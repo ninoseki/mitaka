@@ -1,5 +1,7 @@
-
 npm-debug.log
 node_modules/
 dist/js
 tmp/
+**/.vs
+**/.vscode
+!**/.vscode/tasks.json

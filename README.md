@@ -1,2 +1,2 @@
-# Mitaka: A Chrome Extension makes search engines friendly with urlscan.io
+# Mitaka: A Chrome Extension sends a search query to urlscan.io via the context menu
 

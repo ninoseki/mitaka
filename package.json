@@ -1,5 +1,5 @@
 {
-  "name": "Mitaka",
+  "name": "mitaka",
   "version": "1.0.0",
   "description": "A Chrome Extension makes search engines friendly with urlscan.io Edit",
   "main": "index.js",
@@ -13,15 +13,11 @@
     "type": "git",
     "url": "https://github.com/ninoseki/mitaka.gi"
   },
-  "dependencies": {
-    "jquery": "~3.2.1",
-    "moment": "~2.18.1"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@types/chrome": "~0.0.49",
-    "@types/jquery": "~3.2.13",
-    "ts-loader": "~2.3.7",
-    "typescript": "~2.5.3",
-    "webpack": "~3.7.0"
+    "@types/chrome": "^0.0.59",
+    "ts-loader": "^3.5.0",
+    "typescript": "^2.7.1",
+    "webpack": "^3.10.0"
   }
 }

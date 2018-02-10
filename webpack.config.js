@@ -3,10 +3,7 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        options: path.join(__dirname, 'src/options.ts'),
-        content_script: path.join(__dirname, 'src/content_script.ts'),
         background: path.join(__dirname, 'src/background.ts'),
-        vendor: ['moment', 'jquery']
     },
     output: {
         path: path.join(__dirname, 'dist/js'),
@@ -28,10 +25,7 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             minChunks: Infinity
-        }),
-
-        // exclude locale files in moment
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+        })
 
         // minify
         // new webpack.optimize.UglifyJsPlugin()

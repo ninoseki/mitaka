@@ -1,33 +1,18 @@
 {
   "manifest_version": 2,
-
   "name": "Mitaka",
-  "description": "Chrome Extension makes search engines friendly with urlscan.io",
+  "description": "Chrome Extension sends a search query to urlscan.io via the context menu",
   "version": "0.1",
   "icons": {
     "16": "icons/16.png",
     "48": "icons/48.png",
     "128": "icons/128.png"
   },
-
-  "options_ui": {
-    "page": "options.html",
-    "chrome_style": true
-  },
-
-  "content_scripts": [{
-    "matches": [
-      "https://publicwww.com/websites/*",
-      "https://censys.io/"
-    ],
-    "js": ["js/vendor.js", "js/content_script.js"]
-  }],
-
   "background": {
+    "persistent": false,
     "scripts": ["js/vendor.js", "js/background.js"]
   },
-
   "permissions": [
-    "storage"
+    "contextMenus"
   ]
 }
