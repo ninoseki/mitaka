@@ -5,3 +5,6 @@ tmp/
 **/.vs
 **/.vscode
 !**/.vscode/tasks.json
+dist.crx
+dist.zip
+dist.pem
