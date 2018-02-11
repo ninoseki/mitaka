@@ -28,10 +28,12 @@ function listner(info, tab) {
     case "mitaka-search":
       {
         search(query)
+        break
       }
     case "mitaka-submit":
       {
         submit(query)
+        break
       }
   }
 }
