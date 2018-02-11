@@ -8,14 +8,19 @@ A Chrome Extension sends a search query to urlscan.io via the context menu
 
 ## How to use
 
-Searh a href value via an a element.
+Searh a selection / href value.
 
 !["example"](/examples/1.gif "1.gif")
 
-Search a selection value via a selection.
+Scan a selection / href value.
 
 !["example2"](/examples/2.gif "2.gif")
 
-## Note
+**Note:**
 
-"Mitaka"(見たか) means "Have you seen it?" in Japanese.
+- Please set your urlscan.io API key via the option if you want to make a scan.
+- Until the scan is finished, the URL will respond with a HTTP 404 error. Please wait a minute and reload it.
+
+## Misc.
+
+Mitaka/見たか means "Have you seen it?" in Japanese.
