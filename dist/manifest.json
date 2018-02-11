@@ -8,11 +8,18 @@
     "48": "icons/48.png",
     "128": "icons/128.png"
   },
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  },
   "background": {
     "persistent": false,
     "scripts": ["js/vendor.js", "js/background.js"]
   },
   "permissions": [
-    "contextMenus"
+    "contextMenus",
+    "storage",
+    "notifications",
+    "https://urlscan.io/api/v1/*"
   ]
 }

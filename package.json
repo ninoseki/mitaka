@@ -13,7 +13,9 @@
     "type": "git",
     "url": "https://github.com/ninoseki/mitaka.gi"
   },
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.17.1"
+  },
   "devDependencies": {
     "@types/chrome": "^0.0.59",
     "ts-loader": "^3.5.0",
