@@ -1,24 +1,24 @@
-import axios from 'axios'
+import axios from 'axios';
 
 export class Urlscan {
 
-  protected apiKey: string
-  protected endpoint: string
+  protected apiKey: string;
+  protected endpoint: string;
 
   constructor(apiKey) {
-    this.apiKey = apiKey
-    this.endpoint = "https://urlscan.io/api/v1"
+    this.apiKey = apiKey;
+    this.endpoint = 'https://urlscan.io/api/v1';
   }
 
-  async submit(url, isPublic = true) {
-    let res = await axios.post(`${this.endpoint}/scan/`, {
-      url: url,
-      public: isPublic ? "on" : "off"
+  public async submit(url, isPublic = true) {
+    const res = await axios.post(`${this.endpoint}/scan/`, {
+      public: isPublic ? 'on' : 'off',
+      url,
     }, {
-      headers: {
-        "API-KEY": this.apiKey
-      }
-    })
-    return res
+        headers: {
+          'API-KEY': this.apiKey,
+        },
+      });
+    return res;
   }
 }

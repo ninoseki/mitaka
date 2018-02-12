@@ -1,83 +1,83 @@
-import { Urlscan } from './urlscan'
+import { Urlscan } from './urlscan';
 
 function normalize(query) {
   try {
-    let url = new URL(query)
-    let normalized = url.host + url.pathname + url.search + url.hash
-    if (normalized.slice(-1) == "/") {
-      normalized = normalized.slice(0, -1)
+    const url = new URL(query);
+    let normalized = url.host + url.pathname + url.search + url.hash;
+    if (normalized.slice(-1) === '/') {
+      normalized = normalized.slice(0, -1);
     }
-    return normalized
+    return normalized;
   } catch (err) {
-    return query
+    return query;
   }
 }
 
 function showNotification(message) {
   chrome.notifications.create({
-    type: "basic",
-    iconUrl: "./icons/48.png",
-    title: "Mitaka",
-    message: message
-  })
+    type: 'basic',
+    iconUrl: './icons/48.png',
+    title: 'Mitaka',
+    message,
+  });
 }
 
 function listner(info, tab) {
-  let query = normalize(info.linkUrl || info.selectionText)
+  const query = normalize(info.linkUrl || info.selectionText);
   switch (info.menuItemId) {
-    case "mitaka-search":
+    case 'mitaka-search':
       {
-        search(query)
-        break
+        search(query);
+        break;
       }
-    case "mitaka-submit":
+    case 'mitaka-submit':
       {
-        submit(query)
-        break
+        submit(query);
+        break;
       }
   }
 }
 
 function search(query) {
-  let normalized = normalize(query)
-  let url = `https://urlscan.io/search/#${normalized}`
+  const normalized = normalize(query);
+  const url = `https://urlscan.io/search/#${normalized}`;
   chrome.tabs.create({
-    url: url
-  })
+    url,
+  });
 }
 
 function submit(query) {
-  chrome.storage.sync.get("apiKey", async function (config) {
-    let urlscan = new Urlscan(config.apiKey)
-    let res = await urlscan.submit(query).catch(function (e) {
-      let message
-      if (e.response.status == 401) {
-        message = "Please set your API key via the option"
+  chrome.storage.sync.get('apiKey', async (config) => {
+    const urlscan = new Urlscan(config.apiKey);
+    const res = await urlscan.submit(query).catch((e) => {
+      let message;
+      if (e.response.status === 401) {
+        message = 'Please set your API key via the option';
       } else {
-        message = e.response.data.description
+        message = e.response.data.description;
       }
-      showNotification(message)
-    })
+      showNotification(message);
+    });
     if (res) {
       chrome.tabs.create({
-        url: res.data.result
-      })
+        url: res.data.result,
+      });
     }
   });
 }
 
 chrome.contextMenus.onClicked.addListener(listner);
 
-chrome.runtime.onInstalled.addListener(function () {
-  let contexts = ["selection", "link"]
-  let search = chrome.contextMenus.create({
-    title: "Search it on urlscan.io",
-    contexts: contexts,
-    id: "mitaka-search"
-  })
-  let submit = chrome.contextMenus.create({
-    title: "Scan it on urlscan.io",
-    contexts: contexts,
-    id: "mitaka-submit"
-  })
-})
+chrome.runtime.onInstalled.addListener(() => {
+  const contexts = ['selection', 'link'];
+  chrome.contextMenus.create({
+    title: 'Search it on urlscan.io',
+    id: 'mitaka-search',
+    contexts,
+  });
+  chrome.contextMenus.create({
+    title: 'Scan it on urlscan.io',
+    id: 'mitaka-submit',
+    contexts,
+  });
+});
