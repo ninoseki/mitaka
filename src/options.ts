@@ -1,31 +1,31 @@
 // Saves options to chrome.storage.sync.
 function save_options() {
-  let apiKey = <HTMLInputElement>document.getElementById("api-key")
+  const apiKey = document.getElementById('api-key') as HTMLInputElement;
   if (apiKey) {
     chrome.storage.sync.set({
-      apiKey: apiKey.value
-    }, function () {
-      let status = document.getElementById("status")
+      apiKey: apiKey.value,
+    }, () => {
+      const status = document.getElementById('status');
       if (status) {
-        status.textContent = "Options saved."
+        status.textContent = 'Options saved.';
       }
     });
   }
 }
 
 function restore_options() {
-  chrome.storage.sync.get("apiKey", function (config) {
-    let apiKey = <HTMLInputElement>document.getElementById("api-key")
+  chrome.storage.sync.get('apiKey', (config) => {
+    const apiKey = document.getElementById('api-key') as HTMLInputElement;
     if (apiKey) {
-      apiKey.value = config.apiKey
+      apiKey.value = config.apiKey;
     }
   });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  restore_options()
-  let save = document.getElementById("save")
+document.addEventListener('DOMContentLoaded', () => {
+  restore_options();
+  const save = document.getElementById('save');
   if (save) {
-    save.addEventListener("click", save_options)
+    save.addEventListener('click', save_options);
   }
-})
+});
