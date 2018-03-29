@@ -14,12 +14,12 @@
     "url": "https://github.com/ninoseki/mitaka.gi"
   },
   "dependencies": {
-    "axios": "^0.17.1"
+    "axios": "^0.18.0"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.59",
+    "@types/chrome": "^0.0.63",
     "ts-loader": "^3.5.0",
-    "typescript": "^2.7.1",
+    "typescript": "^2.8.1",
     "webpack": "^3.10.0"
   }
 }

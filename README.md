@@ -2,7 +2,12 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/4a49568bf0bed0b4799a/maintainability)](https://codeclimate.com/github/ninoseki/mitaka/maintainability)
 
-A Chrome Extension sends a search query to urlscan.io & make a scan on urlscan.io via the context menu
+A Chrome Extension which:
+
+- sends a search query to urlscan.io & PublicWWW
+- makes a scan on urlscan.io
+
+via the context menu.
 
 ## Download
 
