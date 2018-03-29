@@ -11,24 +11,20 @@ module.exports = {
         filename: '[name].js'
     },
     module: {
-        loaders: [{
-            exclude: /node_modules/,
-            test: /\.tsx?$/,
-            loader: 'ts-loader'
-        }]
+        rules: [
+            {
+                test: /\.tsx?$/,
+                loader: "ts-loader"
+            }
+        ]
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js']
     },
-    plugins: [
-
-        // pack common vender files
-        new webpack.optimize.CommonsChunkPlugin({
+    optimization: {
+        splitChunks: {
             name: 'vendor',
-            minChunks: Infinity
-        })
-
-        // minify
-        // new webpack.optimize.UglifyJsPlugin()
-    ]
+            chunks: 'all',
+        }
+    }
 };
