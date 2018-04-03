@@ -40,12 +40,25 @@ function listner(info, tab) {
         searchPublicWWW(query);
         break;
       }
+    case 'mitaka-search-urlquery':
+      {
+        searchUrlquery(query);
+        break;
+      }
   }
 }
 
 function searchPublicWWW(query) {
   const encoded = encodeURIComponent(query);
   const url = `https://publicwww.com/websites/${encoded}/`;
+  chrome.tabs.create({
+    url,
+  });
+}
+
+function searchUrlquery(query) {
+  const encoded = encodeURIComponent(query);
+  const url = `http://urlquery.net/search?q=${encoded}`;
   chrome.tabs.create({
     url,
   });
@@ -99,6 +112,12 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     title: 'Search it on PublicWWW',
     id: 'mitaka-search-publicwww',
+    contexts,
+  });
+
+  chrome.contextMenus.create({
+    title: 'Search it on Urlquery',
+    id: 'mitaka-search-urlquery',
     contexts,
   });
 });
