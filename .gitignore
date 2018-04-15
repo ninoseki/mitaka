@@ -8,3 +8,6 @@ tmp/
 dist.crx
 dist.zip
 dist.pem
+
+.nyc_output
+coverage

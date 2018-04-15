@@ -1,17 +1,5 @@
 import { Urlscan } from './urlscan';
-
-function normalize(query) {
-  try {
-    const url = new URL(query);
-    let normalized = url.host + url.pathname + url.search + url.hash;
-    if (normalized.slice(-1) === '/') {
-      normalized = normalized.slice(0, -1);
-    }
-    return normalized;
-  } catch (err) {
-    return query;
-  }
-}
+import { normalize } from './util';
 
 function showNotification(message) {
   chrome.notifications.create({

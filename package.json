@@ -5,22 +5,49 @@
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack",
-    "watch": "./node_modules/.bin/webpack -w"
+    "watch": "./node_modules/.bin/webpack -w",
+    "test": "./node_modules/.bin/mocha -r ts-node/register src/**/*.spec.ts",
+    "cover": "nyc npm t"
+  },
+  "nyc": {
+    "include": [
+      "src/*.ts",
+      "src/**/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "json",
+      "html",
+      "text"
+    ],
+    "sourceMap": true,
+    "all": true
   },
   "author": "ninoseki",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ninoseki/mitaka.gi"
+    "url": "https://github.com/ninoseki/mitaka.git"
   },
   "dependencies": {
     "axios": "^0.18.0"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.2",
     "@types/chrome": "^0.0.63",
-    "ts-loader": "^4.1.0",
+    "@types/mocha": "^5.0.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.1.0",
+    "nyc": "^11.6.0",
+    "ts-loader": "^4.2.0",
+    "ts-node": "^5.0.1",
     "typescript": "^2.8.1",
-    "webpack": "^4.4.1",
-    "webpack-cli": "^2.0.13"
+    "webpack-cli": "^2.0.14",
+    "webpack": "^4.5.0"
   }
 }
