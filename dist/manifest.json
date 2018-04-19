@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Mitaka",
-  "description": "Chrome Extension sends a search query to urlscan.io, urlQuery and PublicWWW via the context menu",
-  "version": "0.5.0",
+  "description": "Chrome Extension sends a search query to urlscan.io, urlQuery, PublicWWW and VirusTotal via the context menu",
+  "version": "0.6.0",
   "icons": {
     "16": "icons/16.png",
     "48": "icons/48.png",

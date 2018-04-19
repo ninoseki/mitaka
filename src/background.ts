@@ -1,5 +1,6 @@
 import { Urlscan } from './urlscan';
-import { normalize } from './util';
+import { removeSquareBrackets } from './util';
+import { VirusTotal } from './virustotal';
 
 function showNotification(message) {
   chrome.notifications.create({
@@ -11,7 +12,7 @@ function showNotification(message) {
 }
 
 function listner(info, tab) {
-  const query = normalize(info.linkUrl || info.selectionText);
+  const query = removeSquareBrackets(info.linkUrl || info.selectionText);
   switch (info.menuItemId) {
     case 'mitaka-search':
       {
@@ -33,7 +34,20 @@ function listner(info, tab) {
         searchUrlquery(query);
         break;
       }
+    case 'mitaka-search-virustotal':
+      {
+        searchVirusTotal(query);
+        break;
+      }
   }
+}
+
+function searchVirusTotal(query) {
+  const vt = new VirusTotal(query);
+  const url = vt.search_url();
+  chrome.tabs.create({
+    url,
+  });
 }
 
 function searchPublicWWW(query) {
@@ -53,8 +67,8 @@ function searchUrlquery(query) {
 }
 
 function search(query) {
-  const normalized = normalize(query);
-  const url = `https://urlscan.io/search/#${normalized}`;
+  const urlscan = new Urlscan('dummy');
+  const url = urlscan.search_url(query);
   chrome.tabs.create({
     url,
   });
@@ -84,28 +98,22 @@ chrome.contextMenus.onClicked.addListener(listner);
 
 chrome.runtime.onInstalled.addListener(() => {
   const contexts = ['selection', 'link'];
-
-  chrome.contextMenus.create({
-    title: 'Search it on urlscan.io',
-    id: 'mitaka-search',
-    contexts,
-  });
-
-  chrome.contextMenus.create({
-    title: 'Scan it on urlscan.io',
-    id: 'mitaka-submit',
-    contexts,
-  });
-
-  chrome.contextMenus.create({
-    title: 'Search it on PublicWWW',
-    id: 'mitaka-search-publicwww',
-    contexts,
-  });
-
-  chrome.contextMenus.create({
-    title: 'Search it on Urlquery',
-    id: 'mitaka-search-urlquery',
-    contexts,
-  });
+  interface Menu {
+    title: string;
+    name: string;
+  }
+  const menus: Menu[] = [
+    { title: 'Search it on urlscan.io', name: 'mitaka-search' },
+    { title: 'Scan it on urlscan.io', name: 'mitaka-submit' },
+    { title: 'Search it on PublicWWW', name: 'mitaka-search-publicwww' },
+    { title: 'Search it on Urlquery', name: 'mitaka-search-urlquery' },
+    { title: 'Search it on VirusTotal', name: 'mitaka-search-virustotal' },
+  ];
+  for (const menu of menus) {
+    chrome.contextMenus.create({
+      title: menu.title,
+      id: menu.name,
+      contexts,
+    });
+  }
 });
