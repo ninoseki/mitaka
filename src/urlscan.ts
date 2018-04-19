@@ -1,4 +1,6 @@
 import axios from 'axios';
+import * as validator from 'validator';
+import { defaultIsURLOptions } from './util';
 
 export class Urlscan {
 
@@ -8,6 +10,16 @@ export class Urlscan {
   constructor(apiKey) {
     this.apiKey = apiKey;
     this.endpoint = 'https://urlscan.io/api/v1';
+  }
+
+  public search_url(query) {
+    const url = `https://urlscan.io/search/`;
+    if (validator.isURL(query, defaultIsURLOptions)) {
+      const encoded = encodeURIComponent(`"${query}"`);
+      return `${url}#${encoded}`;
+    }
+    const encoded = encodeURIComponent(query);
+    return `${url}#${query}`;
   }
 
   public async submit(url, isPublic = true) {

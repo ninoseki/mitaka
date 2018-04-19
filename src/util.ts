@@ -1,21 +1,15 @@
-export function normalize(query) {
-  let result = removeSquareBrackets(query);
-  result = removeProtocol(result);
-  result = removeLastSlash(result);
-  return result;
-}
-
 export function removeSquareBrackets(query) {
   return query.replace(/[\[\]']+/g, '');
 }
 
-export function removeProtocol(query) {
-  return query.replace(/(^\w+:|^)\/\//, '');
-}
 
-export function removeLastSlash(query) {
-  if (query.slice(-1) === '/') {
-    return query.slice(0, -1);
-  }
-  return query;
+export const defaultIsURLOptions = {
+  protocols: ['http', 'https'],
+  require_tld: true,
+  require_protocol: true,
+  require_host: true,
+  require_valid_protocol: true,
+  allow_underscores: true,
+  allow_trailing_dot: true,
+  allow_protocol_relative_urls: false
 }
