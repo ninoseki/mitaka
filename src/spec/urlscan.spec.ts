@@ -3,7 +3,7 @@ import 'mocha';
 import { Urlscan } from '../urlscan';
 
 describe('Urlscan', () => {
-  describe("#submit", () => {
+  describe('#submit', () => {
     it('should return JSON', async () => {
       const urlscan = new Urlscan('invalid_api_key');
       let message;
@@ -16,7 +16,7 @@ describe('Urlscan', () => {
       });
       expect(message).to.eq('Please set your API key via the option');
     });
-  })
+  });
   describe('#search_url', () => {
     it('should return URL', () => {
       const urlscan = new Urlscan('dummy');
