@@ -14,12 +14,11 @@ export class Urlscan {
 
   public search_url(query) {
     const url = `https://urlscan.io/search/`;
+    let encoded = encodeURIComponent(query);
     if (validator.isURL(query, defaultIsURLOptions)) {
-      const encoded = encodeURIComponent(`"${query}"`);
-      return `${url}#${encoded}`;
+      encoded = encodeURIComponent(`"${query}"`);
     }
-    const encoded = encodeURIComponent(query);
-    return `${url}#${query}`;
+    return `${url}#${encoded}`;
   }
 
   public async submit(url, isPublic = true) {

@@ -1,3 +1,6 @@
+import { Censys } from './censys';
+import { PublicWWW } from './publicwww';
+import { Urlquery } from './urlquery';
 import { Urlscan } from './urlscan';
 import { removeSquareBrackets } from './util';
 import { VirusTotal } from './virustotal';
@@ -39,7 +42,20 @@ function listner(info, tab) {
         searchVirusTotal(query);
         break;
       }
+    case 'mitaka-search-censys':
+      {
+        searchCensys(query);
+        break;
+      }
   }
+}
+
+function searchCensys(query) {
+  const censys = new Censys(query);
+  const url = censys.search_url();
+  chrome.tabs.create({
+    url,
+  });
 }
 
 function searchVirusTotal(query) {
@@ -51,16 +67,16 @@ function searchVirusTotal(query) {
 }
 
 function searchPublicWWW(query) {
-  const encoded = encodeURIComponent(query);
-  const url = `https://publicwww.com/websites/${encoded}/`;
+  const publicwwww = new PublicWWW(query);
+  const url = publicwwww.search_url();
   chrome.tabs.create({
     url,
   });
 }
 
 function searchUrlquery(query) {
-  const encoded = encodeURIComponent(query);
-  const url = `http://urlquery.net/search?q=${encoded}`;
+  const urlquery = new Urlquery(query);
+  const url = urlquery.search_url();
   chrome.tabs.create({
     url,
   });
@@ -103,6 +119,7 @@ chrome.runtime.onInstalled.addListener(() => {
     name: string;
   }
   const menus: Menu[] = [
+    { title: 'Search it on Censys', name: 'mitaka-search-censys' },
     { title: 'Search it on urlscan.io', name: 'mitaka-search' },
     { title: 'Scan it on urlscan.io', name: 'mitaka-submit' },
     { title: 'Search it on PublicWWW', name: 'mitaka-search-publicwww' },

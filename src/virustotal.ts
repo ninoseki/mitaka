@@ -1,7 +1,7 @@
 import * as crypto from 'crypto-js';
+import * as url from 'url';
 import * as validator from 'validator';
 import { defaultIsURLOptions } from './util';
-import * as url from 'url';
 
 export class VirusTotal {
 
@@ -34,8 +34,8 @@ export class VirusTotal {
   }
 
   private normalize_url() {
-    const parsed_url = url.parse(this.query);
-    if (parsed_url.pathname === '/' && this.query.slice(-1) !== '/') {
+    const parsedUrl = url.parse(this.query);
+    if (parsedUrl.pathname === '/' && this.query.slice(-1) !== '/') {
       return `${this.query}/`;
     }
     return this.query;
