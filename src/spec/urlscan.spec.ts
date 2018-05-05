@@ -22,7 +22,7 @@ describe('Urlscan', () => {
       const urlscan = new Urlscan('dummy');
 
       const r1 = urlscan.searchUrl('https://urlscan.io');
-      expect(r1).to.eq('https://urlscan.io/search/#%22https%3A%2F%2Furlscan.io%22')
+      expect(r1).to.eq('https://urlscan.io/search/#%22https%3A%2F%2Furlscan.io%22');
 
       const r2 = urlscan.searchUrl('urlscan.io');
       expect(r2).to.eq('https://urlscan.io/search/#urlscan.io');
