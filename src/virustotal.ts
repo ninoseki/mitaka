@@ -13,7 +13,7 @@ export class VirusTotal {
     this.endpoint = 'https://www.virustotal.com/#';
   }
 
-  public search_url() {
+  public searchUrl() {
     if (validator.isIP(this.query)) {
       return this.ip_addr();
     } else if (validator.isURL(this.query, defaultIsURLOptions)) {

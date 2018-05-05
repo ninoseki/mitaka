@@ -1,15 +1,15 @@
-export class Censys {
+export class Shodan {
 
   protected query: string;
   protected endpoint: string;
 
   constructor(query) {
     this.query = query;
-    this.endpoint = 'https://censys.io';
+    this.endpoint = `https://www.shodan.io`;
   }
 
   public searchUrl() {
     const encoded = encodeURIComponent(this.query);
-    return `${this.endpoint}/ipv4?q=${encoded}`;
+    return `${this.endpoint}/search?query=${encoded}`;
   }
 }

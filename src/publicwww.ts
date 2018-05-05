@@ -8,7 +8,7 @@ export class PublicWWW {
     this.endpoint = 'https://publicwww.com/websites';
   }
 
-  public search_url() {
+  public searchUrl() {
     const encoded = encodeURIComponent(this.query);
     return `${this.endpoint}/${encoded}`;
   }

@@ -8,7 +8,7 @@ export class Urlquery {
     this.endpoint = 'https://urlquery.net';
   }
 
-  public search_url() {
+  public searchUrl() {
     const encoded = encodeURIComponent(this.query);
     return `${this.endpoint}/search?q=${encoded}`;
   }
