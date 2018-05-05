@@ -1,5 +1,6 @@
 import { Censys } from './censys';
 import { PublicWWW } from './publicwww';
+import { Shodan } from './shodan';
 import { Urlquery } from './urlquery';
 import { Urlscan } from './urlscan';
 import { removeSquareBrackets } from './util';
@@ -47,12 +48,25 @@ function listner(info, tab) {
         searchCensys(query);
         break;
       }
+    case 'mitaka-search-shodan':
+      {
+        searchShodan(query);
+        break;
+      }
   }
+}
+
+function searchShodan(query) {
+  const shodan = new Shodan(query);
+  const url = shodan.searchUrl();
+  chrome.tabs.create({
+    url,
+  })
 }
 
 function searchCensys(query) {
   const censys = new Censys(query);
-  const url = censys.search_url();
+  const url = censys.searchUrl();
   chrome.tabs.create({
     url,
   });
@@ -60,7 +74,7 @@ function searchCensys(query) {
 
 function searchVirusTotal(query) {
   const vt = new VirusTotal(query);
-  const url = vt.search_url();
+  const url = vt.searchUrl();
   chrome.tabs.create({
     url,
   });
@@ -68,7 +82,7 @@ function searchVirusTotal(query) {
 
 function searchPublicWWW(query) {
   const publicwwww = new PublicWWW(query);
-  const url = publicwwww.search_url();
+  const url = publicwwww.searchUrl();
   chrome.tabs.create({
     url,
   });
@@ -76,7 +90,7 @@ function searchPublicWWW(query) {
 
 function searchUrlquery(query) {
   const urlquery = new Urlquery(query);
-  const url = urlquery.search_url();
+  const url = urlquery.searchUrl();
   chrome.tabs.create({
     url,
   });
@@ -84,7 +98,7 @@ function searchUrlquery(query) {
 
 function search(query) {
   const urlscan = new Urlscan('dummy');
-  const url = urlscan.search_url(query);
+  const url = urlscan.searchUrl(query);
   chrome.tabs.create({
     url,
   });
@@ -120,6 +134,7 @@ chrome.runtime.onInstalled.addListener(() => {
   }
   const menus: Menu[] = [
     { title: 'Search it on Censys', name: 'mitaka-search-censys' },
+    { title: 'Search it on Shodan', name: 'mitaka-search-shodan' },
     { title: 'Search it on urlscan.io', name: 'mitaka-search' },
     { title: 'Scan it on urlscan.io', name: 'mitaka-submit' },
     { title: 'Search it on PublicWWW', name: 'mitaka-search-publicwww' },

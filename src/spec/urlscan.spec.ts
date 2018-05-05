@@ -17,17 +17,17 @@ describe('Urlscan', () => {
       expect(message).to.eq('Please set your API key via the option');
     });
   });
-  describe('#search_url', () => {
+  describe('#searchUrl', () => {
     it('should return URL', () => {
       const urlscan = new Urlscan('dummy');
 
-      const r1 = urlscan.search_url('https://urlscan.io');
+      const r1 = urlscan.searchUrl('https://urlscan.io');
       expect(r1).to.eq('https://urlscan.io/search/#%22https%3A%2F%2Furlscan.io%22')
 
-      const r2 = urlscan.search_url('urlscan.io');
+      const r2 = urlscan.searchUrl('urlscan.io');
       expect(r2).to.eq('https://urlscan.io/search/#urlscan.io');
 
-      const r3 = urlscan.search_url('1.1.1.1');
+      const r3 = urlscan.searchUrl('1.1.1.1');
       expect(r3).to.eq('https://urlscan.io/search/#1.1.1.1');
     });
   });

@@ -12,7 +12,7 @@ export class Urlscan {
     this.endpoint = 'https://urlscan.io/api/v1';
   }
 
-  public search_url(query) {
+  public searchUrl(query) {
     const url = `https://urlscan.io/search/`;
     let encoded = encodeURIComponent(query);
     if (validator.isURL(query, defaultIsURLOptions)) {
