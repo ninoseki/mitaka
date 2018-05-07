@@ -1,13 +1,15 @@
 import axios from 'axios';
 import * as validator from 'validator';
+import { Searcher } from './searcher';
 import { defaultIsURLOptions } from './util';
 
-export class Urlscan {
+export class Urlscan extends Searcher {
 
   protected apiKey: string;
   protected endpoint: string;
 
   constructor(apiKey) {
+    super();
     this.apiKey = apiKey;
     this.endpoint = 'https://urlscan.io/api/v1';
   }

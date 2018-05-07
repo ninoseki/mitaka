@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import 'mocha';
-import { Urlscan } from '../urlscan';
+import { Urlscan } from '../lib/urlscan';
 
 describe('Urlscan', () => {
   describe('#submit', () => {
@@ -21,14 +21,10 @@ describe('Urlscan', () => {
     it('should return URL', () => {
       const urlscan = new Urlscan('dummy');
 
-      const r1 = urlscan.searchUrl('https://urlscan.io');
-      expect(r1).to.eq('https://urlscan.io/search/#%22https%3A%2F%2Furlscan.io%22');
-
-      const r2 = urlscan.searchUrl('urlscan.io');
-      expect(r2).to.eq('https://urlscan.io/search/#urlscan.io');
-
-      const r3 = urlscan.searchUrl('1.1.1.1');
-      expect(r3).to.eq('https://urlscan.io/search/#1.1.1.1');
+      expect(urlscan.searchUrl('https://urlscan.io')).to.
+        eq('https://urlscan.io/search/#%22https%3A%2F%2Furlscan.io%22');
+      expect(urlscan.searchUrl('urlscan.io')).to.eq('https://urlscan.io/search/#urlscan.io');
+      expect(urlscan.searchUrl('1.1.1.1')).to.eq('https://urlscan.io/search/#1.1.1.1');
     });
   });
 });
