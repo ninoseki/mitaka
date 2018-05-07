@@ -1,10 +1,10 @@
-import { Censys } from './censys';
-import { PublicWWW } from './publicwww';
-import { Shodan } from './shodan';
-import { Urlquery } from './urlquery';
-import { Urlscan } from './urlscan';
-import { removeSquareBrackets } from './util';
-import { VirusTotal } from './virustotal';
+import { Censys } from './lib/censys';
+import { PublicWWW } from './lib/publicwww';
+import { Shodan } from './lib/shodan';
+import { Urlquery } from './lib/urlquery';
+import { Urlscan } from './lib/urlscan';
+import { removeSquareBrackets } from './lib/util';
+import { VirusTotal } from './lib/virustotal';
 
 function showNotification(message) {
   chrome.notifications.create({
@@ -57,40 +57,40 @@ function listner(info, tab) {
 }
 
 function searchShodan(query) {
-  const shodan = new Shodan(query);
-  const url = shodan.searchUrl();
+  const shodan = new Shodan();
+  const url = shodan.searchUrl(query);
   chrome.tabs.create({
     url,
-  })
+  });
 }
 
 function searchCensys(query) {
-  const censys = new Censys(query);
-  const url = censys.searchUrl();
+  const censys = new Censys();
+  const url = censys.searchUrl(query);
   chrome.tabs.create({
     url,
   });
 }
 
 function searchVirusTotal(query) {
-  const vt = new VirusTotal(query);
-  const url = vt.searchUrl();
+  const vt = new VirusTotal();
+  const url = vt.searchUrl(query);
   chrome.tabs.create({
     url,
   });
 }
 
 function searchPublicWWW(query) {
-  const publicwwww = new PublicWWW(query);
-  const url = publicwwww.searchUrl();
+  const publicwwww = new PublicWWW();
+  const url = publicwwww.searchUrl(query);
   chrome.tabs.create({
     url,
   });
 }
 
 function searchUrlquery(query) {
-  const urlquery = new Urlquery(query);
-  const url = urlquery.searchUrl();
+  const urlquery = new Urlquery();
+  const url = urlquery.searchUrl(query);
   chrome.tabs.create({
     url,
   });
