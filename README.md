@@ -5,7 +5,7 @@
 
 A Chrome Extension which:
 
-- sends a search query to urlscan.io, PublicWWW and VirusTotal.
+- sends a search query to urlscan.io, PublicWWW and VirusTotal
 - makes a scan on urlscan.io
 
 via the context menu.
