@@ -13,9 +13,15 @@
     "chrome_style": true
   },
   "background": {
-    "persistent": false,
+    "persistent": true,
     "scripts": ["js/vendor.js", "js/background.js"]
   },
+  "content_scripts": [
+   {
+     "matches": ["<all_urls>"],
+     "js": ["js/content.js"]
+   }
+ ],
   "permissions": [
     "contextMenus",
     "storage",

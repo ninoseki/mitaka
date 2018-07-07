@@ -1,23 +1,16 @@
-import { Censys } from './lib/censys';
-import { PublicWWW } from './lib/publicwww';
-import { SecurityTrails } from './lib/securitytrails';
-import { Shodan } from './lib/shodan';
-import { Urlquery } from './lib/urlquery';
-import { Urlscan } from './lib/urlscan';
-import { removeSquareBrackets } from './lib/util';
-import { VirusTotal } from './lib/virustotal';
+import { getIOC, IOC } from 'ioc-extractor';
 
 function showNotification(message) {
   chrome.notifications.create({
-    type: 'basic',
     iconUrl: './icons/48.png',
-    title: 'Mitaka',
     message,
+    title: 'Mitaka',
+    type: 'basic',
   });
 }
 
 function listner(info, tab) {
-  const query = removeSquareBrackets(info.linkUrl || info.selectionText);
+  const query = (info.linkUrl || info.selectionText);
   switch (info.menuItemId) {
     case 'mitaka-search':
       {
@@ -62,62 +55,6 @@ function listner(info, tab) {
   }
 }
 
-function searchShodan(query) {
-  const shodan = new Shodan();
-  const url = shodan.searchUrl(query);
-  chrome.tabs.create({
-    url,
-  });
-}
-
-function searchCensys(query) {
-  const censys = new Censys();
-  const url = censys.searchUrl(query);
-  chrome.tabs.create({
-    url,
-  });
-}
-
-function searchVirusTotal(query) {
-  const vt = new VirusTotal();
-  const url = vt.searchUrl(query);
-  chrome.tabs.create({
-    url,
-  });
-}
-
-function searchSecurityTrails(query) {
-  const st = new SecurityTrails();
-  const url = st.searchUrl(query);
-  chrome.tabs.create({
-    url,
-  });
-}
-
-function searchPublicWWW(query) {
-  const publicwwww = new PublicWWW();
-  const url = publicwwww.searchUrl(query);
-  chrome.tabs.create({
-    url,
-  });
-}
-
-function searchUrlquery(query) {
-  const urlquery = new Urlquery();
-  const url = urlquery.searchUrl(query);
-  chrome.tabs.create({
-    url,
-  });
-}
-
-function search(query) {
-  const urlscan = new Urlscan('dummy');
-  const url = urlscan.searchUrl(query);
-  chrome.tabs.create({
-    url,
-  });
-}
-
 function submit(query) {
   chrome.storage.sync.get('apiKey', async (config) => {
     const urlscan = new Urlscan(config.apiKey);
@@ -158,9 +95,42 @@ chrome.runtime.onInstalled.addListener(() => {
   ];
   for (const menu of menus) {
     chrome.contextMenus.create({
-      title: menu.title,
-      id: menu.name,
       contexts,
+      id: menu.name,
+      title: menu.title,
     });
+  }
+});
+
+interface Menu {
+  title: string;
+  id: string;
+}
+const menus: Menu[] = [
+  { title: 'Search it on Censys',     id: 'censys-search' },
+  { title: 'Search it on Shodan',     id: 'shodan-search' },
+  { title: 'Search it on urlscan.io', id: 'urlscan-search' },
+  { title: 'Scan it on urlscan.io',   id: 'urlscan-scan' },
+  { title: 'Search it on PublicWWW',  id: 'publicwww-scan' },
+  { title: 'Search it on Urlquery',   id: 'urlquery-scan' },
+  { title: 'Search it on VirusTotal', id: 'virustotal-scan' },
+];
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.request === 'updateContextMenu') {
+    for (const menu of menus) {
+      chrome.contextMenus.remove(menu.id);
+    }
+    const text: string = message.selection;
+    const ioc: IOC = getIOC(text);
+
+    const options = {
+      contexts: ['selection'],
+      id: type,
+      onclick: cmClickHandler,
+      title: type,
+    };
+    const cmid = chrome.contextMenus.create(options);
+    contextMenuIds.push(type);
   }
 });

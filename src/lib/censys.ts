@@ -1,16 +1,16 @@
 import { Searcher } from './searcher';
 
-export class Censys extends Searcher {
+export class Censys implements Searcher {
 
-  protected endpoint: string;
+  public endpoint: string;
+  public supportedTypes: string[] = ['raw'];
 
   constructor() {
-    super();
     this.endpoint = 'https://censys.io';
   }
 
-  public searchUrl(query) {
-    const encoded = encodeURIComponent(query);
+  public searchByRaw(raw) {
+    const encoded = encodeURIComponent(raw);
     return `${this.endpoint}/ipv4?q=${encoded}`;
   }
 }
