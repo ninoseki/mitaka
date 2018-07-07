@@ -1,5 +1,6 @@
 import { Censys } from './lib/censys';
 import { PublicWWW } from './lib/publicwww';
+import { SecurityTrails } from './lib/securitytrails';
 import { Shodan } from './lib/shodan';
 import { Urlquery } from './lib/urlquery';
 import { Urlscan } from './lib/urlscan';
@@ -53,6 +54,11 @@ function listner(info, tab) {
         searchShodan(query);
         break;
       }
+    case 'mitaka-search-securitytrails':
+      {
+        searchSecurityTrails(query);
+        break;
+      }
   }
 }
 
@@ -75,6 +81,14 @@ function searchCensys(query) {
 function searchVirusTotal(query) {
   const vt = new VirusTotal();
   const url = vt.searchUrl(query);
+  chrome.tabs.create({
+    url,
+  });
+}
+
+function searchSecurityTrails(query) {
+  const st = new SecurityTrails();
+  const url = st.searchUrl(query);
   chrome.tabs.create({
     url,
   });
@@ -140,6 +154,7 @@ chrome.runtime.onInstalled.addListener(() => {
     { title: 'Search it on PublicWWW', name: 'mitaka-search-publicwww' },
     { title: 'Search it on Urlquery', name: 'mitaka-search-urlquery' },
     { title: 'Search it on VirusTotal', name: 'mitaka-search-virustotal' },
+    { title: 'Search it on SecurityTrails', name: 'mitaka-search-securitytrails' },
   ];
   for (const menu of menus) {
     chrome.contextMenus.create({
