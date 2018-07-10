@@ -1,4 +1,6 @@
 import { getIOC, IOC } from 'ioc-extractor';
+import { SearcherResult, Selector } from './lib/selector';
+import { Urlscan } from './lib/urlscan';
 
 function showNotification(message) {
   chrome.notifications.create({
@@ -10,55 +12,42 @@ function showNotification(message) {
 }
 
 function listner(info, tab) {
-  const query = (info.linkUrl || info.selectionText);
-  switch (info.menuItemId) {
-    case 'mitaka-search':
-      {
-        search(query);
+  const id: string = info.menuItemId;
+  const arr = id.split(' ');
+  const name = arr[arr.length - 1];
+  const query = arr.slice(1, arr.length - 5).join(' ');
+  const selector: Selector = new Selector(query);
+  const results: SearcherResult[] = selector.getSearcherResults();
+  const result = results.find((r) => r.searcher.name === name);
+  let target = '';
+  if (result !== undefined) {
+    switch (result.type) {
+      case 'raw':
+        target = result.searcher.searchByRaw!(result.query);
         break;
-      }
-    case 'mitaka-submit':
-      {
-        submit(query);
+      case 'ip':
+        target = result.searcher.searchByIP!(result.query);
         break;
-      }
-    case 'mitaka-search-publicwww':
-      {
-        searchPublicWWW(query);
+      case 'domain':
+        target = result.searcher.searchByDomain!(result.query);
         break;
-      }
-    case 'mitaka-search-urlquery':
-      {
-        searchUrlquery(query);
+      case 'url':
+        target = result.searcher.searchByURL!(result.query);
         break;
-      }
-    case 'mitaka-search-virustotal':
-      {
-        searchVirusTotal(query);
+      case 'hash':
+        target = result.searcher.searchByHash!(result.query);
         break;
-      }
-    case 'mitaka-search-censys':
-      {
-        searchCensys(query);
-        break;
-      }
-    case 'mitaka-search-shodan':
-      {
-        searchShodan(query);
-        break;
-      }
-    case 'mitaka-search-securitytrails':
-      {
-        searchSecurityTrails(query);
-        break;
-      }
+    }
+  }
+  if (target !== undefined && target !== '') {
+    chrome.tabs.create({ url: target });
   }
 }
 
 function submit(query) {
   chrome.storage.sync.get('apiKey', async (config) => {
     const urlscan = new Urlscan(config.apiKey);
-    const res = await urlscan.submit(query).catch((e) => {
+    const res = await urlscan.scanByUrl(query).catch((e) => {
       let message;
       if (e.response.status === 401) {
         message = 'Please set your API key via the option';
@@ -75,62 +64,36 @@ function submit(query) {
   });
 }
 
-chrome.contextMenus.onClicked.addListener(listner);
-
-chrome.runtime.onInstalled.addListener(() => {
-  const contexts = ['selection', 'link'];
-  interface Menu {
-    title: string;
-    name: string;
-  }
-  const menus: Menu[] = [
-    { title: 'Search it on Censys', name: 'mitaka-search-censys' },
-    { title: 'Search it on Shodan', name: 'mitaka-search-shodan' },
-    { title: 'Search it on urlscan.io', name: 'mitaka-search' },
-    { title: 'Scan it on urlscan.io', name: 'mitaka-submit' },
-    { title: 'Search it on PublicWWW', name: 'mitaka-search-publicwww' },
-    { title: 'Search it on Urlquery', name: 'mitaka-search-urlquery' },
-    { title: 'Search it on VirusTotal', name: 'mitaka-search-virustotal' },
-    { title: 'Search it on SecurityTrails', name: 'mitaka-search-securitytrails' },
-  ];
-  for (const menu of menus) {
-    chrome.contextMenus.create({
-      contexts,
-      id: menu.name,
-      title: menu.title,
-    });
-  }
-});
-
 interface Menu {
   title: string;
   id: string;
 }
 const menus: Menu[] = [
-  { title: 'Search it on Censys',     id: 'censys-search' },
-  { title: 'Search it on Shodan',     id: 'shodan-search' },
-  { title: 'Search it on urlscan.io', id: 'urlscan-search' },
-  { title: 'Scan it on urlscan.io',   id: 'urlscan-scan' },
-  { title: 'Search it on PublicWWW',  id: 'publicwww-scan' },
-  { title: 'Search it on Urlquery',   id: 'urlquery-scan' },
-  { title: 'Search it on VirusTotal', id: 'virustotal-scan' },
+  { title: 'Scan it on urlscan.io',       id: 'Urlscan-scan' },
+  { title: 'Search it on Censys',         id: 'Censys-search' },
+  { title: 'Search it on PublicWWW',      id: 'PublicWWW-search' },
+  { title: 'Search it on SecurityTrails', id: 'SecurityTrails-search' },
+  { title: 'Search it on Shodan',         id: 'Shodan-search' },
+  { title: 'Search it on urlscan.io',     id: 'Urlscan-search' },
+  { title: 'Search it on VirusTotal',     id: 'VirusTotal-search' },
 ];
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
   if (message.request === 'updateContextMenu') {
-    for (const menu of menus) {
-      chrome.contextMenus.remove(menu.id);
+    await chrome.contextMenus.removeAll();
+    const text: string = message.selection;    const selector: Selector = new Selector(text);
+    const results: SearcherResult[] = selector.getSearcherResults();
+    for (const result of results) {
+      const name = result.searcher.name;
+      const id = `${name}-search`;
+      const title = `Search ${result.query} as a ${result.type} on ${name}`;
+      const options = {
+        contexts: ['selection'],
+        id: title,
+        onclick: listner,
+        title,
+      };
+      chrome.contextMenus.create(options);
     }
-    const text: string = message.selection;
-    const ioc: IOC = getIOC(text);
-
-    const options = {
-      contexts: ['selection'],
-      id: type,
-      onclick: cmClickHandler,
-      title: type,
-    };
-    const cmid = chrome.contextMenus.create(options);
-    contextMenuIds.push(type);
   }
 });

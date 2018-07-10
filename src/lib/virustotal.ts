@@ -6,10 +6,12 @@ import { Searcher } from './searcher';
 export class VirusTotal implements Searcher {
 
   public endpoint: string;
+  public name: string;
   public supportedTypes: string[] = ['ip', 'domain', 'url', 'hash'];
 
   constructor() {
     this.endpoint = 'https://www.virustotal.com/#';
+    this.name = 'Urlscan';
   }
 
   public searchByIP(query) {

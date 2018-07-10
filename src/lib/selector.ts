@@ -9,6 +9,7 @@ import { VirusTotal } from './virustotal';
 
 export interface SearcherResult {
   searcher: Searcher;
+  type: string;
   query: string;
 }
 
@@ -84,23 +85,23 @@ export class Selector {
 
   public getSearcherResults(): SearcherResult[] {
     let results: SearcherResult[] = [];
-    results = this.concat(results, this.makeResults(this.getSearchersForRaw(), this.input));
+    results = this.concat(results, this.makeResults(this.getSearchersForRaw(), 'raw', this.input));
 
     const url = this.getUrl();
     if (url !== null) {
-      return this.concat(results, this.makeResults(this.getSearchersForUrl(), url));
+      return this.concat(results, this.makeResults(this.getSearchersForUrl(), 'url', url));
     }
     const domain = this.getDomain();
     if (domain !== null) {
-      return this.concat(results, this.makeResults(this.getSearchersForDomain(), domain));
+      return this.concat(results, this.makeResults(this.getSearchersForDomain(), 'domain', domain));
     }
     const ip = this.getIP();
     if (ip !== null) {
-      return this.concat(results, this.makeResults(this.getSearchersForIP(), ip));
+      return this.concat(results, this.makeResults(this.getSearchersForIP(), 'ip', ip));
     }
     const hash = this.getHash();
     if (hash !== null) {
-      return this.concat(results, this.makeResults(this.getSearchersForHash(), hash));
+      return this.concat(results, this.makeResults(this.getSearchersForHash(), 'hash', hash));
     }
     return results;
   }
@@ -112,15 +113,15 @@ export class Selector {
     return target;
   }
 
-  private makeResults(searchers: Searcher[], query: string) {
+  private makeResults(searchers: Searcher[], type: string, query: string) {
     const results: SearcherResult[] = [];
     for (const s of searchers) {
-      results.push(this.makeResult(s, query));
+      results.push(this.makeResult(s, type, query));
     }
     return results;
   }
 
-  private makeResult(searcher: Searcher, query: string) {
-    return { searcher, query };
+  private makeResult(searcher: Searcher, type: string, query: string) {
+    return { searcher, type, query };
   }
 }

@@ -1,34 +1,26 @@
-import * as validator from 'validator';
 import { Searcher } from './searcher';
 
-export class SecurityTrails extends Searcher {
+export class SecurityTrails implements Searcher {
 
-  protected endpoint: string;
+  public endpoint: string;
+  public name: string;
+  public supportedTypes: string[] = ['domain', 'ip'];
 
   constructor() {
-    super();
     this.endpoint = 'https://securitytrails.com';
+    this.name = 'SecurityTrails';
   }
 
-  public searchUrl(query) {
-    if (validator.isIP(query)) {
-      return this.ip_addr(query);
-    } else if (validator.isFQDN(query)) {
-      return this.domain(query);
-    }
-    return this.keyword(query);
-  }
-
-  private ip_addr(query) {
-    return `${this.endpoint}/list/ip/${query}`;
-  }
-
-  private domain(query) {
-    return `${this.endpoint}/domain/${query}`;
-  }
-
-  private keyword(query) {
-    const encoded = encodeURIComponent(query);
+  public searchByRaw(raw) {
+    const encoded = encodeURIComponent(raw);
     return `${this.endpoint}/list/keyword/${encoded}`;
+  }
+
+  public searchByIP(ip) {
+    return `${this.endpoint}/list/ip/${ip}`;
+  }
+
+  public searchByDomain(domain) {
+    return `${this.endpoint}/domain/${domain}`;
   }
 }
