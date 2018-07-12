@@ -63,8 +63,8 @@ export class Selector {
     return hashes[0];
   }
 
-  public getSearchersForRaw(): Searcher[] {
-    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf('raw') !== -1);
+  public getSearchersForText(): Searcher[] {
+    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf('text') !== -1);
   }
 
   public getSearchersForIP(): Searcher[] {
@@ -85,7 +85,7 @@ export class Selector {
 
   public getSearcherResults(): SearcherResult[] {
     let results: SearcherResult[] = [];
-    results = this.concat(results, this.makeResults(this.getSearchersForRaw(), 'raw', this.input));
+    results = this.concat(results, this.makeResults(this.getSearchersForText(), 'text', this.input));
 
     const url = this.getUrl();
     if (url !== null) {

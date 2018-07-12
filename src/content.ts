@@ -1,25 +1,18 @@
 document.addEventListener('selectionchange', () => {
-  const selection: string = window.getSelection().toString().trim();
-  if (selection !== null && selection !== '') {
+  const selection = window.getSelection();
+  const text: string = selection.toString().trim();
+  let link;
+  if (selection.rangeCount > 0) {
+    const range = window.getSelection().getRangeAt(0).startContainer.parentElement;
+    if (range !== null && range.hasAttribute('href')) {
+      link = range.getAttribute('href');
+    }
+  }
+  const selected = link || text;
+  if (selected !== '') {
     chrome.runtime.sendMessage({
       request: 'updateContextMenu',
-      selection,
+      selection: selected,
     });
   }
 });
-
-const links = document.getElementsByTagName('a');
-for (const link of links) {
-  const RIGHT = 2;
-  link.addEventListener('mousedown', (e) => {
-    if (e.button === RIGHT) {
-      const selection = link.getAttribute('href');
-      if (selection !== null && selection !== '') {
-        chrome.runtime.sendMessage({
-          request: 'updateContextMenu',
-          selection,
-        });
-      }
-    }
-  });
-}

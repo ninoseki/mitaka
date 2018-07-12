@@ -9,7 +9,7 @@ describe('SecurityTrails', () => {
 
       expect(st.searchByIP('8.8.8.8')).to.equal('https://securitytrails.com/list/ip/8.8.8.8');
       expect(st.searchByDomain('github.com')).to.equal('https://securitytrails.com/domain/github.com');
-      expect(st.searchByRaw('test')).to.equal('https://securitytrails.com/list/keyword/test');
+      expect(st.searchByText('test')).to.equal('https://securitytrails.com/list/keyword/test');
     });
   });
 });

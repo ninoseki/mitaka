@@ -11,8 +11,8 @@ export class SecurityTrails implements Searcher {
     this.name = 'SecurityTrails';
   }
 
-  public searchByRaw(raw) {
-    const encoded = encodeURIComponent(raw);
+  public searchByText(query) {
+    const encoded = encodeURIComponent(query);
     return `${this.endpoint}/list/keyword/${encoded}`;
   }
 

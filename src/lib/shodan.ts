@@ -4,14 +4,14 @@ export class Shodan implements Searcher {
 
   public endpoint: string;
   public name: string;
-  public supportedTypes: string[] = ['raw'];
+  public supportedTypes: string[] = ['text'];
 
   constructor() {
     this.endpoint = `https://www.shodan.io`;
     this.name = 'Shodan';
   }
 
-  public searchByRaw(query) {
+  public searchByText(query) {
     const encoded = encodeURIComponent(query);
     return `${this.endpoint}/search?query=${encoded}`;
   }

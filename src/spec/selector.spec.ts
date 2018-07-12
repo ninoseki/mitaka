@@ -4,17 +4,17 @@ import { SearcherResult, Selector } from '../lib/selector';
 
 describe('Seletor', () => {
   context('ip', () => {
-    const selector: Selector = new Selector('raw');
+    const selector: Selector = new Selector('text');
     describe('#getSearchersForRaw', () => {
-      it('should return Searchers support raw', () => {
-        expect(selector.getSearchersForRaw().length).to.equal(3);
+      it('should return Searchers support text', () => {
+        expect(selector.getSearchersForText().length).to.equal(3);
       });
     });
     describe('#getSearcherResults', () => {
-      it('should return Searchers support raw', () => {
+      it('should return Searchers support text', () => {
         const results: SearcherResult[] = selector.getSearcherResults();
         for (const result of results) {
-          expect(result.query).to.equal('raw');
+          expect(result.query).to.equal('text');
         }
         expect(results.length).to.equal(3); // censys, shodan, publicwww
       });
@@ -39,7 +39,7 @@ describe('Seletor', () => {
         for (const result of results) {
           expect(result.query).to.equal('8.8.8.8');
         }
-        expect(results.length).to.equal(5); // urlscan, virustotal + raw(3)
+        expect(results.length).to.equal(5); // urlscan, virustotal + text(3)
       });
     });
   });
@@ -62,7 +62,7 @@ describe('Seletor', () => {
         for (const result of results) {
           expect(result.query).to.equal('urlscan.io');
         }
-        expect(results.length).to.equal(5); // urlscan, virustotal + raw(3)
+        expect(results.length).to.equal(5); // urlscan, virustotal + text(3)
       });
     });
   });
@@ -85,7 +85,7 @@ describe('Seletor', () => {
         for (const result of results) {
           expect(result.query).to.equal('https://urlscan.io/');
         }
-        expect(results.length).to.equal(5); // urlscan, virustotal + raw(3)
+        expect(results.length).to.equal(5); // urlscan, virustotal + text(3)
       });
     });
   });
@@ -108,7 +108,7 @@ describe('Seletor', () => {
         for (const result of results) {
           expect(result.query).to.equal('f6f8179ac71eaabff12b8c024342109b');
         }
-        expect(results.length).to.equal(4); // virustotal + raw(3)
+        expect(results.length).to.equal(4); // virustotal + text(3)
       });
     });
   });
