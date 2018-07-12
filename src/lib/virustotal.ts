@@ -11,7 +11,7 @@ export class VirusTotal implements Searcher {
 
   constructor() {
     this.endpoint = 'https://www.virustotal.com/#';
-    this.name = 'Urlscan';
+    this.name = 'VirusTotal';
   }
 
   public searchByIP(query) {

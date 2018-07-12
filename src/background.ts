@@ -50,11 +50,13 @@ function scan(query) {
 chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
   if (message.request === 'updateContextMenu') {
     chrome.contextMenus.removeAll(() => {
+      // search searchers based on a type of the input
       const text: string = message.selection;
       const selector: Selector = new Selector(text);
       const results: SearcherResult[] = selector.getSearcherResults();
       for (const result of results) {
         const name = result.searcher.name;
+        // it tells action/query/type/target to the listner
         const id = `Search ${result.query} as a ${result.type} on ${name}`;
         const title = `Search its ${result.type} on ${name}`;
         const options = {

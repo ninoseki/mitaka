@@ -3,11 +3,24 @@ import 'mocha';
 import { SearcherResult, Selector } from '../lib/selector';
 
 describe('Seletor', () => {
+  const stats = {
+    // findsubdomains, pulsedive, securitytrails, urlscan, virustotal + text(3)
+    domain: 5,
+    // pulsedive, virustotal
+    hash: 2,
+    // securitytrails, pulsedive, urlscan
+    ip: 4,
+    // shodan, censys, publicwww
+    text: 3,
+    // urlscan, pulsedive, virustotal
+    url: 3,
+  };
+
   context('ip', () => {
     const selector: Selector = new Selector('text');
     describe('#getSearchersForRaw', () => {
       it('should return Searchers support text', () => {
-        expect(selector.getSearchersForText().length).to.equal(3);
+        expect(selector.getSearchersForText().length).to.equal(stats.text);
       });
     });
     describe('#getSearcherResults', () => {
@@ -16,7 +29,7 @@ describe('Seletor', () => {
         for (const result of results) {
           expect(result.query).to.equal('text');
         }
-        expect(results.length).to.equal(3); // censys, shodan, publicwww
+        expect(results.length).to.equal(stats.text);
       });
     });
   });
@@ -30,7 +43,7 @@ describe('Seletor', () => {
     });
     describe('#getSearchersForIP', () => {
       it('should return Searchers support IP', () => {
-        expect(selector.getSearchersForDomain().length).to.equal(2);
+        expect(selector.getSearchersForIP().length).to.equal(stats.ip);
       });
     });
     describe('#getSearchers', () => {
@@ -39,7 +52,7 @@ describe('Seletor', () => {
         for (const result of results) {
           expect(result.query).to.equal('8.8.8.8');
         }
-        expect(results.length).to.equal(5); // urlscan, virustotal + text(3)
+        expect(results.length).to.equal(stats.text + stats.ip);
       });
     });
   });
@@ -53,7 +66,7 @@ describe('Seletor', () => {
     });
     describe('#getSearchersForDomain', () => {
       it('should return Searchers support domain', () => {
-        expect(selector.getSearchersForDomain().length).to.equal(2);
+        expect(selector.getSearchersForDomain().length).to.equal(stats.domain);
       });
     });
     describe('#getSearchers', () => {
@@ -62,7 +75,7 @@ describe('Seletor', () => {
         for (const result of results) {
           expect(result.query).to.equal('urlscan.io');
         }
-        expect(results.length).to.equal(5); // urlscan, virustotal + text(3)
+        expect(results.length).to.equal(stats.text + stats.domain);
       });
     });
   });
@@ -76,7 +89,7 @@ describe('Seletor', () => {
     });
     describe('#getSearchersForUrl', () => {
       it('should return Searchers support url', () => {
-        expect(selector.getSearchersForUrl().length).to.equal(2);
+        expect(selector.getSearchersForUrl().length).to.equal(stats.url);
       });
     });
     describe('#getSearchers', () => {
@@ -85,7 +98,7 @@ describe('Seletor', () => {
         for (const result of results) {
           expect(result.query).to.equal('https://urlscan.io/');
         }
-        expect(results.length).to.equal(5); // urlscan, virustotal + text(3)
+        expect(results.length).to.equal(stats.text + stats.url);
       });
     });
   });
@@ -99,7 +112,7 @@ describe('Seletor', () => {
     });
     describe('#getSearchersForHash', () => {
       it('should return Searchers support hash', () => {
-        expect(selector.getSearchersForHash().length).to.equal(1);
+        expect(selector.getSearchersForHash().length).to.equal(stats.hash);
       });
     });
     describe('#getSearchers', () => {
@@ -108,7 +121,7 @@ describe('Seletor', () => {
         for (const result of results) {
           expect(result.query).to.equal('f6f8179ac71eaabff12b8c024342109b');
         }
-        expect(results.length).to.equal(4); // virustotal + text(3)
+        expect(results.length).to.equal(stats.text + stats.hash);
       });
     });
   });

@@ -1,8 +1,11 @@
 import { getIOC, IOC } from 'ioc-extractor';
 
 import { Censys } from './censys';
+import { FindSubDomains } from './findsubdomains';
 import { PublicWWW } from './publicwww';
+import { Pulsedive } from './pulsedive';
 import { Searcher } from './searcher';
+import { SecurityTrails } from './securitytrails';
 import { Shodan } from './shodan';
 import { Urlscan } from './urlscan';
 import { VirusTotal } from './virustotal';
@@ -19,7 +22,10 @@ export class Selector {
 
   protected searchers: Searcher[] = [
     new Censys(),
+    new FindSubDomains(),
     new PublicWWW(),
+    new Pulsedive(),
+    new SecurityTrails(),
     new Shodan(),
     new Urlscan('test'),
     new VirusTotal(),
