@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/ninoseki/mitaka.svg?branch=master)](https://travis-ci.org/ninoseki/mitaka)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4a49568bf0bed0b4799a/maintainability)](https://codeclimate.com/github/ninoseki/mitaka/maintainability)
 
-Mitaka is an OSINT-friendly IOC (Indicator of Compromise) saerch tool.
+Mitaka is an OSINT-friendly IOC (Indicator of Compromise) search tool.
 
 It works as a Chrome extension and it makes possible to search / scan IOC via the context menu.
 
@@ -44,7 +44,7 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 
 ## How to use
 
-The Chrome extension show context menus based on the type of IOC you selected and then you can choose what you want to search / scan on.
+The Chrome extension shows context menus based on a type of IOC you selected and then you can choose what you want to search / scan on.
 
 **Examples:**
 
