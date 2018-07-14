@@ -1,20 +1,20 @@
 {
-  "defaultSeverity": "error",
-  "extends": [
-      "tslint:recommended"
-  ],
-  "jsRules": {},
-  "rules": {
-      "quotemark": [
-          true,
-          "single"
-      ],
-      "indent": [
-          true
-      ],
-      "interface-name": [
-          false
-      ]
-  },
-  "rulesDirectory": []
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "quotemark": [true,
+            "double",
+            "avoid-escape"
+        ],
+        "indent": [
+            true
+        ],
+        "interface-name": [
+            false
+        ]
+    },
+    "rulesDirectory": []
 }

@@ -1,14 +1,14 @@
-import { Searcher } from './searcher';
+import { Searcher } from "./searcher";
 
 export class Shodan implements Searcher {
 
   public endpoint: string;
   public name: string;
-  public supportedTypes: string[] = ['text'];
+  public supportedTypes: string[] = ["text"];
 
   constructor() {
     this.endpoint = `https://www.shodan.io`;
-    this.name = 'Shodan';
+    this.name = "Shodan";
   }
 
   public searchByText(query) {
