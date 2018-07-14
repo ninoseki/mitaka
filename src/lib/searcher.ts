@@ -1,4 +1,10 @@
-export abstract class Searcher {
-  protected abstract endpoint: string;
-  public abstract searchUrl(query: string): string;
+export interface Searcher {
+  endpoint: string;
+  name: string;
+  supportedTypes: string[];
+  searchByText?(query: string);
+  searchByIP?(query: string);
+  searchByDomain?(query: string);
+  searchByURL?(query: string);
+  searchByHash?(query: string);
 }

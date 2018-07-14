@@ -1,15 +1,17 @@
 import { Searcher } from './searcher';
 
-export class Shodan extends Searcher {
+export class Shodan implements Searcher {
 
-  protected endpoint: string;
+  public endpoint: string;
+  public name: string;
+  public supportedTypes: string[] = ['text'];
 
   constructor() {
-    super();
     this.endpoint = `https://www.shodan.io`;
+    this.name = 'Shodan';
   }
 
-  public searchUrl(query) {
+  public searchByText(query) {
     const encoded = encodeURIComponent(query);
     return `${this.endpoint}/search?query=${encoded}`;
   }

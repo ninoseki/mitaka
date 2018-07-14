@@ -4,9 +4,9 @@
   "description": "A Chrome Extension makes search engines friendly with urlscan.io Edit",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack",
-    "watch": "./node_modules/.bin/webpack -w",
-    "test": "./node_modules/.bin/mocha -r ts-node/register src/**/*.spec.ts",
+    "build": "webpack",
+    "watch": "webpack -w",
+    "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "cover": "nyc npm t"
   },
   "nyc": {
@@ -37,23 +37,24 @@
   "dependencies": {
     "axios": "^0.18.0",
     "crypto-js": "^3.1.9-1",
+    "ioc-extractor": "^0.2.1",
     "url": "^0.11.0",
-    "validator": "^10.2.0"
+    "validator": "^10.4.0"
   },
   "devDependencies": {
-    "@types/chai": "^4.1.3",
-    "@types/chrome": "^0.0.65",
-    "@types/crypto-js": "^3.1.39",
-    "@types/mocha": "^5.2.0",
-    "@types/node": "^10.1.0",
+    "@types/chai": "^4.1.4",
+    "@types/chrome": "^0.0.69",
+    "@types/crypto-js": "^3.1.40",
+    "@types/mocha": "^5.2.3",
+    "@types/node": "^10.3.5",
     "@types/validator": "^9.4.1",
     "chai": "^4.1.2",
-    "mocha": "^5.1.1",
-    "nyc": "^11.8.0",
-    "ts-loader": "^4.3.0",
-    "ts-node": "^6.0.3",
-    "typescript": "^2.8.3",
-    "webpack-cli": "^2.1.3",
-    "webpack": "^4.8.3"
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "ts-loader": "^4.4.1",
+    "ts-node": "^7.0.0",
+    "typescript": "^2.9.2",
+    "webpack-cli": "^3.0.8",
+    "webpack": "^4.12.0"
   }
 }

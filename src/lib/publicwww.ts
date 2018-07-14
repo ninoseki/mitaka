@@ -1,15 +1,17 @@
 import { Searcher } from './searcher';
 
-export class PublicWWW extends Searcher {
+export class PublicWWW implements Searcher {
 
-  protected endpoint: string;
+  public endpoint: string;
+  public name: string;
+  public supportedTypes: string[] = ['text'];
 
   constructor() {
-    super();
     this.endpoint = 'https://publicwww.com/websites';
+    this.name = 'PublicWWW';
   }
 
-  public searchUrl(query) {
+  public searchByText(query) {
     const encoded = encodeURIComponent(query);
     return `${this.endpoint}/${encoded}`;
   }

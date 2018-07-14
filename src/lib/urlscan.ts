@@ -1,29 +1,40 @@
 import axios from 'axios';
-import * as validator from 'validator';
 import { Searcher } from './searcher';
-import { defaultIsURLOptions } from './util';
 
-export class Urlscan extends Searcher {
+export class Urlscan implements Searcher {
 
+  public endpoint: string;
+  public name: string;
+  public supportedTypes: string[] = ['ip', 'domain', 'url'];
   protected apiKey: string;
-  protected endpoint: string;
 
   constructor(apiKey) {
-    super();
     this.apiKey = apiKey;
     this.endpoint = 'https://urlscan.io/api/v1';
+    this.name = 'Urlscan';
   }
 
-  public searchUrl(query) {
+  public searchByIP(query) {
+    const encoded = encodeURIComponent(query);
+    return this.search(encoded);
+  }
+
+  public searchByDomain(query) {
+    const encoded = encodeURIComponent(query);
+    return this.search(encoded);
+  }
+
+  public searchByURL(query) {
+    const encoded = encodeURIComponent(`"${query}"`);
+    return this.search(encoded);
+  }
+
+  public search(query) {
     const url = `https://urlscan.io/search/`;
-    let encoded = encodeURIComponent(query);
-    if (validator.isURL(query, defaultIsURLOptions)) {
-      encoded = encodeURIComponent(`"${query}"`);
-    }
-    return `${url}#${encoded}`;
+    return `${url}#${query}`;
   }
 
-  public async submit(url, isPublic = true) {
+  public async scanByUrl(url, isPublic = true) {
     const res = await axios.post(`${this.endpoint}/scan/`, {
       public: isPublic ? 'on' : 'off',
       url,

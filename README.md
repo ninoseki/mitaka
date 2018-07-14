@@ -3,12 +3,40 @@
 [![Build Status](https://travis-ci.org/ninoseki/mitaka.svg?branch=master)](https://travis-ci.org/ninoseki/mitaka)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4a49568bf0bed0b4799a/maintainability)](https://codeclimate.com/github/ninoseki/mitaka/maintainability)
 
-A Chrome Extension which:
+Mitaka is an OSINT-friendly IOC (Indicator of Compromise) saerch tool.
 
-- sends a search query to urlscan.io, PublicWWW and VirusTotal
-- makes a scan on urlscan.io
+It works as a Chrome extension and it makes possible to search / scan IOC via the context menu.
 
-via the context menu.
+## Features
+
+### Supported IOC types
+
+| name   | desc.               | eg.                                |
+|:-------|:--------------------|:-----------------------------------|
+| text   | freetext            | any string(s)                      |
+| ip     | IPv4 address        | `8.8.8.8`                          |
+| domain | domain name         | `github.com`                       |
+| url    | URL                 | `https://github.com`               |
+| hash   | md5 / sha1 / sha256 | `44d88612fea8a8f36de82e1278abb02f` |
+
+### Supported search engines
+
+| name           | url                         | supported types           |
+|:---------------|:----------------------------|:--------------------------|
+| Censys         | https://censys.io           | text                      |
+| FindSubDomains | https://findsubdomains.com  | domain                    |
+| PublicWWW      | https://publicwww.com/      | text                      |
+| Pulsedive      | https://pulsedive.com/      | ip / domaion / url / hash |
+| SecurityTrails | https://securitytrails.com/ | ip / domain               |
+| Shodan         | https://www.shodan.io       | text                      |
+| Urlscan        | https://urlscan.io          | ip / domain / url         |
+| VirusTotal     | https://www.virustotal.com  | ip / domain / url / hash  |
+
+### Supported scan engine
+
+| name    | url                | supported types |
+|:--------|:-------------------|:----------------|
+| Urlscan | https://urlscan.io | url             |
 
 ## Download
 
@@ -16,11 +44,9 @@ via the context menu.
 
 ## How to use
 
-Searh a selection / href value.
+The Chrome extension show context menus based on the type of IOC you selected and then you can choose what you want to search / scan on.
 
 !["example"](/examples/1.gif "1.gif")
-
-Scan a selection / href value.
 
 !["example2"](/examples/2.gif "2.gif")
 
@@ -28,6 +54,16 @@ Scan a selection / href value.
 
 - Please set your urlscan.io API key via the option if you want to make a scan.
 - Until the scan is finished, the URL will respond with `Not Found / Error code 404`. Please wait a minute and reload it.
+
+## About Permissons
+
+This Chrome extension requires following permissions.
+
+- `contextMenus`: For creating context menus.
+- `notifications`: For making a notification when someting goes wrong.
+- `storage`: For storing API key(s).
+
+I don't (and never) collect any information from the users.
 
 ## How to build (for developers)
 
