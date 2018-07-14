@@ -59,10 +59,9 @@ export class Selector {
 
   public getHash(): string | null {
     let hashes: string[] = [];
-    hashes = this.concat(hashes, this.ioc.hashes.md5s);
-    hashes = this.concat(hashes, this.ioc.hashes.sha1s);
     hashes = this.concat(hashes, this.ioc.hashes.sha256s);
-    hashes = this.concat(hashes, this.ioc.hashes.sha512s);
+    hashes = this.concat(hashes, this.ioc.hashes.sha1s);
+    hashes = this.concat(hashes, this.ioc.hashes.md5s);
     if (hashes.length === 0) {
       return null;
     }

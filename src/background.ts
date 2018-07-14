@@ -47,7 +47,7 @@ function scan(query) {
   });
 }
 
-chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.request === 'updateContextMenu') {
     chrome.contextMenus.removeAll(() => {
       // search searchers based on a type of the input
@@ -58,7 +58,7 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
         const name = result.searcher.name;
         // it tells action/query/type/target to the listner
         const id = `Search ${result.query} as a ${result.type} on ${name}`;
-        const title = `Search its ${result.type} on ${name}`;
+        const title = `Search this ${result.type} on ${name}`;
         const options = {
           contexts: ['selection'],
           id,
@@ -70,7 +70,7 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
       // if there is a url in the ioc, show the scan option
       if (selector.getUrl() !== null) {
         const id = `Scan ${selector.getUrl()} as a url on Urlscan`;
-        const title = `Scan its url on Urlscan`;
+        const title = `Scan this url on Urlscan`;
         const options = {
           contexts: ['selection'],
           id,
@@ -81,4 +81,8 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
       }
     });
   }
+});
+
+chrome.contextMenus.onClicked.addListener(() => {
+  chrome.contextMenus.removeAll();
 });

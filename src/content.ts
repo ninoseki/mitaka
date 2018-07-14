@@ -1,4 +1,4 @@
-document.addEventListener('selectionchange', () => {
+document.onselectionchange = () => {
   const selection = window.getSelection();
   const text: string = selection.toString().trim();
   let link;
@@ -15,4 +15,4 @@ document.addEventListener('selectionchange', () => {
       selection: selected,
     });
   }
-});
+};

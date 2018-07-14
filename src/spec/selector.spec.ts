@@ -104,10 +104,15 @@ describe('Seletor', () => {
   });
 
   context('hash', () => {
-    const selector: Selector = new Selector('f6f8179ac71eaabff12b8c024342109b');
-    describe('#getUrl', () => {
-      it('should return the domain', () => {
-        expect(selector.getHash()).to.equal('f6f8179ac71eaabff12b8c024342109b');
+    const selector: Selector = new Selector('275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f');
+    describe('#getHash', () => {
+      it('should return SHA256', () => {
+        expect(selector.getHash()).to.equal('275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f');
+        // additional tests
+        const s2: Selector = new Selector('3395856ce81f2b7382dee72602f798b642f14140');
+        expect(s2.getHash()).to.equal('3395856ce81f2b7382dee72602f798b642f14140');
+        const s3: Selector = new Selector('44d88612fea8a8f36de82e1278abb02f');
+        expect(s3.getHash()).to.equal('44d88612fea8a8f36de82e1278abb02f');
       });
     });
     describe('#getSearchersForHash', () => {
@@ -116,10 +121,10 @@ describe('Seletor', () => {
       });
     });
     describe('#getSearchers', () => {
-      it('should return SearchrerResults support url', () => {
+      it('should return SearchrerResults support hash', () => {
         const results: SearcherResult[] = selector.getSearcherResults();
         for (const result of results) {
-          expect(result.query).to.equal('f6f8179ac71eaabff12b8c024342109b');
+          expect(result.query).to.equal('275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f');
         }
         expect(results.length).to.equal(stats.text + stats.hash);
       });
