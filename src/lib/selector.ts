@@ -3,6 +3,7 @@ import { getIOC, IOC } from 'ioc-extractor';
 import { Censys } from './censys';
 import { DomainBigData } from './domainbigdata';
 import { FindSubDomains } from './findsubdomains';
+import { HybridAnalysis } from './hybridanalysis';
 import { PublicWWW } from './publicwww';
 import { Pulsedive } from './pulsedive';
 import { Searcher } from './searcher';
@@ -25,6 +26,7 @@ export class Selector {
     new Censys(),
     new DomainBigData(),
     new FindSubDomains(),
+    new HybridAnalysis(),
     new PublicWWW(),
     new Pulsedive(),
     new SecurityTrails(),

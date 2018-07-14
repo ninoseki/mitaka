@@ -6,8 +6,8 @@ describe('Seletor', () => {
   const stats = {
     // domainbigdata, findsubdomains, pulsedive, securitytrails, urlscan, virustotal + text(3)
     domain: 6,
-    // pulsedive, virustotal
-    hash: 2,
+    // hybridanalysis, pulsedive, virustotal
+    hash: 3,
     // securitytrails, pulsedive, urlscan
     ip: 4,
     // shodan, censys, publicwww
