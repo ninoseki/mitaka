@@ -2,7 +2,7 @@ import { Command } from './lib/command';
 import { SearcherResult, Selector } from './lib/selector';
 import { Urlscan } from './lib/urlscan';
 
-function showNotification(message) {
+function showNotification(message: string) {
   chrome.notifications.create({
     iconUrl: './icons/48.png',
     message,
@@ -16,9 +16,13 @@ function listner(info, tab) {
   const command = new Command(id);
   switch (command.action) {
     case 'search':
-      const url = command.search();
-      if (url !== undefined && url !== '') {
-        chrome.tabs.create({ url });
+      try {
+        const url = command.search();
+        if (url !== undefined && url !== '') {
+          chrome.tabs.create({ url });
+        }
+      } catch (err) {
+        showNotification(err.message);
       }
       break;
     case 'scan':
