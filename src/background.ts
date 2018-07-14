@@ -86,7 +86,3 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     });
   }
 });
-
-chrome.contextMenus.onClicked.addListener(() => {
-  chrome.contextMenus.removeAll();
-});
