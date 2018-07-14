@@ -46,7 +46,11 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 
 The Chrome extension show context menus based on the type of IOC you selected and then you can choose what you want to search / scan on.
 
+**Examples:**
+
 !["example"](/examples/1.gif "1.gif")
+
+---
 
 !["example2"](/examples/2.gif "2.gif")
 
@@ -59,11 +63,13 @@ The Chrome extension show context menus based on the type of IOC you selected an
 
 This Chrome extension requires following permissions.
 
-- `contextMenus`: For creating context menus.
-- `notifications`: For making a notification when someting goes wrong.
-- `storage`: For storing API key(s).
+- `Read and change all your data on the websites you visit`:
+  - This extension creates context menus dynamically based on what you select on a website.
+  - It measns this extension requires reading all your data on the websites you visit. (This extension doesn't change anything on the websites)
+- `Display notifications`:
+  - This extension makes a notification when someting goes wrong.
 
-I don't (and never) collect any information from the users.
+I don't (and will never) collect any information from the users.
 
 ## How to build (for developers)
 
