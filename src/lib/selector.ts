@@ -1,16 +1,16 @@
-import { getIOC, IOC } from 'ioc-extractor';
+import { getIOC, IOC } from "ioc-extractor";
 
-import { Censys } from './censys';
-import { DomainBigData } from './domainbigdata';
-import { FindSubDomains } from './findsubdomains';
-import { HybridAnalysis } from './hybridanalysis';
-import { PublicWWW } from './publicwww';
-import { Pulsedive } from './pulsedive';
-import { Searcher } from './searcher';
-import { SecurityTrails } from './securitytrails';
-import { Shodan } from './shodan';
-import { Urlscan } from './urlscan';
-import { VirusTotal } from './virustotal';
+import { Censys } from "./censys";
+import { DomainBigData } from "./domainbigdata";
+import { FindSubDomains } from "./findsubdomains";
+import { HybridAnalysis } from "./hybridanalysis";
+import { PublicWWW } from "./publicwww";
+import { Pulsedive } from "./pulsedive";
+import { Searcher } from "./searcher";
+import { SecurityTrails } from "./securitytrails";
+import { Shodan } from "./shodan";
+import { Urlscan } from "./urlscan";
+import { VirusTotal } from "./virustotal";
 
 export interface SearcherResult {
   searcher: Searcher;
@@ -31,7 +31,7 @@ export class Selector {
     new Pulsedive(),
     new SecurityTrails(),
     new Shodan(),
-    new Urlscan('test'),
+    new Urlscan("test"),
     new VirusTotal(),
   ];
 
@@ -73,44 +73,44 @@ export class Selector {
   }
 
   public getSearchersForText(): Searcher[] {
-    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf('text') !== -1);
+    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf("text") !== -1);
   }
 
   public getSearchersForIP(): Searcher[] {
-    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf('ip') !== -1);
+    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf("ip") !== -1);
   }
 
   public getSearchersForDomain(): Searcher[] {
-    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf('domain') !== -1);
+    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf("domain") !== -1);
   }
 
   public getSearchersForUrl(): Searcher[] {
-    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf('url') !== -1);
+    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf("url") !== -1);
   }
 
   public getSearchersForHash(): Searcher[] {
-    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf('hash') !== -1);
+    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf("hash") !== -1);
   }
 
   public getSearcherResults(): SearcherResult[] {
     let results: SearcherResult[] = [];
-    results = this.concat(results, this.makeResults(this.getSearchersForText(), 'text', this.input));
+    results = this.concat(results, this.makeResults(this.getSearchersForText(), "text", this.input));
 
     const url = this.getUrl();
     if (url !== null) {
-      return this.concat(results, this.makeResults(this.getSearchersForUrl(), 'url', url));
+      return this.concat(results, this.makeResults(this.getSearchersForUrl(), "url", url));
     }
     const domain = this.getDomain();
     if (domain !== null) {
-      return this.concat(results, this.makeResults(this.getSearchersForDomain(), 'domain', domain));
+      return this.concat(results, this.makeResults(this.getSearchersForDomain(), "domain", domain));
     }
     const ip = this.getIP();
     if (ip !== null) {
-      return this.concat(results, this.makeResults(this.getSearchersForIP(), 'ip', ip));
+      return this.concat(results, this.makeResults(this.getSearchersForIP(), "ip", ip));
     }
     const hash = this.getHash();
     if (hash !== null) {
-      return this.concat(results, this.makeResults(this.getSearchersForHash(), 'hash', hash));
+      return this.concat(results, this.makeResults(this.getSearchersForHash(), "hash", hash));
     }
     return results;
   }

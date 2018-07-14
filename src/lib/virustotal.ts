@@ -1,17 +1,17 @@
 
-import * as crypto from 'crypto-js';
-import * as url from 'url';
-import { Searcher } from './searcher';
+import * as crypto from "crypto-js";
+import * as url from "url";
+import { Searcher } from "./searcher";
 
 export class VirusTotal implements Searcher {
 
   public endpoint: string;
   public name: string;
-  public supportedTypes: string[] = ['ip', 'domain', 'url', 'hash'];
+  public supportedTypes: string[] = ["ip", "domain", "url", "hash"];
 
   constructor() {
-    this.endpoint = 'https://www.virustotal.com/#';
-    this.name = 'VirusTotal';
+    this.endpoint = "https://www.virustotal.com/#";
+    this.name = "VirusTotal";
   }
 
   public searchByIP(query) {
@@ -25,7 +25,7 @@ export class VirusTotal implements Searcher {
 
   public normalizeUrl(q) {
     const parsedUrl = url.parse(q);
-    if (parsedUrl.pathname === '/' && q.slice(-1) !== '/') {
+    if (parsedUrl.pathname === "/" && q.slice(-1) !== "/") {
       return `${q}/`;
     }
     return q;

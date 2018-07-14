@@ -1,14 +1,14 @@
-import { expect } from 'chai';
-import 'mocha';
-import { FindSubDomains } from '../lib/findsubdomains';
+import { expect } from "chai";
+import "mocha";
+import { FindSubDomains } from "../lib/findsubdomains";
 
-describe('FindSubDomain', () => {
-  describe('#searchByDomain', () => {
-    it('should return URL', () => {
+describe("FindSubDomain", () => {
+  describe("#searchByDomain", () => {
+    it("should return URL", () => {
       const findsubdomains = new FindSubDomains();
-      expect(findsubdomains.supportedTypes.indexOf('domain')).not.equal(-1);
-      expect(findsubdomains.searchByDomain('github.com')).
-        to.equal('https://findsubdomains.com/subdomains-of/github.com');
+      expect(findsubdomains.supportedTypes.indexOf("domain")).not.equal(-1);
+      expect(findsubdomains.searchByDomain("github.com")).
+        to.equal("https://findsubdomains.com/subdomains-of/github.com");
     });
   });
 });
