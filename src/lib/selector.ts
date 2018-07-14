@@ -1,6 +1,7 @@
 import { getIOC, IOC } from 'ioc-extractor';
 
 import { Censys } from './censys';
+import { DomainBigData } from './domainbigdata';
 import { FindSubDomains } from './findsubdomains';
 import { PublicWWW } from './publicwww';
 import { Pulsedive } from './pulsedive';
@@ -22,6 +23,7 @@ export class Selector {
 
   protected searchers: Searcher[] = [
     new Censys(),
+    new DomainBigData(),
     new FindSubDomains(),
     new PublicWWW(),
     new Pulsedive(),

@@ -4,8 +4,8 @@ import { SearcherResult, Selector } from '../lib/selector';
 
 describe('Seletor', () => {
   const stats = {
-    // findsubdomains, pulsedive, securitytrails, urlscan, virustotal + text(3)
-    domain: 5,
+    // domainbigdata, findsubdomains, pulsedive, securitytrails, urlscan, virustotal + text(3)
+    domain: 6,
     // pulsedive, virustotal
     hash: 2,
     // securitytrails, pulsedive, urlscan
