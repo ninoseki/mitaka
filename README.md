@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/ninoseki/mitaka.svg?branch=master)](https://travis-ci.org/ninoseki/mitaka)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4a49568bf0bed0b4799a/maintainability)](https://codeclimate.com/github/ninoseki/mitaka/maintainability)
 
-Mitaka is an OSINT-friendly IOC (Indicator of Compromise) search tool.
+Mitaka is an OSINT friendly IOC (Indicator of Compromise) search tool.
 
 It works as a Chrome extension and it makes possible to search / scan IOC via the context menu.
 
@@ -21,16 +21,18 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 
 ### Supported search engines
 
-| name           | url                         | supported types           |
-|:---------------|:----------------------------|:--------------------------|
-| Censys         | https://censys.io           | text                      |
-| FindSubDomains | https://findsubdomains.com  | domain                    |
-| PublicWWW      | https://publicwww.com/      | text                      |
-| Pulsedive      | https://pulsedive.com/      | ip / domaion / url / hash |
-| SecurityTrails | https://securitytrails.com/ | ip / domain               |
-| Shodan         | https://www.shodan.io       | text                      |
-| Urlscan        | https://urlscan.io          | ip / domain / url         |
-| VirusTotal     | https://www.virustotal.com  | ip / domain / url / hash  |
+| name           | url                             | supported types           |
+|:---------------|:--------------------------------|:--------------------------|
+| Censys         | https://censys.io               | text                      |
+| DomainBigData  | https://domainbigdata.com       | domain                    |
+| FindSubDomains | https://findsubdomains.com      | domain                    |
+| HybridAnalysis | https://www.hybrid-analysis.com | hash (sha256 only)        |
+| PublicWWW      | https://publicwww.com           | text                      |
+| Pulsedive      | https://pulsedive.com           | ip / domaion / url / hash |
+| SecurityTrails | https://securitytrails.com      | ip / domain               |
+| Shodan         | https://www.shodan.io           | text                      |
+| Urlscan        | https://urlscan.io              | ip / domain / url         |
+| VirusTotal     | https://www.virustotal.com      | ip / domain / url / hash  |
 
 ### Supported scan engine
 
