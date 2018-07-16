@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack -w",
-    "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "test": "mocha -r ts-node/register \"src/**/*.spec.ts\"",
     "cover": "nyc npm t"
   },
   "nyc": {
@@ -38,6 +38,7 @@
     "axios": "^0.18.0",
     "crypto-js": "^3.1.9-1",
     "ioc-extractor": "^0.2.3",
+    "qs": "^6.5.2",
     "url": "^0.11.0",
     "validator": "^10.4.0"
   },
@@ -46,10 +47,13 @@
     "@types/chrome": "^0.0.69",
     "@types/crypto-js": "^3.1.41",
     "@types/mocha": "^5.2.4",
+    "@types/moxios": "^0.4.8",
     "@types/node": "^10.5.2",
+    "@types/qs": "^6.5.1",
     "@types/validator": "^9.4.1",
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
+    "moxios": "^0.4.0",
     "nyc": "^12.0.2",
     "ts-loader": "^4.4.1",
     "ts-node": "^7.0.0",

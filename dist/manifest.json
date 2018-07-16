@@ -26,6 +26,7 @@
     "contextMenus",
     "notifications",
     "storage",
-    "https://urlscan.io/api/v1/*"
+    "https://urlscan.io/api/v1/*",
+    "https://www.virustotal.com/vtapi/v2/*"
   ]
 }

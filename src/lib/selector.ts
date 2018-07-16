@@ -6,6 +6,7 @@ import { FindSubDomains } from "./findsubdomains";
 import { HybridAnalysis } from "./hybridanalysis";
 import { PublicWWW } from "./publicwww";
 import { Pulsedive } from "./pulsedive";
+import { Scanner, UrlscanScanner, VirusTotalScanner } from "./scanner";
 import { Searcher } from "./searcher";
 import { SecurityTrails } from "./securitytrails";
 import { Shodan } from "./shodan";
@@ -16,6 +17,17 @@ export interface SearcherResult {
   searcher: Searcher;
   type: string;
   query: string;
+}
+
+export interface ScannerResult {
+  scanner: Scanner;
+  type: string;
+  query: string;
+}
+
+interface ScanType {
+  name: "ip" | "domain" | "url";
+  value: string | null;
 }
 
 export class Selector {
@@ -31,8 +43,13 @@ export class Selector {
     new Pulsedive(),
     new SecurityTrails(),
     new Shodan(),
-    new Urlscan("test"),
+    new Urlscan(),
     new VirusTotal(),
+  ];
+
+  protected scanners: Scanner[] = [
+    new UrlscanScanner(),
+    new VirusTotalScanner(),
   ];
 
   constructor(input: string) {
@@ -92,6 +109,10 @@ export class Selector {
     return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf("hash") !== -1);
   }
 
+  public getScannersByType(type: "ip" | "domain" | "url") {
+    return this.scanners.filter((scanner: Scanner) => scanner.supportedTypes.indexOf(type) !== -1);
+  }
+
   public getSearcherResults(): SearcherResult[] {
     let results: SearcherResult[] = [];
     results = this.concat(results, this.makeResults(this.getSearchersForText(), "text", this.input));
@@ -111,6 +132,29 @@ export class Selector {
     const hash = this.getHash();
     if (hash !== null) {
       return this.concat(results, this.makeResults(this.getSearchersForHash(), "hash", hash));
+    }
+    return results;
+  }
+
+  public getScannerResults(): ScannerResult[] {
+    const results: ScannerResult[] = [];
+    const types: ScanType[] = [
+      { name: "url", value: this.getUrl() },
+      { name: "domain", value: this.getDomain() },
+      { name: "ip", value: this.getIP() },
+    ];
+    for (const type of types) {
+      if (type.value !== null) {
+        const scanners = this.getScannersByType(type.name);
+        for (const scanner of scanners) {
+          results.push({
+            query: type.value,
+            scanner,
+            type: type.name,
+          });
+        }
+        break;
+      }
     }
     return results;
   }
