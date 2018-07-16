@@ -1,4 +1,5 @@
 import axios from "axios";
+import * as qs from "qs";
 import { Scanner } from "./scanner";
 
 export class VirusTotalScanner implements Scanner {
@@ -9,7 +10,7 @@ export class VirusTotalScanner implements Scanner {
   protected apiKey: string | undefined;
 
   constructor() {
-    this.endpoint = "https://www.virustotal.com";
+    this.endpoint = "https://www.virustotal.com/vtapi/v2";
     this.name = "VirusTotal";
   }
 
@@ -22,10 +23,12 @@ export class VirusTotalScanner implements Scanner {
       throw Error("Please set your VirusTotal API key via the option.");
     }
 
-    const res = await axios.post(`${this.endpoint}/vtapi/v2/url/scan`, {
+    const params = {
       apikey: this.apiKey,
       url,
-    });
+    };
+
+    const res = await axios.post(`${this.endpoint}/url/scan`, qs.stringify(params));
     return res.data.permalink;
   }
 }

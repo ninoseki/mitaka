@@ -8,8 +8,6 @@ function save_options() {
     urlscanApiKey: urlscanApiKey.value,
     virusTotalApiKey: virusTotalApiKey.value,
   };
-
-  console.log(apiKeys);
   if (apiKeys) {
     chrome.storage.sync.set({ apiKeys }, () => {
       const status = document.getElementById("status");
@@ -24,7 +22,6 @@ function restore_options() {
   const urlscanApiKey = document.getElementById("urlscan-api-key") as HTMLInputElement;
   const virusTotalApiKey = document.getElementById("virustotal-api-key") as HTMLInputElement;
   chrome.storage.sync.get("apiKeys", (config) => {
-    console.log(config);
     if (urlscanApiKey) {
       urlscanApiKey.value = config.apiKeys.urlscanApiKey;
     }
