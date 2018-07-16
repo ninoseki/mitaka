@@ -3,7 +3,7 @@ import "mocha";
 import { Urlscan } from "../lib/urlscan";
 
 describe("Urlscan", () => {
-  const urlscan = new Urlscan("dummy");
+  const urlscan = new Urlscan();
   describe("#searchByURL", () => {
     it("should return URL", () => {
       expect(urlscan.searchByURL("https://urlscan.io")).to.

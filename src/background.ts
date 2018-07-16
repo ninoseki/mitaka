@@ -1,6 +1,6 @@
 import { Command } from "./lib/command";
-import { SearcherResult, Selector } from "./lib/selector";
-import { Urlscan } from "./lib/urlscan";
+import { ApiKeys } from "./lib/scanner";
+import { ScannerResult, SearcherResult, Selector } from "./lib/selector";
 
 function showNotification(message: string) {
   chrome.notifications.create({
@@ -16,37 +16,38 @@ function listner(info, tab) {
   const command = new Command(id);
   switch (command.action) {
     case "search":
-      try {
-        const url = command.search();
-        if (url !== undefined && url !== "") {
-          chrome.tabs.create({ url });
-        }
-      } catch (err) {
-        showNotification(err.message);
-      }
+      search(command);
       break;
     case "scan":
-      scan(command.query);
+      scan(command);
       break;
   }
 }
 
-function scan(query) {
-  chrome.storage.sync.get("apiKey", async (config) => {
-    const urlscan = new Urlscan(config.apiKey);
-    const res = await urlscan.scanByUrl(query).catch((e) => {
-      let message;
-      if (e.response.status === 401) {
-        message = "Please set your API key via the option";
-      } else {
-        message = e.response.data.description;
+function search(command: Command) {
+  try {
+    const url = command.search();
+    if (url !== undefined && url !== "") {
+      chrome.tabs.create({ url });
+    }
+  } catch (err) {
+    showNotification(err.message);
+  }
+}
+
+function scan(command: Command) {
+  chrome.storage.sync.get("apiKeys", async (config) => {
+    const apiKeys: ApiKeys = {
+      urlscanApiKey: config.apiKeys.urlscanApiKey,
+      virusTotalApiKey: config.apiKeys.virusTotalApiKey,
+    };
+    try {
+      const url = await command.scan(apiKeys);
+      if (url !== undefined && url !== "") {
+        chrome.tabs.create({ url });
       }
-      showNotification(message);
-    });
-    if (res) {
-      chrome.tabs.create({
-        url: res.data.result,
-      });
+    } catch (err) {
+      showNotification(err.message);
     }
   });
 }
@@ -71,10 +72,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         };
         chrome.contextMenus.create(options);
       }
-      // if there is a url in the ioc, show the scan option
-      if (selector.getUrl() !== null) {
-        const id = `Scan ${selector.getUrl()} as a url on Urlscan`;
-        const title = `Scan this url on Urlscan`;
+      // search scanners based on a type of the input
+      const scannerResults: ScannerResult[] = selector.getScannerResults();
+      for (const result of scannerResults) {
+        const name = result.scanner.name;
+        // it tells action/query/type/target to the listner
+        const id = `Scan ${result.query} as a ${result.type} on ${name}`;
+        const title = `Scan this ${result.type} on ${name}`;
         const options = {
           contexts: ["selection"],
           id,

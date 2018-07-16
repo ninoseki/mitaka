@@ -1,4 +1,5 @@
-import { SearcherResult, Selector } from "./selector";
+import { ApiKeys } from "./scanner";
+import { ScannerResult, SearcherResult, Selector } from "./selector";
 
 export class Command {
   public action: string;
@@ -17,26 +18,55 @@ export class Command {
     const selector: Selector = new Selector(this.query);
     const results: SearcherResult[] = selector.getSearcherResults();
     const result = results.find((r) => r.searcher.name === this.target);
-    let target = "";
+    let url = "";
     if (result !== undefined) {
       switch (result.type) {
         case "text":
-          target = result.searcher.searchByText!(result.query);
+          url = result.searcher.searchByText!(result.query);
           break;
         case "ip":
-          target = result.searcher.searchByIP!(result.query);
+          url = result.searcher.searchByIP!(result.query);
           break;
         case "domain":
-          target = result.searcher.searchByDomain!(result.query);
+          url = result.searcher.searchByDomain!(result.query);
           break;
         case "url":
-          target = result.searcher.searchByURL!(result.query);
+          url = result.searcher.searchByURL!(result.query);
           break;
         case "hash":
-          target = result.searcher.searchByHash!(result.query);
+          url = result.searcher.searchByHash!(result.query);
           break;
       }
     }
-    return target;
+    return url;
+  }
+
+  public async scan(apiKeys: ApiKeys) {
+    const selector: Selector = new Selector(this.query);
+    const results: ScannerResult[] = selector.getScannerResults();
+    const result = results.find((r) => r.scanner.name === this.target);
+    let url = "";
+    if (result !== undefined) {
+      switch (result.scanner.name) {
+        case "Urlscan":
+          result.scanner.setApiKey(apiKeys.urlscanApiKey);
+          break;
+        case "VirusTotal":
+          result.scanner.setApiKey(apiKeys.virusTotalApiKey);
+          break;
+      }
+      switch (result.type) {
+        case "ip":
+          url = await result.scanner.scanByIP!(result.query);
+          break;
+        case "domain":
+          url = await result.scanner.scanByDomain!(result.query);
+          break;
+        case "url":
+          url = await result.scanner.scanByURL!(result.query);
+          break;
+      }
+    }
+    return url;
   }
 }
