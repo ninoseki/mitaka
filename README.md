@@ -36,9 +36,10 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 
 ### Supported scan engine
 
-| name    | url                | supported types |
-|:--------|:-------------------|:----------------|
-| Urlscan | https://urlscan.io | url             |
+| name       | url                        | supported types   |
+|:-----------|:---------------------------|:------------------|
+| Urlscan    | https://urlscan.io         | ip / domain / url |
+| VirusTotal | https://www.virustotal.com | url               |
 
 ## Download
 
@@ -58,8 +59,11 @@ The Chrome extension shows context menus based on a type of IOC you selected and
 
 **Note:**
 
-- Please set your urlscan.io API key via the option if you want to make a scan.
-- Until the scan is finished, the URL will respond with `Not Found / Error code 404`. Please wait a minute and reload it.
+- urlscan.io scan:
+  - Please set your urlscan.io API key via the option if you want to make a scan.
+  - Until the scan is finished, the URL will respond with `Not Found / Error code 404`. Please wait a minute and reload it.
+- VirusTotal scan:
+  - Please set your VirusTotal API key via the option if you want to make a scan.
 
 ## About Permissons
 
