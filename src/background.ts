@@ -1,6 +1,6 @@
 import { Command } from "./lib/command";
 import { ApiKeys } from "./lib/scanner";
-import { ScannerResult, SearcherResult, Selector } from "./lib/selector";
+import { AnalyzerEntry, Selector } from "./lib/selector";
 
 function showNotification(message: string) {
   chrome.notifications.create({
@@ -58,12 +58,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       // search searchers based on a type of the input
       const text: string = message.selection;
       const selector: Selector = new Selector(text);
-      const results: SearcherResult[] = selector.getSearcherResults();
-      for (const result of results) {
-        const name = result.searcher.name;
+      const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
+      for (const entry of searcherEntries) {
+        const name = entry.analyzer.name;
         // it tells action/query/type/target to the listner
-        const id = `Search ${result.query} as a ${result.type} on ${name}`;
-        const title = `Search this ${result.type} on ${name}`;
+        const id = `Search ${entry.query} as a ${entry.type} on ${name}`;
+        const title = `Search this ${entry.type} on ${name}`;
         const options = {
           contexts: ["selection"],
           id,
@@ -73,12 +73,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         chrome.contextMenus.create(options);
       }
       // search scanners based on a type of the input
-      const scannerResults: ScannerResult[] = selector.getScannerResults();
-      for (const result of scannerResults) {
-        const name = result.scanner.name;
+      const scannerEntries: AnalyzerEntry[] = selector.getScannerEntries();
+      for (const entry of scannerEntries) {
+        const name = entry.analyzer.name;
         // it tells action/query/type/target to the listner
-        const id = `Scan ${result.query} as a ${result.type} on ${name}`;
-        const title = `Scan this ${result.type} on ${name}`;
+        const id = `Scan ${entry.query} as a ${entry.type} on ${name}`;
+        const title = `Scan this ${entry.type} on ${name}`;
         const options = {
           contexts: ["selection"],
           id,

@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import { FindSubDomains } from "../lib/findsubdomains";
+import { FindSubDomains } from "../../lib/searcher";
 
 describe("FindSubDomain", () => {
   describe("#searchByDomain", () => {

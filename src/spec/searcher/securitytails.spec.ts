@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import { SecurityTrails } from "../lib/securitytrails";
+import { SecurityTrails } from "../../lib/searcher";
 
 describe("SecurityTrails", () => {
   const st = new SecurityTrails();

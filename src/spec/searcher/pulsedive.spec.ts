@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import { Pulsedive } from "../lib/pulsedive";
+import { Pulsedive } from "../../lib/searcher";
 
 describe("Pulsedive", () => {
   describe("#searchByURL", () => {

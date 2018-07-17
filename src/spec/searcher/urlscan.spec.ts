@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import { Urlscan } from "../lib/urlscan";
+import { Urlscan } from "../../lib/searcher";
 
 describe("Urlscan", () => {
   const urlscan = new Urlscan();

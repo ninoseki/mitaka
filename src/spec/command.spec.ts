@@ -28,12 +28,12 @@ describe("Command", () => {
         const command = new Command("Scan hhttps://www.wikipedia.org/ as a url on Urlscan");
         moxios.stubRequest("https://urlscan.io/api/v1/scan/", {
           response: {
-            api: "https://urlscan.io/api/v1/result/ac04bc14-4efe-439d-b356-8384843daf75/",
+            api: "https://urlscan.io/api/v1/entry/ac04bc14-4efe-439d-b356-8384843daf75/",
             message: "Submission successful",
             options: {
               useragent: "OMITTED",
             },
-            result: "https://urlscan.io/result/ac04bc14-4efe-439d-b356-8384843daf75/",
+            result: "https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/",
             uuid: "ac04bc14-4efe-439d-b356-8384843daf75",
             visibility: "public",
           },
@@ -43,7 +43,7 @@ describe("Command", () => {
           urlscanApiKey: "test",
           virusTotalApiKey: "test",
         };
-        expect(await command.scan(apiKeys)).to.equal("https://urlscan.io/result/ac04bc14-4efe-439d-b356-8384843daf75/");
+        expect(await command.scan(apiKeys)).to.equal("https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/");
       });
     });
     context("virustotal", () => {

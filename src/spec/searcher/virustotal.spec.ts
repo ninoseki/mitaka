@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import { VirusTotal } from "../lib/virustotal";
+import { VirusTotal } from "../../lib/searcher";
 
 describe("VirusTotal", () => {
   const vt = new VirusTotal();

@@ -1,26 +1,21 @@
 import { getIOC, IOC } from "ioc-extractor";
-
-import { Censys } from "./censys";
-import { DomainBigData } from "./domainbigdata";
-import { FindSubDomains } from "./findsubdomains";
-import { HybridAnalysis } from "./hybridanalysis";
-import { PublicWWW } from "./publicwww";
-import { Pulsedive } from "./pulsedive";
 import { Scanner, UrlscanScanner, VirusTotalScanner } from "./scanner";
-import { Searcher } from "./searcher";
-import { SecurityTrails } from "./securitytrails";
-import { Shodan } from "./shodan";
-import { Urlscan } from "./urlscan";
-import { VirusTotal } from "./virustotal";
+import {
+  Censys,
+  DomainBigData,
+  FindSubDomains,
+  HybridAnalysis,
+  PublicWWW,
+  Pulsedive,
+  Searcher,
+  SecurityTrails,
+  Shodan,
+  Urlscan,
+  VirusTotal,
+} from "./searcher";
 
-export interface SearcherResult {
-  searcher: Searcher;
-  type: string;
-  query: string;
-}
-
-export interface ScannerResult {
-  scanner: Scanner;
+export interface AnalyzerEntry {
+  analyzer: Scanner | Searcher;
   type: string;
   query: string;
 }
@@ -89,74 +84,53 @@ export class Selector {
     return hashes[0];
   }
 
-  public getSearchersForText(): Searcher[] {
-    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf("text") !== -1);
-  }
-
-  public getSearchersForIP(): Searcher[] {
-    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf("ip") !== -1);
-  }
-
-  public getSearchersForDomain(): Searcher[] {
-    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf("domain") !== -1);
-  }
-
-  public getSearchersForUrl(): Searcher[] {
-    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf("url") !== -1);
-  }
-
-  public getSearchersForHash(): Searcher[] {
-    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf("hash") !== -1);
+  public getSearchersByType(type: "text" | "ip" | "domain" | "url" | "hash") {
+    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf(type) !== -1);
   }
 
   public getScannersByType(type: "ip" | "domain" | "url") {
     return this.scanners.filter((scanner: Scanner) => scanner.supportedTypes.indexOf(type) !== -1);
   }
 
-  public getSearcherResults(): SearcherResult[] {
-    let results: SearcherResult[] = [];
-    results = this.concat(results, this.makeResults(this.getSearchersForText(), "text", this.input));
+  public getSearcherEntries(): AnalyzerEntry[] {
+    let entries: AnalyzerEntry[] = [];
+    entries = this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("text"), "text", this.input));
 
     const url = this.getUrl();
     if (url !== null) {
-      return this.concat(results, this.makeResults(this.getSearchersForUrl(), "url", url));
+      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("url"), "url", url));
     }
     const domain = this.getDomain();
     if (domain !== null) {
-      return this.concat(results, this.makeResults(this.getSearchersForDomain(), "domain", domain));
+      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("domain"), "domain", domain));
     }
     const ip = this.getIP();
     if (ip !== null) {
-      return this.concat(results, this.makeResults(this.getSearchersForIP(), "ip", ip));
+      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("ip"), "ip", ip));
     }
     const hash = this.getHash();
     if (hash !== null) {
-      return this.concat(results, this.makeResults(this.getSearchersForHash(), "hash", hash));
+      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("hash"), "hash", hash));
     }
-    return results;
+    return entries;
   }
 
-  public getScannerResults(): ScannerResult[] {
-    const results: ScannerResult[] = [];
-    const types: ScanType[] = [
-      { name: "url", value: this.getUrl() },
-      { name: "domain", value: this.getDomain() },
-      { name: "ip", value: this.getIP() },
-    ];
-    for (const type of types) {
-      if (type.value !== null) {
-        const scanners = this.getScannersByType(type.name);
-        for (const scanner of scanners) {
-          results.push({
-            query: type.value,
-            scanner,
-            type: type.name,
-          });
-        }
-        break;
-      }
+  public getScannerEntries(): AnalyzerEntry[] {
+    const analyzerEntries: AnalyzerEntry[] = [];
+
+    const url = this.getUrl();
+    if (url !== null) {
+      return this.makeAnalyzerEntries(this.getScannersByType("url"), "url", url);
     }
-    return results;
+    const domain = this.getDomain();
+    if (domain !== null) {
+      return this.makeAnalyzerEntries(this.getScannersByType("domain"), "domain", domain);
+    }
+    const ip = this.getIP();
+    if (ip !== null) {
+      return this.makeAnalyzerEntries(this.getScannersByType("ip"), "ip", ip);
+    }
+    return analyzerEntries;
   }
 
   private concat<T>(target: T[], input: T[] | null): T[] {
@@ -166,15 +140,15 @@ export class Selector {
     return target;
   }
 
-  private makeResults(searchers: Searcher[], type: string, query: string) {
-    const results: SearcherResult[] = [];
-    for (const s of searchers) {
-      results.push(this.makeResult(s, type, query));
+  private makeAnalyzerEntries(analyzers: Scanner[] | Searcher[], type: string, query: string) {
+    const analyzerEntries: AnalyzerEntry[] = [];
+    for (const analyzer of analyzers) {
+      analyzerEntries.push(this.makeAnalyzerEntry(analyzer, type, query));
     }
-    return results;
+    return analyzerEntries;
   }
 
-  private makeResult(searcher: Searcher, type: string, query: string) {
-    return { searcher, type, query };
+  private makeAnalyzerEntry(analyzer: Scanner | Searcher, type: string, query: string) {
+    return { analyzer, type, query };
   }
 }
