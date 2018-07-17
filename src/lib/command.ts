@@ -1,5 +1,6 @@
-import { ApiKeys } from "./scanner";
-import { ScannerResult, SearcherResult, Selector } from "./selector";
+import { ApiKeys, Scanner } from "./scanner";
+import { Searcher } from "./searcher";
+import { AnalyzerEntry, Selector } from "./selector";
 
 export class Command {
   public action: string;
@@ -16,25 +17,26 @@ export class Command {
 
   public search(): string {
     const selector: Selector = new Selector(this.query);
-    const results: SearcherResult[] = selector.getSearcherResults();
-    const result = results.find((r) => r.searcher.name === this.target);
+    const entries: AnalyzerEntry[] = selector.getSearcherEntries();
+    const entry = entries.find((r) => r.analyzer.name === this.target);
     let url = "";
-    if (result !== undefined) {
-      switch (result.type) {
+    if (entry !== undefined) {
+      const searcher = entry.analyzer as Searcher;
+      switch (entry.type) {
         case "text":
-          url = result.searcher.searchByText!(result.query);
+          url = searcher.searchByText!(entry.query);
           break;
         case "ip":
-          url = result.searcher.searchByIP!(result.query);
+          url = searcher.searchByIP!(entry.query);
           break;
         case "domain":
-          url = result.searcher.searchByDomain!(result.query);
+          url = searcher.searchByDomain!(entry.query);
           break;
         case "url":
-          url = result.searcher.searchByURL!(result.query);
+          url = searcher.searchByURL!(entry.query);
           break;
         case "hash":
-          url = result.searcher.searchByHash!(result.query);
+          url = searcher.searchByHash!(entry.query);
           break;
       }
     }
@@ -43,27 +45,28 @@ export class Command {
 
   public async scan(apiKeys: ApiKeys) {
     const selector: Selector = new Selector(this.query);
-    const results: ScannerResult[] = selector.getScannerResults();
-    const result = results.find((r) => r.scanner.name === this.target);
+    const entries: AnalyzerEntry[] = selector.getScannerEntries();
+    const entry = entries.find((r) => r.analyzer.name === this.target);
     let url = "";
-    if (result !== undefined) {
-      switch (result.scanner.name) {
+    if (entry !== undefined) {
+      const scanner = entry.analyzer as Scanner;
+      switch (scanner.name) {
         case "Urlscan":
-          result.scanner.setApiKey(apiKeys.urlscanApiKey);
+          scanner.setApiKey(apiKeys.urlscanApiKey);
           break;
         case "VirusTotal":
-          result.scanner.setApiKey(apiKeys.virusTotalApiKey);
+          scanner.setApiKey(apiKeys.virusTotalApiKey);
           break;
       }
-      switch (result.type) {
+      switch (entry.type) {
         case "ip":
-          url = await result.scanner.scanByIP!(result.query);
+          url = await scanner.scanByIP!(entry.query);
           break;
         case "domain":
-          url = await result.scanner.scanByDomain!(result.query);
+          url = await scanner.scanByDomain!(entry.query);
           break;
         case "url":
-          url = await result.scanner.scanByURL!(result.query);
+          url = await scanner.scanByURL!(entry.query);
           break;
       }
     }

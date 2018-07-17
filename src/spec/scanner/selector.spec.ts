@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import { ScannerResult, Selector } from "../../lib/selector";
+import { AnalyzerEntry, Selector } from "../../lib/selector";
 
 describe("Seletor", () => {
   const stats = {
@@ -29,39 +29,39 @@ describe("Seletor", () => {
 
     context("ip", () => {
       const selector: Selector = new Selector("8.8.8.8");
-      describe("#getScannerResults", () => {
+      describe("#getScannerentrys", () => {
         it("should return Scanners support ip", () => {
-          const results: ScannerResult[] = selector.getScannerResults();
-          for (const result of results) {
-            expect(result.query).to.equal("8.8.8.8");
+          const entries: AnalyzerEntry[] = selector.getScannerEntries();
+          for (const entry of entries) {
+            expect(entry.query).to.equal("8.8.8.8");
           }
-          expect(results.length).to.equal(stats.ip);
+          expect(entries.length).to.equal(stats.ip);
         });
       });
     });
 
     context("domain", () => {
       const selector: Selector = new Selector("urlscan.io");
-      describe("#getScannerResults", () => {
+      describe("#getScannerentrys", () => {
         it("should return Scanners support domain", () => {
-          const results: ScannerResult[] = selector.getScannerResults();
-          for (const result of results) {
-            expect(result.query).to.equal("urlscan.io");
+          const entries: AnalyzerEntry[] = selector.getScannerEntries();
+          for (const entry of entries) {
+            expect(entry.query).to.equal("urlscan.io");
           }
-          expect(results.length).to.equal(stats.domain);
+          expect(entries.length).to.equal(stats.domain);
         });
       });
     });
 
     context("url", () => {
       const selector: Selector = new Selector("https://urlscan.io/");
-      describe("#getScannerResults", () => {
+      describe("#getScannerentrys", () => {
         it("should return Scanners support url", () => {
-          const results: ScannerResult[] = selector.getScannerResults();
-          for (const result of results) {
-            expect(result.query).to.equal("https://urlscan.io/");
+          const entries: AnalyzerEntry[] = selector.getScannerEntries();
+          for (const entry of entries) {
+            expect(entry.query).to.equal("https://urlscan.io/");
           }
-          expect(results.length).to.equal(stats.url);
+          expect(entries.length).to.equal(stats.url);
         });
       });
     });

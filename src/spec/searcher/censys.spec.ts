@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import { Censys } from "../lib/censys";
+import { Censys } from "../../lib/searcher";
 
 describe("Censys", () => {
   describe("#searchByText", () => {

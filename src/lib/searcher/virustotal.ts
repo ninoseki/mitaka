@@ -1,6 +1,6 @@
 import * as crypto from "crypto-js";
 import * as url from "url";
-import { Scanner } from "./scanner/scanner";
+import { Scanner } from "../scanner/scanner";
 import { Searcher } from "./searcher";
 
 export class VirusTotal implements Searcher {

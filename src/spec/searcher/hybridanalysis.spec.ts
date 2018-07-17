@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import { HybridAnalysis } from "../lib/hybridanalysis";
+import { HybridAnalysis } from "../../lib/searcher";
 
 describe("HybridAnalysis", () => {
   describe("#searchByHash", () => {

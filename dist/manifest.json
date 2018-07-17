@@ -13,7 +13,7 @@
     "chrome_style": true
   },
   "background": {
-    "persistent": true,
+    "persistent": false,
     "scripts": ["js/vendor.js", "js/background.js"]
   },
   "content_scripts": [

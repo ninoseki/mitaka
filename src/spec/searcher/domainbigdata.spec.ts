@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import { DomainBigData } from "../lib/domainbigdata";
+import { DomainBigData } from "../../lib/searcher";
 
 describe("DomainBigData", () => {
   describe("#searchByDomain", () => {

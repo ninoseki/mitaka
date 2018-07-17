@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import { SearcherResult, Selector } from "../lib/selector";
+import { AnalyzerEntry, Selector } from "../lib/selector";
 
 describe("Seletor", () => {
   const stats = {
@@ -21,16 +21,16 @@ describe("Seletor", () => {
       const selector: Selector = new Selector("text");
       describe("#getSearchersForText", () => {
         it("should return Searchers support text", () => {
-          expect(selector.getSearchersForText().length).to.equal(stats.text);
+          expect(selector.getSearchersByType("text").length).to.equal(stats.text);
         });
       });
-      describe("#getSearcherResults", () => {
+      describe("#getAnalyzerEntrys", () => {
         it("should return Searchers support text", () => {
-          const results: SearcherResult[] = selector.getSearcherResults();
-          for (const result of results) {
-            expect(result.query).to.equal("text");
+          const entries: AnalyzerEntry[] = selector.getSearcherEntries();
+          for (const entry of entries) {
+            expect(entry.query).to.equal("text");
           }
-          expect(results.length).to.equal(stats.text);
+          expect(entries.length).to.equal(stats.text);
         });
       });
     });
@@ -44,16 +44,16 @@ describe("Seletor", () => {
       });
       describe("#getSearchersForIP", () => {
         it("should return Searchers support ip", () => {
-          expect(selector.getSearchersForIP().length).to.equal(stats.ip);
+          expect(selector.getSearchersByType("ip").length).to.equal(stats.ip);
         });
       });
-      describe("#getSearcherResults", () => {
-        it("should return SearchrerResults support ip", () => {
-          const results: SearcherResult[] = selector.getSearcherResults();
-          for (const result of results) {
-            expect(result.query).to.equal("8.8.8.8");
+      describe("#getAnalyzerEntrys", () => {
+        it("should return Searchrerentrys support ip", () => {
+          const entries: AnalyzerEntry[] = selector.getSearcherEntries();
+          for (const entry of entries) {
+            expect(entry.query).to.equal("8.8.8.8");
           }
-          expect(results.length).to.equal(stats.text + stats.ip);
+          expect(entries.length).to.equal(stats.text + stats.ip);
         });
       });
     });
@@ -67,16 +67,16 @@ describe("Seletor", () => {
       });
       describe("#getSearchersForDomain", () => {
         it("should return Searchers support domain", () => {
-          expect(selector.getSearchersForDomain().length).to.equal(stats.domain);
+          expect(selector.getSearchersByType("domain").length).to.equal(stats.domain);
         });
       });
-      describe("#getSearcherResults", () => {
-        it("should return SearchrerResults support domain", () => {
-          const results: SearcherResult[] = selector.getSearcherResults();
-          for (const result of results) {
-            expect(result.query).to.equal("urlscan.io");
+      describe("#getAnalyzerEntrys", () => {
+        it("should return Searchrerentrys support domain", () => {
+          const entries: AnalyzerEntry[] = selector.getSearcherEntries();
+          for (const entry of entries) {
+            expect(entry.query).to.equal("urlscan.io");
           }
-          expect(results.length).to.equal(stats.text + stats.domain);
+          expect(entries.length).to.equal(stats.text + stats.domain);
         });
       });
     });
@@ -90,16 +90,16 @@ describe("Seletor", () => {
       });
       describe("#getSearchersForUrl", () => {
         it("should return Searchers support url", () => {
-          expect(selector.getSearchersForUrl().length).to.equal(stats.url);
+          expect(selector.getSearchersByType("url").length).to.equal(stats.url);
         });
       });
-      describe("#getSearcherResults", () => {
-        it("should return SearchrerResults support url", () => {
-          const results: SearcherResult[] = selector.getSearcherResults();
-          for (const result of results) {
-            expect(result.query).to.equal("https://urlscan.io/");
+      describe("#getAnalyzerEntrys", () => {
+        it("should return Searchrerentrys support url", () => {
+          const entries: AnalyzerEntry[] = selector.getSearcherEntries();
+          for (const entry of entries) {
+            expect(entry.query).to.equal("https://urlscan.io/");
           }
-          expect(results.length).to.equal(stats.text + stats.url);
+          expect(entries.length).to.equal(stats.text + stats.url);
         });
       });
     });
@@ -118,16 +118,16 @@ describe("Seletor", () => {
       });
       describe("#getSearchersForHash", () => {
         it("should return Searchers support hash", () => {
-          expect(selector.getSearchersForHash().length).to.equal(stats.hash);
+          expect(selector.getSearchersByType("hash").length).to.equal(stats.hash);
         });
       });
-      describe("#getSearcherResults", () => {
-        it("should return SearchrerResults support hash", () => {
-          const results: SearcherResult[] = selector.getSearcherResults();
-          for (const result of results) {
-            expect(result.query).to.equal("275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f");
+      describe("#getAnalyzerEntrys", () => {
+        it("should return Searchrerentrys support hash", () => {
+          const entries: AnalyzerEntry[] = selector.getSearcherEntries();
+          for (const entry of entries) {
+            expect(entry.query).to.equal("275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f");
           }
-          expect(results.length).to.equal(stats.text + stats.hash);
+          expect(entries.length).to.equal(stats.text + stats.hash);
         });
       });
     });

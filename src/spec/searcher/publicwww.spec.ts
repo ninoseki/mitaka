@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import { PublicWWW } from "../lib/publicwww";
+import { PublicWWW } from "../../lib/searcher";
 
 describe("PublicWWW", () => {
   describe("#searchByText", () => {
