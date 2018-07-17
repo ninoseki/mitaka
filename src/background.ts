@@ -11,19 +11,6 @@ function showNotification(message: string) {
   });
 }
 
-function listner(info, tab) {
-  const id: string = info.menuItemId;
-  const command = new Command(id);
-  switch (command.action) {
-    case "search":
-      search(command);
-      break;
-    case "scan":
-      scan(command);
-      break;
-  }
-}
-
 function search(command: Command) {
   try {
     const url = command.search();
@@ -52,6 +39,19 @@ function scan(command: Command) {
   });
 }
 
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  const id: string = info.menuItemId;
+  const command = new Command(id);
+  switch (command.action) {
+    case "search":
+      search(command);
+      break;
+    case "scan":
+      scan(command);
+      break;
+  }
+});
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.request === "updateContextMenu") {
     chrome.contextMenus.removeAll(() => {
@@ -67,7 +67,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         const options = {
           contexts: ["selection"],
           id,
-          onclick: listner,
           title,
         };
         chrome.contextMenus.create(options);
@@ -82,7 +81,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         const options = {
           contexts: ["selection"],
           id,
-          onclick: listner,
           title,
         };
         chrome.contextMenus.create(options);
