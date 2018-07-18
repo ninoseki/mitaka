@@ -1,6 +1,7 @@
 import { expect } from "chai";
 import "mocha";
 import { AnalyzerEntry, Selector } from "../lib/selector";
+import { PublicWWW } from "../lib/searcher";
 
 describe("Seletor", () => {
   const stats = {
@@ -59,10 +60,11 @@ describe("Seletor", () => {
     });
 
     context("domain", () => {
-      const selector: Selector = new Selector("urlscan.io");
+      const selector: Selector = new Selector("www.google.com");
       describe("#getDomain", () => {
         it("should return the domain", () => {
-          expect(selector.getDomain()).to.equal("urlscan.io");
+          expect(selector.getDomain()).to.equal("www.google.com");
+          expect(selector.getUrl()).to.equal(null);
         });
       });
       describe("#getSearchersForDomain", () => {
@@ -74,7 +76,7 @@ describe("Seletor", () => {
         it("should return Searchrerentrys support domain", () => {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
-            expect(entry.query).to.equal("urlscan.io");
+            expect(entry.query).to.equal("www.google.com");
           }
           expect(entries.length).to.equal(stats.text + stats.domain);
         });
