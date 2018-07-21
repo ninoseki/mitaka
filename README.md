@@ -21,18 +21,19 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 
 ### Supported search engines
 
-| name           | url                             | supported types           |
-|:---------------|:--------------------------------|:--------------------------|
-| Censys         | https://censys.io               | text                      |
-| DomainBigData  | https://domainbigdata.com       | domain                    |
-| FindSubDomains | https://findsubdomains.com      | domain                    |
-| HybridAnalysis | https://www.hybrid-analysis.com | hash (sha256 only)        |
-| PublicWWW      | https://publicwww.com           | text                      |
-| Pulsedive      | https://pulsedive.com           | ip / domaion / url / hash |
-| SecurityTrails | https://securitytrails.com      | ip / domain               |
-| Shodan         | https://www.shodan.io           | text                      |
-| Urlscan        | https://urlscan.io              | ip / domain / url         |
-| VirusTotal     | https://www.virustotal.com      | ip / domain / url / hash  |
+| name             | url                                  | supported types           |
+|:-----------------|:-------------------------------------|:--------------------------|
+| Censys           | https://censys.io                    | text                      |
+| DomainBigData    | https://domainbigdata.com            | domain                    |
+| FindSubDomains   | https://findsubdomains.com           | domain                    |
+| HybridAnalysis   | https://www.hybrid-analysis.com      | hash (sha256 only)        |
+| PublicWWW        | https://publicwww.com                | text                      |
+| Pulsedive        | https://pulsedive.com                | ip / domaion / url / hash |
+| SecurityTrails   | https://securitytrails.com           | ip / domain               |
+| Shodan           | https://www.shodan.io                | text                      |
+| Urlscan          | https://urlscan.io                   | ip / domain / url         |
+| VirusTotal       | https://www.virustotal.com           | ip / domain / url / hash  |
+| X-Force Exchange | https://exchange.xforce.ibmcloud.com | ip / domain / hash        |
 
 ### Supported scan engine
 
