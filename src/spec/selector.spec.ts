@@ -1,16 +1,16 @@
 import { expect } from "chai";
 import "mocha";
 import { AnalyzerEntry, Selector } from "../lib/selector";
-import { PublicWWW } from "../lib/searcher";
 
 describe("Seletor", () => {
   const stats = {
-    // domainbigdata, findsubdomains, pulsedive, securitytrails, urlscan, virustotal + text(3)
-    domain: 6,
-    // hybridanalysis, pulsedive, virustotal
-    hash: 3,
-    // securitytrails, pulsedive, urlscan
-    ip: 4,
+    // domainbigdata, findsubdomains, pulsedive, securitytrails
+    // urlscan, virustotal, xforce-exchange
+    domain: 7,
+    // hybridanalysis, pulsedive, virustotal, xforceexchange
+    hash: 4,
+    // securitytrails, pulsedive, urlscan, virustotal, xforceexchange
+    ip: 5,
     // shodan, censys, publicwww
     text: 3,
     // urlscan, pulsedive, virustotal

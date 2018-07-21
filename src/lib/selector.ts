@@ -12,6 +12,7 @@ import {
   Shodan,
   Urlscan,
   VirusTotal,
+  XForceExchange,
 } from "./searcher";
 
 export interface AnalyzerEntry {
@@ -40,6 +41,7 @@ export class Selector {
     new Shodan(),
     new Urlscan(),
     new VirusTotal(),
+    new XForceExchange(),
   ];
 
   protected scanners: Scanner[] = [

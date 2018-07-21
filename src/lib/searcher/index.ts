@@ -9,3 +9,4 @@ export { SecurityTrails } from "./securitytrails";
 export { Shodan } from "./shodan";
 export { Urlscan } from "./urlscan";
 export { VirusTotal } from "./virustotal";
+export { XForceExchange} from "./xforce-exchange";
