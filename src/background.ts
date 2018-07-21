@@ -58,35 +58,37 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 
   if (message.request === "updateContextMenu") {
-    // search searchers based on a type of the input
-    const text: string = message.selection;
-    const selector: Selector = new Selector(text);
-    const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
-    for (const entry of searcherEntries) {
-      const name = entry.analyzer.name;
-      // it tells action/query/type/target to the listner
-      const id = `Search ${entry.query} as a ${entry.type} on ${name}`;
-      const title = `Search this ${entry.type} on ${name}`;
-      const options = {
-        contexts: ["selection"],
-        id,
-        title,
-      };
-      chrome.contextMenus.create(options);
-    }
-    // search scanners based on a type of the input
-    const scannerEntries: AnalyzerEntry[] = selector.getScannerEntries();
-    for (const entry of scannerEntries) {
-      const name = entry.analyzer.name;
-      // it tells action/query/type/target to the listner
-      const id = `Scan ${entry.query} as a ${entry.type} on ${name}`;
-      const title = `Scan this ${entry.type} on ${name}`;
-      const options = {
-        contexts: ["selection"],
-        id,
-        title,
-      };
-      chrome.contextMenus.create(options);
-    }
+    chrome.contextMenus.removeAll(() => {
+      // search searchers based on a type of the input
+      const text: string = message.selection;
+      const selector: Selector = new Selector(text);
+      const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
+      for (const entry of searcherEntries) {
+        const name = entry.analyzer.name;
+        // it tells action/query/type/target to the listner
+        const id = `Search ${entry.query} as a ${entry.type} on ${name}`;
+        const title = `Search this ${entry.type} on ${name}`;
+        const options = {
+          contexts: ["selection"],
+          id,
+          title,
+        };
+        chrome.contextMenus.create(options);
+      }
+      // search scanners based on a type of the input
+      const scannerEntries: AnalyzerEntry[] = selector.getScannerEntries();
+      for (const entry of scannerEntries) {
+        const name = entry.analyzer.name;
+        // it tells action/query/type/target to the listner
+        const id = `Scan ${entry.query} as a ${entry.type} on ${name}`;
+        const title = `Scan this ${entry.type} on ${name}`;
+        const options = {
+          contexts: ["selection"],
+          id,
+          title,
+        };
+        chrome.contextMenus.create(options);
+      }
+    });
   }
 });
