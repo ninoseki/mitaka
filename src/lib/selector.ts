@@ -55,21 +55,21 @@ export class Selector {
   }
 
   public getIP(): string | null {
-    if (this.ioc.networks.ipv4s !== null) {
+    if (this.ioc.networks.ipv4s !== null && this.ioc.networks.ipv4s[0]) {
       return this.ioc.networks.ipv4s[0];
     }
     return null;
   }
 
   public getDomain(): string | null {
-    if (this.ioc.networks.domains !== null) {
+    if (this.ioc.networks.domains !== null && this.ioc.networks.domains[0]) {
       return this.ioc.networks.domains[0];
     }
     return null;
   }
 
   public getUrl(): string | null {
-    if (this.ioc.networks.urls !== null) {
+    if (this.ioc.networks.urls !== null && this.ioc.networks.urls[0]) {
       return this.ioc.networks.urls[0];
     }
     return null;
