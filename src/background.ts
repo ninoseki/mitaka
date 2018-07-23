@@ -52,11 +52,13 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 });
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.request === "removeContextMenu") {
-    chrome.contextMenus.removeAll();
+function createContextMenuErrorHandler() {
+  if (chrome.runtime.lastError) {
+    console.error(chrome.runtime.lastError.message);
   }
+}
 
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.request === "updateContextMenu") {
     chrome.contextMenus.removeAll(() => {
       // search searchers based on a type of the input
@@ -73,7 +75,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
           id,
           title,
         };
-        chrome.contextMenus.create(options);
+        chrome.contextMenus.create(options, createContextMenuErrorHandler);
       }
       // search scanners based on a type of the input
       const scannerEntries: AnalyzerEntry[] = selector.getScannerEntries();
@@ -87,7 +89,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
           id,
           title,
         };
-        chrome.contextMenus.create(options);
+        chrome.contextMenus.create(options, createContextMenuErrorHandler);
       }
     });
   }

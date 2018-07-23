@@ -16,7 +16,3 @@ document.onselectionchange = () => {
     });
   }
 };
-
-document.onselectstart = () => {
-  chrome.runtime.sendMessage({ request: "removeContextMenu" });
-};
