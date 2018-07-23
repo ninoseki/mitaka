@@ -24,9 +24,12 @@ function search(command: Command) {
 
 function scan(command: Command) {
   chrome.storage.sync.get("apiKeys", async (config) => {
+    console.log(config);
     const apiKeys: ApiKeys = {
-      urlscanApiKey: config.apiKeys.urlscanApiKey,
-      virusTotalApiKey: config.apiKeys.virusTotalApiKey,
+      urlscanApiKey: ("apiKeys" in config && "urlscanApiKey" in config.apiKeys) ?
+        config.apiKeys.urlscanApiKey : undefined,
+      virusTotalApiKey: ("apiKeys" in config && "virusTotalApiKey" in config.apiKeys) ?
+        config.apiKeys.virusTotalApiKey : undefined,
     };
     try {
       const url = await command.scan(apiKeys);
