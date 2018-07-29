@@ -1,6 +1,6 @@
 {
   "name": "mitaka",
-  "version": "0.13.4",
+  "version": "0.14.0",
   "description": "A Chrome Extension makes search engines friendly with urlscan.io Edit",
   "main": "index.js",
   "scripts": {
