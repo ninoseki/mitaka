@@ -5,12 +5,12 @@ import { AnalyzerEntry, Selector } from "../lib/selector";
 describe("Seletor", () => {
   const stats = {
     // domainbigdata, findsubdomains, pulsedive, securitytrails
-    // urlscan, virustotal, xforce-exchange
-    domain: 7,
+    // threatcrowd, urlscan, virustotal, xforce-exchange
+    domain: 8,
     // hybridanalysis, pulsedive, virustotal, xforceexchange
     hash: 4,
-    // securitytrails, pulsedive, urlscan, virustotal, xforceexchange
-    ip: 5,
+    // securitytrails, pulsedive, threatcrowd, urlscan, virustotal, xforceexchange
+    ip: 6,
     // shodan, censys, publicwww
     text: 3,
     // urlscan, pulsedive, virustotal
