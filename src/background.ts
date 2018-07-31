@@ -24,7 +24,6 @@ function search(command: Command) {
 
 function scan(command: Command) {
   chrome.storage.sync.get("apiKeys", async (config) => {
-    console.log(config);
     const apiKeys: ApiKeys = {
       urlscanApiKey: ("apiKeys" in config && "urlscanApiKey" in config.apiKeys) ?
         config.apiKeys.urlscanApiKey : undefined,
@@ -61,38 +60,52 @@ function createContextMenuErrorHandler() {
   }
 }
 
+function createContextMenus(message, config) {
+  chrome.contextMenus.removeAll(() => {
+    const text: string = message.selection;
+    const selector: Selector = new Selector(text);
+    const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
+    for (const entry of searcherEntries) {
+      const name = entry.analyzer.name;
+      // continue if a searcher is disabled by option
+      if (name in config && !config[name]) {
+        continue;
+      }
+      // it tells action/query/type/target to the listner
+      const id = `Search ${entry.query} as a ${entry.type} on ${name}`;
+      const title = `Search this ${entry.type} on ${name}`;
+      const options = {
+        contexts: ["selection"],
+        id,
+        title,
+      };
+      chrome.contextMenus.create(options, createContextMenuErrorHandler);
+    }
+
+    // search scanners based on a type of the input
+    const scannerEntries: AnalyzerEntry[] = selector.getScannerEntries();
+    for (const entry of scannerEntries) {
+      const name = entry.analyzer.name;
+      // it tells action/query/type/target to the listner
+      const id = `Scan ${entry.query} as a ${entry.type} on ${name}`;
+      const title = `Scan this ${entry.type} on ${name}`;
+      const options = {
+        contexts: ["selection"],
+        id,
+        title,
+      };
+      chrome.contextMenus.create(options, createContextMenuErrorHandler);
+    }
+  });
+}
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.request === "updateContextMenu") {
-    chrome.contextMenus.removeAll(() => {
-      // search searchers based on a type of the input
-      const text: string = message.selection;
-      const selector: Selector = new Selector(text);
-      const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
-      for (const entry of searcherEntries) {
-        const name = entry.analyzer.name;
-        // it tells action/query/type/target to the listner
-        const id = `Search ${entry.query} as a ${entry.type} on ${name}`;
-        const title = `Search this ${entry.type} on ${name}`;
-        const options = {
-          contexts: ["selection"],
-          id,
-          title,
-        };
-        chrome.contextMenus.create(options, createContextMenuErrorHandler);
-      }
-      // search scanners based on a type of the input
-      const scannerEntries: AnalyzerEntry[] = selector.getScannerEntries();
-      for (const entry of scannerEntries) {
-        const name = entry.analyzer.name;
-        // it tells action/query/type/target to the listner
-        const id = `Scan ${entry.query} as a ${entry.type} on ${name}`;
-        const title = `Scan this ${entry.type} on ${name}`;
-        const options = {
-          contexts: ["selection"],
-          id,
-          title,
-        };
-        chrome.contextMenus.create(options, createContextMenuErrorHandler);
+    chrome.storage.sync.get("searcherStates", (config) => {
+      if ("searcherStates" in config) {
+        createContextMenus(message, config.searcherStates);
+      } else {
+        createContextMenus(message, {})
       }
     });
   }

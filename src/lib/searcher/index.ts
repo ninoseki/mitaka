@@ -10,4 +10,6 @@ export { Shodan } from "./shodan";
 export { ThreatCrowd } from "./threatcrowd";
 export { Urlscan } from "./urlscan";
 export { VirusTotal } from "./virustotal";
-export { XForceExchange} from "./xforce-exchange";
+export { XForceExchange } from "./xforce-exchange";
+
+export { Searchers } from "./searchers";

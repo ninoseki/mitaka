@@ -1,0 +1,30 @@
+import {
+  Censys,
+  DomainBigData,
+  FindSubDomains,
+  HybridAnalysis,
+  PublicWWW,
+  Pulsedive,
+  Searcher,
+  SecurityTrails,
+  Shodan,
+  ThreatCrowd,
+  Urlscan,
+  VirusTotal,
+  XForceExchange,
+} from ".";
+
+export const Searchers: Searcher[] = [
+  new Censys(),
+  new DomainBigData(),
+  new FindSubDomains(),
+  new HybridAnalysis(),
+  new PublicWWW(),
+  new Pulsedive(),
+  new SecurityTrails(),
+  new Shodan(),
+  new ThreatCrowd(),
+  new Urlscan(),
+  new VirusTotal(),
+  new XForceExchange(),
+]

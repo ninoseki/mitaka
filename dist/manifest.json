@@ -10,18 +10,16 @@
   },
   "options_ui": {
     "page": "options.html",
-    "chrome_style": true
+    "open_in_tab": false
   },
   "background": {
     "persistent": false,
     "scripts": ["js/vendor.js", "js/background.js"]
   },
-  "content_scripts": [
-   {
-     "matches": ["<all_urls>"],
-     "js": ["js/vendor.js", "js/content.js"]
-   }
- ],
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["js/vendor.js", "js/content.js"]
+  }],
   "permissions": [
     "contextMenus",
     "notifications",

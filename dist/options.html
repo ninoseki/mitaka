@@ -3,28 +3,57 @@
 
 <head>
   <title>Mitaka</title>
+  <link rel="stylesheet" href="css/bulma.css">
   <script src="js/vendor.js"></script>
 </head>
 
 <body>
-  <label for="urlscan-api-key">
-    Your
-    <a href="https://urlscan.io">urlscan.io</a> API Key:
-    <input type="text" id="urlscan-api-key">
-  </label>
-
-  <br />
-
-  <label for="virustotal-api-key">
-    Your
-    <a href="https://www.virustotal.com">VirusTotal</a> API Key:
-    <input type="text" id="virustotal-api-key">
-  </label>
-
-  <div id="status"></div>
-  <button id="save">Save</button>
+  <section class="section">
+    <h2 class="title">API key settings</h2>
+    <div class="field">
+      <label class="label">Your
+        <a href="https://urlscan.io">urlscan.io</a> API Key</label>
+      <div class="control">
+        <input type="text" class="input" id="urlscan-api-key">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Your
+        <a href="https://www.virustotal.com">VirusTotal</a> API Key</label>
+      <div class="control">
+        <input type="text" class="input" id="virustotal-api-key">
+      </div>
+    </div>
+    </div>
+    <h2 class="title">Searcher settings</h2>
+    <div id="searcherList">
+    </div>
+    <hr>
+    <div class="field">
+      <div class="control">
+        <button id="save" class="button is-success">
+          Save
+        </button>
+        <span id="status" class="has-text-weight-bold"></span>
+      </div>
+    </div>
+  </section>
 
   <script src="js/options.js"></script>
+  <script id="checkTemplate" type="x-tmpl-mustache">
+    <div class="field has-addons">
+      <div class="control is-expanded">
+        <div>
+          <label class="label">{{name}}</label>
+          <span>Supported types: {{supportedTypes}}</span>
+        </div>
+      </div>
+      <div class="control">
+        <input name="{{name}}" type="checkbox" {{#isEnabled}}checked="checked" {{/isEnabled}}>
+        <label>Enable</label>
+      </div>
+    </div>
+  </script>
 </body>
 
 </html>
