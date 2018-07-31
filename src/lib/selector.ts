@@ -1,20 +1,6 @@
 import { getIOC, IOC } from "ioc-extractor";
 import { Scanner, UrlscanScanner, VirusTotalScanner } from "./scanner";
-import {
-  Censys,
-  DomainBigData,
-  FindSubDomains,
-  HybridAnalysis,
-  PublicWWW,
-  Pulsedive,
-  Searcher,
-  SecurityTrails,
-  Shodan,
-  ThreatCrowd,
-  Urlscan,
-  VirusTotal,
-  XForceExchange,
-} from "./searcher";
+import { Searcher, Searchers } from "./searcher";
 
 export interface AnalyzerEntry {
   analyzer: Scanner | Searcher;
@@ -22,29 +8,11 @@ export interface AnalyzerEntry {
   query: string;
 }
 
-interface ScanType {
-  name: "ip" | "domain" | "url";
-  value: string | null;
-}
-
 export class Selector {
   protected input: string;
   protected ioc: IOC;
 
-  protected searchers: Searcher[] = [
-    new Censys(),
-    new DomainBigData(),
-    new FindSubDomains(),
-    new HybridAnalysis(),
-    new PublicWWW(),
-    new Pulsedive(),
-    new SecurityTrails(),
-    new Shodan(),
-    new ThreatCrowd(),
-    new Urlscan(),
-    new VirusTotal(),
-    new XForceExchange(),
-  ];
+  protected searchers: Searcher[] = Searchers;
 
   protected scanners: Scanner[] = [
     new UrlscanScanner(),
