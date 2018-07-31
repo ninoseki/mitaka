@@ -19,4 +19,4 @@ function onsSlectionChange() {
   }
 };
 
-document.addEventListener("selectionchange", throttle(500, onsSlectionChange));
+document.addEventListener("selectionchange", throttle(100, onsSlectionChange));
