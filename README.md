@@ -35,6 +35,8 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 | VirusTotal       | https://www.virustotal.com           | ip / domain / url / hash  |
 | X-Force Exchange | https://exchange.xforce.ibmcloud.com | ip / domain / hash        |
 
+You can enable / disable a search engine via the extentions's options.
+
 ### Supported scan engine
 
 | name       | url                        | supported types   |
@@ -61,10 +63,10 @@ The Chrome extension shows context menus based on a type of IOC you selected and
 **Note:**
 
 - urlscan.io scan:
-  - Please set your urlscan.io API key via the option if you want to make a scan.
+  - Please set your urlscan.io API key via the options if you want to make a scan.
   - Until the scan is finished, the URL will respond with `Not Found / Error code 404`. Please wait a minute and reload it.
 - VirusTotal scan:
-  - Please set your VirusTotal API key via the option if you want to make a scan.
+  - Please set your VirusTotal API key via the options if you want to make a scan.
 
 ## About Permissons
 
