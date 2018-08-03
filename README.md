@@ -17,7 +17,10 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 | ip     | IPv4 address        | `8.8.8.8`                          |
 | domain | domain name         | `github.com`                       |
 | url    | URL                 | `https://github.com`               |
+| email  | Email address       | `test@test.com`                    |
 | hash   | md5 / sha1 / sha256 | `44d88612fea8a8f36de82e1278abb02f` |
+
+Note: `email` type IOC is used for revese WHOIS lookup.
 
 ### Supported search engines
 
@@ -27,11 +30,14 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 | DomainBigData    | https://domainbigdata.com            | domain                    |
 | FindSubDomains   | https://findsubdomains.com           | domain                    |
 | HybridAnalysis   | https://www.hybrid-analysis.com      | hash (sha256 only)        |
+| ONYPHE           | hhttps://www.onyphe.io               | ip                        |
 | PublicWWW        | https://publicwww.com                | text                      |
 | Pulsedive        | https://pulsedive.com                | ip / domaion / url / hash |
+| RiskIQ           | http://community.riskiq.com          | ip / domain / email       |
 | SecurityTrails   | https://securitytrails.com           | ip / domain               |
 | Shodan           | https://www.shodan.io                | text                      |
 | Urlscan          | https://urlscan.io                   | ip / domain / url         |
+| ViewDNS          | https://viewdns.info                 | ip, domain, email         |
 | VirusTotal       | https://www.virustotal.com           | ip / domain / url / hash  |
 | X-Force Exchange | https://exchange.xforce.ibmcloud.com | ip / domain / hash        |
 
@@ -67,6 +73,12 @@ The Chrome extension shows context menus based on a type of IOC you selected and
   - Until the scan is finished, the URL will respond with `Not Found / Error code 404`. Please wait a minute and reload it.
 - VirusTotal scan:
   - Please set your VirusTotal API key via the options if you want to make a scan.
+
+## Options
+
+You can enable / disalbe a search engine in the options page based on your preference.
+
+!["options.png](/examples/options.png "options.png")
 
 ## About Permissons
 
