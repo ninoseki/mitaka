@@ -60,15 +60,16 @@ function createContextMenuErrorHandler() {
   }
 }
 
-function createContextMenus(message, config) {
+function createContextMenus(message, searcherStates) {
   chrome.contextMenus.removeAll(() => {
     const text: string = message.selection;
     const selector: Selector = new Selector(text);
+    // create searchers context menus based on a type of the input
     const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
     for (const entry of searcherEntries) {
       const name = entry.analyzer.name;
-      // continue if a searcher is disabled by option
-      if (name in config && !config[name]) {
+      // continue if a searcher is disabled in options
+      if (name in searcherStates && !searcherStates[name]) {
         continue;
       }
       // it tells action/query/type/target to the listner
@@ -82,7 +83,7 @@ function createContextMenus(message, config) {
       chrome.contextMenus.create(options, createContextMenuErrorHandler);
     }
 
-    // search scanners based on a type of the input
+    // create scanners context menus based on a type of the input
     const scannerEntries: AnalyzerEntry[] = selector.getScannerEntries();
     for (const entry of scannerEntries) {
       const name = entry.analyzer.name;
