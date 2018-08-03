@@ -10,6 +10,7 @@ import {
   Shodan,
   ThreatCrowd,
   Urlscan,
+  ViewDNS,
   VirusTotal,
   XForceExchange,
 } from ".";
@@ -25,6 +26,7 @@ export const Searchers: Searcher[] = [
   new Shodan(),
   new ThreatCrowd(),
   new Urlscan(),
+  new ViewDNS(),
   new VirusTotal(),
   new XForceExchange(),
 ]

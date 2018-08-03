@@ -6,5 +6,6 @@ export interface Searcher {
   searchByIP?(query: string);
   searchByDomain?(query: string);
   searchByURL?(query: string);
+  searchByEmail?(query: string);
   searchByHash?(query: string);
 }

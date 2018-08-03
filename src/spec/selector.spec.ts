@@ -6,15 +6,19 @@ describe("Seletor", () => {
   const stats = {
     // domainbigdata, findsubdomains, pulsedive, securitytrails
     // threatcrowd, urlscan, virustotal, xforce-exchange
-    domain: 8,
+    // viewDNS
+    domain: 9,
     // hybridanalysis, pulsedive, virustotal, xforceexchange
     hash: 4,
-    // securitytrails, pulsedive, threatcrowd, urlscan, virustotal, xforceexchange
-    ip: 6,
+    // securitytrails, pulsedive, threatcrowd urlscan
+    // virustotal, xforceexchange, viewDNS
+    ip: 7,
     // shodan, censys, publicwww
     text: 3,
     // urlscan, pulsedive, virustotal
     url: 3,
+    // viewDNS, threatcrowd
+    email: 2,
   };
 
   context("searcher", () => {
@@ -86,7 +90,7 @@ describe("Seletor", () => {
     context("url", () => {
       const selector: Selector = new Selector("https://urlscan.io/");
       describe("#getUrl", () => {
-        it("should return the domain", () => {
+        it("should return the url", () => {
           expect(selector.getUrl()).to.equal("https://urlscan.io/");
         });
       });
@@ -102,6 +106,29 @@ describe("Seletor", () => {
             expect(entry.query).to.equal("https://urlscan.io/");
           }
           expect(entries.length).to.equal(stats.text + stats.url);
+        });
+      });
+    });
+
+    context("email", () => {
+      const selector: Selector = new Selector("test@test.com");
+      describe("#getEmail", () => {
+        it("should return the email", () => {
+          expect(selector.getEmail()).to.equal("test@test.com");
+        });
+      });
+      describe("#getSearchersForEmail", () => {
+        it("should return Searchers support email", () => {
+          expect(selector.getSearchersByType("email").length).to.equal(stats.email);
+        });
+      });
+      describe("#getAnalyzerEntrys", () => {
+        it("should return Searchrerentrys support email", () => {
+          const entries: AnalyzerEntry[] = selector.getSearcherEntries();
+          for (const entry of entries) {
+            expect(entry.query).to.equal("test@test.com");
+          }
+          expect(entries.length).to.equal(stats.text + stats.email);
         });
       });
     });

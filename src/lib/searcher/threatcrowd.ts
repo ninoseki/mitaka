@@ -4,7 +4,7 @@ export class ThreatCrowd implements Searcher {
 
   public endpoint: string;
   public name;
-  public supportedTypes: string[] = ["ip", "domain"];
+  public supportedTypes: string[] = ["ip", "domain", "email"];
 
   constructor() {
     this.endpoint = "https://www.threatcrowd.org";
@@ -17,5 +17,9 @@ export class ThreatCrowd implements Searcher {
 
   public searchByDomain(query) {
     return `${this.endpoint}/domain.php?domain=${query}`;
+  }
+
+  public searchByEmail(query) {
+    return `${this.endpoint}/email.php?email=${query}`;
   }
 }
