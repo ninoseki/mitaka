@@ -11,8 +11,8 @@ describe("Seletor", () => {
     // hybridanalysis, pulsedive, virustotal, xforceexchange
     hash: 4,
     // securitytrails, pulsedive, threatcrowd urlscan
-    // virustotal, xforceexchange, viewDNS
-    ip: 7,
+    // virustotal, xforceexchange, viewDNS, ONYPHE
+    ip: 8,
     // shodan, censys, publicwww
     text: 3,
     // urlscan, pulsedive, virustotal
