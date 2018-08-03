@@ -38,7 +38,7 @@ export class Selector {
     return null;
   }
 
-  public getUrl(): string | null {
+  public getURL(): string | null {
     if (this.ioc.networks.urls !== null && this.ioc.networks.urls[0]) {
       return this.ioc.networks.urls[0];
     }
@@ -79,7 +79,7 @@ export class Selector {
     if (email !== null) {
       return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("email"), "email", email));
     }
-    const url = this.getUrl();
+    const url = this.getURL();
     if (url !== null) {
       return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("url"), "url", url));
     }
@@ -101,7 +101,7 @@ export class Selector {
   public getScannerEntries(): AnalyzerEntry[] {
     const analyzerEntries: AnalyzerEntry[] = [];
 
-    const url = this.getUrl();
+    const url = this.getURL();
     if (url !== null) {
       return this.makeAnalyzerEntries(this.getScannersByType("url"), "url", url);
     }

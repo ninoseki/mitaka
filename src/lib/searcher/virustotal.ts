@@ -18,11 +18,11 @@ export class VirusTotal implements Searcher {
   }
 
   public searchByURL(q) {
-    const hash = crypto.SHA256(this.normalizeUrl(q));
+    const hash = crypto.SHA256(this.normalizeURL(q));
     return `${this.endpoint}/url/${hash}`;
   }
 
-  public normalizeUrl(q) {
+  public normalizeURL(q) {
     const parsedUrl = url.parse(q);
     if (parsedUrl.pathname === "/" && q.slice(-1) !== "/") {
       return `${q}/`;

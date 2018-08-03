@@ -69,7 +69,7 @@ describe("Seletor", () => {
       describe("#getDomain", () => {
         it("should return the domain", () => {
           expect(selector.getDomain()).to.equal("www.google.com");
-          expect(selector.getUrl()).to.equal(null);
+          expect(selector.getURL()).to.equal(null);
         });
       });
       describe("#getSearchersForDomain", () => {
@@ -90,9 +90,9 @@ describe("Seletor", () => {
 
     context("url", () => {
       const selector: Selector = new Selector("https://urlscan.io/");
-      describe("#getUrl", () => {
+      describe("#getURL", () => {
         it("should return the url", () => {
-          expect(selector.getUrl()).to.equal("https://urlscan.io/");
+          expect(selector.getURL()).to.equal("https://urlscan.io/");
         });
       });
       describe("#getSearchersForUrl", () => {
