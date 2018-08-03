@@ -30,7 +30,7 @@ Note: `email` type IOC is used for revese WHOIS lookup.
 | DomainBigData    | https://domainbigdata.com            | domain                    |
 | FindSubDomains   | https://findsubdomains.com           | domain                    |
 | HybridAnalysis   | https://www.hybrid-analysis.com      | hash (sha256 only)        |
-| ONYPHE           | hhttps://www.onyphe.io               | ip                        |
+| ONYPHE           | https://www.onyphe.io                | ip                        |
 | PublicWWW        | https://publicwww.com                | text                      |
 | Pulsedive        | https://pulsedive.com                | ip / domaion / url / hash |
 | RiskIQ           | http://community.riskiq.com          | ip / domain / email       |
