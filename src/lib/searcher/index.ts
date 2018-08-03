@@ -9,6 +9,7 @@ export { SecurityTrails } from "./securitytrails";
 export { Shodan } from "./shodan";
 export { ThreatCrowd } from "./threatcrowd";
 export { Urlscan } from "./urlscan";
+export { ViewDNS } from "./viewdns";
 export { VirusTotal } from "./virustotal";
 export { XForceExchange } from "./xforce-exchange";
 

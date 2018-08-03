@@ -35,6 +35,9 @@ export class Command {
         case "url":
           url = searcher.searchByURL!(entry.query);
           break;
+        case "email":
+          url = searcher.searchByEmail!(entry.query);
+          break;
         case "hash":
           url = searcher.searchByHash!(entry.query);
           break;

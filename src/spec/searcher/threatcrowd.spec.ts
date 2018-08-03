@@ -19,4 +19,12 @@ describe("ThreatCrowd", () => {
         to.equal("https://www.threatcrowd.org/domain.php?domain=github.com");
     });
   });
+  describe("#searchByEmail", () => {
+    it("should return URL", () => {
+      const threatCrowd = new ThreatCrowd();
+      expect(threatCrowd.supportedTypes.indexOf("email")).not.equal(-1);
+      expect(threatCrowd.searchByEmail("test@test.com")).
+        to.equal("https://www.threatcrowd.org/email.php?email=test@test.com");
+    });
+  });
 });

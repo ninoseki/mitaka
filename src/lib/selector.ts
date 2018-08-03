@@ -45,6 +45,13 @@ export class Selector {
     return null;
   }
 
+  public getEmail(): string | null {
+    if (this.ioc.networks.emails !== null && this.ioc.networks.emails[0]) {
+      return this.ioc.networks.emails[0];
+    }
+    return null;
+  }
+
   public getHash(): string | null {
     let hashes: string[] = [];
     hashes = this.concat(hashes, this.ioc.hashes.sha256s);
@@ -56,7 +63,7 @@ export class Selector {
     return hashes[0];
   }
 
-  public getSearchersByType(type: "text" | "ip" | "domain" | "url" | "hash") {
+  public getSearchersByType(type: "text" | "ip" | "domain" | "url" | "email" | "hash") {
     return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf(type) !== -1);
   }
 
@@ -68,6 +75,10 @@ export class Selector {
     let entries: AnalyzerEntry[] = [];
     entries = this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("text"), "text", this.input));
 
+    const email = this.getEmail();
+    if (email !== null) {
+      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("email"), "email", email));
+    }
     const url = this.getUrl();
     if (url !== null) {
       return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("url"), "url", url));
