@@ -6,19 +6,20 @@ describe("Seletor", () => {
   const stats = {
     // domainbigdata, findsubdomains, pulsedive, securitytrails
     // threatcrowd, urlscan, virustotal, xforce-exchange
-    // viewDNS
-    domain: 9,
+    // viewDNS, riskiq
+    domain: 10,
     // hybridanalysis, pulsedive, virustotal, xforceexchange
     hash: 4,
     // securitytrails, pulsedive, threatcrowd urlscan
     // virustotal, xforceexchange, viewDNS, ONYPHE
-    ip: 8,
+    // riskiq
+    ip: 9,
     // shodan, censys, publicwww
     text: 3,
     // urlscan, pulsedive, virustotal
     url: 3,
-    // viewDNS, threatcrowd
-    email: 2,
+    // viewDNS, threatcrowd, riskiq
+    email: 3,
   };
 
   context("searcher", () => {
