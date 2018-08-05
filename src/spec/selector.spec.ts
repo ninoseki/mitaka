@@ -6,14 +6,14 @@ describe("Seletor", () => {
   const stats = {
     // domainbigdata, findsubdomains, pulsedive, securitytrails
     // threatcrowd, urlscan, virustotal, xforce-exchange
-    // viewDNS, riskiq
-    domain: 10,
+    // viewDNS, riskiq, cycmon
+    domain: 11,
     // hybridanalysis, pulsedive, virustotal, xforceexchange
     hash: 4,
     // securitytrails, pulsedive, threatcrowd urlscan
     // virustotal, xforceexchange, viewDNS, ONYPHE
-    // riskiq
-    ip: 9,
+    // riskiq, cymon
+    ip: 10,
     // shodan, censys, publicwww
     text: 3,
     // urlscan, pulsedive, virustotal
