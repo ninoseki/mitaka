@@ -27,6 +27,7 @@ Note: `email` type IOC is used for revese WHOIS lookup.
 | name             | url                                  | supported types           |
 |:-----------------|:-------------------------------------|:--------------------------|
 | Censys           | https://censys.io                    | text                      |
+| Cymon            | https://cymon.io                     | ip / domain               |
 | DomainBigData    | https://domainbigdata.com            | domain                    |
 | FindSubDomains   | https://findsubdomains.com           | domain                    |
 | HybridAnalysis   | https://www.hybrid-analysis.com      | hash (sha256 only)        |
