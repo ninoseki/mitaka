@@ -23,10 +23,10 @@ describe("Background script", () => {
   });
   describe("#showNotification", () => {
     it("should call chrome.notifications.create()", () => {
-      expect(root.global.chrome.notifications.create.notCalled).to.be.true;
+      expect(root.chrome.notifications.create.notCalled).to.be.true;
       showNotification("test");
-      expect(root.global.chrome.notifications.create.called).to.be.true;
-      expect(root.global.chrome.notifications.create.withArgs({
+      expect(root.chrome.notifications.create.called).to.be.true;
+      expect(root.chrome.notifications.create.withArgs({
         iconUrl: "./icons/48.png",
         message: "test",
         title: "Mitaka",
