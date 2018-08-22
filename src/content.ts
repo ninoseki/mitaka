@@ -20,5 +20,5 @@ export function onsSlectionChange() {
 };
 
 if (typeof document !== "undefined") {
-  document.addEventListener("selectionchange", throttle(100, onsSlectionChange));
+  document.addEventListener("selectionchange", throttle(250, onsSlectionChange));
 }
