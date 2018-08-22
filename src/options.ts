@@ -51,7 +51,6 @@ export async function restoreApiKeys() {
   chrome.storage.sync.get("apiKeys", (config) => {
     if ("apiKeys" in config) {
       if (urlscanApiKey && "urlscanApiKey" in config.apiKeys) {
-        console.log("hoge");
         urlscanApiKey.value = config.apiKeys.urlscanApiKey;
       }
       if (virusTotalApiKey && "virusTotalApiKey" in config.apiKeys) {
