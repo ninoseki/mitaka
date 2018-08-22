@@ -2,14 +2,13 @@ import { ApiKeys } from "./lib/scanner";
 import { Searchers } from "./lib/searcher";
 import * as Mustache from "mustache";
 
-interface SearcherState {
+export interface SearcherState {
   name: string;
   supportedTypes: string[],
   isEnabled: boolean;
 }
 
-// Saves options to chrome.storage.sync.
-function saveOptions() {
+export function saveApiKeys() {
   const urlscanApiKey = document.getElementById("urlscan-api-key") as HTMLInputElement;
   const virusTotalApiKey = document.getElementById("virustotal-api-key") as HTMLInputElement;
   const apiKeys: ApiKeys = {
@@ -24,7 +23,9 @@ function saveOptions() {
       }
     });
   }
+}
 
+export function saveSearcherStates() {
   let searcherStates = {};
   const searcherList = document.getElementById("searcherList") as HTMLElement;
   const radios = searcherList.querySelectorAll<HTMLInputElement>('[type="checkbox"]');
@@ -38,7 +39,13 @@ function saveOptions() {
   chrome.storage.sync.set({ searcherStates })
 }
 
-function restoreOptions() {
+// Saves options to chrome.storage.sync.
+export function saveOptions() {
+  saveApiKeys();
+  saveSearcherStates();
+}
+
+export async function restoreApiKeys() {
   const urlscanApiKey = document.getElementById("urlscan-api-key") as HTMLInputElement;
   const virusTotalApiKey = document.getElementById("virustotal-api-key") as HTMLInputElement;
   chrome.storage.sync.get("apiKeys", (config) => {
@@ -51,6 +58,9 @@ function restoreOptions() {
       }
     }
   });
+}
+
+export function restoreSearcherStates() {
   chrome.storage.sync.get("searcherStates", (config) => {
     const states: SearcherState[] = [];
 
@@ -75,10 +85,17 @@ function restoreOptions() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  restoreOptions();
-  const save = document.getElementById("save");
-  if (save) {
-    save.addEventListener("click", saveOptions);
-  }
-});
+export function restoreOptions() {
+  restoreApiKeys();
+  restoreSearcherStates();
+}
+
+if (typeof document !== "undefined") {
+  document.addEventListener("DOMContentLoaded", () => {
+    restoreOptions();
+    const save = document.getElementById("save");
+    if (save) {
+      save.addEventListener("click", saveOptions);
+    }
+  });
+}

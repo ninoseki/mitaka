@@ -1,6 +1,6 @@
 import { throttle } from "throttle-debounce";
 
-function onsSlectionChange() {
+export function onsSlectionChange() {
   const selection = window.getSelection();
   const text: string = selection.toString().trim();
   let link;
@@ -19,4 +19,6 @@ function onsSlectionChange() {
   }
 };
 
-document.addEventListener("selectionchange", throttle(100, onsSlectionChange));
+if (typeof document !== "undefined") {
+  document.addEventListener("selectionchange", throttle(100, onsSlectionChange));
+}

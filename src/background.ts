@@ -2,7 +2,7 @@ import { Command } from "./lib/command";
 import { ApiKeys } from "./lib/scanner";
 import { AnalyzerEntry, Selector } from "./lib/selector";
 
-function showNotification(message: string) {
+export function showNotification(message: string) {
   chrome.notifications.create({
     iconUrl: "./icons/48.png",
     message,
@@ -11,7 +11,7 @@ function showNotification(message: string) {
   });
 }
 
-function search(command: Command) {
+export function search(command: Command) {
   try {
     const url = command.search();
     if (url !== undefined && url !== "") {
@@ -22,7 +22,7 @@ function search(command: Command) {
   }
 }
 
-function scan(command: Command) {
+export async function scan(command: Command) {
   chrome.storage.sync.get("apiKeys", async (config) => {
     const apiKeys: ApiKeys = {
       urlscanApiKey: ("apiKeys" in config && "urlscanApiKey" in config.apiKeys) ?
@@ -41,26 +41,13 @@ function scan(command: Command) {
   });
 }
 
-chrome.contextMenus.onClicked.addListener((info, tab) => {
-  const id: string = info.menuItemId;
-  const command = new Command(id);
-  switch (command.action) {
-    case "search":
-      search(command);
-      break;
-    case "scan":
-      scan(command);
-      break;
-  }
-});
-
-function createContextMenuErrorHandler() {
+export function createContextMenuErrorHandler() {
   if (chrome.runtime.lastError) {
     console.error(chrome.runtime.lastError.message);
   }
 }
 
-function createContextMenus(message, searcherStates) {
+export async function createContextMenus(message, searcherStates) {
   chrome.contextMenus.removeAll(() => {
     const text: string = message.selection;
     const selector: Selector = new Selector(text);
@@ -100,14 +87,28 @@ function createContextMenus(message, searcherStates) {
   });
 }
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.request === "updateContextMenu") {
-    chrome.storage.sync.get("searcherStates", (config) => {
-      if ("searcherStates" in config) {
-        createContextMenus(message, config.searcherStates);
-      } else {
-        createContextMenus(message, {})
-      }
-    });
-  }
-});
+if (typeof chrome !== "undefined") {
+  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.request === "updateContextMenu") {
+      chrome.storage.sync.get("searcherStates", (config) => {
+        if ("searcherStates" in config) {
+          createContextMenus(message, config.searcherStates);
+        } else {
+          createContextMenus(message, {})
+        }
+      });
+    }
+  });
+  chrome.contextMenus.onClicked.addListener((info, tab) => {
+    const id: string = info.menuItemId;
+    const command = new Command(id);
+    switch (command.action) {
+      case "search":
+        search(command);
+        break;
+      case "scan":
+        scan(command);
+        break;
+    }
+  });
+}
