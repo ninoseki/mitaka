@@ -21,7 +21,7 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 | email  | Email address       | `test@test.com`                    |
 | hash   | md5 / sha1 / sha256 | `44d88612fea8a8f36de82e1278abb02f` |
 
-Note: `email` type IOC is used for revese WHOIS lookup.
+Note: `email` type IOC is used for reverse WHOIS lookup.
 
 ### Supported search engines
 
@@ -39,11 +39,11 @@ Note: `email` type IOC is used for revese WHOIS lookup.
 | SecurityTrails   | https://securitytrails.com           | ip / domain               |
 | Shodan           | https://www.shodan.io                | text                      |
 | Urlscan          | https://urlscan.io                   | ip / domain / url         |
-| ViewDNS          | https://viewdns.info                 | ip, domain, email         |
+| ViewDNS          | https://viewdns.info                 | ip / domain / email       |
 | VirusTotal       | https://www.virustotal.com           | ip / domain / url / hash  |
 | X-Force Exchange | https://exchange.xforce.ibmcloud.com | ip / domain / hash        |
 
-You can enable / disable a search engine via the extentions's options.
+You can enable / disable a search engine via the extension's options.
 
 ### Supported scan engine
 
@@ -78,7 +78,7 @@ The Chrome extension shows context menus based on a type of IOC you selected and
 
 ## Options
 
-You can enable / disalbe a search engine in the options page based on your preference.
+You can enable / disable a search engine in the options page based on your preference.
 
 !["options.png](/examples/options.png "options.png")
 
@@ -88,9 +88,9 @@ This Chrome extension requires following permissions.
 
 - `Read and change all your data on the websites you visit`:
   - This extension creates context menus dynamically based on what you select on a website.
-  - It measns this extension requires reading all your data on the websites you visit. (This extension doesn't change anything on the websites)
+  - It means this extension requires reading all your data on the websites you visit. (This extension doesn't change anything on the websites)
 - `Display notifications`:
-  - This extension makes a notification when someting goes wrong.
+  - This extension makes a notification when something goes wrong.
 
 I don't (and will never) collect any information from the users.
 
@@ -107,7 +107,7 @@ npm install
 npm run build
 ```
 
-Following procedures to load an unpacked exntension are described at https://developer.chrome.com/extensions/getstarted.
+Following procedures to load an unpacked extension are described at https://developer.chrome.com/extensions/getstarted.
 
 ## Misc
 
