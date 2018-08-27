@@ -1,6 +1,6 @@
 {
   "name": "mitaka",
-  "version": "0.17.1",
+  "version": "0.18.0",
   "description": "OSINT friendly IOC (Indicator of Compromise) saerch tool",
   "main": "index.js",
   "scripts": {
