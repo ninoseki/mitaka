@@ -1,11 +1,11 @@
-import { throttle } from "throttle-debounce";
+import { debounce } from "throttle-debounce";
 
 export function onsSlectionChange() {
   const selection = window.getSelection();
   const text: string = selection.toString().trim();
   let link;
   if (selection.rangeCount > 0) {
-    const range = window.getSelection().getRangeAt(0).startContainer.parentElement;
+    const range = selection.getRangeAt(0).startContainer.parentElement;
     if (range !== null && range.hasAttribute("href")) {
       link = range.getAttribute("href");
     }
@@ -20,5 +20,5 @@ export function onsSlectionChange() {
 };
 
 if (typeof document !== "undefined") {
-  document.addEventListener("selectionchange", throttle(250, onsSlectionChange));
+  document.addEventListener("selectionchange", debounce(100, onsSlectionChange));
 }
