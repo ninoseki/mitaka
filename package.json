@@ -37,12 +37,12 @@
   "dependencies": {
     "axios": "^0.18.0",
     "crypto-js": "^3.1.9-1",
-    "ioc-extractor": "^0.2.5",
+    "ioc-extractor": "^0.4.0",
     "mustache": "^2.3.2",
     "qs": "^6.5.2",
     "throttle-debounce": "^2.0.1",
     "url": "^0.11.0",
-    "validator": "^10.6.0"
+    "validator": "^10.7.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.4",
@@ -52,9 +52,9 @@
     "@types/mocha": "^5.2.5",
     "@types/moxios": "^0.4.8",
     "@types/mustache": "^0.8.31",
-    "@types/node": "^10.7.1",
+    "@types/node": "^10.9.3",
     "@types/qs": "^6.5.1",
-    "@types/sinon": "^5.0.1",
+    "@types/sinon": "^5.0.2",
     "@types/sinon-chrome": "^2.2.4",
     "@types/throttle-debounce": "^1.1.0",
     "@types/validator": "^9.4.1",
@@ -64,13 +64,13 @@
     "jsdom": "^12.0.0",
     "mocha": "^5.2.0",
     "moxios": "^0.4.0",
-    "nyc": "^12.0.2",
+    "nyc": "^13.0.1",
     "sinon": "^6.1.5",
     "sinon-chrome": "^2.3.2",
     "ts-loader": "^4.5.0",
     "ts-node": "^7.0.1",
     "typescript": "^3.0.1",
-    "webpack": "^4.17.0",
+    "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0",
     "window-or-global": "^1.0.1"
   }
