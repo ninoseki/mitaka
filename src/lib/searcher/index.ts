@@ -4,6 +4,7 @@ export { DomainBigData } from "./domainbigdata";
 export { FindSubDomains } from "./findsubdomains";
 export { HybridAnalysis } from "./hybridanalysis";
 export { ONYPHE } from "./onyphe";
+export { Pipl } from "./pipl";
 export { PublicWWW } from "./publicwww";
 export { Pulsedive } from "./pulsedive";
 export { RiskIQ } from "./riskiq";
