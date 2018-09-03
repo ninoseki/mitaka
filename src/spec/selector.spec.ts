@@ -20,6 +20,8 @@ describe("Seletor", () => {
     url: 3,
     // viewDNS, threatcrowd, riskiq, pipl
     email: 4,
+    // vulmon
+    cve: 1
   };
 
   context("searcher", () => {
@@ -158,6 +160,29 @@ describe("Seletor", () => {
             expect(entry.query).to.equal("275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f");
           }
           expect(entries.length).to.equal(stats.text + stats.hash);
+        });
+      });
+    });
+
+    context("CVE", () => {
+      const selector: Selector = new Selector("CVE-2018-8013");
+      describe("#getCVE", () => {
+        it("should return CVE", () => {
+          expect(selector.getCVE()).to.equal("CVE-2018-8013");
+        });
+      });
+      describe("#getSearchersForCVE", () => {
+        it("should return Searchers support CVE", () => {
+          expect(selector.getSearchersByType("cve").length).to.equal(stats.cve);
+        });
+      });
+      describe("#getAnalyzerEntrys", () => {
+        it("should return Searchrerentrys support cve", () => {
+          const entries: AnalyzerEntry[] = selector.getSearcherEntries();
+          for (const entry of entries) {
+            expect(entry.query).to.equal("CVE-2018-8013");
+          }
+          expect(entries.length).to.equal(stats.text + stats.cve);
         });
       });
     });

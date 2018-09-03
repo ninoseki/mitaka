@@ -50,6 +50,12 @@ describe("Command", () => {
         expect(command.search()).to.equal("https://viewdns.info/reversewhois/?q=test@test.com");
       });
     });
+    context("cve", () => {
+      it("should return a URL for search", () => {
+        const command = new Command("Search CVE-2018-16384 as a cve on Vulmon");
+        expect(command.search()).to.equal("https://vulmon.com/vulnerabilitydetails?qid=CVE-2018-16384");
+      });
+    });
   });
 
   describe("#scan", () => {

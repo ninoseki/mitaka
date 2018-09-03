@@ -41,6 +41,9 @@ export class Command {
         case "hash":
           url = searcher.searchByHash!(entry.query);
           break;
+        case "cve":
+          url = searcher.searchByCVE!(entry.query);
+          break;
       }
     }
     return url;

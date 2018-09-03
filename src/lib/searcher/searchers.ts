@@ -17,6 +17,7 @@ import {
   Urlscan,
   ViewDNS,
   VirusTotal,
+  Vulmon,
   XForceExchange,
 } from ".";
 
@@ -38,5 +39,6 @@ export const Searchers: Searcher[] = [
   new Urlscan(),
   new ViewDNS(),
   new VirusTotal(),
+  new Vulmon(),
   new XForceExchange(),
 ]
