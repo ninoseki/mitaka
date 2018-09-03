@@ -16,6 +16,7 @@ export { ThreatCrowd } from "./threatcrowd";
 export { Urlscan } from "./urlscan";
 export { ViewDNS } from "./viewdns";
 export { VirusTotal } from "./virustotal";
+export { Vulmon } from "./vulmon";
 export { XForceExchange } from "./xforce-exchange";
 
 export { Searchers } from "./searchers";

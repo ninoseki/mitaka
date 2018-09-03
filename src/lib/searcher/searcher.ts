@@ -8,4 +8,5 @@ export interface Searcher {
   searchByURL?(query: string);
   searchByEmail?(query: string);
   searchByHash?(query: string);
+  searchByCVE?(query: string);
 }

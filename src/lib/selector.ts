@@ -63,7 +63,14 @@ export class Selector {
     return hashes[0];
   }
 
-  public getSearchersByType(type: "text" | "ip" | "domain" | "url" | "email" | "hash") {
+  public getCVE(): string | null {
+    if (this.ioc.utilities.cves !== null && this.ioc.utilities.cves[0]) {
+      return this.ioc.utilities.cves[0]
+    }
+    return null;
+  }
+
+  public getSearchersByType(type: "text" | "ip" | "domain" | "url" | "email" | "hash" | "cve") {
     return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf(type) !== -1);
   }
 
@@ -94,6 +101,10 @@ export class Selector {
     const hash = this.getHash();
     if (hash !== null) {
       return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("hash"), "hash", hash));
+    }
+    const cve = this.getCVE();
+    if (cve !== null) {
+      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("cve"), "cve", cve));
     }
     return entries;
   }
