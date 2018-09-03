@@ -20,6 +20,7 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 | url    | URL                 | `https://github.com`               |
 | email  | Email address       | `test@test.com`                    |
 | hash   | md5 / sha1 / sha256 | `44d88612fea8a8f36de82e1278abb02f` |
+| cve    | CVE number          | `CVE-2018-11776`                   |
 
 Note: `email` type IOC is used for reverse WHOIS lookup.
 
@@ -44,6 +45,7 @@ Note: `email` type IOC is used for reverse WHOIS lookup.
 | Urlscan          | https://urlscan.io                   | ip / domain / url         |
 | ViewDNS          | https://viewdns.info                 | ip / domain / email       |
 | VirusTotal       | https://www.virustotal.com           | ip / domain / url / hash  |
+| Vulmon           | https://vulmon.com                   | cve                       |
 | X-Force Exchange | https://exchange.xforce.ibmcloud.com | ip / domain / hash        |
 
 You can enable / disable a search engine via the extension's options.
