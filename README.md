@@ -22,7 +22,7 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 | hash   | md5 / sha1 / sha256 | `44d88612fea8a8f36de82e1278abb02f` |
 | cve    | CVE number          | `CVE-2018-11776`                   |
 
-Note: `email` type IOC is used for reverse WHOIS lookup.
+Note: `email` type IOC is used for a reverse WHOIS lookup.
 
 ### Supported search engines
 
@@ -31,6 +31,7 @@ Note: `email` type IOC is used for reverse WHOIS lookup.
 | Censys           | https://censys.io                    | text                      |
 | Cymon            | https://cymon.io                     | ip / domain               |
 | DomainBigData    | https://domainbigdata.com            | domain                    |
+| DomainWatch      | https://domainwat.ch                 | domain / email            |
 | FindSubDomains   | https://findsubdomains.com           | domain                    |
 | HybridAnalysis   | https://www.hybrid-analysis.com      | hash (sha256 only)        |
 | ONYPHE           | https://www.onyphe.io                | ip                        |
