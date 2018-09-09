@@ -7,7 +7,8 @@ describe("Seletor", () => {
     // domainbigdata, findsubdomains, pulsedive, securitytrails
     // threatcrowd, urlscan, virustotal, xforce-exchange
     // viewDNS, riskiq, cycmon, talos
-    domain: 12,
+    // domainwatch
+    domain: 13,
     // hybridanalysis, pulsedive, virustotal, xforceexchange
     hash: 4,
     // securitytrails, pulsedive, threatcrowd urlscan
@@ -19,7 +20,8 @@ describe("Seletor", () => {
     // urlscan, pulsedive, virustotal
     url: 3,
     // viewDNS, threatcrowd, riskiq, pipl
-    email: 4,
+    // domainwatch
+    email: 5,
     // vulmon
     cve: 1
   };

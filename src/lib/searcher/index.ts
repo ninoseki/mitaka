@@ -1,6 +1,7 @@
 export { Censys } from "./censys";
 export { Cymon } from "./cymon";
 export { DomainBigData } from "./domainbigdata";
+export { DomainWatch } from "./domainwatch";
 export { FindSubDomains } from "./findsubdomains";
 export { HybridAnalysis } from "./hybridanalysis";
 export { ONYPHE } from "./onyphe";
