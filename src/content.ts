@@ -1,4 +1,4 @@
-import { debounce } from "throttle-debounce";
+import { throttle } from "throttle-debounce";
 
 export function onsSlectionChange() {
   const selection = window.getSelection();
@@ -20,5 +20,5 @@ export function onsSlectionChange() {
 };
 
 if (typeof document !== "undefined") {
-  document.addEventListener("selectionchange", debounce(100, onsSlectionChange));
+  document.addEventListener("selectionchange", throttle(100, onsSlectionChange));
 }
