@@ -22,8 +22,8 @@ describe("Seletor", () => {
     // viewDNS, threatcrowd, riskiq, pipl
     // domainwatch
     email: 5,
-    // vulmon
-    cve: 1
+    // vulmon, sploitus
+    cve: 2
   };
 
   context("searcher", () => {
