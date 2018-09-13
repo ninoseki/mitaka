@@ -12,6 +12,7 @@ export { RiskIQ } from "./riskiq";
 export { Searcher } from "./searcher";
 export { SecurityTrails } from "./securitytrails";
 export { Shodan } from "./shodan";
+export { Sploitus } from "./sploitus";
 export { Talos } from "./talos";
 export { ThreatCrowd } from "./threatcrowd";
 export { Urlscan } from "./urlscan";
