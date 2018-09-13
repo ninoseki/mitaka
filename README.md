@@ -41,6 +41,7 @@ Note: `email` type IOC is used for a reverse WHOIS lookup.
 | RiskIQ           | http://community.riskiq.com          | ip / domain / email       |
 | SecurityTrails   | https://securitytrails.com           | ip / domain               |
 | Shodan           | https://www.shodan.io                | text                      |
+| Sploitus         | https://sploitus.com                 | cve                       |
 | Talos            | https://talosintelligence.com        | ip / domain               |
 | ThreatCrowd      | https://www.threatcrowd.org          | ip / domain / email       |
 | Urlscan          | https://urlscan.io                   | ip / domain / url         |
