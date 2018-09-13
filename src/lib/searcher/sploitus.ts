@@ -8,7 +8,7 @@ export class Sploitus implements Searcher {
 
   constructor() {
     this.endpoint = "https://sploitus.com";
-    this.name = "Splotious";
+    this.name = "Sploitus";
   }
 
   public searchByCVE(query) {
