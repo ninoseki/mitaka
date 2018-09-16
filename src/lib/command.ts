@@ -4,15 +4,14 @@ import { AnalyzerEntry, Selector } from "./selector";
 
 export class Command {
   public action: string;
-  public parts: string[];
   public query: string;
   public target: string;
 
   constructor(command: string) {
-    this.parts = command.split(" ");
-    this.action = this.parts[0].toLowerCase();
-    this.query = this.parts.slice(1, this.parts.length - 5).join(" ");
-    this.target = this.parts[this.parts.length - 1];
+    const parts: string[] = command.split(" ");
+    this.action = parts[0].toLowerCase();
+    this.query = parts.slice(1, parts.length - 5).join(" ");
+    this.target = parts[parts.length - 1];
   }
 
   public search(): string {
