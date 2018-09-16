@@ -13,17 +13,17 @@ describe("Seletor", () => {
     hash: 4,
     // securitytrails, pulsedive, threatcrowd urlscan
     // virustotal, xforceexchange, viewDNS, ONYPHE
-    // riskiq, cymon, talos
-    ip: 11,
+    // riskiq, cymon, talos, fortiguard
+    ip: 12,
     // shodan, censys, publicwww
     text: 3,
-    // urlscan, pulsedive, virustotal
-    url: 3,
+    // urlscan, pulsedive, virustotal, fortiguard
+    url: 4,
     // viewDNS, threatcrowd, riskiq, pipl
     // domainwatch
     email: 5,
-    // vulmon, sploitus
-    cve: 2
+    // vulmon, sploitus, fortiguard
+    cve: 3
   };
 
   context("searcher", () => {
