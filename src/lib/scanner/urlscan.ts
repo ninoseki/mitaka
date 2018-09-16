@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Scanner } from "./scanner";
 
-export class UrlscanScanner implements Scanner {
+export class Urlscan implements Scanner {
   public endpoint: string;
   public name: string;
   public supportedTypes: string[] = ["ip", "domain", "url"];

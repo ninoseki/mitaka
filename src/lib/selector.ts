@@ -1,5 +1,5 @@
 import { getIOC, IOC } from "ioc-extractor";
-import { Scanner, UrlscanScanner, VirusTotalScanner } from "./scanner";
+import { Scanner, Scanners } from "./scanner";
 import { Searcher, Searchers } from "./searcher";
 
 export interface AnalyzerEntry {
@@ -12,12 +12,8 @@ export class Selector {
   protected input: string;
   protected ioc: IOC;
 
+  protected scanners: Scanner[] = Scanners;
   protected searchers: Searcher[] = Searchers;
-
-  protected scanners: Scanner[] = [
-    new UrlscanScanner(),
-    new VirusTotalScanner(),
-  ];
 
   constructor(input: string) {
     this.input = input;

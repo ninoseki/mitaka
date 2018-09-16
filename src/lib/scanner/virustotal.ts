@@ -2,7 +2,7 @@ import axios from "axios";
 import * as qs from "qs";
 import { Scanner } from "./scanner";
 
-export class VirusTotalScanner implements Scanner {
+export class VirusTotal implements Scanner {
 
   public endpoint: string;
   public name: string;
