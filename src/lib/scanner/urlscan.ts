@@ -41,6 +41,7 @@ export class Urlscan implements Scanner {
           "API-KEY": this.apiKey,
         },
       });
-    return res.data.result;
+    // ref. https://github.com/ninoseki/mitaka/issues/97
+    return `${res.data.result}loading`;
   }
 }

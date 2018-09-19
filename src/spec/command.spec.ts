@@ -82,7 +82,7 @@ describe("Command", () => {
             urlscanApiKey: "test",
             virusTotalApiKey: "test",
           };
-          expect(await command.scan(apiKeys)).to.equal("https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/");
+          expect(await command.scan(apiKeys)).to.equal("https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/loading");
         });
       })
       context("domain", () => {
@@ -105,7 +105,7 @@ describe("Command", () => {
             urlscanApiKey: "test",
             virusTotalApiKey: "test",
           };
-          expect(await command.scan(apiKeys)).to.equal("https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/");
+          expect(await command.scan(apiKeys)).to.equal("https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/loading");
         });
       })
       context("url", () => {
@@ -128,7 +128,7 @@ describe("Command", () => {
             urlscanApiKey: "test",
             virusTotalApiKey: "test",
           };
-          expect(await command.scan(apiKeys)).to.equal("https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/");
+          expect(await command.scan(apiKeys)).to.equal("https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/loading");
         });
       })
     });

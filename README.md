@@ -79,7 +79,6 @@ The Chrome extension shows context menus based on a type of IOC you selected and
 
 - urlscan.io scan:
   - Please set your urlscan.io API key via the options if you want to make a scan.
-  - Until the scan is finished, the URL will respond with `Not Found / Error code 404`. Please wait a minute and reload it.
 - VirusTotal scan:
   - Please set your VirusTotal API key via the options if you want to make a scan.
 
