@@ -3,12 +3,11 @@ import "mocha";
 import { DomainBigData } from "../../lib/searcher";
 
 describe("DomainBigData", () => {
+  const subject = new DomainBigData();
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      const domainBigData = new DomainBigData();
-      expect(domainBigData.supportedTypes.indexOf("domain")).not.equal(-1);
-      expect(domainBigData.searchByDomain("github.com")).
-        to.equal("https://domainbigdata.com/github.com");
+      expect(subject.supportedTypes.indexOf("domain")).not.equal(-1);
+      expect(subject.searchByDomain("github.com")).to.equal("https://domainbigdata.com/github.com");
     });
   });
 });

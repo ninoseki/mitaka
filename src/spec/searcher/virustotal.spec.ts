@@ -3,28 +3,28 @@ import "mocha";
 import { VirusTotal } from "../../lib/searcher";
 
 describe("VirusTotal", () => {
-  const vt = new VirusTotal();
+  const subject = new VirusTotal();
   describe("#searchByURL", () => {
     it("should return URL", () => {
-      expect(vt.searchByURL("https://virustotal.com")).
+      expect(subject.searchByURL("https://virustotal.com")).
         to.equal("https://www.virustotal.com/#/url/77af0145fa9290ca3a4c214eb4561fc01070132300f6265e2c4cfb447372422e");
-      expect(vt.searchByURL("https://qiita.com/trend")).
+      expect(subject.searchByURL("https://qiita.com/trend")).
         to.equal("https://www.virustotal.com/#/url/5dd2d006b4430a593be125eee20494016d3ac933796da6deef590c3e045a685d");
     });
   });
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      expect(vt.searchByDomain("virustotal.com")).to.equal("https://www.virustotal.com/#/domain/virustotal.com");
+      expect(subject.searchByDomain("virustotal.com")).to.equal("https://www.virustotal.com/#/domain/virustotal.com");
     });
   });
   describe("#searchByIP", () => {
     it("should return URL", () => {
-      expect(vt.searchByIP("1.1.1.1")).to.equal("https://www.virustotal.com/#/ip-address/1.1.1.1");
+      expect(subject.searchByIP("1.1.1.1")).to.equal("https://www.virustotal.com/#/ip-address/1.1.1.1");
     });
   });
   describe("#searchByHash", () => {
     it("should return URL", () => {
-      expect(vt.searchByHash("275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f")).
+      expect(subject.searchByHash("275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f")).
         to.equal("https://www.virustotal.com/#/file/275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f");
     });
   });

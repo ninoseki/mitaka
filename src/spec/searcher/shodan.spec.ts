@@ -3,10 +3,10 @@ import "mocha";
 import { Shodan } from "../../lib/searcher";
 
 describe("Shodan", () => {
+  const subject = new Shodan();
   describe("#searchByURL", () => {
     it("should return URL", () => {
-      const shodan = new Shodan();
-      expect(shodan.searchByText("urlscan.io")).to.equal("https://www.shodan.io/search?query=urlscan.io");
+      expect(subject.searchByText("urlscan.io")).to.equal("https://www.shodan.io/search?query=urlscan.io");
     });
   });
 });

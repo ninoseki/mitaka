@@ -3,27 +3,25 @@ import "mocha";
 import { RiskIQ } from "../../lib/searcher";
 
 describe("RiskIQ", () => {
+  const subject = new RiskIQ();
   describe("#searchByIP", () => {
     it("should return URL", () => {
-      const riskIQ = new RiskIQ();
-      expect(riskIQ.supportedTypes.indexOf("ip")).not.equal(-1);
-      expect(riskIQ.searchByIP("1.1.1.1")).
+      expect(subject.supportedTypes.indexOf("ip")).not.equal(-1);
+      expect(subject.searchByIP("1.1.1.1")).
         to.equal("https://community.riskiq.com/search/1.1.1.1")
     });
   });
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      const riskIQ = new RiskIQ();
-      expect(riskIQ.supportedTypes.indexOf("domain")).not.equal(-1);
-      expect(riskIQ.searchByDomain("github.com")).
+      expect(subject.supportedTypes.indexOf("domain")).not.equal(-1);
+      expect(subject.searchByDomain("github.com")).
         to.equal("https://community.riskiq.com/search/github.com");
     });
   });
   describe("#searchByEmail", () => {
     it("should return URL", () => {
-      const riskIQ = new RiskIQ();
-      expect(riskIQ.supportedTypes.indexOf("email")).not.equal(-1);
-      expect(riskIQ.searchByEmail("test@test.com")).
+      expect(subject.supportedTypes.indexOf("email")).not.equal(-1);
+      expect(subject.searchByEmail("test@test.com")).
         to.equal("https://community.riskiq.com/search/whois/email/test@test.com");
     });
   });
