@@ -1,5 +1,6 @@
 export { Censys } from "./censys";
 export { Cymon } from "./cymon";
+export { DNSlytics } from "./dnslytics";
 export { DomainBigData } from "./domainbigdata";
 export { DomainWatch } from "./domainwatch";
 export { FindSubDomains } from "./findsubdomains";
