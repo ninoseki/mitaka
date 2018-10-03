@@ -1,6 +1,7 @@
 import {
   Censys,
   Cymon,
+  DNSlytics,
   DomainBigData,
   DomainWatch,
   FindSubDomains,
@@ -27,6 +28,7 @@ import {
 export const Searchers: Searcher[] = [
   new Censys(),
   new Cymon(),
+  new DNSlytics(),
   new DomainBigData(),
   new DomainWatch(),
   new FindSubDomains(),
