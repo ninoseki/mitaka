@@ -30,6 +30,7 @@ Note: `email` type IOC is used for a reverse WHOIS lookup.
 |:-----------------|:-------------------------------------|:--------------------------|
 | Censys           | https://censys.io                    | text                      |
 | Cymon            | https://cymon.io                     | ip / domain               |
+| DNSlytics        | https://dnslytics.com                | ip / domain               |
 | DomainBigData    | https://domainbigdata.com            | domain                    |
 | DomainWatch      | https://domainwat.ch                 | domain / email            |
 | FindSubDomains   | https://findsubdomains.com           | domain                    |
@@ -99,6 +100,13 @@ This Chrome extension requires following permissions.
   - This extension makes a notification when something goes wrong.
 
 I don't (and will never) collect any information from the users.
+
+## Alternatives or Similar Tools
+
+- [CrowdScrape](https://chrome.google.com/webstore/detail/crowdscrape/jjplaeklnlddpkbbdbnogmppffokemej)
+- [ThreatConnect Integrated Chrome Extension](https://chrome.google.com/webstore/detail/threatconnect-integrated/lblgcphpihpadjdpjgjnnoikjdjcnkbh)
+- [ThreatPinch Lookup](https://github.com/cloudtracer/ThreatPinchLookup)
+- [VTchromizer](https://chrome.google.com/webstore/detail/vtchromizer/efbjojhplkelaegfbieplglfidafgoka)
 
 ## How to build (for developers)
 
