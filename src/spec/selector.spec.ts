@@ -24,7 +24,10 @@ describe("Seletor", () => {
     // domainwatch
     email: 5,
     // vulmon, sploitus, fortiguard
-    cve: 3
+    cve: 3,
+    // blockchain.com
+    btc: 1,
+    xmr: 0,
   };
 
   context("searcher", () => {
@@ -167,7 +170,7 @@ describe("Seletor", () => {
       });
     });
 
-    context("CVE", () => {
+    context("cve", () => {
       const selector: Selector = new Selector("CVE-2018-8013");
       describe("#getCVE", () => {
         it("should return CVE", () => {
@@ -186,6 +189,43 @@ describe("Seletor", () => {
             expect(entry.query).to.equal("CVE-2018-8013");
           }
           expect(entries.length).to.equal(stats.text + stats.cve);
+        });
+      });
+    });
+
+    context("btc", () => {
+      const selector: Selector = new Selector("1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa");
+      describe("#getBTC", () => {
+        it("should return BTC", () => {
+          expect(selector.getBTC()).to.equal("1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa");
+        });
+      });
+      describe("#getSearchersForBTC", () => {
+        it("should return Searchers support BTC", () => {
+          expect(selector.getSearchersByType("btc").length).to.equal(stats.btc);
+        });
+      });
+      describe("#getAnalyzerEntrys", () => {
+        it("should return Searchrerentrys support btc", () => {
+          const entries: AnalyzerEntry[] = selector.getSearcherEntries();
+          for (const entry of entries) {
+            expect(entry.query).to.equal("1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa");
+          }
+          expect(entries.length).to.equal(stats.text + stats.btc);
+        });
+      });
+    });
+
+    context("xmr", () => {
+      const selector: Selector = new Selector("4Aa3TcU7ixMVcYwbsw8ENVbFwt4ZuqrNBVij5TRvPCTpGRK5BKBHQPu7ahT7z2A6547a5Lcn7yPZV1xU22ZbviqxUX7JVuP");
+      describe("#getXMR", () => {
+        it("should return XMR", () => {
+          expect(selector.getXMR()).to.equal("4Aa3TcU7ixMVcYwbsw8ENVbFwt4ZuqrNBVij5TRvPCTpGRK5BKBHQPu7ahT7z2A6547a5Lcn7yPZV1xU22ZbviqxUX7JVuP");
+        });
+      });
+      describe("#getSearchersForBTC", () => {
+        it("should return Searchers support BTC", () => {
+          expect(selector.getSearchersByType("xmr").length).to.equal(stats.xmr);
         });
       });
     });

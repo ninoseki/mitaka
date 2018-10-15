@@ -9,4 +9,6 @@ export interface Searcher {
   searchByEmail?(query: string);
   searchByHash?(query: string);
   searchByCVE?(query: string);
+  searchByBTC?(query: string);
+  searchbyXMR?(query: string);
 }
