@@ -90,7 +90,7 @@ describe("Command", () => {
           };
           expect(await command.scan(apiKeys)).to.equal("https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/loading");
         });
-      })
+      });
       context("domain", () => {
         it("should return a URL for scan", async () => {
           const command = new Command("Scan github.com as a domain on Urlscan");

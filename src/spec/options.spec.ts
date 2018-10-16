@@ -41,7 +41,7 @@ describe("Options script", () => {
       expect(root.chrome.storage.sync.set.withArgs({
         apiKeys: {
           urlscanApiKey: "test",
-          virusTotalApiKey: "test"
+          virusTotalApiKey: "test",
         }
       }).calledOnce).to.be.true;
     });
@@ -85,9 +85,9 @@ describe("Options script", () => {
       const dom = new JSDOM();
       root.document = dom.window.document;
 
-      const urlscanApiKey = root.document.createElement('input') as HTMLInputElement;
+      const urlscanApiKey = root.document.createElement("input") as HTMLInputElement;
       urlscanApiKey.value = "test";
-      const virusTotalApiKey = root.document.createElement('input') as HTMLInputElement;
+      const virusTotalApiKey = root.document.createElement("input") as HTMLInputElement;
       virusTotalApiKey.value = "test";
 
       const stub = sinon.stub(root.document, "getElementById");
