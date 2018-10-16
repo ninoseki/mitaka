@@ -49,6 +49,8 @@ export class Command {
         case "xmr":
           url = searcher.searchbyXMR!(entry.query);
           break;
+        default:
+          break;
       }
     }
     return url;
@@ -68,6 +70,8 @@ export class Command {
         case "VirusTotal":
           scanner.setApiKey(apiKeys.virusTotalApiKey);
           break;
+        default:
+          break;
       }
       switch (entry.type) {
         case "ip":
@@ -78,6 +82,8 @@ export class Command {
           break;
         case "url":
           url = await scanner.scanByURL!(entry.query);
+          break;
+        default:
           break;
       }
     }

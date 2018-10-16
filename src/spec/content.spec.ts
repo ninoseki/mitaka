@@ -25,9 +25,9 @@ describe("Context script", () => {
           toString: () => {
             return "test";
           },
-          rangeCount: 0
+          rangeCount: 0,
         }
-      }
+      };
     });
     afterEach(() => {
       delete root.window.getSelection;
@@ -39,7 +39,7 @@ describe("Context script", () => {
         expect(root.chrome.runtime.sendMessage.called).to.be.true;
         expect(root.chrome.runtime.sendMessage.withArgs({
           request: "updateContextMenu",
-          selection: "test"
+          selection: "test",
         }).calledOnce).to.be.true;
       });
     })
@@ -60,7 +60,7 @@ describe("Context script", () => {
                     return true;
                   },
                   getAttribute: (attr) => {
-                    return "https://example.com"
+                    return "https://example.com";
                   }
                 }
               }

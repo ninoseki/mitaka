@@ -94,7 +94,7 @@ if (typeof chrome !== "undefined") {
         if ("searcherStates" in config) {
           createContextMenus(message, config.searcherStates);
         } else {
-          createContextMenus(message, {})
+          createContextMenus(message, {});
         }
       });
     }
