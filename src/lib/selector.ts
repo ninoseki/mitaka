@@ -66,7 +66,21 @@ export class Selector {
     return null;
   }
 
-  public getSearchersByType(type: "text" | "ip" | "domain" | "url" | "email" | "hash" | "cve") {
+  public getBTC(): string | null {
+    if (this.ioc.cryptocurrencies.btcs !== null && this.ioc.cryptocurrencies.btcs[0]) {
+      return this.ioc.cryptocurrencies.btcs[0];
+    }
+    return null;
+  }
+
+  public getXMR(): string | null {
+    if (this.ioc.cryptocurrencies.xmrs !== null && this.ioc.cryptocurrencies.xmrs[0]) {
+      return this.ioc.cryptocurrencies.xmrs[0];
+    }
+    return null;
+  }
+
+  public getSearchersByType(type: "text" | "ip" | "domain" | "url" | "email" | "hash" | "cve" | "btc" | "xmr") {
     return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf(type) !== -1);
   }
 
@@ -101,6 +115,14 @@ export class Selector {
     const cve = this.getCVE();
     if (cve !== null) {
       return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("cve"), "cve", cve));
+    }
+    const btc = this.getBTC();
+    if (btc !== null) {
+      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("btc"), "btc", btc));
+    }
+    const xmr = this.getXMR();
+    if (xmr !== null) {
+      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("xmr"), "xmr", xmr));
     }
     return entries;
   }

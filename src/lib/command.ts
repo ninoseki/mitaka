@@ -43,6 +43,12 @@ export class Command {
         case "cve":
           url = searcher.searchByCVE!(entry.query);
           break;
+        case "btc":
+          url = searcher.searchByBTC!(entry.query);
+          break;
+        case "xmr":
+          url = searcher.searchbyXMR!(entry.query);
+          break;
       }
     }
     return url;

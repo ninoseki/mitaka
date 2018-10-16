@@ -56,6 +56,12 @@ describe("Command", () => {
         expect(command.search()).to.equal("https://vulmon.com/vulnerabilitydetails?qid=CVE-2018-16384");
       });
     });
+    context("cve", () => {
+      it("should return a URL for search", () => {
+        const command = new Command("Search 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa as a btc on BlockCypher");
+        expect(command.search()).to.equal("https://live.blockcypher.com/btc/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa/");
+      });
+    });
   });
 
   describe("#scan", () => {

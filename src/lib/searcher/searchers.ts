@@ -1,4 +1,5 @@
 import {
+  BlockCypher,
   Censys,
   Cymon,
   DNSlytics,
@@ -26,6 +27,7 @@ import {
 } from ".";
 
 export const Searchers: Searcher[] = [
+  new BlockCypher(),
   new Censys(),
   new Cymon(),
   new DNSlytics(),

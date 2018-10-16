@@ -1,3 +1,4 @@
+export { BlockCypher } from "./blockcypher";
 export { Censys } from "./censys";
 export { Cymon } from "./cymon";
 export { DNSlytics } from "./dnslytics";
