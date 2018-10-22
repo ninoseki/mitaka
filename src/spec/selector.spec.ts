@@ -7,26 +7,27 @@ describe("Seletor", () => {
     // domainbigdata, findsubdomains, pulsedive, securitytrails
     // threatcrowd, urlscan, virustotal, xforce-exchange
     // viewDNS, riskiq, cycmon, talos
-    // domainwatch, dnslytics
-    domain: 14,
+    // domainwatch, dnslytics, intelligencex
+    domain: 15,
     // hybridanalysis, pulsedive, virustotal, xforceexchange
     hash: 4,
     // securitytrails, pulsedive, threatcrowd urlscan
     // virustotal, xforceexchange, viewDNS, ONYPHE
     // riskiq, cymon, talos, fortiguard
-    // dnslytics
-    ip: 13,
+    // dnslytics, intelligencex
+    ip: 14,
     // shodan, censys, publicwww
     text: 3,
     // urlscan, pulsedive, virustotal, fortiguard
-    url: 4,
+    // intelligencex
+    url: 5,
     // viewDNS, threatcrowd, riskiq, pipl
-    // domainwatch
-    email: 5,
+    // domainwatch, inteligencex
+    email: 6,
     // vulmon, sploitus, fortiguard
     cve: 3,
-    // blockchain.com
-    btc: 1,
+    // blockchain.com, intelligencex
+    btc: 2,
     xmr: 0,
   };
 

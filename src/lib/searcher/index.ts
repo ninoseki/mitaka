@@ -7,6 +7,7 @@ export { DomainWatch } from "./domainwatch";
 export { FindSubDomains } from "./findsubdomains";
 export { FortiGuard } from "./fortiguard";
 export { HybridAnalysis } from "./hybridanalysis";
+export { IntelligenceX } from "./intelligencex";
 export { ONYPHE } from "./onyphe";
 export { Pipl } from "./pipl";
 export { PublicWWW } from "./publicwww";
