@@ -8,7 +8,8 @@ describe("Seletor", () => {
     // threatcrowd, urlscan, virustotal, xforce-exchange
     // viewDNS, riskiq, cycmon, talos
     // domainwatch, dnslytics, intelligencex, hybridanalysis
-    domain: 16,
+    // webanalyzer
+    domain: 17,
     // hybridanalysis, pulsedive, virustotal, xforceexchange
     hash: 4,
     // securitytrails, pulsedive, threatcrowd urlscan
