@@ -4,7 +4,7 @@ export class ZoomEye implements Searcher {
 
   public endpoint: string;
   public name;
-  public supportedTypes: string[] = ["ip"]
+  public supportedTypes: string[] = ["ip"];
 
   constructor() {
     this.endpoint = "https://www.zoomeye.org";
