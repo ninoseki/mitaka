@@ -2,7 +2,7 @@ import { expect } from "chai";
 import "mocha";
 import { OTX } from "../../lib/searcher";
 
-describe("Pulsedive", () => {
+describe("OTX", () => {
   const subject = new OTX();
   describe("#searchByIP", () => {
     it("should return URL", () => {

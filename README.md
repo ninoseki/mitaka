@@ -39,6 +39,7 @@ Note: `email` type IOC is used for a reverse WHOIS lookup.
 | HybridAnalysis   | https://www.hybrid-analysis.com      | ip / domain / hash (sha256 only) |
 | Intelligence X   | https://intelx.io                    | ip / domain / url / email / btc  |
 | ONYPHE           | https://www.onyphe.io                | ip                               |
+| OTX              | https://otx.alienvault.com           | ip / domain / hash               |
 | Pipl             | https://pipl.com                     | email                            |
 | PublicWWW        | https://publicwww.com                | text                             |
 | Pulsedive        | https://pulsedive.com                | ip / domaion / url / hash        |
@@ -54,6 +55,7 @@ Note: `email` type IOC is used for a reverse WHOIS lookup.
 | Vulmon           | https://vulmon.com                   | cve                              |
 | WebAnalyzer      | https://wa-com.com/                  | domain                           |
 | X-Force Exchange | https://exchange.xforce.ibmcloud.com | ip / domain / hash               |
+| ZoomEye          | https://www.zoomeye.org              | ip                               |
 
 You can enable / disable a search engine via the extension's options.
 
