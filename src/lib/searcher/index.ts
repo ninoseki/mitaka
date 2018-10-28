@@ -26,5 +26,6 @@ export { VirusTotal } from "./virustotal";
 export { Vulmon } from "./vulmon";
 export { WebAnalyzer } from "./webanalyzer";
 export { XForceExchange } from "./xforce-exchange";
+export { ZoomEye } from "./zoomeye";
 
 export { Searchers } from "./searchers";

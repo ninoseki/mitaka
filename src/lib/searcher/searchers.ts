@@ -28,6 +28,7 @@ import {
   XForceExchange,
 } from ".";
 import { OTX } from "./otx";
+import { ZoomEye } from "./zoomeye";
 
 export const Searchers: Searcher[] = [
   new BlockCypher(),
@@ -57,4 +58,5 @@ export const Searchers: Searcher[] = [
   new Vulmon(),
   new WebAnalyzer(),
   new XForceExchange(),
+  new ZoomEye(),
 ]

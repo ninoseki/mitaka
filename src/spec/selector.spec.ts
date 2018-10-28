@@ -17,7 +17,8 @@ describe("Seletor", () => {
     // virustotal, xforceexchange, viewDNS, ONYPHE
     // riskiq, cymon, talos, fortiguard
     // dnslytics, intelligencex, hybridanalysis, otx
-    ip: 16,
+    // zoomeye
+    ip: 17,
     // shodan, censys, publicwww
     text: 3,
     // urlscan, pulsedive, virustotal, fortiguard
