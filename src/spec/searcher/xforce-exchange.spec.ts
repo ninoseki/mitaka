@@ -2,7 +2,7 @@ import { expect } from "chai";
 import "mocha";
 import { XForceExchange } from "../../lib/searcher";
 
-describe("VirusTotal", () => {
+describe("X-Force Exchange", () => {
   const subject = new XForceExchange();
   describe("#searchByIP", () => {
     it("should return URL", () => {
