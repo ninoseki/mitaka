@@ -9,6 +9,7 @@ export { FortiGuard } from "./fortiguard";
 export { HybridAnalysis } from "./hybridanalysis";
 export { IntelligenceX } from "./intelligencex";
 export { ONYPHE } from "./onyphe";
+export { OTX } from "./otx";
 export { Pipl } from "./pipl";
 export { PublicWWW } from "./publicwww";
 export { Pulsedive } from "./pulsedive";

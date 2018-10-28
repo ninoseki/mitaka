@@ -27,6 +27,7 @@ import {
   WebAnalyzer,
   XForceExchange,
 } from ".";
+import { OTX } from "./otx";
 
 export const Searchers: Searcher[] = [
   new BlockCypher(),
@@ -40,6 +41,7 @@ export const Searchers: Searcher[] = [
   new HybridAnalysis(),
   new IntelligenceX(),
   new ONYPHE(),
+  new OTX(),
   new Pipl(),
   new PublicWWW(),
   new Pulsedive(),
