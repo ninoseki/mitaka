@@ -12,18 +12,18 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 
 ### Supported IOC types
 
-| name   | desc.               | eg.                                  |
-|:-------|:--------------------|:-------------------------------------|
-| text   | freetext            | any string(s)                        |
-| ip     | IPv4 address        | `8.8.8.8`                            |
-| domain | domain name         | `github.com`                         |
-| url    | URL                 | `https://github.com`                 |
-| email  | Email address       | `test@test.com`                      |
-| hash   | md5 / sha1 / sha256 | `44d88612fea8a8f36de82e1278abb02f`   |
-| cve    | CVE number          | `CVE-2018-11776`                     |
-| btc    | BTC address         | `1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa` |
-
-Note: `email` type IOC is used for a reverse WHOIS lookup.
+| name      | desc.                       | eg.                                  |
+|:----------|:----------------------------|:-------------------------------------|
+| text      | freetext                    | any string(s)                        |
+| ip        | IPv4 address                | `8.8.8.8`                            |
+| domain    | domain name                 | `github.com`                         |
+| url       | URL                         | `https://github.com`                 |
+| email     | Email address               | `test@test.com`                      |
+| hash      | md5 / sha1 / sha256         | `44d88612fea8a8f36de82e1278abb02f`   |
+| cve       | CVE number                  | `CVE-2018-11776`                     |
+| btc       | BTC address                 | `1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa` |
+| gaPubID   | Google Adsense Publisher ID | `pub-9383614236930773`               |
+| gaTrackID | Google Analytics Tracker ID | `UA-67609351-1`                      |
 
 ### Supported search engines
 
@@ -41,6 +41,7 @@ Note: `email` type IOC is used for a reverse WHOIS lookup.
 | ONYPHE           | https://www.onyphe.io                | ip                               |
 | OTX              | https://otx.alienvault.com           | ip / domain / hash               |
 | Pipl             | https://pipl.com                     | email                            |
+| PubDB            | http://pub-db.com                    | gaPubID / gaTrackID              |
 | PublicWWW        | https://publicwww.com                | text                             |
 | Pulsedive        | https://pulsedive.com                | ip / domaion / url / hash        |
 | RiskIQ           | http://community.riskiq.com          | ip / domain / email              |

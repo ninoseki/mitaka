@@ -29,6 +29,7 @@ import {
 } from ".";
 import { OTX } from "./otx";
 import { ZoomEye } from "./zoomeye";
+import { PubDB } from "./pubdb";
 
 export const Searchers: Searcher[] = [
   new BlockCypher(),
@@ -44,6 +45,7 @@ export const Searchers: Searcher[] = [
   new ONYPHE(),
   new OTX(),
   new Pipl(),
+  new PubDB(),
   new PublicWWW(),
   new Pulsedive(),
   new RiskIQ(),

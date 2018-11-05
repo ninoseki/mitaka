@@ -49,6 +49,12 @@ export class Command {
         case "xmr":
           url = searcher.searchbyXMR!(entry.query);
           break;
+        case "gaTrackID":
+          url = searcher.searchByGATrackID!(entry.query);
+          break;
+        case "gaPubID":
+          url = searcher.searchByGAPubID!(entry.query);
+          break;
         default:
           break;
       }

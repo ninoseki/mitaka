@@ -32,6 +32,10 @@ describe("Seletor", () => {
     // blockchain.com, intelligencex
     btc: 2,
     xmr: 0,
+    // pubdb
+    gaTrackID: 1,
+    // pubdb
+    gaPubID: 1,
   };
 
   context("searcher", () => {
@@ -230,6 +234,34 @@ describe("Seletor", () => {
       describe("#getSearchersForBTC", () => {
         it("should return Searchers support BTC", () => {
           expect(selector.getSearchersByType("xmr").length).to.equal(stats.xmr);
+        });
+      });
+    });
+
+    context("gaTrackID", () => {
+      const selector: Selector = new Selector("UA-67609351-1");
+      describe("#getGATrackID", () => {
+        it("should return GATrackID", () => {
+          expect(selector.getGATrackID()).to.equal("UA-67609351-1");
+        });
+      });
+      describe("#getSearchersForGATrackID", () => {
+        it("should return Searchers support GATrackID", () => {
+          expect(selector.getSearchersByType("gaTrackID").length).to.equal(stats.gaTrackID);
+        });
+      });
+    });
+
+    context("gaPubID", () => {
+      const selector: Selector = new Selector("pub-9383614236930773");
+      describe("#getGAPubID", () => {
+        it("should return GAPubID", () => {
+          expect(selector.getGAPubID()).to.equal("pub-9383614236930773");
+        });
+      });
+      describe("#getSearchersForGAPubID", () => {
+        it("should return Searchers support GAPubID", () => {
+          expect(selector.getSearchersByType("gaPubID").length).to.equal(stats.gaPubID);
         });
       });
     });
