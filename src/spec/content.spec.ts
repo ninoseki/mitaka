@@ -3,7 +3,7 @@ import { JSDOM } from "jsdom";
 import "mocha";
 import SinonChrome = require("sinon-chrome");
 import * as root from "window-or-global";
-import { onsSlectionChange } from "../content"
+import { onsSlectionChange } from "../content";
 
 describe("Context script", () => {
   beforeEach(() => {
@@ -18,15 +18,15 @@ describe("Context script", () => {
   context("when selected a non anchor element", () => {
     beforeEach(() => {
       const obj = {};
-      obj.toString = () => { return "test" }
+      obj.toString = () => "test";
       obj["rangeCount"] = 0;
       root.window.getSelection = () => {
         return {
+          rangeCount: 0,
           toString: () => {
             return "test";
           },
-          rangeCount: 0,
-        }
+        };
       };
     });
     afterEach(() => {
@@ -42,7 +42,7 @@ describe("Context script", () => {
           selection: "test",
         }).calledOnce).to.be.true;
       });
-    })
+    });
   });
   context("when selected an anchor element", () => {
     beforeEach(() => {
@@ -61,16 +61,16 @@ describe("Context script", () => {
                   },
                   getAttribute: (attr) => {
                     return "https://example.com";
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+                  },
+                },
+              },
+            };
+          },
+        };
+      };
     });
     afterEach(() => {
-      delete root.window.getSelection
+      delete root.window.getSelection;
     });
     describe("#onSelectionChange", () => {
       it("should call chrome.runtime.sendMessage()", () => {
@@ -79,9 +79,9 @@ describe("Context script", () => {
         expect(root.chrome.runtime.sendMessage.called).to.be.true;
         expect(root.chrome.runtime.sendMessage.withArgs({
           request: "updateContextMenu",
-          selection: "https://example.com"
+          selection: "https://example.com",
         }).calledOnce).to.be.true;
       });
-    })
+    });
   });
 });

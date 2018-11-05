@@ -17,7 +17,7 @@ describe("OTX", () => {
   describe("#searchByHash", () => {
     it("should return URL", () => {
       expect(subject.searchByHash("726a2eedb9df3d63ec1b4a7d774a799901f1a2b9")).to.equal(
-        "https://otx.alienvault.com/indicator/file/726a2eedb9df3d63ec1b4a7d774a799901f1a2b9"
+        "https://otx.alienvault.com/indicator/file/726a2eedb9df3d63ec1b4a7d774a799901f1a2b9",
       );
     });
   });

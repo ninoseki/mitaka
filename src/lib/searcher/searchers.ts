@@ -10,7 +10,9 @@ import {
   HybridAnalysis,
   IntelligenceX,
   ONYPHE,
+  OTX,
   Pipl,
+  PubDB,
   PublicWWW,
   Pulsedive,
   RiskIQ,
@@ -26,10 +28,8 @@ import {
   Vulmon,
   WebAnalyzer,
   XForceExchange,
+  ZoomEye,
 } from ".";
-import { OTX } from "./otx";
-import { ZoomEye } from "./zoomeye";
-import { PubDB } from "./pubdb";
 
 export const Searchers: Searcher[] = [
   new BlockCypher(),
@@ -61,4 +61,4 @@ export const Searchers: Searcher[] = [
   new WebAnalyzer(),
   new XForceExchange(),
   new ZoomEye(),
-]
+];

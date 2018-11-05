@@ -61,7 +61,7 @@ export class Selector {
 
   public getCVE(): string | null {
     if (this.ioc.utilities.cves !== null && this.ioc.utilities.cves[0]) {
-      return this.ioc.utilities.cves[0]
+      return this.ioc.utilities.cves[0];
     }
     return null;
   }

@@ -8,7 +8,7 @@ describe("RiskIQ", () => {
     it("should return URL", () => {
       expect(subject.supportedTypes.indexOf("ip")).not.equal(-1);
       expect(subject.searchByIP("1.1.1.1")).
-        to.equal("https://community.riskiq.com/search/1.1.1.1")
+        to.equal("https://community.riskiq.com/search/1.1.1.1");
     });
   });
   describe("#searchByDomain", () => {

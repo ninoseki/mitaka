@@ -5,11 +5,11 @@ import SinonChrome = require("sinon-chrome");
 import * as root from "window-or-global";
 
 import {
-  showNotification,
-  search,
-  scan,
   createContextMenuErrorHandler,
-  createContextMenus
+  createContextMenus,
+  scan,
+  search,
+  showNotification,
 } from "../background";
 import { Command } from "../lib/command";
 
@@ -42,7 +42,7 @@ describe("Background script", () => {
         search(command);
         expect(root.chrome.tabs.create.called).to.be.true;
         expect(root.chrome.tabs.create.withArgs({
-          url: "https://urlscan.io/search/#%22https%3A%2F%2Fgithub.com%22"
+          url: "https://urlscan.io/search/#%22https%3A%2F%2Fgithub.com%22",
         }).calledOnce).to.be.true;
       });
     });
@@ -54,7 +54,7 @@ describe("Background script", () => {
           apiKeys: {
             urlscanApiKey: "test",
             virusTotalApiKey: "test",
-          }
+          },
         });
         const command = new Command("Scan https://www.wikipedia.org/ as a url on Urlscan");
         sinon.stub(command, "scan").withArgs({
@@ -66,14 +66,14 @@ describe("Background script", () => {
         await scan(command);
         expect(root.chrome.tabs.create.called).to.be.true;
         expect(root.chrome.tabs.create.withArgs({
-          url: "https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/"
+          url: "https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/",
         }).calledOnce).to.be.true;
       });
     });
     context("when chrome.storage.sync.get returns an invalid config", () => {
       it("should call chrome.tabs.create()", async () => {
         root.chrome.storage.sync.get.withArgs("apiKeys").yieldsAsync({
-          apiKeys: {}
+          apiKeys: {},
         });
         const command = new Command("Scan https://www.wikipedia.org/ as a url on Urlscan");
 
@@ -94,8 +94,8 @@ describe("Background script", () => {
     context("when set an error in chrome.runtime.lastError", () => {
       it("should output via console.error", () => {
         root.chrome.runtime.lastError = {
-          message: "test"
-        }
+          message: "test",
+        };
         createContextMenuErrorHandler();
         expect((console.error as sinon.SinonStub).withArgs("test").calledOnce).to.be.true;
       });
@@ -119,17 +119,17 @@ describe("Background script", () => {
         expect(root.chrome.contextMenus.create.withArgs({
           contexts: ["selection"],
           id: "Search test as a text on Censys",
-          title: "Search this text on Censys"
+          title: "Search this text on Censys",
         }).calledOnce).to.be.true;
         expect(root.chrome.contextMenus.create.withArgs({
           contexts: ["selection"],
           id: "Search test as a text on Shodan",
-          title: "Search this text on Shodan"
+          title: "Search this text on Shodan",
         }).calledOnce).to.be.true;
         expect(root.chrome.contextMenus.create.withArgs({
           contexts: ["selection"],
           id: "Search test as a text on PublicWWW",
-          title: "Search this text on PublicWWW"
+          title: "Search this text on PublicWWW",
         }).calledOnce).to.be.true;
       });
     });
@@ -139,24 +139,24 @@ describe("Background script", () => {
         await createContextMenus(
           { selection: "test" },
           {
-            "Censys": false,
+            Censys: false,
           },
         );
         expect(root.chrome.contextMenus.create.called).to.be.true;
         expect(root.chrome.contextMenus.create.withArgs({
           contexts: ["selection"],
           id: "Search test as a text on Censys",
-          title: "Search this text on Censys"
+          title: "Search this text on Censys",
         }).calledOnce).to.be.false;
         expect(root.chrome.contextMenus.create.withArgs({
           contexts: ["selection"],
           id: "Search test as a text on Shodan",
-          title: "Search this text on Shodan"
+          title: "Search this text on Shodan",
         }).calledOnce).to.be.true;
         expect(root.chrome.contextMenus.create.withArgs({
           contexts: ["selection"],
           id: "Search test as a text on PublicWWW",
-          title: "Search this text on PublicWWW"
+          title: "Search this text on PublicWWW",
         }).calledOnce).to.be.true;
       });
     });

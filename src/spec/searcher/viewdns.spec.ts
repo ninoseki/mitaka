@@ -8,7 +8,7 @@ describe("ViewDNS", () => {
     it("should return URL", () => {
       expect(subject.supportedTypes.indexOf("ip")).not.equal(-1);
       expect(subject.searchByIP("1.1.1.1")).
-        to.equal("https://viewdns.info/reverseip/?t=1&host=1.1.1.1")
+        to.equal("https://viewdns.info/reverseip/?t=1&host=1.1.1.1");
     });
   });
   describe("#searchByDomain", () => {

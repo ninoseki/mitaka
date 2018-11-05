@@ -4,7 +4,7 @@ export class Vulmon implements Searcher {
 
   public endpoint: string;
   public name;
-  public supportedTypes: string[] = ["cve"]
+  public supportedTypes: string[] = ["cve"];
 
   constructor() {
     this.endpoint = "https://vulmon.com";

@@ -8,7 +8,7 @@ describe("ThreatCrowd", () => {
     it("should return URL", () => {
       expect(subject.supportedTypes.indexOf("ip")).not.equal(-1);
       expect(subject.searchByIP("188.40.75.132")).
-        to.equal("https://www.threatcrowd.org/ip.php?ip=188.40.75.132")
+        to.equal("https://www.threatcrowd.org/ip.php?ip=188.40.75.132");
     });
   });
   describe("#searchByDomain", () => {

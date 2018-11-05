@@ -22,7 +22,7 @@ describe("Pulsedive", () => {
   describe("#searchByHash", () => {
     it("should return URL", () => {
       expect(subject.searchByHash("726a2eedb9df3d63ec1b4a7d774a799901f1a2b9")).to.equal(
-        "https://pulsedive.com/indicator/?ioc=NzI2YTJlZWRiOWRmM2Q2M2VjMWI0YTdkNzc0YTc5OTkwMWYxYTJiOQ=="
+        "https://pulsedive.com/indicator/?ioc=NzI2YTJlZWRiOWRmM2Q2M2VjMWI0YTdkNzc0YTc5OTkwMWYxYTJiOQ==",
       );
     });
   });

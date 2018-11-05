@@ -1,10 +1,10 @@
+import * as Mustache from "mustache";
 import { ApiKeys } from "./lib/scanner";
 import { Searchers } from "./lib/searcher";
-import * as Mustache from "mustache";
 
 export interface SearcherState {
   name: string;
-  supportedTypes: string[],
+  supportedTypes: string[];
   isEnabled: boolean;
 }
 
@@ -36,7 +36,7 @@ export function saveSearcherStates() {
     }
     searcherStates[name] = radio.checked;
   }
-  chrome.storage.sync.set({ searcherStates })
+  chrome.storage.sync.set({ searcherStates });
 }
 
 // Saves options to chrome.storage.sync.
