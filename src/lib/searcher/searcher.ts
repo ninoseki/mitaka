@@ -11,4 +11,6 @@ export interface Searcher {
   searchByCVE?(query: string);
   searchByBTC?(query: string);
   searchbyXMR?(query: string);
+  searchByGATrackID?(query: string);
+  searchByGAPubID?(quqery: string);
 }

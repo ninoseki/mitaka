@@ -80,7 +80,21 @@ export class Selector {
     return null;
   }
 
-  public getSearchersByType(type: "text" | "ip" | "domain" | "url" | "email" | "hash" | "cve" | "btc" | "xmr") {
+  public getGATrackID(): string | null {
+    if (this.ioc.trackers.gaTrackIDs !== null && this.ioc.trackers.gaTrackIDs[0]) {
+      return this.ioc.trackers.gaTrackIDs[0];
+    }
+    return null;
+  }
+
+  public getGAPubID(): string | null {
+    if (this.ioc.trackers.gaPubIDs !== null && this.ioc.trackers.gaPubIDs[0]) {
+      return this.ioc.trackers.gaPubIDs[0];
+    }
+    return null;
+  }
+
+  public getSearchersByType(type: "text" | "ip" | "domain" | "url" | "email" | "hash" | "cve" | "btc" | "xmr" | "gaTrackID" | "gaPubID") {
     return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf(type) !== -1);
   }
 
@@ -123,6 +137,14 @@ export class Selector {
     const xmr = this.getXMR();
     if (xmr !== null) {
       return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("xmr"), "xmr", xmr));
+    }
+    const gaTrackID = this.getGATrackID();
+    if (gaTrackID !== null) {
+      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("gaTrackID"), "gaTrackID", gaTrackID));
+    }
+    const gaPubID = this.getGAPubID();
+    if (gaPubID !== null) {
+      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("gaPubID"), "gaPubID", gaPubID));
     }
     return entries;
   }

@@ -56,10 +56,22 @@ describe("Command", () => {
         expect(command.search()).to.equal("https://vulmon.com/vulnerabilitydetails?qid=CVE-2018-16384");
       });
     });
-    context("cve", () => {
+    context("btc", () => {
       it("should return a URL for search", () => {
         const command = new Command("Search 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa as a btc on BlockCypher");
         expect(command.search()).to.equal("https://live.blockcypher.com/btc/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa/");
+      });
+    });
+    context("gaTrackID", () => {
+      it("should return a URL for search", () => {
+        const command = new Command("Search UA-67609351-1 as a gaTrackID on PubDB");
+        expect(command.search()).to.equal("http://pub-db.com/google-analytics/UA-67609351-1.html");
+      });
+    });
+    context("gaPubID", () => {
+      it("should return a URL for search", () => {
+        const command = new Command("Search pub-9383614236930773 as a gaPubID on PubDB");
+        expect(command.search()).to.equal("http://pub-db.com/adsense/pub-9383614236930773.html");
       });
     });
   });

@@ -11,6 +11,7 @@ export { IntelligenceX } from "./intelligencex";
 export { ONYPHE } from "./onyphe";
 export { OTX } from "./otx";
 export { Pipl } from "./pipl";
+export { PubDB } from "./pubdb";
 export { PublicWWW } from "./publicwww";
 export { Pulsedive } from "./pulsedive";
 export { RiskIQ } from "./riskiq";

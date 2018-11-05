@@ -37,7 +37,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "crypto-js": "^3.1.9-1",
-    "ioc-extractor": "^0.5.1",
+    "ioc-extractor": "^0.6.0",
     "mustache": "^3.0.0",
     "qs": "^6.5.2",
     "throttle-debounce": "^2.0.1",
