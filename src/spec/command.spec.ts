@@ -125,7 +125,7 @@ describe("Command", () => {
           };
           expect(await command.scan(apiKeys)).to.equal("https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/loading");
         });
-      })
+      });
       context("url", () => {
         it("should return a URL for scan", async () => {
           const command = new Command("Scan https://www.wikipedia.org/ as a url on Urlscan");
@@ -148,7 +148,7 @@ describe("Command", () => {
           };
           expect(await command.scan(apiKeys)).to.equal("https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/loading");
         });
-      })
+      });
     });
     context("virustotal", () => {
       context("url", () => {

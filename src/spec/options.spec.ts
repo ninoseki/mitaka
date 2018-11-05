@@ -6,10 +6,10 @@ import SinonChrome = require("sinon-chrome");
 import * as root from "window-or-global";
 
 import {
+  restoreApiKeys,
+  restoreSearcherStates,
   saveApiKeys,
   saveSearcherStates,
-  restoreApiKeys,
-  restoreSearcherStates
 } from "../options";
 
 describe("Options script", () => {
@@ -25,7 +25,7 @@ describe("Options script", () => {
       const dom = new JSDOM();
       root.document = dom.window.document;
 
-      const input = root.document.createElement('input') as HTMLInputElement;
+      const input = root.document.createElement("input") as HTMLInputElement;
       input.value = "test";
 
       const stub = sinon.stub(root.document, "getElementById");
@@ -42,7 +42,7 @@ describe("Options script", () => {
         apiKeys: {
           urlscanApiKey: "test",
           virusTotalApiKey: "test",
-        }
+        },
       }).calledOnce).to.be.true;
     });
   });
@@ -75,8 +75,8 @@ describe("Options script", () => {
       expect(root.chrome.storage.sync.set.withArgs({
         searcherStates: {
           test1: true,
-          test2: true
-        }
+          test2: true,
+        },
       }).calledOnce).to.be.true;
     });
   });
@@ -101,8 +101,8 @@ describe("Options script", () => {
       root.chrome.storage.sync.get.withArgs("apiKeys").yieldsAsync({
         apiKeys: {
           urlscanApiKey: "test1",
-          virusTotalApiKey: "test2"
-        }
+          virusTotalApiKey: "test2",
+        },
       });
 
       expect(root.chrome.storage.sync.get.notCalled).to.be.true;
@@ -119,7 +119,7 @@ describe("Options script", () => {
       const dom = new JSDOM();
       root.document = dom.window.document;
 
-      const searcherList = root.document.createElement('div') as HTMLElement;;
+      const searcherList = root.document.createElement("div") as HTMLElement; ;
       searcherList.id = "searcherList";
 
       const stub = sinon.stub(root.document, "getElementById");
@@ -137,8 +137,8 @@ describe("Options script", () => {
             <input name="{{name}}" type="checkbox" {{#isEnabled}}checked="checked" {{/isEnabled}}>
             <label>Enable</label>
           </div>
-        </div>`
-      })
+        </div>`,
+      });
     });
     afterEach(() => {
       (root.document.getElementById as sinon.SinonStub).restore();
@@ -147,7 +147,7 @@ describe("Options script", () => {
       root.chrome.storage.sync.get.withArgs("searcherStates").yieldsAsync({
         searcherStates: {
           Censys: false,
-        }
+        },
       });
       expect(root.chrome.storage.sync.get.notCalled).to.be.true;
       await restoreSearcherStates();

@@ -8,4 +8,3 @@ export interface ApiKeys {
   urlscanApiKey: string | undefined;
   virusTotalApiKey: string | undefined;
 }
-

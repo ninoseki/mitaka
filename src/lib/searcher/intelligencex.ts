@@ -34,6 +34,6 @@ export class IntelligenceX implements Searcher {
   }
 
   private search(query) {
-    return `${this.endpoint}/?s=${query}`
+    return `${this.endpoint}/?s=${query}`;
   }
 }
