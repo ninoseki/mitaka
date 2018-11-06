@@ -27,36 +27,37 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 
 ### Supported search engines
 
-| name             | url                                  | supported types                  |
-|:-----------------|:-------------------------------------|:---------------------------------|
-| BlockCypher      | https://live.blockcypher.com         | btc                              |
-| Censys           | https://censys.io                    | text                             |
-| Cymon            | https://cymon.io                     | ip / domain                      |
-| DNSlytics        | https://dnslytics.com                | ip / domain                      |
-| DomainBigData    | https://domainbigdata.com            | domain                           |
-| DomainWatch      | https://domainwat.ch                 | domain / email                   |
-| FindSubDomains   | https://findsubdomains.com           | domain                           |
-| HybridAnalysis   | https://www.hybrid-analysis.com      | ip / domain / hash (sha256 only) |
-| Intelligence X   | https://intelx.io                    | ip / domain / url / email / btc  |
-| ONYPHE           | https://www.onyphe.io                | ip                               |
-| OTX              | https://otx.alienvault.com           | ip / domain / hash               |
-| Pipl             | https://pipl.com                     | email                            |
-| PubDB            | http://pub-db.com                    | gaPubID / gaTrackID              |
-| PublicWWW        | https://publicwww.com                | text                             |
-| Pulsedive        | https://pulsedive.com                | ip / domaion / url / hash        |
-| RiskIQ           | http://community.riskiq.com          | ip / domain / email              |
-| SecurityTrails   | https://securitytrails.com           | ip / domain                      |
-| Shodan           | https://www.shodan.io                | text                             |
-| Sploitus         | https://sploitus.com                 | cve                              |
-| Talos            | https://talosintelligence.com        | ip / domain                      |
-| ThreatCrowd      | https://www.threatcrowd.org          | ip / domain / email              |
-| Urlscan          | https://urlscan.io                   | ip / domain / url                |
-| ViewDNS          | https://viewdns.info                 | ip / domain / email              |
-| VirusTotal       | https://www.virustotal.com           | ip / domain / url / hash         |
-| Vulmon           | https://vulmon.com                   | cve                              |
-| WebAnalyzer      | https://wa-com.com/                  | domain                           |
-| X-Force Exchange | https://exchange.xforce.ibmcloud.com | ip / domain / hash               |
-| ZoomEye          | https://www.zoomeye.org              | ip                               |
+| name             | url                                  | supported types                   |
+|:-----------------|:-------------------------------------|:----------------------------------|
+| BlockCypher      | https://live.blockcypher.com         | btc                               |
+| Censys           | https://censys.io                    | text                              |
+| Cymon            | https://cymon.io                     | ip / domain                       |
+| DNSlytics        | https://dnslytics.com                | ip / domain                       |
+| DomainBigData    | https://domainbigdata.com            | domain                            |
+| DomainWatch      | https://domainwat.ch                 | domain / email                    |
+| FindSubDomains   | https://findsubdomains.com           | domain                            |
+| HybridAnalysis   | https://www.hybrid-analysis.com      | ip / domain / hash (sha256 only)  |
+| Intelligence X   | https://intelx.io                    | ip / domain / url / email / btc   |
+| ONYPHE           | https://www.onyphe.io                | ip                                |
+| OTX              | https://otx.alienvault.com           | ip / domain / hash                |
+| Pipl             | https://pipl.com                     | email                             |
+| PubDB            | http://pub-db.com                    | gaPubID / gaTrackID               |
+| PublicWWW        | https://publicwww.com                | text                              |
+| Pulsedive        | https://pulsedive.com                | ip / domaion / url / hash         |
+| RiskIQ           | http://community.riskiq.com          | ip / domain / email               |
+| SecurityTrails   | https://securitytrails.com           | ip / domain                       |
+| Shodan           | https://www.shodan.io                | text                              |
+| Sploitus         | https://sploitus.com                 | cve                               |
+| SpyOnWeb         | http://spyonweb.com                  | ip / domain / gaPubID / gaTrackID |
+| Talos            | https://talosintelligence.com        | ip / domain                       |
+| ThreatCrowd      | https://www.threatcrowd.org          | ip / domain / email               |
+| Urlscan          | https://urlscan.io                   | ip / domain / url                 |
+| ViewDNS          | https://viewdns.info                 | ip / domain / email               |
+| VirusTotal       | https://www.virustotal.com           | ip / domain / url / hash          |
+| Vulmon           | https://vulmon.com                   | cve                               |
+| WebAnalyzer      | https://wa-com.com/                  | domain                            |
+| X-Force Exchange | https://exchange.xforce.ibmcloud.com | ip / domain / hash                |
+| ZoomEye          | https://www.zoomeye.org              | ip                                |
 
 You can enable / disable a search engine via the extension's options.
 

@@ -19,6 +19,7 @@ export { Searcher } from "./searcher";
 export { SecurityTrails } from "./securitytrails";
 export { Shodan } from "./shodan";
 export { Sploitus } from "./sploitus";
+export { SpyOnWeb } from "./spyonweb";
 export { Talos } from "./talos";
 export { ThreatCrowd } from "./threatcrowd";
 export { Urlscan } from "./urlscan";

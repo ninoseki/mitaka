@@ -30,6 +30,7 @@ import {
   XForceExchange,
   ZoomEye,
 } from ".";
+import { SpyOnWeb } from "./spyonweb";
 
 export const Searchers: Searcher[] = [
   new BlockCypher(),
@@ -52,6 +53,7 @@ export const Searchers: Searcher[] = [
   new SecurityTrails(),
   new Shodan(),
   new Sploitus(),
+  new SpyOnWeb(),
   new Talos(),
   new ThreatCrowd(),
   new Urlscan(),

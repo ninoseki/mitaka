@@ -8,8 +8,8 @@ describe("Seletor", () => {
     // threatcrowd, urlscan, virustotal, xforce-exchange
     // viewDNS, riskiq, cycmon, talos
     // domainwatch, dnslytics, intelligencex, hybridanalysis
-    // webanalyzer, otx
-    domain: 18,
+    // webanalyzer, otx, spyonweb
+    domain: 19,
     // hybridanalysis, pulsedive, virustotal, xforceexchange
     // otx
     hash: 5,
@@ -17,8 +17,8 @@ describe("Seletor", () => {
     // virustotal, xforceexchange, viewDNS, ONYPHE
     // riskiq, cymon, talos, fortiguard
     // dnslytics, intelligencex, hybridanalysis, otx
-    // zoomeye
-    ip: 17,
+    // zoomeye, spyonweb
+    ip: 18,
     // shodan, censys, publicwww
     text: 3,
     // urlscan, pulsedive, virustotal, fortiguard
@@ -32,10 +32,10 @@ describe("Seletor", () => {
     // blockchain.com, intelligencex
     btc: 2,
     xmr: 0,
-    // pubdb
-    gaTrackID: 1,
-    // pubdb
-    gaPubID: 1,
+    // pubdb, spyonweb
+    gaTrackID: 2,
+    // pubdb, spyonweb
+    gaPubID: 2,
   };
 
   context("searcher", () => {
