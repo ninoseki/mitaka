@@ -15,7 +15,7 @@ export { PubDB } from "./pubdb";
 export { PublicWWW } from "./publicwww";
 export { Pulsedive } from "./pulsedive";
 export { RiskIQ } from "./riskiq";
-export { Searcher } from "./searcher";
+export { SearchableType, Searcher } from "./searcher";
 export { SecurityTrails } from "./securitytrails";
 export { Shodan } from "./shodan";
 export { Sploitus } from "./sploitus";

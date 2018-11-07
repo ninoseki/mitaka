@@ -1,10 +1,10 @@
-import { Searcher } from "./searcher";
+import { SearchableType, Searcher } from "./searcher";
 
 export class XForceExchange implements Searcher {
 
   public endpoint: string;
   public name: string;
-  public supportedTypes: string[] = ["ip", "domain", "hash"];
+  public supportedTypes: SearchableType[] = ["ip", "domain", "hash"];
 
   constructor() {
     this.endpoint = "https://exchange.xforce.ibmcloud.com";

@@ -1,7 +1,9 @@
+export type SearchableType = "text" | "ip" | "domain" | "url" | "email" | "hash" | "cve" | "btc" | "xmr" | "gaTrackID" | "gaPubID";
+
 export interface Searcher {
   endpoint: string;
   name: string;
-  supportedTypes: string[];
+  supportedTypes: SearchableType[];
   searchByText?(query: string);
   searchByIP?(query: string);
   searchByDomain?(query: string);

@@ -1,11 +1,11 @@
 import * as crypto from "crypto-js";
-import { Searcher } from "./searcher";
+import { SearchableType, Searcher } from "./searcher";
 
 export class Pulsedive implements Searcher {
 
   public endpoint: string;
   public name: string;
-  public supportedTypes: string[] = ["ip", "domain", "url", "hash"];
+  public supportedTypes: SearchableType[] = ["ip", "domain", "url", "hash"];
 
   constructor() {
     this.endpoint = "https://pulsedive.com";

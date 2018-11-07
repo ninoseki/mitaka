@@ -1,10 +1,10 @@
-import { Searcher } from "./searcher";
+import { SearchableType, Searcher } from "./searcher";
 
 export class ONYPHE implements Searcher {
 
   public endpoint: string;
   public name: string;
-  public supportedTypes: string[] = ["ip"];
+  public supportedTypes: SearchableType[] = ["ip"];
 
   constructor() {
     this.endpoint = "https://www.onyphe.io";

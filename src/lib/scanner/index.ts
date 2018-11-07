@@ -1,4 +1,4 @@
-export { Scanner } from "./scanner";
+export { ScannableType, Scanner } from "./scanner";
 export { Urlscan } from "./urlscan";
 export { VirusTotal } from "./virustotal";
 

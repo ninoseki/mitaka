@@ -1,10 +1,10 @@
-import { Searcher } from "./searcher";
+import { SearchableType, Searcher } from "./searcher";
 
 export class PubDB implements Searcher {
 
   public endpoint: string;
   public name;
-  public supportedTypes: string[] = ["gaTrackID", "gaPubID"];
+  public supportedTypes: SearchableType[] = ["gaTrackID", "gaPubID"];
 
   constructor() {
     this.endpoint = "http://pub-db.com";

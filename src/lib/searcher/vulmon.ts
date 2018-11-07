@@ -1,10 +1,10 @@
-import { Searcher } from "./searcher";
+import { SearchableType, Searcher } from "./searcher";
 
 export class Vulmon implements Searcher {
 
   public endpoint: string;
   public name;
-  public supportedTypes: string[] = ["cve"];
+  public supportedTypes: SearchableType[] = ["cve"];
 
   constructor() {
     this.endpoint = "https://vulmon.com";

@@ -1,12 +1,12 @@
 import axios from "axios";
 import * as qs from "qs";
-import { Scanner } from "./scanner";
+import { Scanner, ScannableType } from "./scanner";
 
 export class VirusTotal implements Scanner {
 
   public endpoint: string;
   public name: string;
-  public supportedTypes: string[] = ["url"];
+  public supportedTypes: ScannableType[] = ["url"];
   protected apiKey: string | undefined;
 
   constructor() {

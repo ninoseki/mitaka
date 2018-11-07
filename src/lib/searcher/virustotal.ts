@@ -1,12 +1,12 @@
 import * as crypto from "crypto-js";
 import * as url from "url";
-import { Searcher } from "./searcher";
+import { SearchableType, Searcher } from "./searcher";
 
 export class VirusTotal implements Searcher {
 
   public endpoint: string;
   public name: string;
-  public supportedTypes: string[] = ["ip", "domain", "url", "hash"];
+  public supportedTypes: SearchableType[] = ["ip", "domain", "url", "hash"];
 
   constructor() {
     this.endpoint = "https://www.virustotal.com/#";

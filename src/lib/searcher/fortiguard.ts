@@ -1,10 +1,10 @@
-import { Searcher } from "./searcher";
+import { SearchableType, Searcher } from "./searcher";
 
 export class FortiGuard implements Searcher {
 
   public endpoint: string;
   public name: string;
-  public supportedTypes: string[] = ["ip", "url", "cve"];
+  public supportedTypes: SearchableType[] = ["ip", "url", "cve"];
 
   constructor() {
     this.endpoint = "https://fortiguard.com";

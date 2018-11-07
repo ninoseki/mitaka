@@ -1,10 +1,10 @@
-import { Searcher } from "./searcher";
+import { SearchableType, Searcher } from "./searcher";
 
 export class SecurityTrails implements Searcher {
 
   public endpoint: string;
   public name: string;
-  public supportedTypes: string[] = ["domain", "ip"];
+  public supportedTypes: SearchableType[] = ["domain", "ip"];
 
   constructor() {
     this.endpoint = "https://securitytrails.com";
