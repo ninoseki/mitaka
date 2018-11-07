@@ -1,6 +1,6 @@
 import { getIOC, IOC } from "ioc-extractor";
-import { Scanner, Scanners, ScannableType } from "./scanner";
-import { Searcher, Searchers, SearchableType } from "./searcher";
+import { ScannableType, Scanner, Scanners } from "./scanner";
+import { SearchableType, Searcher, Searchers } from "./searcher";
 
 export interface AnalyzerEntry {
   analyzer: Scanner | Searcher;

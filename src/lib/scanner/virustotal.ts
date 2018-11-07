@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as qs from "qs";
-import { Scanner, ScannableType } from "./scanner";
+import { ScannableType, Scanner } from "./scanner";
 
 export class VirusTotal implements Scanner {
 
