@@ -1,6 +1,6 @@
 import { getIOC, IOC } from "ioc-extractor";
-import { Scanner, Scanners } from "./scanner";
-import { Searcher, Searchers } from "./searcher";
+import { ScannableType, Scanner, Scanners } from "./scanner";
+import { SearchableType, Searcher, Searchers } from "./searcher";
 
 export interface AnalyzerEntry {
   analyzer: Scanner | Searcher;
@@ -94,11 +94,11 @@ export class Selector {
     return null;
   }
 
-  public getSearchersByType(type: "text" | "ip" | "domain" | "url" | "email" | "hash" | "cve" | "btc" | "xmr" | "gaTrackID" | "gaPubID") {
+  public getSearchersByType(type: SearchableType) {
     return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf(type) !== -1);
   }
 
-  public getScannersByType(type: "ip" | "domain" | "url") {
+  public getScannersByType(type: ScannableType) {
     return this.scanners.filter((scanner: Scanner) => scanner.supportedTypes.indexOf(type) !== -1);
   }
 

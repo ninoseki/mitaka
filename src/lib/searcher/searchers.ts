@@ -20,6 +20,7 @@ import {
   SecurityTrails,
   Shodan,
   Sploitus,
+  SpyOnWeb,
   Talos,
   ThreatCrowd,
   Urlscan,
@@ -30,7 +31,6 @@ import {
   XForceExchange,
   ZoomEye,
 } from ".";
-import { SpyOnWeb } from "./spyonweb";
 
 export const Searchers: Searcher[] = [
   new BlockCypher(),

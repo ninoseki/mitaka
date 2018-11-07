@@ -1,10 +1,10 @@
-import { Searcher } from "./searcher";
+import { SearchableType, Searcher } from "./searcher";
 
 export class SpyOnWeb implements Searcher {
 
   public endpoint: string;
   public name;
-  public supportedTypes: string[] = ["ip", "domain", "gaPubID", "gaTrackID"];
+  public supportedTypes: SearchableType[] = ["ip", "domain", "gaPubID", "gaTrackID"];
 
   constructor() {
     this.endpoint = "http://spyonweb.com";

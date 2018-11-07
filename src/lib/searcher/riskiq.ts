@@ -1,10 +1,10 @@
-import { Searcher } from "./searcher";
+import { SearchableType, Searcher } from "./searcher";
 
 export class RiskIQ implements Searcher {
 
   public endpoint: string;
   public name;
-  public supportedTypes: string[] = ["ip", "domain", "email"];
+  public supportedTypes: SearchableType[] = ["ip", "domain", "email"];
 
   constructor() {
     this.endpoint = "https://community.riskiq.com";

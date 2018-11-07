@@ -1,10 +1,10 @@
-import { Searcher } from "./searcher";
+import { SearchableType, Searcher } from "./searcher";
 
 export class ZoomEye implements Searcher {
 
   public endpoint: string;
   public name;
-  public supportedTypes: string[] = ["ip"];
+  public supportedTypes: SearchableType[] = ["ip"];
 
   constructor() {
     this.endpoint = "https://www.zoomeye.org";

@@ -1,10 +1,10 @@
-import { Searcher } from "./searcher";
+import { SearchableType, Searcher } from "./searcher";
 
 export class Urlscan implements Searcher {
 
   public endpoint: string;
   public name: string;
-  public supportedTypes: string[] = ["ip", "domain", "url"];
+  public supportedTypes: SearchableType[] = ["ip", "domain", "url"];
 
   constructor() {
     this.endpoint = "https://urlscan.io/api/v1";

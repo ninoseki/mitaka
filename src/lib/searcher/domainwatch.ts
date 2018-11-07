@@ -1,10 +1,10 @@
-import { Searcher } from "./searcher";
+import { SearchableType, Searcher } from "./searcher";
 
 export class DomainWatch implements Searcher {
 
   public endpoint: string;
   public name;
-  public supportedTypes: string[] = ["domain", "email"];
+  public supportedTypes: SearchableType[] = ["domain", "email"];
 
   constructor() {
     this.endpoint = "https://domainwat.ch";

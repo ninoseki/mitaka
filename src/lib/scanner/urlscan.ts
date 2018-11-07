@@ -1,10 +1,10 @@
 import axios from "axios";
-import { Scanner } from "./scanner";
+import { ScannableType, Scanner } from "./scanner";
 
 export class Urlscan implements Scanner {
   public endpoint: string;
   public name: string;
-  public supportedTypes: string[] = ["ip", "domain", "url"];
+  public supportedTypes: ScannableType[] = ["ip", "domain", "url"];
   protected apiKey: string | undefined;
 
   constructor() {
