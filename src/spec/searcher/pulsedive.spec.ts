@@ -4,6 +4,11 @@ import { Pulsedive } from "../../lib/searcher";
 
 describe("Pulsedive", () => {
   const subject = new Pulsedive();
+
+  it("should support IP, Domain, URL & Hash type IOC", () => {
+    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "url", "hash"]);
+  });
+
   describe("#searchByIP", () => {
     it("should return URL", () => {
       expect(subject.searchByIP("1.1.1.1")).to.equal("https://pulsedive.com/indicator/?ioc=MS4xLjEuMQ==");

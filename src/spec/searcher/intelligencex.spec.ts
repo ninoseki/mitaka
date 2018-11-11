@@ -4,6 +4,11 @@ import { IntelligenceX } from "../../lib/searcher";
 
 describe("Intelligence X", () => {
   const subject = new IntelligenceX();
+
+  it("should support IP, Domain, URL, Email & BTC type IOC", () => {
+    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "url", "email", "btc"]);
+  });
+
   describe("#searchByIP", () => {
     it("should return URL", () => {
       expect(subject.supportedTypes.indexOf("ip")).not.equal(-1);

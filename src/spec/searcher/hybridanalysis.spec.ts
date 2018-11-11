@@ -4,6 +4,11 @@ import { HybridAnalysis } from "../../lib/searcher";
 
 describe("HybridAnalysis", () => {
   const subject = new HybridAnalysis();
+
+  it("should support IP, URL & Hash type IOC", () => {
+    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "hash"]);
+  });
+
   describe("#searchByHash", () => {
     it("should return URL", () => {
       const sha256 = "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f";

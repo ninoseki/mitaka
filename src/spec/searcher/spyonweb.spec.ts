@@ -4,6 +4,11 @@ import { SpyOnWeb } from "../../lib/searcher";
 
 describe("SpyOnWeb", () => {
   const subject = new SpyOnWeb();
+
+  it("should support IP, Domain, gaPubID & gaTrackID type IOC", () => {
+    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "gaPubID", "gaTrackID"]);
+  });
+
   describe("#searchByIP", () => {
     it("should return URL", () => {
       expect(subject.searchByIP("1.1.1.1")).to.eq("http://spyonweb.com/1.1.1.1");

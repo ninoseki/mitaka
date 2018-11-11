@@ -4,6 +4,11 @@ import { RiskIQ } from "../../lib/searcher";
 
 describe("RiskIQ", () => {
   const subject = new RiskIQ();
+
+  it("should support IP, Domain & Emal type IOC", () => {
+    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "email"]);
+  });
+
   describe("#searchByIP", () => {
     it("should return URL", () => {
       expect(subject.supportedTypes.indexOf("ip")).not.equal(-1);

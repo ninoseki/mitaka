@@ -4,6 +4,11 @@ import { ViewDNS } from "../../lib/searcher";
 
 describe("ViewDNS", () => {
   const subject = new ViewDNS();
+
+  it("should support IP, Domain & Emal type IOC", () => {
+    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "email"]);
+  });
+
   describe("#searchByIP", () => {
     it("should return URL", () => {
       expect(subject.supportedTypes.indexOf("ip")).not.equal(-1);

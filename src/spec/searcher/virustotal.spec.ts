@@ -4,6 +4,11 @@ import { VirusTotal } from "../../lib/searcher";
 
 describe("VirusTotal", () => {
   const subject = new VirusTotal();
+
+  it("should support IP, Domain, URL & Hash type IOC", () => {
+    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "url", "hash"]);
+  });
+
   describe("#searchByURL", () => {
     it("should return URL", () => {
       expect(subject.searchByURL("https://virustotal.com")).
