@@ -4,6 +4,11 @@ import { FortiGuard } from "../../lib/searcher";
 
 describe("FortiGuard", () => {
   const subject = new FortiGuard();
+
+  it("should support IP, URL & CVE type IOC", () => {
+    expect(subject.supportedTypes).to.deep.equal(["ip", "url", "cve"]);
+  });
+
   describe("#searchByIP", () => {
     it("should return URL", () => {
       expect(subject.searchByIP("1.1.1.1")).to.equal("https://fortiguard.com/search?q=1.1.1.1&engine=8");

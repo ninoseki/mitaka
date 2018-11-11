@@ -4,6 +4,11 @@ import { XForceExchange } from "../../lib/searcher";
 
 describe("X-Force Exchange", () => {
   const subject = new XForceExchange();
+
+  it("should support IP, Domain, Hash type IOC", () => {
+    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "hash"]);
+  });
+
   describe("#searchByIP", () => {
     it("should return URL", () => {
       expect(subject.searchByIP("1.1.1.1")).to.equal("https://exchange.xforce.ibmcloud.com/ip/1.1.1.1");

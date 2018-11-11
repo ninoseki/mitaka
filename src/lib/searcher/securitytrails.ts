@@ -4,7 +4,7 @@ export class SecurityTrails implements Searcher {
 
   public endpoint: string;
   public name: string;
-  public supportedTypes: SearchableType[] = ["domain", "ip"];
+  public supportedTypes: SearchableType[] = ["ip", "domain"];
 
   constructor() {
     this.endpoint = "https://securitytrails.com";

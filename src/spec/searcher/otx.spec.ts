@@ -4,6 +4,11 @@ import { OTX } from "../../lib/searcher";
 
 describe("OTX", () => {
   const subject = new OTX();
+
+  it("should support IP, Domain & Hash type IOC", () => {
+    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "hash"]);
+  });
+
   describe("#searchByIP", () => {
     it("should return URL", () => {
       expect(subject.searchByIP("1.1.1.1")).to.equal("https://otx.alienvault.com/indicator/ip/1.1.1.1");

@@ -4,6 +4,11 @@ import { Urlscan } from "../../lib/searcher";
 
 describe("Urlscan", () => {
   const subject = new Urlscan();
+
+  it("should support IP, Domain & URL type IOC", () => {
+    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "url"]);
+  });
+
   describe("#searchByURL", () => {
     it("should return URL", () => {
       expect(subject.searchByURL("https://urlscan.io")).to.
