@@ -21,31 +21,19 @@ export class Selector {
   }
 
   public getIP(): string | null {
-    if (this.ioc.networks.ipv4s !== null && this.ioc.networks.ipv4s[0]) {
-      return this.ioc.networks.ipv4s[0];
-    }
-    return null;
+    return this.getFirstValueFromArray(this.ioc.networks.ipv4s);
   }
 
   public getDomain(): string | null {
-    if (this.ioc.networks.domains !== null && this.ioc.networks.domains[0]) {
-      return this.ioc.networks.domains[0];
-    }
-    return null;
+    return this.getFirstValueFromArray(this.ioc.networks.domains);
   }
 
   public getURL(): string | null {
-    if (this.ioc.networks.urls !== null && this.ioc.networks.urls[0]) {
-      return this.ioc.networks.urls[0];
-    }
-    return null;
+    return this.getFirstValueFromArray(this.ioc.networks.urls);
   }
 
   public getEmail(): string | null {
-    if (this.ioc.networks.emails !== null && this.ioc.networks.emails[0]) {
-      return this.ioc.networks.emails[0];
-    }
-    return null;
+    return this.getFirstValueFromArray(this.ioc.networks.emails);
   }
 
   public getHash(): string | null {
@@ -60,38 +48,23 @@ export class Selector {
   }
 
   public getCVE(): string | null {
-    if (this.ioc.utilities.cves !== null && this.ioc.utilities.cves[0]) {
-      return this.ioc.utilities.cves[0];
-    }
-    return null;
+    return this.getFirstValueFromArray(this.ioc.utilities.cves);
   }
 
   public getBTC(): string | null {
-    if (this.ioc.cryptocurrencies.btcs !== null && this.ioc.cryptocurrencies.btcs[0]) {
-      return this.ioc.cryptocurrencies.btcs[0];
-    }
-    return null;
+    return this.getFirstValueFromArray(this.ioc.cryptocurrencies.btcs);
   }
 
   public getXMR(): string | null {
-    if (this.ioc.cryptocurrencies.xmrs !== null && this.ioc.cryptocurrencies.xmrs[0]) {
-      return this.ioc.cryptocurrencies.xmrs[0];
-    }
-    return null;
+    return this.getFirstValueFromArray(this.ioc.cryptocurrencies.xmrs);
   }
 
   public getGATrackID(): string | null {
-    if (this.ioc.trackers.gaTrackIDs !== null && this.ioc.trackers.gaTrackIDs[0]) {
-      return this.ioc.trackers.gaTrackIDs[0];
-    }
-    return null;
+    return this.getFirstValueFromArray(this.ioc.trackers.gaTrackIDs);
   }
 
   public getGAPubID(): string | null {
-    if (this.ioc.trackers.gaPubIDs !== null && this.ioc.trackers.gaPubIDs[0]) {
-      return this.ioc.trackers.gaPubIDs[0];
-    }
-    return null;
+    return this.getFirstValueFromArray(this.ioc.trackers.gaPubIDs);
   }
 
   public getSearchersByType(type: SearchableType) {
@@ -165,6 +138,13 @@ export class Selector {
       return this.makeAnalyzerEntries(this.getScannersByType("ip"), "ip", ip);
     }
     return analyzerEntries;
+  }
+
+  private getFirstValueFromArray<T>(array: T[] | null): T | null {
+    if (array !== null && array[0]) {
+      return array[0];
+    }
+    return null;
   }
 
   private concat<T>(target: T[], input: T[] | null): T[] {
