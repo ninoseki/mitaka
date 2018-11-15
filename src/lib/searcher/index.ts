@@ -5,6 +5,7 @@ export { DNSlytics } from "./dnslytics";
 export { DomainBigData } from "./domainbigdata";
 export { DomainWatch } from "./domainwatch";
 export { FindSubDomains } from "./findsubdomains";
+export { FOFA } from "./fofa";
 export { FortiGuard } from "./fortiguard";
 export { HybridAnalysis } from "./hybridanalysis";
 export { IntelligenceX } from "./intelligencex";
