@@ -1,41 +1,26 @@
 import { expect } from "chai";
 import "mocha";
+import { SearchableType, Searcher, Searchers } from "../lib/searcher";
 import { AnalyzerEntry, Selector } from "../lib/selector";
+
+function numberOfSelectorsByType(type: SearchableType): number {
+  const searchers: Searcher[] = Searchers;
+  return searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf(type) !== -1).length;
+}
 
 describe("Seletor", () => {
   const stats = {
-    // domainbigdata, findsubdomains, pulsedive, securitytrails
-    // threatcrowd, urlscan, virustotal, xforce-exchange
-    // viewDNS, riskiq, cycmon, talos
-    // domainwatch, dnslytics, intelligencex, hybridanalysis
-    // webanalyzer, otx, spyonweb
-    domain: 19,
-    // hybridanalysis, pulsedive, virustotal, xforceexchange
-    // otx
-    hash: 5,
-    // securitytrails, pulsedive, threatcrowd urlscan
-    // virustotal, xforceexchange, viewDNS, ONYPHE
-    // riskiq, cymon, talos, fortiguard
-    // dnslytics, intelligencex, hybridanalysis, otx
-    // zoomeye, spyonweb
-    ip: 18,
-    // shodan, censys, publicwww
-    text: 3,
-    // urlscan, pulsedive, virustotal, fortiguard
-    // intelligencex
-    url: 5,
-    // viewDNS, threatcrowd, riskiq, pipl
-    // domainwatch, inteligencex
-    email: 6,
-    // vulmon, sploitus, fortiguard
-    cve: 3,
-    // blockchain.com, intelligencex
-    btc: 2,
-    xmr: 0,
-    // pubdb, spyonweb
-    gaTrackID: 2,
-    // pubdb, spyonweb
-    gaPubID: 2,
+    btc: numberOfSelectorsByType("btc"),
+    cve: numberOfSelectorsByType("cve"),
+    domain: numberOfSelectorsByType("domain"),
+    email: numberOfSelectorsByType("email"),
+    gaPubID: numberOfSelectorsByType("gaPubID"),
+    gaTrackID: numberOfSelectorsByType("gaTrackID"),
+    hash: numberOfSelectorsByType("hash"),
+    ip: numberOfSelectorsByType("ip"),
+    text: numberOfSelectorsByType("text"),
+    url: numberOfSelectorsByType("url"),
+    xmr: numberOfSelectorsByType("xmr"),
   };
 
   context("searcher", () => {
