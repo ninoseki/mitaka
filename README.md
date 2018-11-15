@@ -35,6 +35,7 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 | DNSlytics        | https://dnslytics.com                | ip / domain                       |
 | DomainBigData    | https://domainbigdata.com            | domain                            |
 | DomainWatch      | https://domainwat.ch                 | domain / email                    |
+| FOFA             | https://fofa.so                      | ip / domain                       |
 | FindSubDomains   | https://findsubdomains.com           | domain                            |
 | HybridAnalysis   | https://www.hybrid-analysis.com      | ip / domain / hash (sha256 only)  |
 | Intelligence X   | https://intelx.io                    | ip / domain / url / email / btc   |
