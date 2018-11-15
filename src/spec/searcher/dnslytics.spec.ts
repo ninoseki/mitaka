@@ -2,7 +2,7 @@ import { expect } from "chai";
 import "mocha";
 import { DNSlytics } from "../../lib/searcher";
 
-describe("Cymon", () => {
+describe("DNSlytics", () => {
   const subject = new DNSlytics();
 
   it("should support IP & Domain type IOC", () => {

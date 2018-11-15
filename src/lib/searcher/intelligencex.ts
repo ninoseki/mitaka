@@ -1,5 +1,3 @@
-import * as crypto from "crypto-js";
-import * as url from "url";
 import { SearchableType, Searcher } from "./searcher";
 
 export class IntelligenceX implements Searcher {
