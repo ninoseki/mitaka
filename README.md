@@ -29,6 +29,7 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 
 | name             | url                                  | supported types                   |
 |:-----------------|:-------------------------------------|:----------------------------------|
+| BGPView          | https://bgpview.io                   | ip                                |
 | BlockCypher      | https://live.blockcypher.com         | btc                               |
 | Censys           | https://censys.io                    | text                              |
 | Cymon            | https://cymon.io                     | ip / domain                       |
