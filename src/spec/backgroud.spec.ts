@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import * as sinon from "sinon";
+import sinon = require("sinon");
 import SinonChrome = require("sinon-chrome");
 import * as root from "window-or-global";
 
@@ -57,10 +57,11 @@ describe("Background script", () => {
           },
         });
         const command = new Command("Scan https://www.wikipedia.org/ as a url on Urlscan");
-        sinon.stub(command, "scan").withArgs({
+        const stub: sinon.SinonStub = sinon.stub(command, "scan").withArgs({
           urlscanApiKey: "test",
           virusTotalApiKey: "test",
-        }).returns("https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/");
+        });
+        stub.returns("https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/");
 
         expect(root.chrome.tabs.create.notCalled).to.be.true;
         await scan(command);

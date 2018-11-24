@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { JSDOM } from "jsdom";
 import "mocha";
-import * as sinon from "sinon";
+import sinon = require("sinon");
 import SinonChrome = require("sinon-chrome");
 import * as root from "window-or-global";
 
@@ -28,7 +28,7 @@ describe("Options script", () => {
       const input = root.document.createElement("input") as HTMLInputElement;
       input.value = "test";
 
-      const stub = sinon.stub(root.document, "getElementById");
+      const stub: sinon.SinonStub = sinon.stub(root.document, "getElementById");
       stub.withArgs("urlscan-api-key").returns(input);
       stub.withArgs("virustotal-api-key").returns(input);
     });
@@ -63,7 +63,7 @@ describe("Options script", () => {
       element.appendChild(radio1);
       element.appendChild(radio2);
 
-      const stub = sinon.stub(root.document, "getElementById");
+      const stub: sinon.SinonStub = sinon.stub(root.document, "getElementById");
       stub.withArgs("searcherList").returns(element);
     });
     afterEach(() => {
@@ -90,7 +90,7 @@ describe("Options script", () => {
       const virusTotalApiKey = root.document.createElement("input") as HTMLInputElement;
       virusTotalApiKey.value = "test";
 
-      const stub = sinon.stub(root.document, "getElementById");
+      const stub: sinon.SinonStub = sinon.stub(root.document, "getElementById");
       stub.withArgs("urlscan-api-key").returns(urlscanApiKey);
       stub.withArgs("virustotal-api-key").returns(virusTotalApiKey);
     });
@@ -119,10 +119,10 @@ describe("Options script", () => {
       const dom = new JSDOM();
       root.document = dom.window.document;
 
-      const searcherList = root.document.createElement("div") as HTMLElement; ;
+      const searcherList = root.document.createElement("div") as HTMLElement;;
       searcherList.id = "searcherList";
 
-      const stub = sinon.stub(root.document, "getElementById");
+      const stub: sinon.SinonStub = sinon.stub(root.document, "getElementById");
       stub.withArgs("searcherList").returns(searcherList);
       stub.withArgs("checkTemplate").returns({
         innerHTML: `
