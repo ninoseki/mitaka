@@ -128,6 +128,7 @@ TypeScript files will start out in `src` directory, run through the TypeScript c
 git clone https://github.com/ninoseki/mitaka.git
 cd mitaka
 npm install
+npm run test
 npm run build
 ```
 
