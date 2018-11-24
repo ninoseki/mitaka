@@ -1,3 +1,4 @@
+export { BGPView } from "./bgpview";
 export { BlockCypher } from "./blockcypher";
 export { Censys } from "./censys";
 export { Cymon } from "./cymon";

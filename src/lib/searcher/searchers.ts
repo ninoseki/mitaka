@@ -1,4 +1,5 @@
 import {
+  BGPView,
   BlockCypher,
   Censys,
   Cymon,
@@ -34,6 +35,7 @@ import {
 } from ".";
 
 export const Searchers: Searcher[] = [
+  new BGPView(),
   new BlockCypher(),
   new Censys(),
   new Cymon(),
