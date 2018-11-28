@@ -37,9 +37,9 @@
   "dependencies": {
     "axios": "^0.18.0",
     "crypto-js": "^3.1.9-1",
-    "ioc-extractor": "^0.6.1",
+    "ioc-extractor": "^0.7.0",
     "mustache": "^3.0.1",
-    "qs": "^6.5.2",
+    "qs": "^6.6.0",
     "throttle-debounce": "^2.0.1",
     "url": "^0.11.0",
     "validator": "^10.9.0"
@@ -68,10 +68,10 @@
     "sinon": "^7.1.1",
     "sinon-chrome": "^2.3.2",
     "ts-lint": "^4.5.1",
-    "ts-loader": "^5.3.0",
+    "ts-loader": "^5.3.1",
     "ts-node": "^7.0.1",
     "typescript": "^3.1.6",
-    "webpack": "^4.26.0",
+    "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",
     "window-or-global": "^1.0.1"
   }
