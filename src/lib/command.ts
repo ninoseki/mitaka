@@ -34,6 +34,9 @@ export class Command {
         case "url":
           url = searcher.searchByURL!(entry.query);
           break;
+        case "asn":
+          url = searcher.searchByASN!(entry.query);
+          break;
         case "email":
           url = searcher.searchByEmail!(entry.query);
           break;
