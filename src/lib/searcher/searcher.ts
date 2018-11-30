@@ -4,7 +4,7 @@ export interface Searcher {
   endpoint: string;
   name: string;
   supportedTypes: SearchableType[];
-  searchByASN(query: string);
+  searchByASN?(query: string);
   searchByBTC?(query: string);
   searchByCVE?(query: string);
   searchByDomain?(query: string);
