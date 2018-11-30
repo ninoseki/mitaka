@@ -4,7 +4,7 @@ import { SearchableType, Searcher, Searchers } from "./searcher";
 
 export interface AnalyzerEntry {
   analyzer: Scanner | Searcher;
-  type: string;
+  type: SearchableType | ScannableType;
   query: string;
 }
 
@@ -34,6 +34,10 @@ export class Selector {
 
   public getEmail(): string | null {
     return this.getFirstValueFromArray(this.ioc.networks.emails);
+  }
+
+  public getASN(): string | null {
+    return this.getFirstValueFromArray(this.ioc.networks.asns);
   }
 
   public getHash(): string | null {
@@ -79,6 +83,10 @@ export class Selector {
     let entries: AnalyzerEntry[] = [];
     entries = this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("text"), "text", this.input));
 
+    const asn = this.getASN();
+    if (asn !== null) {
+      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("asn"), "asn", asn));
+    }
     const email = this.getEmail();
     if (email !== null) {
       return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("email"), "email", email));
@@ -154,7 +162,7 @@ export class Selector {
     return target;
   }
 
-  private makeAnalyzerEntries(analyzers: Scanner[] | Searcher[], type: string, query: string) {
+  private makeAnalyzerEntries(analyzers: Scanner[] | Searcher[], type: SearchableType | ScannableType, query: string) {
     const analyzerEntries: AnalyzerEntry[] = [];
     for (const analyzer of analyzers) {
       analyzerEntries.push(this.makeAnalyzerEntry(analyzer, type, query));
@@ -162,7 +170,7 @@ export class Selector {
     return analyzerEntries;
   }
 
-  private makeAnalyzerEntry(analyzer: Scanner | Searcher, type: string, query: string) {
+  private makeAnalyzerEntry(analyzer: Scanner | Searcher, type: SearchableType | ScannableType, query: string) {
     return { analyzer, type, query };
   }
 }

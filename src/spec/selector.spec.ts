@@ -10,6 +10,7 @@ function numberOfSelectorsByType(type: SearchableType): number {
 
 describe("Seletor", () => {
   const stats = {
+    asn: numberOfSelectorsByType("asn"),
     btc: numberOfSelectorsByType("btc"),
     cve: numberOfSelectorsByType("cve"),
     domain: numberOfSelectorsByType("domain"),
@@ -131,6 +132,29 @@ describe("Seletor", () => {
             expect(entry.query).to.equal("test@test.com");
           }
           expect(entries.length).to.equal(stats.text + stats.email);
+        });
+      });
+    });
+
+    context("asn", () => {
+      const selector: Selector = new Selector("ASN15169");
+      describe("#getASN", () => {
+        it("should return the asn", () => {
+          expect(selector.getASN()).to.equal("ASN15169");
+        });
+      });
+      describe("#getSearchersForASN", () => {
+        it("should return Searchers support asn", () => {
+          expect(selector.getSearchersByType("asn").length).to.equal(stats.asn);
+        });
+      });
+      describe("#getAnalyzerEntrys", () => {
+        it("should return Searchrerentrys support asn", () => {
+          const entries: AnalyzerEntry[] = selector.getSearcherEntries();
+          for (const entry of entries) {
+            expect(entry.query).to.equal("ASN15169");
+          }
+          expect(entries.length).to.equal(stats.text + stats.asn);
         });
       });
     });
