@@ -2,25 +2,25 @@ import { SearchableType, Searcher } from "./searcher";
 
 export class SecurityTrails implements Searcher {
 
-  public endpoint: string;
-  public name: string;
-  public supportedTypes: SearchableType[] = ["ip", "domain"];
+  endpoint: string;
+  name: string;
+  supportedTypes: SearchableType[] = ["ip", "domain"];
 
   constructor() {
     this.endpoint = "https://securitytrails.com";
     this.name = "SecurityTrails";
   }
 
-  public searchByText(query) {
+  searchByText(query) {
     const encoded = encodeURIComponent(query);
     return `${this.endpoint}/list/keyword/${encoded}`;
   }
 
-  public searchByIP(ip) {
+  searchByIP(ip) {
     return `${this.endpoint}/list/ip/${ip}`;
   }
 
-  public searchByDomain(domain) {
+  searchByDomain(domain) {
     return `${this.endpoint}/domain/${domain}`;
   }
 }

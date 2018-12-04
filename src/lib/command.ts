@@ -3,9 +3,9 @@ import { Searcher } from "./searcher";
 import { AnalyzerEntry, Selector } from "./selector";
 
 export class Command {
-  public action: string;
-  public query: string;
-  public target: string;
+  action: string;
+  query: string;
+  target: string;
 
   constructor(command: string) {
     const parts: string[] = command.split(" ");
@@ -14,7 +14,7 @@ export class Command {
     this.target = parts[parts.length - 1];
   }
 
-  public search(): string {
+  search(): string {
     const selector: Selector = new Selector(this.query);
     const entries: AnalyzerEntry[] = selector.getSearcherEntries();
     const entry = entries.find((r) => r.analyzer.name === this.target);
@@ -65,7 +65,7 @@ export class Command {
     return url;
   }
 
-  public async scan(apiKeys: ApiKeys) {
+  async scan(apiKeys: ApiKeys) {
     const selector: Selector = new Selector(this.query);
     const entries: AnalyzerEntry[] = selector.getScannerEntries();
     const entry = entries.find((r) => r.analyzer.name === this.target);

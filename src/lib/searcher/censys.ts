@@ -2,16 +2,16 @@ import { SearchableType, Searcher } from "./searcher";
 
 export class Censys implements Searcher {
 
-  public endpoint: string;
-  public name: string;
-  public supportedTypes: SearchableType[] = ["text"];
+  endpoint: string;
+  name: string;
+  supportedTypes: SearchableType[] = ["text"];
 
   constructor() {
     this.endpoint = "https://censys.io";
     this.name = "Censys";
   }
 
-  public searchByText(query) {
+  searchByText(query) {
     const encoded = encodeURIComponent(query);
     return `${this.endpoint}/ipv4?q=${encoded}`;
   }

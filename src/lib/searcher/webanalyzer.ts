@@ -2,16 +2,16 @@ import { SearchableType, Searcher } from "./searcher";
 
 export class WebAnalyzer implements Searcher {
 
-  public endpoint: string;
-  public name;
-  public supportedTypes: SearchableType[] = ["domain"];
+  endpoint: string;
+  name;
+  supportedTypes: SearchableType[] = ["domain"];
 
   constructor() {
     this.endpoint = "https://wa-com.com";
     this.name = "WebAnalyzer";
   }
 
-  public searchByDomain(query) {
+  searchByDomain(query) {
     return `${this.endpoint}/${query}`;
   }
 }

@@ -2,20 +2,20 @@ import { SearchableType, Searcher } from "./searcher";
 
 export class Talos implements Searcher {
 
-  public endpoint: string;
-  public name;
-  public supportedTypes: SearchableType[] = ["ip", "domain"];
+  endpoint: string;
+  name;
+  supportedTypes: SearchableType[] = ["ip", "domain"];
 
   constructor() {
     this.endpoint = "https://talosintelligence.com";
     this.name = "Talos";
   }
 
-  public searchByIP(query) {
+  searchByIP(query) {
     return this.search(query);
   }
 
-  public searchByDomain(query) {
+  searchByDomain(query) {
     return this.search(query);
   }
 
