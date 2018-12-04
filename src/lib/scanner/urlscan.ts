@@ -2,9 +2,9 @@ import axios from "axios";
 import { ScannableType, Scanner } from "./scanner";
 
 export class Urlscan implements Scanner {
-  public endpoint: string;
-  public name: string;
-  public supportedTypes: ScannableType[] = ["ip", "domain", "url"];
+  endpoint: string;
+  name: string;
+  supportedTypes: ScannableType[] = ["ip", "domain", "url"];
   protected apiKey: string | undefined;
 
   constructor() {
@@ -12,19 +12,19 @@ export class Urlscan implements Scanner {
     this.name = "Urlscan";
   }
 
-  public setApiKey(apiKey) {
+  setApiKey(apiKey) {
     this.apiKey = apiKey;
   }
 
-  public async scanByIP(ip) {
+  async scanByIP(ip) {
     return await this.scan(ip);
   }
 
-  public async scanByDomain(domain) {
+  async scanByDomain(domain) {
     return await this.scan(domain);
   }
 
-  public async scanByURL(url) {
+  async scanByURL(url) {
     return await this.scan(url);
   }
 

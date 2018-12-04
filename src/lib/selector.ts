@@ -20,27 +20,27 @@ export class Selector {
     this.ioc = getIOC(input);
   }
 
-  public getIP(): string | null {
+  getIP(): string | null {
     return this.getFirstValueFromArray(this.ioc.networks.ipv4s);
   }
 
-  public getDomain(): string | null {
+  getDomain(): string | null {
     return this.getFirstValueFromArray(this.ioc.networks.domains);
   }
 
-  public getURL(): string | null {
+  getURL(): string | null {
     return this.getFirstValueFromArray(this.ioc.networks.urls);
   }
 
-  public getEmail(): string | null {
+  getEmail(): string | null {
     return this.getFirstValueFromArray(this.ioc.networks.emails);
   }
 
-  public getASN(): string | null {
+  getASN(): string | null {
     return this.getFirstValueFromArray(this.ioc.networks.asns);
   }
 
-  public getHash(): string | null {
+  getHash(): string | null {
     let hashes: string[] = [];
     hashes = this.concat(hashes, this.ioc.hashes.sha256s);
     hashes = this.concat(hashes, this.ioc.hashes.sha1s);
@@ -51,35 +51,35 @@ export class Selector {
     return hashes[0];
   }
 
-  public getCVE(): string | null {
+  getCVE(): string | null {
     return this.getFirstValueFromArray(this.ioc.utilities.cves);
   }
 
-  public getBTC(): string | null {
+  getBTC(): string | null {
     return this.getFirstValueFromArray(this.ioc.cryptocurrencies.btcs);
   }
 
-  public getXMR(): string | null {
+  getXMR(): string | null {
     return this.getFirstValueFromArray(this.ioc.cryptocurrencies.xmrs);
   }
 
-  public getGATrackID(): string | null {
+  getGATrackID(): string | null {
     return this.getFirstValueFromArray(this.ioc.trackers.gaTrackIDs);
   }
 
-  public getGAPubID(): string | null {
+  getGAPubID(): string | null {
     return this.getFirstValueFromArray(this.ioc.trackers.gaPubIDs);
   }
 
-  public getSearchersByType(type: SearchableType) {
+  getSearchersByType(type: SearchableType) {
     return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf(type) !== -1);
   }
 
-  public getScannersByType(type: ScannableType) {
+  getScannersByType(type: ScannableType) {
     return this.scanners.filter((scanner: Scanner) => scanner.supportedTypes.indexOf(type) !== -1);
   }
 
-  public getSearcherEntries(): AnalyzerEntry[] {
+  getSearcherEntries(): AnalyzerEntry[] {
     let entries: AnalyzerEntry[] = [];
     entries = this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("text"), "text", this.input));
 
@@ -130,7 +130,7 @@ export class Selector {
     return entries;
   }
 
-  public getScannerEntries(): AnalyzerEntry[] {
+  getScannerEntries(): AnalyzerEntry[] {
     const analyzerEntries: AnalyzerEntry[] = [];
 
     const url = this.getURL();
