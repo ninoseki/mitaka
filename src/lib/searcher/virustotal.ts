@@ -4,25 +4,25 @@ import { SearchableType, Searcher } from "./searcher";
 
 export class VirusTotal implements Searcher {
 
-  endpoint: string;
-  name: string;
-  supportedTypes: SearchableType[] = ["ip", "domain", "url", "hash"];
+  public endpoint: string;
+  public name: string;
+  public supportedTypes: SearchableType[] = ["ip", "domain", "url", "hash"];
 
   constructor() {
     this.endpoint = "https://www.virustotal.com/#";
     this.name = "VirusTotal";
   }
 
-  searchByIP(query) {
+  public searchByIP(query) {
     return `${this.endpoint}/ip-address/${query}`;
   }
 
-  searchByURL(q) {
+  public searchByURL(q) {
     const hash = crypto.SHA256(this.normalizeURL(q));
     return `${this.endpoint}/url/${hash}`;
   }
 
-  normalizeURL(q) {
+  public normalizeURL(q) {
     const parsedUrl = url.parse(q);
     if (parsedUrl.pathname === "/" && q.slice(-1) !== "/") {
       return `${q}/`;
@@ -30,11 +30,11 @@ export class VirusTotal implements Searcher {
     return q;
   }
 
-  searchByDomain(query) {
+  public searchByDomain(query) {
     return `${this.endpoint}/domain/${query}`;
   }
 
-  searchByHash(query) {
+  public searchByHash(query) {
     return `${this.endpoint}/file/${query}`;
   }
 }

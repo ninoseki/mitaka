@@ -2,26 +2,26 @@ import { SearchableType, Searcher } from "./searcher";
 
 export class FortiGuard implements Searcher {
 
-  endpoint: string;
-  name: string;
-  supportedTypes: SearchableType[] = ["ip", "url", "cve"];
+  public endpoint: string;
+  public name: string;
+  public supportedTypes: SearchableType[] = ["ip", "url", "cve"];
 
   constructor() {
     this.endpoint = "https://fortiguard.com";
     this.name = "FortiGuard";
   }
 
-  searchByIP(query) {
+  public searchByIP(query) {
     return `${this.endpoint}/search?q=${query}&engine=8`;
   }
 
-  searchByURL(query) {
+  public searchByURL(query) {
     const encoded = encodeURIComponent(query);
     return `${this.endpoint}/webfilter?q=${encoded}`;
 
   }
 
-  searchByCVE(query) {
+  public searchByCVE(query) {
     return `${this.endpoint}/search?q=${query}&engine=3`;
   }
 }
