@@ -3,25 +3,25 @@ import { SearchableType, Searcher } from "./searcher";
 
 export class Pulsedive implements Searcher {
 
-  endpoint: string;
-  name: string;
-  supportedTypes: SearchableType[] = ["ip", "domain", "url", "hash"];
+  public endpoint: string;
+  public name: string;
+  public supportedTypes: SearchableType[] = ["ip", "domain", "url", "hash"];
 
   constructor() {
     this.endpoint = "https://pulsedive.com";
     this.name = "Pulsedive";
   }
 
-  searchByIP(query) {
+  public searchByIP(query) {
     return this.search(query);
   }
-  searchByDomain(query) {
+  public searchByDomain(query) {
     return this.search(query);
   }
-  searchByURL(query) {
+  public searchByURL(query) {
     return this.search(query);
   }
-  searchByHash(query) {
+  public searchByHash(query) {
     return this.search(query);
   }
 

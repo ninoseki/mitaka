@@ -4,9 +4,9 @@ import { ScannableType, Scanner } from "./scanner";
 
 export class VirusTotal implements Scanner {
 
-  endpoint: string;
-  name: string;
-  supportedTypes: ScannableType[] = ["url"];
+  public endpoint: string;
+  public name: string;
+  public supportedTypes: ScannableType[] = ["url"];
   protected apiKey: string | undefined;
 
   constructor() {
@@ -14,11 +14,11 @@ export class VirusTotal implements Scanner {
     this.name = "VirusTotal";
   }
 
-  setApiKey(apiKey) {
+  public setApiKey(apiKey) {
     this.apiKey = apiKey;
   }
 
-  async scanByURL(url) {
+  public async scanByURL(url) {
     if (this.apiKey === undefined) {
       throw Error("Please set your VirusTotal API key via the option.");
     }

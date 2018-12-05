@@ -2,24 +2,24 @@ import { SearchableType, Searcher } from "./searcher";
 
 export class ThreatCrowd implements Searcher {
 
-  endpoint: string;
-  name;
-  supportedTypes: SearchableType[] = ["ip", "domain", "email"];
+  public endpoint: string;
+  public name;
+  public supportedTypes: SearchableType[] = ["ip", "domain", "email"];
 
   constructor() {
     this.endpoint = "https://www.threatcrowd.org";
     this.name = "ThreatCrowd";
   }
 
-  searchByIP(query) {
+  public searchByIP(query) {
     return `${this.endpoint}/ip.php?ip=${query}`;
   }
 
-  searchByDomain(query) {
+  public searchByDomain(query) {
     return `${this.endpoint}/domain.php?domain=${query}`;
   }
 
-  searchByEmail(query) {
+  public searchByEmail(query) {
     return `${this.endpoint}/email.php?email=${query}`;
   }
 }

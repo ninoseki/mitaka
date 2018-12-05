@@ -2,16 +2,16 @@ import { SearchableType, Searcher } from "./searcher";
 
 export class FindSubDomains implements Searcher {
 
-  endpoint: string;
-  name: string;
-  supportedTypes: SearchableType[] = ["domain"];
+  public endpoint: string;
+  public name: string;
+  public supportedTypes: SearchableType[] = ["domain"];
 
   constructor() {
     this.endpoint = "https://findsubdomains.com";
     this.name = "FindSubDomains";
   }
 
-  searchByDomain(query) {
+  public searchByDomain(query) {
     return `${this.endpoint}/subdomains-of/${query}`;
   }
 }

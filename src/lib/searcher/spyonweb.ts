@@ -2,28 +2,28 @@ import { SearchableType, Searcher } from "./searcher";
 
 export class SpyOnWeb implements Searcher {
 
-  endpoint: string;
-  name;
-  supportedTypes: SearchableType[] = ["ip", "domain", "gaPubID", "gaTrackID"];
+  public endpoint: string;
+  public name;
+  public supportedTypes: SearchableType[] = ["ip", "domain", "gaPubID", "gaTrackID"];
 
   constructor() {
     this.endpoint = "http://spyonweb.com";
     this.name = "SpyOnWeb";
   }
 
-  searchByIP(query) {
+  public searchByIP(query) {
     return this.search(query);
   }
 
-  searchByDomain(query) {
+  public searchByDomain(query) {
     return this.search(query);
   }
 
-  searchByGAPubID(query) {
+  public searchByGAPubID(query) {
     return this.search(query);
   }
 
-  searchByGATrackID(query) {
+  public searchByGATrackID(query) {
     return this.search(query);
   }
 

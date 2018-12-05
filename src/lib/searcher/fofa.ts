@@ -4,21 +4,21 @@ import * as crypto from "crypto-js";
 
 export class FOFA implements Searcher {
 
-  endpoint: string;
-  name;
-  supportedTypes: SearchableType[] = ["ip", "domain"];
+  public endpoint: string;
+  public name;
+  public supportedTypes: SearchableType[] = ["ip", "domain"];
 
   constructor() {
     this.endpoint = "https://fofa.so";
     this.name = "FOFA";
   }
 
-  searchByIP(query) {
+  public searchByIP(query) {
     const param = `ip="${query}"`;
     return `${this.endpoint}/result?qbase64=${this.base64fy(param)}`;
   }
 
-  searchByDomain(query) {
+  public searchByDomain(query) {
     const param = `domain="${query}"`;
     return `${this.endpoint}/result?qbase64=${this.base64fy(param)}`;
   }

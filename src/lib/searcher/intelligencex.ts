@@ -2,32 +2,32 @@ import { SearchableType, Searcher } from "./searcher";
 
 export class IntelligenceX implements Searcher {
 
-  endpoint: string;
-  name: string;
-  supportedTypes: SearchableType[] = ["ip", "domain", "url", "email", "btc"];
+  public endpoint: string;
+  public name: string;
+  public supportedTypes: SearchableType[] = ["ip", "domain", "url", "email", "btc"];
 
   constructor() {
     this.endpoint = "https://intelx.io";
     this.name = "IntelligenceX";
   }
 
-  searchByIP(query) {
+  public searchByIP(query) {
     return this.search(query);
   }
 
-  searchByDomain(query) {
+  public searchByDomain(query) {
     return this.search(query);
   }
 
-  searchByURL(query) {
+  public searchByURL(query) {
     return this.search(query);
   }
 
-  searchByEmail(query) {
+  public searchByEmail(query) {
     return this.search(query);
   }
 
-  searchByBTC(query) {
+  public searchByBTC(query) {
     return this.search(query);
   }
 
