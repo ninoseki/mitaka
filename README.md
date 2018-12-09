@@ -41,6 +41,7 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 | FindSubDomains   | https://findsubdomains.com           | domain                            |
 | HybridAnalysis   | https://www.hybrid-analysis.com      | ip / domain / hash (sha256 only)  |
 | Intelligence X   | https://intelx.io                    | ip / domain / url / email / btc   |
+| Maltiverse       | https://www.maltiverse.com           | domain / hash                     |
 | ONYPHE           | https://www.onyphe.io                | ip                                |
 | OTX              | https://otx.alienvault.com           | ip / domain / hash                |
 | Pipl             | https://pipl.com                     | email                             |
