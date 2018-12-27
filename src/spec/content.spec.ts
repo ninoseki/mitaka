@@ -48,23 +48,23 @@ describe("Context script", () => {
     beforeEach(() => {
       root.window.getSelection = () => {
         return {
-          toString: () => {
-            return "test";
-          },
-          rangeCount: 1,
           getRangeAt: (idx) => {
             return {
               startContainer: {
                 parentElement: {
-                  hasAttribute: (attr) => {
-                    return true;
-                  },
                   getAttribute: (attr) => {
                     return "https://example.com";
+                  },
+                  hasAttribute: (attr) => {
+                    return true;
                   },
                 },
               },
             };
+          },
+          rangeCount: 1,
+          toString: () => {
+            return "test";
           },
         };
       };

@@ -17,7 +17,8 @@
         ],
         "no-console": [
             false
-        ]
+        ],
+        "max-line-length": [false]
     },
     "rulesDirectory": []
 }
