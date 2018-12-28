@@ -37,18 +37,18 @@
   "dependencies": {
     "axios": "^0.18.0",
     "crypto-js": "^3.1.9-1",
-    "ioc-extractor": "^0.7.1",
+    "ioc-extractor": "^0.7.2",
     "mustache": "^3.0.1",
     "qs": "^6.6.0",
     "throttle-debounce": "^2.0.1",
     "url": "^0.11.0",
-    "validator": "^10.9.0"
+    "validator": "^10.10.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/chrome": "^0.0.75",
     "@types/crypto-js": "^3.1.43",
-    "@types/jsdom": "^12.2.0",
+    "@types/jsdom": "^12.2.1",
     "@types/mocha": "^5.2.5",
     "@types/moxios": "^0.4.8",
     "@types/mustache": "^0.8.32",
@@ -71,7 +71,7 @@
     "ts-loader": "^5.3.2",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2",
-    "webpack": "^4.28.1",
+    "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
     "window-or-global": "^1.0.1"
   }
