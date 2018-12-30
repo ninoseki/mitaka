@@ -13,8 +13,8 @@ export function showNotification(message: string) {
 
 export function search(command: Command) {
   try {
-    const url = command.search();
-    if (url !== undefined && url !== "") {
+    const url: string = command.search();
+    if (url !== "") {
       chrome.tabs.create({ url });
     }
   } catch (err) {
@@ -31,8 +31,8 @@ export async function scan(command: Command) {
         config.apiKeys.virusTotalApiKey : undefined,
     };
     try {
-      const url = await command.scan(apiKeys);
-      if (url !== undefined && url !== "") {
+      const url: string = await command.scan(apiKeys);
+      if (url !== "") {
         chrome.tabs.create({ url });
       }
     } catch (err) {
