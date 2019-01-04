@@ -3,7 +3,7 @@ import { SearchableType, Searcher } from "./searcher";
 export class DomainBigData implements Searcher {
 
   public endpoint: string;
-  public name;
+  public name: string;
   public supportedTypes: SearchableType[] = ["domain"];
 
   constructor() {

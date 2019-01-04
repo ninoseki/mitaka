@@ -3,7 +3,7 @@ import { SearchableType, Searcher } from "./searcher";
 export class Pipl implements Searcher {
 
   public endpoint: string;
-  public name;
+  public name: string;
   public supportedTypes: SearchableType[] = ["email"];
 
   constructor() {
