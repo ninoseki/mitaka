@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class FindSubDomains implements Searcher {
@@ -11,7 +12,7 @@ export class FindSubDomains implements Searcher {
     this.name = "FindSubDomains";
   }
 
-  public searchByDomain(query) {
-    return `${this.endpoint}/subdomains-of/${query}`;
+  public searchByDomain(query: string) {
+    return buildURL(this.endpoint, `/subdomains-of/${query}`);
   }
 }

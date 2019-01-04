@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class DomainWatch implements Searcher {
@@ -11,11 +12,11 @@ export class DomainWatch implements Searcher {
     this.name = "DomainWatch";
   }
 
-  public searchByDomain(query) {
-    return `${this.endpoint}/whois/${query}`;
+  public searchByDomain(query: string) {
+    return buildURL(this.endpoint, `/whois/${query}`);
   }
 
-  public searchByEmail(query) {
-    return `${this.endpoint}/search?query=${encodeURIComponent(query)}`;
+  public searchByEmail(query: string) {
+    return buildURL(this.endpoint, "/search", { query });
   }
 }

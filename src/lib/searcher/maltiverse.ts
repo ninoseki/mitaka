@@ -11,11 +11,11 @@ export class Maltiverse implements Searcher {
     this.name = "Maltiverse";
   }
 
-  public searchByDomain(query) {
+  public searchByDomain(query: string) {
     return `${this.endpoint}/search;query=domain:${query}`;
   }
 
-  public searchByHash(query) {
+  public searchByHash(query: string) {
     return `${this.endpoint}/search;query=${query}`;
   }
 }

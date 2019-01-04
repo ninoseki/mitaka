@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class ThreatMiner implements Searcher {
@@ -11,15 +12,15 @@ export class ThreatMiner implements Searcher {
     this.name = "ThreatMiner";
   }
 
-  public searchByIP(query) {
-    return `${this.endpoint}/host.php?q=${query}`;
+  public searchByIP(query: string) {
+    return buildURL(this.endpoint, "/host.php", { q: query });
   }
 
-  public searchByDomain(query) {
-    return `${this.endpoint}/domain.php?q=${query}`;
+  public searchByDomain(query: string) {
+    return buildURL(this.endpoint, "/domain.php", { q: query });
   }
 
-  public searchByHash(query) {
-    return `${this.endpoint}/sample.php?q=${query}`;
+  public searchByHash(query: string) {
+    return buildURL(this.endpoint, "/sample.php", { q: query });
   }
 }

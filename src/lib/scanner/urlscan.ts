@@ -12,23 +12,23 @@ export class Urlscan implements Scanner {
     this.name = "Urlscan";
   }
 
-  public setApiKey(apiKey) {
+  public setApiKey(apiKey: string | undefined) {
     this.apiKey = apiKey;
   }
 
-  public async scanByIP(ip) {
+  public async scanByIP(ip: string) {
     return await this.scan(ip);
   }
 
-  public async scanByDomain(domain) {
+  public async scanByDomain(domain: string) {
     return await this.scan(domain);
   }
 
-  public async scanByURL(url) {
+  public async scanByURL(url: string) {
     return await this.scan(url);
   }
 
-  private async scan(query, isPublic = true) {
+  private async scan(query: string, isPublic = true) {
     if (this.apiKey === undefined) {
       throw Error("Please set your urlscan.io API key via the option.");
     }

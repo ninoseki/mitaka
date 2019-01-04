@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class FortiGuard implements Searcher {
@@ -11,17 +12,15 @@ export class FortiGuard implements Searcher {
     this.name = "FortiGuard";
   }
 
-  public searchByIP(query) {
-    return `${this.endpoint}/search?q=${query}&engine=8`;
+  public searchByIP(query: string) {
+    return buildURL(this.endpoint, "/search", { q: query, engine: 8 });
   }
 
-  public searchByURL(query) {
-    const encoded = encodeURIComponent(query);
-    return `${this.endpoint}/webfilter?q=${encoded}`;
-
+  public searchByURL(query: string) {
+    return buildURL(this.endpoint, "/webfilter", { q: query });
   }
 
-  public searchByCVE(query) {
-    return `${this.endpoint}/search?q=${query}&engine=3`;
+  public searchByCVE(query: string) {
+    return buildURL(this.endpoint, "/search", { q: query, engine: 3 });
   }
 }

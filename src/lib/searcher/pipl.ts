@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class Pipl implements Searcher {
@@ -11,7 +12,7 @@ export class Pipl implements Searcher {
     this.name = "Pipl";
   }
 
-  public searchByEmail(query) {
-    return `${this.endpoint}/search/?q=${encodeURIComponent(query)}`;
+  public searchByEmail(query: string) {
+    return buildURL(this.endpoint, "/search/", { q: query });
   }
 }

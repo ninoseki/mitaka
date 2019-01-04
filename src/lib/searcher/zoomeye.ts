@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class ZoomEye implements Searcher {
@@ -12,7 +13,6 @@ export class ZoomEye implements Searcher {
   }
 
   public searchByIP(query) {
-    const encoded = encodeURIComponent(`ip:"${query}"`);
-    return `${this.endpoint}/searchResult?q=${encoded}&t=host`;
+    return buildURL(this.endpoint, "/searchResult", { q: `ip:"${query}"`, t: "host" });
   }
 }

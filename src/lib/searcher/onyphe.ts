@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class ONYPHE implements Searcher {
@@ -11,7 +12,7 @@ export class ONYPHE implements Searcher {
     this.name = "ONYPHE";
   }
 
-  public searchByIP(query) {
-    return `${this.endpoint}/ip/${query}`;
+  public searchByIP(query: string) {
+    return buildURL(this.endpoint, `/ip/${query}`);
   }
 }

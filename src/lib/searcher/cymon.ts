@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class Cymon implements Searcher {
@@ -11,11 +12,11 @@ export class Cymon implements Searcher {
     this.name = "Cymon";
   }
 
-  public searchByIP(query) {
-    return `${this.endpoint}/${query}`;
+  public searchByIP(query: string) {
+    return buildURL(this.endpoint, `/${query}`);
   }
 
-  public searchByDomain(query) {
-    return `${this.endpoint}/domain/${query}`;
+  public searchByDomain(query: string) {
+    return buildURL(this.endpoint, `/domain/${query}`);
   }
 }

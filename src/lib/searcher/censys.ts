@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class Censys implements Searcher {
@@ -11,8 +12,7 @@ export class Censys implements Searcher {
     this.name = "Censys";
   }
 
-  public searchByText(query) {
-    const encoded = encodeURIComponent(query);
-    return `${this.endpoint}/ipv4?q=${encoded}`;
+  public searchByText(query: string) {
+    return buildURL(this.endpoint, "/ipv4", { q: query });
   }
 }

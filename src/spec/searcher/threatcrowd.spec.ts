@@ -27,7 +27,7 @@ describe("ThreatCrowd", () => {
     it("should return URL", () => {
       expect(subject.supportedTypes.indexOf("email")).not.equal(-1);
       expect(subject.searchByEmail("test@test.com")).
-        to.equal("https://www.threatcrowd.org/email.php?email=test@test.com");
+        to.equal("https://www.threatcrowd.org/email.php?email=test%40test.com");
     });
   });
 });

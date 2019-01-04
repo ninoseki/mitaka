@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class BlockCypher implements Searcher {
@@ -11,7 +12,7 @@ export class BlockCypher implements Searcher {
     this.name = "BlockCypher";
   }
 
-  public searchByBTC(query) {
-    return `${this.endpoint}/btc/address/${query}/`;
+  public searchByBTC(query: string) {
+    return buildURL(this.endpoint, `/btc/address/${query}/`);
   }
 }

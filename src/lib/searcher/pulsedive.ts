@@ -1,4 +1,4 @@
-import * as crypto from "crypto-js";
+import { base64fy } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class Pulsedive implements Searcher {
@@ -12,22 +12,20 @@ export class Pulsedive implements Searcher {
     this.name = "Pulsedive";
   }
 
-  public searchByIP(query) {
+  public searchByIP(query: string) {
     return this.search(query);
   }
-  public searchByDomain(query) {
+  public searchByDomain(query: string) {
     return this.search(query);
   }
-  public searchByURL(query) {
+  public searchByURL(query: string) {
     return this.search(query);
   }
-  public searchByHash(query) {
+  public searchByHash(query: string) {
     return this.search(query);
   }
 
   private search(query: string) {
-    const wordArray = crypto.enc.Utf8.parse(query);
-    const b64 = crypto.enc.Base64.stringify(wordArray);
-    return `${this.endpoint}/indicator/?ioc=${b64}`;
+    return `${this.endpoint}/indicator/?ioc=${base64fy(query)}`;
   }
 }

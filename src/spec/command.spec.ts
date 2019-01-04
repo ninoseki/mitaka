@@ -47,7 +47,7 @@ describe("Command", () => {
     context("email", () => {
       it("should return a URL for search", () => {
         const command = new Command("Search test@test.com as a email on ViewDNS");
-        expect(command.search()).to.equal("https://viewdns.info/reversewhois/?q=test@test.com");
+        expect(command.search()).to.equal("https://viewdns.info/reversewhois/?q=test%40test.com");
       });
     });
     context("cve", () => {

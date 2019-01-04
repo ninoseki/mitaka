@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class XForceExchange implements Searcher {
@@ -11,15 +12,15 @@ export class XForceExchange implements Searcher {
     this.name = "X-Force-Exchange";
   }
 
-  public searchByIP(query) {
-    return `${this.endpoint}/ip/${query}`;
+  public searchByIP(query: string) {
+    return buildURL(this.endpoint, `/ip/${query}`);
   }
 
-  public searchByDomain(query) {
-    return `${this.endpoint}/url/${query}`;
+  public searchByDomain(query: string) {
+    return buildURL(this.endpoint, `/url/${query}`);
   }
 
-  public searchByHash(query) {
-    return `${this.endpoint}/malware/${query}`;
+  public searchByHash(query: string) {
+    return buildURL(this.endpoint, `/malware/${query}`);
   }
 }

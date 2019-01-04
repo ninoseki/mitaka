@@ -1,9 +1,10 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class Sploitus implements Searcher {
 
   public endpoint: string;
-  public name;
+  public name: string;
   public supportedTypes: SearchableType[] = ["cve"];
 
   constructor() {
@@ -11,7 +12,7 @@ export class Sploitus implements Searcher {
     this.name = "Sploitus";
   }
 
-  public searchByCVE(query) {
-    return `${this.endpoint}/?query=${query}`;
+  public searchByCVE(query: string) {
+    return buildURL(this.endpoint, "/", { query });
   }
 }

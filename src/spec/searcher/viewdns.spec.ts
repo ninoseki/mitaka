@@ -27,7 +27,7 @@ describe("ViewDNS", () => {
     it("should return URL", () => {
       expect(subject.supportedTypes.indexOf("email")).not.equal(-1);
       expect(subject.searchByEmail("test@test.com")).
-        to.equal("https://viewdns.info/reversewhois/?q=test@test.com");
+        to.equal("https://viewdns.info/reversewhois/?q=test%40test.com");
     });
   });
 });

@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class RiskIQ implements Searcher {
@@ -11,15 +12,15 @@ export class RiskIQ implements Searcher {
     this.name = "RiskIQ";
   }
 
-  public searchByIP(query) {
-    return `${this.endpoint}/search/${query}`;
+  public searchByIP(query: string) {
+    return buildURL(this.endpoint, `/search/${query}`);
   }
 
-  public searchByDomain(query) {
-    return `${this.endpoint}/search/${query}`;
+  public searchByDomain(query: string) {
+    return buildURL(this.endpoint, `/search/${query}`);
   }
 
-  public searchByEmail(query) {
-    return `${this.endpoint}/search/whois/email/${query}`;
+  public searchByEmail(query: string) {
+    return buildURL(this.endpoint, `/search/whois/email/${query}`);
   }
 }
