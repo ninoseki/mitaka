@@ -34,6 +34,7 @@ import {
   XForceExchange,
   ZoomEye,
 } from ".";
+import { ThreatMiner } from "./threatminer";
 
 export const Searchers: Searcher[] = [
   new BGPView(),
@@ -62,6 +63,7 @@ export const Searchers: Searcher[] = [
   new SpyOnWeb(),
   new Talos(),
   new ThreatCrowd(),
+  new ThreatMiner(),
   new Urlscan(),
   new ViewDNS(),
   new VirusTotal(),

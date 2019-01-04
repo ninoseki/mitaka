@@ -25,6 +25,7 @@ export { Sploitus } from "./sploitus";
 export { SpyOnWeb } from "./spyonweb";
 export { Talos } from "./talos";
 export { ThreatCrowd } from "./threatcrowd";
+export { ThreatMiner } from "./threatminer";
 export { Urlscan } from "./urlscan";
 export { ViewDNS } from "./viewdns";
 export { VirusTotal } from "./virustotal";
