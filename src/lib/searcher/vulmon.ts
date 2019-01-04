@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class Vulmon implements Searcher {
@@ -11,7 +12,7 @@ export class Vulmon implements Searcher {
     this.name = "Vulmon";
   }
 
-  public searchByCVE(query) {
-    return `${this.endpoint}/vulnerabilitydetails?qid=${query}`;
+  public searchByCVE(query: string) {
+    return buildURL(this.endpoint, "/vulnerabilitydetails", { qid: query });
   }
 }

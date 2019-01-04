@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class BGPView implements Searcher {
@@ -11,14 +12,15 @@ export class BGPView implements Searcher {
     this.name = "BGPView";
   }
 
-  public searchByIP(query) {
-    return `${this.endpoint}/ip/${query}`;
+  public searchByIP(query: string) {
+    return buildURL(this.endpoint, `/ip/${query}`);
   }
 
-  public searchByASN(query) {
+  public searchByASN(query: string) {
     const matches = query.match(/\d+$/);
     if (matches !== null && matches[0]) {
-      return `${this.endpoint}/asn/${matches[0]}`;
+      return buildURL(this.endpoint, `/asn/${matches[0]}`);
     }
+    return "";
   }
 }

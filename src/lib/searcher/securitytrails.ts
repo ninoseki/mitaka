@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class SecurityTrails implements Searcher {
@@ -11,16 +12,15 @@ export class SecurityTrails implements Searcher {
     this.name = "SecurityTrails";
   }
 
-  public searchByText(query) {
-    const encoded = encodeURIComponent(query);
-    return `${this.endpoint}/list/keyword/${encoded}`;
+  public searchByText(query: string) {
+    return buildURL(this.endpoint, `/list/keyword/${encodeURIComponent(query)}`);
   }
 
-  public searchByIP(ip) {
-    return `${this.endpoint}/list/ip/${ip}`;
+  public searchByIP(query: string) {
+    return buildURL(this.endpoint, `/list/ip/${query}`);
   }
 
-  public searchByDomain(domain) {
-    return `${this.endpoint}/domain/${domain}`;
+  public searchByDomain(query: string) {
+    return buildURL(this.endpoint, `/domain/${query}`);
   }
 }

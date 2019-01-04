@@ -1,6 +1,5 @@
+import { base64fy, buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
-
-import * as crypto from "crypto-js";
 
 export class FOFA implements Searcher {
 
@@ -13,18 +12,15 @@ export class FOFA implements Searcher {
     this.name = "FOFA";
   }
 
-  public searchByIP(query) {
-    const param = `ip="${query}"`;
-    return `${this.endpoint}/result?qbase64=${this.base64fy(param)}`;
+  public searchByIP(query: string) {
+    return this.search(`ip="${query}"`);
   }
 
-  public searchByDomain(query) {
-    const param = `domain="${query}"`;
-    return `${this.endpoint}/result?qbase64=${this.base64fy(param)}`;
+  public searchByDomain(query: string) {
+    return this.search(`domain="${query}"`);
   }
 
-  private base64fy(s: string): string {
-    const wordArray = crypto.enc.Utf8.parse(s);
-    return crypto.enc.Base64.stringify(wordArray).trim();
+  private search(query: string): string {
+    return buildURL(this.endpoint, "/result", { qbase64: base64fy(query) });
   }
 }

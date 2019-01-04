@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class SpyOnWeb implements Searcher {
@@ -11,23 +12,23 @@ export class SpyOnWeb implements Searcher {
     this.name = "SpyOnWeb";
   }
 
-  public searchByIP(query) {
+  public searchByIP(query: string) {
     return this.search(query);
   }
 
-  public searchByDomain(query) {
+  public searchByDomain(query: string) {
     return this.search(query);
   }
 
-  public searchByGAPubID(query) {
+  public searchByGAPubID(query: string) {
     return this.search(query);
   }
 
-  public searchByGATrackID(query) {
+  public searchByGATrackID(query: string) {
     return this.search(query);
   }
 
-  private search(query) {
-    return `${this.endpoint}/${query}`;
+  private search(query: string) {
+    return buildURL(this.endpoint, `/${query}`);
   }
 }

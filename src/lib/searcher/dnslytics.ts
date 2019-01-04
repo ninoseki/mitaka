@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class DNSlytics implements Searcher {
@@ -11,11 +12,11 @@ export class DNSlytics implements Searcher {
     this.name = "DNSlytics";
   }
 
-  public searchByIP(query) {
-    return `${this.endpoint}/ip/${query}`;
+  public searchByIP(query: string) {
+    return buildURL(this.endpoint, `/ip/${query}`);
   }
 
-  public searchByDomain(query) {
-    return `${this.endpoint}/domain/${query}`;
+  public searchByDomain(query: string) {
+    return buildURL(this.endpoint, `/domain/${query}`);
   }
 }

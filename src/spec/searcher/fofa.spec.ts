@@ -17,7 +17,7 @@ describe("FOFA", () => {
 
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      expect(subject.searchByDomain("github.com")).to.equal("https://fofa.so/result?qbase64=ZG9tYWluPSJnaXRodWIuY29tIg==");
+      expect(subject.searchByDomain("github.com")).to.equal("https://fofa.so/result?qbase64=ZG9tYWluPSJnaXRodWIuY29tIg%3D%3D");
     });
   });
 });

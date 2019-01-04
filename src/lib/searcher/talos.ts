@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class Talos implements Searcher {
@@ -11,15 +12,15 @@ export class Talos implements Searcher {
     this.name = "Talos";
   }
 
-  public searchByIP(query) {
+  public searchByIP(query: string) {
     return this.search(query);
   }
 
-  public searchByDomain(query) {
+  public searchByDomain(query: string) {
     return this.search(query);
   }
 
-  private search(query) {
-    return `${this.endpoint}/reputation_center/lookup?search=${query}`;
+  private search(query: string) {
+    return buildURL(this.endpoint, "/reputation_center/lookup", { search: query });
   }
 }

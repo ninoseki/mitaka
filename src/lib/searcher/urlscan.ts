@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class Urlscan implements Searcher {
@@ -7,27 +8,23 @@ export class Urlscan implements Searcher {
   public supportedTypes: SearchableType[] = ["ip", "domain", "url"];
 
   constructor() {
-    this.endpoint = "https://urlscan.io/api/v1";
+    this.endpoint = "https://urlscan.io";
     this.name = "Urlscan";
   }
 
-  public searchByIP(query) {
-    const encoded = encodeURIComponent(query);
-    return this.search(encoded);
+  public searchByIP(query: string) {
+    return this.search(encodeURIComponent(query));
   }
 
-  public searchByDomain(query) {
-    const encoded = encodeURIComponent(query);
-    return this.search(encoded);
+  public searchByDomain(query: string) {
+    return this.search(encodeURIComponent(query));
   }
 
-  public searchByURL(query) {
-    const encoded = encodeURIComponent(`"${query}"`);
-    return this.search(encoded);
+  public searchByURL(query: string) {
+    return this.search(encodeURIComponent(`"${query}"`));
   }
 
-  public search(query) {
-    const url = `https://urlscan.io/search/`;
-    return `${url}#${query}`;
+  private search(query: string) {
+    return buildURL(this.endpoint, `/search/#${query}`);
   }
 }

@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class DomainBigData implements Searcher {
@@ -11,7 +12,7 @@ export class DomainBigData implements Searcher {
     this.name = "DomainBigData";
   }
 
-  public searchByDomain(query) {
-    return `${this.endpoint}/${query}`;
+  public searchByDomain(query: string) {
+    return buildURL(this.endpoint, `/${query}`);
   }
 }

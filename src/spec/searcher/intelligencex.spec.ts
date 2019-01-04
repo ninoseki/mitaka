@@ -24,13 +24,13 @@ describe("Intelligence X", () => {
   describe("#searchByURL", () => {
     it("should return URL", () => {
       expect(subject.supportedTypes.indexOf("url")).not.equal(-1);
-      expect(subject.searchByURL("https://github.com")).to.equal("https://intelx.io/?s=https://github.com");
+      expect(subject.searchByURL("https://github.com")).to.equal("https://intelx.io/?s=https%3A%2F%2Fgithub.com");
     });
   });
   describe("#searchByEmail", () => {
     it("should return URL", () => {
       expect(subject.supportedTypes.indexOf("email")).not.equal(-1);
-      expect(subject.searchByEmail("test@test.com")).to.equal("https://intelx.io/?s=test@test.com");
+      expect(subject.searchByEmail("test@test.com")).to.equal("https://intelx.io/?s=test%40test.com");
     });
   });
   describe("#searchByBTC", () => {

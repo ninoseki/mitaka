@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class ThreatCrowd implements Searcher {
@@ -12,14 +13,14 @@ export class ThreatCrowd implements Searcher {
   }
 
   public searchByIP(query) {
-    return `${this.endpoint}/ip.php?ip=${query}`;
+    return buildURL(this.endpoint, "/ip.php", { ip: query });
   }
 
   public searchByDomain(query) {
-    return `${this.endpoint}/domain.php?domain=${query}`;
+    return buildURL(this.endpoint, "/domain.php", { domain: query });
   }
 
   public searchByEmail(query) {
-    return `${this.endpoint}/email.php?email=${query}`;
+    return buildURL(this.endpoint, "/email.php", { email: query });
   }
 }

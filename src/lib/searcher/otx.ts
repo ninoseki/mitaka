@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class OTX implements Searcher {
@@ -11,14 +12,14 @@ export class OTX implements Searcher {
     this.name = "OTX";
   }
 
-  public searchByIP(query) {
-    return `${this.endpoint}/indicator/ip/${query}`;
+  public searchByIP(query: string) {
+    return buildURL(this.endpoint, `/indicator/ip/${query}`);
   }
-  public searchByDomain(query) {
-    return `${this.endpoint}/indicator/domain/${query}`;
+  public searchByDomain(query: string) {
+    return buildURL(this.endpoint, `/indicator/domain/${query}`);
   }
 
-  public searchByHash(query) {
-    return `${this.endpoint}/indicator/file/${query}`;
+  public searchByHash(query: string) {
+    return buildURL(this.endpoint, `/indicator/file/${query}`);
   }
 }

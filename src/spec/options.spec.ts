@@ -119,7 +119,7 @@ describe("Options script", () => {
       const dom = new JSDOM();
       root.document = dom.window.document;
 
-      const searcherList = root.document.createElement("div") as HTMLElement; ;
+      const searcherList = root.document.createElement("div") as HTMLElement;
       searcherList.id = "searcherList";
 
       const stub: sinon.SinonStub = sinon.stub(root.document, "getElementById");

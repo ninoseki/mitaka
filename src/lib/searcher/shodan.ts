@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class Shodan implements Searcher {
@@ -11,8 +12,7 @@ export class Shodan implements Searcher {
     this.name = "Shodan";
   }
 
-  public searchByText(query) {
-    const encoded = encodeURIComponent(query);
-    return `${this.endpoint}/search?query=${encoded}`;
+  public searchByText(query: string) {
+    return buildURL(this.endpoint, "/search", { query });
   }
 }

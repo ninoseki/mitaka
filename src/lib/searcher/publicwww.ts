@@ -1,3 +1,4 @@
+import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class PublicWWW implements Searcher {
@@ -11,8 +12,7 @@ export class PublicWWW implements Searcher {
     this.name = "PublicWWW";
   }
 
-  public searchByText(query) {
-    const encoded = encodeURIComponent(query);
-    return `${this.endpoint}/${encoded}`;
+  public searchByText(query: string) {
+    return buildURL(this.endpoint, `/${encodeURIComponent(query)}`);
   }
 }
