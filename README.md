@@ -55,6 +55,7 @@ It works as a Chrome extension and it makes possible to search / scan IOC via th
 | SpyOnWeb         | http://spyonweb.com                  | ip / domain / gaPubID / gaTrackID |
 | Talos            | https://talosintelligence.com        | ip / domain                       |
 | ThreatCrowd      | https://www.threatcrowd.org          | ip / domain / email               |
+| ThreatMiner      | https://www.threatminer.org          | ip / domain / hash                |
 | Urlscan          | https://urlscan.io                   | ip / domain / url                 |
 | ViewDNS          | https://viewdns.info                 | ip / domain / email               |
 | VirusTotal       | https://www.virustotal.com           | ip / domain / url / hash          |
