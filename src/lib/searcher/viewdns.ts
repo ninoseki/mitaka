@@ -3,7 +3,7 @@ import { SearchableType, Searcher } from "./searcher";
 export class ViewDNS implements Searcher {
 
   public endpoint: string;
-  public name;
+  public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "email"];
 
   constructor() {

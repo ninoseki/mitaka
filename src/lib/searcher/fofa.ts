@@ -5,7 +5,7 @@ import * as crypto from "crypto-js";
 export class FOFA implements Searcher {
 
   public endpoint: string;
-  public name;
+  public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain"];
 
   constructor() {
