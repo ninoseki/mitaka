@@ -1,6 +1,6 @@
 {
   "name": "mitaka",
-  "version": "0.34.0",
+  "version": "0.35.0",
   "description": "OSINT friendly IOC (Indicator of Compromise) saerch tool",
   "main": "index.js",
   "scripts": {
@@ -68,11 +68,11 @@
     "sinon": "^7.2.2",
     "sinon-chrome": "^2.3.2",
     "ts-lint": "^4.5.1",
-    "ts-loader": "^5.3.2",
+    "ts-loader": "^5.3.3",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2",
-    "webpack": "^4.28.3",
-    "webpack-cli": "^3.2.0",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1",
     "window-or-global": "^1.0.1"
   }
 }
