@@ -17,7 +17,7 @@ export function onsSlectionChange() {
       selection: selected,
     });
   }
-};
+}
 
 if (typeof document !== "undefined") {
   document.addEventListener("selectionchange", throttle(100, onsSlectionChange));
