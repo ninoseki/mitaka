@@ -26,7 +26,7 @@ export function saveApiKeys() {
 }
 
 export function saveSearcherStates() {
-  let searcherStates = {};
+  const searcherStates = {};
   const searcherList = document.getElementById("searcherList") as HTMLElement;
   const radios = searcherList.querySelectorAll<HTMLInputElement>('[type="checkbox"]');
   for (const radio of radios) {
@@ -70,9 +70,9 @@ export function restoreSearcherStates() {
         isEnabled = config.searcherStates[searcher.name];
       }
       states.push({
+        isEnabled,
         name: searcher.name,
         supportedTypes: searcher.supportedTypes,
-        isEnabled,
       });
     }
 
