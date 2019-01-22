@@ -23,13 +23,13 @@ describe("Command", () => {
     context("ip", () => {
       it("should return a URL for search", () => {
         const command = new Command("Search 1.1.1.1 as a ip on Urlscan");
-        expect(command.search()).to.equal("https://urlscan.io/search/#1.1.1.1");
+        expect(command.search()).to.equal("https://urlscan.io/ip/1.1.1.1");
       });
     });
     context("domain", () => {
       it("should return a URL for search", () => {
         const command = new Command("Search github.com as a domain on Urlscan");
-        expect(command.search()).to.equal("https://urlscan.io/search/#github.com");
+        expect(command.search()).to.equal("https://urlscan.io/domain/github.com");
       });
     });
     context("url", () => {
