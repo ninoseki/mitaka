@@ -1,12 +1,6 @@
-sudo: false
-
 language: node_js
 
 node_js:
   - "11"
 
 after_success: npm run coverage
-
-cache:
-  directories:
-    - node_modules
