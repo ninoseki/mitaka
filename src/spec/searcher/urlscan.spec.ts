@@ -17,12 +17,12 @@ describe("Urlscan", () => {
   });
   describe("#searchByIP", () => {
     it("should return URL", () => {
-      expect(subject.searchByIP("1.1.1.1")).to.eq("https://urlscan.io/search/#1.1.1.1");
+      expect(subject.searchByIP("1.1.1.1")).to.eq("https://urlscan.io/ip/1.1.1.1");
     });
   });
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      expect(subject.searchByDomain("urlscan.io")).to.eq("https://urlscan.io/search/#urlscan.io");
+      expect(subject.searchByDomain("urlscan.io")).to.eq("https://urlscan.io/domain/urlscan.io");
     });
   });
 });
