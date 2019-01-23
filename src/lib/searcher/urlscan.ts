@@ -13,11 +13,11 @@ export class Urlscan implements Searcher {
   }
 
   public searchByIP(query: string) {
-    return buildURL(this.endpoint, `/ip/${query}`)
+    return buildURL(this.endpoint, `/ip/${query}`);
   }
 
   public searchByDomain(query: string) {
-    return buildURL(this.endpoint, `/domain/${query}`)
+    return buildURL(this.endpoint, `/domain/${query}`);
   }
 
   public searchByURL(query: string) {
