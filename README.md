@@ -3,14 +3,18 @@
 [![Chrome Version](https://img.shields.io/chrome-web-store/v/:mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg?style=flat&logo=google%20chrome&colorB=green&logoColor=dddddd)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
 [![Chrome Users](https://img.shields.io/chrome-web-store/users/:mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg?style=flat&logo=google%20chrome&logoColor=dddddd)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
 [![Chrome Stars](https://img.shields.io/chrome-web-store/stars/:mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg?style=flat&logo=google%20chrome&logoColor=dddddd)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
-
 [![Build Status](https://travis-ci.org/ninoseki/mitaka.svg?branch=master)](https://travis-ci.org/ninoseki/mitaka)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1bd809cde51f4ef98507fa0650fa6526)](https://www.codacy.com/app/ninoseki/mitaka)
 [![Coverage Status](https://coveralls.io/repos/github/ninoseki/mitaka/badge.svg)](https://coveralls.io/github/ninoseki/mitaka)
 
-Mitaka is an OSINT friendly IOC (Indicator of Compromise) search tool.
+![eyecatch](./examples/eyecatch.png)
 
-It works as a Chrome extension and it makes possible to search / scan IOC via the context menu.
+Mitaka is an OSINT friendly Chrome extension which can:
+
+- Extract & refang IoC from a block of text
+  - E.g. `example[.]com` to `example.com`
+- Search / scan it on various engines
+  - E.g. VirusTotal, urlscan.io, Censys, Shodan, etc.
 
 ## Features
 
@@ -84,7 +88,7 @@ You can enable / disable a search engine via the extension's options.
 
 ## How to use
 
-The Chrome extension shows context menus based on a type of IOC you selected and then you can choose what you want to search / scan on.
+The Chrome extension shows context menus based on a type of IoC you selected and then you can choose what you want to search / scan on.
 
 **Examples:**
 
