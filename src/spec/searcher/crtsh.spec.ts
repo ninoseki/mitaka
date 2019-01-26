@@ -5,7 +5,7 @@ import { Crtsh } from "../../lib/searcher";
 describe("Crtsh", () => {
   const subject = new Crtsh();
 
-  it("should support IP & Domain type IOC", () => {
+  it("should support Domain type IOC", () => {
     expect(subject.supportedTypes).to.deep.equal(["domain"]);
   });
 
