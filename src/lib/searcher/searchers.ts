@@ -1,4 +1,5 @@
 import {
+  AbuseIPDB,
   BGPView,
   BlockCypher,
   Censys,
@@ -27,6 +28,7 @@ import {
   SpyOnWeb,
   Talos,
   ThreatCrowd,
+  ThreatMiner,
   Urlscan,
   ViewDNS,
   VirusTotal,
@@ -35,9 +37,9 @@ import {
   XForceExchange,
   ZoomEye,
 } from ".";
-import { ThreatMiner } from "./threatminer";
 
 export const Searchers: Searcher[] = [
+  new AbuseIPDB(),
   new BGPView(),
   new BlockCypher(),
   new Censys(),
