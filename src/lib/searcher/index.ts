@@ -1,5 +1,6 @@
 export { AbuseIPDB } from "./abuseipdb";
 export { BGPView } from "./bgpview";
+export { BlockChain } from "./blockchain";
 export { BlockCypher } from "./blockcypher";
 export { Censys } from "./censys";
 export { Crtsh } from "./crtsh";
