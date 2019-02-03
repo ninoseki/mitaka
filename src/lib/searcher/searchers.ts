@@ -1,6 +1,7 @@
 import {
   AbuseIPDB,
   BGPView,
+  BitcoinAbuse,
   BlockChain,
   BlockCypher,
   Censys,
@@ -42,6 +43,7 @@ import {
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),
   new BGPView(),
+  new BitcoinAbuse(),
   new BlockChain(),
   new BlockCypher(),
   new Censys(),
