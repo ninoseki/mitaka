@@ -3,7 +3,7 @@ import { JSDOM } from "jsdom";
 import "mocha";
 import SinonChrome = require("sinon-chrome");
 import * as root from "window-or-global";
-import { onsSlectionChange } from "../content";
+import { onSelctionChange } from "../content";
 
 describe("Context script", () => {
   beforeEach(() => {
@@ -17,9 +17,6 @@ describe("Context script", () => {
   });
   context("when selected a non anchor element", () => {
     beforeEach(() => {
-      const obj = {};
-      obj.toString = () => "test";
-      obj["rangeCount"] = 0;
       root.window.getSelection = () => {
         return {
           rangeCount: 0,
@@ -35,7 +32,7 @@ describe("Context script", () => {
     describe("#onSelectionChange", () => {
       it("should call chrome.runtime.sendMessage()", () => {
         expect(root.chrome.runtime.sendMessage.notCalled).to.be.true;
-        onsSlectionChange();
+        onSelctionChange();
         expect(root.chrome.runtime.sendMessage.called).to.be.true;
         expect(root.chrome.runtime.sendMessage.withArgs({
           request: "updateContextMenu",
@@ -75,7 +72,7 @@ describe("Context script", () => {
     describe("#onSelectionChange", () => {
       it("should call chrome.runtime.sendMessage()", () => {
         expect(root.chrome.runtime.sendMessage.notCalled).to.be.true;
-        onsSlectionChange();
+        onSelctionChange();
         expect(root.chrome.runtime.sendMessage.called).to.be.true;
         expect(root.chrome.runtime.sendMessage.withArgs({
           request: "updateContextMenu",
