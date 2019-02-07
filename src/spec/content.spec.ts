@@ -17,9 +17,6 @@ describe("Context script", () => {
   });
   context("when selected a non anchor element", () => {
     beforeEach(() => {
-      const obj = {};
-      obj.toString = () => "test";
-      obj["rangeCount"] = 0;
       root.window.getSelection = () => {
         return {
           rangeCount: 0,
