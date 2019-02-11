@@ -1,6 +1,6 @@
 {
   "name": "mitaka",
-  "version": "0.38.0",
+  "version": "0.39.0",
   "description": "OSINT friendly IOC (Indicator of Compromise) saerch tool",
   "main": "index.js",
   "scripts": {
@@ -52,7 +52,7 @@
     "@types/mocha": "^5.2.5",
     "@types/moxios": "^0.4.8",
     "@types/mustache": "^0.8.32",
-    "@types/node": "^10.12.23",
+    "@types/node": "^10.12.24",
     "@types/qs": "^6.5.1",
     "@types/sinon": "^7.0.5",
     "@types/sinon-chrome": "^2.2.6",
