@@ -15,6 +15,7 @@ export { FortiGuard } from "./fortiguard";
 export { HybridAnalysis } from "./hybridanalysis";
 export { IntelligenceX } from "./intelligencex";
 export { Maltiverse } from "./maltiverse";
+export { OCCRP } from "./occrp";
 export { ONYPHE } from "./onyphe";
 export { OTX } from "./otx";
 export { Pipl } from "./pipl";
