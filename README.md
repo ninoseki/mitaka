@@ -40,6 +40,7 @@ Mitaka is an OSINT friendly Chrome extension which can:
 |:-----------------|:-------------------------------------|:----------------------------------|
 | AbuseIPDB        | https://www.abuseipdb.com            | ip                                |
 | BGPView          | https://bgpview.io                   | ip / asn                          |
+| BinaryEdge       | https://app.binaryedge.io            | ip / domain                       |
 | BitcoinAbuse     | https://www.bitcoinabuse.com         | btc                               |
 | Blockchain.com   | https://www.blockchain.com           | btc                               |
 | BlockCypher      | https://live.blockcypher.com         | btc                               |
