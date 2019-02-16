@@ -1,6 +1,7 @@
 import {
   AbuseIPDB,
   BGPView,
+  BinaryEdge,
   BitcoinAbuse,
   BlockChain,
   BlockCypher,
@@ -44,6 +45,7 @@ import {
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),
   new BGPView(),
+  new BinaryEdge(),
   new BitcoinAbuse(),
   new BlockChain(),
   new BlockCypher(),
