@@ -74,6 +74,7 @@ Mitaka is an OSINT friendly Chrome extension which can:
 | ViewDNS          | https://viewdns.info                 | ip / domain / email               |
 | VirusTotal       | https://www.virustotal.com           | ip / domain / url / hash          |
 | Vulmon           | https://vulmon.com                   | cve                               |
+| VxCube           | http://vxcube.com                    | ip / domain / hash                |
 | WebAnalyzer      | https://wa-com.com/                  | domain                            |
 | X-Force Exchange | https://exchange.xforce.ibmcloud.com | ip / domain / hash                |
 | ZoomEye          | https://www.zoomeye.org              | ip                                |
