@@ -44,7 +44,7 @@ Mitaka is an OSINT friendly Chrome extension which can:
 | BitcoinAbuse     | https://www.bitcoinabuse.com         | btc                               |
 | Blockchain.com   | https://www.blockchain.com           | btc                               |
 | BlockCypher      | https://live.blockcypher.com         | btc                               |
-| Censys           | https://censys.io                    | text                              |
+| Censys           | https://censys.io                    | ip / domain / ans / text          |
 | crt.sh           | https://crt.sh                       | domain                            |
 | Cymon            | https://cymon.io                     | ip / domain                       |
 | DNSlytics        | https://dnslytics.com                | ip / domain                       |
@@ -64,7 +64,7 @@ Mitaka is an OSINT friendly Chrome extension which can:
 | Pulsedive        | https://pulsedive.com                | ip / domaion / url / hash         |
 | RiskIQ           | http://community.riskiq.com          | ip / domain / email               |
 | SecurityTrails   | https://securitytrails.com           | ip / domain                       |
-| Shodan           | https://www.shodan.io                | text                              |
+| Shodan           | https://www.shodan.io                | ip / domain / asn                 |
 | Sploitus         | https://sploitus.com                 | cve                               |
 | SpyOnWeb         | http://spyonweb.com                  | ip / domain / gaPubID / gaTrackID |
 | Talos            | https://talosintelligence.com        | ip / domain                       |
