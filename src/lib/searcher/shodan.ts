@@ -5,14 +5,22 @@ export class Shodan implements Searcher {
 
   public endpoint: string;
   public name: string;
-  public supportedTypes: SearchableType[] = ["text"];
+  public supportedTypes: SearchableType[] = ["ip", "domain", "asn"];
 
   constructor() {
     this.endpoint = `https://www.shodan.io`;
     this.name = "Shodan";
   }
 
-  public searchByText(query: string) {
-    return buildURL(this.endpoint, "/search", { query });
+  public searchByASN(query: string) {
+    return buildURL(this.endpoint, "/search", { query: `asn:${query}` });
+  }
+
+  public searchByIP(query: string) {
+    return buildURL(this.endpoint, `/host/${query}`);
+  }
+
+  public searchByDomain(query: string) {
+    return buildURL(this.endpoint, "/search", { query: `hostname:${query}` });
   }
 }

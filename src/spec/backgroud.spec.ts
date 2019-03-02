@@ -124,11 +124,6 @@ describe("Background script", () => {
         }).calledOnce).to.be.true;
         expect(root.chrome.contextMenus.create.withArgs({
           contexts: ["selection"],
-          id: "Search test as a text on Shodan",
-          title: "Search this text on Shodan",
-        }).calledOnce).to.be.true;
-        expect(root.chrome.contextMenus.create.withArgs({
-          contexts: ["selection"],
           id: "Search test as a text on PublicWWW",
           title: "Search this text on PublicWWW",
         }).calledOnce).to.be.true;
@@ -149,11 +144,6 @@ describe("Background script", () => {
           id: "Search test as a text on Censys",
           title: "Search this text on Censys",
         }).calledOnce).to.be.false;
-        expect(root.chrome.contextMenus.create.withArgs({
-          contexts: ["selection"],
-          id: "Search test as a text on Shodan",
-          title: "Search this text on Shodan",
-        }).calledOnce).to.be.true;
         expect(root.chrome.contextMenus.create.withArgs({
           contexts: ["selection"],
           id: "Search test as a text on PublicWWW",
