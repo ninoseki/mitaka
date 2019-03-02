@@ -5,7 +5,7 @@ export class Censys implements Searcher {
 
   public endpoint: string;
   public name: string;
-  public supportedTypes: SearchableType[] = ["text"];
+  public supportedTypes: SearchableType[] = ["ip", "domain", "asn", "text"];
 
   constructor() {
     this.endpoint = "https://censys.io";
@@ -14,5 +14,21 @@ export class Censys implements Searcher {
 
   public searchByText(query: string) {
     return buildURL(this.endpoint, "/ipv4", { q: query });
+  }
+
+  public searchByIP(query: string) {
+    return buildURL(this.endpoint, `/ipv4/${query}`);
+  }
+
+  public searchByDomain(query: string) {
+    return buildURL(this.endpoint, `/domain/${query}`);
+  }
+
+  public searchByASN(query: string) {
+    const matches = query.match(/\d+$/);
+    if (matches !== null && matches[0]) {
+      return buildURL(this.endpoint, "/ipv4", { q: `autonomous_system.asn:${matches[0]}` });
+    }
+    return "";
   }
 }
