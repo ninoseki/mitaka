@@ -6,10 +6,13 @@ export class Command {
   public action: string;
   public query: string;
   public target: string;
+  public type: string;
 
   constructor(command: string) {
+    // command = `Search ${entry.query} as a ${entry.type} on ${name}`;
     const parts: string[] = command.split(" ");
     this.action = parts[0].toLowerCase();
+    this.type = parts[parts.length - 3];
     this.query = parts.slice(1, parts.length - 5).join(" ");
     this.target = parts[parts.length - 1];
   }
@@ -21,7 +24,7 @@ export class Command {
     let url = "";
     if (entry !== undefined) {
       const searcher = entry.analyzer as Searcher;
-      switch (entry.type) {
+      switch (this.type) {
         case "text":
           url = searcher.searchByText!(entry.query);
           break;
