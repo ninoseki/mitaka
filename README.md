@@ -44,7 +44,7 @@ Mitaka is an OSINT friendly Chrome extension which can:
 | BitcoinAbuse     | https://www.bitcoinabuse.com         | btc                               |
 | Blockchain.com   | https://www.blockchain.com           | btc                               |
 | BlockCypher      | https://live.blockcypher.com         | btc                               |
-| Censys           | https://censys.io                    | ip / domain / ans / text          |
+| Censys           | https://censys.io                    | ip / domain / asn / text          |
 | crt.sh           | https://crt.sh                       | domain                            |
 | Cymon            | https://cymon.io                     | ip / domain                       |
 | DNSlytics        | https://dnslytics.com                | ip / domain                       |
@@ -113,7 +113,7 @@ The Chrome extension shows context menus based on a type of IoC you selected and
 
 ## Options
 
-You can enable / disable a search engine in the options page based on your preference.
+You can enable / disable a search engine on the options page based on your preference.
 
 !["options.png](/examples/options.png "options.png")
 
