@@ -1,8 +1,8 @@
 # Mitaka
 
-[![Chrome Version](https://img.shields.io/chrome-web-store/v/:mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg?style=flat&logo=google%20chrome&colorB=green&logoColor=dddddd)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
-[![Chrome Users](https://img.shields.io/chrome-web-store/users/:mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg?style=flat&logo=google%20chrome&logoColor=dddddd)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
-[![Chrome Stars](https://img.shields.io/chrome-web-store/stars/:mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg?style=flat&logo=google%20chrome&logoColor=dddddd)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
+[![Chrome Version](https://img.shields.io/chrome-web-store/v/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
+[![Chrome Users](https://img.shields.io/chrome-web-store/users/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
+[![Chrome Rating](https://img.shields.io/chrome-web-store/rating/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
 [![Build Status](https://travis-ci.org/ninoseki/mitaka.svg?branch=master)](https://travis-ci.org/ninoseki/mitaka)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1bd809cde51f4ef98507fa0650fa6526)](https://www.codacy.com/app/ninoseki/mitaka)
 [![Coverage Status](https://coveralls.io/repos/github/ninoseki/mitaka/badge.svg)](https://coveralls.io/github/ninoseki/mitaka)
