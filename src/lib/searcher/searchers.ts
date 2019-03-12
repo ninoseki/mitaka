@@ -1,5 +1,6 @@
 import {
   AbuseIPDB,
+  ArchiveOrg,
   BGPView,
   BinaryEdge,
   BitcoinAbuse,
@@ -45,6 +46,7 @@ import {
 
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),
+  new ArchiveOrg(),
   new BGPView(),
   new BinaryEdge(),
   new BitcoinAbuse(),
