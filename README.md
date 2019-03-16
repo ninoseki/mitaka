@@ -36,49 +36,50 @@ Mitaka is an OSINT friendly Chrome extension which can:
 
 ### Supported search engines
 
-| name             | url                                  | supported types                   |
-|:-----------------|:-------------------------------------|:----------------------------------|
-| AbuseIPDB        | https://www.abuseipdb.com            | ip                                |
-| archive.org      | https://archive.org/                 | url                               |
-| BGPView          | https://bgpview.io                   | ip / asn                          |
-| BinaryEdge       | https://app.binaryedge.io            | ip / domain                       |
-| BitcoinAbuse     | https://www.bitcoinabuse.com         | btc                               |
-| Blockchain.com   | https://www.blockchain.com           | btc                               |
-| BlockCypher      | https://live.blockcypher.com         | btc                               |
-| Censys           | https://censys.io                    | ip / domain / asn / text          |
-| crt.sh           | https://crt.sh                       | domain                            |
-| Cymon            | https://cymon.io                     | ip / domain                       |
-| DNSlytics        | https://dnslytics.com                | ip / domain                       |
-| DomainBigData    | https://domainbigdata.com            | domain                            |
-| DomainWatch      | https://domainwat.ch                 | domain / email                    |
-| FOFA             | https://fofa.so                      | ip / domain                       |
-| FindSubDomains   | https://findsubdomains.com           | domain                            |
-| HybridAnalysis   | https://www.hybrid-analysis.com      | ip / domain / hash (sha256 only)  |
-| Intelligence X   | https://intelx.io                    | ip / domain / url / email / btc   |
-| Maltiverse       | https://www.maltiverse.com           | domain / hash                     |
-| OOCPR            | https://data.occrp.org               | email                             |
-| ONYPHE           | https://www.onyphe.io                | ip                                |
-| OTX              | https://otx.alienvault.com           | ip / domain / hash                |
-| Pipl             | https://pipl.com                     | email                             |
-| PubDB            | http://pub-db.com                    | gaPubID / gaTrackID               |
-| PublicWWW        | https://publicwww.com                | text                              |
-| Pulsedive        | https://pulsedive.com                | ip / domaion / url / hash         |
-| RiskIQ           | http://community.riskiq.com          | ip / domain / email               |
-| SecurityTrails   | https://securitytrails.com           | ip / domain                       |
-| Shodan           | https://www.shodan.io                | ip / domain / asn                 |
-| Sploitus         | https://sploitus.com                 | cve                               |
-| SpyOnWeb         | http://spyonweb.com                  | ip / domain / gaPubID / gaTrackID |
-| Talos            | https://talosintelligence.com        | ip / domain                       |
-| ThreatCrowd      | https://www.threatcrowd.org          | ip / domain / email               |
-| ThreatMiner      | https://www.threatminer.org          | ip / domain / hash                |
-| Urlscan          | https://urlscan.io                   | ip / domain / url                 |
-| ViewDNS          | https://viewdns.info                 | ip / domain / email               |
-| VirusTotal       | https://www.virustotal.com           | ip / domain / url / hash          |
-| Vulmon           | https://vulmon.com                   | cve                               |
-| VxCube           | http://vxcube.com                    | ip / domain / hash                |
-| WebAnalyzer      | https://wa-com.com/                  | domain                            |
-| X-Force Exchange | https://exchange.xforce.ibmcloud.com | ip / domain / hash                |
-| ZoomEye          | https://www.zoomeye.org              | ip                                |
+| name                 | url                                    | supported types                   |
+|:---------------------|:---------------------------------------|:----------------------------------|
+| AbuseIPDB            | https://www.abuseipdb.com              | ip                                |
+| archive.org          | https://archive.org/                   | url                               |
+| BGPView              | https://bgpview.io                     | ip / asn                          |
+| BinaryEdge           | https://app.binaryedge.io              | ip / domain                       |
+| BitcoinAbuse         | https://www.bitcoinabuse.com           | btc                               |
+| Blockchain.com       | https://www.blockchain.com             | btc                               |
+| BlockCypher          | https://live.blockcypher.com           | btc                               |
+| Censys               | https://censys.io                      | ip / domain / asn / text          |
+| crt.sh               | https://crt.sh                         | domain                            |
+| Cymon                | https://cymon.io                       | ip / domain                       |
+| DNSlytics            | https://dnslytics.com                  | ip / domain                       |
+| DomainBigData        | https://domainbigdata.com              | domain                            |
+| DomainWatch          | https://domainwat.ch                   | domain / email                    |
+| FindSubDomains       | https://findsubdomains.com             | domain                            |
+| FOFA                 | https://fofa.so                        | ip / domain                       |
+| Google Safe Browsing | https://transparencyreport.google.com/ | domain / url                      |
+| HybridAnalysis       | https://www.hybrid-analysis.com        | ip / domain / hash (sha256 only)  |
+| Intelligence X       | https://intelx.io                      | ip / domain / url / email / btc   |
+| Maltiverse           | https://www.maltiverse.com             | domain / hash                     |
+| OOCPR                | https://data.occrp.org                 | email                             |
+| ONYPHE               | https://www.onyphe.io                  | ip                                |
+| OTX                  | https://otx.alienvault.com             | ip / domain / hash                |
+| Pipl                 | https://pipl.com                       | email                             |
+| PubDB                | http://pub-db.com                      | gaPubID / gaTrackID               |
+| PublicWWW            | https://publicwww.com                  | text                              |
+| Pulsedive            | https://pulsedive.com                  | ip / domaion / url / hash         |
+| RiskIQ               | http://community.riskiq.com            | ip / domain / email               |
+| SecurityTrails       | https://securitytrails.com             | ip / domain                       |
+| Shodan               | https://www.shodan.io                  | ip / domain / asn                 |
+| Sploitus             | https://sploitus.com                   | cve                               |
+| SpyOnWeb             | http://spyonweb.com                    | ip / domain / gaPubID / gaTrackID |
+| Talos                | https://talosintelligence.com          | ip / domain                       |
+| ThreatCrowd          | https://www.threatcrowd.org            | ip / domain / email               |
+| ThreatMiner          | https://www.threatminer.org            | ip / domain / hash                |
+| Urlscan              | https://urlscan.io                     | ip / domain / url                 |
+| ViewDNS              | https://viewdns.info                   | ip / domain / email               |
+| VirusTotal           | https://www.virustotal.com             | ip / domain / url / hash          |
+| Vulmon               | https://vulmon.com                     | cve                               |
+| VxCube               | http://vxcube.com                      | ip / domain / hash                |
+| WebAnalyzer          | https://wa-com.com/                    | domain                            |
+| X-Force Exchange     | https://exchange.xforce.ibmcloud.com   | ip / domain / hash                |
+| ZoomEye              | https://www.zoomeye.org                | ip                                |
 
 You can enable / disable a search engine via the extension's options.
 
