@@ -16,10 +16,12 @@ describe("Options script", () => {
   beforeEach(() => {
     root.chrome = SinonChrome;
   });
+
   afterEach(() => {
     root.chrome.flush();
     delete root.chrome;
   });
+
   describe("#saveApiKeys", () => {
     beforeEach(() => {
       const dom = new JSDOM();
@@ -32,9 +34,11 @@ describe("Options script", () => {
       stub.withArgs("urlscan-api-key").returns(input);
       stub.withArgs("virustotal-api-key").returns(input);
     });
+
     afterEach(() => {
       (root.document.getElementById as sinon.SinonStub).restore();
     });
+
     it("should save apiKeys via chrome.storage.sync.set()", () => {
       expect(root.chrome.storage.sync.set.notCalled).to.be.true;
       saveApiKeys();
@@ -46,6 +50,7 @@ describe("Options script", () => {
       }).calledOnce).to.be.true;
     });
   });
+
   describe("#saveSearcherStates", () => {
     beforeEach(() => {
       const dom = new JSDOM();
@@ -66,9 +71,11 @@ describe("Options script", () => {
       const stub: sinon.SinonStub = sinon.stub(root.document, "getElementById");
       stub.withArgs("searcherList").returns(element);
     });
+
     afterEach(() => {
       (root.document.getElementById as sinon.SinonStub).restore();
     });
+
     it("should save searcherStates via chrome.storage.sync.set()", () => {
       expect(root.chrome.storage.sync.set.notCalled).to.be.true;
       saveSearcherStates();
@@ -80,6 +87,7 @@ describe("Options script", () => {
       }).calledOnce).to.be.true;
     });
   });
+
   describe("#restoreApiKeys", () => {
     beforeEach(() => {
       const dom = new JSDOM();
@@ -94,9 +102,11 @@ describe("Options script", () => {
       stub.withArgs("urlscan-api-key").returns(urlscanApiKey);
       stub.withArgs("virustotal-api-key").returns(virusTotalApiKey);
     });
+
     afterEach(() => {
       (root.document.getElementById as sinon.SinonStub).restore();
     });
+
     it("should restore via chrome.storage.sync.get()", async () => {
       root.chrome.storage.sync.get.withArgs("apiKeys").yieldsAsync({
         apiKeys: {
@@ -114,6 +124,7 @@ describe("Options script", () => {
       expect(virusTotalApiKey.value).to.equal("test2");
     });
   });
+
   describe("#restoreSearcherStates", () => {
     beforeEach(() => {
       const dom = new JSDOM();
@@ -140,9 +151,11 @@ describe("Options script", () => {
         </div>`,
       });
     });
+
     afterEach(() => {
       (root.document.getElementById as sinon.SinonStub).restore();
     });
+
     it("should compose searcerList based on searcherStates via chrome.storage.sync.get()", async () => {
       root.chrome.storage.sync.get.withArgs("searcherStates").yieldsAsync({
         searcherStates: {

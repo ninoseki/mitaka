@@ -11,18 +11,18 @@ describe("ThreatMiner", () => {
 
   describe("#searchByIP", () => {
     it("should return URL", () => {
-      expect(subject.supportedTypes.indexOf("ip")).not.equal(-1);
       expect(subject.searchByIP("1.1.1.1")).
         to.equal("https://www.threatminer.org/host.php?q=1.1.1.1");
     });
   });
+
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      expect(subject.supportedTypes.indexOf("domain")).not.equal(-1);
       expect(subject.searchByDomain("github.com")).
         to.equal("https://www.threatminer.org/domain.php?q=github.com");
     });
   });
+
   describe("#searchByHash", () => {
     it("should return URL", () => {
       expect(subject.supportedTypes.indexOf("hash")).not.equal(-1);

@@ -16,6 +16,7 @@ describe("ThreatCrowd", () => {
         to.equal("https://www.threatcrowd.org/ip.php?ip=188.40.75.132");
     });
   });
+
   describe("#searchByDomain", () => {
     it("should return URL", () => {
       expect(subject.supportedTypes.indexOf("domain")).not.equal(-1);
@@ -23,6 +24,7 @@ describe("ThreatCrowd", () => {
         to.equal("https://www.threatcrowd.org/domain.php?domain=github.com");
     });
   });
+
   describe("#searchByEmail", () => {
     it("should return URL", () => {
       expect(subject.supportedTypes.indexOf("email")).not.equal(-1);

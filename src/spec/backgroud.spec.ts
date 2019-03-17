@@ -17,10 +17,12 @@ describe("Background script", () => {
   beforeEach(() => {
     root.chrome = SinonChrome;
   });
+
   afterEach(() => {
     root.chrome.flush();
     delete root.chrome;
   });
+
   describe("#showNotification", () => {
     it("should call chrome.notifications.create()", () => {
       expect(root.chrome.notifications.create.notCalled).to.be.true;
@@ -34,6 +36,7 @@ describe("Background script", () => {
       }).calledOnce).to.be.true;
     });
   });
+
   describe("#search", () => {
     context("when given a valid input", () => {
       it("should call chrome.tabs.create()", () => {
@@ -47,6 +50,7 @@ describe("Background script", () => {
       });
     });
   });
+
   describe("#scan", () => {
     context("when chrome.storage.sync.get returns a valid config", () => {
       it("should call chrome.tabs.create()", async () => {
@@ -71,6 +75,7 @@ describe("Background script", () => {
         }).calledOnce).to.be.true;
       });
     });
+
     context("when chrome.storage.sync.get returns an invalid config", () => {
       it("should call chrome.tabs.create()", async () => {
         root.chrome.storage.sync.get.withArgs("apiKeys").yieldsAsync({
@@ -84,14 +89,17 @@ describe("Background script", () => {
       });
     });
   });
+
   describe("#createContextMenuErrorHandler", () => {
     beforeEach(() => {
       const stub = sinon.stub(console, "error");
       stub.withArgs("test");
     });
+
     afterEach(() => {
       (console.error as sinon.SinonStub).restore();
     });
+
     context("when set an error in chrome.runtime.lastError", () => {
       it("should output via console.error", () => {
         root.chrome.runtime.lastError = {
@@ -101,6 +109,7 @@ describe("Background script", () => {
         expect((console.error as sinon.SinonStub).withArgs("test").calledOnce).to.be.true;
       });
     });
+
     context("when not set an error in chrome.runtime.lastError", () => {
       it("should not output via console.error", () => {
         createContextMenuErrorHandler();
@@ -108,10 +117,12 @@ describe("Background script", () => {
       });
     });
   });
+
   describe("#createContextMenus", () => {
     beforeEach(() => {
       root.chrome.contextMenus.removeAll.yieldsAsync();
     });
+
     context("when not given a searcherState", () => {
       it("should call chrome.contextMenus.create", async () => {
         expect(root.chrome.contextMenus.create.notCalled).to.be.true;
@@ -129,6 +140,7 @@ describe("Background script", () => {
         }).calledOnce).to.be.true;
       });
     });
+
     context("when given a searcherState", () => {
       it("should call chrome.contextMenus.create", async () => {
         expect(root.chrome.contextMenus.create.notCalled).to.be.true;

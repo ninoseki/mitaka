@@ -14,12 +14,14 @@ describe("X-Force Exchange", () => {
       expect(subject.searchByIP("1.1.1.1")).to.equal("https://exchange.xforce.ibmcloud.com/ip/1.1.1.1");
     });
   });
+
   describe("#searchByDomain", () => {
     it("should return URL", () => {
       expect(subject.searchByDomain("github.com")).
         to.equal("https://exchange.xforce.ibmcloud.com/url/github.com");
     });
   });
+
   describe("#searchByHash", () => {
     it("should return URL", () => {
       expect(subject.searchByHash("44d88612fea8a8f36de82e1278abb02f")).

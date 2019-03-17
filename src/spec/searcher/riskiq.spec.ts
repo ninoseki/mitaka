@@ -16,6 +16,7 @@ describe("RiskIQ", () => {
         to.equal("https://community.riskiq.com/search/1.1.1.1");
     });
   });
+
   describe("#searchByDomain", () => {
     it("should return URL", () => {
       expect(subject.supportedTypes.indexOf("domain")).not.equal(-1);
@@ -23,6 +24,7 @@ describe("RiskIQ", () => {
         to.equal("https://community.riskiq.com/search/github.com");
     });
   });
+
   describe("#searchByEmail", () => {
     it("should return URL", () => {
       expect(subject.supportedTypes.indexOf("email")).not.equal(-1);

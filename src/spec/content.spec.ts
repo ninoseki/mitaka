@@ -11,10 +11,12 @@ describe("Context script", () => {
     root.window = dom.window;
     root.chrome = SinonChrome;
   });
+
   afterEach(() => {
     root.chrome.flush();
     delete root.chrome;
   });
+
   context("when selected a non anchor element", () => {
     beforeEach(() => {
       root.window.getSelection = () => {
@@ -26,9 +28,11 @@ describe("Context script", () => {
         };
       };
     });
+
     afterEach(() => {
       delete root.window.getSelection;
     });
+
     describe("#onSelectionChange", () => {
       it("should call chrome.runtime.sendMessage()", () => {
         expect(root.chrome.runtime.sendMessage.notCalled).to.be.true;
@@ -41,6 +45,7 @@ describe("Context script", () => {
       });
     });
   });
+
   context("when selected an anchor element", () => {
     beforeEach(() => {
       root.window.getSelection = () => {
@@ -66,9 +71,11 @@ describe("Context script", () => {
         };
       };
     });
+
     afterEach(() => {
       delete root.window.getSelection;
     });
+
     describe("#onSelectionChange", () => {
       it("should call chrome.runtime.sendMessage()", () => {
         expect(root.chrome.runtime.sendMessage.notCalled).to.be.true;
