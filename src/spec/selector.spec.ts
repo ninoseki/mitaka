@@ -32,6 +32,7 @@ describe("Seletor", () => {
           expect(selector.getSearchersByType("text").length).to.equal(stats.text);
         });
       });
+
       describe("#getAnalyzerEntrys", () => {
         it("should return Searchers support text", () => {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
@@ -50,11 +51,13 @@ describe("Seletor", () => {
           expect(selector.getIP()).to.equal("8.8.8.8");
         });
       });
+
       describe("#getSearchersForIP", () => {
         it("should return Searchers support ip", () => {
           expect(selector.getSearchersByType("ip").length).to.equal(stats.ip);
         });
       });
+
       describe("#getAnalyzerEntrys", () => {
         it("should return Searchrerentrys support ip", () => {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
@@ -74,11 +77,13 @@ describe("Seletor", () => {
           expect(selector.getURL()).to.equal(null);
         });
       });
+
       describe("#getSearchersForDomain", () => {
         it("should return Searchers support domain", () => {
           expect(selector.getSearchersByType("domain").length).to.equal(stats.domain);
         });
       });
+
       describe("#getAnalyzerEntrys", () => {
         it("should return Searchrerentrys support domain", () => {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
@@ -97,11 +102,13 @@ describe("Seletor", () => {
           expect(selector.getURL()).to.equal("https://urlscan.io/");
         });
       });
+
       describe("#getSearchersForUrl", () => {
         it("should return Searchers support url", () => {
           expect(selector.getSearchersByType("url").length).to.equal(stats.url);
         });
       });
+
       describe("#getAnalyzerEntrys", () => {
         it("should return Searchrerentrys support url", () => {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
@@ -120,11 +127,13 @@ describe("Seletor", () => {
           expect(selector.getEmail()).to.equal("test@test.com");
         });
       });
+
       describe("#getSearchersForEmail", () => {
         it("should return Searchers support email", () => {
           expect(selector.getSearchersByType("email").length).to.equal(stats.email);
         });
       });
+
       describe("#getAnalyzerEntrys", () => {
         it("should return Searchrerentrys support email", () => {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
@@ -143,11 +152,13 @@ describe("Seletor", () => {
           expect(selector.getASN()).to.equal("ASN15169");
         });
       });
+
       describe("#getSearchersForASN", () => {
         it("should return Searchers support asn", () => {
           expect(selector.getSearchersByType("asn").length).to.equal(stats.asn);
         });
       });
+
       describe("#getAnalyzerEntrys", () => {
         it("should return Searchrerentrys support asn", () => {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
@@ -171,11 +182,13 @@ describe("Seletor", () => {
           expect(s3.getHash()).to.equal("44d88612fea8a8f36de82e1278abb02f");
         });
       });
+
       describe("#getSearchersForHash", () => {
         it("should return Searchers support hash", () => {
           expect(selector.getSearchersByType("hash").length).to.equal(stats.hash);
         });
       });
+
       describe("#getAnalyzerEntrys", () => {
         it("should return Searchrerentrys support hash", () => {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
@@ -194,11 +207,13 @@ describe("Seletor", () => {
           expect(selector.getCVE()).to.equal("CVE-2018-8013");
         });
       });
+
       describe("#getSearchersForCVE", () => {
         it("should return Searchers support CVE", () => {
           expect(selector.getSearchersByType("cve").length).to.equal(stats.cve);
         });
       });
+
       describe("#getAnalyzerEntrys", () => {
         it("should return Searchrerentrys support cve", () => {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
@@ -217,11 +232,13 @@ describe("Seletor", () => {
           expect(selector.getBTC()).to.equal("1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa");
         });
       });
+
       describe("#getSearchersForBTC", () => {
         it("should return Searchers support BTC", () => {
           expect(selector.getSearchersByType("btc").length).to.equal(stats.btc);
         });
       });
+
       describe("#getAnalyzerEntrys", () => {
         it("should return Searchrerentrys support btc", () => {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
@@ -240,6 +257,7 @@ describe("Seletor", () => {
           expect(selector.getXMR()).to.equal("4Aa3TcU7ixMVcYwbsw8ENVbFwt4ZuqrNBVij5TRvPCTpGRK5BKBHQPu7ahT7z2A6547a5Lcn7yPZV1xU22ZbviqxUX7JVuP");
         });
       });
+
       describe("#getSearchersForBTC", () => {
         it("should return Searchers support BTC", () => {
           expect(selector.getSearchersByType("xmr").length).to.equal(stats.xmr);
@@ -254,6 +272,7 @@ describe("Seletor", () => {
           expect(selector.getGATrackID()).to.equal("UA-67609351-1");
         });
       });
+
       describe("#getSearchersForGATrackID", () => {
         it("should return Searchers support GATrackID", () => {
           expect(selector.getSearchersByType("gaTrackID").length).to.equal(stats.gaTrackID);
@@ -268,6 +287,7 @@ describe("Seletor", () => {
           expect(selector.getGAPubID()).to.equal("pub-9383614236930773");
         });
       });
+
       describe("#getSearchersForGAPubID", () => {
         it("should return Searchers support GAPubID", () => {
           expect(selector.getSearchersByType("gaPubID").length).to.equal(stats.gaPubID);

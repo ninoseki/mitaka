@@ -13,6 +13,7 @@ describe("Command", () => {
       expect(command.target).to.equal("Urlscan");
     });
   });
+
   describe("#search", () => {
     context("text", () => {
       it("should return a URL for search", () => {
@@ -20,54 +21,63 @@ describe("Command", () => {
         expect(command.search()).to.equal("https://censys.io/ipv4?q=1.1.1.1");
       });
     });
+
     context("ip", () => {
       it("should return a URL for search", () => {
         const command = new Command("Search 1.1.1.1 as a ip on Urlscan");
         expect(command.search()).to.equal("https://urlscan.io/ip/1.1.1.1");
       });
     });
+
     context("domain", () => {
       it("should return a URL for search", () => {
         const command = new Command("Search github.com as a domain on Urlscan");
         expect(command.search()).to.equal("https://urlscan.io/domain/github.com");
       });
     });
+
     context("url", () => {
       it("should return a URL for search", () => {
         const command = new Command("Search https://github.com as a url on Urlscan");
         expect(command.search()).to.equal("https://urlscan.io/search/#%22https%3A%2F%2Fgithub.com%22");
       });
     });
+
     context("hash", () => {
       it("should return a URL for search", () => {
         const command = new Command("Search 726a2eedb9df3d63ec1b4a7d774a799901f1a2b9 as a hash on Pulsedive");
         expect(command.search()).to.equal("https://pulsedive.com/indicator/?ioc=NzI2YTJlZWRiOWRmM2Q2M2VjMWI0YTdkNzc0YTc5OTkwMWYxYTJiOQ==");
       });
     });
+
     context("email", () => {
       it("should return a URL for search", () => {
         const command = new Command("Search test@test.com as a email on ViewDNS");
         expect(command.search()).to.equal("https://viewdns.info/reversewhois/?q=test%40test.com");
       });
     });
+
     context("cve", () => {
       it("should return a URL for search", () => {
         const command = new Command("Search CVE-2018-16384 as a cve on Vulmon");
         expect(command.search()).to.equal("https://vulmon.com/vulnerabilitydetails?qid=CVE-2018-16384");
       });
     });
+
     context("btc", () => {
       it("should return a URL for search", () => {
         const command = new Command("Search 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa as a btc on BlockCypher");
         expect(command.search()).to.equal("https://live.blockcypher.com/btc/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa/");
       });
     });
+
     context("gaTrackID", () => {
       it("should return a URL for search", () => {
         const command = new Command("Search UA-67609351-1 as a gaTrackID on PubDB");
         expect(command.search()).to.equal("http://pub-db.com/google-analytics/UA-67609351-1.html");
       });
     });
+
     context("gaPubID", () => {
       it("should return a URL for search", () => {
         const command = new Command("Search pub-9383614236930773 as a gaPubID on PubDB");
@@ -79,6 +89,7 @@ describe("Command", () => {
   describe("#scan", () => {
     beforeEach(() => { moxios.install(); });
     afterEach(() => { moxios.uninstall(); });
+
     context("urlscan", () => {
       context("ip", () => {
         it("should return a URL for scan", async () => {
@@ -103,6 +114,7 @@ describe("Command", () => {
           expect(await command.scan(apiKeys)).to.equal("https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/loading");
         });
       });
+
       context("domain", () => {
         it("should return a URL for scan", async () => {
           const command = new Command("Scan github.com as a domain on Urlscan");
@@ -126,6 +138,7 @@ describe("Command", () => {
           expect(await command.scan(apiKeys)).to.equal("https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/loading");
         });
       });
+
       context("url", () => {
         it("should return a URL for scan", async () => {
           const command = new Command("Scan https://www.wikipedia.org/ as a url on Urlscan");
@@ -150,6 +163,7 @@ describe("Command", () => {
         });
       });
     });
+
     context("virustotal", () => {
       context("url", () => {
         it("should return a URL for scan", async () => {

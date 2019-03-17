@@ -17,16 +17,19 @@ describe("VirusTotal", () => {
         to.equal("https://www.virustotal.com/#/url/5dd2d006b4430a593be125eee20494016d3ac933796da6deef590c3e045a685d");
     });
   });
+
   describe("#searchByDomain", () => {
     it("should return URL", () => {
       expect(subject.searchByDomain("virustotal.com")).to.equal("https://www.virustotal.com/#/domain/virustotal.com");
     });
   });
+
   describe("#searchByIP", () => {
     it("should return URL", () => {
       expect(subject.searchByIP("1.1.1.1")).to.equal("https://www.virustotal.com/#/ip-address/1.1.1.1");
     });
   });
+
   describe("#searchByHash", () => {
     it("should return URL", () => {
       expect(subject.searchByHash("275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f")).
