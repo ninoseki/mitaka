@@ -6,7 +6,7 @@ export class DomainBigData implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["domain"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://domainbigdata.com";
     this.name = "DomainBigData";
   }

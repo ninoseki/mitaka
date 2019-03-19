@@ -75,7 +75,7 @@ export function restoreSearcherStates() {
     const states: SearcherState[] = [];
 
     for (const searcher of Searchers) {
-      let isEnabled: boolean = true;
+      let isEnabled = true;
       if (
         "searcherStates" in config &&
         searcher.name in config.searcherStates

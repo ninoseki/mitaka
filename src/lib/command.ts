@@ -8,7 +8,7 @@ export class Command {
   public target: string;
   public type: string;
 
-  constructor(command: string) {
+  public constructor(command: string) {
     // command = `Search ${entry.query} as a ${entry.type} on ${name}`;
     const parts: string[] = command.split(" ");
     this.action = parts[0].toLowerCase();

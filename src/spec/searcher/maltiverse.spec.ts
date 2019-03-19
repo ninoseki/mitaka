@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import { IntelligenceX, Maltiverse } from "../../lib/searcher";
+import { Maltiverse } from "../../lib/searcher";
 
 describe("Maltiverse", () => {
   const subject = new Maltiverse();

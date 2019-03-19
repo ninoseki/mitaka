@@ -11,7 +11,7 @@ export class SpyOnWeb implements Searcher {
     "gaTrackID",
   ];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "http://spyonweb.com";
     this.name = "SpyOnWeb";
   }

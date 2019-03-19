@@ -6,7 +6,7 @@ export class PubDB implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["gaTrackID", "gaPubID"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "http://pub-db.com";
     this.name = "PubDB";
   }

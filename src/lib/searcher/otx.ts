@@ -6,7 +6,7 @@ export class OTX implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "hash"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://otx.alienvault.com";
     this.name = "OTX";
   }

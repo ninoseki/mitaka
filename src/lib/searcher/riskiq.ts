@@ -6,7 +6,7 @@ export class RiskIQ implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "email"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://community.riskiq.com";
     this.name = "RiskIQ";
   }

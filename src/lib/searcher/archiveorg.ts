@@ -6,7 +6,7 @@ export class ArchiveOrg implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["url"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://web.archive.org";
     this.name = "archive.org";
   }

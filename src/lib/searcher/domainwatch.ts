@@ -6,7 +6,7 @@ export class DomainWatch implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["domain", "email"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://domainwat.ch";
     this.name = "DomainWatch";
   }

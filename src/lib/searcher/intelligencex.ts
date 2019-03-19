@@ -12,7 +12,7 @@ export class IntelligenceX implements Searcher {
     "btc",
   ];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://intelx.io";
     this.name = "IntelligenceX";
   }

@@ -6,7 +6,7 @@ export class ONYPHE implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://www.onyphe.io";
     this.name = "ONYPHE";
   }

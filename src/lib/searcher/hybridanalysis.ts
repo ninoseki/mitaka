@@ -6,7 +6,7 @@ export class HybridAnalysis implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "hash"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://www.hybrid-analysis.com";
     this.name = "HybridAnalysis";
   }

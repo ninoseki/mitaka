@@ -6,7 +6,7 @@ export class XForceExchange implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "hash"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://exchange.xforce.ibmcloud.com";
     this.name = "X-Force-Exchange";
   }

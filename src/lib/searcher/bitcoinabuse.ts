@@ -6,7 +6,7 @@ export class BitcoinAbuse implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["btc"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://www.bitcoinabuse.com";
     this.name = "BitcoinAbuse";
   }

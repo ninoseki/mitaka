@@ -6,7 +6,7 @@ export class Shodan implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "asn"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = `https://www.shodan.io`;
     this.name = "Shodan";
   }

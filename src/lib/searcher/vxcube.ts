@@ -6,7 +6,7 @@ export class VxCube implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "hash"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "http://vxcube.com";
     this.name = "VxCube";
   }
