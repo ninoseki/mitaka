@@ -38,10 +38,12 @@ describe("Context script", () => {
         expect(root.chrome.runtime.sendMessage.notCalled).to.be.true;
         onSelctionChange();
         expect(root.chrome.runtime.sendMessage.called).to.be.true;
-        expect(root.chrome.runtime.sendMessage.withArgs({
-          request: "updateContextMenu",
-          selection: "test",
-        }).calledOnce).to.be.true;
+        expect(
+          root.chrome.runtime.sendMessage.withArgs({
+            request: "updateContextMenu",
+            selection: "test",
+          }).calledOnce
+        ).to.be.true;
       });
     });
   });
@@ -50,14 +52,14 @@ describe("Context script", () => {
     beforeEach(() => {
       root.window.getSelection = () => {
         return {
-          getRangeAt: (idx) => {
+          getRangeAt: idx => {
             return {
               startContainer: {
                 parentElement: {
-                  getAttribute: (attr) => {
+                  getAttribute: attr => {
                     return "https://example.com";
                   },
-                  hasAttribute: (attr) => {
+                  hasAttribute: attr => {
                     return true;
                   },
                 },
@@ -81,10 +83,12 @@ describe("Context script", () => {
         expect(root.chrome.runtime.sendMessage.notCalled).to.be.true;
         onSelctionChange();
         expect(root.chrome.runtime.sendMessage.called).to.be.true;
-        expect(root.chrome.runtime.sendMessage.withArgs({
-          request: "updateContextMenu",
-          selection: "https://example.com",
-        }).calledOnce).to.be.true;
+        expect(
+          root.chrome.runtime.sendMessage.withArgs({
+            request: "updateContextMenu",
+            selection: "https://example.com",
+          }).calledOnce
+        ).to.be.true;
       });
     });
   });

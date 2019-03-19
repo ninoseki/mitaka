@@ -11,8 +11,9 @@ describe("ONYPHE", () => {
 
   describe("#searchByIP", () => {
     it("should return URL", () => {
-      expect(subject.searchByIP("1.1.1.1")).
-        to.equal("https://www.onyphe.io/ip/1.1.1.1");
+      expect(subject.searchByIP("1.1.1.1")).to.equal(
+        "https://www.onyphe.io/ip/1.1.1.1"
+      );
     });
   });
 });

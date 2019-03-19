@@ -11,13 +11,17 @@ describe("Google Safe Browsing", () => {
 
   describe("#searchByDoman", () => {
     it("should return URL", () => {
-      expect(subject.searchByDomain("github.com")).to.equal("https://transparencyreport.google.com/safe-browsing/search?url=github.com");
+      expect(subject.searchByDomain("github.com")).to.equal(
+        "https://transparencyreport.google.com/safe-browsing/search?url=github.com"
+      );
     });
   });
 
   describe("#searchByURL", () => {
     it("should return URL", () => {
-      expect(subject.searchByURL("https://github.com")).to.equal("https://transparencyreport.google.com/safe-browsing/search?url=https%3A%2F%2Fgithub.com");
+      expect(subject.searchByURL("https://github.com")).to.equal(
+        "https://transparencyreport.google.com/safe-browsing/search?url=https%3A%2F%2Fgithub.com"
+      );
     });
   });
 });

@@ -19,7 +19,9 @@ describe("Seletor", () => {
       });
 
       it("should return Scanners support domain", () => {
-        expect(selector.getScannersByType("domain").length).to.equal(stats.domain);
+        expect(selector.getScannersByType("domain").length).to.equal(
+          stats.domain
+        );
       });
 
       it("should return Scanners support url", () => {

@@ -72,60 +72,120 @@ export class Selector {
   }
 
   public getSearchersByType(type: SearchableType) {
-    return this.searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf(type) !== -1);
+    return this.searchers.filter(
+      (searcher: Searcher) => searcher.supportedTypes.indexOf(type) !== -1
+    );
   }
 
   public getScannersByType(type: ScannableType) {
-    return this.scanners.filter((scanner: Scanner) => scanner.supportedTypes.indexOf(type) !== -1);
+    return this.scanners.filter(
+      (scanner: Scanner) => scanner.supportedTypes.indexOf(type) !== -1
+    );
   }
 
   public getSearcherEntries(): AnalyzerEntry[] {
     let entries: AnalyzerEntry[] = [];
-    entries = this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("text"), "text", this.input));
+    entries = this.concat(
+      entries,
+      this.makeAnalyzerEntries(
+        this.getSearchersByType("text"),
+        "text",
+        this.input
+      )
+    );
 
     const asn = this.getASN();
     if (asn !== null) {
-      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("asn"), "asn", asn));
+      return this.concat(
+        entries,
+        this.makeAnalyzerEntries(this.getSearchersByType("asn"), "asn", asn)
+      );
     }
     const email = this.getEmail();
     if (email !== null) {
-      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("email"), "email", email));
+      return this.concat(
+        entries,
+        this.makeAnalyzerEntries(
+          this.getSearchersByType("email"),
+          "email",
+          email
+        )
+      );
     }
     const url = this.getURL();
     if (url !== null) {
-      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("url"), "url", url));
+      return this.concat(
+        entries,
+        this.makeAnalyzerEntries(this.getSearchersByType("url"), "url", url)
+      );
     }
     const domain = this.getDomain();
     if (domain !== null) {
-      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("domain"), "domain", domain));
+      return this.concat(
+        entries,
+        this.makeAnalyzerEntries(
+          this.getSearchersByType("domain"),
+          "domain",
+          domain
+        )
+      );
     }
     const ip = this.getIP();
     if (ip !== null) {
-      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("ip"), "ip", ip));
+      return this.concat(
+        entries,
+        this.makeAnalyzerEntries(this.getSearchersByType("ip"), "ip", ip)
+      );
     }
     const hash = this.getHash();
     if (hash !== null) {
-      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("hash"), "hash", hash));
+      return this.concat(
+        entries,
+        this.makeAnalyzerEntries(this.getSearchersByType("hash"), "hash", hash)
+      );
     }
     const cve = this.getCVE();
     if (cve !== null) {
-      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("cve"), "cve", cve));
+      return this.concat(
+        entries,
+        this.makeAnalyzerEntries(this.getSearchersByType("cve"), "cve", cve)
+      );
     }
     const btc = this.getBTC();
     if (btc !== null) {
-      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("btc"), "btc", btc));
+      return this.concat(
+        entries,
+        this.makeAnalyzerEntries(this.getSearchersByType("btc"), "btc", btc)
+      );
     }
     const xmr = this.getXMR();
     if (xmr !== null) {
-      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("xmr"), "xmr", xmr));
+      return this.concat(
+        entries,
+        this.makeAnalyzerEntries(this.getSearchersByType("xmr"), "xmr", xmr)
+      );
     }
     const gaTrackID = this.getGATrackID();
     if (gaTrackID !== null) {
-      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("gaTrackID"), "gaTrackID", gaTrackID));
+      return this.concat(
+        entries,
+        this.makeAnalyzerEntries(
+          this.getSearchersByType("gaTrackID"),
+          "gaTrackID",
+          gaTrackID
+        )
+      );
     }
     const gaPubID = this.getGAPubID();
     if (gaPubID !== null) {
-      return this.concat(entries, this.makeAnalyzerEntries(this.getSearchersByType("gaPubID"), "gaPubID", gaPubID));
+      return this.concat(
+        entries,
+        this.makeAnalyzerEntries(
+          this.getSearchersByType("gaPubID"),
+          "gaPubID",
+          gaPubID
+        )
+      );
     }
     return entries;
   }
@@ -135,11 +195,19 @@ export class Selector {
 
     const url = this.getURL();
     if (url !== null) {
-      return this.makeAnalyzerEntries(this.getScannersByType("url"), "url", url);
+      return this.makeAnalyzerEntries(
+        this.getScannersByType("url"),
+        "url",
+        url
+      );
     }
     const domain = this.getDomain();
     if (domain !== null) {
-      return this.makeAnalyzerEntries(this.getScannersByType("domain"), "domain", domain);
+      return this.makeAnalyzerEntries(
+        this.getScannersByType("domain"),
+        "domain",
+        domain
+      );
     }
     const ip = this.getIP();
     if (ip !== null) {
@@ -162,7 +230,11 @@ export class Selector {
     return target;
   }
 
-  private makeAnalyzerEntries(analyzers: Scanner[] | Searcher[], type: SearchableType | ScannableType, query: string) {
+  private makeAnalyzerEntries(
+    analyzers: Scanner[] | Searcher[],
+    type: SearchableType | ScannableType,
+    query: string
+  ) {
     const analyzerEntries: AnalyzerEntry[] = [];
     for (const analyzer of analyzers) {
       analyzerEntries.push(this.makeAnalyzerEntry(analyzer, type, query));
@@ -170,7 +242,11 @@ export class Selector {
     return analyzerEntries;
   }
 
-  private makeAnalyzerEntry(analyzer: Scanner | Searcher, type: SearchableType | ScannableType, query: string) {
+  private makeAnalyzerEntry(
+    analyzer: Scanner | Searcher,
+    type: SearchableType | ScannableType,
+    query: string
+  ) {
     return { analyzer, type, query };
   }
 }

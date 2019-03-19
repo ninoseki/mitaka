@@ -23,12 +23,16 @@ export function search(command: Command) {
 }
 
 export async function scan(command: Command) {
-  chrome.storage.sync.get("apiKeys", async (config) => {
+  chrome.storage.sync.get("apiKeys", async config => {
     const apiKeys: ApiKeys = {
-      urlscanApiKey: ("apiKeys" in config && "urlscanApiKey" in config.apiKeys) ?
-        config.apiKeys.urlscanApiKey : undefined,
-      virusTotalApiKey: ("apiKeys" in config && "virusTotalApiKey" in config.apiKeys) ?
-        config.apiKeys.virusTotalApiKey : undefined,
+      urlscanApiKey:
+        "apiKeys" in config && "urlscanApiKey" in config.apiKeys
+          ? config.apiKeys.urlscanApiKey
+          : undefined,
+      virusTotalApiKey:
+        "apiKeys" in config && "virusTotalApiKey" in config.apiKeys
+          ? config.apiKeys.virusTotalApiKey
+          : undefined,
     };
     try {
       const url: string = await command.scan(apiKeys);
@@ -90,7 +94,7 @@ export async function createContextMenus(message, searcherStates) {
 if (typeof chrome !== "undefined") {
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.request === "updateContextMenu") {
-      chrome.storage.sync.get("searcherStates", (config) => {
+      chrome.storage.sync.get("searcherStates", config => {
         if ("searcherStates" in config) {
           createContextMenus(message, config.searcherStates);
         } else {

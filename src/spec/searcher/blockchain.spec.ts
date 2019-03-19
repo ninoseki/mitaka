@@ -11,7 +11,11 @@ describe("Blockchain", () => {
 
   describe("#searchByBTC", () => {
     it("should return URL", () => {
-      expect(subject.searchByBTC("1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa")).to.equal("https://www.blockchain.com/btc/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa");
+      expect(
+        subject.searchByBTC("1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa")
+      ).to.equal(
+        "https://www.blockchain.com/btc/address/1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      );
     });
   });
 });

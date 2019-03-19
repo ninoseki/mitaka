@@ -11,19 +11,25 @@ describe("SecurityTrails", () => {
 
   describe("#searchByIP", () => {
     it("should return URL", () => {
-      expect(subject.searchByIP("8.8.8.8")).to.equal("https://securitytrails.com/list/ip/8.8.8.8");
+      expect(subject.searchByIP("8.8.8.8")).to.equal(
+        "https://securitytrails.com/list/ip/8.8.8.8"
+      );
     });
   });
 
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      expect(subject.searchByDomain("github.com")).to.equal("https://securitytrails.com/domain/github.com");
+      expect(subject.searchByDomain("github.com")).to.equal(
+        "https://securitytrails.com/domain/github.com"
+      );
     });
   });
 
   describe("#searchByText", () => {
     it("should return URL", () => {
-      expect(subject.searchByText("test")).to.equal("https://securitytrails.com/list/keyword/test");
+      expect(subject.searchByText("test")).to.equal(
+        "https://securitytrails.com/list/keyword/test"
+      );
     });
   });
 });

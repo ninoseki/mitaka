@@ -1,4 +1,16 @@
-export type SearchableType = "text" | "ip" | "domain" | "url" | "asn" | "email" | "hash" | "cve" | "btc" | "xmr" | "gaTrackID" | "gaPubID";
+export type SearchableType =
+  | "text"
+  | "ip"
+  | "domain"
+  | "url"
+  | "asn"
+  | "email"
+  | "hash"
+  | "cve"
+  | "btc"
+  | "xmr"
+  | "gaTrackID"
+  | "gaPubID";
 
 export interface Searcher {
   endpoint: string;

@@ -1,7 +1,6 @@
 import { SearchableType, Searcher } from "./searcher";
 
 export class Maltiverse implements Searcher {
-
   public endpoint: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["domain", "hash"];
