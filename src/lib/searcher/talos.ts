@@ -6,7 +6,7 @@ export class Talos implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://talosintelligence.com";
     this.name = "Talos";
   }

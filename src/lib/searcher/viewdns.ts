@@ -6,7 +6,7 @@ export class ViewDNS implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "email"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://viewdns.info";
     this.name = "ViewDNS";
   }

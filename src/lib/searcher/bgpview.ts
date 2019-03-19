@@ -6,7 +6,7 @@ export class BGPView implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "asn"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://bgpview.io";
     this.name = "BGPView";
   }

@@ -6,7 +6,7 @@ export class BlockCypher implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["btc"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://live.blockcypher.com";
     this.name = "BlockCypher";
   }

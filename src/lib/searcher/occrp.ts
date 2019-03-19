@@ -6,7 +6,7 @@ export class OCCRP implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["email"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://data.occrp.org";
     this.name = "OCCPR";
   }

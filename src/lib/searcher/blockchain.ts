@@ -6,7 +6,7 @@ export class BlockChain implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["btc"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://www.blockchain.com";
     this.name = "Blockchain.com";
   }

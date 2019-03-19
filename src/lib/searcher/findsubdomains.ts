@@ -6,7 +6,7 @@ export class FindSubDomains implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["domain"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://findsubdomains.com";
     this.name = "FindSubDomains";
   }

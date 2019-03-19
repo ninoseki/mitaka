@@ -6,7 +6,7 @@ export class PublicWWW implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["text"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://publicwww.com/websites";
     this.name = "PublicWWW";
   }

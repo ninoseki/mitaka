@@ -4,8 +4,8 @@ export interface Scanner {
   endpoint: string;
   name: string;
   supportedTypes: ScannableType[];
-  scanByIP?(query: string);
-  scanByDomain?(query: string);
-  scanByURL?(query: string);
-  setApiKey(apiKey: string | undefined);
+  scanByIP?(query: string): Promise<string>;
+  scanByDomain?(query: string): Promise<string>;
+  scanByURL?(query: string): Promise<string>;
+  setApiKey(apiKey: string | undefined): void;
 }

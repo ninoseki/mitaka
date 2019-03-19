@@ -6,7 +6,7 @@ export class Urlscan implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "url"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://urlscan.io";
     this.name = "Urlscan";
   }

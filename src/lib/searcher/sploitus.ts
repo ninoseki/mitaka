@@ -6,7 +6,7 @@ export class Sploitus implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["cve"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://sploitus.com";
     this.name = "Sploitus";
   }

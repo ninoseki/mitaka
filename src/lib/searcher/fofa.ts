@@ -6,7 +6,7 @@ export class FOFA implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://fofa.so";
     this.name = "FOFA";
   }

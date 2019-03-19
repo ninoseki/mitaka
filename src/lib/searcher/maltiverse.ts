@@ -5,7 +5,7 @@ export class Maltiverse implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["domain", "hash"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://www.maltiverse.com";
     this.name = "Maltiverse";
   }

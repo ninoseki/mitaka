@@ -6,7 +6,7 @@ export class GoogleSafeBrowsing implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["domain", "url"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://transparencyreport.google.com";
     this.name = "GoogleSafeBrowsing";
   }

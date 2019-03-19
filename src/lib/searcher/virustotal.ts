@@ -8,7 +8,7 @@ export class VirusTotal implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "url", "hash"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://www.virustotal.com/#";
     this.name = "VirusTotal";
   }

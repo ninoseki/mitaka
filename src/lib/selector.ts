@@ -15,7 +15,7 @@ export class Selector {
   protected scanners: Scanner[] = Scanners;
   protected searchers: Searcher[] = Searchers;
 
-  constructor(input: string) {
+  public constructor(input: string) {
     this.input = input;
     this.ioc = getIOC(input);
   }

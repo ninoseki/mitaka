@@ -6,7 +6,7 @@ export class WebAnalyzer implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["domain"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://wa-com.com";
     this.name = "WebAnalyzer";
   }

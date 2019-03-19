@@ -6,7 +6,7 @@ export class Censys implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "asn", "text"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://censys.io";
     this.name = "Censys";
   }

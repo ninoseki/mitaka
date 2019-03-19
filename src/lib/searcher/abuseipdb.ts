@@ -6,7 +6,7 @@ export class AbuseIPDB implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://www.abuseipdb.com";
     this.name = "AbuseIPDB";
   }

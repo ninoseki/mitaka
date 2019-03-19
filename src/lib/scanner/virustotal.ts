@@ -8,7 +8,7 @@ export class VirusTotal implements Scanner {
   public supportedTypes: ScannableType[] = ["url"];
   protected apiKey: string | undefined;
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://www.virustotal.com/vtapi/v2";
     this.name = "VirusTotal";
   }

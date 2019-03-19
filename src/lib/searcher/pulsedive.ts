@@ -6,7 +6,7 @@ export class Pulsedive implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "url", "hash"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://pulsedive.com";
     this.name = "Pulsedive";
   }

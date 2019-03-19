@@ -6,7 +6,7 @@ export class Pipl implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["email"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://pipl.com";
     this.name = "Pipl";
   }

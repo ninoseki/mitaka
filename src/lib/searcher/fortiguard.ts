@@ -6,7 +6,7 @@ export class FortiGuard implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "url", "cve"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://fortiguard.com";
     this.name = "FortiGuard";
   }

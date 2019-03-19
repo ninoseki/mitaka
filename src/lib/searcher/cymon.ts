@@ -6,7 +6,7 @@ export class Cymon implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://cymon.io";
     this.name = "Cymon";
   }

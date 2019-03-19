@@ -6,7 +6,7 @@ export class ThreatCrowd implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "email"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://www.threatcrowd.org";
     this.name = "ThreatCrowd";
   }

@@ -6,7 +6,7 @@ export class Crtsh implements Searcher {
   public name: string;
   public supportedTypes: SearchableType[] = ["domain"];
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://crt.sh";
     this.name = "crt.sh";
   }

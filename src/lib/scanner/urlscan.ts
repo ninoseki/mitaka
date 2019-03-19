@@ -7,28 +7,28 @@ export class Urlscan implements Scanner {
   public supportedTypes: ScannableType[] = ["ip", "domain", "url"];
   protected apiKey: string | undefined;
 
-  constructor() {
+  public constructor() {
     this.endpoint = "https://urlscan.io/api/v1";
     this.name = "Urlscan";
   }
 
-  public setApiKey(apiKey: string | undefined) {
+  public setApiKey(apiKey: string | undefined): void {
     this.apiKey = apiKey;
   }
 
-  public async scanByIP(ip: string) {
+  public async scanByIP(ip: string): Promise<string> {
     return await this.scan(ip);
   }
 
-  public async scanByDomain(domain: string) {
+  public async scanByDomain(domain: string): Promise<string> {
     return await this.scan(domain);
   }
 
-  public async scanByURL(url: string) {
+  public async scanByURL(url: string): Promise<string> {
     return await this.scan(url);
   }
 
-  private async scan(query: string, isPublic = true) {
+  private async scan(query: string, isPublic = true): Promise<string> {
     if (this.apiKey === undefined) {
       throw Error("Please set your urlscan.io API key via the option.");
     }
