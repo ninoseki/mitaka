@@ -7,7 +7,8 @@
     "build": "webpack",
     "watch": "webpack -w",
     "test": "nyc mocha -r ts-node/register \"src/**/*.spec.ts\"",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "eslint src/** --ext .ts"
   },
   "nyc": {
     "include": [
@@ -59,15 +60,19 @@
     "@types/throttle-debounce": "^1.1.1",
     "@types/validator": "^10.9.0",
     "@types/window-or-global": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
     "chai": "^4.2.0",
     "coveralls": "^3.0.3",
+    "eslint": "^5.15.3",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
     "jsdom": "^14.0.0",
     "mocha": "^6.0.2",
     "moxios": "^0.4.0",
     "nyc": "^13.3.0",
+    "prettier": "^1.16.4",
     "sinon": "^7.2.7",
     "sinon-chrome": "^2.3.2",
-    "ts-lint": "^4.5.1",
     "ts-loader": "^5.3.3",
     "ts-node": "^8.0.3",
     "typescript": "^3.3.3333",
