@@ -11,7 +11,9 @@ describe("DomainBigData", () => {
 
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      expect(subject.searchByDomain("github.com")).to.equal("https://domainbigdata.com/github.com");
+      expect(subject.searchByDomain("github.com")).to.equal(
+        "https://domainbigdata.com/github.com"
+      );
     });
   });
 });

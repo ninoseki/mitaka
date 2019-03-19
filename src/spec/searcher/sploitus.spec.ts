@@ -11,7 +11,9 @@ describe("Sploitus", () => {
 
   describe("#searchByCVE", () => {
     it("should return URL", () => {
-      expect(subject.searchByCVE("CVE-2018-8013")).to.equal("https://sploitus.com/?query=CVE-2018-8013");
+      expect(subject.searchByCVE("CVE-2018-8013")).to.equal(
+        "https://sploitus.com/?query=CVE-2018-8013"
+      );
     });
   });
 });

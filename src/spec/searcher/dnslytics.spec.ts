@@ -11,13 +11,17 @@ describe("DNSlytics", () => {
 
   describe("#searchByIP", () => {
     it("should return URL", () => {
-      expect(subject.searchByIP("1.1.1.1")).to.equal("https://dnslytics.com/ip/1.1.1.1");
+      expect(subject.searchByIP("1.1.1.1")).to.equal(
+        "https://dnslytics.com/ip/1.1.1.1"
+      );
     });
   });
 
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      expect(subject.searchByDomain("github.com")).to.equal("https://dnslytics.com/domain/github.com");
+      expect(subject.searchByDomain("github.com")).to.equal(
+        "https://dnslytics.com/domain/github.com"
+      );
     });
   });
 });

@@ -5,7 +5,9 @@ import { AnalyzerEntry, Selector } from "../lib/selector";
 
 function numberOfSelectorsByType(type: SearchableType): number {
   const searchers: Searcher[] = Searchers;
-  return searchers.filter((searcher: Searcher) => searcher.supportedTypes.indexOf(type) !== -1).length;
+  return searchers.filter(
+    (searcher: Searcher) => searcher.supportedTypes.indexOf(type) !== -1
+  ).length;
 }
 
 describe("Seletor", () => {
@@ -29,7 +31,9 @@ describe("Seletor", () => {
       const selector: Selector = new Selector("text");
       describe("#getSearchersForText", () => {
         it("should return Searchers support text", () => {
-          expect(selector.getSearchersByType("text").length).to.equal(stats.text);
+          expect(selector.getSearchersByType("text").length).to.equal(
+            stats.text
+          );
         });
       });
 
@@ -80,7 +84,9 @@ describe("Seletor", () => {
 
       describe("#getSearchersForDomain", () => {
         it("should return Searchers support domain", () => {
-          expect(selector.getSearchersByType("domain").length).to.equal(stats.domain);
+          expect(selector.getSearchersByType("domain").length).to.equal(
+            stats.domain
+          );
         });
       });
 
@@ -130,7 +136,9 @@ describe("Seletor", () => {
 
       describe("#getSearchersForEmail", () => {
         it("should return Searchers support email", () => {
-          expect(selector.getSearchersByType("email").length).to.equal(stats.email);
+          expect(selector.getSearchersByType("email").length).to.equal(
+            stats.email
+          );
         });
       });
 
@@ -171,13 +179,21 @@ describe("Seletor", () => {
     });
 
     context("hash", () => {
-      const selector: Selector = new Selector("275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f");
+      const selector: Selector = new Selector(
+        "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f"
+      );
       describe("#getHash", () => {
         it("should return SHA256", () => {
-          expect(selector.getHash()).to.equal("275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f");
+          expect(selector.getHash()).to.equal(
+            "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f"
+          );
           // additional tests
-          const s2: Selector = new Selector("3395856ce81f2b7382dee72602f798b642f14140");
-          expect(s2.getHash()).to.equal("3395856ce81f2b7382dee72602f798b642f14140");
+          const s2: Selector = new Selector(
+            "3395856ce81f2b7382dee72602f798b642f14140"
+          );
+          expect(s2.getHash()).to.equal(
+            "3395856ce81f2b7382dee72602f798b642f14140"
+          );
           const s3: Selector = new Selector("44d88612fea8a8f36de82e1278abb02f");
           expect(s3.getHash()).to.equal("44d88612fea8a8f36de82e1278abb02f");
         });
@@ -185,7 +201,9 @@ describe("Seletor", () => {
 
       describe("#getSearchersForHash", () => {
         it("should return Searchers support hash", () => {
-          expect(selector.getSearchersByType("hash").length).to.equal(stats.hash);
+          expect(selector.getSearchersByType("hash").length).to.equal(
+            stats.hash
+          );
         });
       });
 
@@ -193,7 +211,9 @@ describe("Seletor", () => {
         it("should return Searchrerentrys support hash", () => {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
-            expect(entry.query).to.equal("275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f");
+            expect(entry.query).to.equal(
+              "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f"
+            );
           }
           expect(entries.length).to.equal(stats.text + stats.hash);
         });
@@ -226,10 +246,14 @@ describe("Seletor", () => {
     });
 
     context("btc", () => {
-      const selector: Selector = new Selector("1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa");
+      const selector: Selector = new Selector(
+        "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      );
       describe("#getBTC", () => {
         it("should return BTC", () => {
-          expect(selector.getBTC()).to.equal("1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa");
+          expect(selector.getBTC()).to.equal(
+            "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+          );
         });
       });
 
@@ -251,10 +275,14 @@ describe("Seletor", () => {
     });
 
     context("xmr", () => {
-      const selector: Selector = new Selector("4Aa3TcU7ixMVcYwbsw8ENVbFwt4ZuqrNBVij5TRvPCTpGRK5BKBHQPu7ahT7z2A6547a5Lcn7yPZV1xU22ZbviqxUX7JVuP");
+      const selector: Selector = new Selector(
+        "4Aa3TcU7ixMVcYwbsw8ENVbFwt4ZuqrNBVij5TRvPCTpGRK5BKBHQPu7ahT7z2A6547a5Lcn7yPZV1xU22ZbviqxUX7JVuP"
+      );
       describe("#getXMR", () => {
         it("should return XMR", () => {
-          expect(selector.getXMR()).to.equal("4Aa3TcU7ixMVcYwbsw8ENVbFwt4ZuqrNBVij5TRvPCTpGRK5BKBHQPu7ahT7z2A6547a5Lcn7yPZV1xU22ZbviqxUX7JVuP");
+          expect(selector.getXMR()).to.equal(
+            "4Aa3TcU7ixMVcYwbsw8ENVbFwt4ZuqrNBVij5TRvPCTpGRK5BKBHQPu7ahT7z2A6547a5Lcn7yPZV1xU22ZbviqxUX7JVuP"
+          );
         });
       });
 
@@ -275,7 +303,9 @@ describe("Seletor", () => {
 
       describe("#getSearchersForGATrackID", () => {
         it("should return Searchers support GATrackID", () => {
-          expect(selector.getSearchersByType("gaTrackID").length).to.equal(stats.gaTrackID);
+          expect(selector.getSearchersByType("gaTrackID").length).to.equal(
+            stats.gaTrackID
+          );
         });
       });
     });
@@ -290,7 +320,9 @@ describe("Seletor", () => {
 
       describe("#getSearchersForGAPubID", () => {
         it("should return Searchers support GAPubID", () => {
-          expect(selector.getSearchersByType("gaPubID").length).to.equal(stats.gaPubID);
+          expect(selector.getSearchersByType("gaPubID").length).to.equal(
+            stats.gaPubID
+          );
         });
       });
     });

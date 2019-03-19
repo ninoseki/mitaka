@@ -11,14 +11,16 @@ describe("DomainWatch", () => {
 
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      expect(subject.searchByDomain("github.com")).
-        to.equal("https://domainwat.ch/whois/github.com");
+      expect(subject.searchByDomain("github.com")).to.equal(
+        "https://domainwat.ch/whois/github.com"
+      );
     });
   });
   describe("#searchByEmail", () => {
     it("should return URL", () => {
-      expect(subject.searchByEmail("test@test.com")).
-        to.equal("https://domainwat.ch/search?query=test%40test.com");
+      expect(subject.searchByEmail("test@test.com")).to.equal(
+        "https://domainwat.ch/search?query=test%40test.com"
+      );
     });
   });
 });

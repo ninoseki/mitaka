@@ -2,7 +2,6 @@ import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class Censys implements Searcher {
-
   public endpoint: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "asn", "text"];
@@ -27,7 +26,9 @@ export class Censys implements Searcher {
   public searchByASN(query: string) {
     const matches = query.match(/\d+$/);
     if (matches !== null && matches[0]) {
-      return buildURL(this.endpoint, "/ipv4", { q: `autonomous_system.asn:${matches[0]}` });
+      return buildURL(this.endpoint, "/ipv4", {
+        q: `autonomous_system.asn:${matches[0]}`,
+      });
     }
     return "";
   }

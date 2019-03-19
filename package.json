@@ -8,7 +8,8 @@
     "watch": "webpack -w",
     "test": "nyc mocha -r ts-node/register \"src/**/*.spec.ts\"",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "eslint src/** --ext .ts"
+    "lint": "eslint 'src/**' --ext .ts",
+    "fmt": "prettier --write 'src/**' --ext .ts"
   },
   "nyc": {
     "include": [

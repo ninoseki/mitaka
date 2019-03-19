@@ -11,13 +11,17 @@ describe("BinaryEdge", () => {
 
   describe("#searchByIP", () => {
     it("should return URL", () => {
-      expect(subject.searchByIP("1.1.1.1")).to.equal("https://app.binaryedge.io/services/query?query=ip%3A%221.1.1.1%22");
+      expect(subject.searchByIP("1.1.1.1")).to.equal(
+        "https://app.binaryedge.io/services/query?query=ip%3A%221.1.1.1%22"
+      );
     });
   });
 
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      expect(subject.searchByDomain("github.com")).to.equal("https://app.binaryedge.io/services/domains?query=github.com");
+      expect(subject.searchByDomain("github.com")).to.equal(
+        "https://app.binaryedge.io/services/domains?query=github.com"
+      );
     });
   });
 });

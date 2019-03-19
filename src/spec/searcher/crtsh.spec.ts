@@ -11,7 +11,9 @@ describe("Crtsh", () => {
 
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      expect(subject.searchByDomain("github.com")).to.equal("https://crt.sh/?q=github.com");
+      expect(subject.searchByDomain("github.com")).to.equal(
+        "https://crt.sh/?q=github.com"
+      );
     });
   });
 });

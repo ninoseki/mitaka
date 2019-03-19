@@ -2,7 +2,6 @@ import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class Talos implements Searcher {
-
   public endpoint: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain"];
@@ -21,6 +20,8 @@ export class Talos implements Searcher {
   }
 
   private search(query: string) {
-    return buildURL(this.endpoint, "/reputation_center/lookup", { search: query });
+    return buildURL(this.endpoint, "/reputation_center/lookup", {
+      search: query,
+    });
   }
 }

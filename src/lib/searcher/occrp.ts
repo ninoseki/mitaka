@@ -2,7 +2,6 @@ import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class OCCRP implements Searcher {
-
   public endpoint: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["email"];
@@ -13,6 +12,9 @@ export class OCCRP implements Searcher {
   }
 
   public searchByEmail(query: string) {
-    return buildURL(this.endpoint, "/search", { "facet": "email", "filter:emails": query });
+    return buildURL(this.endpoint, "/search", {
+      facet: "email",
+      "filter:emails": query,
+    });
   }
 }

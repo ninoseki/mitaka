@@ -42,12 +42,14 @@ describe("Options script", () => {
     it("should save apiKeys via chrome.storage.sync.set()", () => {
       expect(root.chrome.storage.sync.set.notCalled).to.be.true;
       saveApiKeys();
-      expect(root.chrome.storage.sync.set.withArgs({
-        apiKeys: {
-          urlscanApiKey: "test",
-          virusTotalApiKey: "test",
-        },
-      }).calledOnce).to.be.true;
+      expect(
+        root.chrome.storage.sync.set.withArgs({
+          apiKeys: {
+            urlscanApiKey: "test",
+            virusTotalApiKey: "test",
+          },
+        }).calledOnce
+      ).to.be.true;
     });
   });
 
@@ -79,12 +81,14 @@ describe("Options script", () => {
     it("should save searcherStates via chrome.storage.sync.set()", () => {
       expect(root.chrome.storage.sync.set.notCalled).to.be.true;
       saveSearcherStates();
-      expect(root.chrome.storage.sync.set.withArgs({
-        searcherStates: {
-          test1: true,
-          test2: true,
-        },
-      }).calledOnce).to.be.true;
+      expect(
+        root.chrome.storage.sync.set.withArgs({
+          searcherStates: {
+            test1: true,
+            test2: true,
+          },
+        }).calledOnce
+      ).to.be.true;
     });
   });
 
@@ -93,9 +97,13 @@ describe("Options script", () => {
       const dom = new JSDOM();
       root.document = dom.window.document;
 
-      const urlscanApiKey = root.document.createElement("input") as HTMLInputElement;
+      const urlscanApiKey = root.document.createElement(
+        "input"
+      ) as HTMLInputElement;
       urlscanApiKey.value = "test";
-      const virusTotalApiKey = root.document.createElement("input") as HTMLInputElement;
+      const virusTotalApiKey = root.document.createElement(
+        "input"
+      ) as HTMLInputElement;
       virusTotalApiKey.value = "test";
 
       const stub: sinon.SinonStub = sinon.stub(root.document, "getElementById");
@@ -118,9 +126,13 @@ describe("Options script", () => {
       expect(root.chrome.storage.sync.get.notCalled).to.be.true;
       await restoreApiKeys();
       expect(root.chrome.storage.sync.get.calledOnce).to.be.true;
-      const urlscanApiKey = root.document.getElementById("urlscan-api-key") as HTMLInputElement;
+      const urlscanApiKey = root.document.getElementById(
+        "urlscan-api-key"
+      ) as HTMLInputElement;
       expect(urlscanApiKey.value).to.equal("test1");
-      const virusTotalApiKey = root.document.getElementById("virustotal-api-key") as HTMLInputElement;
+      const virusTotalApiKey = root.document.getElementById(
+        "virustotal-api-key"
+      ) as HTMLInputElement;
       expect(virusTotalApiKey.value).to.equal("test2");
     });
   });
@@ -165,7 +177,9 @@ describe("Options script", () => {
       expect(root.chrome.storage.sync.get.notCalled).to.be.true;
       await restoreSearcherStates();
       expect(root.chrome.storage.sync.get.calledOnce).to.be.true;
-      const searcherList = root.document.getElementById("searcherList") as HTMLElement;
+      const searcherList = root.document.getElementById(
+        "searcherList"
+      ) as HTMLElement;
       const censys = searcherList.querySelector("[name=Censys]");
       expect((censys as HTMLInputElement).checked).to.be.false;
       const shodan = searcherList.querySelector("[name=Shodan]");

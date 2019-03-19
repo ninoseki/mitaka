@@ -11,7 +11,9 @@ describe("WebAnalyzer", () => {
 
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      expect(subject.searchByDomain("github.com")).to.equal("https://wa-com.com/github.com");
+      expect(subject.searchByDomain("github.com")).to.equal(
+        "https://wa-com.com/github.com"
+      );
     });
   });
 });

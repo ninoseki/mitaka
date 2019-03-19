@@ -2,7 +2,6 @@ import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class PublicWWW implements Searcher {
-
   public endpoint: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["text"];

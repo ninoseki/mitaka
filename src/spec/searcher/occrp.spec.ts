@@ -11,7 +11,9 @@ describe("OCCRP", () => {
 
   describe("#searchByEmail", () => {
     it("should return URL", () => {
-      expect(subject.searchByEmail("test@test.com")).to.equal("https://data.occrp.org/search?facet=email&filter%3Aemails=test%40test.com");
+      expect(subject.searchByEmail("test@test.com")).to.equal(
+        "https://data.occrp.org/search?facet=email&filter%3Aemails=test%40test.com"
+      );
     });
   });
 });

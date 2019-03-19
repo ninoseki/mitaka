@@ -2,7 +2,6 @@ import { base64fy } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class Pulsedive implements Searcher {
-
   public endpoint: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "url", "hash"];

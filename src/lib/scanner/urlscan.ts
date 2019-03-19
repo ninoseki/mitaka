@@ -33,14 +33,18 @@ export class Urlscan implements Scanner {
       throw Error("Please set your urlscan.io API key via the option.");
     }
 
-    const res = await axios.post(`${this.endpoint}/scan/`, {
-      public: isPublic ? "on" : "off",
-      url: query,
-    }, {
+    const res = await axios.post(
+      `${this.endpoint}/scan/`,
+      {
+        public: isPublic ? "on" : "off",
+        url: query,
+      },
+      {
         headers: {
           "API-KEY": this.apiKey,
         },
-      });
+      }
+    );
     // ref. https://github.com/ninoseki/mitaka/issues/97
     return `${res.data.result}loading`;
   }

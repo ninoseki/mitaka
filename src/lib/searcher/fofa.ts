@@ -2,7 +2,6 @@ import { base64fy, buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
 
 export class FOFA implements Searcher {
-
   public endpoint: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain"];

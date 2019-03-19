@@ -11,7 +11,9 @@ describe("ArchiveOrg", () => {
 
   describe("#searchByURL", () => {
     it("should return URL", () => {
-      expect(subject.searchByURL("https://github.com")).to.equal("https://web.archive.org/web/*/https://github.com");
+      expect(subject.searchByURL("https://github.com")).to.equal(
+        "https://web.archive.org/web/*/https://github.com"
+      );
     });
   });
 });

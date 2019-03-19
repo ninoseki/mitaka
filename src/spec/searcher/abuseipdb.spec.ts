@@ -11,7 +11,9 @@ describe("AbuseIPDB", () => {
 
   describe("#searchByIP", () => {
     it("should return URL", () => {
-      expect(subject.searchByIP("1.1.1.1")).to.equal("https://www.abuseipdb.com/check/1.1.1.1");
+      expect(subject.searchByIP("1.1.1.1")).to.equal(
+        "https://www.abuseipdb.com/check/1.1.1.1"
+      );
     });
   });
 });

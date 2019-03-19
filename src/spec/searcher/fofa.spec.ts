@@ -11,13 +11,17 @@ describe("FOFA", () => {
 
   describe("#searchByIP", () => {
     it("should return URL", () => {
-      expect(subject.searchByIP("1.1.1.1")).to.equal("https://fofa.so/result?qbase64=aXA9IjEuMS4xLjEi");
+      expect(subject.searchByIP("1.1.1.1")).to.equal(
+        "https://fofa.so/result?qbase64=aXA9IjEuMS4xLjEi"
+      );
     });
   });
 
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      expect(subject.searchByDomain("github.com")).to.equal("https://fofa.so/result?qbase64=ZG9tYWluPSJnaXRodWIuY29tIg%3D%3D");
+      expect(subject.searchByDomain("github.com")).to.equal(
+        "https://fofa.so/result?qbase64=ZG9tYWluPSJnaXRodWIuY29tIg%3D%3D"
+      );
     });
   });
 });

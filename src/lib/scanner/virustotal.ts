@@ -3,7 +3,6 @@ import * as qs from "qs";
 import { ScannableType, Scanner } from "./scanner";
 
 export class VirusTotal implements Scanner {
-
   public endpoint: string;
   public name: string;
   public supportedTypes: ScannableType[] = ["url"];
@@ -28,7 +27,10 @@ export class VirusTotal implements Scanner {
       url,
     };
 
-    const res = await axios.post(`${this.endpoint}/url/scan`, qs.stringify(params));
+    const res = await axios.post(
+      `${this.endpoint}/url/scan`,
+      qs.stringify(params)
+    );
     return res.data.permalink;
   }
 }
