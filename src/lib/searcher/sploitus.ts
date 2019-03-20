@@ -11,7 +11,7 @@ export class Sploitus implements Searcher {
     this.name = "Sploitus";
   }
 
-  public searchByCVE(query: string) {
+  public searchByCVE(query: string): string {
     return buildURL(this.endpoint, "/", { query });
   }
 }

@@ -11,15 +11,15 @@ export class GoogleSafeBrowsing implements Searcher {
     this.name = "GoogleSafeBrowsing";
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return this.search(query);
   }
 
-  public searchByURL(query: string) {
+  public searchByURL(query: string): string {
     return this.search(query);
   }
 
-  private search(query: string) {
+  private search(query: string): string {
     return buildURL(this.endpoint, "/safe-browsing/search", { url: query });
   }
 }

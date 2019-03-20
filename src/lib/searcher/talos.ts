@@ -11,15 +11,15 @@ export class Talos implements Searcher {
     this.name = "Talos";
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return this.search(query);
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return this.search(query);
   }
 
-  private search(query: string) {
+  private search(query: string): string {
     return buildURL(this.endpoint, "/reputation_center/lookup", {
       search: query,
     });

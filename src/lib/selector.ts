@@ -71,13 +71,13 @@ export class Selector {
     return this.getFirstValueFromArray(this.ioc.trackers.gaPubIDs);
   }
 
-  public getSearchersByType(type: SearchableType) {
+  public getSearchersByType(type: SearchableType): Searcher[] {
     return this.searchers.filter(
       (searcher: Searcher) => searcher.supportedTypes.indexOf(type) !== -1
     );
   }
 
-  public getScannersByType(type: ScannableType) {
+  public getScannersByType(type: ScannableType): Scanner[] {
     return this.scanners.filter(
       (scanner: Scanner) => scanner.supportedTypes.indexOf(type) !== -1
     );
@@ -234,7 +234,7 @@ export class Selector {
     analyzers: Scanner[] | Searcher[],
     type: SearchableType | ScannableType,
     query: string
-  ) {
+  ): AnalyzerEntry[] {
     const analyzerEntries: AnalyzerEntry[] = [];
     for (const analyzer of analyzers) {
       analyzerEntries.push(this.makeAnalyzerEntry(analyzer, type, query));
@@ -246,7 +246,7 @@ export class Selector {
     analyzer: Scanner | Searcher,
     type: SearchableType | ScannableType,
     query: string
-  ) {
+  ): AnalyzerEntry {
     return { analyzer, type, query };
   }
 }

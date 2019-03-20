@@ -11,11 +11,11 @@ export class DomainWatch implements Searcher {
     this.name = "DomainWatch";
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, `/whois/${query}`);
   }
 
-  public searchByEmail(query: string) {
+  public searchByEmail(query: string): string {
     return buildURL(this.endpoint, "/search", { query });
   }
 }

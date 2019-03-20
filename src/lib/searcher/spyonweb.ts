@@ -16,23 +16,23 @@ export class SpyOnWeb implements Searcher {
     this.name = "SpyOnWeb";
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return this.search(query);
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return this.search(query);
   }
 
-  public searchByGAPubID(query: string) {
+  public searchByGAPubID(query: string): string {
     return this.search(query);
   }
 
-  public searchByGATrackID(query: string) {
+  public searchByGATrackID(query: string): string {
     return this.search(query);
   }
 
-  private search(query: string) {
+  private search(query: string): string {
     return buildURL(this.endpoint, `/${query}`);
   }
 }

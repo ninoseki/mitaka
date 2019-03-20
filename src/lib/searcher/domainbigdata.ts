@@ -11,7 +11,7 @@ export class DomainBigData implements Searcher {
     this.name = "DomainBigData";
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, `/${query}`);
   }
 }

@@ -11,7 +11,7 @@ export class Pipl implements Searcher {
     this.name = "Pipl";
   }
 
-  public searchByEmail(query: string) {
+  public searchByEmail(query: string): string {
     return buildURL(this.endpoint, "/search/", { q: query });
   }
 }

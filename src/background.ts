@@ -2,7 +2,7 @@ import { Command } from "./lib/command";
 import { ApiKeys } from "./lib/scanner";
 import { AnalyzerEntry, Selector } from "./lib/selector";
 
-export function showNotification(message: string) {
+export function showNotification(message: string): void {
   chrome.notifications.create({
     iconUrl: "./icons/48.png",
     message,
@@ -11,7 +11,7 @@ export function showNotification(message: string) {
   });
 }
 
-export function search(command: Command) {
+export function search(command: Command): void {
   try {
     const url: string = command.search();
     if (url !== "") {
@@ -22,7 +22,7 @@ export function search(command: Command) {
   }
 }
 
-export async function scan(command: Command) {
+export async function scan(command: Command): Promise<void> {
   chrome.storage.sync.get("apiKeys", async config => {
     const apiKeys: ApiKeys = {
       urlscanApiKey:
@@ -45,13 +45,16 @@ export async function scan(command: Command) {
   });
 }
 
-export function createContextMenuErrorHandler() {
+export function createContextMenuErrorHandler(): void {
   if (chrome.runtime.lastError) {
     console.error(chrome.runtime.lastError.message);
   }
 }
 
-export async function createContextMenus(message, searcherStates) {
+export async function createContextMenus(
+  message,
+  searcherStates
+): Promise<void> {
   chrome.contextMenus.removeAll(() => {
     const text: string = message.selection;
     const selector: Selector = new Selector(text);

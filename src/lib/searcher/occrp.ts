@@ -11,7 +11,7 @@ export class OCCRP implements Searcher {
     this.name = "OCCPR";
   }
 
-  public searchByEmail(query: string) {
+  public searchByEmail(query: string): string {
     return buildURL(this.endpoint, "/search", {
       facet: "email",
       "filter:emails": query,

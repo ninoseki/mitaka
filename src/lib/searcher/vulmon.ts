@@ -11,7 +11,7 @@ export class Vulmon implements Searcher {
     this.name = "Vulmon";
   }
 
-  public searchByCVE(query: string) {
+  public searchByCVE(query: string): string {
     return buildURL(this.endpoint, "/vulnerabilitydetails", { qid: query });
   }
 }

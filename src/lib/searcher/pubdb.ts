@@ -11,11 +11,11 @@ export class PubDB implements Searcher {
     this.name = "PubDB";
   }
 
-  public searchByGATrackID(query: string) {
+  public searchByGATrackID(query: string): string {
     return buildURL(this.endpoint, `/google-analytics/${query}.html`);
   }
 
-  public searchByGAPubID(query: string) {
+  public searchByGAPubID(query: string): string {
     return buildURL(this.endpoint, `/adsense/${query}.html`);
   }
 }

@@ -13,24 +13,24 @@ export class VirusTotal implements Searcher {
     this.name = "VirusTotal";
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, `/ip-address/${query}`);
   }
 
-  public searchByURL(query: string) {
+  public searchByURL(query: string): string {
     const hash = crypto.SHA256(this.normalizeURL(query));
     return buildURL(this.endpoint, `/url/${hash}`);
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, `/domain/${query}`);
   }
 
-  public searchByHash(query: string) {
+  public searchByHash(query: string): string {
     return buildURL(this.endpoint, `/file/${query}`);
   }
 
-  private normalizeURL(uri: string) {
+  private normalizeURL(uri: string): string {
     const parsedUrl = url.parse(uri);
     if (parsedUrl.pathname === "/" && uri.slice(-1) !== "/") {
       return `${uri}/`;

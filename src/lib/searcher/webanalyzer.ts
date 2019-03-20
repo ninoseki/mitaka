@@ -11,7 +11,7 @@ export class WebAnalyzer implements Searcher {
     this.name = "WebAnalyzer";
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, `/${query}`);
   }
 }

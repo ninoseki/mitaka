@@ -11,7 +11,7 @@ export class ZoomEye implements Searcher {
     this.name = "ZoomEye";
   }
 
-  public searchByIP(query) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, "/searchResult", {
       q: `ip:"${query}"`,
       t: "host",

@@ -11,7 +11,7 @@ export class BitcoinAbuse implements Searcher {
     this.name = "BitcoinAbuse";
   }
 
-  public searchByBTC(query: string) {
+  public searchByBTC(query: string): string {
     return buildURL(this.endpoint, `/reports/${query}`);
   }
 }

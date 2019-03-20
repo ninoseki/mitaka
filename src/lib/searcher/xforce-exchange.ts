@@ -11,15 +11,15 @@ export class XForceExchange implements Searcher {
     this.name = "X-Force-Exchange";
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, `/ip/${query}`);
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, `/url/${query}`);
   }
 
-  public searchByHash(query: string) {
+  public searchByHash(query: string): string {
     return buildURL(this.endpoint, `/malware/${query}`);
   }
 }

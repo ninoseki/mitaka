@@ -11,7 +11,7 @@ export class FindSubDomains implements Searcher {
     this.name = "FindSubDomains";
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, `/subdomains-of/${query}`);
   }
 }
