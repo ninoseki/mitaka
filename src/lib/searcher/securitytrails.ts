@@ -11,18 +11,18 @@ export class SecurityTrails implements Searcher {
     this.name = "SecurityTrails";
   }
 
-  public searchByText(query: string) {
+  public searchByText(query: string): string {
     return buildURL(
       this.endpoint,
       `/list/keyword/${encodeURIComponent(query)}`
     );
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, `/list/ip/${query}`);
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, `/domain/${query}`);
   }
 }

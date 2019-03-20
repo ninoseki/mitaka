@@ -11,15 +11,15 @@ export class ThreatCrowd implements Searcher {
     this.name = "ThreatCrowd";
   }
 
-  public searchByIP(query) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, "/ip.php", { ip: query });
   }
 
-  public searchByDomain(query) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, "/domain.php", { domain: query });
   }
 
-  public searchByEmail(query) {
+  public searchByEmail(query: string): string {
     return buildURL(this.endpoint, "/email.php", { email: query });
   }
 }

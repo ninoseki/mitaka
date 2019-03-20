@@ -11,7 +11,7 @@ export class Crtsh implements Searcher {
     this.name = "crt.sh";
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, "/", { q: query });
   }
 }

@@ -8,7 +8,7 @@ export interface SearcherState {
   isEnabled: boolean;
 }
 
-export function saveApiKeys() {
+export function saveApiKeys(): void {
   const urlscanApiKey = document.getElementById(
     "urlscan-api-key"
   ) as HTMLInputElement;
@@ -29,7 +29,7 @@ export function saveApiKeys() {
   }
 }
 
-export function saveSearcherStates() {
+export function saveSearcherStates(): void {
   const searcherStates = {};
   const searcherList = document.getElementById("searcherList") as HTMLElement;
   const radios = searcherList.querySelectorAll<HTMLInputElement>(
@@ -46,12 +46,12 @@ export function saveSearcherStates() {
 }
 
 // Saves options to chrome.storage.sync.
-export function saveOptions() {
+export function saveOptions(): void {
   saveApiKeys();
   saveSearcherStates();
 }
 
-export async function restoreApiKeys() {
+export async function restoreApiKeys(): Promise<void> {
   const urlscanApiKey = document.getElementById(
     "urlscan-api-key"
   ) as HTMLInputElement;
@@ -70,7 +70,7 @@ export async function restoreApiKeys() {
   });
 }
 
-export function restoreSearcherStates() {
+export function restoreSearcherStates(): void {
   chrome.storage.sync.get("searcherStates", config => {
     const states: SearcherState[] = [];
 
@@ -99,7 +99,7 @@ export function restoreSearcherStates() {
   });
 }
 
-export function restoreOptions() {
+export function restoreOptions(): void {
   restoreApiKeys();
   restoreSearcherStates();
 }

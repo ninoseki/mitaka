@@ -11,11 +11,11 @@ export class Cymon implements Searcher {
     this.name = "Cymon";
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, `/${query}`);
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, `/domain/${query}`);
   }
 }

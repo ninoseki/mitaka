@@ -11,11 +11,11 @@ export class BGPView implements Searcher {
     this.name = "BGPView";
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, `/ip/${query}`);
   }
 
-  public searchByASN(query: string) {
+  public searchByASN(query: string): string {
     const matches = query.match(/\d+$/);
     if (matches !== null && matches[0]) {
       return buildURL(this.endpoint, `/asn/${matches[0]}`);

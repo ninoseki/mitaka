@@ -11,14 +11,14 @@ export class OTX implements Searcher {
     this.name = "OTX";
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, `/indicator/ip/${query}`);
   }
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, `/indicator/domain/${query}`);
   }
 
-  public searchByHash(query: string) {
+  public searchByHash(query: string): string {
     return buildURL(this.endpoint, `/indicator/file/${query}`);
   }
 }

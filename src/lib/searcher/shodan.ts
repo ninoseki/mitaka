@@ -11,15 +11,15 @@ export class Shodan implements Searcher {
     this.name = "Shodan";
   }
 
-  public searchByASN(query: string) {
+  public searchByASN(query: string): string {
     return buildURL(this.endpoint, "/search", { query: `asn:${query}` });
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, `/host/${query}`);
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, "/search", { query: `hostname:${query}` });
   }
 }

@@ -11,7 +11,7 @@ export class PublicWWW implements Searcher {
     this.name = "PublicWWW";
   }
 
-  public searchByText(query: string) {
+  public searchByText(query: string): string {
     return buildURL(this.endpoint, `/${encodeURIComponent(query)}`);
   }
 }

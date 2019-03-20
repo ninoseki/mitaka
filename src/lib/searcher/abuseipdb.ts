@@ -11,7 +11,7 @@ export class AbuseIPDB implements Searcher {
     this.name = "AbuseIPDB";
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, `/check/${query}`);
   }
 }

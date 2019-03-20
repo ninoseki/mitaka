@@ -11,20 +11,20 @@ export class Pulsedive implements Searcher {
     this.name = "Pulsedive";
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return this.search(query);
   }
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return this.search(query);
   }
-  public searchByURL(query: string) {
+  public searchByURL(query: string): string {
     return this.search(query);
   }
-  public searchByHash(query: string) {
+  public searchByHash(query: string): string {
     return this.search(query);
   }
 
-  private search(query: string) {
+  private search(query: string): string {
     return `${this.endpoint}/indicator/?ioc=${base64fy(query)}`;
   }
 }

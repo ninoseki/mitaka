@@ -11,11 +11,11 @@ export class FOFA implements Searcher {
     this.name = "FOFA";
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return this.search(`ip="${query}"`);
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return this.search(`domain="${query}"`);
   }
 

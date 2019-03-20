@@ -11,7 +11,7 @@ export class ArchiveOrg implements Searcher {
     this.name = "archive.org";
   }
 
-  public searchByURL(query: string) {
+  public searchByURL(query: string): string {
     return buildURL(this.endpoint, `/web/*/${query}`);
   }
 }

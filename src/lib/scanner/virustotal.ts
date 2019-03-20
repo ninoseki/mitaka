@@ -13,11 +13,11 @@ export class VirusTotal implements Scanner {
     this.name = "VirusTotal";
   }
 
-  public setApiKey(apiKey: string | undefined) {
+  public setApiKey(apiKey: string | undefined): void {
     this.apiKey = apiKey;
   }
 
-  public async scanByURL(url: string) {
+  public async scanByURL(url: string): Promise<string> {
     if (this.apiKey === undefined) {
       throw Error("Please set your VirusTotal API key via the option.");
     }

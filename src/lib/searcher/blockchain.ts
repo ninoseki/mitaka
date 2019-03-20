@@ -11,7 +11,7 @@ export class BlockChain implements Searcher {
     this.name = "Blockchain.com";
   }
 
-  public searchByBTC(query: string) {
+  public searchByBTC(query: string): string {
     return buildURL(this.endpoint, `/btc/address/${query}`);
   }
 }

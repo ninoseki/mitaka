@@ -11,19 +11,19 @@ export class Urlscan implements Searcher {
     this.name = "Urlscan";
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, `/ip/${query}`);
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, `/domain/${query}`);
   }
 
-  public searchByURL(query: string) {
+  public searchByURL(query: string): string {
     return this.search(encodeURIComponent(`"${query}"`));
   }
 
-  private search(query: string) {
+  private search(query: string): string {
     return buildURL(this.endpoint, `/search/#${query}`);
   }
 }

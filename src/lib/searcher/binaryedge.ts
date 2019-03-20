@@ -11,13 +11,13 @@ export class BinaryEdge implements Searcher {
     this.name = "BinaryEdge";
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, "/services/query", {
       query: `ip:"${query}"`,
     });
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, "/services/domains", { query });
   }
 }

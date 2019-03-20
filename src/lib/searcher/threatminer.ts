@@ -11,15 +11,15 @@ export class ThreatMiner implements Searcher {
     this.name = "ThreatMiner";
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, "/host.php", { q: query });
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, "/domain.php", { q: query });
   }
 
-  public searchByHash(query: string) {
+  public searchByHash(query: string): string {
     return buildURL(this.endpoint, "/sample.php", { q: query });
   }
 }

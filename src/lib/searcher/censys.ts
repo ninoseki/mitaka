@@ -11,19 +11,19 @@ export class Censys implements Searcher {
     this.name = "Censys";
   }
 
-  public searchByText(query: string) {
+  public searchByText(query: string): string {
     return buildURL(this.endpoint, "/ipv4", { q: query });
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, `/ipv4/${query}`);
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, `/domain/${query}`);
   }
 
-  public searchByASN(query: string) {
+  public searchByASN(query: string): string {
     const matches = query.match(/\d+$/);
     if (matches !== null && matches[0]) {
       return buildURL(this.endpoint, "/ipv4", {

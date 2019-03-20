@@ -11,7 +11,7 @@ export class ONYPHE implements Searcher {
     this.name = "ONYPHE";
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, `/ip/${query}`);
   }
 }

@@ -11,7 +11,7 @@ export class BlockCypher implements Searcher {
     this.name = "BlockCypher";
   }
 
-  public searchByBTC(query: string) {
+  public searchByBTC(query: string): string {
     return buildURL(this.endpoint, `/btc/address/${query}/`);
   }
 }

@@ -68,7 +68,7 @@ export class Command {
     return url;
   }
 
-  public async scan(apiKeys: ApiKeys) {
+  public async scan(apiKeys: ApiKeys): Promise<string> {
     const selector: Selector = new Selector(this.query);
     const entries: AnalyzerEntry[] = selector.getScannerEntries();
     const entry = entries.find(r => r.analyzer.name === this.target);

@@ -11,15 +11,15 @@ export class RiskIQ implements Searcher {
     this.name = "RiskIQ";
   }
 
-  public searchByIP(query: string) {
+  public searchByIP(query: string): string {
     return buildURL(this.endpoint, `/search/${query}`);
   }
 
-  public searchByDomain(query: string) {
+  public searchByDomain(query: string): string {
     return buildURL(this.endpoint, `/search/${query}`);
   }
 
-  public searchByEmail(query: string) {
+  public searchByEmail(query: string): string {
     return buildURL(this.endpoint, `/search/whois/email/${query}`);
   }
 }
