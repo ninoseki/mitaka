@@ -20,11 +20,11 @@ Mitaka is an OSINT friendly Chrome extension which can:
 
 ### Supported IOC types
 
-| name      | desc.                       | eg.                                  |
+| name      | desc.                       | e.g.                                 |
 |:----------|:----------------------------|:-------------------------------------|
-| text      | freetext                    | any string(s)                        |
+| text      | Freetext                    | any string(s)                        |
 | ip        | IPv4 address                | `8.8.8.8`                            |
-| domain    | domain name                 | `github.com`                         |
+| domain    | Domain name                 | `github.com`                         |
 | url       | URL                         | `https://github.com`                 |
 | email     | Email address               | `test@test.com`                      |
 | asn       | ASN                         | `AS13335`                            |
@@ -84,7 +84,7 @@ Mitaka is an OSINT friendly Chrome extension which can:
 
 You can enable / disable a search engine via the extension's options.
 
-### Supported scan engine
+### Supported scan engines
 
 | name       | url                        | supported types   |
 |:-----------|:---------------------------|:------------------|
@@ -122,7 +122,7 @@ You can enable / disable a search engine on the options page based on your prefe
 
 ## About Permissons
 
-This Chrome extension requires following permissions.
+This Chrome extension requires the following permissions.
 
 - `Read and change all your data on the websites you visit`:
   - This extension creates context menus dynamically based on what you select on a website.
@@ -153,7 +153,7 @@ npm run test
 npm run build
 ```
 
-Following procedures to load an unpacked extension are described at https://developer.chrome.com/extensions/getstarted.
+For loading an unpacked extension, please follow the procedures described at https://developer.chrome.com/extensions/getstarted.
 
 ## Misc
 
