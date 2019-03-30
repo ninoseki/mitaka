@@ -66,7 +66,7 @@ Mitaka is an OSINT friendly Chrome extension which can:
 | PublicWWW            | https://publicwww.com                  | text                              |
 | Pulsedive            | https://pulsedive.com                  | ip / domaion / url / hash         |
 | RiskIQ               | http://community.riskiq.com            | ip / domain / email               |
-| SecurityTrails       | https://securitytrails.com             | ip / domain                       |
+| SecurityTrails       | https://securitytrails.com             | ip / domain / email               |
 | Shodan               | https://www.shodan.io                  | ip / domain / asn                 |
 | Sploitus             | https://sploitus.com                   | cve                               |
 | SpyOnWeb             | http://spyonweb.com                    | ip / domain / gaPubID / gaTrackID |
