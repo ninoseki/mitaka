@@ -4,7 +4,7 @@ import { SearchableType, Searcher } from "./searcher";
 export class SecurityTrails implements Searcher {
   public endpoint: string;
   public name: string;
-  public supportedTypes: SearchableType[] = ["ip", "domain"];
+  public supportedTypes: SearchableType[] = ["ip", "domain", "email"];
 
   public constructor() {
     this.endpoint = "https://securitytrails.com";
@@ -24,5 +24,9 @@ export class SecurityTrails implements Searcher {
 
   public searchByDomain(query: string): string {
     return buildURL(this.endpoint, `/domain/${query}`);
+  }
+
+  public searchByEmail(query: string): string {
+    return buildURL(this.endpoint, `/list/by-email/${query}`);
   }
 }
