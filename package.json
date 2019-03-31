@@ -43,8 +43,7 @@
     "mustache": "^3.0.1",
     "qs": "^6.7.0",
     "throttle-debounce": "^2.1.0",
-    "url": "^0.11.0",
-    "validator": "^10.11.0"
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
@@ -56,10 +55,9 @@
     "@types/mustache": "^0.8.32",
     "@types/node": "^11.12.2",
     "@types/qs": "^6.5.2",
-    "@types/sinon": "7.0.8",
+    "@types/sinon": "^7.0.11",
     "@types/sinon-chrome": "^2.2.6",
     "@types/throttle-debounce": "^1.1.1",
-    "@types/validator": "^10.11.0",
     "@types/window-or-global": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^1.5.0",
     "chai": "^4.2.0",
@@ -73,7 +71,7 @@
     "nyc": "^13.3.0",
     "prettier": "^1.16.4",
     "sinon": "^7.3.1",
-    "sinon-chrome": "^2.3.2",
+    "sinon-chrome": "^3.0.0",
     "ts-loader": "^5.3.3",
     "ts-node": "^8.0.3",
     "typescript": "^3.4.1",
