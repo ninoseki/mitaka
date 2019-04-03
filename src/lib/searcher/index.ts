@@ -15,6 +15,7 @@ export { FindSubDomains } from "./findsubdomains";
 export { FOFA } from "./fofa";
 export { FortiGuard } from "./fortiguard";
 export { GoogleSafeBrowsing } from "./googlesafebrowsing";
+export { GreyNoise } from "./greynoise";
 export { HybridAnalysis } from "./hybridanalysis";
 export { IntelligenceX } from "./intelligencex";
 export { Maltiverse } from "./maltiverse";
