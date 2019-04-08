@@ -58,7 +58,7 @@ Mitaka is an OSINT friendly Chrome extension which can:
 | GreyNoise            | https://viz.greynoise.io               | ip                                |
 | HybridAnalysis       | https://www.hybrid-analysis.com        | ip / domain / hash (sha256 only)  |
 | Intelligence X       | https://intelx.io                      | ip / domain / url / email / btc   |
-| MalShare             | https://malshare.com¥                  | hash                              |
+| MalShare             | https://malshare.com                   | hash                              |
 | Maltiverse           | https://www.maltiverse.com             | domain / hash                     |
 | OOCPR                | https://data.occrp.org                 | email                             |
 | ONYPHE               | https://www.onyphe.io                  | ip                                |
