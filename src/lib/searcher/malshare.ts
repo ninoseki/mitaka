@@ -7,7 +7,7 @@ export class Malshare implements Searcher {
   public supportedTypes: SearchableType[] = ["hash"];
 
   public constructor() {
-    this.endpoint = "http://www.malshare.com";
+    this.endpoint = "https://www.malshare.com";
     this.name = "MalShare";
   }
 
