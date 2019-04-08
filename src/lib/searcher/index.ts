@@ -18,6 +18,7 @@ export { GoogleSafeBrowsing } from "./googlesafebrowsing";
 export { GreyNoise } from "./greynoise";
 export { HybridAnalysis } from "./hybridanalysis";
 export { IntelligenceX } from "./intelligencex";
+export { IPinfo } from "./ipinfo";
 export { Malshare } from "./malshare";
 export { Maltiverse } from "./maltiverse";
 export { OCCRP } from "./occrp";
