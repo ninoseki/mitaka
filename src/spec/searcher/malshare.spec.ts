@@ -9,7 +9,7 @@ describe("Malshare", () => {
     expect(subject.supportedTypes).to.deep.equal(["hash"]);
   });
 
-  describe("#searchByURL", () => {
+  describe("#searchByHash", () => {
     it("should return URL", () => {
       expect(subject.searchByHash("44d88612fea8a8f36de82e1278abb02")).to.equal(
         "http://www.malshare.com/sample.php?action=detail&hash=44d88612fea8a8f36de82e1278abb02"
