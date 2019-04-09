@@ -112,10 +112,7 @@ The Chrome extension shows context menus based on a type of IoC you selected and
 
 **Note:**
 
-- urlscan.io scan:
-  - Please set your urlscan.io API key via the options if you want to make a scan.
-- VirusTotal scan:
-  - Please set your VirusTotal API key via the options if you want to make a scan.
+Please set your urlscan.io & VirusTotal API keys in the options page for enabling urlscan.io & VirusTotal scans.
 
 ## Options
 
