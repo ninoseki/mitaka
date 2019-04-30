@@ -50,6 +50,7 @@ Mitaka is an OSINT friendly Chrome extension which can:
 | Cymon                | https://cymon.io                       | ip / domain                       |
 | DNSlytics            | https://dnslytics.com                  | ip / domain                       |
 | DomainBigData        | https://domainbigdata.com              | domain                            |
+| DomainTools          | https://www.domaintools.com            | ip / domain                       |
 | DomainWatch          | https://domainwat.ch                   | domain / email                    |
 | FindSubDomains       | https://findsubdomains.com             | domain                            |
 | FOFA                 | https://fofa.so                        | ip / domain                       |
