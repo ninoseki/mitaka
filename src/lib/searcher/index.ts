@@ -10,6 +10,7 @@ export { Crtsh } from "./crtsh";
 export { Cymon } from "./cymon";
 export { DNSlytics } from "./dnslytics";
 export { DomainBigData } from "./domainbigdata";
+export { DomainTools } from "./domaintools";
 export { DomainWatch } from "./domainwatch";
 export { FindSubDomains } from "./findsubdomains";
 export { FOFA } from "./fofa";
