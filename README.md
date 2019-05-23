@@ -52,6 +52,7 @@ Mitaka is an OSINT friendly Chrome extension which can:
 | DomainBigData        | https://domainbigdata.com              | domain                            |
 | DomainTools          | https://www.domaintools.com            | ip / domain                       |
 | DomainWatch          | https://domainwat.ch                   | domain / email                    |
+| EmailRep             | https://emailrep.io                    | email                             |
 | FindSubDomains       | https://findsubdomains.com             | domain                            |
 | FOFA                 | https://fofa.so                        | ip / domain                       |
 | FortiGuard           | https://fortiguard.com                 | ip / url / cve                    |
