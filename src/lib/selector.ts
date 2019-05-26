@@ -21,30 +21,30 @@ export class Selector {
   }
 
   public getIP(): string | null {
-    return this.getFirstValueFromArray(this.ioc.networks.ipv4s);
+    return this.getFirstValueFromArray(this.ioc.ipv4s);
   }
 
   public getDomain(): string | null {
-    return this.getFirstValueFromArray(this.ioc.networks.domains);
+    return this.getFirstValueFromArray(this.ioc.domains);
   }
 
   public getURL(): string | null {
-    return this.getFirstValueFromArray(this.ioc.networks.urls);
+    return this.getFirstValueFromArray(this.ioc.urls);
   }
 
   public getEmail(): string | null {
-    return this.getFirstValueFromArray(this.ioc.networks.emails);
+    return this.getFirstValueFromArray(this.ioc.emails);
   }
 
   public getASN(): string | null {
-    return this.getFirstValueFromArray(this.ioc.networks.asns);
+    return this.getFirstValueFromArray(this.ioc.asns);
   }
 
   public getHash(): string | null {
     let hashes: string[] = [];
-    hashes = this.concat(hashes, this.ioc.hashes.sha256s);
-    hashes = this.concat(hashes, this.ioc.hashes.sha1s);
-    hashes = this.concat(hashes, this.ioc.hashes.md5s);
+    hashes = this.concat(hashes, this.ioc.sha256s);
+    hashes = this.concat(hashes, this.ioc.sha1s);
+    hashes = this.concat(hashes, this.ioc.md5s);
     if (hashes.length === 0) {
       return null;
     }
@@ -52,23 +52,23 @@ export class Selector {
   }
 
   public getCVE(): string | null {
-    return this.getFirstValueFromArray(this.ioc.utilities.cves);
+    return this.getFirstValueFromArray(this.ioc.cves);
   }
 
   public getBTC(): string | null {
-    return this.getFirstValueFromArray(this.ioc.cryptocurrencies.btcs);
+    return this.getFirstValueFromArray(this.ioc.btcs);
   }
 
   public getXMR(): string | null {
-    return this.getFirstValueFromArray(this.ioc.cryptocurrencies.xmrs);
+    return this.getFirstValueFromArray(this.ioc.xmrs);
   }
 
   public getGATrackID(): string | null {
-    return this.getFirstValueFromArray(this.ioc.trackers.gaTrackIDs);
+    return this.getFirstValueFromArray(this.ioc.gaTrackIDs);
   }
 
   public getGAPubID(): string | null {
-    return this.getFirstValueFromArray(this.ioc.trackers.gaPubIDs);
+    return this.getFirstValueFromArray(this.ioc.gaPubIDs);
   }
 
   public getSearchersByType(type: SearchableType): Searcher[] {
