@@ -7,7 +7,6 @@ export { BlockChain } from "./blockchain";
 export { BlockCypher } from "./blockcypher";
 export { Censys } from "./censys";
 export { Crtsh } from "./crtsh";
-export { Cymon } from "./cymon";
 export { DNSlytics } from "./dnslytics";
 export { DomainBigData } from "./domainbigdata";
 export { DomainTools } from "./domaintools";
