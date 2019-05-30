@@ -47,7 +47,6 @@ Mitaka is an OSINT friendly Chrome extension which can:
 | BlockCypher          | https://live.blockcypher.com           | btc                               |
 | Censys               | https://censys.io                      | ip / domain / asn / text          |
 | crt.sh               | https://crt.sh                         | domain                            |
-| Cymon                | https://cymon.io                       | ip / domain                       |
 | DNSlytics            | https://dnslytics.com                  | ip / domain                       |
 | DomainBigData        | https://domainbigdata.com              | domain                            |
 | DomainTools          | https://www.domaintools.com            | ip / domain                       |
