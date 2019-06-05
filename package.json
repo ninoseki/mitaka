@@ -37,7 +37,7 @@
     "url": "https://github.com/ninoseki/mitaka.git"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "crypto-js": "^3.1.9-1",
     "ioc-extractor": "^2.0.0",
     "mustache": "^3.0.1",
@@ -50,10 +50,10 @@
     "@types/chrome": "^0.0.85",
     "@types/crypto-js": "^3.1.43",
     "@types/jsdom": "^12.2.3",
-    "@types/mocha": "^5.2.6",
+    "@types/mocha": "^5.2.7",
     "@types/moxios": "^0.4.8",
     "@types/mustache": "^0.8.32",
-    "@types/node": "^12.0.3",
+    "@types/node": "^12.0.4",
     "@types/qs": "^6.5.3",
     "@types/sinon": "^7.0.12",
     "@types/sinon-chrome": "^2.2.6",
@@ -72,10 +72,10 @@
     "prettier": "^1.17.1",
     "sinon": "^7.3.2",
     "sinon-chrome": "^3.0.1",
-    "ts-loader": "^6.0.1",
+    "ts-loader": "^6.0.2",
     "ts-node": "^8.2.0",
     "typescript": "3.4.5",
-    "webpack": "^4.32.2",
+    "webpack": "^4.33.0",
     "webpack-cli": "^3.3.2",
     "window-or-global": "^1.0.1"
   }
