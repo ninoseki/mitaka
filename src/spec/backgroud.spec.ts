@@ -69,10 +69,12 @@ describe("Background script", () => {
         const command = new Command(
           "Scan https://www.wikipedia.org/ as a url on Urlscan"
         );
-        const stub: sinon.SinonStub = sinon.stub(command, "scan").withArgs({
-          urlscanApiKey: "test",
-          virusTotalApiKey: "test",
-        });
+        const stub: sinon.SinonStub<any, any> = sinon
+          .stub(command, "scan")
+          .withArgs({
+            urlscanApiKey: "test",
+            virusTotalApiKey: "test",
+          });
         stub.returns(
           "https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/"
         );
