@@ -1,6 +1,7 @@
 # Mitaka
 
 [![Chrome Version](https://img.shields.io/chrome-web-store/v/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
+[![FF Version](https://img.shields.io/amo/v/mitaka.svg)](https://addons.mozilla.org/en-US/firefox/addon/mitaka/)
 [![Chrome Users](https://img.shields.io/chrome-web-store/users/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
 [![Chrome Rating](https://img.shields.io/chrome-web-store/rating/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
 [![Build Status](https://travis-ci.org/ninoseki/mitaka.svg?branch=master)](https://travis-ci.org/ninoseki/mitaka)
@@ -9,7 +10,7 @@
 
 ![eyecatch](./examples/eyecatch.png)
 
-Mitaka is an OSINT friendly Chrome extension which can:
+Mitaka is an OSINT friendly browser extension which can:
 
 - Extract & refang IoC from a block of text
   - E.g. `example[.]com` to `example.com`
@@ -99,11 +100,12 @@ You can enable / disable a search engine via the extension's options.
 
 ## Download
 
-- https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg
+- Chrome: https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg
+- FireFox: https://addons.mozilla.org/en-US/firefox/addon/mitaka/
 
 ## How to use
 
-The Chrome extension shows context menus based on a type of IoC you selected and then you can choose what you want to search / scan on.
+This browser extension shows context menus based on a type of IoC you selected and then you can choose what you want to search / scan on.
 
 **Examples:**
 
@@ -125,7 +127,7 @@ You can enable / disable a search engine on the options page based on your prefe
 
 ## About Permissons
 
-This Chrome extension requires the following permissions.
+This browser extension requires the following permissions.
 
 - `Read and change all your data on the websites you visit`:
   - This extension creates context menus dynamically based on what you select on a website.
@@ -144,7 +146,7 @@ I don't (and will never) collect any information from the users.
 
 ## How to build (for developers)
 
-The chrome extension is written in [TypeScript](https://www.typescriptlang.org/) and built by [webpack](https://webpack.js.org/).
+This browser extension is written in [TypeScript](https://www.typescriptlang.org/) and built by [webpack](https://webpack.js.org/).
 
 TypeScript files will start out in `src` directory, run through the TypeScript compiler, then webpack, and end up in JavaScript files in `dist` directory.
 
