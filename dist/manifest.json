@@ -26,5 +26,10 @@
     "storage",
     "https://urlscan.io/api/v1/*",
     "https://www.virustotal.com/vtapi/v2/*"
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{9efc0280-b125-400e-b53d-2d09d7effab4}"
+    }
+  }
 }
