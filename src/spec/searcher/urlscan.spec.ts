@@ -6,7 +6,12 @@ describe("Urlscan", () => {
   const subject = new Urlscan();
 
   it("should support IP, Domain & URL type IOC", () => {
-    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "url"]);
+    expect(subject.supportedTypes).to.deep.equal([
+      "ip",
+      "domain",
+      "asn",
+      "url",
+    ]);
   });
 
   describe("#searchByURL", () => {
@@ -29,6 +34,14 @@ describe("Urlscan", () => {
     it("should return URL", () => {
       expect(subject.searchByDomain("urlscan.io")).to.eq(
         "https://urlscan.io/domain/urlscan.io"
+      );
+    });
+  });
+
+  describe("#searchByASN", () => {
+    it("should return URL", () => {
+      expect(subject.searchByASN("AS24940")).to.eq(
+        "https://urlscan.io/asn/AS24940"
       );
     });
   });

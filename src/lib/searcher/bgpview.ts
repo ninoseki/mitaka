@@ -1,5 +1,6 @@
 import { buildURL } from "../url_builder";
 import { SearchableType, Searcher } from "./searcher";
+import { extractASNumber } from "../utility";
 
 export class BGPView implements Searcher {
   public endpoint: string;
@@ -16,10 +17,7 @@ export class BGPView implements Searcher {
   }
 
   public searchByASN(query: string): string {
-    const matches = query.match(/\d+$/);
-    if (matches !== null && matches[0]) {
-      return buildURL(this.endpoint, `/asn/${matches[0]}`);
-    }
-    return "";
+    const number: string = extractASNumber(query);
+    return buildURL(this.endpoint, `/asn/${number}`);
   }
 }

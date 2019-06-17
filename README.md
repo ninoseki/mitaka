@@ -80,7 +80,7 @@ Mitaka is an OSINT friendly browser extension which can:
 | ThreatCrowd          | https://www.threatcrowd.org            | ip / domain / email               |
 | ThreatMiner          | https://www.threatminer.org            | ip / domain / hash                |
 | TIP                  | https://threatintelligenceplatform.com | ip / domain                       |
-| Urlscan              | https://urlscan.io                     | ip / domain / url                 |
+| Urlscan              | https://urlscan.io                     | ip / domain / asn / url           |
 | ViewDNS              | https://viewdns.info                   | ip / domain / email               |
 | VirusTotal           | https://www.virustotal.com             | ip / domain / url / hash          |
 | Vulmon               | https://vulmon.com                     | cve                               |
