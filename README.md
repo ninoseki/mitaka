@@ -77,6 +77,7 @@ Mitaka is an OSINT friendly browser extension which can:
 | Sploitus             | https://sploitus.com                   | cve                               |
 | SpyOnWeb             | http://spyonweb.com                    | ip / domain / gaPubID / gaTrackID |
 | Talos                | https://talosintelligence.com          | ip / domain                       |
+| ThreatConnect        | https://app.threatconnect.com          | ip / domain / email               |
 | ThreatCrowd          | https://www.threatcrowd.org            | ip / domain / email               |
 | ThreatMiner          | https://www.threatminer.org            | ip / domain / hash                |
 | TIP                  | https://threatintelligenceplatform.com | ip / domain                       |
