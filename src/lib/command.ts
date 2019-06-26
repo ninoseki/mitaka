@@ -26,40 +26,64 @@ export class Command {
       const searcher = entry.analyzer as Searcher;
       switch (this.type) {
         case "text":
-          url = searcher.searchByText!(entry.query);
+          if (searcher.searchByText) {
+            url = searcher.searchByText(entry.query);
+          }
           break;
         case "ip":
-          url = searcher.searchByIP!(entry.query);
+          if (searcher.searchByIP) {
+            url = searcher.searchByIP(entry.query);
+          }
           break;
         case "domain":
-          url = searcher.searchByDomain!(entry.query);
+          if (searcher.searchByDomain) {
+            url = searcher.searchByDomain(entry.query);
+          }
           break;
         case "url":
-          url = searcher.searchByURL!(entry.query);
+          if (searcher.searchByURL) {
+            url = searcher.searchByURL(entry.query);
+          }
           break;
         case "asn":
-          url = searcher.searchByASN!(entry.query);
+          if (searcher.searchByASN) {
+            url = searcher.searchByASN(entry.query);
+          }
           break;
         case "email":
-          url = searcher.searchByEmail!(entry.query);
+          if (searcher.searchByEmail) {
+            url = searcher.searchByEmail(entry.query);
+          }
           break;
         case "hash":
-          url = searcher.searchByHash!(entry.query);
+          if (searcher.searchByHash) {
+            url = searcher.searchByHash(entry.query);
+          }
           break;
         case "cve":
-          url = searcher.searchByCVE!(entry.query);
+          if (searcher.searchByCVE) {
+            url = searcher.searchByCVE(entry.query);
+          }
           break;
         case "btc":
-          url = searcher.searchByBTC!(entry.query);
+          if (searcher.searchByBTC) {
+            url = searcher.searchByBTC(entry.query);
+          }
           break;
         case "xmr":
-          url = searcher.searchbyXMR!(entry.query);
+          if (searcher.searchbyXMR) {
+            url = searcher.searchbyXMR(entry.query);
+          }
           break;
         case "gaTrackID":
-          url = searcher.searchByGATrackID!(entry.query);
+          if (searcher.searchByGATrackID) {
+            url = searcher.searchByGATrackID(entry.query);
+          }
           break;
         case "gaPubID":
-          url = searcher.searchByGAPubID!(entry.query);
+          if (searcher.searchByGAPubID) {
+            url = searcher.searchByGAPubID(entry.query);
+          }
           break;
         default:
           break;
@@ -87,13 +111,19 @@ export class Command {
       }
       switch (entry.type) {
         case "ip":
-          url = await scanner.scanByIP!(entry.query);
+          if (scanner.scanByIP) {
+            url = await scanner.scanByIP(entry.query);
+          }
           break;
         case "domain":
-          url = await scanner.scanByDomain!(entry.query);
+          if (scanner.scanByDomain) {
+            url = await scanner.scanByDomain(entry.query);
+          }
           break;
         case "url":
-          url = await scanner.scanByURL!(entry.query);
+          if (scanner.scanByURL) {
+            url = await scanner.scanByURL(entry.query);
+          }
           break;
         default:
           break;
