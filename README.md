@@ -85,6 +85,7 @@ Mitaka is an OSINT friendly browser extension which can:
 | ViewDNS              | https://viewdns.info                   | ip / domain / email               |
 | VirusTotal           | https://www.virustotal.com             | ip / domain / url / hash          |
 | Vulmon               | https://vulmon.com                     | cve                               |
+| VulncodeDB           | https://www.vulncode-db.com            | cve                               |
 | VxCube               | http://vxcube.com                      | ip / domain / hash                |
 | WebAnalyzer          | https://wa-com.com/                    | domain                            |
 | X-Force Exchange     | https://exchange.xforce.ibmcloud.com   | ip / domain / hash                |
