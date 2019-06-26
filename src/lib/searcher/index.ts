@@ -45,6 +45,7 @@ export { Urlscan } from "./urlscan";
 export { ViewDNS } from "./viewdns";
 export { VirusTotal } from "./virustotal";
 export { Vulmon } from "./vulmon";
+export { VulncodeDB } from "./vulncode-db";
 export { VxCube } from "./vxcube";
 export { WebAnalyzer } from "./webanalyzer";
 export { XForceExchange } from "./xforce-exchange";
