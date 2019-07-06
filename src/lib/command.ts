@@ -110,19 +110,19 @@ export class Command {
   private scannerTable = {
     ip: async (scanner: Scanner, query: string): Promise<string> => {
       if (scanner.scanByIP) {
-        return await scanner.scanByIP(query);
+        return scanner.scanByIP(query);
       }
       return "";
     },
     domain: async (scanner: Scanner, query: string): Promise<string> => {
       if (scanner.scanByDomain) {
-        return await scanner.scanByDomain(query);
+        return scanner.scanByDomain(query);
       }
       return "";
     },
     url: async (scanner: Scanner, query: string): Promise<string> => {
       if (scanner.scanByURL) {
-        return await scanner.scanByURL(query);
+        return scanner.scanByURL(query);
       }
       return "";
     },
