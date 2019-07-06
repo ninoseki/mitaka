@@ -18,73 +18,73 @@ export class Command {
   }
 
   private searcherTable = {
-    text: function(searcher: Searcher, query: string): string {
+    text: (searcher: Searcher, query: string): string => {
       if (searcher.searchByText) {
         return searcher.searchByText(query);
       }
       return "";
     },
-    ip: function(searcher: Searcher, query: string): string {
+    ip: (searcher: Searcher, query: string): string => {
       if (searcher.searchByIP) {
         return searcher.searchByIP(query);
       }
       return "";
     },
-    domain: function(searcher: Searcher, query: string): string {
+    domain: (searcher: Searcher, query: string): string => {
       if (searcher.searchByDomain) {
         return searcher.searchByDomain(query);
       }
       return "";
     },
-    url: function(searcher: Searcher, query: string): string {
+    url: (searcher: Searcher, query: string): string => {
       if (searcher.searchByURL) {
         return searcher.searchByURL(query);
       }
       return "";
     },
-    asn: function(searcher: Searcher, query: string): string {
+    asn: (searcher: Searcher, query: string): string => {
       if (searcher.searchByASN) {
         return searcher.searchByASN(query);
       }
       return "";
     },
-    email: function(searcher: Searcher, query: string): string {
+    email: (searcher: Searcher, query: string): string => {
       if (searcher.searchByEmail) {
         return searcher.searchByEmail(query);
       }
       return "";
     },
-    hash: function(searcher: Searcher, query: string): string {
+    hash: (searcher: Searcher, query: string): string => {
       if (searcher.searchByHash) {
         return searcher.searchByHash(query);
       }
       return "";
     },
-    cve: function(searcher: Searcher, query: string): string {
+    cve: (searcher: Searcher, query: string): string => {
       if (searcher.searchByCVE) {
         return searcher.searchByCVE(query);
       }
       return "";
     },
-    btc: function(searcher: Searcher, query: string): string {
+    btc: (searcher: Searcher, query: string): string => {
       if (searcher.searchByBTC) {
         return searcher.searchByBTC(query);
       }
       return "";
     },
-    xmr: function(searcher: Searcher, query: string): string {
+    xmr: (searcher: Searcher, query: string): string => {
       if (searcher.searchByXMR) {
         return searcher.searchByXMR(query);
       }
       return "";
     },
-    gaPubID: function(searcher: Searcher, query: string): string {
+    gaPubID: (searcher: Searcher, query: string): string => {
       if (searcher.searchByGAPubID) {
         return searcher.searchByGAPubID(query);
       }
       return "";
     },
-    gaTrackID: function(searcher: Searcher, query: string): string {
+    gaTrackID: (searcher: Searcher, query: string): string => {
       if (searcher.searchByGATrackID) {
         return searcher.searchByGATrackID(query);
       }
@@ -99,26 +99,28 @@ export class Command {
     let url = "";
     if (entry !== undefined) {
       const searcher = entry.analyzer as Searcher;
-      const fn: Function = this.searcherTable[entry.type];
-      url = fn(searcher, entry.query);
+      if (entry.type in this.searcherTable) {
+        const fn: Function = this.searcherTable[entry.type];
+        url = fn(searcher, entry.query);
+      }
     }
     return url;
   }
 
   private scannerTable = {
-    ip: async function(scanner: Scanner, query: string): Promise<string> {
+    ip: async (scanner: Scanner, query: string): Promise<string> => {
       if (scanner.scanByIP) {
         return await scanner.scanByIP(query);
       }
       return "";
     },
-    domain: async function(scanner: Scanner, query: string): Promise<string> {
+    domain: async (scanner: Scanner, query: string): Promise<string> => {
       if (scanner.scanByDomain) {
         return await scanner.scanByDomain(query);
       }
       return "";
     },
-    url: async function(scanner: Scanner, query: string): Promise<string> {
+    url: async (scanner: Scanner, query: string): Promise<string> => {
       if (scanner.scanByURL) {
         return await scanner.scanByURL(query);
       }
@@ -143,8 +145,10 @@ export class Command {
         default:
           break;
       }
-      const fn: Function = this.scannerTable[entry.type];
-      url = await fn(scanner, entry.query);
+      if (entry.type in this.scannerTable) {
+        const fn: Function = this.scannerTable[entry.type];
+        url = await fn(scanner, entry.query);
+      }
     }
     return url;
   }
