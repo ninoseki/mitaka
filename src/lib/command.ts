@@ -17,6 +17,81 @@ export class Command {
     this.target = parts[parts.length - 1];
   }
 
+  private searcherTable = {
+    text: (searcher: Searcher, query: string): string => {
+      if (searcher.searchByText) {
+        return searcher.searchByText(query);
+      }
+      return "";
+    },
+    ip: (searcher: Searcher, query: string): string => {
+      if (searcher.searchByIP) {
+        return searcher.searchByIP(query);
+      }
+      return "";
+    },
+    domain: (searcher: Searcher, query: string): string => {
+      if (searcher.searchByDomain) {
+        return searcher.searchByDomain(query);
+      }
+      return "";
+    },
+    url: (searcher: Searcher, query: string): string => {
+      if (searcher.searchByURL) {
+        return searcher.searchByURL(query);
+      }
+      return "";
+    },
+    asn: (searcher: Searcher, query: string): string => {
+      if (searcher.searchByASN) {
+        return searcher.searchByASN(query);
+      }
+      return "";
+    },
+    email: (searcher: Searcher, query: string): string => {
+      if (searcher.searchByEmail) {
+        return searcher.searchByEmail(query);
+      }
+      return "";
+    },
+    hash: (searcher: Searcher, query: string): string => {
+      if (searcher.searchByHash) {
+        return searcher.searchByHash(query);
+      }
+      return "";
+    },
+    cve: (searcher: Searcher, query: string): string => {
+      if (searcher.searchByCVE) {
+        return searcher.searchByCVE(query);
+      }
+      return "";
+    },
+    btc: (searcher: Searcher, query: string): string => {
+      if (searcher.searchByBTC) {
+        return searcher.searchByBTC(query);
+      }
+      return "";
+    },
+    xmr: (searcher: Searcher, query: string): string => {
+      if (searcher.searchByXMR) {
+        return searcher.searchByXMR(query);
+      }
+      return "";
+    },
+    gaPubID: (searcher: Searcher, query: string): string => {
+      if (searcher.searchByGAPubID) {
+        return searcher.searchByGAPubID(query);
+      }
+      return "";
+    },
+    gaTrackID: (searcher: Searcher, query: string): string => {
+      if (searcher.searchByGATrackID) {
+        return searcher.searchByGATrackID(query);
+      }
+      return "";
+    },
+  };
+
   public search(): string {
     const selector: Selector = new Selector(this.query);
     const entries: AnalyzerEntry[] = selector.getSearcherEntries();
@@ -24,73 +99,34 @@ export class Command {
     let url = "";
     if (entry !== undefined) {
       const searcher = entry.analyzer as Searcher;
-      switch (this.type) {
-        case "text":
-          if (searcher.searchByText) {
-            url = searcher.searchByText(entry.query);
-          }
-          break;
-        case "ip":
-          if (searcher.searchByIP) {
-            url = searcher.searchByIP(entry.query);
-          }
-          break;
-        case "domain":
-          if (searcher.searchByDomain) {
-            url = searcher.searchByDomain(entry.query);
-          }
-          break;
-        case "url":
-          if (searcher.searchByURL) {
-            url = searcher.searchByURL(entry.query);
-          }
-          break;
-        case "asn":
-          if (searcher.searchByASN) {
-            url = searcher.searchByASN(entry.query);
-          }
-          break;
-        case "email":
-          if (searcher.searchByEmail) {
-            url = searcher.searchByEmail(entry.query);
-          }
-          break;
-        case "hash":
-          if (searcher.searchByHash) {
-            url = searcher.searchByHash(entry.query);
-          }
-          break;
-        case "cve":
-          if (searcher.searchByCVE) {
-            url = searcher.searchByCVE(entry.query);
-          }
-          break;
-        case "btc":
-          if (searcher.searchByBTC) {
-            url = searcher.searchByBTC(entry.query);
-          }
-          break;
-        case "xmr":
-          if (searcher.searchbyXMR) {
-            url = searcher.searchbyXMR(entry.query);
-          }
-          break;
-        case "gaTrackID":
-          if (searcher.searchByGATrackID) {
-            url = searcher.searchByGATrackID(entry.query);
-          }
-          break;
-        case "gaPubID":
-          if (searcher.searchByGAPubID) {
-            url = searcher.searchByGAPubID(entry.query);
-          }
-          break;
-        default:
-          break;
+      if (entry.type in this.searcherTable) {
+        const fn: Function = this.searcherTable[entry.type];
+        url = fn(searcher, entry.query);
       }
     }
     return url;
   }
+
+  private scannerTable = {
+    ip: async (scanner: Scanner, query: string): Promise<string> => {
+      if (scanner.scanByIP) {
+        return scanner.scanByIP(query);
+      }
+      return "";
+    },
+    domain: async (scanner: Scanner, query: string): Promise<string> => {
+      if (scanner.scanByDomain) {
+        return scanner.scanByDomain(query);
+      }
+      return "";
+    },
+    url: async (scanner: Scanner, query: string): Promise<string> => {
+      if (scanner.scanByURL) {
+        return scanner.scanByURL(query);
+      }
+      return "";
+    },
+  };
 
   public async scan(apiKeys: ApiKeys): Promise<string> {
     const selector: Selector = new Selector(this.query);
@@ -109,24 +145,9 @@ export class Command {
         default:
           break;
       }
-      switch (entry.type) {
-        case "ip":
-          if (scanner.scanByIP) {
-            url = await scanner.scanByIP(entry.query);
-          }
-          break;
-        case "domain":
-          if (scanner.scanByDomain) {
-            url = await scanner.scanByDomain(entry.query);
-          }
-          break;
-        case "url":
-          if (scanner.scanByURL) {
-            url = await scanner.scanByURL(entry.query);
-          }
-          break;
-        default:
-          break;
+      if (entry.type in this.scannerTable) {
+        const fn: Function = this.scannerTable[entry.type];
+        url = await fn(scanner, entry.query);
       }
     }
     return url;

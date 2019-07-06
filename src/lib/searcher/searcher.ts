@@ -27,5 +27,5 @@ export interface Searcher {
   searchByIP?(query: string): string;
   searchByText?(query: string): string;
   searchByURL?(query: string): string;
-  searchbyXMR?(query: string): string;
+  searchByXMR?(query: string): string;
 }
