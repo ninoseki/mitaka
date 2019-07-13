@@ -24,6 +24,7 @@ export { IPinfo } from "./ipinfo";
 export { JoeSandbox } from "./joesandbox";
 export { Malshare } from "./malshare";
 export { Maltiverse } from "./maltiverse";
+export { NVD } from "./nvd";
 export { OCCRP } from "./occrp";
 export { ONYPHE } from "./onyphe";
 export { OTX } from "./otx";
