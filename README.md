@@ -65,6 +65,7 @@ Mitaka is an OSINT friendly browser extension which can:
 | Joe Sandbox          | https://www.joesandbox.com             | hash                              |
 | MalShare             | https://malshare.com                   | hash                              |
 | Maltiverse           | https://www.maltiverse.com             | domain / hash                     |
+| NVD                  | https://nvd.nist.gov                   | cve                               |
 | OOCPR                | https://data.occrp.org                 | email                             |
 | ONYPHE               | https://www.onyphe.io                  | ip                                |
 | OTX                  | https://otx.alienvault.com             | ip / domain / hash                |
