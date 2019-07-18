@@ -1,6 +1,5 @@
 npm-debug.log
 node_modules/
-dist/js
 tmp/
 **/.vs
 **/.vscode
@@ -13,3 +12,6 @@ dist.pem
 coverage
 
 .DS_Store
+
+/dist
+/dist-zip

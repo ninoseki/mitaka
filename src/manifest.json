@@ -14,22 +14,12 @@
   },
   "background": {
     "persistent": false,
-    "scripts": [
-      "vendor.js",
-      "background.js"
-    ]
+    "scripts": ["vendor.js", "background.js"]
   },
-  "content_scripts": [
-    {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": [
-        "vendor.js",
-        "content.js"
-      ]
-    }
-  ],
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["vendor.js", "content.js"]
+  }],
   "permissions": [
     "contextMenus",
     "notifications",
