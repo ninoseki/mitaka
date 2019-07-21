@@ -1,6 +1,6 @@
 {
   "name": "mitaka",
-  "version": "0.57.0",
+  "version": "0.57.1",
   "description": "OSINT friendly IOC (Indicator of Compromise) saerch tool",
   "main": "index.js",
   "scripts": {
@@ -43,7 +43,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "crypto-js": "^3.1.9-1",
-    "ioc-extractor": "^2.0.3",
+    "ioc-extractor": "^2.0.4",
     "mustache": "^3.0.1",
     "qs": "^6.7.0",
     "throttle-debounce": "^2.1.0",
@@ -57,7 +57,7 @@
     "@types/mocha": "^5.2.7",
     "@types/moxios": "^0.4.8",
     "@types/mustache": "^0.8.32",
-    "@types/node": "^12.6.2",
+    "@types/node": "^12.6.8",
     "@types/qs": "^6.5.3",
     "@types/sinon": "^7.0.13",
     "@types/sinon-chrome": "^2.2.6",
@@ -65,7 +65,7 @@
     "@types/window-or-global": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^1.12.0",
     "@typescript-eslint/parser": "^1.12.0",
-    "archiver": "^3.0.0",
+    "archiver": "^3.0.3",
     "chai": "^4.2.0",
     "copy-webpack-plugin": "^5.0.3",
     "coveralls": "^3.0.5",
@@ -74,7 +74,7 @@
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
     "jsdom": "^15.1.1",
-    "mocha": "^6.1.4",
+    "mocha": "^6.2.0",
     "moxios": "^0.4.0",
     "nyc": "^14.1.1",
     "prettier": "^1.18.2",
@@ -83,8 +83,8 @@
     "ts-loader": "^6.0.4",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3",
-    "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.5",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6",
     "webpack-extension-reloader": "^1.1.0",
     "window-or-global": "^1.0.1"
   }
