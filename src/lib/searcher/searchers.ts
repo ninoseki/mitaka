@@ -59,6 +59,7 @@ import {
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),
   new ArchiveOrg(),
+  new ArchiveToday(),
   new BGPView(),
   new BinaryEdge(),
   new BitcoinAbuse(),
