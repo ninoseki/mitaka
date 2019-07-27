@@ -1,5 +1,6 @@
 export { AbuseIPDB } from "./abuseipdb";
 export { ArchiveOrg } from "./archiveorg";
+export { ArchiveToday } from "./archivetoday";
 export { BGPView } from "./bgpview";
 export { BinaryEdge } from "./binaryedge";
 export { BitcoinAbuse } from "./bitcoinabuse";

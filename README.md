@@ -40,7 +40,8 @@ Mitaka is an OSINT friendly browser extension which can:
 | name                 | url                                    | supported types                   |
 |:---------------------|:---------------------------------------|:----------------------------------|
 | AbuseIPDB            | https://www.abuseipdb.com              | ip                                |
-| archive.org          | https://archive.org/                   | url                               |
+| archive.org          | https://archive.org                    | url                               |
+| archive.today        | http://archive.fo                      | url                               |
 | BGPView              | https://bgpview.io                     | ip / asn                          |
 | BinaryEdge           | https://app.binaryedge.io              | ip / domain                       |
 | BitcoinAbuse         | https://www.bitcoinabuse.com           | btc                               |
@@ -56,7 +57,7 @@ Mitaka is an OSINT friendly browser extension which can:
 | FindSubDomains       | https://findsubdomains.com             | domain                            |
 | FOFA                 | https://fofa.so                        | ip / domain                       |
 | FortiGuard           | https://fortiguard.com                 | ip / url / cve                    |
-| Google Safe Browsing | https://transparencyreport.google.com/ | domain / url                      |
+| Google Safe Browsing | https://transparencyreport.google.com  | domain / url                      |
 | GreyNoise            | https://viz.greynoise.io               | ip                                |
 | Hashdd               | https://hashdd.com                     | ip / domain / hash                |
 | HybridAnalysis       | https://www.hybrid-analysis.com        | ip / domain / hash (sha256 only)  |
