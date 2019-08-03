@@ -58,7 +58,7 @@ Mitaka is an OSINT friendly browser extension which can:
 | FOFA                 | https://fofa.so                        | ip / domain                       |
 | FortiGuard           | https://fortiguard.com                 | ip / url / cve                    |
 | Google Safe Browsing | https://transparencyreport.google.com  | domain / url                      |
-| GreyNoise            | https://viz.greynoise.io               | ip                                |
+| GreyNoise            | https://viz.greynoise.io               | ip / domain / asn                 |
 | Hashdd               | https://hashdd.com                     | ip / domain / hash                |
 | HybridAnalysis       | https://www.hybrid-analysis.com        | ip / domain / hash (sha256 only)  |
 | Intelligence X       | https://intelx.io                      | ip / domain / url / email / btc   |
