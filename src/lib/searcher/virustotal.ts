@@ -32,7 +32,7 @@ export class VirusTotal implements Searcher {
 
   private normalizeURL(uri: string): string {
     const parsedUrl = url.parse(uri);
-    if (parsedUrl.pathname === "/" && uri.slice(-1) !== "/") {
+    if (parsedUrl.pathname === "/" && !uri.endsWith("/")) {
       return `${uri}/`;
     }
     return uri;

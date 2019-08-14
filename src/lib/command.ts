@@ -99,8 +99,8 @@ export class Command {
     let url = "";
     if (entry !== undefined) {
       const searcher = entry.analyzer as Searcher;
-      if (entry.type in this.searcherTable) {
-        const fn: Function = this.searcherTable[entry.type];
+      if (this.type in this.searcherTable) {
+        const fn: Function = this.searcherTable[this.type];
         url = fn(searcher, entry.query);
       }
     }

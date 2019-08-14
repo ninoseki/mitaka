@@ -73,13 +73,13 @@ export class Selector {
 
   public getSearchersByType(type: SearchableType): Searcher[] {
     return this.searchers.filter(
-      (searcher: Searcher) => searcher.supportedTypes.indexOf(type) !== -1
+      (searcher: Searcher) => searcher.supportedTypes.includes(type)
     );
   }
 
   public getScannersByType(type: ScannableType): Scanner[] {
-    return this.scanners.filter(
-      (scanner: Scanner) => scanner.supportedTypes.indexOf(type) !== -1
+    return this.scanners.filter((scanner: Scanner) =>
+      scanner.supportedTypes.includes(type)
     );
   }
 

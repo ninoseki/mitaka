@@ -23,7 +23,7 @@ export class ThreatConnect implements Searcher {
     return this.searchByType("emailaddress", query);
   }
 
-  private searchByType(type: string, query: string) {
+  private searchByType(type: string, query: string): string {
     const params = {};
     params[type] = query;
 

@@ -24,7 +24,7 @@ export class Censys implements Searcher {
   }
 
   public searchByASN(query: string): string {
-    const matches = query.match(/\d+$/);
+    const matches = /\d+$/.exec(query);
     if (matches !== null && matches[0]) {
       return buildURL(this.endpoint, "/ipv4", {
         q: `autonomous_system.asn:${matches[0]}`,
