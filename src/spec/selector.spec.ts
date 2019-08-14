@@ -5,8 +5,8 @@ import { AnalyzerEntry, Selector } from "../lib/selector";
 
 function numberOfSelectorsByType(type: SearchableType): number {
   const searchers: Searcher[] = Searchers;
-  return searchers.filter(
-    (searcher: Searcher) => searcher.supportedTypes.indexOf(type) !== -1
+  return searchers.filter((searcher: Searcher) =>
+    searcher.supportedTypes.includes(type)
   ).length;
 }
 
