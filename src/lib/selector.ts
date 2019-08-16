@@ -72,8 +72,8 @@ export class Selector {
   }
 
   public getSearchersByType(type: SearchableType): Searcher[] {
-    return this.searchers.filter(
-      (searcher: Searcher) => searcher.supportedTypes.includes(type)
+    return this.searchers.filter((searcher: Searcher) =>
+      searcher.supportedTypes.includes(type)
     );
   }
 
@@ -101,6 +101,7 @@ export class Selector {
         this.makeAnalyzerEntries(this.getSearchersByType("asn"), "asn", asn)
       );
     }
+
     const email = this.getEmail();
     if (email !== null) {
       return this.concat(
@@ -112,6 +113,7 @@ export class Selector {
         )
       );
     }
+
     const url = this.getURL();
     if (url !== null) {
       return this.concat(
@@ -119,6 +121,7 @@ export class Selector {
         this.makeAnalyzerEntries(this.getSearchersByType("url"), "url", url)
       );
     }
+
     const domain = this.getDomain();
     if (domain !== null) {
       return this.concat(
@@ -130,6 +133,7 @@ export class Selector {
         )
       );
     }
+
     const ip = this.getIP();
     if (ip !== null) {
       return this.concat(
@@ -137,6 +141,7 @@ export class Selector {
         this.makeAnalyzerEntries(this.getSearchersByType("ip"), "ip", ip)
       );
     }
+
     const hash = this.getHash();
     if (hash !== null) {
       return this.concat(
@@ -144,6 +149,7 @@ export class Selector {
         this.makeAnalyzerEntries(this.getSearchersByType("hash"), "hash", hash)
       );
     }
+
     const cve = this.getCVE();
     if (cve !== null) {
       return this.concat(
@@ -151,6 +157,7 @@ export class Selector {
         this.makeAnalyzerEntries(this.getSearchersByType("cve"), "cve", cve)
       );
     }
+
     const btc = this.getBTC();
     if (btc !== null) {
       return this.concat(
@@ -158,13 +165,7 @@ export class Selector {
         this.makeAnalyzerEntries(this.getSearchersByType("btc"), "btc", btc)
       );
     }
-    const xmr = this.getXMR();
-    if (xmr !== null) {
-      return this.concat(
-        entries,
-        this.makeAnalyzerEntries(this.getSearchersByType("xmr"), "xmr", xmr)
-      );
-    }
+
     const gaTrackID = this.getGATrackID();
     if (gaTrackID !== null) {
       return this.concat(
@@ -176,6 +177,7 @@ export class Selector {
         )
       );
     }
+
     const gaPubID = this.getGAPubID();
     if (gaPubID !== null) {
       return this.concat(
@@ -187,6 +189,7 @@ export class Selector {
         )
       );
     }
+
     return entries;
   }
 
