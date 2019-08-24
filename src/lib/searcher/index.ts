@@ -22,6 +22,7 @@ export { Hashdd } from "./hashdd";
 export { HybridAnalysis } from "./hybridanalysis";
 export { IntelligenceX } from "./intelligencex";
 export { IPinfo } from "./ipinfo";
+export { IPIP } from "./ipip";
 export { JoeSandbox } from "./joesandbox";
 export { Malshare } from "./malshare";
 export { Maltiverse } from "./maltiverse";
