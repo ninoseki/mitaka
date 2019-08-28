@@ -10,11 +10,11 @@
 
 ![eyecatch](./examples/eyecatch.png)
 
-Mitaka is an OSINT friendly browser extension which can:
+Mitaka is a browser extension for OSINT search which can:
 
-- Extract & refang IoC from a block of text
-  - E.g. `example[.]com` to `example.com`
-- Search / scan it on various engines
+- Extract & refang IoC from a selected block of text.
+  - E.g. `example[.]com` to `example.com`, `test[at]example.com` to `test@example.com`, `hxxp://example.com` to `http://example.com`, etc.
+- Search / scan it on various engines.
   - E.g. VirusTotal, urlscan.io, Censys, Shodan, etc.
 
 ## Features
@@ -96,8 +96,6 @@ Mitaka is an OSINT friendly browser extension which can:
 | X-Force Exchange     | https://exchange.xforce.ibmcloud.com   | ip / domain / hash                |
 | ZoomEye              | https://www.zoomeye.org                | ip                                |
 
-You can enable / disable a search engine via the extension's options.
-
 ### Supported scan engines
 
 | name       | url                        | supported types   |
@@ -105,7 +103,7 @@ You can enable / disable a search engine via the extension's options.
 | Urlscan    | https://urlscan.io         | ip / domain / url |
 | VirusTotal | https://www.virustotal.com | url               |
 
-## Download
+## Downloads
 
 - Chrome: https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg
 - FireFox: https://addons.mozilla.org/en-US/firefox/addon/mitaka/
@@ -147,6 +145,8 @@ I don't (and will never) collect any information from the users.
 ## Alternatives or Similar Tools
 
 - [CrowdScrape](https://chrome.google.com/webstore/detail/crowdscrape/jjplaeklnlddpkbbdbnogmppffokemej)
+- [Gotanda](https://github.com/HASH1da1/Gotanda)
+- [Sputnik](https://github.com/mitchmoser/sputnik)
 - [ThreatConnect Integrated Chrome Extension](https://chrome.google.com/webstore/detail/threatconnect-integrated/lblgcphpihpadjdpjgjnnoikjdjcnkbh)
 - [ThreatPinch Lookup](https://github.com/cloudtracer/ThreatPinchLookup)
 - [VTchromizer](https://chrome.google.com/webstore/detail/vtchromizer/efbjojhplkelaegfbieplglfidafgoka)
