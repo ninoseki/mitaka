@@ -53,6 +53,7 @@ import {
   VulncodeDB,
   VxCube,
   WebAnalyzer,
+  WeLeakInfo,
   XForceExchange,
   ZoomEye,
 } from ".";
@@ -111,6 +112,7 @@ export const Searchers: Searcher[] = [
   new VulncodeDB(),
   new VxCube(),
   new WebAnalyzer(),
+  new WeLeakInfo(),
   new XForceExchange(),
   new ZoomEye(),
 ];
