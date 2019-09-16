@@ -12,7 +12,7 @@
     "build-zip": "node scripts/build-zip.js",
     "watch": "npm run build -- --watch",
     "watch:dev": "cross-env HMR=true npm run build:dev -- --watch",
-    "test": "nyc mocha -r ts-node/register \"src/**/*.spec.ts\"",
+    "test": "nyc mocha -r ts-node/register \"test/**/*.spec.ts\"",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "nyc": {
@@ -27,7 +27,6 @@
       "ts-node/register"
     ],
     "reporter": [
-      "json",
       "html",
       "text"
     ],

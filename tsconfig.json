@@ -5,7 +5,7 @@
         "noImplicitAny": false,
         "sourceMap": true,
         "strict": true,
-        "rootDir": "src",
+        "rootDirs": ["src", "test"],
         "outDir": "dist/js",
         "noEmitOnError": true
     }
