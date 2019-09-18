@@ -2,13 +2,15 @@ import * as Mustache from "mustache";
 import { ApiKeys } from "./lib/scanner";
 import { Searchers } from "./lib/searcher";
 
+import { browser } from "webextension-polyfill-ts";
+
 export interface SearcherState {
   name: string;
   supportedTypes: string[];
   isEnabled: boolean;
 }
 
-export function saveApiKeys(): void {
+export async function saveApiKeys(): Promise<void> {
   const urlscanApiKey = document.getElementById(
     "urlscan-api-key"
   ) as HTMLInputElement;
@@ -20,12 +22,11 @@ export function saveApiKeys(): void {
     virusTotalApiKey: virusTotalApiKey.value,
   };
   if (apiKeys) {
-    chrome.storage.sync.set({ apiKeys }, () => {
-      const status = document.getElementById("status");
-      if (status) {
-        status.textContent = "Options saved.";
-      }
-    });
+    await browser.storage.sync.set({ apiKeys });
+    const status = document.getElementById("status");
+    if (status) {
+      status.textContent = "Options saved.";
+    }
   }
 }
 
@@ -42,7 +43,7 @@ export function saveSearcherStates(): void {
     }
     searcherStates[name] = radio.checked;
   }
-  chrome.storage.sync.set({ searcherStates });
+  browser.storage.sync.set({ searcherStates });
 }
 
 // Saves options to chrome.storage.sync.
@@ -58,45 +59,43 @@ export async function restoreApiKeys(): Promise<void> {
   const virusTotalApiKey = document.getElementById(
     "virustotal-api-key"
   ) as HTMLInputElement;
-  chrome.storage.sync.get("apiKeys", config => {
-    if ("apiKeys" in config) {
-      if (urlscanApiKey && "urlscanApiKey" in config.apiKeys) {
-        urlscanApiKey.value = config.apiKeys.urlscanApiKey;
-      }
-      if (virusTotalApiKey && "virusTotalApiKey" in config.apiKeys) {
-        virusTotalApiKey.value = config.apiKeys.virusTotalApiKey;
-      }
+
+  const config = await browser.storage.sync.get("apiKeys");
+  if (config !== undefined && "apiKeys" in config) {
+    if (urlscanApiKey && "urlscanApiKey" in config.apiKeys) {
+      urlscanApiKey.value = config.apiKeys.urlscanApiKey;
     }
-  });
+    if (virusTotalApiKey && "virusTotalApiKey" in config.apiKeys) {
+      virusTotalApiKey.value = config.apiKeys.virusTotalApiKey;
+    }
+  }
 }
 
-export function restoreSearcherStates(): void {
-  chrome.storage.sync.get("searcherStates", config => {
-    const states: SearcherState[] = [];
+export async function restoreSearcherStates(): Promise<void> {
+  const config = await browser.storage.sync.get("searcherStates");
+  const hasSearcherStates: boolean =
+    config !== undefined && "searcherStates" in config;
+  const states: SearcherState[] = [];
 
-    for (const searcher of Searchers) {
-      let isEnabled = true;
-      if (
-        "searcherStates" in config &&
-        searcher.name in config.searcherStates
-      ) {
-        isEnabled = config.searcherStates[searcher.name];
-      }
-      states.push({
-        isEnabled,
-        name: searcher.name,
-        supportedTypes: searcher.supportedTypes,
-      });
+  for (const searcher of Searchers) {
+    let isEnabled = true;
+    if (hasSearcherStates && searcher.name in config.searcherStates) {
+      isEnabled = config.searcherStates[searcher.name];
     }
+    states.push({
+      isEnabled,
+      name: searcher.name,
+      supportedTypes: searcher.supportedTypes,
+    });
+  }
 
-    const searcherList = document.getElementById("searcherList") as HTMLElement;
-    for (const state of states) {
-      const template = (document.getElementById("checkTemplate") as HTMLElement)
-        .innerHTML;
-      const rendered = Mustache.render(template, state);
-      searcherList.insertAdjacentHTML("beforeend", rendered);
-    }
-  });
+  const searcherList = document.getElementById("searcherList") as HTMLElement;
+  for (const state of states) {
+    const template = (document.getElementById("checkTemplate") as HTMLElement)
+      .innerHTML;
+    const rendered = Mustache.render(template, state);
+    searcherList.insertAdjacentHTML("beforeend", rendered);
+  }
 }
 
 export function restoreOptions(): void {
