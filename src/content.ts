@@ -1,4 +1,5 @@
 import { throttle } from "throttle-debounce";
+import { browser } from "webextension-polyfill-ts";
 
 export function onSelctionChange(): void {
   const selection = window.getSelection();
@@ -14,7 +15,7 @@ export function onSelctionChange(): void {
 
   const selected: string = link || text;
   if (selected !== "") {
-    chrome.runtime.sendMessage({
+    browser.runtime.sendMessage({
       request: "updateContextMenu",
       selection: selected,
     });

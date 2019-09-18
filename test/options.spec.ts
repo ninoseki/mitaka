@@ -2,7 +2,6 @@ import { expect } from "chai";
 import { JSDOM } from "jsdom";
 import "mocha";
 import sinon = require("sinon");
-import SinonChrome = require("sinon-chrome");
 import * as root from "window-or-global";
 
 import {
@@ -12,14 +11,14 @@ import {
   saveSearcherStates,
 } from "../src/options";
 
-describe("Options script", () => {
-  beforeEach(() => {
-    root.chrome = SinonChrome;
-  });
+import { browserMock } from "./browserMock";
 
+const sandbox = sinon.createSandbox();
+
+describe("Options script", () => {
   afterEach(() => {
-    root.chrome.flush();
-    delete root.chrome;
+    browserMock.reset();
+    sandbox.restore();
   });
 
   describe("#saveApiKeys", () => {
@@ -30,26 +29,26 @@ describe("Options script", () => {
       const input = root.document.createElement("input") as HTMLInputElement;
       input.value = "test";
 
-      const stub: sinon.SinonStub = sinon.stub(root.document, "getElementById");
+      const stub: sinon.SinonStub = sandbox.stub(
+        root.document,
+        "getElementById"
+      );
       stub.withArgs("urlscan-api-key").returns(input);
       stub.withArgs("virustotal-api-key").returns(input);
     });
 
-    afterEach(() => {
-      (root.document.getElementById as sinon.SinonStub).restore();
-    });
-
     it("should save apiKeys via chrome.storage.sync.set()", () => {
-      expect(root.chrome.storage.sync.set.notCalled).to.be.true;
       saveApiKeys();
-      expect(
-        root.chrome.storage.sync.set.withArgs({
-          apiKeys: {
-            urlscanApiKey: "test",
-            virusTotalApiKey: "test",
+      browserMock.storage.sync.set.assertCalls([
+        [
+          {
+            apiKeys: {
+              urlscanApiKey: "test",
+              virusTotalApiKey: "test",
+            },
           },
-        }).calledOnce
-      ).to.be.true;
+        ],
+      ]);
     });
   });
 
@@ -70,25 +69,25 @@ describe("Options script", () => {
       element.appendChild(radio1);
       element.appendChild(radio2);
 
-      const stub: sinon.SinonStub = sinon.stub(root.document, "getElementById");
+      const stub: sinon.SinonStub = sandbox.stub(
+        root.document,
+        "getElementById"
+      );
       stub.withArgs("searcherList").returns(element);
     });
 
-    afterEach(() => {
-      (root.document.getElementById as sinon.SinonStub).restore();
-    });
-
     it("should save searcherStates via chrome.storage.sync.set()", () => {
-      expect(root.chrome.storage.sync.set.notCalled).to.be.true;
       saveSearcherStates();
-      expect(
-        root.chrome.storage.sync.set.withArgs({
-          searcherStates: {
-            test1: true,
-            test2: true,
+      browserMock.storage.sync.set.assertCalls([
+        [
+          {
+            searcherStates: {
+              test1: true,
+              test2: true,
+            },
           },
-        }).calledOnce
-      ).to.be.true;
+        ],
+      ]);
     });
   });
 
@@ -106,26 +105,27 @@ describe("Options script", () => {
       ) as HTMLInputElement;
       virusTotalApiKey.value = "test";
 
-      const stub: sinon.SinonStub = sinon.stub(root.document, "getElementById");
+      const stub: sinon.SinonStub = sandbox.stub(
+        root.document,
+        "getElementById"
+      );
       stub.withArgs("urlscan-api-key").returns(urlscanApiKey);
       stub.withArgs("virustotal-api-key").returns(virusTotalApiKey);
     });
 
-    afterEach(() => {
-      (root.document.getElementById as sinon.SinonStub).restore();
-    });
-
     it("should restore via chrome.storage.sync.get()", async () => {
-      root.chrome.storage.sync.get.withArgs("apiKeys").yieldsAsync({
-        apiKeys: {
-          urlscanApiKey: "test1",
-          virusTotalApiKey: "test2",
-        },
-      });
+      sandbox
+        .stub(browserMock.storage.sync, "get")
+        .withArgs("apiKeys")
+        .resolves({
+          apiKeys: {
+            urlscanApiKey: "test1",
+            virusTotalApiKey: "test2",
+          },
+        });
 
-      expect(root.chrome.storage.sync.get.notCalled).to.be.true;
       await restoreApiKeys();
-      expect(root.chrome.storage.sync.get.calledOnce).to.be.true;
+
       const urlscanApiKey = root.document.getElementById(
         "urlscan-api-key"
       ) as HTMLInputElement;
@@ -145,7 +145,10 @@ describe("Options script", () => {
       const searcherList = root.document.createElement("div") as HTMLElement;
       searcherList.id = "searcherList";
 
-      const stub: sinon.SinonStub = sinon.stub(root.document, "getElementById");
+      const stub: sinon.SinonStub = sandbox.stub(
+        root.document,
+        "getElementById"
+      );
       stub.withArgs("searcherList").returns(searcherList);
       stub.withArgs("checkTemplate").returns({
         innerHTML: `
@@ -164,19 +167,18 @@ describe("Options script", () => {
       });
     });
 
-    afterEach(() => {
-      (root.document.getElementById as sinon.SinonStub).restore();
-    });
-
     it("should compose searcerList based on searcherStates via chrome.storage.sync.get()", async () => {
-      root.chrome.storage.sync.get.withArgs("searcherStates").yieldsAsync({
-        searcherStates: {
-          Censys: false,
-        },
-      });
-      expect(root.chrome.storage.sync.get.notCalled).to.be.true;
+      sandbox
+        .stub(browserMock.storage.sync, "get")
+        .withArgs("searcherStates")
+        .resolves({
+          searcherStates: {
+            Censys: false,
+          },
+        });
+
       await restoreSearcherStates();
-      expect(root.chrome.storage.sync.get.calledOnce).to.be.true;
+
       const searcherList = root.document.getElementById(
         "searcherList"
       ) as HTMLElement;

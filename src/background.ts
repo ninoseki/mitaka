@@ -2,8 +2,10 @@ import { Command } from "./lib/command";
 import { ApiKeys } from "./lib/scanner";
 import { AnalyzerEntry, Selector } from "./lib/selector";
 
+import { browser, ContextMenus } from "webextension-polyfill-ts";
+
 export function showNotification(message: string): void {
-  chrome.notifications.create({
+  browser.notifications.create({
     iconUrl: "./icons/48.png",
     message,
     title: "Mitaka",
@@ -15,7 +17,7 @@ export function search(command: Command): void {
   try {
     const url: string = command.search();
     if (url !== "") {
-      chrome.tabs.create({ url });
+      browser.tabs.create({ url });
     }
   } catch (err) {
     showNotification(err.message);
@@ -23,31 +25,35 @@ export function search(command: Command): void {
 }
 
 export async function scan(command: Command): Promise<void> {
-  chrome.storage.sync.get("apiKeys", async config => {
-    const apiKeys: ApiKeys = {
-      urlscanApiKey:
-        "apiKeys" in config && "urlscanApiKey" in config.apiKeys
-          ? config.apiKeys.urlscanApiKey
-          : undefined,
-      virusTotalApiKey:
-        "apiKeys" in config && "virusTotalApiKey" in config.apiKeys
-          ? config.apiKeys.virusTotalApiKey
-          : undefined,
-    };
-    try {
-      const url: string = await command.scan(apiKeys);
-      if (url !== "") {
-        chrome.tabs.create({ url });
-      }
-    } catch (err) {
-      showNotification(err.message);
+  const config = await browser.storage.sync.get("apiKeys");
+  const hasUrlscanApiKey: boolean =
+    config !== undefined &&
+    "apiKeys" in config &&
+    "urlscanApiKey" in config.apiKeys;
+  const hasVirusTotalApiKey: boolean =
+    config !== undefined &&
+    "apiKeys" in config &&
+    "virusTotalApiKey" in config.apiKeys;
+
+  const apiKeys: ApiKeys = {
+    urlscanApiKey: hasUrlscanApiKey ? config.apiKeys.urlscanApiKey : undefined,
+    virusTotalApiKey: hasVirusTotalApiKey
+      ? config.apiKeys.virusTotalApiKey
+      : undefined,
+  };
+  try {
+    const url: string = await command.scan(apiKeys);
+    if (url !== "") {
+      browser.tabs.create({ url });
     }
-  });
+  } catch (err) {
+    showNotification(err.message);
+  }
 }
 
 export function createContextMenuErrorHandler(): void {
-  if (chrome.runtime.lastError) {
-    console.error(chrome.runtime.lastError.message);
+  if (browser.runtime.lastError) {
+    console.error(browser.runtime.lastError.message);
   }
 }
 
@@ -55,49 +61,43 @@ export async function createContextMenus(
   message,
   searcherStates
 ): Promise<void> {
-  chrome.contextMenus.removeAll(() => {
-    const text: string = message.selection;
-    const selector: Selector = new Selector(text);
-    // create searchers context menus based on a type of the input
-    const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
-    for (const entry of searcherEntries) {
-      const name = entry.analyzer.name;
-      // continue if a searcher is disabled in options
-      if (name in searcherStates && !searcherStates[name]) {
-        continue;
-      }
-      // it tells action/query/type/target to the listner
-      const id = `Search ${entry.query} as a ${entry.type} on ${name}`;
-      const title = `Search this ${entry.type} on ${name}`;
-      const options = {
-        contexts: ["selection"],
-        id,
-        title,
-      };
-      chrome.contextMenus.create(options, createContextMenuErrorHandler);
-    }
+  await browser.contextMenus.removeAll();
 
-    // create scanners context menus based on a type of the input
-    const scannerEntries: AnalyzerEntry[] = selector.getScannerEntries();
-    for (const entry of scannerEntries) {
-      const name = entry.analyzer.name;
-      // it tells action/query/type/target to the listner
-      const id = `Scan ${entry.query} as a ${entry.type} on ${name}`;
-      const title = `Scan this ${entry.type} on ${name}`;
-      const options = {
-        contexts: ["selection"],
-        id,
-        title,
-      };
-      chrome.contextMenus.create(options, createContextMenuErrorHandler);
+  const text: string = message.selection;
+  const selector: Selector = new Selector(text);
+  // create searchers context menus based on a type of the input
+  const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
+  for (const entry of searcherEntries) {
+    const name = entry.analyzer.name;
+    // continue if a searcher is disabled in options
+    if (name in searcherStates && !searcherStates[name]) {
+      continue;
     }
-  });
+    // it tells action/query/type/target to the listner
+    const id = `Search ${entry.query} as a ${entry.type} on ${name}`;
+    const title = `Search this ${entry.type} on ${name}`;
+    const contexts: ContextMenus.ContextType[] = ["selection"];
+    const options = { contexts, id, title };
+    browser.contextMenus.create(options, createContextMenuErrorHandler);
+  }
+
+  // create scanners context menus based on a type of the input
+  const scannerEntries: AnalyzerEntry[] = selector.getScannerEntries();
+  for (const entry of scannerEntries) {
+    const name = entry.analyzer.name;
+    // it tells action/query/type/target to the listner
+    const id = `Scan ${entry.query} as a ${entry.type} on ${name}`;
+    const title = `Scan this ${entry.type} on ${name}`;
+    const contexts: ContextMenus.ContextType[] = ["selection"];
+    const options = { contexts, id, title };
+    browser.contextMenus.create(options, createContextMenuErrorHandler);
+  }
 }
 
-if (typeof chrome !== "undefined") {
-  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+if (typeof browser !== "undefined" && browser.runtime !== undefined) {
+  browser.runtime.onMessage.addListener(message => {
     if (message.request === "updateContextMenu") {
-      chrome.storage.sync.get("searcherStates", config => {
+      browser.storage.sync.get("searcherStates").then(config => {
         if ("searcherStates" in config) {
           createContextMenus(message, config.searcherStates);
         } else {
@@ -106,8 +106,9 @@ if (typeof chrome !== "undefined") {
       });
     }
   });
-  chrome.contextMenus.onClicked.addListener((info, tab) => {
-    const id: string = info.menuItemId;
+
+  browser.contextMenus.onClicked.addListener((info, tab) => {
+    const id: string = info.menuItemId.toString();
     const command = new Command(id);
     switch (command.action) {
       case "search":

@@ -1,20 +1,17 @@
-import { expect } from "chai";
-import { JSDOM } from "jsdom";
 import "mocha";
-import SinonChrome = require("sinon-chrome");
-import * as root from "window-or-global";
+import { browserMock } from "./browserMock";
+import { JSDOM } from "jsdom";
 import { onSelctionChange } from "../src/content";
+import * as root from "window-or-global";
 
 describe("Context script", () => {
   beforeEach(() => {
     const dom = new JSDOM(`<!DOCTYPE html><p>Just a stub</p>`);
     root.window = dom.window;
-    root.chrome = SinonChrome;
   });
 
   afterEach(() => {
-    root.chrome.flush();
-    delete root.chrome;
+    browserMock.reset();
   });
 
   context("when selected a non anchor element", () => {
@@ -35,15 +32,15 @@ describe("Context script", () => {
 
     describe("#onSelectionChange", () => {
       it("should call chrome.runtime.sendMessage()", () => {
-        expect(root.chrome.runtime.sendMessage.notCalled).to.be.true;
         onSelctionChange();
-        expect(root.chrome.runtime.sendMessage.called).to.be.true;
-        expect(
-          root.chrome.runtime.sendMessage.withArgs({
-            request: "updateContextMenu",
-            selection: "test",
-          }).calledOnce
-        ).to.be.true;
+        browserMock.runtime.sendMessage.assertCalls([
+          [
+            {
+              request: "updateContextMenu",
+              selection: "test",
+            },
+          ],
+        ]);
       });
     });
   });
@@ -80,15 +77,15 @@ describe("Context script", () => {
 
     describe("#onSelectionChange", () => {
       it("should call chrome.runtime.sendMessage()", () => {
-        expect(root.chrome.runtime.sendMessage.notCalled).to.be.true;
         onSelctionChange();
-        expect(root.chrome.runtime.sendMessage.called).to.be.true;
-        expect(
-          root.chrome.runtime.sendMessage.withArgs({
-            request: "updateContextMenu",
-            selection: "https://example.com",
-          }).calledOnce
-        ).to.be.true;
+        browserMock.runtime.sendMessage.assertCalls([
+          [
+            {
+              request: "updateContextMenu",
+              selection: "https://example.com",
+            },
+          ],
+        ]);
       });
     });
   });
