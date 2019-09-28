@@ -9,25 +9,25 @@ export class VirusTotal implements Searcher {
   public supportedTypes: SearchableType[] = ["ip", "domain", "url", "hash"];
 
   public constructor() {
-    this.endpoint = "https://www.virustotal.com/#";
+    this.endpoint = "https://www.virustotal.com";
     this.name = "VirusTotal";
   }
 
   public searchByIP(query: string): string {
-    return buildURL(this.endpoint, `/ip-address/${query}`);
+    return buildURL(this.endpoint, `/gui/ip-address/${query}/details`);
   }
 
   public searchByURL(query: string): string {
     const hash = crypto.SHA256(this.normalizeURL(query));
-    return buildURL(this.endpoint, `/url/${hash}`);
+    return buildURL(this.endpoint, `/gui/url/${hash}/details`);
   }
 
   public searchByDomain(query: string): string {
-    return buildURL(this.endpoint, `/domain/${query}`);
+    return buildURL(this.endpoint, `/gui/domain/${query}/details`);
   }
 
   public searchByHash(query: string): string {
-    return buildURL(this.endpoint, `/file/${query}`);
+    return buildURL(this.endpoint, `/gui/file/${query}/details`);
   }
 
   private normalizeURL(uri: string): string {
