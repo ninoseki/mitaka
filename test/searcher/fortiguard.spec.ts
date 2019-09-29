@@ -16,6 +16,7 @@ describe("FortiGuard", () => {
       );
     });
   });
+
   describe("#searchByURL", () => {
     it("should return URL", () => {
       expect(subject.searchByURL("https://github.com")).to.equal(
@@ -23,6 +24,7 @@ describe("FortiGuard", () => {
       );
     });
   });
+
   describe("#searchByCVE", () => {
     it("should return URL", () => {
       expect(subject.searchByCVE("CVE-2017-2991")).to.equal(
