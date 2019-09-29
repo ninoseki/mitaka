@@ -11,7 +11,6 @@ describe("FindSubDomain", () => {
 
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      expect(subject.supportedTypes.indexOf("domain")).not.equal(-1);
       expect(subject.searchByDomain("github.com")).to.equal(
         "https://findsubdomains.com/subdomains-of/github.com"
       );

@@ -27,7 +27,6 @@ describe("ThreatMiner", () => {
 
   describe("#searchByHash", () => {
     it("should return URL", () => {
-      expect(subject.supportedTypes.indexOf("hash")).not.equal(-1);
       expect(subject.searchByHash("44d88612fea8a8f36de82e1278abb02f")).to.equal(
         "https://www.threatminer.org/sample.php?q=44d88612fea8a8f36de82e1278abb02f"
       );
