@@ -11,7 +11,6 @@ describe("ThreatConnect", () => {
 
   describe("#searchByIP", () => {
     it("should return URL", () => {
-      expect(subject.supportedTypes.indexOf("ip")).not.equal(-1);
       expect(subject.searchByIP("1.1.1.1")).to.equal(
         "https://app.threatconnect.com/auth/indicators/details/address.xhtml?address=1.1.1.1"
       );
@@ -20,7 +19,6 @@ describe("ThreatConnect", () => {
 
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      expect(subject.supportedTypes.indexOf("domain")).not.equal(-1);
       expect(subject.searchByDomain("github.com")).to.equal(
         "https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=github.com"
       );
@@ -29,7 +27,6 @@ describe("ThreatConnect", () => {
 
   describe("#searchByEmail", () => {
     it("should return URL", () => {
-      expect(subject.supportedTypes.indexOf("email")).not.equal(-1);
       expect(subject.searchByEmail("test@test.com")).to.equal(
         "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=test%40test.com"
       );

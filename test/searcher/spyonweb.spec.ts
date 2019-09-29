@@ -21,6 +21,7 @@ describe("SpyOnWeb", () => {
       );
     });
   });
+
   describe("#searchByDomain", () => {
     it("should return URL", () => {
       expect(subject.searchByDomain("github.com")).to.eq(
@@ -28,6 +29,7 @@ describe("SpyOnWeb", () => {
       );
     });
   });
+
   describe("#searchByGAPubID", () => {
     it("should return URL", () => {
       expect(subject.searchByGAPubID("pub-7232066202917795")).to.eq(
@@ -35,6 +37,7 @@ describe("SpyOnWeb", () => {
       );
     });
   });
+
   describe("#searchByGATrackID", () => {
     it("should return URL", () => {
       expect(subject.searchByGATrackID("ua-67609351-1")).to.eq(

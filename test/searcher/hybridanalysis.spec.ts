@@ -13,7 +13,6 @@ describe("HybridAnalysis", () => {
     it("should return URL", () => {
       const sha256 =
         "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f";
-      expect(subject.supportedTypes.indexOf("hash")).not.equal(-1);
       expect(subject.searchByHash(sha256)).to.equal(
         `https://www.hybrid-analysis.com/sample/${sha256}`
       );
@@ -26,17 +25,17 @@ describe("HybridAnalysis", () => {
       }).to.throw("HybridAnalysis onlys suports SHA256");
     });
   });
+
   describe("#searchByIP", () => {
     it("should return URL", () => {
-      expect(subject.supportedTypes.indexOf("ip")).not.equal(-1);
       expect(subject.searchByIP("1.1.1.1")).to.equal(
         "https://www.hybrid-analysis.com/search?query=host%3A1.1.1.1"
       );
     });
   });
+
   describe("#searchByDomain", () => {
     it("should return URL", () => {
-      expect(subject.supportedTypes.indexOf("domain")).not.equal(-1);
       expect(subject.searchByDomain("github.com")).to.equal(
         "https://www.hybrid-analysis.com/search?query=domain%3Agithub.com"
       );
