@@ -40,6 +40,7 @@ Mitaka is a browser extension for OSINT search which can:
 | name                 | url                                    | supported types                   |
 |:---------------------|:---------------------------------------|:----------------------------------|
 | AbuseIPDB            | https://www.abuseipdb.com              | ip                                |
+| Apility              | https://apility.io                     | ip / domain / email / asn         |
 | archive.org          | https://archive.org                    | url                               |
 | archive.today        | http://archive.fo                      | url                               |
 | BGPView              | https://bgpview.io                     | ip / asn                          |
