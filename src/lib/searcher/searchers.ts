@@ -1,5 +1,6 @@
 import {
   AbuseIPDB,
+  Apility,
   ArchiveOrg,
   ArchiveToday,
   BGPView,
@@ -59,6 +60,7 @@ import {
 
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),
+  new Apility(),
   new ArchiveOrg(),
   new ArchiveToday(),
   new BGPView(),
