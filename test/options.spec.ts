@@ -1,9 +1,3 @@
-import { expect } from "chai";
-import { JSDOM } from "jsdom";
-import "mocha";
-import sinon = require("sinon");
-import * as root from "window-or-global";
-
 import {
   restoreApiKeys,
   restoreSearcherStates,
@@ -11,7 +5,12 @@ import {
   saveSearcherStates,
 } from "../src/options";
 
+import "mocha";
 import { browserMock } from "./browserMock";
+import { expect } from "chai";
+import { JSDOM } from "jsdom";
+import * as root from "window-or-global";
+import sinon = require("sinon");
 
 const sandbox = sinon.createSandbox();
 

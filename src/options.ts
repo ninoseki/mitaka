@@ -1,8 +1,7 @@
-import * as Mustache from "mustache";
 import { ApiKeys } from "./lib/scanner";
-import { Searchers } from "./lib/searcher";
-
 import { browser } from "webextension-polyfill-ts";
+import { getApiKeys, getSearcherStates } from "./utility";
+import * as Mustache from "mustache";
 
 export interface SearcherState {
   name: string;
@@ -60,42 +59,30 @@ export async function restoreApiKeys(): Promise<void> {
     "virustotal-api-key"
   ) as HTMLInputElement;
 
-  const config = await browser.storage.sync.get("apiKeys");
-  if (config !== undefined && "apiKeys" in config) {
-    if (urlscanApiKey && "urlscanApiKey" in config.apiKeys) {
-      urlscanApiKey.value = config.apiKeys.urlscanApiKey;
-    }
-    if (virusTotalApiKey && "virusTotalApiKey" in config.apiKeys) {
-      virusTotalApiKey.value = config.apiKeys.virusTotalApiKey;
-    }
+  const apiKeys = await getApiKeys();
+
+  if (apiKeys.urlscanApiKey) {
+    urlscanApiKey.value = apiKeys.urlscanApiKey;
+  }
+  if (apiKeys.virusTotalApiKey) {
+    virusTotalApiKey.value = apiKeys.virusTotalApiKey;
   }
 }
 
 export async function restoreSearcherStates(): Promise<void> {
-  const config = await browser.storage.sync.get("searcherStates");
-  const hasSearcherStates: boolean =
-    config !== undefined && "searcherStates" in config;
-  const states: SearcherState[] = [];
-
-  for (const searcher of Searchers) {
-    let isEnabled = true;
-    if (hasSearcherStates && searcher.name in config.searcherStates) {
-      isEnabled = config.searcherStates[searcher.name];
-    }
-    states.push({
-      isEnabled,
-      name: searcher.name,
-      supportedTypes: searcher.supportedTypes,
-    });
-  }
+  const states = await getSearcherStates();
 
   const searcherList = document.getElementById("searcherList") as HTMLElement;
+  const fragment: DocumentFragment = document.createDocumentFragment();
+  const template = (document.getElementById("checkTemplate") as HTMLElement)
+    .innerHTML;
+
   for (const state of states) {
-    const template = (document.getElementById("checkTemplate") as HTMLElement)
-      .innerHTML;
-    const rendered = Mustache.render(template, state);
-    searcherList.insertAdjacentHTML("beforeend", rendered);
+    const elem = document.createElement("div");
+    elem.innerHTML = Mustache.render(template, state);
+    fragment.appendChild(elem);
   }
+  searcherList.appendChild(fragment);
 }
 
 export function restoreOptions(): void {

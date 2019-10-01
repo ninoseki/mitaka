@@ -1,8 +1,7 @@
-import { Command } from "./lib/command";
-import { ApiKeys } from "./lib/scanner";
 import { AnalyzerEntry, Selector } from "./lib/selector";
-
 import { browser, ContextMenus } from "webextension-polyfill-ts";
+import { Command } from "./lib/command";
+import { getApiKeys } from "./utility";
 
 export function showNotification(message: string): void {
   browser.notifications.create({
@@ -25,22 +24,7 @@ export function search(command: Command): void {
 }
 
 export async function scan(command: Command): Promise<void> {
-  const config = await browser.storage.sync.get("apiKeys");
-  const hasUrlscanApiKey: boolean =
-    config !== undefined &&
-    "apiKeys" in config &&
-    "urlscanApiKey" in config.apiKeys;
-  const hasVirusTotalApiKey: boolean =
-    config !== undefined &&
-    "apiKeys" in config &&
-    "virusTotalApiKey" in config.apiKeys;
-
-  const apiKeys: ApiKeys = {
-    urlscanApiKey: hasUrlscanApiKey ? config.apiKeys.urlscanApiKey : undefined,
-    virusTotalApiKey: hasVirusTotalApiKey
-      ? config.apiKeys.virusTotalApiKey
-      : undefined,
-  };
+  const apiKeys = await getApiKeys();
   try {
     const url: string = await command.scan(apiKeys);
     if (url !== "") {

@@ -5,11 +5,11 @@ import {
   createContextMenuErrorHandler,
   createContextMenus,
 } from "../src/background";
-import { Command } from "../src/lib/command";
 
 import "mocha";
 import { browser } from "webextension-polyfill-ts";
 import { browserMock } from "./browserMock";
+import { Command } from "../src/lib/command";
 import { expect } from "chai";
 import sinon = require("sinon");
 
