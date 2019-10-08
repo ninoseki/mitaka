@@ -8,6 +8,16 @@ export interface AnalyzerEntry {
   query: string;
 }
 
+interface SelectorSlot {
+  type: SearchableType;
+  func: () => string | null;
+}
+
+interface ScannerSlot {
+  type: ScannableType;
+  func: () => string | null;
+}
+
 export class Selector {
   protected input: string;
   protected ioc: IOC;
@@ -83,140 +93,64 @@ export class Selector {
     );
   }
 
+  private selectorSlots: SelectorSlot[] = [
+    { type: "url", func: this.getURL },
+    { type: "email", func: this.getEmail },
+    { type: "domain", func: this.getDomain },
+    { type: "ip", func: this.getIP },
+    { type: "asn", func: this.getASN },
+    { type: "hash", func: this.getHash },
+    { type: "cve", func: this.getCVE },
+    { type: "btc", func: this.getBTC },
+    { type: "gaTrackID", func: this.getGATrackID },
+    { type: "gaPubID", func: this.getGAPubID },
+  ];
+
   public getSearcherEntries(): AnalyzerEntry[] {
-    let entries: AnalyzerEntry[] = [];
-    entries = this.concat(
-      entries,
-      this.makeAnalyzerEntries(
-        this.getSearchersByType("text"),
-        "text",
-        this.input
-      )
+    const entries: AnalyzerEntry[] = this.makeAnalyzerEntries(
+      this.getSearchersByType("text"),
+      "text",
+      this.input
     );
 
-    const asn = this.getASN();
-    if (asn !== null) {
-      return this.concat(
-        entries,
-        this.makeAnalyzerEntries(this.getSearchersByType("asn"), "asn", asn)
-      );
-    }
+    for (const slot of this.selectorSlots) {
+      const type = slot.type;
+      const func = slot.func;
 
-    const email = this.getEmail();
-    if (email !== null) {
-      return this.concat(
-        entries,
-        this.makeAnalyzerEntries(
-          this.getSearchersByType("email"),
-          "email",
-          email
-        )
-      );
-    }
-
-    const url = this.getURL();
-    if (url !== null) {
-      return this.concat(
-        entries,
-        this.makeAnalyzerEntries(this.getSearchersByType("url"), "url", url)
-      );
-    }
-
-    const domain = this.getDomain();
-    if (domain !== null) {
-      return this.concat(
-        entries,
-        this.makeAnalyzerEntries(
-          this.getSearchersByType("domain"),
-          "domain",
-          domain
-        )
-      );
-    }
-
-    const ip = this.getIP();
-    if (ip !== null) {
-      return this.concat(
-        entries,
-        this.makeAnalyzerEntries(this.getSearchersByType("ip"), "ip", ip)
-      );
-    }
-
-    const hash = this.getHash();
-    if (hash !== null) {
-      return this.concat(
-        entries,
-        this.makeAnalyzerEntries(this.getSearchersByType("hash"), "hash", hash)
-      );
-    }
-
-    const cve = this.getCVE();
-    if (cve !== null) {
-      return this.concat(
-        entries,
-        this.makeAnalyzerEntries(this.getSearchersByType("cve"), "cve", cve)
-      );
-    }
-
-    const btc = this.getBTC();
-    if (btc !== null) {
-      return this.concat(
-        entries,
-        this.makeAnalyzerEntries(this.getSearchersByType("btc"), "btc", btc)
-      );
-    }
-
-    const gaTrackID = this.getGATrackID();
-    if (gaTrackID !== null) {
-      return this.concat(
-        entries,
-        this.makeAnalyzerEntries(
-          this.getSearchersByType("gaTrackID"),
-          "gaTrackID",
-          gaTrackID
-        )
-      );
-    }
-
-    const gaPubID = this.getGAPubID();
-    if (gaPubID !== null) {
-      return this.concat(
-        entries,
-        this.makeAnalyzerEntries(
-          this.getSearchersByType("gaPubID"),
-          "gaPubID",
-          gaPubID
-        )
-      );
+      const result = func.apply(this);
+      if (result !== null) {
+        return this.concat(
+          entries,
+          this.makeAnalyzerEntries(this.getSearchersByType(type), type, result)
+        );
+      }
     }
 
     return entries;
   }
 
-  public getScannerEntries(): AnalyzerEntry[] {
-    const analyzerEntries: AnalyzerEntry[] = [];
+  private scannerSlots: ScannerSlot[] = [
+    { type: "url", func: this.getURL },
+    { type: "domain", func: this.getDomain },
+    { type: "ip", func: this.getIP },
+  ];
 
-    const url = this.getURL();
-    if (url !== null) {
-      return this.makeAnalyzerEntries(
-        this.getScannersByType("url"),
-        "url",
-        url
-      );
+  public getScannerEntries(): AnalyzerEntry[] {
+    const entries: AnalyzerEntry[] = [];
+
+    for (const slot of this.scannerSlots) {
+      const type = slot.type;
+      const func = slot.func;
+
+      const result = func.apply(this);
+      if (result !== null) {
+        return entries.concat(
+          this.makeAnalyzerEntries(this.getScannersByType(type), type, result)
+        );
+      }
     }
-    const domain = this.getDomain();
-    if (domain !== null) {
-      return this.makeAnalyzerEntries(
-        this.getScannersByType("domain"),
-        "domain",
-        domain
-      );
-    }
-    const ip = this.getIP();
-    if (ip !== null) {
-      return this.makeAnalyzerEntries(this.getScannersByType("ip"), "ip", ip);
-    }
-    return analyzerEntries;
+
+    return entries;
   }
 
   private getFirstValueFromArray<T>(array: T[] | null): T | null {
