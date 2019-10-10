@@ -1,12 +1,6 @@
-import { ApiKeys } from "./lib/scanner";
 import { browser } from "webextension-polyfill-ts";
 import { Searchers } from "./lib/searcher";
-
-export interface SearcherState {
-  name: string;
-  supportedTypes: string[];
-  isEnabled: boolean;
-}
+import { ApiKeys, SearcherState } from "./lib/types";
 
 export async function getApiKeys(): Promise<ApiKeys> {
   const config = await browser.storage.sync.get("apiKeys");

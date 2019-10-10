@@ -2,7 +2,7 @@ import { expect } from "chai";
 import "mocha";
 import * as moxios from "moxios";
 import { Command } from "../src/lib/command";
-import { ApiKeys } from "../src/lib/scanner";
+import { ApiKeys } from "./lib/types";
 
 describe("Command", () => {
   describe("#constructor", () => {

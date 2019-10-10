@@ -1,5 +1,5 @@
 import { base64fy } from "../url_builder";
-import { SearchableType, Searcher } from "./searcher";
+import { Searcher, SearchableType } from "../types";
 
 export class Pulsedive implements Searcher {
   public endpoint: string;

@@ -1,7 +1,8 @@
-import { AnalyzerEntry, Selector } from "./lib/selector";
+import { Selector } from "./lib/selector";
 import { browser, ContextMenus } from "webextension-polyfill-ts";
 import { Command } from "./lib/command";
 import { getApiKeys } from "./utility";
+import { AnalyzerEntry } from "./lib/types";
 
 export function showNotification(message: string): void {
   browser.notifications.create({

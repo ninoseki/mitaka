@@ -1,6 +1,7 @@
 import { expect } from "chai";
 import "mocha";
-import { AnalyzerEntry, Selector } from "../../src/lib/selector";
+import { Selector } from "../../src/lib/selector";
+import { AnalyzerEntry } from "../lib/types";
 
 describe("Seletor", () => {
   const stats = {

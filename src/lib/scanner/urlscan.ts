@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ScannableType, Scanner } from "./scanner";
+import { Scanner, ScannableType } from "../types";
 
 export class Urlscan implements Scanner {
   public endpoint: string;
