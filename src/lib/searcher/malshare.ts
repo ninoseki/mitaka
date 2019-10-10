@@ -1,4 +1,4 @@
-import { SearchableType, Searcher } from "./searcher";
+import { Searcher, SearchableType } from "../types";
 import { buildURL } from "../url_builder";
 
 export class Malshare implements Searcher {

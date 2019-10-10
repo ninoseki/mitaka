@@ -1,4 +1,4 @@
-import { SearchableType, Searcher } from "./searcher";
+import { Searcher, SearchableType } from "../types";
 
 export class Maltiverse implements Searcher {
   public endpoint: string;

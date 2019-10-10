@@ -1,10 +1,11 @@
 import { expect } from "chai";
 import "mocha";
-import { SearchableType, Searcher, Searchers } from "../src/lib/searcher";
-import { AnalyzerEntry, Selector } from "../src/lib/selector";
+import { Searchers } from "../src/lib/searcher";
+import { Selector } from "../src/lib/selector";
+import { Searcher, SearchableType, AnalyzerEntry } from "./lib/types";
 
 function numberOfSelectorsByType(type: SearchableType): number {
-  const searchers: Searcher[] = Searchers;
+  const searchers = Searchers;
   return searchers.filter((searcher: Searcher) =>
     searcher.supportedTypes.includes(type)
   ).length;

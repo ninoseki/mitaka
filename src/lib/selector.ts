@@ -1,22 +1,15 @@
 import { getIOC, IOC } from "ioc-extractor";
-import { ScannableType, Scanner, Scanners } from "./scanner";
-import { SearchableType, Searcher, Searchers } from "./searcher";
-
-export interface AnalyzerEntry {
-  analyzer: Scanner | Searcher;
-  type: SearchableType | ScannableType;
-  query: string;
-}
-
-interface SelectorSlot {
-  type: SearchableType;
-  func: () => string | null;
-}
-
-interface ScannerSlot {
-  type: ScannableType;
-  func: () => string | null;
-}
+import { Scanners } from "./scanner";
+import { Searchers } from "./searcher";
+import {
+  Scanner,
+  Searcher,
+  ScannableType,
+  SearchableType,
+  SelectorSlot,
+  AnalyzerEntry,
+  ScannerSlot,
+} from "./types";
 
 export class Selector {
   protected input: string;

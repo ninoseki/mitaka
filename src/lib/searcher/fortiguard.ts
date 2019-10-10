@@ -1,5 +1,5 @@
 import { buildURL } from "../url_builder";
-import { SearchableType, Searcher } from "./searcher";
+import { Searcher, SearchableType } from "../types";
 
 export class FortiGuard implements Searcher {
   public endpoint: string;

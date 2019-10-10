@@ -36,7 +36,6 @@ import {
   PublicWWW,
   Pulsedive,
   RiskIQ,
-  Searcher,
   SecurityTrails,
   Shodan,
   Sploitus,
@@ -57,6 +56,8 @@ import {
   XForceExchange,
   ZoomEye,
 } from ".";
+
+import { Searcher } from "../types";
 
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),

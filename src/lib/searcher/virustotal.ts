@@ -1,7 +1,7 @@
 import * as crypto from "crypto-js";
 import * as url from "url";
 import { buildURL } from "../url_builder";
-import { SearchableType, Searcher } from "./searcher";
+import { Searcher, SearchableType } from "../types";
 
 export class VirusTotal implements Searcher {
   public endpoint: string;

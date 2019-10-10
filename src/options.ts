@@ -1,13 +1,7 @@
-import { ApiKeys } from "./lib/scanner";
 import { browser } from "webextension-polyfill-ts";
 import { getApiKeys, getSearcherStates } from "./utility";
 import * as Mustache from "mustache";
-
-export interface SearcherState {
-  name: string;
-  supportedTypes: string[];
-  isEnabled: boolean;
-}
+import { ApiKeys } from "./lib/types";
 
 export async function saveApiKeys(): Promise<void> {
   const urlscanApiKey = document.getElementById(
