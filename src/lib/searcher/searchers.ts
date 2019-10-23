@@ -1,6 +1,7 @@
 import {
   AbuseIPDB,
   Apility,
+  Apklab,
   ArchiveOrg,
   ArchiveToday,
   BGPView,
@@ -62,6 +63,7 @@ import { Searcher } from "../types";
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),
   new Apility(),
+  new Apklab(),
   new ArchiveOrg(),
   new ArchiveToday(),
   new BGPView(),
