@@ -22,7 +22,7 @@ describe("HybridAnalysis", () => {
       const md5 = "44d88612fea8a8f36de82e1278abb02f";
       expect(() => {
         subject.searchByHash(md5);
-      }).to.throw("HybridAnalysis onlys suports SHA256");
+      }).to.throw("HybridAnalysis supports only SHA256 hash");
     });
   });
 
