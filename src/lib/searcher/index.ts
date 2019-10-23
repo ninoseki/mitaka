@@ -1,5 +1,6 @@
 export { AbuseIPDB } from "./abuseipdb";
 export { Apility } from "./apility";
+export { Apklab } from "./apklab";
 export { ArchiveOrg } from "./archiveorg";
 export { ArchiveToday } from "./archivetoday";
 export { BGPView } from "./bgpview";
