@@ -68,6 +68,7 @@ Mitaka is a browser extension for OSINT search which can:
 | NVD                  | https://nvd.nist.gov                   | cve                               |
 | OOCPR                | https://data.occrp.org                 | email                             |
 | ONYPHE               | https://www.onyphe.io                  | ip                                |
+| OpenTIP              | https://opentip.kaspersky.com          | hash                              |
 | OTX                  | https://otx.alienvault.com             | ip / domain / hash                |
 | PubDB                | http://pub-db.com                      | gaPubID / gaTrackID               |
 | PublicWWW            | https://publicwww.com                  | text                              |
