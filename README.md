@@ -74,6 +74,7 @@ Mitaka is a browser extension for OSINT search which can:
 | PublicWWW            | https://publicwww.com                  | text                              |
 | Pulsedive            | https://pulsedive.com                  | ip / domaion / url / hash         |
 | RiskIQ               | http://community.riskiq.com            | ip / domain / email / gaTrackID   |
+| Scumware             | https://www.scumware.org               | ip / domain / hash                 |
 | SecurityTrails       | https://securitytrails.com             | ip / domain / email               |
 | Shodan               | https://www.shodan.io                  | ip / domain / asn                 |
 | Sploitus             | https://sploitus.com                   | cve                               |
