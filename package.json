@@ -1,7 +1,7 @@
 {
   "name": "mitaka",
   "version": "0.63.0",
-  "description": "OSINT friendly IOC (Indicator of Compromise) saerch tool",
+  "description": "A browser extension for searching IP, domain, URL, hash, etc. via the context menu.",
   "main": "index.js",
   "scripts": {
     "lint": "eslint --ext .ts src test",
