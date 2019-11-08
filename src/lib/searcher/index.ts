@@ -18,6 +18,7 @@ export { EmailRep } from "./emailrep";
 export { FindSubDomains } from "./findsubdomains";
 export { FOFA } from "./fofa";
 export { FortiGuard } from "./fortiguard";
+export { GodaddyWhois } from "./godaddy";
 export { GoogleSafeBrowsing } from "./googlesafebrowsing";
 export { GreyNoise } from "./greynoise";
 export { Hashdd } from "./hashdd";

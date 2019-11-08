@@ -19,6 +19,7 @@ import {
   FindSubDomains,
   FOFA,
   FortiGuard,
+  GodaddyWhois,
   GoogleSafeBrowsing,
   GreyNoise,
   Hashdd,
