@@ -55,6 +55,7 @@ Mitaka is a browser extension for OSINT search which can:
 | FindSubDomains       | https://findsubdomains.com             | domain                            |
 | FOFA                 | https://fofa.so                        | ip / domain                       |
 | FortiGuard           | https://fortiguard.com                 | ip / url / cve                    |
+| GoDaddy WHOIS        | https://www.godaddy.com                | domain                            |
 | Google Safe Browsing | https://transparencyreport.google.com  | domain / url                      |
 | GreyNoise            | https://viz.greynoise.io               | ip / domain / asn                 |
 | Hashdd               | https://hashdd.com                     | ip / domain / hash                |
