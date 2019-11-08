@@ -48,7 +48,7 @@ Mitaka is a browser extension for OSINT search which can:
 | Censys               | https://censys.io                      | ip / domain / asn / text          |
 | crt.sh               | https://crt.sh                         | domain                            |
 | DNSlytics            | https://dnslytics.com                  | ip / domain                       |
-| DomainBigData        | https://domainbigdata.com              | domain                            |
+| DomainBigData        | https://domainbigdata.com              | ip / domain / email               |
 | DomainTools          | https://www.domaintools.com            | ip / domain                       |
 | DomainWatch          | https://domainwat.ch                   | domain / email                    |
 | EmailRep             | https://emailrep.io                    | email                             |

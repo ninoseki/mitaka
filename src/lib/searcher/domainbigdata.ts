@@ -14,4 +14,12 @@ export class DomainBigData implements Searcher {
   public searchByDomain(query: string): string {
     return buildURL(this.endpoint, `/${query}`);
   }
+
+  public searchByIP(query: string): string {
+    return buildURL(this.endpoint, `/${query}`);
+  }
+
+  public searchByEmail(query: string): string {
+    return buildURL(this.endpoint, `/${query}`);
+  }
 }
