@@ -28,7 +28,7 @@ describe("DomainBigData", () => {
   describe("#searchByEmail", () => {
     it("should return URL", () => {
       expect(subject.searchByEmail("test@test.com")).to.equal(
-        "https://domainbigdata.com/test@test.com"
+        "https://domainbigdata.com/email/test@test.com"
       );
     });
   });

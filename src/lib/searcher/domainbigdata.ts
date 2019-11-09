@@ -20,6 +20,6 @@ export class DomainBigData implements Searcher {
   }
 
   public searchByEmail(query: string): string {
-    return buildURL(this.endpoint, `/${query}`);
+    return buildURL(this.endpoint, `/email/${query}`);
   }
 }
