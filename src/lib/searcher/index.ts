@@ -37,6 +37,7 @@ export { PubDB } from "./pubdb";
 export { PublicWWW } from "./publicwww";
 export { Pulsedive } from "./pulsedive";
 export { RiskIQ } from "./riskiq";
+export { Scumware } from "./scumware";
 export { SecurityTrails } from "./securitytrails";
 export { Shodan } from "./shodan";
 export { Sploitus } from "./sploitus";
