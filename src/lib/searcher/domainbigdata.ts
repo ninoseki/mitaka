@@ -4,7 +4,7 @@ import { Searcher, SearchableType } from "../types";
 export class DomainBigData implements Searcher {
   public endpoint: string;
   public name: string;
-  public supportedTypes: SearchableType[] = ["domain"];
+  public supportedTypes: SearchableType[] = ["domain", "ip", "email"];
 
   public constructor() {
     this.endpoint = "https://domainbigdata.com";
@@ -13,5 +13,13 @@ export class DomainBigData implements Searcher {
 
   public searchByDomain(query: string): string {
     return buildURL(this.endpoint, `/${query}`);
+  }
+
+  public searchByIP(query: string): string {
+    return buildURL(this.endpoint, `/${query}`);
+  }
+
+  public searchByEmail(query: string): string {
+    return buildURL(this.endpoint, `/email/${query}`);
   }
 }
