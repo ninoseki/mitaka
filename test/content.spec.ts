@@ -4,7 +4,7 @@ import { JSDOM } from "jsdom";
 import { onSelctionChange } from "../src/content";
 import * as root from "window-or-global";
 
-describe("Context script", () => {
+describe("Context script", function() {
   beforeEach(() => {
     const dom = new JSDOM(`<!DOCTYPE html><p>Just a stub</p>`);
     root.window = dom.window;
@@ -14,12 +14,12 @@ describe("Context script", () => {
     browserMock.reset();
   });
 
-  context("when selected a non anchor element", () => {
+  context("when selected a non anchor element", function() {
     beforeEach(() => {
-      root.window.getSelection = () => {
+      root.window.getSelection = function() {
         return {
           rangeCount: 0,
-          toString: () => {
+          toString: function() {
             return "test";
           },
         };
@@ -30,8 +30,8 @@ describe("Context script", () => {
       delete root.window.getSelection;
     });
 
-    describe("#onSelectionChange", () => {
-      it("should call chrome.runtime.sendMessage()", () => {
+    describe("#onSelectionChange", function() {
+      it("should call chrome.runtime.sendMessage()", function() {
         onSelctionChange();
         browserMock.runtime.sendMessage.assertCalls([
           [
@@ -45,9 +45,9 @@ describe("Context script", () => {
     });
   });
 
-  context("when selected an anchor element", () => {
+  context("when selected an anchor element", function() {
     beforeEach(() => {
-      root.window.getSelection = () => {
+      root.window.getSelection = function() {
         return {
           getRangeAt: idx => {
             return {
@@ -64,7 +64,7 @@ describe("Context script", () => {
             };
           },
           rangeCount: 1,
-          toString: () => {
+          toString: function() {
             return "test";
           },
         };
@@ -75,8 +75,8 @@ describe("Context script", () => {
       delete root.window.getSelection;
     });
 
-    describe("#onSelectionChange", () => {
-      it("should call chrome.runtime.sendMessage()", () => {
+    describe("#onSelectionChange", function() {
+      it("should call chrome.runtime.sendMessage()", function() {
         onSelctionChange();
         browserMock.runtime.sendMessage.assertCalls([
           [

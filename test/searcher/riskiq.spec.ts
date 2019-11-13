@@ -2,10 +2,10 @@ import { expect } from "chai";
 import "mocha";
 import { RiskIQ } from "../../src/lib/searcher";
 
-describe("RiskIQ", () => {
+describe("RiskIQ", function() {
   const subject = new RiskIQ();
 
-  it("should support IP, Domain & Emal type IOC", () => {
+  it("should support IP, Domain & Emal type IOC", function() {
     expect(subject.supportedTypes).to.deep.equal([
       "ip",
       "domain",
@@ -14,32 +14,32 @@ describe("RiskIQ", () => {
     ]);
   });
 
-  describe("#searchByIP", () => {
-    it("should return URL", () => {
+  describe("#searchByIP", function() {
+    it("should return URL", function() {
       expect(subject.searchByIP("1.1.1.1")).to.equal(
         "https://community.riskiq.com/search/1.1.1.1"
       );
     });
   });
 
-  describe("#searchByDomain", () => {
-    it("should return URL", () => {
+  describe("#searchByDomain", function() {
+    it("should return URL", function() {
       expect(subject.searchByDomain("github.com")).to.equal(
         "https://community.riskiq.com/search/github.com"
       );
     });
   });
 
-  describe("#searchByEmail", () => {
-    it("should return URL", () => {
+  describe("#searchByEmail", function() {
+    it("should return URL", function() {
       expect(subject.searchByEmail("test@test.com")).to.equal(
         "https://community.riskiq.com/search/whois/email/test@test.com"
       );
     });
   });
 
-  describe("#searchByGATarckID", () => {
-    it("should return URL", () => {
+  describe("#searchByGATarckID", function() {
+    it("should return URL", function() {
       expect(subject.searchByGATrackID("UA-67609351-1")).to.equal(
         "https://community.riskiq.com/search/trackers/ua-67609351-1"
       );
