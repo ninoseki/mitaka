@@ -4,9 +4,9 @@ import * as moxios from "moxios";
 import { Command } from "../src/lib/command";
 import { ApiKeys } from "./lib/types";
 
-describe("Command", () => {
-  describe("#constructor", () => {
-    it("should return attributes", () => {
+describe("Command", function() {
+  describe("#constructor", function() {
+    it("should return attributes", function() {
       const command = new Command(
         "Search https://github.com as a url on Urlscan"
       );
@@ -16,23 +16,23 @@ describe("Command", () => {
     });
   });
 
-  describe("#search", () => {
-    context("text", () => {
-      it("should return a URL for search", () => {
+  describe("#search", function() {
+    context("text", function() {
+      it("should return a URL for search", function() {
         const command = new Command("Search 1.1.1.1 as a text on Censys");
         expect(command.search()).to.equal("https://censys.io/ipv4?q=1.1.1.1");
       });
     });
 
-    context("ip", () => {
-      it("should return a URL for search", () => {
+    context("ip", function() {
+      it("should return a URL for search", function() {
         const command = new Command("Search 1.1.1.1 as a ip on Urlscan");
         expect(command.search()).to.equal("https://urlscan.io/ip/1.1.1.1");
       });
     });
 
-    context("domain", () => {
-      it("should return a URL for search", () => {
+    context("domain", function() {
+      it("should return a URL for search", function() {
         const command = new Command("Search github.com as a domain on Urlscan");
         expect(command.search()).to.equal(
           "https://urlscan.io/domain/github.com"
@@ -40,8 +40,8 @@ describe("Command", () => {
       });
     });
 
-    context("url", () => {
-      it("should return a URL for search", () => {
+    context("url", function() {
+      it("should return a URL for search", function() {
         const command = new Command(
           "Search https://github.com as a url on Urlscan"
         );
@@ -51,8 +51,8 @@ describe("Command", () => {
       });
     });
 
-    context("hash", () => {
-      it("should return a URL for search", () => {
+    context("hash", function() {
+      it("should return a URL for search", function() {
         const command = new Command(
           "Search 726a2eedb9df3d63ec1b4a7d774a799901f1a2b9 as a hash on Pulsedive"
         );
@@ -62,8 +62,8 @@ describe("Command", () => {
       });
     });
 
-    context("email", () => {
-      it("should return a URL for search", () => {
+    context("email", function() {
+      it("should return a URL for search", function() {
         const command = new Command(
           "Search test@test.com as a email on ViewDNS"
         );
@@ -73,8 +73,8 @@ describe("Command", () => {
       });
     });
 
-    context("cve", () => {
-      it("should return a URL for search", () => {
+    context("cve", function() {
+      it("should return a URL for search", function() {
         const command = new Command("Search CVE-2018-16384 as a cve on Vulmon");
         expect(command.search()).to.equal(
           "https://vulmon.com/vulnerabilitydetails?qid=CVE-2018-16384"
@@ -82,8 +82,8 @@ describe("Command", () => {
       });
     });
 
-    context("btc", () => {
-      it("should return a URL for search", () => {
+    context("btc", function() {
+      it("should return a URL for search", function() {
         const command = new Command(
           "Search 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa as a btc on BlockCypher"
         );
@@ -93,8 +93,8 @@ describe("Command", () => {
       });
     });
 
-    context("gaTrackID", () => {
-      it("should return a URL for search", () => {
+    context("gaTrackID", function() {
+      it("should return a URL for search", function() {
         const command = new Command(
           "Search UA-67609351-1 as a gaTrackID on PubDB"
         );
@@ -104,8 +104,8 @@ describe("Command", () => {
       });
     });
 
-    context("gaPubID", () => {
-      it("should return a URL for search", () => {
+    context("gaPubID", function() {
+      it("should return a URL for search", function() {
         const command = new Command(
           "Search pub-9383614236930773 as a gaPubID on PubDB"
         );
@@ -116,7 +116,7 @@ describe("Command", () => {
     });
   });
 
-  describe("#scan", () => {
+  describe("#scan", function() {
     beforeEach(() => {
       moxios.install();
     });
@@ -124,9 +124,9 @@ describe("Command", () => {
       moxios.uninstall();
     });
 
-    context("urlscan", () => {
-      context("ip", () => {
-        it("should return a URL for scan", async () => {
+    context("urlscan", function() {
+      context("ip", function() {
+        it("should return a URL for scan", async function() {
           const command = new Command("Scan 1.1.1.1 as a ip on Urlscan");
           moxios.stubRequest("https://urlscan.io/api/v1/scan/", {
             response: {
@@ -153,8 +153,8 @@ describe("Command", () => {
         });
       });
 
-      context("domain", () => {
-        it("should return a URL for scan", async () => {
+      context("domain", function() {
+        it("should return a URL for scan", async function() {
           const command = new Command("Scan github.com as a domain on Urlscan");
           moxios.stubRequest("https://urlscan.io/api/v1/scan/", {
             response: {
@@ -181,8 +181,8 @@ describe("Command", () => {
         });
       });
 
-      context("url", () => {
-        it("should return a URL for scan", async () => {
+      context("url", function() {
+        it("should return a URL for scan", async function() {
           const command = new Command(
             "Scan https://www.wikipedia.org/ as a url on Urlscan"
           );
@@ -212,9 +212,9 @@ describe("Command", () => {
       });
     });
 
-    context("virustotal", () => {
-      context("url", () => {
-        it("should return a URL for scan", async () => {
+    context("virustotal", function() {
+      context("url", function() {
+        it("should return a URL for scan", async function() {
           const command = new Command(
             "Scan http://www.virustotal.com/ as a url on VirusTotal"
           );

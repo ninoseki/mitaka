@@ -2,15 +2,15 @@ import { expect } from "chai";
 import "mocha";
 import { PublicWWW } from "../../src/lib/searcher";
 
-describe("PublicWWW", () => {
+describe("PublicWWW", function() {
   const subject = new PublicWWW();
 
-  it("should support text type IOC", () => {
+  it("should support text type IOC", function() {
     expect(subject.supportedTypes).to.deep.equal(["text"]);
   });
 
-  describe("#searchByText", () => {
-    it("should return URL", () => {
+  describe("#searchByText", function() {
+    it("should return URL", function() {
       expect(subject.searchByText("urlscan.io")).to.equal(
         "https://publicwww.com/websites/urlscan.io"
       );

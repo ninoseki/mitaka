@@ -14,13 +14,13 @@ import sinon = require("sinon");
 
 const sandbox = sinon.createSandbox();
 
-describe("Options script", () => {
+describe("Options script", function() {
   afterEach(() => {
     browserMock.reset();
     sandbox.restore();
   });
 
-  describe("#saveApiKeys", () => {
+  describe("#saveApiKeys", function() {
     beforeEach(() => {
       const dom = new JSDOM();
       root.document = dom.window.document;
@@ -36,7 +36,7 @@ describe("Options script", () => {
       stub.withArgs("virustotal-api-key").returns(input);
     });
 
-    it("should save apiKeys via chrome.storage.sync.set()", () => {
+    it("should save apiKeys via chrome.storage.sync.set()", function() {
       saveApiKeys();
       browserMock.storage.sync.set.assertCalls([
         [
@@ -51,7 +51,7 @@ describe("Options script", () => {
     });
   });
 
-  describe("#saveSearcherStates", () => {
+  describe("#saveSearcherStates", function() {
     beforeEach(() => {
       const dom = new JSDOM();
       root.document = dom.window.document;
@@ -75,7 +75,7 @@ describe("Options script", () => {
       stub.withArgs("searcherList").returns(element);
     });
 
-    it("should save searcherStates via chrome.storage.sync.set()", () => {
+    it("should save searcherStates via chrome.storage.sync.set()", function() {
       saveSearcherStates();
       browserMock.storage.sync.set.assertCalls([
         [
@@ -90,7 +90,7 @@ describe("Options script", () => {
     });
   });
 
-  describe("#restoreApiKeys", () => {
+  describe("#restoreApiKeys", function() {
     beforeEach(() => {
       const dom = new JSDOM();
       root.document = dom.window.document;
@@ -112,7 +112,7 @@ describe("Options script", () => {
       stub.withArgs("virustotal-api-key").returns(virusTotalApiKey);
     });
 
-    it("should restore via chrome.storage.sync.get()", async () => {
+    it("should restore via chrome.storage.sync.get()", async function() {
       sandbox
         .stub(browserMock.storage.sync, "get")
         .withArgs("apiKeys")
@@ -136,7 +136,7 @@ describe("Options script", () => {
     });
   });
 
-  describe("#restoreSearcherStates", () => {
+  describe("#restoreSearcherStates", function() {
     beforeEach(() => {
       const dom = new JSDOM();
       root.document = dom.window.document;
@@ -166,7 +166,7 @@ describe("Options script", () => {
       });
     });
 
-    it("should compose searcerList based on searcherStates via chrome.storage.sync.get()", async () => {
+    it("should compose searcerList based on searcherStates via chrome.storage.sync.get()", async function() {
       sandbox
         .stub(browserMock.storage.sync, "get")
         .withArgs("searcherStates")
