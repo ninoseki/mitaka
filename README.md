@@ -58,7 +58,7 @@ Mitaka is a browser extension for OSINT search which can:
 | Google Safe Browsing | https://transparencyreport.google.com  | domain / url                      |
 | GreyNoise            | https://viz.greynoise.io               | ip / domain / asn                 |
 | Hashdd               | https://hashdd.com                     | ip / domain / hash                |
-| HybridAnalysis       | https://www.hybrid-analysis.com        | ip / domain / hash (SHA256 only)  |
+| HybridAnalysis       | https://www.hybrid-analysis.com        | ip / domain / hash                |
 | Intelligence X       | https://intelx.io                      | ip / domain / url / email / btc   |
 | IPinfo               | https://ipinfo.io                      | ip / asn                          |
 | IPIP                 | https://en.ipip.net                    | ip / asn                          |

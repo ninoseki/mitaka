@@ -12,10 +12,7 @@ export class HybridAnalysis implements Searcher {
   }
 
   public searchByHash(query: string): string {
-    if (query.length !== 64) {
-      throw new Error("HybridAnalysis supports only SHA256 hash");
-    }
-    return buildURL(this.endpoint, `/sample/${query}`);
+    return buildURL(this.endpoint, "/search", { query: `${query}` });
   }
 
   public searchByIP(query: string): string {
