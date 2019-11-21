@@ -16,6 +16,9 @@ export class DomainWatch implements Searcher {
   }
 
   public searchByEmail(query: string): string {
-    return buildURL(this.endpoint, "/search", { query });
+    return buildURL(this.endpoint, "/search", {
+      query: `email:${query}`,
+      type: "whois_raw",
+    });
   }
 }
