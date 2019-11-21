@@ -19,7 +19,7 @@ describe("DomainWatch", function() {
   describe("#searchByEmail", function() {
     it("should return URL", function() {
       expect(subject.searchByEmail("test@test.com")).to.equal(
-        "https://domainwat.ch/search?query=test%40test.com"
+        "https://domainwat.ch/search?query=email%3Atest%40test.com&type=whois_raw"
       );
     });
   });
