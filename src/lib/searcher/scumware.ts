@@ -8,7 +8,7 @@ export class Scumware implements Searcher {
 
   public constructor() {
     this.endpoint = "https://www.scumware.org";
-    this.name = "scumware.org";
+    this.name = "Scumware";
   }
 
   public searchByDomain(query: string): string {
