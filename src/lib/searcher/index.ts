@@ -6,6 +6,7 @@ export { ArchiveToday } from "./archivetoday";
 export { BGPView } from "./bgpview";
 export { BinaryEdge } from "./binaryedge";
 export { BitcoinAbuse } from "./bitcoinabuse";
+export { BitcoinWhosWho } from "./bitcoinwhoswho";
 export { BlockChain } from "./blockchain";
 export { BlockCypher } from "./blockcypher";
 export { Censys } from "./censys";
