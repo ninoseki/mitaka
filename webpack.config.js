@@ -48,6 +48,7 @@ const config = {
       },
     ]),
   ],
+  devtool: "source-map",
 };
 
 if (process.env.HMR === "true") {
