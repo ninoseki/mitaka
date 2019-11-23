@@ -43,6 +43,7 @@ Mitaka is a browser extension for OSINT search which can:
 | BGPView              | https://bgpview.io                     | ip / asn                          |
 | BinaryEdge           | https://app.binaryedge.io              | ip / domain                       |
 | BitcoinAbuse         | https://www.bitcoinabuse.com           | btc                               |
+| BitcoinWhosWhos      | https://bitcoinwhoswho.com             | btc                               |
 | Blockchain.com       | https://www.blockchain.com             | btc                               |
 | BlockCypher          | https://live.blockcypher.com           | btc                               |
 | Censys               | https://censys.io                      | ip / domain / asn / text          |
