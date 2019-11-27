@@ -1,6 +1,6 @@
 # Mitaka
 
-[![Build Status](https://travis-ci.org/ninoseki/mitaka.svg?branch=master)](https://travis-ci.org/ninoseki/mitaka)
+[![Build Status](https://travis-ci.com/ninoseki/mitaka.svg?branch=master)](https://travis-ci.com/ninoseki/mitaka)
 [![CodeFactor](https://www.codefactor.io/repository/github/ninoseki/mitaka/badge)](https://www.codefactor.io/repository/github/ninoseki/mitaka)
 [![Coverage Status](https://coveralls.io/repos/github/ninoseki/mitaka/badge.svg)](https://coveralls.io/github/ninoseki/mitaka)
 
