@@ -48,6 +48,7 @@ export { ThreatConnect } from "./threatconnect";
 export { ThreatCrowd } from "./threatcrowd";
 export { ThreatMiner } from "./threatminer";
 export { TIP } from "./tip";
+export { URLhaus } from "./urlhaus";
 export { Urlscan } from "./urlscan";
 export { ViewDNS } from "./viewdns";
 export { VirusTotal } from "./virustotal";
