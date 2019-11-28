@@ -3,6 +3,8 @@ import { getApiKeys, getSearcherStates } from "./utility";
 import * as Mustache from "mustache";
 import { ApiKeys } from "./lib/types";
 
+require("./options/bulma.scss");
+
 export async function saveApiKeys(): Promise<void> {
   const urlscanApiKey = document.getElementById(
     "urlscan-api-key"
