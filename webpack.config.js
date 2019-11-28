@@ -1,6 +1,7 @@
 const { version } = require("./package.json");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtensionReloader = require("webpack-extension-reloader");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 const config = {
@@ -21,6 +22,18 @@ const config = {
         test: /\.tsx?$/,
         loader: "ts-loader",
       },
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+          },
+          {
+            loader: "sass-loader",
+          },
+        ],
+      },
     ],
   },
   resolve: {
@@ -36,7 +49,6 @@ const config = {
     new CopyWebpackPlugin([
       { from: "icons", to: "icons" },
       { from: "options/options.html", to: "options/options.html" },
-      { from: "options/css/bulma.css", to: "options/css/bulma.css" },
       {
         from: "manifest.json",
         to: "manifest.json",
@@ -47,6 +59,9 @@ const config = {
         },
       },
     ]),
+    new MiniCssExtractPlugin({
+      filename: "options/css/bulma.css",
+    }),
   ],
   devtool: "source-map",
 };
