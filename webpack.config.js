@@ -64,6 +64,11 @@ const config = {
     }),
   ],
   devtool: "source-map",
+  performance: {
+    assetFilter: function(assetFilename) {
+      return assetFilename.endsWith(".js");
+    },
+  },
 };
 
 if (process.env.HMR === "true") {
