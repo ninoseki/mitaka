@@ -9,8 +9,7 @@
     "128": "icons/128.png"
   },
   "options_ui": {
-    "page": "options/options.html",
-    "open_in_tab": false
+    "page": "options/options.html"
   },
   "background": {
     "persistent": false,

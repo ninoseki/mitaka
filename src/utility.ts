@@ -29,6 +29,7 @@ export async function getSearcherStates(): Promise<SearcherState[]> {
     states.push({
       isEnabled,
       name: searcher.name,
+      baseURL: searcher.endpoint,
       supportedTypes: searcher.supportedTypes,
     });
   }
