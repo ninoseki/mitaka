@@ -3,26 +3,26 @@ import { Searcher, SearchableType } from "../types";
 import { extractASNumber } from "../utility";
 
 export class Urlscan implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "asn", "url"];
 
   public constructor() {
-    this.endpoint = "https://urlscan.io";
+    this.baseURL = "https://urlscan.io";
     this.name = "Urlscan";
   }
 
   public searchByIP(query: string): string {
-    return buildURL(this.endpoint, `/ip/${query}`);
+    return buildURL(this.baseURL, `/ip/${query}`);
   }
 
   public searchByDomain(query: string): string {
-    return buildURL(this.endpoint, `/domain/${query}`);
+    return buildURL(this.baseURL, `/domain/${query}`);
   }
 
   public searchByASN(query: string): string {
     const number: string = extractASNumber(query);
-    return buildURL(this.endpoint, `/asn/AS${number}`);
+    return buildURL(this.baseURL, `/asn/AS${number}`);
   }
 
   public searchByURL(query: string): string {
@@ -30,6 +30,6 @@ export class Urlscan implements Searcher {
   }
 
   private search(query: string): string {
-    return buildURL(this.endpoint, `/search/#${query}`);
+    return buildURL(this.baseURL, `/search/#${query}`);
   }
 }

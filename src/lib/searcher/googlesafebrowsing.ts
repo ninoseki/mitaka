@@ -2,12 +2,12 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class GoogleSafeBrowsing implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["domain", "url"];
 
   public constructor() {
-    this.endpoint = "https://transparencyreport.google.com";
+    this.baseURL = "https://transparencyreport.google.com";
     this.name = "GoogleSafeBrowsing";
   }
 
@@ -20,6 +20,6 @@ export class GoogleSafeBrowsing implements Searcher {
   }
 
   private search(query: string): string {
-    return buildURL(this.endpoint, "/safe-browsing/search", { url: query });
+    return buildURL(this.baseURL, "/safe-browsing/search", { url: query });
   }
 }

@@ -2,24 +2,24 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class XForceExchange implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "hash"];
 
   public constructor() {
-    this.endpoint = "https://exchange.xforce.ibmcloud.com";
+    this.baseURL = "https://exchange.xforce.ibmcloud.com";
     this.name = "X-Force-Exchange";
   }
 
   public searchByIP(query: string): string {
-    return buildURL(this.endpoint, `/ip/${query}`);
+    return buildURL(this.baseURL, `/ip/${query}`);
   }
 
   public searchByDomain(query: string): string {
-    return buildURL(this.endpoint, `/url/${query}`);
+    return buildURL(this.baseURL, `/url/${query}`);
   }
 
   public searchByHash(query: string): string {
-    return buildURL(this.endpoint, `/malware/${query}`);
+    return buildURL(this.baseURL, `/malware/${query}`);
   }
 }

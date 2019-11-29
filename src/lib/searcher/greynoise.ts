@@ -2,12 +2,12 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class GreyNoise implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "asn"];
 
   public constructor() {
-    this.endpoint = "https://viz.greynoise.io";
+    this.baseURL = "https://viz.greynoise.io";
     this.name = "GreyNoise";
   }
 
@@ -24,6 +24,6 @@ export class GreyNoise implements Searcher {
   }
 
   private search(gnql: string): string {
-    return buildURL(this.endpoint, "/query", { gnql: gnql });
+    return buildURL(this.baseURL, "/query", { gnql: gnql });
   }
 }

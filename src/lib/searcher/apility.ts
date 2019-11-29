@@ -3,12 +3,12 @@ import { Searcher, SearchableType } from "../types";
 import { extractASNumber } from "../utility";
 
 export class Apility implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "email", "asn"];
 
   public constructor() {
-    this.endpoint = "https://apility.io";
+    this.baseURL = "https://apility.io";
     this.name = "Apility";
   }
 
@@ -31,6 +31,6 @@ export class Apility implements Searcher {
   }
 
   private search(query: string): string {
-    return buildURL(this.endpoint, `/search/${query}`);
+    return buildURL(this.baseURL, `/search/${query}`);
   }
 }

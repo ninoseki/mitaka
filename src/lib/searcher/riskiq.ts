@@ -2,7 +2,7 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class RiskIQ implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = [
     "ip",
@@ -12,23 +12,23 @@ export class RiskIQ implements Searcher {
   ];
 
   public constructor() {
-    this.endpoint = "https://community.riskiq.com";
+    this.baseURL = "https://community.riskiq.com";
     this.name = "RiskIQ";
   }
 
   public searchByIP(query: string): string {
-    return buildURL(this.endpoint, `/search/${query}`);
+    return buildURL(this.baseURL, `/search/${query}`);
   }
 
   public searchByDomain(query: string): string {
-    return buildURL(this.endpoint, `/search/${query}`);
+    return buildURL(this.baseURL, `/search/${query}`);
   }
 
   public searchByEmail(query: string): string {
-    return buildURL(this.endpoint, `/search/whois/email/${query}`);
+    return buildURL(this.baseURL, `/search/whois/email/${query}`);
   }
 
   public searchByGATrackID(query: string): string {
-    return buildURL(this.endpoint, `/search/trackers/${query.toLowerCase()}`);
+    return buildURL(this.baseURL, `/search/trackers/${query.toLowerCase()}`);
   }
 }

@@ -2,12 +2,12 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class DomainTools implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain"];
 
   public constructor() {
-    this.endpoint = "https://whois.domaintools.com";
+    this.baseURL = "https://whois.domaintools.com";
     this.name = "DomainTools";
   }
 
@@ -20,6 +20,6 @@ export class DomainTools implements Searcher {
   }
 
   private search(query: string): string {
-    return buildURL(this.endpoint, `/${query}`);
+    return buildURL(this.baseURL, `/${query}`);
   }
 }

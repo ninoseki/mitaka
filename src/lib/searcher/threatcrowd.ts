@@ -2,24 +2,24 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class ThreatCrowd implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "email"];
 
   public constructor() {
-    this.endpoint = "https://www.threatcrowd.org";
+    this.baseURL = "https://www.threatcrowd.org";
     this.name = "ThreatCrowd";
   }
 
   public searchByIP(query: string): string {
-    return buildURL(this.endpoint, "/ip.php", { ip: query });
+    return buildURL(this.baseURL, "/ip.php", { ip: query });
   }
 
   public searchByDomain(query: string): string {
-    return buildURL(this.endpoint, "/domain.php", { domain: query });
+    return buildURL(this.baseURL, "/domain.php", { domain: query });
   }
 
   public searchByEmail(query: string): string {
-    return buildURL(this.endpoint, "/email.php", { email: query });
+    return buildURL(this.baseURL, "/email.php", { email: query });
   }
 }

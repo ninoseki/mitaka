@@ -3,12 +3,12 @@ import { Searcher, SearchableType } from "../types";
 import { extractASNumber } from "../utility";
 
 export class Apklab implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["hash"];
 
   public constructor() {
-    this.endpoint = "https://www.apklab.io";
+    this.baseURL = "https://www.apklab.io";
     this.name = "Apklab";
   }
 

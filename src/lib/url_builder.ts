@@ -1,12 +1,12 @@
 import * as crypto from "crypto-js";
 import * as qs from "qs";
 
-export function buildURL(endpoint: string, path: string, params = {}): string {
+export function buildURL(baseURL: string, path: string, params = {}): string {
   const queryString: string = qs.stringify(params);
   if (queryString === "") {
-    return `${endpoint}${path}`;
+    return `${baseURL}${path}`;
   } else {
-    return `${endpoint}${path}?${queryString}`;
+    return `${baseURL}${path}?${queryString}`;
   }
 }
 

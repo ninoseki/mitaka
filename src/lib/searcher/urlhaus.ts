@@ -2,12 +2,12 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class URLhaus implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain"];
 
   public constructor() {
-    this.endpoint = "https://urlhaus.abuse.ch";
+    this.baseURL = "https://urlhaus.abuse.ch";
     this.name = "URLhaus";
   }
 
@@ -20,6 +20,6 @@ export class URLhaus implements Searcher {
   }
 
   private searchByHost(host: string): string {
-    return buildURL(this.endpoint, `/host/${host}/`);
+    return buildURL(this.baseURL, `/host/${host}/`);
   }
 }

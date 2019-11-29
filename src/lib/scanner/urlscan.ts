@@ -2,13 +2,13 @@ import axios from "axios";
 import { Scanner, ScannableType } from "../types";
 
 export class Urlscan implements Scanner {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: ScannableType[] = ["ip", "domain", "url"];
   protected apiKey: string | undefined;
 
   public constructor() {
-    this.endpoint = "https://urlscan.io/api/v1";
+    this.baseURL = "https://urlscan.io/api/v1";
     this.name = "Urlscan";
   }
 
@@ -34,7 +34,7 @@ export class Urlscan implements Scanner {
     }
 
     const res = await axios.post(
-      `${this.endpoint}/scan/`,
+      `${this.baseURL}/scan/`,
       {
         public: isPublic ? "on" : "off",
         url: query,

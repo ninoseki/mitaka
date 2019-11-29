@@ -2,16 +2,16 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class ArchiveToday implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["url"];
 
   public constructor() {
-    this.endpoint = "http://archive.fo";
+    this.baseURL = "http://archive.fo";
     this.name = "archive.today";
   }
 
   public searchByURL(query: string): string {
-    return buildURL(this.endpoint, `/${query}`);
+    return buildURL(this.baseURL, `/${query}`);
   }
 }

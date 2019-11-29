@@ -2,20 +2,20 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class TIP implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain"];
 
   public constructor() {
-    this.endpoint = "https://threatintelligenceplatform.com";
+    this.baseURL = "https://threatintelligenceplatform.com";
     this.name = "TIP";
   }
 
   public searchByIP(query: string): string {
-    return buildURL(this.endpoint, `/report/${query}/`);
+    return buildURL(this.baseURL, `/report/${query}/`);
   }
 
   public searchByDomain(query: string): string {
-    return buildURL(this.endpoint, `/report/${query}/`);
+    return buildURL(this.baseURL, `/report/${query}/`);
   }
 }

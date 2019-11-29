@@ -2,17 +2,17 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class ZoomEye implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip"];
 
   public constructor() {
-    this.endpoint = "https://www.zoomeye.org";
+    this.baseURL = "https://www.zoomeye.org";
     this.name = "ZoomEye";
   }
 
   public searchByIP(query: string): string {
-    return buildURL(this.endpoint, "/searchResult", {
+    return buildURL(this.baseURL, "/searchResult", {
       q: `ip:"${query}"`,
       t: "host",
     });

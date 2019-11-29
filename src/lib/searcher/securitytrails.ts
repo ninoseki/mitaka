@@ -2,31 +2,31 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class SecurityTrails implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "email"];
 
   public constructor() {
-    this.endpoint = "https://securitytrails.com";
+    this.baseURL = "https://securitytrails.com";
     this.name = "SecurityTrails";
   }
 
   public searchByText(query: string): string {
     return buildURL(
-      this.endpoint,
+      this.baseURL,
       `/list/keyword/${encodeURIComponent(query)}`
     );
   }
 
   public searchByIP(query: string): string {
-    return buildURL(this.endpoint, `/list/ip/${query}`);
+    return buildURL(this.baseURL, `/list/ip/${query}`);
   }
 
   public searchByDomain(query: string): string {
-    return buildURL(this.endpoint, `/domain/${query}`);
+    return buildURL(this.baseURL, `/domain/${query}`);
   }
 
   public searchByEmail(query: string): string {
-    return buildURL(this.endpoint, `/list/by-email/${query}`);
+    return buildURL(this.baseURL, `/list/by-email/${query}`);
   }
 }

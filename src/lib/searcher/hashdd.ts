@@ -2,12 +2,12 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class Hashdd implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "hash"];
 
   public constructor() {
-    this.endpoint = "https://hashdd.com";
+    this.baseURL = "https://hashdd.com";
     this.name = "Hashdd";
   }
 
@@ -24,6 +24,6 @@ export class Hashdd implements Searcher {
   }
 
   private search(query: string): string {
-    return buildURL(this.endpoint, `/i/${query}`);
+    return buildURL(this.baseURL, `/i/${query}`);
   }
 }

@@ -2,7 +2,7 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class SpyOnWeb implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = [
     "ip",
@@ -12,7 +12,7 @@ export class SpyOnWeb implements Searcher {
   ];
 
   public constructor() {
-    this.endpoint = "http://spyonweb.com";
+    this.baseURL = "http://spyonweb.com";
     this.name = "SpyOnWeb";
   }
 
@@ -33,6 +33,6 @@ export class SpyOnWeb implements Searcher {
   }
 
   private search(query: string): string {
-    return buildURL(this.endpoint, `/${query}`);
+    return buildURL(this.baseURL, `/${query}`);
   }
 }

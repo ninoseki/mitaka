@@ -2,20 +2,20 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class DNSlytics implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain"];
 
   public constructor() {
-    this.endpoint = "https://dnslytics.com";
+    this.baseURL = "https://dnslytics.com";
     this.name = "DNSlytics";
   }
 
   public searchByIP(query: string): string {
-    return buildURL(this.endpoint, `/ip/${query}`);
+    return buildURL(this.baseURL, `/ip/${query}`);
   }
 
   public searchByDomain(query: string): string {
-    return buildURL(this.endpoint, `/domain/${query}`);
+    return buildURL(this.baseURL, `/domain/${query}`);
   }
 }
