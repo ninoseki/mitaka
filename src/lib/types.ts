@@ -60,6 +60,7 @@ export interface AnalyzerEntry {
 
 export interface SearcherState {
   name: string;
+  baseURL: string;
   supportedTypes: string[];
   isEnabled: boolean;
 }

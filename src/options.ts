@@ -20,7 +20,7 @@ export async function saveApiKeys(): Promise<void> {
     await browser.storage.sync.set({ apiKeys });
     const status = document.getElementById("status");
     if (status) {
-      status.textContent = "Options saved.";
+      status.textContent = "Settings are saved.";
     }
   }
 }
