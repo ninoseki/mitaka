@@ -7,11 +7,11 @@ export class PublicWWW implements Searcher {
   public supportedTypes: SearchableType[] = ["text"];
 
   public constructor() {
-    this.baseURL = "https://publicwww.com/websites";
+    this.baseURL = "https://publicwww.com";
     this.name = "PublicWWW";
   }
 
   public searchByText(query: string): string {
-    return buildURL(this.baseURL, `/${encodeURIComponent(query)}`);
+    return buildURL(this.baseURL, `/websites/${encodeURIComponent(query)}`);
   }
 }
