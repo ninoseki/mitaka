@@ -2,12 +2,12 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class ThreatConnect implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "email"];
 
   public constructor() {
-    this.endpoint = "https://app.threatconnect.com";
+    this.baseURL = "https://app.threatconnect.com";
     this.name = "ThreatConnect";
   }
 
@@ -28,7 +28,7 @@ export class ThreatConnect implements Searcher {
     params[type] = query;
 
     return buildURL(
-      this.endpoint,
+      this.baseURL,
       `/auth/indicators/details/${type}.xhtml`,
       params
     );

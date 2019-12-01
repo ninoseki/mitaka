@@ -3,21 +3,21 @@ import { Searcher, SearchableType } from "../types";
 import { extractASNumber } from "../utility";
 
 export class BGPView implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "asn"];
 
   public constructor() {
-    this.endpoint = "https://bgpview.io";
+    this.baseURL = "https://bgpview.io";
     this.name = "BGPView";
   }
 
   public searchByIP(query: string): string {
-    return buildURL(this.endpoint, `/ip/${query}`);
+    return buildURL(this.baseURL, `/ip/${query}`);
   }
 
   public searchByASN(query: string): string {
     const number: string = extractASNumber(query);
-    return buildURL(this.endpoint, `/asn/${number}`);
+    return buildURL(this.baseURL, `/asn/${number}`);
   }
 }

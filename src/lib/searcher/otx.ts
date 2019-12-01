@@ -2,23 +2,23 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class OTX implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "hash"];
 
   public constructor() {
-    this.endpoint = "https://otx.alienvault.com";
+    this.baseURL = "https://otx.alienvault.com";
     this.name = "OTX";
   }
 
   public searchByIP(query: string): string {
-    return buildURL(this.endpoint, `/indicator/ip/${query}`);
+    return buildURL(this.baseURL, `/indicator/ip/${query}`);
   }
   public searchByDomain(query: string): string {
-    return buildURL(this.endpoint, `/indicator/domain/${query}`);
+    return buildURL(this.baseURL, `/indicator/domain/${query}`);
   }
 
   public searchByHash(query: string): string {
-    return buildURL(this.endpoint, `/indicator/file/${query}`);
+    return buildURL(this.baseURL, `/indicator/file/${query}`);
   }
 }

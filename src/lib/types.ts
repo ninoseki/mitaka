@@ -13,7 +13,7 @@ export type SearchableType =
   | "gaPubID";
 
 export interface Searcher {
-  endpoint: string;
+  baseURL: string;
   name: string;
   supportedTypes: SearchableType[];
   searchByASN?(query: string): string;
@@ -33,7 +33,7 @@ export interface Searcher {
 export type ScannableType = "ip" | "domain" | "url";
 
 export interface Scanner {
-  endpoint: string;
+  baseURL: string;
   name: string;
   supportedTypes: ScannableType[];
   scanByIP?(query: string): Promise<string>;

@@ -2,12 +2,12 @@ import { base64fy } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class Pulsedive implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "url", "hash"];
 
   public constructor() {
-    this.endpoint = "https://pulsedive.com";
+    this.baseURL = "https://pulsedive.com";
     this.name = "Pulsedive";
   }
 
@@ -25,6 +25,6 @@ export class Pulsedive implements Searcher {
   }
 
   private search(query: string): string {
-    return `${this.endpoint}/indicator/?ioc=${base64fy(query)}`;
+    return `${this.baseURL}/indicator/?ioc=${base64fy(query)}`;
   }
 }

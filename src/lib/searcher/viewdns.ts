@@ -2,24 +2,24 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class ViewDNS implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "email"];
 
   public constructor() {
-    this.endpoint = "https://viewdns.info";
+    this.baseURL = "https://viewdns.info";
     this.name = "ViewDNS";
   }
 
   public searchByIP(query: string): string {
-    return buildURL(this.endpoint, "/reverseip/", { t: 1, host: query });
+    return buildURL(this.baseURL, "/reverseip/", { t: 1, host: query });
   }
 
   public searchByDomain(query: string): string {
-    return buildURL(this.endpoint, "/iphistory/", { domain: query });
+    return buildURL(this.baseURL, "/iphistory/", { domain: query });
   }
 
   public searchByEmail(query: string): string {
-    return buildURL(this.endpoint, "/reversewhois/", { q: query });
+    return buildURL(this.baseURL, "/reversewhois/", { q: query });
   }
 }

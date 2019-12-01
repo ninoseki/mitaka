@@ -1,20 +1,20 @@
 import { Searcher, SearchableType } from "../types";
 
 export class Maltiverse implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["domain", "hash"];
 
   public constructor() {
-    this.endpoint = "https://www.maltiverse.com";
+    this.baseURL = "https://www.maltiverse.com";
     this.name = "Maltiverse";
   }
 
   public searchByDomain(query: string): string {
-    return `${this.endpoint}/search;query=domain:${query}`;
+    return `${this.baseURL}/search;query=domain:${query}`;
   }
 
   public searchByHash(query: string): string {
-    return `${this.endpoint}/search;query=${query}`;
+    return `${this.baseURL}/search;query=${query}`;
   }
 }

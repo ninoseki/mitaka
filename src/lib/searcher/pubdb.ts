@@ -2,20 +2,20 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class PubDB implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["gaTrackID", "gaPubID"];
 
   public constructor() {
-    this.endpoint = "http://pub-db.com";
+    this.baseURL = "http://pub-db.com";
     this.name = "PubDB";
   }
 
   public searchByGATrackID(query: string): string {
-    return buildURL(this.endpoint, `/google-analytics/${query}.html`);
+    return buildURL(this.baseURL, `/google-analytics/${query}.html`);
   }
 
   public searchByGAPubID(query: string): string {
-    return buildURL(this.endpoint, `/adsense/${query}.html`);
+    return buildURL(this.baseURL, `/adsense/${query}.html`);
   }
 }

@@ -2,7 +2,7 @@ import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 
 export class IntelligenceX implements Searcher {
-  public endpoint: string;
+  public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = [
     "ip",
@@ -13,7 +13,7 @@ export class IntelligenceX implements Searcher {
   ];
 
   public constructor() {
-    this.endpoint = "https://intelx.io";
+    this.baseURL = "https://intelx.io";
     this.name = "IntelligenceX";
   }
 
@@ -38,6 +38,6 @@ export class IntelligenceX implements Searcher {
   }
 
   private search(query: string): string {
-    return buildURL(this.endpoint, "/", { s: query });
+    return buildURL(this.baseURL, "/", { s: query });
   }
 }
