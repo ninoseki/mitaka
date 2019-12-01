@@ -1,2 +1,12 @@
 @charset "utf-8";
 @import "~bulma/bulma";
+
+span#status {
+  display: inline-block;
+  line-height: 2.5em;
+  vertical-align: middle;
+}
+
+.searcher {
+  margin: 15px 0 15px 0;
+}
