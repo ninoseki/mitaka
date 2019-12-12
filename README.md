@@ -13,6 +13,13 @@ Mitaka is a browser extension for OSINT search which can:
 - Search / scan it on various engines.
   - E.g. VirusTotal, urlscan.io, Censys, Shodan, etc.
 
+## Downloads
+
+| Browser       | Link                                                                                                                                                                                   | Users                                                                                                                                                                                    | Rating                                                                                                                                                                                     |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Google Chrome | [![Chrome Version](https://img.shields.io/chrome-web-store/v/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg) | [![Chrome Users](https://img.shields.io/chrome-web-store/users/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg) | [![Chrome Rating](https://img.shields.io/chrome-web-store/rating/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg) |
+| Firefox       | [![FF Version](https://img.shields.io/amo/v/mitaka.svg)](https://addons.mozilla.org/en-US/firefox/addon/mitaka/)                                                                       | ![Mozilla Add-on](https://img.shields.io/amo/users/mitaka)                                                                                                                               | ![Mozilla Add-on](https://img.shields.io/amo/rating/mitaka)                                                                                                                                |
+
 ## Features
 
 ### Supported IOC types
@@ -104,13 +111,6 @@ Mitaka is a browser extension for OSINT search which can:
 | Urlscan    | https://urlscan.io         | ip / domain / url |
 | VirusTotal | https://www.virustotal.com | url               |
 
-## Downloads
-
-| Browser       | Link                                                                                                                                                                                   | Users                                                                                                                                                                                    | Rating                                                                                                                                                                                     |
-|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Google Chrome | [![Chrome Version](https://img.shields.io/chrome-web-store/v/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg) | [![Chrome Users](https://img.shields.io/chrome-web-store/users/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg) | [![Chrome Rating](https://img.shields.io/chrome-web-store/rating/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg) |
-| Firefox       | [![FF Version](https://img.shields.io/amo/v/mitaka.svg)](https://addons.mozilla.org/en-US/firefox/addon/mitaka/)                                                                       | ![Mozilla Add-on](https://img.shields.io/amo/users/mitaka)                                                                                                                               | ![Mozilla Add-on](https://img.shields.io/amo/rating/mitaka)                                                                                                                                |
-
 ## How to use
 
 This browser extension shows context menus based on a type of IoC you selected and then you can choose what you want to search / scan on.
@@ -118,8 +118,6 @@ This browser extension shows context menus based on a type of IoC you selected a
 **Examples:**
 
 !["example"](/examples/1.gif "1.gif")
-
----
 
 !["example2"](/examples/2.gif "2.gif")
 
