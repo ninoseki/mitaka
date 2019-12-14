@@ -6,22 +6,19 @@ const expect = chai.expect;
 import "mocha";
 import * as moxios from "moxios";
 
-import { HybridAnalysis } from "../../src/lib/scanner";
+import { VirusTotal } from "../../src/lib/scanner";
 
-describe("HybridAnalysis", function() {
-  const subject = new HybridAnalysis();
+describe("VirusTotal", function() {
+  const subject = new VirusTotal();
 
   beforeEach(() => {
     moxios.install();
-    moxios.stubRequest(
-      "https://www.hybrid-analysis.com/api/v2/quick-scan/url",
-      {
-        response: {
-          sha256: "foo",
-        },
-        status: 200,
-      }
-    );
+    moxios.stubRequest("https://www.virustotal.com/vtapi/v2/url/scan", {
+      response: {
+        permalink: `http://www.virustotal.com/foo`,
+      },
+      status: 200,
+    });
 
     subject.setApiKey("foo");
   });
@@ -39,7 +36,7 @@ describe("HybridAnalysis", function() {
   describe("#scanByURL", function() {
     it("should return a URL", async function() {
       const res = await subject.scanByURL("http://example.com");
-      expect(res).to.equal("https://www.hybrid-analysis.com/sample/foo/");
+      expect(res).to.equal("http://www.virustotal.com/foo");
     });
   });
 
