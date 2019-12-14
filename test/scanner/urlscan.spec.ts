@@ -1,4 +1,8 @@
-import { expect } from "chai";
+import * as chai from "chai";
+import * as chaiAsPromised from "chai-as-promised";
+chai.use(chaiAsPromised);
+const expect = chai.expect;
+
 import "mocha";
 import * as moxios from "moxios";
 
@@ -47,6 +51,14 @@ describe("Urlscan", function() {
     it("should return a URL", async function() {
       const res = await subject.scanByURL("http://example.com");
       expect(res).to.equal("https://urlscan.io/entry/foo/loading");
+    });
+  });
+
+  context("when apiKey is undefined", function() {
+    it("should raise an error", async function() {
+      subject.setApiKey(undefined);
+
+      expect(subject.scanByURL("http://example.com")).to.be.rejectedWith(Error);
     });
   });
 });
