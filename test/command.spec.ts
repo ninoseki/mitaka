@@ -117,134 +117,52 @@ describe("Command", function() {
   });
 
   describe("#scan", function() {
+    const apiKeys: ApiKeys = {
+      hybridAnalysisApiKey: "test",
+      urlscanApiKey: "test",
+      virusTotalApiKey: "test",
+    };
+
     beforeEach(() => {
       moxios.install();
+      moxios.stubRequest("https://urlscan.io/api/v1/scan/", {
+        response: {
+          result: "https://urlscan.io/entry/foo/",
+        },
+        status: 200,
+      });
     });
+
     afterEach(() => {
       moxios.uninstall();
     });
 
-    context("urlscan", function() {
-      context("ip", function() {
-        it("should return a URL for scan", async function() {
-          const command = new Command("Scan 1.1.1.1 as a ip on Urlscan");
-          moxios.stubRequest("https://urlscan.io/api/v1/scan/", {
-            response: {
-              api:
-                "https://urlscan.io/api/v1/entry/ac04bc14-4efe-439d-b356-8384843daf75/",
-              message: "Submission successful",
-              options: {
-                useragent: "OMITTED",
-              },
-              result:
-                "https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/",
-              uuid: "ac04bc14-4efe-439d-b356-8384843daf75",
-              visibility: "public",
-            },
-            status: 200,
-          });
-          const apiKeys: ApiKeys = {
-            hybridAnalysisApiKey: "test",
-            urlscanApiKey: "test",
-            virusTotalApiKey: "test",
-          };
-          expect(await command.scan(apiKeys)).to.equal(
-            "https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/loading"
-          );
-        });
-      });
-
-      context("domain", function() {
-        it("should return a URL for scan", async function() {
-          const command = new Command("Scan github.com as a domain on Urlscan");
-          moxios.stubRequest("https://urlscan.io/api/v1/scan/", {
-            response: {
-              api:
-                "https://urlscan.io/api/v1/entry/ac04bc14-4efe-439d-b356-8384843daf75/",
-              message: "Submission successful",
-              options: {
-                useragent: "OMITTED",
-              },
-              result:
-                "https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/",
-              uuid: "ac04bc14-4efe-439d-b356-8384843daf75",
-              visibility: "public",
-            },
-            status: 200,
-          });
-          const apiKeys: ApiKeys = {
-            hybridAnalysisApiKey: "test",
-            urlscanApiKey: "test",
-            virusTotalApiKey: "test",
-          };
-          expect(await command.scan(apiKeys)).to.equal(
-            "https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/loading"
-          );
-        });
-      });
-
-      context("url", function() {
-        it("should return a URL for scan", async function() {
-          const command = new Command(
-            "Scan https://www.wikipedia.org/ as a url on Urlscan"
-          );
-          moxios.stubRequest("https://urlscan.io/api/v1/scan/", {
-            response: {
-              api:
-                "https://urlscan.io/api/v1/entry/ac04bc14-4efe-439d-b356-8384843daf75/",
-              message: "Submission successful",
-              options: {
-                useragent: "OMITTED",
-              },
-              result:
-                "https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/",
-              uuid: "ac04bc14-4efe-439d-b356-8384843daf75",
-              visibility: "public",
-            },
-            status: 200,
-          });
-          const apiKeys: ApiKeys = {
-            hybridAnalysisApiKey: "test",
-            urlscanApiKey: "test",
-            virusTotalApiKey: "test",
-          };
-          expect(await command.scan(apiKeys)).to.equal(
-            "https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/loading"
-          );
-        });
+    context("ip", function() {
+      it("should return a URL", async function() {
+        const command = new Command("Scan 1.1.1.1 as a ip on Urlscan");
+        expect(await command.scan(apiKeys)).to.equal(
+          "https://urlscan.io/entry/foo/loading"
+        );
       });
     });
 
-    context("virustotal", function() {
-      context("url", function() {
-        it("should return a URL for scan", async function() {
-          const command = new Command(
-            "Scan http://www.virustotal.com/ as a url on VirusTotal"
-          );
-          const path =
-            "/url/1db0ad7dbcec0676710ea0eaacd35d5e471d3e11944d53bcbd31f0cbd11bce31/analysis/1320752364/";
-          moxios.stubRequest("https://www.virustotal.com/vtapi/v2/url/scan", {
-            response: {
-              permalink: `http://www.virustotal.com${path}`,
-              response_code: 1,
-              scan_date: "2011-11-08 11:39:24",
-              scan_id:
-                "1db0ad7dbcec0676710ea0eaacd35d5e471d3e11944d53bcbd31f0cbd11bce31-1320752364",
-              url: "http://www.virustotal.com/",
-              verbose_msg:
-                "Scan request successfully queued, come back later for the report",
-            },
-            status: 200,
-          });
-          const apiKeys: ApiKeys = {
-            hybridAnalysisApiKey: "test",
-            urlscanApiKey: "test",
-            virusTotalApiKey: "test",
-          };
-          expect(await command.scan(apiKeys)).to.equal(
-            `http://www.virustotal.com${path}`
-          );
-        });
+    context("domain", function() {
+      it("should return a URL", async function() {
+        const command = new Command("Scan github.com as a domain on Urlscan");
+        expect(await command.scan(apiKeys)).to.equal(
+          "https://urlscan.io/entry/foo/loading"
+        );
+      });
+    });
+
+    context("url", function() {
+      it("should return a URL for scan", async function() {
+        const command = new Command(
+          "Scan https://www.wikipedia.org/ as a url on Urlscan"
+        );
+        expect(await command.scan(apiKeys)).to.equal(
+          "https://urlscan.io/entry/foo/loading"
+        );
       });
     });
   });
