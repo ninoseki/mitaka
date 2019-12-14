@@ -1,0 +1,38 @@
+import { expect } from "chai";
+import "mocha";
+import * as moxios from "moxios";
+
+import { VirusTotal } from "../../src/lib/scanner";
+
+describe("VirusTotal", function() {
+  const subject = new VirusTotal();
+
+  beforeEach(() => {
+    moxios.install();
+    moxios.stubRequest("https://www.virustotal.com/vtapi/v2/url/scan", {
+      response: {
+        permalink: `http://www.virustotal.com/foo`,
+      },
+      status: 200,
+    });
+
+    subject.setApiKey("foo");
+  });
+
+  afterEach(() => {
+    moxios.uninstall();
+
+    subject.setApiKey(undefined);
+  });
+
+  it("should support IP type IOC", function() {
+    expect(subject.supportedTypes).to.deep.equal(["url"]);
+  });
+
+  describe("#scanByURL", function() {
+    it("should return a URL", async function() {
+      const res = await subject.scanByURL("http://example.com");
+      expect(res).to.equal("http://www.virustotal.com/foo");
+    });
+  });
+});
