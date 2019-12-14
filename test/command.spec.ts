@@ -144,6 +144,7 @@ describe("Command", function() {
             status: 200,
           });
           const apiKeys: ApiKeys = {
+            hybridAnalysisApiKey: "test",
             urlscanApiKey: "test",
             virusTotalApiKey: "test",
           };
@@ -172,6 +173,7 @@ describe("Command", function() {
             status: 200,
           });
           const apiKeys: ApiKeys = {
+            hybridAnalysisApiKey: "test",
             urlscanApiKey: "test",
             virusTotalApiKey: "test",
           };
@@ -202,6 +204,7 @@ describe("Command", function() {
             status: 200,
           });
           const apiKeys: ApiKeys = {
+            hybridAnalysisApiKey: "test",
             urlscanApiKey: "test",
             virusTotalApiKey: "test",
           };
@@ -234,6 +237,7 @@ describe("Command", function() {
             status: 200,
           });
           const apiKeys: ApiKeys = {
+            hybridAnalysisApiKey: "test",
             urlscanApiKey: "test",
             virusTotalApiKey: "test",
           };

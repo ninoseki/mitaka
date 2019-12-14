@@ -63,6 +63,7 @@ describe("Background script", function() {
           .withArgs("apiKeys")
           .resolves({
             apiKeys: {
+              hybridAnalysisApiKey: "test",
               urlscanApiKey: "test",
               virusTotalApiKey: "test",
             },
@@ -76,6 +77,7 @@ describe("Background script", function() {
         const commandStub: sinon.SinonStub<any, any> = sandbox
           .stub(command, "scan")
           .withArgs({
+            hybridAnalysisApiKey: "test",
             urlscanApiKey: "test",
             virusTotalApiKey: "test",
           });

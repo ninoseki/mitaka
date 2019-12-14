@@ -66,6 +66,7 @@ export interface SearcherState {
 }
 
 export interface ApiKeys {
+  hybridAnalysisApiKey: string | undefined;
   urlscanApiKey: string | undefined;
   virusTotalApiKey: string | undefined;
 }

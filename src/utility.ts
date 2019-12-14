@@ -6,10 +6,12 @@ export async function getApiKeys(): Promise<ApiKeys> {
   const config = await browser.storage.sync.get("apiKeys");
 
   const apiKeys: ApiKeys = {
+    hybridAnalysisApiKey: undefined,
     urlscanApiKey: undefined,
     virusTotalApiKey: undefined,
   };
   if ("apiKeys" in config) {
+    apiKeys.hybridAnalysisApiKey = config.apiKeys.hybridAnalysisApiKey;
     apiKeys.urlscanApiKey = config.apiKeys.urlscanApiKey;
     apiKeys.virusTotalApiKey = config.apiKeys.virusTotalApiKey;
   }
