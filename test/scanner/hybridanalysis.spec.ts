@@ -9,10 +9,23 @@ describe("HybridAnalysis", function() {
 
   beforeEach(() => {
     moxios.install();
+    moxios.stubRequest(
+      "https://www.hybrid-analysis.com/api/v2/quick-scan/url",
+      {
+        response: {
+          sha256: "foo",
+        },
+        status: 200,
+      }
+    );
+
+    subject.setApiKey("foo");
   });
 
   afterEach(() => {
     moxios.uninstall();
+
+    subject.setApiKey(undefined);
   });
 
   it("should support IP type IOC", function() {
@@ -20,25 +33,7 @@ describe("HybridAnalysis", function() {
   });
 
   describe("#scanByURL", function() {
-    before(() => {
-      subject.setApiKey("foo");
-    });
-
-    after(() => {
-      subject.setApiKey(undefined);
-    });
-
     it("should return a URL", async function() {
-      moxios.stubRequest(
-        "https://www.hybrid-analysis.com/api/v2/quick-scan/url",
-        {
-          response: {
-            sha256: "foo",
-          },
-          status: 200,
-        }
-      );
-
       const res = await subject.scanByURL("http://example.com");
       expect(res).to.equal("https://www.hybrid-analysis.com/sample/foo/");
     });
