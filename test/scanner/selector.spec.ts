@@ -9,9 +9,10 @@ describe("Seletor", function() {
     domain: 1,
     // urlscan
     ip: 1,
-    // urlscan, virustotal
-    url: 2,
+    // hybridanalysis, urlscan, virustotal
+    url: 3,
   };
+
   context("scanner", function() {
     describe("#getScannersByType", function() {
       const selector: Selector = new Selector("test");

@@ -32,6 +32,7 @@ describe("Options script", function() {
         root.document,
         "getElementById"
       );
+      stub.withArgs("hybridanalysis-api-key").returns(input);
       stub.withArgs("urlscan-api-key").returns(input);
       stub.withArgs("virustotal-api-key").returns(input);
     });
@@ -42,6 +43,7 @@ describe("Options script", function() {
         [
           {
             apiKeys: {
+              hybridAnalysisApiKey: "test",
               urlscanApiKey: "test",
               virusTotalApiKey: "test",
             },
@@ -95,6 +97,10 @@ describe("Options script", function() {
       const dom = new JSDOM();
       root.document = dom.window.document;
 
+      const hybridAanalysisApiKey = root.document.createElement(
+        "input"
+      ) as HTMLInputElement;
+      hybridAanalysisApiKey.value = "test";
       const urlscanApiKey = root.document.createElement(
         "input"
       ) as HTMLInputElement;
@@ -108,6 +114,7 @@ describe("Options script", function() {
         root.document,
         "getElementById"
       );
+      stub.withArgs("hybridanalysis-api-key").returns(hybridAanalysisApiKey);
       stub.withArgs("urlscan-api-key").returns(urlscanApiKey);
       stub.withArgs("virustotal-api-key").returns(virusTotalApiKey);
     });
@@ -118,6 +125,7 @@ describe("Options script", function() {
         .withArgs("apiKeys")
         .resolves({
           apiKeys: {
+            hybridAanalysisApiKey: "test",
             urlscanApiKey: "test1",
             virusTotalApiKey: "test2",
           },
@@ -125,6 +133,10 @@ describe("Options script", function() {
 
       await restoreApiKeys();
 
+      const hybridAanalysisApiKey = root.document.getElementById(
+        "hybridanalysis-api-key"
+      ) as HTMLInputElement;
+      expect(hybridAanalysisApiKey.value).to.equal("test");
       const urlscanApiKey = root.document.getElementById(
         "urlscan-api-key"
       ) as HTMLInputElement;

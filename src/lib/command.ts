@@ -135,6 +135,9 @@ export class Command {
     if (entry !== undefined) {
       const scanner = entry.analyzer as Scanner;
       switch (scanner.name) {
+        case "HybridAnalysis":
+          scanner.setApiKey(apiKeys.hybridAnalysisApiKey);
+          break;
         case "Urlscan":
           scanner.setApiKey(apiKeys.urlscanApiKey);
           break;

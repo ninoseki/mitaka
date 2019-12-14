@@ -6,13 +6,18 @@ import { ApiKeys } from "./lib/types";
 require("./options/bulma.scss");
 
 export async function saveApiKeys(): Promise<void> {
+  const hybridAnalysisApiKey = document.getElementById(
+    "hybridanalysis-api-key"
+  ) as HTMLInputElement;
   const urlscanApiKey = document.getElementById(
     "urlscan-api-key"
   ) as HTMLInputElement;
   const virusTotalApiKey = document.getElementById(
     "virustotal-api-key"
   ) as HTMLInputElement;
+
   const apiKeys: ApiKeys = {
+    hybridAnalysisApiKey: hybridAnalysisApiKey.value,
     urlscanApiKey: urlscanApiKey.value,
     virusTotalApiKey: virusTotalApiKey.value,
   };
@@ -48,6 +53,9 @@ export function saveOptions(): void {
 }
 
 export async function restoreApiKeys(): Promise<void> {
+  const hybridAnalysisApiKey = document.getElementById(
+    "hybridanalysis-api-key"
+  ) as HTMLInputElement;
   const urlscanApiKey = document.getElementById(
     "urlscan-api-key"
   ) as HTMLInputElement;
@@ -56,7 +64,9 @@ export async function restoreApiKeys(): Promise<void> {
   ) as HTMLInputElement;
 
   const apiKeys = await getApiKeys();
-
+  if (apiKeys.hybridAnalysisApiKey) {
+    hybridAnalysisApiKey.value = apiKeys.hybridAnalysisApiKey;
+  }
   if (apiKeys.urlscanApiKey) {
     urlscanApiKey.value = apiKeys.urlscanApiKey;
   }
