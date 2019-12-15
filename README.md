@@ -106,10 +106,11 @@ Mitaka is a browser extension for OSINT search which can:
 
 ### Supported scan engines
 
-| name       | url                        | supported types   |
-|:-----------|:---------------------------|:------------------|
-| Urlscan    | https://urlscan.io         | ip / domain / url |
-| VirusTotal | https://www.virustotal.com | url               |
+| name           | url                             | supported types   |
+|:---------------|:--------------------------------|:------------------|
+| HybridAnalysis | https://www.hybrid-analysis.com | url               |
+| Urlscan        | https://urlscan.io              | ip / domain / url |
+| VirusTotal     | https://www.virustotal.com      | url               |
 
 ## How to use
 
