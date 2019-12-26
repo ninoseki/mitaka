@@ -144,6 +144,10 @@ This browser extension requires the following permissions.
 
 I don't (and will never) collect any information from the users.
 
+## Privacy Policy
+
+- [My privacy policy for the extension](https://ninoseki.github.io/chrome-webstore/privacy-policy/)
+
 ## Alternatives or Similar Tools
 
 - [CrowdScrape](https://chrome.google.com/webstore/detail/crowdscrape/jjplaeklnlddpkbbdbnogmppffokemej)
