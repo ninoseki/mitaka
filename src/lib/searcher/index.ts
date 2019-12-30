@@ -22,6 +22,7 @@ export { FortiGuard } from "./fortiguard";
 export { GoogleSafeBrowsing } from "./googlesafebrowsing";
 export { GreyNoise } from "./greynoise";
 export { Hashdd } from "./hashdd";
+export { HurricaneElectric } from "./hurricaneelectric";
 export { HybridAnalysis } from "./hybridanalysis";
 export { IntelligenceX } from "./intelligencex";
 export { IPinfo } from "./ipinfo";
