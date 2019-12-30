@@ -1,5 +1,6 @@
 import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
+import { extractASNumber } from "../utility";
 
 export class Censys implements Searcher {
   public baseURL: string;
@@ -24,12 +25,9 @@ export class Censys implements Searcher {
   }
 
   public searchByASN(query: string): string {
-    const matches = /\d+$/.exec(query);
-    if (matches !== null && matches[0]) {
-      return buildURL(this.baseURL, "/ipv4", {
-        q: `autonomous_system.asn:${matches[0]}`,
-      });
-    }
-    return "";
+    const asn = extractASNumber(query);
+    return buildURL(this.baseURL, "/ipv4", {
+      q: `autonomous_system.asn:${asn}`,
+    });
   }
 }
