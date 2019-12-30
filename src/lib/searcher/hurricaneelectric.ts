@@ -1,0 +1,27 @@
+import { buildURL } from "../url_builder";
+import { Searcher, SearchableType } from "../types";
+import { extractASNumber } from "../utility";
+
+export class HurricaneElectric implements Searcher {
+  public baseURL: string;
+  public name: string;
+  public supportedTypes: SearchableType[] = ["ip", "domain", "asn"];
+
+  public constructor() {
+    this.baseURL = "https://bgp.he.net";
+    this.name = "HurricaneElectric";
+  }
+
+  public searchByIP(query: string): string {
+    return buildURL(this.baseURL, `/ip/${query}`);
+  }
+
+  public searchByDomain(query: string): string {
+    return buildURL(this.baseURL, `/dns/${query}`);
+  }
+
+  public searchByASN(query: string): string {
+    const asn = extractASNumber(query);
+    return buildURL(this.baseURL, `/AS${asn}`);
+  }
+}
