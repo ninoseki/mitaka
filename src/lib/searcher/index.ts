@@ -44,6 +44,7 @@ export { SecurityTrails } from "./securitytrails";
 export { Shodan } from "./shodan";
 export { Sploitus } from "./sploitus";
 export { SpyOnWeb } from "./spyonweb";
+export { Spyse } from "./spyse";
 export { Talos } from "./talos";
 export { ThreatConnect } from "./threatconnect";
 export { ThreatCrowd } from "./threatcrowd";
