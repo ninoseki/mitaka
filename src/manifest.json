@@ -2,7 +2,8 @@
   "manifest_version": 2,
   "name": "Mitaka",
   "description": "A browser extension for searching IP, domain, URL, hash, etc. via the context menu.",
-  "version": "0.57.0",
+  "homepage_url": "https://ninoseki.github.io/projects/mitaka/",
+  "version": "0.67.0",
   "icons": {
     "16": "icons/16.png",
     "48": "icons/48.png",
