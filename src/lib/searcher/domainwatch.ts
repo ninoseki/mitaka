@@ -12,7 +12,7 @@ export class DomainWatch implements Searcher {
   }
 
   public searchByDomain(query: string): string {
-    return buildURL(this.baseURL, `/whois/${query}`);
+    return buildURL(this.baseURL, `/site/${query}`);
   }
 
   public searchByEmail(query: string): string {

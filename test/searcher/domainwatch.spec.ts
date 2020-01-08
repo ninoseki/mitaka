@@ -12,7 +12,7 @@ describe("DomainWatch", function() {
   describe("#searchByDomain", function() {
     it("should return URL", function() {
       expect(subject.searchByDomain("github.com")).to.equal(
-        "https://domainwat.ch/whois/github.com"
+        "https://domainwat.ch/site/github.com"
       );
     });
   });
