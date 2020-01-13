@@ -1,6 +1,5 @@
 import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
-import { extractASNumber } from "../utility";
 
 export class Apklab implements Searcher {
   public baseURL: string;
@@ -17,6 +16,6 @@ export class Apklab implements Searcher {
       throw new Error("apklab supports only SHA256 hash");
     }
 
-    return `https://www.apklab.io/apk.html?hash=${query}`;
+    return buildURL(this.baseURL, "/apk.html", { hash: query });
   }
 }
