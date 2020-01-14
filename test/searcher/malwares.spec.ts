@@ -1,0 +1,19 @@
+import { expect } from "chai";
+import "mocha";
+import { Malwares } from "../../src/lib/searcher";
+
+describe("Malwares", function() {
+  const subject = new Malwares();
+
+  it("should support hash", function() {
+    expect(subject.supportedTypes).to.deep.equal(["hash"]);
+  });
+
+  describe("#searchByHash", function() {
+    it("should return URL", function() {
+      expect(subject.searchByHash("44d88612fea8a8f36de82e1278abb02f")).to.equal(
+        "https://www.malwares.com/report/file?hash=44d88612fea8a8f36de82e1278abb02f"
+      );
+    });
+  });
+});
