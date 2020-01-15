@@ -74,6 +74,7 @@ Mitaka is a browser extension for OSINT search which can:
 | Joe Sandbox          | https://www.joesandbox.com             | hash                              |
 | MalShare             | https://malshare.com                   | hash                              |
 | Maltiverse           | https://www.maltiverse.com             | domain / hash                     |
+| Malwares             | https://www.malwares.com               | hash                              |
 | NVD                  | https://nvd.nist.gov                   | cve                               |
 | OOCPR                | https://data.occrp.org                 | email                             |
 | ONYPHE               | https://www.onyphe.io                  | ip                                |
@@ -98,6 +99,7 @@ Mitaka is a browser extension for OSINT search which can:
 | Urlscan              | https://urlscan.io                     | ip / domain / asn / url           |
 | ViewDNS              | https://viewdns.info                   | ip / domain / email               |
 | VirusTotal           | https://www.virustotal.com             | ip / domain / url / hash          |
+| VMRay                | https://www.vmray.com                  | hash                              |
 | Vulmon               | https://vulmon.com                     | cve                               |
 | VulncodeDB           | https://www.vulncode-db.com            | cve                               |
 | VxCube               | http://vxcube.com                      | ip / domain / hash                |
