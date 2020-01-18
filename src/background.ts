@@ -4,6 +4,8 @@ import { Command } from "./lib/command";
 import { getApiKeys } from "./utility";
 import { AnalyzerEntry } from "./lib/types";
 
+const FIRST_INDEX_WITHOUT_TEXT_ANALYZERS = 3;
+
 export function showNotification(message: string): void {
   browser.notifications.create({
     iconUrl: "./icons/48.png",
@@ -17,6 +19,17 @@ export function search(command: Command): void {
   try {
     const url: string = command.search();
     if (url !== "") {
+      browser.tabs.create({ url });
+    }
+  } catch (err) {
+    showNotification(err.message);
+  }
+}
+
+export function searchAll(command: Command): void {
+  try {
+    const urls = command.searchAll();
+    for (const url of urls) {
       browser.tabs.create({ url });
     }
   } catch (err) {
@@ -65,6 +78,16 @@ export async function createContextMenus(
     const options = { contexts, id, title };
     browser.contextMenus.create(options, createContextMenuErrorHandler);
   }
+  // search it on all services
+  if (searcherEntries.length >= FIRST_INDEX_WITHOUT_TEXT_ANALYZERS) {
+    const query = searcherEntries[FIRST_INDEX_WITHOUT_TEXT_ANALYZERS].query;
+    const type = searcherEntries[FIRST_INDEX_WITHOUT_TEXT_ANALYZERS].type;
+    const id = `Search ${query} as a ${type} on all`;
+    const title = `Search this ${type} on all`;
+    const contexts: ContextMenus.ContextType[] = ["selection"];
+    const options = { contexts, id, title };
+    browser.contextMenus.create(options, createContextMenuErrorHandler);
+  }
 
   // create scanners context menus based on a type of the input
   const scannerEntries: AnalyzerEntry[] = selector.getScannerEntries();
@@ -97,7 +120,11 @@ if (typeof browser !== "undefined" && browser.runtime !== undefined) {
     const command = new Command(id);
     switch (command.action) {
       case "search":
-        search(command);
+        if (command.target === "all") {
+          searchAll(command);
+        } else {
+          search(command);
+        }
         break;
       case "scan":
         scan(command);

@@ -1,9 +1,10 @@
 import {
-  search,
-  showNotification,
-  scan,
   createContextMenuErrorHandler,
   createContextMenus,
+  scan,
+  search,
+  searchAll,
+  showNotification,
 } from "../src/background";
 
 import "mocha";
@@ -48,6 +49,29 @@ describe("Background script", function() {
           [
             {
               url: "https://urlscan.io/search/#%22https%3A%2F%2Fgithub.com%22",
+            },
+          ],
+        ]);
+      });
+    });
+  });
+
+  describe("#searchAll", function() {
+    context("when given a valid input", function() {
+      it("should call chrome.tabs.create()", function() {
+        const command = new Command(
+          "Search pub-9383614236930773 as a gaPubID on all"
+        );
+        searchAll(command);
+        browserMock.tabs.create.assertCalls([
+          [
+            {
+              url: "http://pub-db.com/adsense/pub-9383614236930773.html",
+            },
+          ],
+          [
+            {
+              url: "http://spyonweb.com/pub-9383614236930773",
             },
           ],
         ]);

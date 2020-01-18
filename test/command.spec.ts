@@ -116,6 +116,19 @@ describe("Command", function() {
     });
   });
 
+  describe("#searchAll", function() {
+    context("ip", function() {
+      it("should return URLs", function() {
+        const command = new Command("Search 1.1.1.1 as a ip on all");
+        const urls = command.searchAll();
+        expect(urls.length).to.be.greaterThan(0);
+        for (const url of urls) {
+          expect(url).to.match(/^http/);
+        }
+      });
+    });
+  });
+
   describe("#scan", function() {
     const apiKeys: ApiKeys = {
       hybridAnalysisApiKey: "test",
