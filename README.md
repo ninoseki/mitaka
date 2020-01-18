@@ -104,7 +104,6 @@ Mitaka is a browser extension for OSINT search which can:
 | VulncodeDB           | https://www.vulncode-db.com            | cve                               |
 | VxCube               | http://vxcube.com                      | ip / domain / hash                |
 | WebAnalyzer          | https://wa-com.com                     | domain                            |
-| We Leak Info         | https://weleakinfo.com                 | email                             |
 | X-Force Exchange     | https://exchange.xforce.ibmcloud.com   | ip / domain / hash                |
 | ZoomEye              | https://www.zoomeye.org                | ip                                |
 

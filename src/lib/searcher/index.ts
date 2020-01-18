@@ -60,7 +60,6 @@ export { Vulmon } from "./vulmon";
 export { VulncodeDB } from "./vulncode-db";
 export { VxCube } from "./vxcube";
 export { WebAnalyzer } from "./webanalyzer";
-export { WeLeakInfo } from "./weleakinfo";
 export { XForceExchange } from "./xforce-exchange";
 export { ZoomEye } from "./zoomeye";
 
