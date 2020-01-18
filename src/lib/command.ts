@@ -106,6 +106,26 @@ export class Command {
     return url;
   }
 
+  public searchAll(): string[] {
+    const selector: Selector = new Selector(this.query);
+    const entries: AnalyzerEntry[] = selector
+      .getSearcherEntries()
+      .filter(entry => this.type === entry.type);
+    const urls: string[] = [];
+    for (const entry of entries) {
+      const searcher = entry.analyzer as Searcher;
+      if (this.type in this.searcherTable) {
+        try {
+          const fn: Function = this.searcherTable[this.type];
+          urls.push(fn(searcher, entry.query));
+        } catch (err) {
+          continue;
+        }
+      }
+    }
+    return urls;
+  }
+
   private scannerTable = {
     ip: async (scanner: Scanner, query: string): Promise<string> => {
       if (scanner.scanByIP) {
