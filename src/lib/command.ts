@@ -106,13 +106,18 @@ export class Command {
     return url;
   }
 
-  public searchAll(): string[] {
+  public searchAll(searcherStates): string[] {
     const selector: Selector = new Selector(this.query);
     const entries: AnalyzerEntry[] = selector
       .getSearcherEntries()
       .filter(entry => this.type === entry.type);
+    const selectedEntries = entries.filter(
+      entry =>
+        !(entry.analyzer.name in searcherStates) ||
+        searcherStates[entry.analyzer.name]
+    );
     const urls: string[] = [];
-    for (const entry of entries) {
+    for (const entry of selectedEntries) {
       const searcher = entry.analyzer as Searcher;
       if (this.type in this.searcherTable) {
         try {

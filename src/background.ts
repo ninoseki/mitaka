@@ -26,12 +26,15 @@ export function search(command: Command): void {
   }
 }
 
-export function searchAll(command: Command): void {
+export async function searchAll(command: Command): Promise<void> {
   try {
-    const urls = command.searchAll();
-    for (const url of urls) {
-      browser.tabs.create({ url });
-    }
+    await browser.storage.sync.get("searcherStates").then(config => {
+      const states = "searcherStates" in config ? config.searcherStates : {};
+      const urls = command.searchAll(states);
+      for (const url of urls) {
+        browser.tabs.create({ url });
+      }
+    });
   } catch (err) {
     showNotification(err.message);
   }

@@ -58,20 +58,26 @@ describe("Background script", function() {
 
   describe("#searchAll", function() {
     context("when given a valid input", function() {
-      it("should call chrome.tabs.create()", function() {
+      this.beforeEach(() => {
+        sandbox
+          .stub(browserMock.storage.sync, "get")
+          .withArgs("searcherStates")
+          .resolves({
+            searcherStates: {
+              PubDB: true,
+              SpyOnWeb: false,
+            },
+          });
+      });
+      it("should call chrome.tabs.create()", async function() {
         const command = new Command(
           "Search pub-9383614236930773 as a gaPubID on all"
         );
-        searchAll(command);
+        await searchAll(command);
         browserMock.tabs.create.assertCalls([
           [
             {
               url: "http://pub-db.com/adsense/pub-9383614236930773.html",
-            },
-          ],
-          [
-            {
-              url: "http://spyonweb.com/pub-9383614236930773",
             },
           ],
         ]);
