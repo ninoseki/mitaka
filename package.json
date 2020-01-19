@@ -1,6 +1,6 @@
 {
   "name": "mitaka",
-  "version": "0.69.0",
+  "version": "0.70.0",
   "description": "A browser extension for searching IP, domain, URL, hash, etc. via the context menu.",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "build-zip": "node scripts/build-zip.js",
     "watch": "npm run build -- --watch",
     "watch:dev": "cross-env HMR=true npm run build:dev -- --watch",
-    "test": "nyc mocha --opts mocha.opts",
+    "test": "nyc mocha",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "nyc": {
