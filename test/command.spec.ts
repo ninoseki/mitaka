@@ -120,7 +120,11 @@ describe("Command", function() {
     context("ip", function() {
       it("should return URLs", function() {
         const command = new Command("Search 1.1.1.1 as a ip on all");
-        const urls = command.searchAll();
+        const states = {
+          Urlscan: true,
+          VirusTotal: true,
+        };
+        const urls = command.searchAll(states);
         expect(urls.length).to.be.greaterThan(0);
         for (const url of urls) {
           expect(url).to.match(/^http/);
