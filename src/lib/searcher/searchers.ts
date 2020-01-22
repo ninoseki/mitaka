@@ -1,5 +1,6 @@
 import {
   AbuseIPDB,
+  AnyRun,
   Apility,
   Apklab,
   ArchiveOrg,
@@ -69,6 +70,7 @@ import { Searcher } from "../types";
 
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),
+  new AnyRun(),
   new Apility(),
   new Apklab(),
   new ArchiveOrg(),
