@@ -7,7 +7,7 @@ export class AnyRun implements Searcher {
 
   public constructor() {
     this.baseURL = "https://app.any.run";
-    this.name = "AnyRun";
+    this.name = "ANY.RUN";
   }
 
   public searchByHash(query: string): string {
