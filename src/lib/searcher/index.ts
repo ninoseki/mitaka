@@ -25,6 +25,7 @@ export { GreyNoise } from "./greynoise";
 export { Hashdd } from "./hashdd";
 export { HurricaneElectric } from "./hurricaneelectric";
 export { HybridAnalysis } from "./hybridanalysis";
+export { InQuest } from "./inquest";
 export { IntelligenceX } from "./intelligencex";
 export { IPinfo } from "./ipinfo";
 export { IPIP } from "./ipip";
