@@ -27,6 +27,7 @@ export { HurricaneElectric } from "./hurricaneelectric";
 export { HybridAnalysis } from "./hybridanalysis";
 export { InQuest } from "./inquest";
 export { IntelligenceX } from "./intelligencex";
+export { Intezer } from "./intezer";
 export { IPinfo } from "./ipinfo";
 export { IPIP } from "./ipip";
 export { JoeSandbox } from "./joesandbox";
