@@ -70,6 +70,7 @@ Mitaka is a browser extension for OSINT search which can:
 | Hurricane Electric   | https://bgp.he.net/                    | ip / domain / asn                 |
 | HybridAnalysis       | https://www.hybrid-analysis.com        | ip / domain / hash                |
 | Intelligence X       | https://intelx.io                      | ip / domain / url / email / btc   |
+| Intezer              | https://analyze.intezer.com            | hash                              |
 | IPinfo               | https://ipinfo.io                      | ip / asn                          |
 | IPIP                 | https://en.ipip.net                    | ip / asn                          |
 | Joe Sandbox          | https://www.joesandbox.com             | hash                              |
