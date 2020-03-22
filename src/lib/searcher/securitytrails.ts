@@ -12,10 +12,7 @@ export class SecurityTrails implements Searcher {
   }
 
   public searchByText(query: string): string {
-    return buildURL(
-      this.baseURL,
-      `/list/keyword/${encodeURIComponent(query)}`
-    );
+    return buildURL(this.baseURL, `/list/keyword/${encodeURIComponent(query)}`);
   }
 
   public searchByIP(query: string): string {

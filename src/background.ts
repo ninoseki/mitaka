@@ -28,7 +28,7 @@ export function search(command: Command): void {
 
 export async function searchAll(command: Command): Promise<void> {
   try {
-    await browser.storage.sync.get("searcherStates").then(config => {
+    await browser.storage.sync.get("searcherStates").then((config) => {
       const states = "searcherStates" in config ? config.searcherStates : {};
       const urls = command.searchAll(states);
       for (const url of urls) {
@@ -106,9 +106,9 @@ export async function createContextMenus(
 }
 
 if (typeof browser !== "undefined" && browser.runtime !== undefined) {
-  browser.runtime.onMessage.addListener(message => {
+  browser.runtime.onMessage.addListener((message) => {
     if (message.request === "updateContextMenu") {
-      browser.storage.sync.get("searcherStates").then(config => {
+      browser.storage.sync.get("searcherStates").then((config) => {
         if ("searcherStates" in config) {
           createContextMenus(message, config.searcherStates);
         } else {

@@ -3,7 +3,7 @@ import "mocha";
 import { Selector } from "../../src/lib/selector";
 import { AnalyzerEntry } from "../lib/types";
 
-describe("Seletor", function() {
+describe("Seletor", function () {
   const stats = {
     // urlscan
     domain: 1,
@@ -13,28 +13,28 @@ describe("Seletor", function() {
     url: 3,
   };
 
-  context("scanner", function() {
-    describe("#getScannersByType", function() {
+  context("scanner", function () {
+    describe("#getScannersByType", function () {
       const selector: Selector = new Selector("test");
-      it("should return Scanners support ip", function() {
+      it("should return Scanners support ip", function () {
         expect(selector.getScannersByType("ip").length).to.equal(stats.ip);
       });
 
-      it("should return Scanners support domain", function() {
+      it("should return Scanners support domain", function () {
         expect(selector.getScannersByType("domain").length).to.equal(
           stats.domain
         );
       });
 
-      it("should return Scanners support url", function() {
+      it("should return Scanners support url", function () {
         expect(selector.getScannersByType("url").length).to.equal(stats.url);
       });
     });
 
-    context("ip", function() {
+    context("ip", function () {
       const selector: Selector = new Selector("8.8.8.8");
-      describe("#getScannerentrys", function() {
-        it("should return Scanners support ip", function() {
+      describe("#getScannerentrys", function () {
+        it("should return Scanners support ip", function () {
           const entries: AnalyzerEntry[] = selector.getScannerEntries();
           for (const entry of entries) {
             expect(entry.query).to.equal("8.8.8.8");
@@ -44,10 +44,10 @@ describe("Seletor", function() {
       });
     });
 
-    context("domain", function() {
+    context("domain", function () {
       const selector: Selector = new Selector("urlscan.io");
-      describe("#getScannerentrys", function() {
-        it("should return Scanners support domain", function() {
+      describe("#getScannerentrys", function () {
+        it("should return Scanners support domain", function () {
           const entries: AnalyzerEntry[] = selector.getScannerEntries();
           for (const entry of entries) {
             expect(entry.query).to.equal("urlscan.io");
@@ -57,10 +57,10 @@ describe("Seletor", function() {
       });
     });
 
-    context("url", function() {
+    context("url", function () {
       const selector: Selector = new Selector("https://urlscan.io/");
-      describe("#getScannerentrys", function() {
-        it("should return Scanners support url", function() {
+      describe("#getScannerentrys", function () {
+        it("should return Scanners support url", function () {
           const entries: AnalyzerEntry[] = selector.getScannerEntries();
           for (const entry of entries) {
             expect(entry.query).to.equal("https://urlscan.io/");

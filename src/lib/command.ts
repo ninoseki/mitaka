@@ -94,7 +94,7 @@ export class Command {
   public search(): string {
     const selector: Selector = new Selector(this.query);
     const entries: AnalyzerEntry[] = selector.getSearcherEntries();
-    const entry = entries.find(r => r.analyzer.name === this.target);
+    const entry = entries.find((r) => r.analyzer.name === this.target);
     let url = "";
     if (entry !== undefined) {
       const searcher = entry.analyzer as Searcher;
@@ -110,9 +110,9 @@ export class Command {
     const selector: Selector = new Selector(this.query);
     const entries: AnalyzerEntry[] = selector
       .getSearcherEntries()
-      .filter(entry => this.type === entry.type);
+      .filter((entry) => this.type === entry.type);
     const selectedEntries = entries.filter(
-      entry =>
+      (entry) =>
         !(entry.analyzer.name in searcherStates) ||
         searcherStates[entry.analyzer.name]
     );
@@ -155,7 +155,7 @@ export class Command {
   public async scan(apiKeys: ApiKeys): Promise<string> {
     const selector: Selector = new Selector(this.query);
     const entries: AnalyzerEntry[] = selector.getScannerEntries();
-    const entry = entries.find(r => r.analyzer.name === this.target);
+    const entry = entries.find((r) => r.analyzer.name === this.target);
     let url = "";
     if (entry !== undefined) {
       const scanner = entry.analyzer as Scanner;
