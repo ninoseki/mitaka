@@ -8,7 +8,7 @@ import * as moxios from "moxios";
 
 import { HybridAnalysis } from "../../src/lib/scanner";
 
-describe("HybridAnalysis", function() {
+describe("HybridAnalysis", function () {
   const subject = new HybridAnalysis();
 
   beforeEach(() => {
@@ -32,19 +32,19 @@ describe("HybridAnalysis", function() {
     subject.setApiKey(undefined);
   });
 
-  it("should support IP type IOC", function() {
+  it("should support IP type IOC", function () {
     expect(subject.supportedTypes).to.deep.equal(["url"]);
   });
 
-  describe("#scanByURL", function() {
-    it("should return a URL", async function() {
+  describe("#scanByURL", function () {
+    it("should return a URL", async function () {
       const res = await subject.scanByURL("http://example.com");
       expect(res).to.equal("https://www.hybrid-analysis.com/sample/foo/");
     });
   });
 
-  context("when apiKey is undefined", function() {
-    it("should raise an error", async function() {
+  context("when apiKey is undefined", function () {
+    it("should raise an error", async function () {
       subject.setApiKey(undefined);
 
       expect(subject.scanByURL("http://example.com")).to.be.rejectedWith(Error);

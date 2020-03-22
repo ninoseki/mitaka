@@ -2,15 +2,15 @@ import { expect } from "chai";
 import "mocha";
 import { ArchiveToday } from "../../src/lib/searcher";
 
-describe("ArchiveToday", function() {
+describe("ArchiveToday", function () {
   const subject = new ArchiveToday();
 
-  it("should support URL type IOC", function() {
+  it("should support URL type IOC", function () {
     expect(subject.supportedTypes).to.deep.equal(["url"]);
   });
 
-  describe("#searchByURL", function() {
-    it("should return URL", function() {
+  describe("#searchByURL", function () {
+    it("should return URL", function () {
       expect(subject.searchByURL("https://github.com")).to.equal(
         "http://archive.fo/https://github.com"
       );

@@ -19,7 +19,7 @@ export interface SpyData {
 
 // tslint:disable-next-line:ban-types
 export function createSpy(wrappedFunction?: Function) {
-  const spyData = function(...args: any[]) {
+  const spyData = function (...args: any[]) {
     spyData.callCount++;
     // @ts-ignore
     spyData.thisValues.push(this);
@@ -83,7 +83,7 @@ export function doneHandler<T extends Function>(
 }
 
 export function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function booleanVariations(count: number): boolean[][] {
@@ -93,7 +93,7 @@ function booleanVariations(count: number): boolean[][] {
     const entry = i
       .toString(2)
       .split("")
-      .map(b => (b === "0" ? false : true));
+      .map((b) => (b === "0" ? false : true));
     while (entry.length !== count) entry.unshift(false);
     result.push(entry);
   }
@@ -130,7 +130,7 @@ export const booleanContext = createSimpleSuiteFunction<
   (...value: boolean[]) => void
 >((context, callback) => {
   const names = getArgs(callback);
-  booleanVariations(names.length).forEach(booleans => {
+  booleanVariations(names.length).forEach((booleans) => {
     const label =
       "with " +
       booleans.map((value, index) => `${names[index]} = ${value}`).join(", ");
@@ -146,7 +146,7 @@ export function contextWithResult<CT, RT>(
   rows: Array<ContextWithResultRow<CT, RT>>,
   callback: (context: CT, result: RT) => void
 ) {
-  rows.forEach(row =>
+  rows.forEach((row) =>
     context(`with ${name} = ${row.context}`, () =>
       callback(row.context, row.result)
     )
@@ -160,7 +160,7 @@ export namespace contextWithResult {
     rows: Array<ContextWithResultRow<CT, RT>>,
     callback: (context: CT, result: RT) => void
   ): void {
-    rows.forEach(row =>
+    rows.forEach((row) =>
       context.only(`with ${name} = ${row.context}`, () =>
         callback(row.context, row.result)
       )

@@ -26,7 +26,7 @@ class ListenerMock<T extends Function> {
         this.listeners.push(listener);
       }),
       removeListener: createSpy((listener: ListenerCallback) => {
-        this.listeners = this.listeners.filter(cb => listener !== cb);
+        this.listeners = this.listeners.filter((cb) => listener !== cb);
       }),
       hasListener: createSpy((listener: ListenerCallback) => {
         return this.listeners.indexOf(listener) >= 0;

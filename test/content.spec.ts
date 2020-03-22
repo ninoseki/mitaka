@@ -4,7 +4,7 @@ import { JSDOM } from "jsdom";
 import { onSelctionChange } from "../src/content";
 import * as root from "window-or-global";
 
-describe("Context script", function() {
+describe("Context script", function () {
   beforeEach(() => {
     const dom = new JSDOM(`<!DOCTYPE html><p>Just a stub</p>`);
     root.window = dom.window;
@@ -14,12 +14,12 @@ describe("Context script", function() {
     browserMock.reset();
   });
 
-  context("when selected a non anchor element", function() {
+  context("when selected a non anchor element", function () {
     beforeEach(() => {
-      root.window.getSelection = function() {
+      root.window.getSelection = function () {
         return {
           rangeCount: 0,
-          toString: function() {
+          toString: function () {
             return "test";
           },
         };
@@ -30,8 +30,8 @@ describe("Context script", function() {
       delete root.window.getSelection;
     });
 
-    describe("#onSelectionChange", function() {
-      it("should call chrome.runtime.sendMessage()", function() {
+    describe("#onSelectionChange", function () {
+      it("should call chrome.runtime.sendMessage()", function () {
         onSelctionChange();
         browserMock.runtime.sendMessage.assertCalls([
           [
@@ -45,18 +45,18 @@ describe("Context script", function() {
     });
   });
 
-  context("when selected an anchor element", function() {
+  context("when selected an anchor element", function () {
     beforeEach(() => {
-      root.window.getSelection = function() {
+      root.window.getSelection = function () {
         return {
-          getRangeAt: idx => {
+          getRangeAt: (idx) => {
             return {
               startContainer: {
                 parentElement: {
-                  getAttribute: attr => {
+                  getAttribute: (attr) => {
                     return "https://example.com";
                   },
-                  hasAttribute: attr => {
+                  hasAttribute: (attr) => {
                     return true;
                   },
                 },
@@ -64,7 +64,7 @@ describe("Context script", function() {
             };
           },
           rangeCount: 1,
-          toString: function() {
+          toString: function () {
             return "test";
           },
         };
@@ -75,8 +75,8 @@ describe("Context script", function() {
       delete root.window.getSelection;
     });
 
-    describe("#onSelectionChange", function() {
-      it("should call chrome.runtime.sendMessage()", function() {
+    describe("#onSelectionChange", function () {
+      it("should call chrome.runtime.sendMessage()", function () {
         onSelctionChange();
         browserMock.runtime.sendMessage.assertCalls([
           [

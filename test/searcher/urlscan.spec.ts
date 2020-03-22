@@ -2,10 +2,10 @@ import { expect } from "chai";
 import "mocha";
 import { Urlscan } from "../../src/lib/searcher";
 
-describe("Urlscan", function() {
+describe("Urlscan", function () {
   const subject = new Urlscan();
 
-  it("should support IP, Domain & URL type IOC", function() {
+  it("should support IP, Domain & URL type IOC", function () {
     expect(subject.supportedTypes).to.deep.equal([
       "ip",
       "domain",
@@ -14,32 +14,32 @@ describe("Urlscan", function() {
     ]);
   });
 
-  describe("#searchByURL", function() {
-    it("should return URL", function() {
+  describe("#searchByURL", function () {
+    it("should return URL", function () {
       expect(subject.searchByURL("https://urlscan.io")).to.eq(
         "https://urlscan.io/search/#%22https%3A%2F%2Furlscan.io%22"
       );
     });
   });
 
-  describe("#searchByIP", function() {
-    it("should return URL", function() {
+  describe("#searchByIP", function () {
+    it("should return URL", function () {
       expect(subject.searchByIP("1.1.1.1")).to.eq(
         "https://urlscan.io/ip/1.1.1.1"
       );
     });
   });
 
-  describe("#searchByDomain", function() {
-    it("should return URL", function() {
+  describe("#searchByDomain", function () {
+    it("should return URL", function () {
       expect(subject.searchByDomain("urlscan.io")).to.eq(
         "https://urlscan.io/domain/urlscan.io"
       );
     });
   });
 
-  describe("#searchByASN", function() {
-    it("should return URL", function() {
+  describe("#searchByASN", function () {
+    it("should return URL", function () {
       expect(subject.searchByASN("AS24940")).to.eq(
         "https://urlscan.io/asn/AS24940"
       );

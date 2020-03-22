@@ -4,9 +4,9 @@ import * as moxios from "moxios";
 import { Command } from "../src/lib/command";
 import { ApiKeys } from "./lib/types";
 
-describe("Command", function() {
-  describe("#constructor", function() {
-    it("should return attributes", function() {
+describe("Command", function () {
+  describe("#constructor", function () {
+    it("should return attributes", function () {
       const command = new Command(
         "Search https://github.com as a url on Urlscan"
       );
@@ -16,23 +16,23 @@ describe("Command", function() {
     });
   });
 
-  describe("#search", function() {
-    context("text", function() {
-      it("should return a URL for search", function() {
+  describe("#search", function () {
+    context("text", function () {
+      it("should return a URL for search", function () {
         const command = new Command("Search 1.1.1.1 as a text on Censys");
         expect(command.search()).to.equal("https://censys.io/ipv4?q=1.1.1.1");
       });
     });
 
-    context("ip", function() {
-      it("should return a URL for search", function() {
+    context("ip", function () {
+      it("should return a URL for search", function () {
         const command = new Command("Search 1.1.1.1 as a ip on Urlscan");
         expect(command.search()).to.equal("https://urlscan.io/ip/1.1.1.1");
       });
     });
 
-    context("domain", function() {
-      it("should return a URL for search", function() {
+    context("domain", function () {
+      it("should return a URL for search", function () {
         const command = new Command("Search github.com as a domain on Urlscan");
         expect(command.search()).to.equal(
           "https://urlscan.io/domain/github.com"
@@ -40,8 +40,8 @@ describe("Command", function() {
       });
     });
 
-    context("url", function() {
-      it("should return a URL for search", function() {
+    context("url", function () {
+      it("should return a URL for search", function () {
         const command = new Command(
           "Search https://github.com as a url on Urlscan"
         );
@@ -51,8 +51,8 @@ describe("Command", function() {
       });
     });
 
-    context("hash", function() {
-      it("should return a URL for search", function() {
+    context("hash", function () {
+      it("should return a URL for search", function () {
         const command = new Command(
           "Search 726a2eedb9df3d63ec1b4a7d774a799901f1a2b9 as a hash on Pulsedive"
         );
@@ -62,8 +62,8 @@ describe("Command", function() {
       });
     });
 
-    context("email", function() {
-      it("should return a URL for search", function() {
+    context("email", function () {
+      it("should return a URL for search", function () {
         const command = new Command(
           "Search test@test.com as a email on ViewDNS"
         );
@@ -73,8 +73,8 @@ describe("Command", function() {
       });
     });
 
-    context("cve", function() {
-      it("should return a URL for search", function() {
+    context("cve", function () {
+      it("should return a URL for search", function () {
         const command = new Command("Search CVE-2018-16384 as a cve on Vulmon");
         expect(command.search()).to.equal(
           "https://vulmon.com/vulnerabilitydetails?qid=CVE-2018-16384"
@@ -82,8 +82,8 @@ describe("Command", function() {
       });
     });
 
-    context("btc", function() {
-      it("should return a URL for search", function() {
+    context("btc", function () {
+      it("should return a URL for search", function () {
         const command = new Command(
           "Search 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa as a btc on BlockCypher"
         );
@@ -93,8 +93,8 @@ describe("Command", function() {
       });
     });
 
-    context("gaTrackID", function() {
-      it("should return a URL for search", function() {
+    context("gaTrackID", function () {
+      it("should return a URL for search", function () {
         const command = new Command(
           "Search UA-67609351-1 as a gaTrackID on PubDB"
         );
@@ -104,8 +104,8 @@ describe("Command", function() {
       });
     });
 
-    context("gaPubID", function() {
-      it("should return a URL for search", function() {
+    context("gaPubID", function () {
+      it("should return a URL for search", function () {
         const command = new Command(
           "Search pub-9383614236930773 as a gaPubID on PubDB"
         );
@@ -116,9 +116,9 @@ describe("Command", function() {
     });
   });
 
-  describe("#searchAll", function() {
-    context("ip", function() {
-      it("should return URLs", function() {
+  describe("#searchAll", function () {
+    context("ip", function () {
+      it("should return URLs", function () {
         const command = new Command("Search 1.1.1.1 as a ip on all");
         const states = {
           Urlscan: true,
@@ -133,7 +133,7 @@ describe("Command", function() {
     });
   });
 
-  describe("#scan", function() {
+  describe("#scan", function () {
     const apiKeys: ApiKeys = {
       hybridAnalysisApiKey: "test",
       urlscanApiKey: "test",
@@ -154,8 +154,8 @@ describe("Command", function() {
       moxios.uninstall();
     });
 
-    context("ip", function() {
-      it("should return a URL", async function() {
+    context("ip", function () {
+      it("should return a URL", async function () {
         const command = new Command("Scan 1.1.1.1 as a ip on Urlscan");
         expect(await command.scan(apiKeys)).to.equal(
           "https://urlscan.io/entry/foo/loading"
@@ -163,8 +163,8 @@ describe("Command", function() {
       });
     });
 
-    context("domain", function() {
-      it("should return a URL", async function() {
+    context("domain", function () {
+      it("should return a URL", async function () {
         const command = new Command("Scan github.com as a domain on Urlscan");
         expect(await command.scan(apiKeys)).to.equal(
           "https://urlscan.io/entry/foo/loading"
@@ -172,8 +172,8 @@ describe("Command", function() {
       });
     });
 
-    context("url", function() {
-      it("should return a URL for scan", async function() {
+    context("url", function () {
+      it("should return a URL for scan", async function () {
         const command = new Command(
           "Scan https://www.wikipedia.org/ as a url on Urlscan"
         );

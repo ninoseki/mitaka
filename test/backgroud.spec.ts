@@ -16,14 +16,14 @@ import sinon = require("sinon");
 
 const sandbox = sinon.createSandbox();
 
-describe("Background script", function() {
+describe("Background script", function () {
   afterEach(() => {
     browserMock.reset();
     sandbox.restore();
   });
 
-  describe("#showNotification", function() {
-    it("should call chrome.notifications.create()", function() {
+  describe("#showNotification", function () {
+    it("should call chrome.notifications.create()", function () {
       showNotification("test");
       browserMock.notifications.create.assertCalls([
         [
@@ -38,9 +38,9 @@ describe("Background script", function() {
     });
   });
 
-  describe("#search", function() {
-    context("when given a valid input", function() {
-      it("should call chrome.tabs.create()", function() {
+  describe("#search", function () {
+    context("when given a valid input", function () {
+      it("should call chrome.tabs.create()", function () {
         const command = new Command(
           "Search https://github.com as a url on Urlscan"
         );
@@ -56,8 +56,8 @@ describe("Background script", function() {
     });
   });
 
-  describe("#searchAll", function() {
-    context("when given a valid input", function() {
+  describe("#searchAll", function () {
+    context("when given a valid input", function () {
       this.beforeEach(() => {
         sandbox
           .stub(browserMock.storage.sync, "get")
@@ -69,7 +69,7 @@ describe("Background script", function() {
             },
           });
       });
-      it("should call chrome.tabs.create()", async function() {
+      it("should call chrome.tabs.create()", async function () {
         const command = new Command(
           "Search pub-9383614236930773 as a gaPubID on all"
         );
@@ -85,8 +85,8 @@ describe("Background script", function() {
     });
   });
 
-  describe("#scan", function() {
-    context("when chrome.storage.sync.get returns a valid config", function() {
+  describe("#scan", function () {
+    context("when chrome.storage.sync.get returns a valid config", function () {
       beforeEach(() => {
         sandbox
           .stub(browserMock.storage.sync, "get")
@@ -100,7 +100,7 @@ describe("Background script", function() {
           });
       });
 
-      it("should call chrome.tabs.create()", async function() {
+      it("should call chrome.tabs.create()", async function () {
         const command = new Command(
           "Scan https://www.wikipedia.org/ as a url on Urlscan"
         );
@@ -129,7 +129,7 @@ describe("Background script", function() {
 
     context(
       "when chrome.storage.sync.get returns an invalid config",
-      function() {
+      function () {
         beforeEach(() => {
           sandbox
             .stub(browserMock.storage.sync, "get")
@@ -137,7 +137,7 @@ describe("Background script", function() {
             .resolves({ apiKeys: {} });
         });
 
-        it("should not call chrome.tabs.create()", async function() {
+        it("should not call chrome.tabs.create()", async function () {
           const command = new Command(
             "Scan https://www.wikipedia.org/ as a url on Urlscan"
           );
@@ -149,14 +149,14 @@ describe("Background script", function() {
     );
   });
 
-  describe("#createContextMenuErrorHandler", function() {
+  describe("#createContextMenuErrorHandler", function () {
     beforeEach(() => {
       const stub = sandbox.stub(console, "error");
       stub.withArgs("test");
     });
 
-    context("when set an error in chrome.runtime.lastError", function() {
-      it("should output via console.error", function() {
+    context("when set an error in chrome.runtime.lastError", function () {
+      it("should output via console.error", function () {
         browser.runtime.lastError = {
           message: "test",
         };
@@ -168,8 +168,8 @@ describe("Background script", function() {
       });
     });
 
-    context("when not set an error in chrome.runtime.lastError", function() {
-      it("should not output via console.error", function() {
+    context("when not set an error in chrome.runtime.lastError", function () {
+      it("should not output via console.error", function () {
         browser.runtime.lastError = undefined;
 
         createContextMenuErrorHandler();
@@ -178,9 +178,9 @@ describe("Background script", function() {
     });
   });
 
-  describe("#createContextMenus", function() {
-    context("when not given a searcherState", function() {
-      it("should call chrome.contextMenus.create", async function() {
+  describe("#createContextMenus", function () {
+    context("when not given a searcherState", function () {
+      it("should call chrome.contextMenus.create", async function () {
         await createContextMenus({ selection: "test" }, {});
 
         browserMock.contextMenus.create.assertCalls([
@@ -204,8 +204,8 @@ describe("Background script", function() {
       });
     });
 
-    context("when given a searcherState", function() {
-      it("should call chrome.contextMenus.create", async function() {
+    context("when given a searcherState", function () {
+      it("should call chrome.contextMenus.create", async function () {
         await createContextMenus(
           { selection: "test" },
           {
