@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as qs from "qs";
+import * as snakecaseKeys from "snakecase-keys";
 import { Scanner, ScannableType } from "../types";
 
 export class HybridAnalysis implements Scanner {
@@ -22,10 +23,10 @@ export class HybridAnalysis implements Scanner {
       throw Error("Please set your HybridAnalysis API key via the option.");
     }
 
-    const params = {
-      scan_type: "all",
+    const params = snakecaseKeys({
+      scanType: "all",
       url: url,
-    };
+    });
     const res = await axios.post(
       `${this.baseURL}/quick-scan/url`,
       qs.stringify(params),
