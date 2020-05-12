@@ -1,5 +1,5 @@
-import * as crypto from "crypto-js";
-import * as url from "url";
+import crypto from "crypto-js";
+import url from "url";
 import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
 

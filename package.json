@@ -9,7 +9,7 @@
     "prettier:write": "npm run prettier -- --write",
     "build": "cross-env NODE_ENV=production webpack",
     "build:dev": "cross-env NODE_ENV=development webpack",
-    "build-zip": "node scripts/build-zip.js",
+    "build-zip": "ts-node scripts/build-zip.ts",
     "watch": "npm run build -- --watch",
     "watch:dev": "cross-env HMR=true npm run build:dev -- --watch",
     "test": "nyc mocha",
@@ -50,6 +50,7 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
+    "@types/archiver": "^3.1.0",
     "@types/chai": "^4.2.11",
     "@types/chai-as-promised": "^7.1.2",
     "@types/crypto-js": "^3.1.45",

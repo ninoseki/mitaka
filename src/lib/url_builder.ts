@@ -1,5 +1,5 @@
-import * as crypto from "crypto-js";
-import * as qs from "qs";
+import crypto from "crypto-js";
+import qs from "qs";
 
 export function buildURL(baseURL: string, path: string, params = {}): string {
   const queryString: string = qs.stringify(params);
