@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import "mocha";
-import * as moxios from "moxios";
+import moxios from "moxios";
 import { Command } from "../src/lib/command";
 import { ApiKeys } from "./lib/types";
 

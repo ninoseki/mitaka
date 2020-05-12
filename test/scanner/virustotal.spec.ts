@@ -1,10 +1,10 @@
-import * as chai from "chai";
-import * as chaiAsPromised from "chai-as-promised";
+import chai from "chai";
+import chaiAsPromised from "chai-as-promised";
 chai.use(chaiAsPromised);
 const expect = chai.expect;
 
 import "mocha";
-import * as moxios from "moxios";
+import moxios from "moxios";
 
 import { VirusTotal } from "../../src/lib/scanner";
 

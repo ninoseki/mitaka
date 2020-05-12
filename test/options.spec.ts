@@ -9,7 +9,7 @@ import "mocha";
 import { browserMock } from "./browserMock";
 import { expect } from "chai";
 import { JSDOM } from "jsdom";
-import * as root from "window-or-global";
+import root from "window-or-global";
 import sinon = require("sinon");
 
 const sandbox = sinon.createSandbox();

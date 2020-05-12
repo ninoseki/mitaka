@@ -1,6 +1,6 @@
 import axios from "axios";
-import * as qs from "qs";
-import * as snakecaseKeys from "snakecase-keys";
+import qs from "qs";
+import snakecaseKeys from "snakecase-keys";
 import { Scanner, ScannableType } from "../types";
 
 export class HybridAnalysis implements Scanner {
