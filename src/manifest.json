@@ -23,7 +23,10 @@
   "permissions": [
     "contextMenus",
     "notifications",
-    "storage"
+    "storage",
+    "https://urlscan.io/api/v1/*",
+    "https://www.virustotal.com/vtapi/v2/*",
+    "https://www.hybrid-analysis.com/api/v2/*"
   ],
   "browser_specific_settings": {
     "gecko": {
