@@ -1,7 +1,10 @@
 const { version } = require("./package.json");
+
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtensionReloader = require("webpack-extension-reloader");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 const path = require("path");
 
 const config = {
@@ -52,7 +55,7 @@ const config = {
       {
         from: "manifest.json",
         to: "manifest.json",
-        transform: content => {
+        transform: (content) => {
           const jsonContent = JSON.parse(content);
           jsonContent.version = version;
           return JSON.stringify(jsonContent, null, 2);
@@ -62,10 +65,11 @@ const config = {
     new MiniCssExtractPlugin({
       filename: "options/css/bulma.css",
     }),
+    new CleanWebpackPlugin(),
   ],
   devtool: "source-map",
   performance: {
-    assetFilter: function(assetFilename) {
+    assetFilter: function (assetFilename) {
       return assetFilename.endsWith(".js");
     },
   },
