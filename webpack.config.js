@@ -49,19 +49,21 @@ const config = {
     },
   },
   plugins: [
-    new CopyWebpackPlugin([
-      { from: "icons", to: "icons" },
-      { from: "options/options.html", to: "options/options.html" },
-      {
-        from: "manifest.json",
-        to: "manifest.json",
-        transform: (content) => {
-          const jsonContent = JSON.parse(content);
-          jsonContent.version = version;
-          return JSON.stringify(jsonContent, null, 2);
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "icons", to: "icons" },
+        { from: "options/options.html", to: "options/options.html" },
+        {
+          from: "manifest.json",
+          to: "manifest.json",
+          transform: (content) => {
+            const jsonContent = JSON.parse(content);
+            jsonContent.version = version;
+            return JSON.stringify(jsonContent, null, 2);
+          },
         },
-      },
-    ]),
+      ],
+    }),
     new MiniCssExtractPlugin({
       filename: "options/css/bulma.css",
     }),
