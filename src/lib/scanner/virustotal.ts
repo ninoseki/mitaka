@@ -1,6 +1,16 @@
 import axios from "axios";
 import qs from "qs";
 import { Scanner, ScannableType } from "../types";
+import { buildURL } from "../url_builder";
+
+interface Data {
+  id: string;
+  type: string;
+}
+
+interface Response {
+  data: Data;
+}
 
 export class VirusTotal implements Scanner {
   public baseURL: string;
@@ -9,7 +19,7 @@ export class VirusTotal implements Scanner {
   protected apiKey: string | undefined;
 
   public constructor() {
-    this.baseURL = "https://www.virustotal.com/vtapi/v2";
+    this.baseURL = "https://www.virustotal.com/api/v3";
     this.name = "VirusTotal";
   }
 
@@ -17,20 +27,29 @@ export class VirusTotal implements Scanner {
     this.apiKey = apiKey;
   }
 
+  private permmaLink(id: string): string {
+    // id format: u-{SHA256}-{?}
+    // e.g. u-ef8678c0f43f6142407ca89b4a376556cd4472d26b5952efa6d3821fa9fc597b-1589690619
+    const parts = id.split("-");
+    const sha256 = parts[1];
+    return buildURL("https://www.virustotal.com", `/gui/url/${sha256}/details`);
+  }
+
   public async scanByURL(url: string): Promise<string> {
     if (this.apiKey === undefined) {
       throw Error("Please set your VirusTotal API key via the option.");
     }
 
-    const params = {
-      apikey: this.apiKey,
-      url,
-    };
-
-    const res = await axios.post(
-      `${this.baseURL}/url/scan`,
-      qs.stringify(params)
+    const params = { url };
+    const headers = { "x-apikey": this.apiKey };
+    const res = await axios.post<Response>(
+      buildURL(this.baseURL, "/urls"),
+      qs.stringify(params),
+      {
+        headers: headers,
+      }
     );
-    return res.data.permalink;
+    const response = res.data;
+    return this.permmaLink(response.data.id);
   }
 }
