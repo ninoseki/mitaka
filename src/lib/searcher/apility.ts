@@ -26,7 +26,6 @@ export class Apility implements Searcher {
 
   public searchByASN(query: string): string {
     const number: string = extractASNumber(query);
-    console.log(number);
     return this.search(number);
   }
 
