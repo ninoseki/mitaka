@@ -1,4 +1,5 @@
-import crypto from "crypto-js";
+import { sha256 } from "js-sha256";
+
 import url from "url";
 import { buildURL } from "../url_builder";
 import { Searcher, SearchableType } from "../types";
@@ -18,7 +19,7 @@ export class VirusTotal implements Searcher {
   }
 
   public searchByURL(query: string): string {
-    const hash = crypto.SHA256(this.normalizeURL(query));
+    const hash = sha256(this.normalizeURL(query));
     return buildURL(this.baseURL, `/gui/url/${hash}/details`);
   }
 
