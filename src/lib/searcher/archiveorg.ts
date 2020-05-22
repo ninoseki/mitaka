@@ -1,5 +1,5 @@
+import { SearchableType, Searcher } from "../types";
 import { buildURL } from "../url_builder";
-import { Searcher, SearchableType } from "../types";
 
 export class ArchiveOrg implements Searcher {
   public baseURL: string;

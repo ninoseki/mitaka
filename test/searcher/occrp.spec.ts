@@ -1,5 +1,7 @@
-import { expect } from "chai";
 import "mocha";
+
+import { expect } from "chai";
+
 import { OCCRP } from "../../src/lib/searcher";
 
 describe("OCCRP", function () {

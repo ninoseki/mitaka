@@ -1,4 +1,5 @@
 import { browser } from "webextension-polyfill-ts";
+
 import { Searchers } from "./lib/searcher";
 import { ApiKeys, SearcherState } from "./lib/types";
 

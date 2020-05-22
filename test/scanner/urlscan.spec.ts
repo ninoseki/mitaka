@@ -4,6 +4,7 @@ chai.use(chaiAsPromised);
 const expect = chai.expect;
 
 import "mocha";
+
 import moxios from "moxios";
 
 import { Urlscan } from "../../src/lib/scanner";

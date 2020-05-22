@@ -4,6 +4,7 @@ chai.use(chaiAsPromised);
 const expect = chai.expect;
 
 import "mocha";
+
 import moxios from "moxios";
 
 import { VirusTotal } from "../../src/lib/scanner";

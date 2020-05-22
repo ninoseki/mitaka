@@ -1,5 +1,5 @@
+import { SearchableType, Searcher } from "../types";
 import { base64fy, buildURL } from "../url_builder";
-import { Searcher, SearchableType } from "../types";
 
 export class FOFA implements Searcher {
   public baseURL: string;

@@ -1,5 +1,7 @@
-import { expect } from "chai";
 import "mocha";
+
+import { expect } from "chai";
+
 import { ONYPHE } from "../../src/lib/searcher";
 
 describe("ONYPHE", function () {

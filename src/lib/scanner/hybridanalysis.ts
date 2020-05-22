@@ -1,7 +1,8 @@
 import axios from "axios";
 import qs from "qs";
 import snakecaseKeys from "snakecase-keys";
-import { Scanner, ScannableType } from "../types";
+
+import { ScannableType, Scanner } from "../types";
 
 export class HybridAnalysis implements Scanner {
   public baseURL: string;

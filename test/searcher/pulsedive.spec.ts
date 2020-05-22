@@ -1,5 +1,7 @@
-import { expect } from "chai";
 import "mocha";
+
+import { expect } from "chai";
+
 import { Pulsedive } from "../../src/lib/searcher";
 
 describe("Pulsedive", function () {

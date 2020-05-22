@@ -1,14 +1,15 @@
 import { getIOC, IOC } from "ioc-extractor";
+
 import { Scanners } from "./scanner";
 import { Searchers } from "./searcher";
 import {
-  Scanner,
-  Searcher,
-  ScannableType,
-  SearchableType,
-  SelectorSlot,
   AnalyzerEntry,
+  ScannableType,
+  Scanner,
   ScannerSlot,
+  SearchableType,
+  Searcher,
+  SelectorSlot,
 } from "./types";
 
 export class Selector {

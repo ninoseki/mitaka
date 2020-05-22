@@ -1,5 +1,5 @@
 import { Selector } from "./selector";
-import { AnalyzerEntry, Scanner, ApiKeys, Searcher } from "./types";
+import { AnalyzerEntry, ApiKeys, Scanner, Searcher } from "./types";
 
 export class Command {
   public action: string;

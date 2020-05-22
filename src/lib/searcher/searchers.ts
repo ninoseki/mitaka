@@ -1,3 +1,4 @@
+import { Searcher } from "../types";
 import {
   AbuseIPDB,
   AnyRun,
@@ -67,8 +68,6 @@ import {
   XForceExchange,
   ZoomEye,
 } from ".";
-
-import { Searcher } from "../types";
 
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),

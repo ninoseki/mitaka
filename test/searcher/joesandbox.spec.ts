@@ -1,5 +1,7 @@
-import { expect } from "chai";
 import "mocha";
+
+import { expect } from "chai";
+
 import { JoeSandbox } from "../../src/lib/searcher";
 
 describe("JoeSandbox", function () {

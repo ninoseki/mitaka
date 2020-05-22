@@ -3,7 +3,8 @@
  */
 
 import { browser, Runtime } from "webextension-polyfill-ts";
-import { createSpy, clone, SpyData } from "./testHelpers";
+
+import { clone, createSpy, SpyData } from "./testHelpers";
 
 type ListenerCallback = (...args: any[]) => any;
 // tslint:disable-next-line:ban-types
@@ -29,7 +30,7 @@ class ListenerMock<T extends Function> {
         this.listeners = this.listeners.filter((cb) => listener !== cb);
       }),
       hasListener: createSpy((listener: ListenerCallback) => {
-        return this.listeners.indexOf(listener) >= 0;
+        return this.listeners.includes(listener);
       }),
       hasListeners: createSpy(() => {
         return this.listeners.length > 0;

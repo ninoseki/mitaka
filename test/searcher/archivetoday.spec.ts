@@ -1,5 +1,7 @@
-import { expect } from "chai";
 import "mocha";
+
+import { expect } from "chai";
+
 import { ArchiveToday } from "../../src/lib/searcher";
 
 describe("ArchiveToday", function () {

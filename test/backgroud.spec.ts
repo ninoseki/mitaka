@@ -1,3 +1,8 @@
+import "mocha";
+
+import { expect } from "chai";
+import { browser } from "webextension-polyfill-ts";
+
 import {
   createContextMenuErrorHandler,
   createContextMenus,
@@ -6,12 +11,8 @@ import {
   searchAll,
   showNotification,
 } from "../src/background";
-
-import "mocha";
-import { browser } from "webextension-polyfill-ts";
-import { browserMock } from "./browserMock";
 import { Command } from "../src/lib/command";
-import { expect } from "chai";
+import { browserMock } from "./browserMock";
 import sinon = require("sinon");
 
 const sandbox = sinon.createSandbox();
@@ -39,7 +40,7 @@ describe("Background script", function () {
   });
 
   describe("#search", function () {
-    context("when given a valid input", function () {
+    context("when given a valid input", function () {
       it("should call chrome.tabs.create()", function () {
         const command = new Command(
           "Search https://github.com as a url on Urlscan"

@@ -1,5 +1,7 @@
-import { expect } from "chai";
 import "mocha";
+
+import { expect } from "chai";
+
 import { BGPView } from "../../src/lib/searcher";
 
 describe("BGPView", function () {

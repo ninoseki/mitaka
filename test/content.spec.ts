@@ -1,8 +1,10 @@
 import "mocha";
-import { browserMock } from "./browserMock";
+
 import { JSDOM } from "jsdom";
-import { onSelctionChange } from "../src/content";
 import root from "window-or-global";
+
+import { onSelctionChange } from "../src/content";
+import { browserMock } from "./browserMock";
 
 describe("Context script", function () {
   beforeEach(() => {
