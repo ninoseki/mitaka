@@ -1,8 +1,10 @@
-import { expect } from "chai";
 import "mocha";
+
+import { expect } from "chai";
+
 import { Searchers } from "../src/lib/searcher";
 import { Selector } from "../src/lib/selector";
-import { Searcher, SearchableType, AnalyzerEntry } from "./lib/types";
+import { AnalyzerEntry, SearchableType, Searcher } from "./lib/types";
 
 function numberOfSelectorsByType(type: SearchableType): number {
   const searchers = Searchers;

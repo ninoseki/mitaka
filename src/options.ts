@@ -1,7 +1,8 @@
-import { browser } from "webextension-polyfill-ts";
-import { getApiKeys, getSearcherStates } from "./utility";
 import Mustache from "mustache";
+import { browser } from "webextension-polyfill-ts";
+
 import { ApiKeys } from "./lib/types";
+import { getApiKeys, getSearcherStates } from "./utility";
 
 require("./options/bulma.scss");
 

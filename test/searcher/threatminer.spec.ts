@@ -1,5 +1,7 @@
-import { expect } from "chai";
 import "mocha";
+
+import { expect } from "chai";
+
 import { ThreatMiner } from "../../src/lib/searcher";
 
 describe("ThreatMiner", function () {

@@ -1,5 +1,7 @@
-import { expect } from "chai";
 import "mocha";
+
+import { expect } from "chai";
+
 import { GoogleSafeBrowsing } from "../../src/lib/searcher";
 
 describe("Google Safe Browsing", function () {

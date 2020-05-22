@@ -1,6 +1,7 @@
 import axios from "axios";
 import qs from "qs";
-import { Scanner, ScannableType } from "../types";
+
+import { ScannableType, Scanner } from "../types";
 import { buildURL } from "../url_builder";
 
 interface Data {

@@ -1,5 +1,7 @@
-import { expect } from "chai";
 import "mocha";
+
+import { expect } from "chai";
+
 import { WebAnalyzer } from "../../src/lib/searcher";
 
 describe("WebAnalyzer", function () {

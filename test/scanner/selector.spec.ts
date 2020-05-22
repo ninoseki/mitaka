@@ -1,5 +1,7 @@
-import { expect } from "chai";
 import "mocha";
+
+import { expect } from "chai";
+
 import { Selector } from "../../src/lib/selector";
 import { AnalyzerEntry } from "../lib/types";
 

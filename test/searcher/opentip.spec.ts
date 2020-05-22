@@ -1,5 +1,7 @@
-import { expect } from "chai";
 import "mocha";
+
+import { expect } from "chai";
+
 import { OpenTIP } from "../../src/lib/searcher";
 
 describe("OpenTIP", function () {

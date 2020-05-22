@@ -1,5 +1,7 @@
-import { expect } from "chai";
 import "mocha";
+
+import { expect } from "chai";
+
 import { Urlscan } from "../../src/lib/searcher";
 
 describe("Urlscan", function () {

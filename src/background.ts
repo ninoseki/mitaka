@@ -1,8 +1,9 @@
-import { Selector } from "./lib/selector";
 import { browser, ContextMenus } from "webextension-polyfill-ts";
+
 import { Command } from "./lib/command";
-import { getApiKeys } from "./utility";
+import { Selector } from "./lib/selector";
 import { AnalyzerEntry } from "./lib/types";
+import { getApiKeys } from "./utility";
 
 const FIRST_INDEX_WITHOUT_TEXT_ANALYZERS = 3;
 
