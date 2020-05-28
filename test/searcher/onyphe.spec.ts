@@ -14,7 +14,7 @@ describe("ONYPHE", function () {
   describe("#searchByIP", function () {
     it("should return URL", function () {
       expect(subject.searchByIP("1.1.1.1")).to.equal(
-        "https://www.onyphe.io/ip/1.1.1.1"
+        "https://www.onyphe.io/summary/ip/1.1.1.1"
       );
     });
   });
