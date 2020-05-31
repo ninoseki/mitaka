@@ -1,14 +1,18 @@
-import { browser, ContextMenus } from "webextension-polyfill-ts";
+import { browser, ContextMenus, Extension } from "webextension-polyfill-ts";
 
 import { Command } from "./lib/command";
 import { Selector } from "./lib/selector";
-import { AnalyzerEntry } from "./lib/types";
+import {
+  AnalyzerEntry,
+  SearcherStates,
+  UpdateContextMenuMessage,
+} from "./lib/types";
 import { getApiKeys } from "./utility";
 
 const FIRST_INDEX_WITHOUT_TEXT_ANALYZERS = 3;
 
-export function showNotification(message: string): void {
-  browser.notifications.create({
+export async function showNotification(message: string): Promise<void> {
+  await browser.notifications.create({
     iconUrl: "./icons/48.png",
     message,
     title: "Mitaka",
@@ -16,28 +20,32 @@ export function showNotification(message: string): void {
   });
 }
 
-export function search(command: Command): void {
+export async function search(command: Command): Promise<void> {
   try {
     const url: string = command.search();
     if (url !== "") {
-      browser.tabs.create({ url });
+      await browser.tabs.create({ url });
     }
-  } catch (err) {
-    showNotification(err.message);
+  } catch (e) {
+    const err = <Extension.PropertyLastErrorType>e;
+    await showNotification(err.message);
   }
 }
 
 export async function searchAll(command: Command): Promise<void> {
   try {
-    await browser.storage.sync.get("searcherStates").then((config) => {
-      const states = "searcherStates" in config ? config.searcherStates : {};
+    await browser.storage.sync.get("searcherStates").then(async (config) => {
+      const states: SearcherStates = <SearcherStates>(
+        ("searcherStates" in config ? config.searcherStates : {})
+      );
       const urls = command.searchAll(states);
       for (const url of urls) {
-        browser.tabs.create({ url });
+        await browser.tabs.create({ url });
       }
     });
-  } catch (err) {
-    showNotification(err.message);
+  } catch (e) {
+    const err = <Extension.PropertyLastErrorType>e;
+    await showNotification(err.message);
   }
 }
 
@@ -46,10 +54,11 @@ export async function scan(command: Command): Promise<void> {
   try {
     const url: string = await command.scan(apiKeys);
     if (url !== "") {
-      browser.tabs.create({ url });
+      await browser.tabs.create({ url });
     }
-  } catch (err) {
-    showNotification(err.message);
+  } catch (e) {
+    const err = <Extension.PropertyLastErrorType>e;
+    await showNotification(err.message);
   }
 }
 
@@ -60,8 +69,8 @@ export function createContextMenuErrorHandler(): void {
 }
 
 export async function createContextMenus(
-  message,
-  searcherStates
+  message: UpdateContextMenuMessage,
+  searcherStates: SearcherStates
 ): Promise<void> {
   await browser.contextMenus.removeAll();
 
@@ -107,31 +116,34 @@ export async function createContextMenus(
 }
 
 if (typeof browser !== "undefined" && browser.runtime !== undefined) {
-  browser.runtime.onMessage.addListener((message) => {
-    if (message.request === "updateContextMenu") {
-      browser.storage.sync.get("searcherStates").then((config) => {
+  browser.runtime.onMessage.addListener(
+    async (message: UpdateContextMenuMessage): Promise<void> => {
+      if (message.request === "updateContextMenu") {
+        const config = await browser.storage.sync.get("searcherStates");
         if ("searcherStates" in config) {
-          createContextMenus(message, config.searcherStates);
+          const searcherStates = <SearcherStates>config.searcherStates;
+          await createContextMenus(message, searcherStates);
         } else {
-          createContextMenus(message, {});
+          await createContextMenus(message, {});
         }
-      });
+      }
     }
-  });
+  );
 
-  browser.contextMenus.onClicked.addListener((info, tab) => {
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
+  browser.contextMenus.onClicked.addListener(async (info, tab_) => {
     const id: string = info.menuItemId.toString();
     const command = new Command(id);
     switch (command.action) {
       case "search":
         if (command.target === "all") {
-          searchAll(command);
+          await searchAll(command);
         } else {
-          search(command);
+          await search(command);
         }
         break;
       case "scan":
-        scan(command);
+        await scan(command);
         break;
     }
   });

@@ -2,6 +2,10 @@ import axios from "axios";
 
 import { ScannableType, Scanner } from "../types";
 
+interface Response {
+  result: string;
+}
+
 export class Urlscan implements Scanner {
   public baseURL: string;
   public name: string;
@@ -34,7 +38,7 @@ export class Urlscan implements Scanner {
       throw Error("Please set your urlscan.io API key via the option.");
     }
 
-    const res = await axios.post(
+    const res = await axios.post<Response>(
       `${this.baseURL}/scan/`,
       {
         public: isPublic ? "on" : "off",

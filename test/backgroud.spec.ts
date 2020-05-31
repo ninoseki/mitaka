@@ -24,8 +24,8 @@ describe("Background script", function () {
   });
 
   describe("#showNotification", function () {
-    it("should call chrome.notifications.create()", function () {
-      showNotification("test");
+    it("should call chrome.notifications.create()", async function () {
+      await showNotification("test");
       browserMock.notifications.create.assertCalls([
         [
           {
@@ -41,11 +41,11 @@ describe("Background script", function () {
 
   describe("#search", function () {
     context("when given a valid input", function () {
-      it("should call chrome.tabs.create()", function () {
+      it("should call chrome.tabs.create()", async function () {
         const command = new Command(
           "Search https://github.com as a url on Urlscan"
         );
-        search(command);
+        await search(command);
         browserMock.tabs.create.assertCalls([
           [
             {
@@ -182,7 +182,10 @@ describe("Background script", function () {
   describe("#createContextMenus", function () {
     context("when not given a searcherState", function () {
       it("should call chrome.contextMenus.create", async function () {
-        await createContextMenus({ selection: "test" }, {});
+        await createContextMenus(
+          { request: "updateContextMenu", selection: "test" },
+          {}
+        );
 
         browserMock.contextMenus.create.assertCalls([
           [
@@ -208,7 +211,7 @@ describe("Background script", function () {
     context("when given a searcherState", function () {
       it("should call chrome.contextMenus.create", async function () {
         await createContextMenus(
-          { selection: "test" },
+          { request: "updateContextMenu", selection: "test" },
           {
             Censys: false,
           }

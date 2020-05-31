@@ -1,7 +1,7 @@
 import Mustache from "mustache";
 import { browser } from "webextension-polyfill-ts";
 
-import { ApiKeys } from "./lib/types";
+import { ApiKeys, SearcherStates } from "./lib/types";
 import { getApiKeys, getSearcherStates } from "./utility";
 
 require("./options/bulma.scss");
@@ -31,8 +31,8 @@ export async function saveApiKeys(): Promise<void> {
   }
 }
 
-export function saveSearcherStates(): void {
-  const searcherStates = {};
+export async function saveSearcherStates(): Promise<void> {
+  const searcherStates: SearcherStates = {};
   const searcherList = document.getElementById("searcherList") as HTMLElement;
   const radios = searcherList.querySelectorAll<HTMLInputElement>(
     '[type="checkbox"]'
@@ -44,13 +44,13 @@ export function saveSearcherStates(): void {
     }
     searcherStates[name] = radio.checked;
   }
-  browser.storage.sync.set({ searcherStates });
+  await browser.storage.sync.set({ searcherStates });
 }
 
 // Saves options to chrome.storage.sync.
-export function saveOptions(): void {
-  saveApiKeys();
-  saveSearcherStates();
+export async function saveOptions(): Promise<void> {
+  await saveApiKeys();
+  await saveSearcherStates();
 }
 
 export async function restoreApiKeys(): Promise<void> {
@@ -92,17 +92,25 @@ export async function restoreSearcherStates(): Promise<void> {
   searcherList.appendChild(fragment);
 }
 
-export function restoreOptions(): void {
-  restoreApiKeys();
-  restoreSearcherStates();
+export async function restoreOptions(): Promise<void> {
+  await restoreApiKeys();
+  await restoreSearcherStates();
+}
+
+export async function onDOMContentLoaded(): Promise<void> {
+  await restoreOptions();
+  const save = document.getElementById("save");
+  if (save) {
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    save.addEventListener("click", async () => {
+      await saveOptions();
+    });
+  }
 }
 
 if (typeof document !== "undefined") {
-  document.addEventListener("DOMContentLoaded", () => {
-    restoreOptions();
-    const save = document.getElementById("save");
-    if (save) {
-      save.addEventListener("click", saveOptions);
-    }
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
+  document.addEventListener("DOMContentLoaded", async () => {
+    await onDOMContentLoaded();
   });
 }

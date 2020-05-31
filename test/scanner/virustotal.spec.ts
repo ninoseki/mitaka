@@ -50,7 +50,7 @@ describe("VirusTotal", function () {
   context("when apiKey is undefined", function () {
     it("should raise an error", function () {
       subject.setApiKey(undefined);
-
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       expect(subject.scanByURL("http://example.com")).to.be.rejectedWith(Error);
     });
   });

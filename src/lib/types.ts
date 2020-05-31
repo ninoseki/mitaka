@@ -65,8 +65,25 @@ export interface SearcherState {
   isEnabled: boolean;
 }
 
+export interface SearcherStates {
+  [name: string]: boolean;
+}
+
 export interface ApiKeys {
   hybridAnalysisApiKey: string | undefined;
   urlscanApiKey: string | undefined;
   virusTotalApiKey: string | undefined;
+}
+
+export interface UpdateContextMenuMessage {
+  request: string;
+  selection: string;
+}
+
+export interface SearcherTable {
+  [name: string]: (searcher: Searcher, query: string) => string;
+}
+
+export interface ScannerTable {
+  [name: string]: (scanner: Scanner, query: string) => Promise<string>;
 }

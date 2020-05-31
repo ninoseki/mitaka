@@ -4,6 +4,10 @@ import snakecaseKeys from "snakecase-keys";
 
 import { ScannableType, Scanner } from "../types";
 
+interface Resopnse {
+  sha256: string;
+}
+
 export class HybridAnalysis implements Scanner {
   public baseURL: string;
   public name: string;
@@ -28,7 +32,7 @@ export class HybridAnalysis implements Scanner {
       scanType: "all",
       url: url,
     });
-    const res = await axios.post(
+    const res = await axios.post<Resopnse>(
       `${this.baseURL}/quick-scan/url`,
       qs.stringify(params),
       {
