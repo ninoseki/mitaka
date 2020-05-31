@@ -1,5 +1,13 @@
 import { Selector } from "./selector";
-import { AnalyzerEntry, ApiKeys, Scanner, Searcher } from "./types";
+import {
+  AnalyzerEntry,
+  ApiKeys,
+  Scanner,
+  ScannerTable,
+  Searcher,
+  SearcherStates,
+  SearcherTable,
+} from "./types";
 
 export class Command {
   public action: string;
@@ -16,7 +24,7 @@ export class Command {
     this.target = parts[parts.length - 1];
   }
 
-  private searcherTable = {
+  private searcherTable: SearcherTable = {
     text: (searcher: Searcher, query: string): string => {
       if (searcher.searchByText) {
         return searcher.searchByText(query);
@@ -99,14 +107,14 @@ export class Command {
     if (entry !== undefined) {
       const searcher = entry.analyzer as Searcher;
       if (this.type in this.searcherTable) {
-        const fn: Function = this.searcherTable[this.type];
+        const fn = this.searcherTable[this.type];
         url = fn(searcher, entry.query);
       }
     }
     return url;
   }
 
-  public searchAll(searcherStates): string[] {
+  public searchAll(searcherStates: SearcherStates): string[] {
     const selector: Selector = new Selector(this.query);
     const entries: AnalyzerEntry[] = selector
       .getSearcherEntries()
@@ -121,7 +129,7 @@ export class Command {
       const searcher = entry.analyzer as Searcher;
       if (this.type in this.searcherTable) {
         try {
-          const fn: Function = this.searcherTable[this.type];
+          const fn = this.searcherTable[this.type];
           urls.push(fn(searcher, entry.query));
         } catch (err) {
           continue;
@@ -131,7 +139,7 @@ export class Command {
     return urls;
   }
 
-  private scannerTable = {
+  private scannerTable: ScannerTable = {
     ip: async (scanner: Scanner, query: string): Promise<string> => {
       if (scanner.scanByIP) {
         return scanner.scanByIP(query);
@@ -173,7 +181,7 @@ export class Command {
           break;
       }
       if (entry.type in this.scannerTable) {
-        const fn: Function = this.scannerTable[entry.type];
+        const fn = this.scannerTable[entry.type];
         url = await fn(scanner, entry.query);
       }
     }

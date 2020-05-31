@@ -33,8 +33,8 @@ describe("Context script", function () {
     });
 
     describe("#onSelectionChange", function () {
-      it("should call chrome.runtime.sendMessage()", function () {
-        onSelctionChange();
+      it("should call chrome.runtime.sendMessage()", async function () {
+        await onSelctionChange();
         browserMock.runtime.sendMessage.assertCalls([
           [
             {
@@ -51,14 +51,14 @@ describe("Context script", function () {
     beforeEach(() => {
       root.window.getSelection = function () {
         return {
-          getRangeAt: (idx) => {
+          getRangeAt: (idx_) => {
             return {
               startContainer: {
                 parentElement: {
-                  getAttribute: (attr) => {
+                  getAttribute: (attr_) => {
                     return "https://example.com";
                   },
-                  hasAttribute: (attr) => {
+                  hasAttribute: (attr_) => {
                     return true;
                   },
                 },
@@ -78,8 +78,8 @@ describe("Context script", function () {
     });
 
     describe("#onSelectionChange", function () {
-      it("should call chrome.runtime.sendMessage()", function () {
-        onSelctionChange();
+      it("should call chrome.runtime.sendMessage()", async function () {
+        await onSelctionChange();
         browserMock.runtime.sendMessage.assertCalls([
           [
             {

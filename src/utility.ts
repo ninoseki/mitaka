@@ -1,7 +1,7 @@
 import { browser } from "webextension-polyfill-ts";
 
 import { Searchers } from "./lib/searcher";
-import { ApiKeys, SearcherState } from "./lib/types";
+import { ApiKeys, SearcherState, SearcherStates } from "./lib/types";
 
 export async function getApiKeys(): Promise<ApiKeys> {
   const config = await browser.storage.sync.get("apiKeys");
@@ -12,9 +12,10 @@ export async function getApiKeys(): Promise<ApiKeys> {
     virusTotalApiKey: undefined,
   };
   if ("apiKeys" in config) {
-    apiKeys.hybridAnalysisApiKey = config.apiKeys.hybridAnalysisApiKey;
-    apiKeys.urlscanApiKey = config.apiKeys.urlscanApiKey;
-    apiKeys.virusTotalApiKey = config.apiKeys.virusTotalApiKey;
+    const configKeys = <ApiKeys>config.apiKeys;
+    apiKeys.hybridAnalysisApiKey = configKeys.hybridAnalysisApiKey;
+    apiKeys.urlscanApiKey = configKeys.urlscanApiKey;
+    apiKeys.virusTotalApiKey = configKeys.virusTotalApiKey;
   }
   return apiKeys;
 }
@@ -26,8 +27,10 @@ export async function getSearcherStates(): Promise<SearcherState[]> {
 
   for (const searcher of Searchers) {
     let isEnabled = true;
+
     if (hasSearcherStates && searcher.name in config.searcherStates) {
-      isEnabled = config.searcherStates[searcher.name];
+      const searcherStates = <SearcherStates>config.searcherStates;
+      isEnabled = searcherStates[searcher.name];
     }
     states.push({
       isEnabled,

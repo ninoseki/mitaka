@@ -88,16 +88,19 @@ export class Selector {
   }
 
   private selectorSlots: SelectorSlot[] = [
-    { type: "url", func: this.getURL },
-    { type: "email", func: this.getEmail },
-    { type: "domain", func: this.getDomain },
-    { type: "ip", func: this.getIP },
-    { type: "asn", func: this.getASN },
-    { type: "hash", func: this.getHash },
-    { type: "cve", func: this.getCVE },
-    { type: "btc", func: this.getBTC },
-    { type: "gaTrackID", func: this.getGATrackID },
-    { type: "gaPubID", func: this.getGAPubID },
+    { type: "url", func: this.getURL = this.getURL.bind(this) },
+    { type: "email", func: this.getEmail = this.getEmail.bind(this) },
+    { type: "domain", func: this.getDomain = this.getDomain.bind(this) },
+    { type: "ip", func: this.getIP = this.getIP.bind(this) },
+    { type: "asn", func: this.getASN = this.getASN.bind(this) },
+    { type: "hash", func: this.getHash = this.getHash.bind(this) },
+    { type: "cve", func: this.getCVE = this.getCVE.bind(this) },
+    { type: "btc", func: this.getBTC = this.getBTC.bind(this) },
+    {
+      type: "gaTrackID",
+      func: this.getGATrackID = this.getGATrackID.bind(this),
+    },
+    { type: "gaPubID", func: this.getGAPubID = this.getGAPubID.bind(this) },
   ];
 
   public getSearcherEntries(): AnalyzerEntry[] {
@@ -124,9 +127,9 @@ export class Selector {
   }
 
   private scannerSlots: ScannerSlot[] = [
-    { type: "url", func: this.getURL },
-    { type: "domain", func: this.getDomain },
-    { type: "ip", func: this.getIP },
+    { type: "url", func: this.getURL = this.getURL.bind(this) },
+    { type: "domain", func: this.getDomain = this.getDomain.bind(this) },
+    { type: "ip", func: this.getIP = this.getIP.bind(this) },
   ];
 
   public getScannerEntries(): AnalyzerEntry[] {

@@ -1,7 +1,9 @@
 import { throttle } from "throttle-debounce";
 import { browser } from "webextension-polyfill-ts";
 
-export function onSelctionChange(): void {
+import { UpdateContextMenuMessage } from "./lib/types";
+
+export async function onSelctionChange(): Promise<void> {
   const selection = window.getSelection();
   const text: string = selection !== null ? selection.toString().trim() : "";
   let link: string | null = null;
@@ -15,13 +17,20 @@ export function onSelctionChange(): void {
 
   const selected: string = link || text;
   if (selected !== "") {
-    browser.runtime.sendMessage({
+    const message: UpdateContextMenuMessage = {
       request: "updateContextMenu",
       selection: selected,
-    });
+    };
+    await browser.runtime.sendMessage(message);
   }
 }
 
 if (typeof document !== "undefined") {
-  document.addEventListener("selectionchange", throttle(100, onSelctionChange));
+  document.addEventListener(
+    "selectionchange",
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    throttle(100, async () => {
+      await onSelctionChange();
+    })
+  );
 }
