@@ -1,4 +1,19 @@
-import { getIOC, IOC } from "ioc-extractor";
+import {
+  extractASN,
+  extractBTC,
+  extractCVE,
+  extractDomain,
+  extractEmail,
+  extractGAPubID,
+  extractGATrackID,
+  extractIPv4,
+  extractMD5,
+  extractSHA1,
+  extractSHA256,
+  extractURL,
+  extractXMR,
+  refang,
+} from "ioc-extractor";
 
 import { Scanners } from "./scanner";
 import { Searchers } from "./searcher";
@@ -14,41 +29,39 @@ import {
 
 export class Selector {
   protected input: string;
-  protected ioc: IOC;
 
   protected scanners: Scanner[] = Scanners;
   protected searchers: Searcher[] = Searchers;
 
   public constructor(input: string) {
-    this.input = input;
-    this.ioc = getIOC(input);
+    this.input = refang(input);
   }
 
   public getIP(): string | null {
-    return this.getFirstValueFromArray(this.ioc.ipv4s);
+    return this.getFirstValueFromArray(extractIPv4(this.input));
   }
 
   public getDomain(): string | null {
-    return this.getFirstValueFromArray(this.ioc.domains);
+    return this.getFirstValueFromArray(extractDomain(this.input));
   }
 
   public getURL(): string | null {
-    return this.getFirstValueFromArray(this.ioc.urls);
+    return this.getFirstValueFromArray(extractURL(this.input));
   }
 
   public getEmail(): string | null {
-    return this.getFirstValueFromArray(this.ioc.emails);
+    return this.getFirstValueFromArray(extractEmail(this.input));
   }
 
   public getASN(): string | null {
-    return this.getFirstValueFromArray(this.ioc.asns);
+    return this.getFirstValueFromArray(extractASN(this.input));
   }
 
   public getHash(): string | null {
     let hashes: string[] = [];
-    hashes = this.concat(hashes, this.ioc.sha256s);
-    hashes = this.concat(hashes, this.ioc.sha1s);
-    hashes = this.concat(hashes, this.ioc.md5s);
+    hashes = this.concat(hashes, extractSHA256(this.input));
+    hashes = this.concat(hashes, extractSHA1(this.input));
+    hashes = this.concat(hashes, extractMD5(this.input));
     if (hashes.length === 0) {
       return null;
     }
@@ -56,23 +69,23 @@ export class Selector {
   }
 
   public getCVE(): string | null {
-    return this.getFirstValueFromArray(this.ioc.cves);
+    return this.getFirstValueFromArray(extractCVE(this.input));
   }
 
   public getBTC(): string | null {
-    return this.getFirstValueFromArray(this.ioc.btcs);
+    return this.getFirstValueFromArray(extractBTC(this.input));
   }
 
   public getXMR(): string | null {
-    return this.getFirstValueFromArray(this.ioc.xmrs);
+    return this.getFirstValueFromArray(extractXMR(this.input));
   }
 
   public getGATrackID(): string | null {
-    return this.getFirstValueFromArray(this.ioc.gaTrackIDs);
+    return this.getFirstValueFromArray(extractGATrackID(this.input));
   }
 
   public getGAPubID(): string | null {
-    return this.getFirstValueFromArray(this.ioc.gaPubIDs);
+    return this.getFirstValueFromArray(extractGAPubID(this.input));
   }
 
   public getSearchersByType(type: SearchableType): Searcher[] {
