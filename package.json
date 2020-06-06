@@ -23,7 +23,10 @@
     }
   },
   "lint-staged": {
-    "*.ts": ["npm run lint:pre-commit", "npm run prettier:write"]
+    "*.ts": [
+      "npm run lint:pre-commit",
+      "npm run prettier:write"
+    ]
   },
   "nyc": {
     "include": [
@@ -51,7 +54,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "ioc-extractor": "^2.3.4",
+    "ioc-extractor": "^2.3.6",
     "js-base64": "^2.5.2",
     "js-sha256": "^0.9.0",
     "mustache": "^4.0.1",
