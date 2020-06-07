@@ -11,7 +11,7 @@
     "prettier:write": "npm run prettier -- --write",
     "build": "cross-env NODE_ENV=production webpack",
     "build:dev": "cross-env NODE_ENV=development webpack",
-    "build-zip": "ts-node scripts/build-zip.ts",
+    "build:zip": "npm run build && ts-node scripts/build-zip.ts",
     "watch": "npm run build -- --watch",
     "watch:dev": "cross-env HMR=true npm run build:dev -- --watch",
     "test": "nyc mocha",
