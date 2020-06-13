@@ -12,7 +12,7 @@ export async function getApiKeys(): Promise<ApiKeys> {
     virusTotalApiKey: undefined,
   };
   if ("apiKeys" in config) {
-    const configKeys = <ApiKeys>config.apiKeys;
+    const configKeys = <ApiKeys>config["apiKeys"];
     apiKeys.hybridAnalysisApiKey = configKeys.hybridAnalysisApiKey;
     apiKeys.urlscanApiKey = configKeys.urlscanApiKey;
     apiKeys.virusTotalApiKey = configKeys.virusTotalApiKey;
@@ -28,8 +28,8 @@ export async function getSearcherStates(): Promise<SearcherState[]> {
   for (const searcher of Searchers) {
     let isEnabled = true;
 
-    if (hasSearcherStates && searcher.name in config.searcherStates) {
-      const searcherStates = <SearcherStates>config.searcherStates;
+    if (hasSearcherStates && searcher.name in config["searcherStates"]) {
+      const searcherStates = <SearcherStates>config["searcherStates"];
       isEnabled = searcherStates[searcher.name];
     }
     states.push({

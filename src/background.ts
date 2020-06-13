@@ -34,15 +34,14 @@ export async function search(command: Command): Promise<void> {
 
 export async function searchAll(command: Command): Promise<void> {
   try {
-    await browser.storage.sync.get("searcherStates").then(async (config) => {
-      const states: SearcherStates = <SearcherStates>(
-        ("searcherStates" in config ? config.searcherStates : {})
-      );
-      const urls = command.searchAll(states);
-      for (const url of urls) {
-        await browser.tabs.create({ url });
-      }
-    });
+    const config = await browser.storage.sync.get("searcherStates");
+    const states: SearcherStates = <SearcherStates>(
+      ("searcherStates" in config ? config["searcherStates"] : {})
+    );
+    const urls = command.searchAll(states);
+    for (const url of urls) {
+      await browser.tabs.create({ url });
+    }
   } catch (e) {
     const err = <Extension.PropertyLastErrorType>e;
     await showNotification(err.message);
@@ -121,7 +120,7 @@ if (typeof browser !== "undefined" && browser.runtime !== undefined) {
       if (message.request === "updateContextMenu") {
         const config = await browser.storage.sync.get("searcherStates");
         if ("searcherStates" in config) {
-          const searcherStates = <SearcherStates>config.searcherStates;
+          const searcherStates = <SearcherStates>config["searcherStates"];
           await createContextMenus(message, searcherStates);
         } else {
           await createContextMenus(message, {});
