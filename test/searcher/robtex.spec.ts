@@ -21,7 +21,7 @@ describe("Robtex", function () {
 
   describe("#searchByIP", function () {
     it("should return URL", function () {
-      expect(subject.searchByDomain("1.1.1.1")).to.equal(
+      expect(subject.searchByIP("1.1.1.1")).to.equal(
         "https://www.robtex.com/ip-lookup/1.1.1.1"
       );
     });
