@@ -86,6 +86,7 @@ export async function restoreSearcherStates(): Promise<void> {
 
   for (const state of states) {
     const elem = document.createElement("div");
+    elem.className = "searcher";
     elem.innerHTML = Mustache.render(template, state);
     fragment.appendChild(elem);
   }

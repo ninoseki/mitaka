@@ -9,4 +9,9 @@ span#status {
 
 .searcher {
   margin: 15px 0 15px 0;
+  padding: 10px;
+}
+
+.searcher:nth-child(even) {
+  background-color: #fafafa
 }
