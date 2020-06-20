@@ -204,14 +204,6 @@ describe("Background script", function () {
             },
             createContextMenuErrorHandler,
           ],
-          [
-            {
-              contexts: ["selection"],
-              id: "Search test as a text on Twitter",
-              title: "Search this text on Twitter",
-            },
-            createContextMenuErrorHandler,
-          ],
         ]);
       });
     });
@@ -231,14 +223,6 @@ describe("Background script", function () {
               contexts: ["selection"],
               id: "Search test as a text on PublicWWW",
               title: "Search this text on PublicWWW",
-            },
-            createContextMenuErrorHandler,
-          ],
-          [
-            {
-              contexts: ["selection"],
-              id: "Search test as a text on Twitter",
-              title: "Search this text on Twitter",
             },
             createContextMenuErrorHandler,
           ],
