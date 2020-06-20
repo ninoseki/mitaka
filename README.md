@@ -100,6 +100,7 @@ Mitaka is a browser extension for OSINT search which can:
 | ThreatCrowd          | https://www.threatcrowd.org            | ip / domain / email               |
 | ThreatMiner          | https://www.threatminer.org            | ip / domain / hash                |
 | TIP                  | https://threatintelligenceplatform.com | ip / domain                       |
+| Twitter              | https://www.twitter.com                | text                              |
 | URLhaus              | https://urlhaus.abuse.ch               | ip / domain                       |
 | Urlscan              | https://urlscan.io                     | ip / domain / asn / url           |
 | ViewDNS              | https://viewdns.info                   | ip / domain / email               |

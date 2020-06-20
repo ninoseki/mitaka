@@ -55,6 +55,7 @@ export { ThreatConnect } from "./threatconnect";
 export { ThreatCrowd } from "./threatcrowd";
 export { ThreatMiner } from "./threatminer";
 export { TIP } from "./tip";
+export { Twitter } from "./twitter";
 export { URLhaus } from "./urlhaus";
 export { Urlscan } from "./urlscan";
 export { ViewDNS } from "./viewdns";
