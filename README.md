@@ -78,6 +78,7 @@ Mitaka is a browser extension for OSINT search which can:
 | Joe Sandbox          | https://www.joesandbox.com             | hash                              |
 | MalShare             | https://malshare.com                   | hash                              |
 | Maltiverse           | https://www.maltiverse.com             | domain / hash                     |
+| MalwareBazaar        | https://bazaar.abuse.ch                | hash                              |
 | Malwares             | https://www.malwares.com               | hash                              |
 | NVD                  | https://nvd.nist.gov                   | cve                               |
 | OOCPR                | https://data.occrp.org                 | email                             |

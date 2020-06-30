@@ -33,6 +33,7 @@ export { IPIP } from "./ipip";
 export { JoeSandbox } from "./joesandbox";
 export { Malshare } from "./malshare";
 export { Maltiverse } from "./maltiverse";
+export { MalwareBazaar } from "./malwarebazaar";
 export { Malwares } from "./malwares";
 export { NVD } from "./nvd";
 export { OCCRP } from "./occrp";
