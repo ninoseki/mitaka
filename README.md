@@ -3,10 +3,11 @@
 [![Build Status](https://travis-ci.com/ninoseki/mitaka.svg?branch=master)](https://travis-ci.com/ninoseki/mitaka)
 [![CodeFactor](https://www.codefactor.io/repository/github/ninoseki/mitaka/badge)](https://www.codefactor.io/repository/github/ninoseki/mitaka)
 [![Coverage Status](https://coveralls.io/repos/github/ninoseki/mitaka/badge.svg)](https://coveralls.io/github/ninoseki/mitaka)
+
 [![Chrome Version](https://img.shields.io/chrome-web-store/v/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
-![Chrome Users](https://img.shields.io/chrome-web-store/users/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)
+[![Chrome Users](https://img.shields.io/chrome-web-store/users/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
 [![FF Version](https://img.shields.io/amo/v/mitaka.svg)](https://addons.mozilla.org/en-US/firefox/addon/mitaka/)
-![Mozilla Users](https://img.shields.io/amo/users/mitaka)
+[![Mozilla Users](https://img.shields.io/amo/users/mitaka)](https://addons.mozilla.org/en-US/firefox/addon/mitaka/)
 
 ![eyecatch](./examples/eyecatch.png)
 
