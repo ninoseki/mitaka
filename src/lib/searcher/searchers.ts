@@ -2,10 +2,10 @@ import { Searcher } from "../types";
 import {
   AbuseIPDB,
   AnyRun,
-  Apility,
   Apklab,
   ArchiveOrg,
   ArchiveToday,
+  Auth0,
   BGPView,
   BinaryEdge,
   BitcoinAbuse,
@@ -74,10 +74,10 @@ import {
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),
   new AnyRun(),
-  new Apility(),
   new Apklab(),
   new ArchiveOrg(),
   new ArchiveToday(),
+  new Auth0(),
   new BGPView(),
   new BinaryEdge(),
   new BitcoinAbuse(),
