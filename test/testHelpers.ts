@@ -69,7 +69,7 @@ export function ensureNotNull<T>(value: T | null): T {
 // tslint:disable-next-line:ban-types
 export function doneHandler<T extends Function>(
   handler: T,
-  done: MochaDone,
+  done: Mocha.Done,
   doneCondition?: () => boolean
 ) {
   return (...args: any[]) => {
