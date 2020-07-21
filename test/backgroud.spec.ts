@@ -65,8 +65,7 @@ describe("Background script", function () {
           .withArgs("searcherStates")
           .resolves({
             searcherStates: {
-              PubDB: true,
-              SpyOnWeb: false,
+              SpyOnWeb: true,
             },
           });
       });
@@ -78,7 +77,7 @@ describe("Background script", function () {
         browserMock.tabs.create.assertCalls([
           [
             {
-              url: "http://pub-db.com/adsense/pub-9383614236930773.html",
+              url: "http://spyonweb.com/pub-9383614236930773",
             },
           ],
         ]);

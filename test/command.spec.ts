@@ -98,21 +98,19 @@ describe("Command", function () {
     context("gaTrackID", function () {
       it("should return a URL for search", function () {
         const command = new Command(
-          "Search UA-67609351-1 as a gaTrackID on PubDB"
+          "Search UA-67609351 as a gaTrackID on SpyOnWeb"
         );
-        expect(command.search()).to.equal(
-          "http://pub-db.com/google-analytics/UA-67609351-1.html"
-        );
+        expect(command.search()).to.equal("http://spyonweb.com/UA-67609351");
       });
     });
 
     context("gaPubID", function () {
       it("should return a URL for search", function () {
         const command = new Command(
-          "Search pub-9383614236930773 as a gaPubID on PubDB"
+          "Search pub-9383614236930773 as a gaPubID on SpyOnWeb"
         );
         expect(command.search()).to.equal(
-          "http://pub-db.com/adsense/pub-9383614236930773.html"
+          "http://spyonweb.com/pub-9383614236930773"
         );
       });
     });

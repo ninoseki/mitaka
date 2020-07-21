@@ -39,7 +39,6 @@ export { OCCRP } from "./occrp";
 export { ONYPHE } from "./onyphe";
 export { OpenTIP } from "./opentip";
 export { OTX } from "./otx";
-export { PubDB } from "./pubdb";
 export { PublicWWW } from "./publicwww";
 export { Pulsedive } from "./pulsedive";
 export { RiskIQ } from "./riskiq";
