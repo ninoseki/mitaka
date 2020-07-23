@@ -49,7 +49,8 @@ describe("Background script", function () {
         browserMock.tabs.create.assertCalls([
           [
             {
-              url: "https://urlscan.io/search/#%22https%3A%2F%2Fgithub.com%22",
+              url:
+                "https://urlscan.io/search/#page.url%3A%22https%3A%2F%2Fgithub.com%22",
             },
           ],
         ]);

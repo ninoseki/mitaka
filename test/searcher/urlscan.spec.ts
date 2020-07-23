@@ -18,8 +18,8 @@ describe("Urlscan", function () {
 
   describe("#searchByURL", function () {
     it("should return URL", function () {
-      expect(subject.searchByURL("https://urlscan.io")).to.eq(
-        "https://urlscan.io/search/#%22https%3A%2F%2Furlscan.io%22"
+      expect(subject.searchByURL("https://github.com")).to.eq(
+        "https://urlscan.io/search/#page.url%3A%22https%3A%2F%2Fgithub.com%22"
       );
     });
   });
