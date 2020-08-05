@@ -116,6 +116,7 @@ Mitaka is a browser extension for OSINT search which can:
 
 | name           | url                             | supported types   |
 |:---------------|:--------------------------------|:------------------|
+| Browserling    | https://www.browserling.com     | url               |
 | HybridAnalysis | https://www.hybrid-analysis.com | url               |
 | Urlscan        | https://urlscan.io              | ip / domain / url |
 | VirusTotal     | https://www.virustotal.com      | url               |
