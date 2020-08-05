@@ -169,13 +169,19 @@ export class Command {
       const scanner = entry.analyzer as Scanner;
       switch (scanner.name) {
         case "HybridAnalysis":
-          scanner.setApiKey(apiKeys.hybridAnalysisApiKey);
+          if (typeof scanner["setApiKey"] === "function") {
+            scanner.setApiKey(apiKeys.hybridAnalysisApiKey);
+          }
           break;
         case "Urlscan":
-          scanner.setApiKey(apiKeys.urlscanApiKey);
+          if (typeof scanner["setApiKey"] === "function") {
+            scanner.setApiKey(apiKeys.urlscanApiKey);
+          }
           break;
         case "VirusTotal":
-          scanner.setApiKey(apiKeys.virusTotalApiKey);
+          if (typeof scanner["setApiKey"] === "function") {
+            scanner.setApiKey(apiKeys.virusTotalApiKey);
+          }
           break;
         default:
           break;

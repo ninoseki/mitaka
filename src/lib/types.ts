@@ -38,8 +38,8 @@ export interface Scanner {
   supportedTypes: ScannableType[];
   scanByIP?(query: string): Promise<string>;
   scanByDomain?(query: string): Promise<string>;
-  scanByURL?(query: string): Promise<string>;
-  setApiKey(apiKey: string | undefined): void;
+  scanByURL?(query: string): Promise<string> | string;
+  setApiKey?(apiKey: string | undefined): void;
 }
 
 export interface SelectorSlot {
