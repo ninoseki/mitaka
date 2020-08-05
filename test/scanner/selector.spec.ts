@@ -11,8 +11,8 @@ describe("Seletor", function () {
     domain: 1,
     // urlscan
     ip: 1,
-    // hybridanalysis, urlscan, virustotal
-    url: 3,
+    // broserling, hybridanalysis, urlscan, virustotal
+    url: 4,
   };
 
   context("scanner", function () {
