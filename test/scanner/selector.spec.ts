@@ -2,17 +2,21 @@ import "mocha";
 
 import { expect } from "chai";
 
+import { Scanners } from "../../src/lib/scanner";
 import { Selector } from "../../src/lib/selector";
-import { AnalyzerEntry } from "../lib/types";
+import { AnalyzerEntry, ScannableType, Scanner } from "../lib/types";
 
-describe("Seletor", function () {
+function numberOfScannersByType(type: ScannableType): number {
+  return Scanners.filter((scanner: Scanner) =>
+    scanner.supportedTypes.includes(type)
+  ).length;
+}
+
+describe("Selector", function () {
   const stats = {
-    // urlscan
-    domain: 1,
-    // urlscan
-    ip: 1,
-    // broserling, hybridanalysis, urlscan, virustotal
-    url: 4,
+    domain: numberOfScannersByType("domain"),
+    ip: numberOfScannersByType("ip"),
+    url: numberOfScannersByType("url"),
   };
 
   context("scanner", function () {
@@ -35,7 +39,7 @@ describe("Seletor", function () {
 
     context("ip", function () {
       const selector: Selector = new Selector("8.8.8.8");
-      describe("#getScannerentrys", function () {
+      describe("#getScannerEntries", function () {
         it("should return Scanners support ip", function () {
           const entries: AnalyzerEntry[] = selector.getScannerEntries();
           for (const entry of entries) {
@@ -48,7 +52,7 @@ describe("Seletor", function () {
 
     context("domain", function () {
       const selector: Selector = new Selector("urlscan.io");
-      describe("#getScannerentrys", function () {
+      describe("#getScannerEntries", function () {
         it("should return Scanners support domain", function () {
           const entries: AnalyzerEntry[] = selector.getScannerEntries();
           for (const entry of entries) {
@@ -61,7 +65,7 @@ describe("Seletor", function () {
 
     context("url", function () {
       const selector: Selector = new Selector("https://urlscan.io/");
-      describe("#getScannerentrys", function () {
+      describe("#getScannerEntries", function () {
         it("should return Scanners support url", function () {
           const entries: AnalyzerEntry[] = selector.getScannerEntries();
           for (const entry of entries) {
