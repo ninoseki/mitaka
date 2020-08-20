@@ -1,9 +1,15 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 import { ScannableType, Scanner } from "../types";
 
 interface Response {
   result: string;
+}
+
+interface ErrorResponse {
+  message: string;
+  description: string;
+  status: number;
 }
 
 export class Urlscan implements Scanner {
@@ -38,19 +44,24 @@ export class Urlscan implements Scanner {
       throw Error("Please set your urlscan.io API key via the option.");
     }
 
-    const res = await axios.post<Response>(
-      `${this.baseURL}/scan/`,
-      {
-        public: isPublic ? "on" : "off",
-        url: query,
-      },
-      {
-        headers: {
-          "API-KEY": this.apiKey,
+    try {
+      const res = await axios.post<Response>(
+        `${this.baseURL}/scan/`,
+        {
+          public: isPublic ? "on" : "off",
+          url: query,
         },
-      }
-    );
-    // ref. https://github.com/ninoseki/mitaka/issues/97
-    return `${res.data.result}loading`;
+        {
+          headers: {
+            "API-KEY": this.apiKey,
+          },
+        }
+      );
+      // ref. https://github.com/ninoseki/mitaka/issues/97
+      return `${res.data.result}loading`;
+    } catch (err) {
+      const error = err as AxiosError<ErrorResponse>;
+      throw Error(error.response?.data.description);
+    }
   }
 }
