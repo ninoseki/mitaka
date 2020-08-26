@@ -48,7 +48,7 @@ describe("Command", function () {
           "Search https://github.com as a url on Urlscan"
         );
         expect(command.search()).to.equal(
-          "https://urlscan.io/search/#page.url%3A%22https%3A%2F%2Fgithub.com%22"
+          "https://urlscan.io/search/#page.url%3A%22https%3A%2F%2Fgithub.com%22%20OR%20task.url%3A%22https%3A%2F%2Fgithub.com%22"
         );
       });
     });

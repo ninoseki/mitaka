@@ -26,7 +26,9 @@ export class Urlscan implements Searcher {
   }
 
   public searchByURL(query: string): string {
-    return this.search(encodeURIComponent(`page.url:"${query}"`));
+    return this.search(
+      encodeURIComponent(`page.url:"${query}" OR task.url:"${query}"`)
+    );
   }
 
   private search(query: string): string {
