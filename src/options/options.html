@@ -13,40 +13,46 @@
       <div class="columns is-centered">
         <div class="column is-half">
           <h1 class="title is-1">Mitaka</h1>
-          <h2 class="title is-2">API key settings</h2>
-          <div class="field">
-            <label class="label">
-              <a href="https://www.hybrid-analysis.com">HybridAnalysis</a> API Key
-            </label>
-            <div class="control">
-              <input type="text" class="input" id="hybridanalysis-api-key">
+
+          <div class="box">
+            <h2 class="title is-2">API key settings</h2>
+            <div class="field">
+              <label class="label">
+                <a href="https://www.hybrid-analysis.com">HybridAnalysis</a> API Key
+              </label>
+              <div class="control">
+                <input type="text" class="input" id="hybridanalysis-api-key">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">
+                <a href="https://urlscan.io">urlscan.io</a> API Key
+              </label>
+              <div class="control">
+                <input type="text" class="input" id="urlscan-api-key">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">
+                <a href="https://www.virustotal.com">VirusTotal</a> API Key
+              </label>
+              <div class="control">
+                <input type="text" class="input" id="virustotal-api-key">
+              </div>
             </div>
           </div>
-          <div class="field">
-            <label class="label">
-              <a href="https://urlscan.io">urlscan.io</a> API Key
-            </label>
-            <div class="control">
-              <input type="text" class="input" id="urlscan-api-key">
-            </div>
+          <div class="box">
+            <h2 class="title is-2">Searcher settings</h2>
+            <div id="searcherList"></div>
           </div>
-          <div class="field">
-            <label class="label">
-              <a href="https://www.virustotal.com">VirusTotal</a> API Key
-            </label>
-            <div class="control">
-              <input type="text" class="input" id="virustotal-api-key">
-            </div>
-          </div>
-          <h2 class="title is-2">Searcher settings</h2>
-          <div id="searcherList"></div>
-          <hr>
-          <div class="field">
-            <div class="control">
-              <button id="save" class="button is-success">
-                Save
-              </button>
-              <span id="status" class="has-text-weight-bold"></span>
+          <div>
+            <div class="field has-text-right">
+              <div class="control">
+                <button id="save" class="button is-success">
+                  Save
+                </button>
+                <span id="status" class="has-text-weight-bold"></span>
+              </div>
             </div>
           </div>
         </div>
