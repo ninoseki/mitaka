@@ -1,4 +1,4 @@
-import { throttle } from "throttle-debounce";
+import { throttle } from "@github/mini-throttle";
 import { browser } from "webextension-polyfill-ts";
 
 import { UpdateContextMenuMessage } from "./lib/types";
@@ -28,9 +28,8 @@ export async function onSelctionChange(): Promise<void> {
 if (typeof document !== "undefined") {
   document.addEventListener(
     "selectionchange",
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    throttle(100, async () => {
+    throttle(async () => {
       await onSelctionChange();
-    })
+    }, 200)
   );
 }
