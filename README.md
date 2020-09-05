@@ -25,7 +25,7 @@ Mitaka is a browser extension for OSINT search which can:
 
 ## Features
 
-### Supported IOC types
+### Supported IoCs
 
 | name      | desc.                       | e.g.                                 |
 |:----------|:----------------------------|:-------------------------------------|
@@ -131,9 +131,13 @@ This browser extension shows context menus based on a type of IoC you selected a
 
 !["example2"](/examples/2.gif "2.gif")
 
+Also, there is a how-to article about Mitaka which is written by Null Byte.
+
+- [Use Mitaka to Perform In-Browser OSINT to Identify Malware, Sketchy Sites, Shady Emails & More](https://null-byte.wonderhowto.com/how-to/use-mitaka-perform-browser-osint-identify-malware-sketchy-sites-shady-emails-more-0216352/)
+
 **Note:**
 
-Please set your urlscan.io & VirusTotal API keys in the options page for enabling urlscan.io & VirusTotal scans.
+Please set your API keys in the options for enabling HybridAnalysis, urlscan.io and VirusTotal scans.
 
 ## Options
 
