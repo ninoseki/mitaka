@@ -1,6 +1,6 @@
 # Contributing
 
-Suggestions and pull requests are highly encouraged! Have a look at the [open issues](https://github.com/ninoseki/mitaka/issuesc).
+Suggestions and pull requests are highly encouraged! Have a look at the [open issues](https://github.com/ninoseki/mitaka/issues).
 
 ## Notes
 
