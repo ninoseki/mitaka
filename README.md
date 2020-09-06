@@ -1,13 +1,11 @@
 # Mitaka
 
+[link-cws]: https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg
+[link-amo]: https://addons.mozilla.org/en-US/firefox/addon/mitaka/
+
 [![Build Status](https://travis-ci.com/ninoseki/mitaka.svg?branch=master)](https://travis-ci.com/ninoseki/mitaka)
 [![CodeFactor](https://www.codefactor.io/repository/github/ninoseki/mitaka/badge)](https://www.codefactor.io/repository/github/ninoseki/mitaka)
 [![Coverage Status](https://coveralls.io/repos/github/ninoseki/mitaka/badge.svg)](https://coveralls.io/github/ninoseki/mitaka)
-
-[![Chrome Version](https://img.shields.io/chrome-web-store/v/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
-[![Chrome Users](https://img.shields.io/chrome-web-store/users/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg)
-[![FF Version](https://img.shields.io/amo/v/mitaka.svg)](https://addons.mozilla.org/en-US/firefox/addon/mitaka/)
-[![Mozilla Users](https://img.shields.io/amo/users/mitaka)](https://addons.mozilla.org/en-US/firefox/addon/mitaka/)
 
 ![eyecatch](./examples/eyecatch.png)
 
@@ -18,10 +16,15 @@ Mitaka is a browser extension for OSINT search which can:
 - Search / scan it on various engines.
   - E.g. VirusTotal, urlscan.io, Censys, Shodan, etc.
 
-## Downloads
+## Install
 
-- Google Chrome: https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg
-- Firefox: https://addons.mozilla.org/en-US/firefox/addon/mitaka/
+- [**Chrome** extension][link-cws]
+[![Chrome Version](https://img.shields.io/chrome-web-store/v/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](link-cws)
+[![Chrome Users](https://img.shields.io/chrome-web-store/users/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](link-cws)
+
+- [**Firefox** add-on][link-amo]
+[![FF Version](https://img.shields.io/amo/v/mitaka.svg)](link-amo)
+[![Mozilla Users](https://img.shields.io/amo/users/mitaka)](lnk-amo)
 
 ## Features
 
@@ -170,22 +173,6 @@ I don't (and will never) collect any information from the users.
 - [ThreatPinch Lookup](https://github.com/cloudtracer/ThreatPinchLookup)
 - [VTchromizer](https://chrome.google.com/webstore/detail/vtchromizer/efbjojhplkelaegfbieplglfidafgoka)
 
-## How to build (for developers)
+## Contribute
 
-This browser extension is written in [TypeScript](https://www.typescriptlang.org/) and built by [webpack](https://webpack.js.org/).
-
-TypeScript files will start out in `src` directory, run through the TypeScript compiler, then webpack, and end up in JavaScript files in `dist` directory.
-
-```sh
-git clone https://github.com/ninoseki/mitaka.git
-cd mitaka
-npm install
-npm run test
-npm run build
-```
-
-For loading an unpacked extension, please follow the procedures described at https://developer.chrome.com/extensions/getstarted.
-
-## Misc
-
-Mitaka/見たか means "Have you seen it?" in Japanese.
+Read the [contribution guide](contributing.md) and join the [contributors](https://github.com/ninoseki/mitaka/graphs/contributors).
