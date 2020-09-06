@@ -18,13 +18,11 @@ Mitaka is a browser extension for OSINT search which can:
 
 ## Install
 
-- [**Chrome** extension][link-cws]
-[![Chrome Version](https://img.shields.io/chrome-web-store/v/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](link-cws)
-[![Chrome Users](https://img.shields.io/chrome-web-store/users/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)](link-cws)
+- [Chrome extension][link-cws]
+  - [![Chrome Version](https://img.shields.io/chrome-web-store/v/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)][link-cws] [![Chrome Users](https://img.shields.io/chrome-web-store/users/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)][link-cws]
 
-- [**Firefox** add-on][link-amo]
-[![FF Version](https://img.shields.io/amo/v/mitaka.svg)](link-amo)
-[![Mozilla Users](https://img.shields.io/amo/users/mitaka)](lnk-amo)
+- [Firefox add-on][link-amo]
+  - [![FF Version](https://img.shields.io/amo/v/mitaka.svg)][link-amo] [![Mozilla Users](https://img.shields.io/amo/users/mitaka)][link-amo]
 
 ## Features
 
