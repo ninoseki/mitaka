@@ -9,10 +9,11 @@
 
 ![eyecatch](./examples/eyecatch.png)
 
-Mitaka is a browser extension for OSINT search which can:
+Mitaka is a browser extension for OSINT (open source intelligence)) search which can:
 
-- Extract & refang IoC from a selected block of text.
+- Extract & refang IoCs (indicators of compromise) from a selected block of text.
   - E.g. `example[.]com` to `example.com`, `test[at]example.com` to `test@example.com`, `hxxp://example.com` to `http://example.com`, etc.
+  - You can find all the refang techniques at [here](https://github.com/ninoseki/ioc-extractor#details).
 - Search / scan it on various engines.
   - E.g. VirusTotal, urlscan.io, Censys, Shodan, etc.
 
