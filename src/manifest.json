@@ -20,6 +20,7 @@
     "matches": ["<all_urls>"],
     "js": ["vendor.js", "content.js"]
   }],
+  "content_security_policy": "default-src 'none'; script-src 'self'; object-src 'self';",
   "permissions": [
     "contextMenus",
     "notifications",
