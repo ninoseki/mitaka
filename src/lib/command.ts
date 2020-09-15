@@ -97,6 +97,12 @@ export class Command {
       }
       return "";
     },
+    eth: (searcher: Searcher, query: string): string => {
+      if (searcher.searchByETH) {
+        return searcher.searchByETH(query);
+      }
+      return "";
+    },
   };
 
   public search(): string {

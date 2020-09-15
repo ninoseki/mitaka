@@ -20,6 +20,7 @@ describe("Seletor", function () {
     cve: numberOfSelectorsByType("cve"),
     domain: numberOfSelectorsByType("domain"),
     email: numberOfSelectorsByType("email"),
+    eth: numberOfSelectorsByType("eth"),
     gaPubID: numberOfSelectorsByType("gaPubID"),
     gaTrackID: numberOfSelectorsByType("gaTrackID"),
     hash: numberOfSelectorsByType("hash"),
@@ -326,6 +327,32 @@ describe("Seletor", function () {
           expect(selector.getSearchersByType("gaPubID").length).to.equal(
             stats.gaPubID
           );
+        });
+      });
+    });
+
+    context("eth", function () {
+      const eth = "0x4966db520b0680fc19df5d7774ca96f42e6abd4f";
+      const selector: Selector = new Selector(eth);
+      describe("#getETH", function () {
+        it("should return ETH address", function () {
+          expect(selector.getETH()).to.equal(eth);
+        });
+      });
+
+      describe("#getSearchersForETH", function () {
+        it("should return searchers which support ETH", function () {
+          expect(selector.getSearchersByType("eth").length).to.equal(stats.eth);
+        });
+      });
+
+      describe("#getAnalyzerEntrys", function () {
+        it("should return searcher entries which support ETH", function () {
+          const entries: AnalyzerEntry[] = selector.getSearcherEntries();
+          for (const entry of entries) {
+            expect(entry.query).to.equal(eth);
+          }
+          expect(entries.length).to.equal(stats.text + stats.eth);
         });
       });
     });

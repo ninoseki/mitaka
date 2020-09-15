@@ -4,6 +4,7 @@ import {
   extractCVE,
   extractDomain,
   extractEmail,
+  extractETH,
   extractGAPubID,
   extractGATrackID,
   extractIPv4,
@@ -88,6 +89,10 @@ export class Selector {
     return this.getFirstValueFromArray(extractGAPubID(this.input));
   }
 
+  public getETH(): string | null {
+    return this.getFirstValueFromArray(extractETH(this.input));
+  }
+
   public getSearchersByType(type: SearchableType): Searcher[] {
     return this.searchers.filter((searcher: Searcher) =>
       searcher.supportedTypes.includes(type)
@@ -114,6 +119,7 @@ export class Selector {
       func: this.getGATrackID = this.getGATrackID.bind(this),
     },
     { type: "gaPubID", func: this.getGAPubID = this.getGAPubID.bind(this) },
+    { type: "eth", func: this.getETH = this.getETH.bind(this) },
   ];
 
   public getSearcherEntries(): AnalyzerEntry[] {
