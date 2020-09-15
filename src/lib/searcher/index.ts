@@ -9,6 +9,7 @@ export { BinaryEdge } from "./binaryedge";
 export { BitcoinAbuse } from "./bitcoinabuse";
 export { BitcoinWhosWho } from "./bitcoinwhoswho";
 export { BlockChain } from "./blockchain";
+export { Blockchair } from "./blockchair";
 export { BlockCypher } from "./blockcypher";
 export { Censys } from "./censys";
 export { Crtsh } from "./crtsh";

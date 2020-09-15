@@ -1,16 +1,17 @@
 export type SearchableType =
-  | "text"
-  | "ip"
-  | "domain"
-  | "url"
   | "asn"
-  | "email"
-  | "hash"
-  | "cve"
   | "btc"
-  | "xmr"
+  | "cve"
+  | "domain"
+  | "email"
+  | "eth"
+  | "gaPubID"
   | "gaTrackID"
-  | "gaPubID";
+  | "hash"
+  | "ip"
+  | "text"
+  | "url"
+  | "xmr";
 
 export interface Searcher {
   baseURL: string;
@@ -21,6 +22,7 @@ export interface Searcher {
   searchByCVE?(query: string): string;
   searchByDomain?(query: string): string;
   searchByEmail?(query: string): string;
+  searchByETH?(query: string): string;
   searchByGAPubID?(quqery: string): string;
   searchByGATrackID?(query: string): string;
   searchByHash?(query: string): string;
