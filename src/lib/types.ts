@@ -10,8 +10,7 @@ export type SearchableType =
   | "hash"
   | "ip"
   | "text"
-  | "url"
-  | "xmr";
+  | "url";
 
 export interface Searcher {
   baseURL: string;

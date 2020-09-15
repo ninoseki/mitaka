@@ -27,7 +27,6 @@ describe("Seletor", function () {
     ip: numberOfSelectorsByType("ip"),
     text: numberOfSelectorsByType("text"),
     url: numberOfSelectorsByType("url"),
-    xmr: numberOfSelectorsByType("xmr"),
   };
 
   context("searcher", function () {
@@ -274,25 +273,6 @@ describe("Seletor", function () {
             expect(entry.query).to.equal("1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa");
           }
           expect(entries.length).to.equal(stats.text + stats.btc);
-        });
-      });
-    });
-
-    context("xmr", function () {
-      const selector: Selector = new Selector(
-        "4Aa3TcU7ixMVcYwbsw8ENVbFwt4ZuqrNBVij5TRvPCTpGRK5BKBHQPu7ahT7z2A6547a5Lcn7yPZV1xU22ZbviqxUX7JVuP"
-      );
-      describe("#getXMR", function () {
-        it("should return XMR", function () {
-          expect(selector.getXMR()).to.equal(
-            "4Aa3TcU7ixMVcYwbsw8ENVbFwt4ZuqrNBVij5TRvPCTpGRK5BKBHQPu7ahT7z2A6547a5Lcn7yPZV1xU22ZbviqxUX7JVuP"
-          );
-        });
-      });
-
-      describe("#getSearchersForBTC", function () {
-        it("should return Searchers support BTC", function () {
-          expect(selector.getSearchersByType("xmr").length).to.equal(stats.xmr);
         });
       });
     });
