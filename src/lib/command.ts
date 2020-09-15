@@ -79,12 +79,6 @@ export class Command {
       }
       return "";
     },
-    xmr: (searcher: Searcher, query: string): string => {
-      if (searcher.searchByXMR) {
-        return searcher.searchByXMR(query);
-      }
-      return "";
-    },
     gaPubID: (searcher: Searcher, query: string): string => {
       if (searcher.searchByGAPubID) {
         return searcher.searchByGAPubID(query);
