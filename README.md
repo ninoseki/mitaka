@@ -29,19 +29,20 @@ Mitaka is a browser extension for OSINT (open source intelligence) search which 
 
 ### Supported IoCs
 
-| name      | desc.                       | e.g.                                 |
-|:----------|:----------------------------|:-------------------------------------|
-| text      | Freetext                    | any string(s)                        |
-| ip        | IPv4 address                | `8.8.8.8`                            |
-| domain    | Domain name                 | `github.com`                         |
-| url       | URL                         | `https://github.com`                 |
-| email     | Email address               | `test@test.com`                      |
-| asn       | ASN                         | `AS13335`                            |
-| hash      | md5 / sha1 / sha256         | `44d88612fea8a8f36de82e1278abb02f`   |
-| cve       | CVE number                  | `CVE-2018-11776`                     |
-| btc       | BTC address                 | `1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa` |
-| gaPubID   | Google Adsense Publisher ID | `pub-9383614236930773`               |
-| gaTrackID | Google Analytics Tracker ID | `UA-67609351-1`                      |
+| name      | desc.                       | e.g.                                         |
+|:----------|:----------------------------|:---------------------------------------------|
+| text      | Freetext                    | any string(s)                                |
+| asn       | ASN                         | `AS13335`                                    |
+| btc       | BTC address                 | `1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa`         |
+| cve       | CVE number                  | `CVE-2018-11776`                             |
+| domain    | Domain name                 | `github.com`                                 |
+| email     | Email address               | `test@test.com`                              |
+| eth       | Ethereum address            | `0x32be343b94f860124dc4fee278fdcbd38c102d88` |
+| gaPubID   | Google Adsense Publisher ID | `pub-9383614236930773`                       |
+| gaTrackID | Google Analytics Tracker ID | `UA-67609351-1`                              |
+| hash      | md5 / sha1 / sha256         | `44d88612fea8a8f36de82e1278abb02f`           |
+| ip        | IPv4 address                | `8.8.8.8`                                    |
+| url       | URL                         | `https://github.com`                         |
 
 ### Supported search engines
 
@@ -58,6 +59,7 @@ Mitaka is a browser extension for OSINT (open source intelligence) search which 
 | BitcoinAbuse         | https://www.bitcoinabuse.com           | btc                               |
 | BitcoinWhosWhos      | https://bitcoinwhoswho.com             | btc                               |
 | Blockchain.com       | https://www.blockchain.com             | btc                               |
+| Blockchair           | https://blockchair.com                 | btc / eth                         |
 | BlockCypher          | https://live.blockcypher.com           | btc                               |
 | Censys               | https://censys.io                      | ip / domain / asn / text          |
 | crt.sh               | https://crt.sh                         | domain                            |
