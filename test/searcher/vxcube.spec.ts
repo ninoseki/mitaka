@@ -7,30 +7,33 @@ import { VxCube } from "../../src/lib/searcher";
 describe("VxCube", function () {
   const subject = new VxCube();
 
-  it("should support IP, Domain & Hash type IOC", function () {
+  it("should support ip, domain and hash ", function () {
     expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "hash"]);
   });
 
   describe("#searchByIP", function () {
-    it("should return URL", function () {
-      expect(subject.searchByIP("1.1.1.1")).to.equal(
-        "http://vxcube.com/tools/ip/1.1.1.1/whois"
+    const ip = "1.1.1.1";
+    it("should return a URL", function () {
+      expect(subject.searchByIP(ip)).to.equal(
+        `http://vxcube.com/tools/ip/${ip}/whois`
       );
     });
   });
 
   describe("#searchByDomain", function () {
-    it("should return URL", function () {
-      expect(subject.searchByDomain("github.com")).to.equal(
-        "http://vxcube.com/tools/domain/github.com/whois"
+    const domain = "github.com";
+    it("should return a URL", function () {
+      expect(subject.searchByDomain(domain)).to.equal(
+        `http://vxcube.com/tools/domain/${domain}/whois`
       );
     });
   });
 
   describe("#searchByHash", function () {
-    it("should return URL", function () {
-      expect(subject.searchByHash("44d88612fea8a8f36de82e1278abb02f")).to.equal(
-        "http://vxcube.com/result/44d88612fea8a8f36de82e1278abb02f"
+    const hash = "44d88612fea8a8f36de82e1278abb02f";
+    it("should return a URL", function () {
+      expect(subject.searchByHash(hash)).to.equal(
+        `http://vxcube.com/result/${hash}`
       );
     });
   });

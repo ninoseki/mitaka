@@ -7,12 +7,12 @@ import { PublicWWW } from "../../src/lib/searcher";
 describe("PublicWWW", function () {
   const subject = new PublicWWW();
 
-  it("should support text type IOC", function () {
+  it("should support text", function () {
     expect(subject.supportedTypes).to.deep.equal(["text"]);
   });
 
   describe("#searchByText", function () {
-    it("should return URL", function () {
+    it("should return a URL", function () {
       expect(subject.searchByText("urlscan.io")).to.equal(
         "https://publicwww.com/websites/urlscan.io"
       );

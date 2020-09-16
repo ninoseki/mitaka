@@ -22,28 +22,29 @@ describe("Selector", function () {
   context("scanner", function () {
     describe("#getScannersByType", function () {
       const selector: Selector = new Selector("test");
-      it("should return Scanners support ip", function () {
+      it("should return scanners which support ip", function () {
         expect(selector.getScannersByType("ip").length).to.equal(stats.ip);
       });
 
-      it("should return Scanners support domain", function () {
+      it("should return scanners which support domain", function () {
         expect(selector.getScannersByType("domain").length).to.equal(
           stats.domain
         );
       });
 
-      it("should return Scanners support url", function () {
+      it("should return scanners support url", function () {
         expect(selector.getScannersByType("url").length).to.equal(stats.url);
       });
     });
 
     context("ip", function () {
-      const selector: Selector = new Selector("8.8.8.8");
+      const ip = "8.8.8.8";
+      const selector: Selector = new Selector(ip);
       describe("#getScannerEntries", function () {
-        it("should return Scanners support ip", function () {
+        it("should return scanners which support ip", function () {
           const entries: AnalyzerEntry[] = selector.getScannerEntries();
           for (const entry of entries) {
-            expect(entry.query).to.equal("8.8.8.8");
+            expect(entry.query).to.equal(ip);
           }
           expect(entries.length).to.equal(stats.ip);
         });
@@ -51,12 +52,13 @@ describe("Selector", function () {
     });
 
     context("domain", function () {
-      const selector: Selector = new Selector("urlscan.io");
+      const domain = "urlscan.io";
+      const selector: Selector = new Selector(domain);
       describe("#getScannerEntries", function () {
-        it("should return Scanners support domain", function () {
+        it("should return scanners which support domain", function () {
           const entries: AnalyzerEntry[] = selector.getScannerEntries();
           for (const entry of entries) {
-            expect(entry.query).to.equal("urlscan.io");
+            expect(entry.query).to.equal(domain);
           }
           expect(entries.length).to.equal(stats.domain);
         });

@@ -7,7 +7,7 @@ import { RiskIQ } from "../../src/lib/searcher";
 describe("RiskIQ", function () {
   const subject = new RiskIQ();
 
-  it("should support IP, Domain & Emal type IOC", function () {
+  it("should support ip, domain, email and gaTrackID", function () {
     expect(subject.supportedTypes).to.deep.equal([
       "ip",
       "domain",
@@ -17,32 +17,36 @@ describe("RiskIQ", function () {
   });
 
   describe("#searchByIP", function () {
-    it("should return URL", function () {
-      expect(subject.searchByIP("1.1.1.1")).to.equal(
-        "https://community.riskiq.com/search/1.1.1.1"
+    const ip = "1.1.1.1";
+    it("should return a URL", function () {
+      expect(subject.searchByIP(ip)).to.equal(
+        `https://community.riskiq.com/search/${ip}`
       );
     });
   });
 
   describe("#searchByDomain", function () {
-    it("should return URL", function () {
-      expect(subject.searchByDomain("github.com")).to.equal(
-        "https://community.riskiq.com/search/github.com"
+    const domain = "github.com";
+    it("should return a URL", function () {
+      expect(subject.searchByDomain(domain)).to.equal(
+        `https://community.riskiq.com/search/${domain}`
       );
     });
   });
 
   describe("#searchByEmail", function () {
-    it("should return URL", function () {
-      expect(subject.searchByEmail("test@test.com")).to.equal(
-        "https://community.riskiq.com/search/whois/email/test@test.com"
+    const email = "test@test.com";
+    it("should return a URL", function () {
+      expect(subject.searchByEmail(email)).to.equal(
+        `https://community.riskiq.com/search/whois/email/${email}`
       );
     });
   });
 
   describe("#searchByGATarckID", function () {
-    it("should return URL", function () {
-      expect(subject.searchByGATrackID("UA-67609351-1")).to.equal(
+    const gaTrackID = "UA-67609351-1";
+    it("should return a URL", function () {
+      expect(subject.searchByGATrackID(gaTrackID)).to.equal(
         "https://community.riskiq.com/search/trackers/ua-67609351-1"
       );
     });

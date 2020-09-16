@@ -7,13 +7,14 @@ import { OCCRP } from "../../src/lib/searcher";
 describe("OCCRP", function () {
   const subject = new OCCRP();
 
-  it("should support Email type IOC", function () {
+  it("should support email", function () {
     expect(subject.supportedTypes).to.deep.equal(["email"]);
   });
 
   describe("#searchByEmail", function () {
-    it("should return URL", function () {
-      expect(subject.searchByEmail("test@test.com")).to.equal(
+    const email = "test@test.com";
+    it("should return a URL", function () {
+      expect(subject.searchByEmail(email)).to.equal(
         "https://data.occrp.org/search?facet=email&filter%3Aemails=test%40test.com"
       );
     });

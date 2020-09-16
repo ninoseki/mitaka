@@ -7,22 +7,24 @@ import { Robtex } from "../../src/lib/searcher";
 describe("Robtex", function () {
   const subject = new Robtex();
 
-  it("should support Domain, IP type IOC", function () {
+  it("should support domain and ip", function () {
     expect(subject.supportedTypes).to.deep.equal(["domain", "ip"]);
   });
 
   describe("#searchByDomain", function () {
-    it("should return URL", function () {
-      expect(subject.searchByDomain("github.com")).to.equal(
-        "https://www.robtex.com/dns-lookup/github.com"
+    const domain = "github.com";
+    it("should return a URL", function () {
+      expect(subject.searchByDomain(domain)).to.equal(
+        `https://www.robtex.com/dns-lookup/${domain}`
       );
     });
   });
 
   describe("#searchByIP", function () {
-    it("should return URL", function () {
-      expect(subject.searchByIP("1.1.1.1")).to.equal(
-        "https://www.robtex.com/ip-lookup/1.1.1.1"
+    const ip = "1.1.1.1";
+    it("should return a URL", function () {
+      expect(subject.searchByIP(ip)).to.equal(
+        `https://www.robtex.com/ip-lookup/${ip}`
       );
     });
   });

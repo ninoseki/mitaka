@@ -7,20 +7,23 @@ import { DomainWatch } from "../../src/lib/searcher";
 describe("DomainWatch", function () {
   const subject = new DomainWatch();
 
-  it("should support Domain & Email type IOC", function () {
+  it("should support domain and email", function () {
     expect(subject.supportedTypes).to.deep.equal(["domain", "email"]);
   });
 
   describe("#searchByDomain", function () {
-    it("should return URL", function () {
-      expect(subject.searchByDomain("github.com")).to.equal(
-        "https://domainwat.ch/site/github.com"
+    const domain = "github.com";
+    it("should return a URL", function () {
+      expect(subject.searchByDomain(domain)).to.equal(
+        `https://domainwat.ch/site/${domain}`
       );
     });
   });
+
   describe("#searchByEmail", function () {
-    it("should return URL", function () {
-      expect(subject.searchByEmail("test@test.com")).to.equal(
+    const email = "test@test.com";
+    it("should return a URL", function () {
+      expect(subject.searchByEmail(email)).to.equal(
         "https://domainwat.ch/search?query=email%3Atest%40test.com&type=whois_raw"
       );
     });

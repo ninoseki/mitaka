@@ -7,14 +7,15 @@ import { Vulmon } from "../../src/lib/searcher";
 describe("Vulmon", function () {
   const subject = new Vulmon();
 
-  it("should support CVE type IOC", function () {
+  it("should support cve", function () {
     expect(subject.supportedTypes).to.deep.equal(["cve"]);
   });
 
   describe("#searchByCVE", function () {
-    it("should return URL", function () {
-      expect(subject.searchByCVE("CVE-2018-8013")).to.equal(
-        "https://vulmon.com/vulnerabilitydetails?qid=CVE-2018-8013"
+    const cve = "CVE-2018-8013";
+    it("should return a URL", function () {
+      expect(subject.searchByCVE(cve)).to.equal(
+        `https://vulmon.com/vulnerabilitydetails?qid=${cve}`
       );
     });
   });

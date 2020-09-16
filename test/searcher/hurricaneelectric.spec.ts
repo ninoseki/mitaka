@@ -7,31 +7,30 @@ import { HurricaneElectric } from "../../src/lib/searcher";
 describe("HurricaneElectric", function () {
   const subject = new HurricaneElectric();
 
-  it("should support IP and domain", function () {
+  it("should support ip, domain and asn", function () {
     expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "asn"]);
   });
 
   describe("#searchByIP", function () {
-    it("should return URL", function () {
-      expect(subject.searchByIP("1.1.1.1")).to.equal(
-        "https://bgp.he.net/ip/1.1.1.1"
-      );
+    const ip = "1.1.1.1";
+    it("should return a URL", function () {
+      expect(subject.searchByIP(ip)).to.equal(`https://bgp.he.net/ip/${ip}`);
     });
   });
 
   describe("#searchByDomain", function () {
-    it("should return URL", function () {
-      expect(subject.searchByDomain("github.com")).to.equal(
-        "https://bgp.he.net/dns/github.com"
+    const domain = "github.com";
+    it("should return a URL", function () {
+      expect(subject.searchByDomain(domain)).to.equal(
+        `https://bgp.he.net/dns/${domain}`
       );
     });
   });
 
   describe("#searchByASN", function () {
-    it("should return URL", function () {
-      expect(subject.searchByASN("AS2497")).to.equal(
-        "https://bgp.he.net/AS2497"
-      );
+    const asn = "AS2497";
+    it("should return a URL", function () {
+      expect(subject.searchByASN(asn)).to.equal(`https://bgp.he.net/${asn}`);
     });
   });
 });

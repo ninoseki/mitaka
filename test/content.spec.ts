@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import "mocha";
 
 import { JSDOM } from "jsdom";
@@ -51,14 +53,14 @@ describe("Context script", function () {
     beforeEach(() => {
       root.window.getSelection = function () {
         return {
-          getRangeAt: (idx_) => {
+          getRangeAt: (_idx) => {
             return {
               startContainer: {
                 parentElement: {
-                  getAttribute: (attr_) => {
+                  getAttribute: (_attr) => {
                     return "https://example.com";
                   },
-                  hasAttribute: (attr_) => {
+                  hasAttribute: (_attr) => {
                     return true;
                   },
                 },
@@ -78,7 +80,7 @@ describe("Context script", function () {
     });
 
     describe("#onSelectionChange", function () {
-      it("should call chrome.runtime.sendMessage()", async function () {
+      it("should call chrome.runtime.sendMessage", async function () {
         await onSelctionChange();
         browserMock.runtime.sendMessage.assertCalls([
           [

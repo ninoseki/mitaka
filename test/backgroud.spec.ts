@@ -24,7 +24,7 @@ describe("Background script", function () {
   });
 
   describe("#showNotification", function () {
-    it("should call chrome.notifications.create()", async function () {
+    it("should call chrome.notifications.create", async function () {
       await showNotification("test");
       browserMock.notifications.create.assertCalls([
         [
@@ -70,7 +70,7 @@ describe("Background script", function () {
             },
           });
       });
-      it("should call chrome.tabs.create()", async function () {
+      it("should call chrome.tabs.create", async function () {
         const command = new Command(
           "Search pub-9383614236930773 as a gaPubID on all"
         );
@@ -156,7 +156,7 @@ describe("Background script", function () {
       stub.withArgs("test");
     });
 
-    context("when set an error in chrome.runtime.lastError", function () {
+    context("when chrome.runtime.lastError raises an error", function () {
       it("should output via console.error", function () {
         browser.runtime.lastError = {
           message: "test",
@@ -180,7 +180,7 @@ describe("Background script", function () {
   });
 
   describe("#createContextMenus", function () {
-    context("when not given a searcherState", function () {
+    context("when not given a searcherStates", function () {
       it("should call chrome.contextMenus.create", async function () {
         await createContextMenus(
           { request: "updateContextMenu", selection: "test" },
@@ -208,7 +208,7 @@ describe("Background script", function () {
       });
     });
 
-    context("when given a searcherState", function () {
+    context("when given a searcherStates", function () {
       it("should call chrome.contextMenus.create", async function () {
         await createContextMenus(
           { request: "updateContextMenu", selection: "test" },

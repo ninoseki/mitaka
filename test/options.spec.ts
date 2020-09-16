@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import "mocha";
 
 import { expect } from "chai";
@@ -38,7 +40,7 @@ describe("Options script", function () {
       stub.withArgs("virustotal-api-key").returns(input);
     });
 
-    it("should save apiKeys via chrome.storage.sync.set()", async function () {
+    it("should save apiKeys via chrome.storage.sync.set", async function () {
       await saveApiKeys();
       browserMock.storage.sync.set.assertCalls([
         [
@@ -78,7 +80,7 @@ describe("Options script", function () {
       stub.withArgs("searcherList").returns(element);
     });
 
-    it("should save searcherStates via chrome.storage.sync.set()", async function () {
+    it("should save searcherStates via chrome.storage.sync.set", async function () {
       await saveSearcherStates();
       browserMock.storage.sync.set.assertCalls([
         [
@@ -120,7 +122,7 @@ describe("Options script", function () {
       stub.withArgs("virustotal-api-key").returns(virusTotalApiKey);
     });
 
-    it("should restore via chrome.storage.sync.get()", async function () {
+    it("should restore apiKeys via chrome.storage.sync.get", async function () {
       sandbox
         .stub(browserMock.storage.sync, "get")
         .withArgs("apiKeys")
@@ -179,7 +181,7 @@ describe("Options script", function () {
       });
     });
 
-    it("should compose searcerList based on searcherStates via chrome.storage.sync.get()", async function () {
+    it("should compose a searcerList based on searcherStates via chrome.storage.sync.get", async function () {
       sandbox
         .stub(browserMock.storage.sync, "get")
         .withArgs("searcherStates")

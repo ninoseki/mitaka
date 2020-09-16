@@ -7,14 +7,15 @@ import { VulncodeDB } from "../../src/lib/searcher";
 describe("VulncodeDB", function () {
   const subject = new VulncodeDB();
 
-  it("should support CVE type IOC", function () {
+  it("should support cve", function () {
     expect(subject.supportedTypes).to.deep.equal(["cve"]);
   });
 
   describe("#searchByCVE", function () {
-    it("should return URL", function () {
-      expect(subject.searchByCVE("CVE-2018-8013")).to.equal(
-        "https://www.vulncode-db.com/CVE-2018-8013"
+    const cve = "CVE-2018-8013";
+    it("should return a URL", function () {
+      expect(subject.searchByCVE(cve)).to.equal(
+        `https://www.vulncode-db.com/${cve}`
       );
     });
   });

@@ -7,30 +7,33 @@ import { DomainBigData } from "../../src/lib/searcher";
 describe("DomainBigData", function () {
   const subject = new DomainBigData();
 
-  it("should support Domain, IP, Email type IOC", function () {
+  it("should support domain, ip and email", function () {
     expect(subject.supportedTypes).to.deep.equal(["domain", "ip", "email"]);
   });
 
   describe("#searchByDomain", function () {
-    it("should return URL", function () {
-      expect(subject.searchByDomain("github.com")).to.equal(
-        "https://domainbigdata.com/github.com"
+    const domain = "github.com";
+    it("should return a URL", function () {
+      expect(subject.searchByDomain(domain)).to.equal(
+        `https://domainbigdata.com/${domain}`
       );
     });
   });
 
   describe("#searchByIP", function () {
-    it("should return URL", function () {
-      expect(subject.searchByDomain("1.1.1.1")).to.equal(
-        "https://domainbigdata.com/1.1.1.1"
+    const ip = "1.1.1.1";
+    it("should return a URL", function () {
+      expect(subject.searchByIP(ip)).to.equal(
+        `https://domainbigdata.com/${ip}`
       );
     });
   });
 
   describe("#searchByEmail", function () {
-    it("should return URL", function () {
-      expect(subject.searchByEmail("test@test.com")).to.equal(
-        "https://domainbigdata.com/email/test@test.com"
+    const email = "test@test.com";
+    it("should return a URL", function () {
+      expect(subject.searchByEmail(email)).to.equal(
+        `https://domainbigdata.com/email/${email}`
       );
     });
   });
