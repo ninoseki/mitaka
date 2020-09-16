@@ -5,7 +5,7 @@ import { Browserling } from "../../src/lib/scanner";
 describe("Browserling", function () {
   const subject = new Browserling();
 
-  it("should support url type IOC", function () {
+  it("should support url", function () {
     expect(subject.supportedTypes).to.deep.equal(["url"]);
   });
 

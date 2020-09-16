@@ -7,29 +7,32 @@ import { ViewDNS } from "../../src/lib/searcher";
 describe("ViewDNS", function () {
   const subject = new ViewDNS();
 
-  it("should support IP, Domain & Emal type IOC", function () {
+  it("should support ip, domain and email", function () {
     expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "email"]);
   });
 
   describe("#searchByIP", function () {
-    it("should return URL", function () {
-      expect(subject.searchByIP("1.1.1.1")).to.equal(
-        "https://viewdns.info/reverseip/?t=1&host=1.1.1.1"
+    const ip = "1.1.1.1";
+    it("should return a URL", function () {
+      expect(subject.searchByIP(ip)).to.equal(
+        `https://viewdns.info/reverseip/?t=1&host=${ip}`
       );
     });
   });
 
   describe("#searchByDomain", function () {
-    it("should return URL", function () {
-      expect(subject.searchByDomain("github.com")).to.equal(
-        "https://viewdns.info/iphistory/?domain=github.com"
+    const domain = "github.com";
+    it("should return a URL", function () {
+      expect(subject.searchByDomain(domain)).to.equal(
+        `https://viewdns.info/iphistory/?domain=${domain}`
       );
     });
   });
 
   describe("#searchByEmail", function () {
-    it("should return URL", function () {
-      expect(subject.searchByEmail("test@test.com")).to.equal(
+    const email = "test@test.com";
+    it("should return a URL", function () {
+      expect(subject.searchByEmail(email)).to.equal(
         "https://viewdns.info/reversewhois/?q=test%40test.com"
       );
     });

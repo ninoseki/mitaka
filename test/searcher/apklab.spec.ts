@@ -12,11 +12,11 @@ describe("Apklab", function () {
   });
 
   describe("#searchByHash", function () {
-    it("should return URL", function () {
+    it("should return a URL", function () {
       const hash =
         "c06537ddb8c4b0c5d338b8c6c891305cceadd9845138f7a87a0b277f16654295";
       expect(subject.searchByHash(hash)).to.equal(
-        "https://www.apklab.io/apk.html?hash=c06537ddb8c4b0c5d338b8c6c891305cceadd9845138f7a87a0b277f16654295"
+        `https://www.apklab.io/apk.html?hash=${hash}`
       );
     });
 

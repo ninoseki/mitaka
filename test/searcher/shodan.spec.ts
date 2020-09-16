@@ -7,29 +7,32 @@ import { Shodan } from "../../src/lib/searcher";
 describe("Shodan", function () {
   const subject = new Shodan();
 
-  it("should support text type IOC", function () {
+  it("should support ip, domain ans asn", function () {
     expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "asn"]);
   });
 
   describe("#searchByIP", function () {
-    it("should return URL", function () {
-      expect(subject.searchByIP("1.1.1.1")).to.equal(
-        "https://www.shodan.io/host/1.1.1.1"
+    const ip = "1.1.1.1";
+    it("should return a URL", function () {
+      expect(subject.searchByIP(ip)).to.equal(
+        `https://www.shodan.io/host/${ip}`
       );
     });
   });
 
   describe("#searchByDomain", function () {
-    it("should return URL", function () {
-      expect(subject.searchByDomain("github.com")).to.equal(
+    const domain = "github.com";
+    it("should return a URL", function () {
+      expect(subject.searchByDomain(domain)).to.equal(
         "https://www.shodan.io/search?query=hostname%3Agithub.com"
       );
     });
   });
 
   describe("#searchByASN", function () {
-    it("should return URL", function () {
-      expect(subject.searchByASN("AS13335")).to.equal(
+    const asn = "AS13335";
+    it("should return a URL", function () {
+      expect(subject.searchByASN(asn)).to.equal(
         "https://www.shodan.io/search?query=asn%3AAS13335"
       );
     });

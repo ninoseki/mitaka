@@ -7,7 +7,7 @@ import { SpyOnWeb } from "../../src/lib/searcher";
 describe("SpyOnWeb", function () {
   const subject = new SpyOnWeb();
 
-  it("should support IP, Domain, gaPubID & gaTrackID type IOC", function () {
+  it("should support ip, domain, gaPubID and gaTrackID", function () {
     expect(subject.supportedTypes).to.deep.equal([
       "ip",
       "domain",
@@ -17,34 +17,32 @@ describe("SpyOnWeb", function () {
   });
 
   describe("#searchByIP", function () {
-    it("should return URL", function () {
-      expect(subject.searchByIP("1.1.1.1")).to.eq(
-        "http://spyonweb.com/1.1.1.1"
-      );
+    const ip = "1.1.1.1";
+    it("should return a URL", function () {
+      expect(subject.searchByIP(ip)).to.eq(`http://spyonweb.com/${ip}`);
     });
   });
 
   describe("#searchByDomain", function () {
-    it("should return URL", function () {
-      expect(subject.searchByDomain("github.com")).to.eq(
-        "http://spyonweb.com/github.com"
+    const domain = "github.com";
+    it("should return a URL", function () {
+      expect(subject.searchByDomain(domain)).to.eq(
+        `http://spyonweb.com/${domain}`
       );
     });
   });
 
   describe("#searchByGAPubID", function () {
-    it("should return URL", function () {
-      expect(subject.searchByGAPubID("pub-7232066202917795")).to.eq(
-        "http://spyonweb.com/pub-7232066202917795"
-      );
+    const id = "pub-7232066202917795";
+    it("should return a URL", function () {
+      expect(subject.searchByGAPubID(id)).to.eq(`http://spyonweb.com/${id}`);
     });
   });
 
   describe("#searchByGATrackID", function () {
-    it("should return URL", function () {
-      expect(subject.searchByGATrackID("ua-67609351-1")).to.eq(
-        "http://spyonweb.com/ua-67609351-1"
-      );
+    const id = "ua-67609351-1";
+    it("should return a URL", function () {
+      expect(subject.searchByGATrackID(id)).to.eq(`http://spyonweb.com/${id}`);
     });
   });
 });

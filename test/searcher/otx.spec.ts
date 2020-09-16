@@ -7,32 +7,33 @@ import { OTX } from "../../src/lib/searcher";
 describe("OTX", function () {
   const subject = new OTX();
 
-  it("should support IP, Domain & Hash type IOC", function () {
+  it("should support ip, domain and hash", function () {
     expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "hash"]);
   });
 
   describe("#searchByIP", function () {
-    it("should return URL", function () {
-      expect(subject.searchByIP("1.1.1.1")).to.equal(
-        "https://otx.alienvault.com/indicator/ip/1.1.1.1"
+    const ip = "1.1.1.1";
+    it("should return a URL", function () {
+      expect(subject.searchByIP(ip)).to.equal(
+        `https://otx.alienvault.com/indicator/ip/${ip}`
       );
     });
   });
 
   describe("#searchByDomain", function () {
-    it("should return URL", function () {
-      expect(subject.searchByDomain("github.com")).to.equal(
-        "https://otx.alienvault.com/indicator/domain/github.com"
+    const domain = "github.com";
+    it("should return a URL", function () {
+      expect(subject.searchByDomain(domain)).to.equal(
+        `https://otx.alienvault.com/indicator/domain/${domain}`
       );
     });
   });
 
   describe("#searchByHash", function () {
-    it("should return URL", function () {
-      expect(
-        subject.searchByHash("726a2eedb9df3d63ec1b4a7d774a799901f1a2b9")
-      ).to.equal(
-        "https://otx.alienvault.com/indicator/file/726a2eedb9df3d63ec1b4a7d774a799901f1a2b9"
+    const hash = "726a2eedb9df3d63ec1b4a7d774a799901f1a2b9";
+    it("should return a URL", function () {
+      expect(subject.searchByHash(hash)).to.equal(
+        `https://otx.alienvault.com/indicator/file/${hash}`
       );
     });
   });

@@ -30,7 +30,7 @@ describe("Urlscan", function () {
     subject.setApiKey(undefined);
   });
 
-  it("should support IP type IOC", function () {
+  it("should support ip, domain and url", function () {
     expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "url"]);
   });
 

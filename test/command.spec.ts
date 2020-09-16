@@ -114,6 +114,17 @@ describe("Command", function () {
         );
       });
     });
+
+    context("eth", function () {
+      it("should return a URL for search", function () {
+        const command = new Command(
+          "Search 0x4966db520b0680fc19df5d7774ca96f42e6abd4f as a eth on Blockchair"
+        );
+        expect(command.search()).to.equal(
+          "https://blockchair.com/ethereum/address/0x4966db520b0680fc19df5d7774ca96f42e6abd4f"
+        );
+      });
+    });
   });
 
   describe("#searchAll", function () {

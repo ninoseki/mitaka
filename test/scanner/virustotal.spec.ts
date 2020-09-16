@@ -34,7 +34,7 @@ describe("VirusTotal", function () {
     subject.setApiKey(undefined);
   });
 
-  it("should support IP type IOC", function () {
+  it("should support url", function () {
     expect(subject.supportedTypes).to.deep.equal(["url"]);
   });
 

@@ -7,7 +7,7 @@ import { Urlscan } from "../../src/lib/searcher";
 describe("Urlscan", function () {
   const subject = new Urlscan();
 
-  it("should support IP, Domain & URL type IOC", function () {
+  it("should support ip, domain, asn and url", function () {
     expect(subject.supportedTypes).to.deep.equal([
       "ip",
       "domain",
@@ -17,34 +17,34 @@ describe("Urlscan", function () {
   });
 
   describe("#searchByURL", function () {
-    it("should return URL", function () {
-      expect(subject.searchByURL("https://github.com")).to.eq(
+    const url = "https://github.com";
+    it("should return a URL", function () {
+      expect(subject.searchByURL(url)).to.eq(
         "https://urlscan.io/search/#page.url%3A%22https%3A%2F%2Fgithub.com%22%20OR%20task.url%3A%22https%3A%2F%2Fgithub.com%22"
       );
     });
   });
 
   describe("#searchByIP", function () {
-    it("should return URL", function () {
-      expect(subject.searchByIP("1.1.1.1")).to.eq(
-        "https://urlscan.io/ip/1.1.1.1"
-      );
+    const ip = "1.1.1.1";
+    it("should return a URL", function () {
+      expect(subject.searchByIP(ip)).to.eq(`https://urlscan.io/ip/${ip}`);
     });
   });
 
   describe("#searchByDomain", function () {
-    it("should return URL", function () {
-      expect(subject.searchByDomain("urlscan.io")).to.eq(
-        "https://urlscan.io/domain/urlscan.io"
+    const domain = "github.com";
+    it("should return a URL", function () {
+      expect(subject.searchByDomain(domain)).to.eq(
+        `https://urlscan.io/domain/${domain}`
       );
     });
   });
 
   describe("#searchByASN", function () {
-    it("should return URL", function () {
-      expect(subject.searchByASN("AS24940")).to.eq(
-        "https://urlscan.io/asn/AS24940"
-      );
+    const asn = "AS24940";
+    it("should return a URL", function () {
+      expect(subject.searchByASN(asn)).to.eq(`https://urlscan.io/asn/${asn}`);
     });
   });
 });

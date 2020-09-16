@@ -7,7 +7,7 @@ import { VirusTotal } from "../../src/lib/searcher";
 describe("VirusTotal", function () {
   const subject = new VirusTotal();
 
-  it("should support IP, Domain, URL & Hash type IOC", function () {
+  it("should support ip, domain, url and hash", function () {
     expect(subject.supportedTypes).to.deep.equal([
       "ip",
       "domain",
@@ -17,7 +17,7 @@ describe("VirusTotal", function () {
   });
 
   describe("#searchByURL", function () {
-    it("should return URL", function () {
+    it("should return a URL", function () {
       expect(subject.searchByURL("https://virustotal.com")).to.equal(
         "https://www.virustotal.com/gui/url/77af0145fa9290ca3a4c214eb4561fc01070132300f6265e2c4cfb447372422e/details"
       );
@@ -28,29 +28,29 @@ describe("VirusTotal", function () {
   });
 
   describe("#searchByDomain", function () {
-    it("should return URL", function () {
-      expect(subject.searchByDomain("virustotal.com")).to.equal(
-        "https://www.virustotal.com/gui/domain/virustotal.com/details"
+    const domain = "github.com";
+    it("should return a URL", function () {
+      expect(subject.searchByDomain(domain)).to.equal(
+        `https://www.virustotal.com/gui/domain/${domain}/details`
       );
     });
   });
 
   describe("#searchByIP", function () {
-    it("should return URL", function () {
-      expect(subject.searchByIP("1.1.1.1")).to.equal(
-        "https://www.virustotal.com/gui/ip-address/1.1.1.1/details"
+    const ip = "1.1.1.1";
+    it("should return a URL", function () {
+      expect(subject.searchByIP(ip)).to.equal(
+        `https://www.virustotal.com/gui/ip-address/${ip}/details`
       );
     });
   });
 
   describe("#searchByHash", function () {
-    it("should return URL", function () {
-      expect(
-        subject.searchByHash(
-          "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f"
-        )
-      ).to.equal(
-        "https://www.virustotal.com/gui/file/275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f/details"
+    const hash =
+      "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f";
+    it("should return a URL", function () {
+      expect(subject.searchByHash(hash)).to.equal(
+        `https://www.virustotal.com/gui/file/${hash}/details`
       );
     });
   });

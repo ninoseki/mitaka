@@ -7,35 +7,33 @@ import { XForceExchange } from "../../src/lib/searcher";
 describe("X-Force Exchange", function () {
   const subject = new XForceExchange();
 
-  it("should support IP, Domain, Hash type IOC", function () {
+  it("should support ip, domain and hash", function () {
     expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "hash"]);
   });
 
   describe("#searchByIP", function () {
-    it("should return URL", function () {
-      expect(subject.searchByIP("1.1.1.1")).to.equal(
-        "https://exchange.xforce.ibmcloud.com/ip/1.1.1.1"
+    const ip = "1.1.1.1";
+    it("should return a URL", function () {
+      expect(subject.searchByIP(ip)).to.equal(
+        `https://exchange.xforce.ibmcloud.com/ip/${ip}`
       );
     });
   });
 
   describe("#searchByDomain", function () {
-    it("should return URL", function () {
-      expect(subject.searchByDomain("github.com")).to.equal(
-        "https://exchange.xforce.ibmcloud.com/url/github.com"
+    const domain = "github.com";
+    it("should return a URL", function () {
+      expect(subject.searchByDomain(domain)).to.equal(
+        `https://exchange.xforce.ibmcloud.com/url/${domain}`
       );
     });
   });
 
   describe("#searchByHash", function () {
-    it("should return URL", function () {
-      expect(subject.searchByHash("44d88612fea8a8f36de82e1278abb02f")).to.equal(
-        "https://exchange.xforce.ibmcloud.com/malware/44d88612fea8a8f36de82e1278abb02f"
-      );
-      expect(
-        subject.searchByHash("3395856ce81f2b7382dee72602f798b642f14140")
-      ).to.equal(
-        "https://exchange.xforce.ibmcloud.com/malware/3395856ce81f2b7382dee72602f798b642f14140"
+    const hash = "44d88612fea8a8f36de82e1278abb02f";
+    it("should return a URL", function () {
+      expect(subject.searchByHash(hash)).to.equal(
+        `https://exchange.xforce.ibmcloud.com/malware/${hash}`
       );
     });
   });

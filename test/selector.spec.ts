@@ -33,7 +33,7 @@ describe("Seletor", function () {
     context("text", function () {
       const selector: Selector = new Selector("text");
       describe("#getSearchersForText", function () {
-        it("should return Searchers support text", function () {
+        it("should return searchers which support text", function () {
           expect(selector.getSearchersByType("text").length).to.equal(
             stats.text
           );
@@ -41,7 +41,7 @@ describe("Seletor", function () {
       });
 
       describe("#getAnalyzerEntrys", function () {
-        it("should return Searchers support text", function () {
+        it("should return searchers which support text", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
             expect(entry.query).to.equal("text");
@@ -52,24 +52,25 @@ describe("Seletor", function () {
     });
 
     context("ip", function () {
-      const selector: Selector = new Selector("8.8.8.8");
+      const ip = "1.1.1.1";
+      const selector: Selector = new Selector(ip);
       describe("#getIP", function () {
         it("should return the ip", function () {
-          expect(selector.getIP()).to.equal("8.8.8.8");
+          expect(selector.getIP()).to.equal(ip);
         });
       });
 
       describe("#getSearchersForIP", function () {
-        it("should return Searchers support ip", function () {
+        it("should return searchers which support ip", function () {
           expect(selector.getSearchersByType("ip").length).to.equal(stats.ip);
         });
       });
 
       describe("#getAnalyzerEntrys", function () {
-        it("should return Searchrerentrys support ip", function () {
+        it("should return entries which support ip", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
-            expect(entry.query).to.equal("8.8.8.8");
+            expect(entry.query).to.equal(ip);
           }
           expect(entries.length).to.equal(stats.text + stats.ip);
         });
@@ -77,16 +78,17 @@ describe("Seletor", function () {
     });
 
     context("domain", function () {
-      const selector: Selector = new Selector("www.google.com");
+      const domain = "github.com";
+      const selector: Selector = new Selector(domain);
       describe("#getDomain", function () {
         it("should return the domain", function () {
-          expect(selector.getDomain()).to.equal("www.google.com");
+          expect(selector.getDomain()).to.equal(domain);
           expect(selector.getURL()).to.equal(null);
         });
       });
 
       describe("#getSearchersForDomain", function () {
-        it("should return Searchers support domain", function () {
+        it("should return searchers which support domain", function () {
           expect(selector.getSearchersByType("domain").length).to.equal(
             stats.domain
           );
@@ -94,10 +96,10 @@ describe("Seletor", function () {
       });
 
       describe("#getAnalyzerEntrys", function () {
-        it("should return Searchrerentrys support domain", function () {
+        it("should return entries which support domain", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
-            expect(entry.query).to.equal("www.google.com");
+            expect(entry.query).to.equal(domain);
           }
           expect(entries.length).to.equal(stats.text + stats.domain);
         });
@@ -105,24 +107,25 @@ describe("Seletor", function () {
     });
 
     context("url", function () {
-      const selector: Selector = new Selector("https://urlscan.io/");
+      const url = "http://github.com";
+      const selector: Selector = new Selector(url);
       describe("#getURL", function () {
         it("should return the url", function () {
-          expect(selector.getURL()).to.equal("https://urlscan.io/");
+          expect(selector.getURL()).to.equal(url);
         });
       });
 
       describe("#getSearchersForUrl", function () {
-        it("should return Searchers support url", function () {
+        it("should return searchers which support url", function () {
           expect(selector.getSearchersByType("url").length).to.equal(stats.url);
         });
       });
 
       describe("#getAnalyzerEntrys", function () {
-        it("should return Searchrerentrys support url", function () {
+        it("should return entries which support url", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
-            expect(entry.query).to.equal("https://urlscan.io/");
+            expect(entry.query).to.equal(url);
           }
           expect(entries.length).to.equal(stats.text + stats.url);
         });
@@ -130,15 +133,16 @@ describe("Seletor", function () {
     });
 
     context("email", function () {
-      const selector: Selector = new Selector("test@test.com");
+      const email = "test@test.com";
+      const selector: Selector = new Selector(email);
       describe("#getEmail", function () {
         it("should return the email", function () {
-          expect(selector.getEmail()).to.equal("test@test.com");
+          expect(selector.getEmail()).to.equal(email);
         });
       });
 
       describe("#getSearchersForEmail", function () {
-        it("should return Searchers support email", function () {
+        it("should return searchers which support email", function () {
           expect(selector.getSearchersByType("email").length).to.equal(
             stats.email
           );
@@ -146,10 +150,10 @@ describe("Seletor", function () {
       });
 
       describe("#getAnalyzerEntrys", function () {
-        it("should return Searchrerentrys support email", function () {
+        it("should return entries which support email", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
-            expect(entry.query).to.equal("test@test.com");
+            expect(entry.query).to.equal(email);
           }
           expect(entries.length).to.equal(stats.text + stats.email);
         });
@@ -157,24 +161,25 @@ describe("Seletor", function () {
     });
 
     context("asn", function () {
-      const selector: Selector = new Selector("ASN15169");
+      const asn = "ASN15169";
+      const selector: Selector = new Selector(asn);
       describe("#getASN", function () {
         it("should return the asn", function () {
-          expect(selector.getASN()).to.equal("ASN15169");
+          expect(selector.getASN()).to.equal(asn);
         });
       });
 
       describe("#getSearchersForASN", function () {
-        it("should return Searchers support asn", function () {
+        it("should return searchers which support asn", function () {
           expect(selector.getSearchersByType("asn").length).to.equal(stats.asn);
         });
       });
 
       describe("#getAnalyzerEntrys", function () {
-        it("should return Searchrerentrys support asn", function () {
+        it("should return entries which support asn", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
-            expect(entry.query).to.equal("ASN15169");
+            expect(entry.query).to.equal(asn);
           }
           expect(entries.length).to.equal(stats.text + stats.asn);
         });
@@ -182,14 +187,13 @@ describe("Seletor", function () {
     });
 
     context("hash", function () {
-      const selector: Selector = new Selector(
-        "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f"
-      );
+      const sha256 =
+        "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f";
+      const selector: Selector = new Selector(sha256);
       describe("#getHash", function () {
         it("should return SHA256", function () {
-          expect(selector.getHash()).to.equal(
-            "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f"
-          );
+          expect(selector.getHash()).to.equal(sha256);
+
           // additional tests
           const s2: Selector = new Selector(
             "3395856ce81f2b7382dee72602f798b642f14140"
@@ -203,7 +207,7 @@ describe("Seletor", function () {
       });
 
       describe("#getSearchersForHash", function () {
-        it("should return Searchers support hash", function () {
+        it("should return searchers which support hash", function () {
           expect(selector.getSearchersByType("hash").length).to.equal(
             stats.hash
           );
@@ -211,12 +215,10 @@ describe("Seletor", function () {
       });
 
       describe("#getAnalyzerEntrys", function () {
-        it("should return Searchrerentrys support hash", function () {
+        it("should return entries which support hash", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
-            expect(entry.query).to.equal(
-              "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f"
-            );
+            expect(entry.query).to.equal(sha256);
           }
           expect(entries.length).to.equal(stats.text + stats.hash);
         });
@@ -224,24 +226,25 @@ describe("Seletor", function () {
     });
 
     context("cve", function () {
-      const selector: Selector = new Selector("CVE-2018-8013");
+      const cve = "CVE-2018-8013";
+      const selector: Selector = new Selector(cve);
       describe("#getCVE", function () {
         it("should return CVE", function () {
-          expect(selector.getCVE()).to.equal("CVE-2018-8013");
+          expect(selector.getCVE()).to.equal(cve);
         });
       });
 
       describe("#getSearchersForCVE", function () {
-        it("should return Searchers support CVE", function () {
+        it("should return searchers which support CVE", function () {
           expect(selector.getSearchersByType("cve").length).to.equal(stats.cve);
         });
       });
 
       describe("#getAnalyzerEntrys", function () {
-        it("should return Searchrerentrys support cve", function () {
+        it("should return entries which support cve", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
-            expect(entry.query).to.equal("CVE-2018-8013");
+            expect(entry.query).to.equal(cve);
           }
           expect(entries.length).to.equal(stats.text + stats.cve);
         });
@@ -249,28 +252,25 @@ describe("Seletor", function () {
     });
 
     context("btc", function () {
-      const selector: Selector = new Selector(
-        "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
-      );
+      const btc = "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa";
+      const selector: Selector = new Selector(btc);
       describe("#getBTC", function () {
         it("should return BTC", function () {
-          expect(selector.getBTC()).to.equal(
-            "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
-          );
+          expect(selector.getBTC()).to.equal(btc);
         });
       });
 
       describe("#getSearchersForBTC", function () {
-        it("should return Searchers support BTC", function () {
+        it("should return searchers which support BTC", function () {
           expect(selector.getSearchersByType("btc").length).to.equal(stats.btc);
         });
       });
 
       describe("#getAnalyzerEntrys", function () {
-        it("should return Searchrerentrys support btc", function () {
+        it("should return entries which support btc", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
-            expect(entry.query).to.equal("1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa");
+            expect(entry.query).to.equal(btc);
           }
           expect(entries.length).to.equal(stats.text + stats.btc);
         });
@@ -278,15 +278,16 @@ describe("Seletor", function () {
     });
 
     context("gaTrackID", function () {
-      const selector: Selector = new Selector("UA-67609351-1");
+      const id = "UA-67609351-1";
+      const selector: Selector = new Selector(id);
       describe("#getGATrackID", function () {
         it("should return GATrackID", function () {
-          expect(selector.getGATrackID()).to.equal("UA-67609351-1");
+          expect(selector.getGATrackID()).to.equal(id);
         });
       });
 
       describe("#getSearchersForGATrackID", function () {
-        it("should return Searchers support GATrackID", function () {
+        it("should return searchers which support GATrackID", function () {
           expect(selector.getSearchersByType("gaTrackID").length).to.equal(
             stats.gaTrackID
           );
@@ -295,15 +296,16 @@ describe("Seletor", function () {
     });
 
     context("gaPubID", function () {
-      const selector: Selector = new Selector("pub-9383614236930773");
+      const id = "pub-9383614236930773";
+      const selector: Selector = new Selector(id);
       describe("#getGAPubID", function () {
         it("should return GAPubID", function () {
-          expect(selector.getGAPubID()).to.equal("pub-9383614236930773");
+          expect(selector.getGAPubID()).to.equal(id);
         });
       });
 
       describe("#getSearchersForGAPubID", function () {
-        it("should return Searchers support GAPubID", function () {
+        it("should return searchers support GAPubID", function () {
           expect(selector.getSearchersByType("gaPubID").length).to.equal(
             stats.gaPubID
           );
@@ -327,7 +329,7 @@ describe("Seletor", function () {
       });
 
       describe("#getAnalyzerEntrys", function () {
-        it("should return searcher entries which support ETH", function () {
+        it("should return entries which support ETH", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
             expect(entry.query).to.equal(eth);
