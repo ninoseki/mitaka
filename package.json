@@ -75,7 +75,7 @@
     "@types/node": "14.11.2",
     "@types/qs": "6.9.5",
     "@types/sinon": "9.0.7",
-    "@types/window-or-global": "1.0.0",
+    "@types/window-or-global": "1.0.3",
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/parser": "4.3.0",
     "archiver": "5.0.2",
