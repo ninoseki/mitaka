@@ -91,6 +91,7 @@ Mitaka is a browser extension for OSINT (open source intelligence) search which 
 | OTX                  | https://otx.alienvault.com             | ip / domain / hash                |
 | PublicWWW            | https://publicwww.com                  | text                              |
 | Pulsedive            | https://pulsedive.com                  | ip / domain / url / hash          |
+| Radar                | https://radar.cloudflare.com           | ip / domain                       |
 | RiskIQ               | http://community.riskiq.com            | ip / domain / email / gaTrackID   |
 | Robtex               | https://www.robtex.com                 | ip / domain                       |
 | Scumware             | https://www.scumware.org               | ip / domain / hash (MD5 only)     |
