@@ -5,3 +5,9 @@ export function extractASNumber(asn: string): string {
   }
   return "";
 }
+
+export function extractCVENumber(cve: string): string {
+  const parts = cve.split("-");
+  const numbers = parts.slice(1 - parts.length);
+  return numbers.join("-");
+}
