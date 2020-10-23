@@ -9,8 +9,6 @@ import {
 } from "./lib/types";
 import { getApiKeys } from "./utility";
 
-const FIRST_INDEX_WITHOUT_TEXT_ANALYZERS = 3;
-
 export async function showNotification(message: string): Promise<void> {
   await browser.notifications.create({
     iconUrl: "./icons/48.png",
@@ -77,23 +75,31 @@ export async function createContextMenus(
   const selector: Selector = new Selector(text);
   // create searchers context menus based on a type of the input
   const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
+  let nonTextEntry: AnalyzerEntry | undefined = undefined;
+
   for (const entry of searcherEntries) {
     const name = entry.analyzer.name;
     // continue if a searcher is disabled in options
     if (name in searcherStates && !searcherStates[name]) {
       continue;
     }
-    // it tells action/query/type/target to the listner
+
+    if (entry.type !== "text" && nonTextEntry === undefined) {
+      nonTextEntry = entry;
+    }
+
+    // it tells action, query, type and target to the listner
     const id = `Search ${entry.query} as a ${entry.type} on ${name}`;
     const title = `Search this ${entry.type} on ${name}`;
     const contexts: ContextMenus.ContextType[] = ["selection"];
     const options = { contexts, id, title };
     browser.contextMenus.create(options, createContextMenuErrorHandler);
   }
+
   // search it on all services
-  if (searcherEntries.length >= FIRST_INDEX_WITHOUT_TEXT_ANALYZERS) {
-    const query = searcherEntries[FIRST_INDEX_WITHOUT_TEXT_ANALYZERS].query;
-    const type = searcherEntries[FIRST_INDEX_WITHOUT_TEXT_ANALYZERS].type;
+  if (nonTextEntry !== undefined) {
+    const query = nonTextEntry.query;
+    const type = nonTextEntry.type;
     const id = `Search ${query} as a ${type} on all`;
     const title = `Search this ${type} on all`;
     const contexts: ContextMenus.ContextType[] = ["selection"];
