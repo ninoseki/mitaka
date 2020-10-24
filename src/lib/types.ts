@@ -88,3 +88,7 @@ export interface SearcherTable {
 export interface ScannerTable {
   [name: string]: (scanner: Scanner, query: string) => Promise<string>;
 }
+
+export interface GeneralSettings {
+  enableIDN: boolean;
+}

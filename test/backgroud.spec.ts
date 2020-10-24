@@ -184,7 +184,8 @@ describe("Background script", function () {
       it("should call chrome.contextMenus.create", async function () {
         await createContextMenus(
           { request: "updateContextMenu", selection: "test" },
-          {}
+          {},
+          { enableIDN: true }
         );
 
         browserMock.contextMenus.create.assertCalls([
@@ -214,7 +215,8 @@ describe("Background script", function () {
           { request: "updateContextMenu", selection: "test" },
           {
             Censys: false,
-          }
+          },
+          { enableIDN: true }
         );
 
         browserMock.contextMenus.create.assertCalls([

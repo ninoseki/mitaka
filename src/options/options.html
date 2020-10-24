@@ -15,6 +15,11 @@
           <h1 class="title is-1">Mitaka</h1>
 
           <div class="box">
+            <h2 class="title is-2">General settings</h2>
+            <div id="general-settings"></div>
+          </div>
+
+          <div class="box">
             <h2 class="title is-2">API key settings</h2>
             <div class="field">
               <label class="label">
@@ -41,6 +46,7 @@
               </div>
             </div>
           </div>
+
           <div class="box">
             <h2 class="title is-2">Searcher settings</h2>
             <div id="searcherList"></div>
@@ -72,6 +78,22 @@
       </div>
       <div class="control">
         <input name="{{name}}" type="checkbox" {{#isEnabled}}checked="checked" {{/isEnabled}}>
+        <label>Enable</label>
+      </div>
+    </div>
+  </script>
+
+  <script id="general-settings-template" type="x-tmpl-mustache">
+    <div class="field has-addons">
+      <div class="control is-expanded">
+        <div>
+          <label class="label">
+            Enable IDN (Internationalized Domain Name) extraction
+          </label>
+        </div>
+      </div>
+      <div class="control">
+        <input id="enable-idn" type="checkbox" {{#enableIDN}}checked="checked"{{/enableIDN}}>
         <label>Enable</label>
       </div>
     </div>
