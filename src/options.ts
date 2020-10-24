@@ -33,7 +33,7 @@ export async function saveApiKeys(): Promise<void> {
 
 export async function saveSearcherStates(): Promise<void> {
   const searcherStates: SearcherStates = {};
-  const searcherList = document.getElementById("searcherList") as HTMLElement;
+  const searcherList = document.getElementById("searcher-list") as HTMLElement;
   const radios = searcherList.querySelectorAll<HTMLInputElement>(
     '[type="checkbox"]'
   );
@@ -92,9 +92,9 @@ export async function restoreApiKeys(): Promise<void> {
 export async function restoreSearcherStates(): Promise<void> {
   const states = await getSearcherStates();
 
-  const searcherList = document.getElementById("searcherList") as HTMLElement;
+  const searcherList = document.getElementById("searcher-list") as HTMLElement;
   const fragment: DocumentFragment = document.createDocumentFragment();
-  const template = (document.getElementById("checkTemplate") as HTMLElement)
+  const template = (document.getElementById("check-template") as HTMLElement)
     .innerHTML;
 
   for (const state of states) {

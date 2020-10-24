@@ -79,7 +79,7 @@ describe("Options script", function () {
         root.document,
         "getElementById"
       );
-      stub.withArgs("searcherList").returns(element);
+      stub.withArgs("searcher-list").returns(element);
     });
 
     it("should save searcherStates via chrome.storage.sync.set", async function () {
@@ -189,14 +189,14 @@ describe("Options script", function () {
       root.document = dom.window.document;
 
       const searcherList = root.document.createElement("div") as HTMLElement;
-      searcherList.id = "searcherList";
+      searcherList.id = "searcher-list";
 
       const stub: sinon.SinonStub = sandbox.stub(
         root.document,
         "getElementById"
       );
-      stub.withArgs("searcherList").returns(searcherList);
-      stub.withArgs("checkTemplate").returns({
+      stub.withArgs("searcher-list").returns(searcherList);
+      stub.withArgs("check-template").returns({
         innerHTML: `
         <div class="field has-addons">
           <div class="control is-expanded">
@@ -226,7 +226,7 @@ describe("Options script", function () {
       await restoreSearcherStates();
 
       const searcherList = root.document.getElementById(
-        "searcherList"
+        "searcher-list"
       ) as HTMLElement;
       const censys = searcherList.querySelector("[name=Censys]");
       expect((censys as HTMLInputElement).checked).to.be.false;
