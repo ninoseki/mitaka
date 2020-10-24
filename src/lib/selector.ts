@@ -30,12 +30,14 @@ import {
 
 export class Selector {
   protected input: string;
+  protected enableIDN: boolean;
 
   protected scanners: Scanner[] = Scanners;
   protected searchers: Searcher[] = Searchers;
 
-  public constructor(input: string) {
+  public constructor(input: string, enableIDN = true) {
     this.input = refang(input);
+    this.enableIDN = enableIDN;
   }
 
   public getIP(): string | null {
@@ -43,15 +45,19 @@ export class Selector {
   }
 
   public getDomain(): string | null {
-    return this.getFirstValueFromArray(extractDomain(this.input));
+    return this.getFirstValueFromArray(
+      extractDomain(this.input, this.enableIDN)
+    );
   }
 
   public getURL(): string | null {
-    return this.getFirstValueFromArray(extractURL(this.input));
+    return this.getFirstValueFromArray(extractURL(this.input, this.enableIDN));
   }
 
   public getEmail(): string | null {
-    return this.getFirstValueFromArray(extractEmail(this.input));
+    return this.getFirstValueFromArray(
+      extractEmail(this.input, this.enableIDN)
+    );
   }
 
   public getASN(): string | null {

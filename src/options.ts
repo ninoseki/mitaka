@@ -1,8 +1,8 @@
 import Mustache from "mustache";
 import { browser } from "webextension-polyfill-ts";
 
-import { ApiKeys, SearcherStates } from "./lib/types";
-import { getApiKeys, getSearcherStates } from "./utility";
+import { ApiKeys, GeneralSettings, SearcherStates } from "./lib/types";
+import { getApiKeys, getGeneralSettings, getSearcherStates } from "./utility";
 
 require("./options/bulma.scss");
 
@@ -47,10 +47,23 @@ export async function saveSearcherStates(): Promise<void> {
   await browser.storage.sync.set({ searcherStates });
 }
 
+export async function saveGeneralSettings(): Promise<void> {
+  const enableIDNInput = document.getElementById(
+    "enable-idn"
+  ) as HTMLInputElement;
+
+  const generalSettings: GeneralSettings = {
+    enableIDN: enableIDNInput.checked,
+  };
+
+  await browser.storage.sync.set({ generalSettings });
+}
+
 // Saves options to chrome.storage.sync.
 export async function saveOptions(): Promise<void> {
   await saveApiKeys();
   await saveSearcherStates();
+  await saveGeneralSettings();
 }
 
 export async function restoreApiKeys(): Promise<void> {
@@ -93,9 +106,28 @@ export async function restoreSearcherStates(): Promise<void> {
   searcherList.appendChild(fragment);
 }
 
+export async function restoreGeneralSettings(): Promise<void> {
+  const generalSettings = await getGeneralSettings();
+
+  const generalSettingsWrapper = document.getElementById(
+    "general-settings"
+  ) as HTMLElement;
+  const fragment: DocumentFragment = document.createDocumentFragment();
+  const template = (document.getElementById(
+    "general-settings-template"
+  ) as HTMLElement).innerHTML;
+
+  const elem = document.createElement("div");
+  elem.innerHTML = Mustache.render(template, generalSettings);
+  fragment.appendChild(elem);
+
+  generalSettingsWrapper.appendChild(fragment);
+}
+
 export async function restoreOptions(): Promise<void> {
   await restoreApiKeys();
   await restoreSearcherStates();
+  await restoreGeneralSettings();
 }
 
 export async function onDOMContentLoaded(): Promise<void> {

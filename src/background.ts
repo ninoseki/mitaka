@@ -4,10 +4,11 @@ import { Command } from "./lib/command";
 import { Selector } from "./lib/selector";
 import {
   AnalyzerEntry,
+  GeneralSettings,
   SearcherStates,
   UpdateContextMenuMessage,
 } from "./lib/types";
-import { getApiKeys } from "./utility";
+import { getApiKeys, getGeneralSettings } from "./utility";
 
 export async function showNotification(message: string): Promise<void> {
   await browser.notifications.create({
@@ -67,19 +68,20 @@ export function createContextMenuErrorHandler(): void {
 
 export async function createContextMenus(
   message: UpdateContextMenuMessage,
-  searcherStates: SearcherStates
+  searcherStates: SearcherStates,
+  generalSettings: GeneralSettings
 ): Promise<void> {
   await browser.contextMenus.removeAll();
 
   const text: string = message.selection;
-  const selector: Selector = new Selector(text);
+  const selector: Selector = new Selector(text, generalSettings.enableIDN);
   // create searchers context menus based on a type of the input
   const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
   let nonTextEntry: AnalyzerEntry | undefined = undefined;
 
   for (const entry of searcherEntries) {
     const name = entry.analyzer.name;
-    // continue if a searcher is disabled in options
+    // continue if a searcher is disabled by options
     if (name in searcherStates && !searcherStates[name]) {
       continue;
     }
@@ -125,11 +127,13 @@ if (typeof browser !== "undefined" && browser.runtime !== undefined) {
     async (message: UpdateContextMenuMessage): Promise<void> => {
       if (message.request === "updateContextMenu") {
         const config = await browser.storage.sync.get("searcherStates");
+        const generalSettings = await getGeneralSettings();
+
         if ("searcherStates" in config) {
           const searcherStates = <SearcherStates>config["searcherStates"];
-          await createContextMenus(message, searcherStates);
+          await createContextMenus(message, searcherStates, generalSettings);
         } else {
-          await createContextMenus(message, {});
+          await createContextMenus(message, {}, generalSettings);
         }
       }
     }

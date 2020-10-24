@@ -8,8 +8,10 @@ import root from "window-or-global";
 
 import {
   restoreApiKeys,
+  restoreGeneralSettings,
   restoreSearcherStates,
   saveApiKeys,
+  saveGeneralSettings,
   saveSearcherStates,
 } from "../src/options";
 import { browserMock } from "./browserMock";
@@ -88,6 +90,36 @@ describe("Options script", function () {
             searcherStates: {
               test1: true,
               test2: true,
+            },
+          },
+        ],
+      ]);
+    });
+  });
+
+  describe("#saveGeneralSettings", function () {
+    beforeEach(() => {
+      const dom = new JSDOM();
+      root.document = dom.window.document;
+
+      const input = root.document.createElement("input") as HTMLInputElement;
+      input.type = "checkbox";
+      input.checked = true;
+
+      const stub: sinon.SinonStub = sandbox.stub(
+        root.document,
+        "getElementById"
+      );
+      stub.withArgs("enable-idn").returns(input);
+    });
+
+    it("should save generalSettings via chrome.storage.sync.set", async function () {
+      await saveGeneralSettings();
+      browserMock.storage.sync.set.assertCalls([
+        [
+          {
+            generalSettings: {
+              enableIDN: true,
             },
           },
         ],
@@ -200,6 +232,102 @@ describe("Options script", function () {
       expect((censys as HTMLInputElement).checked).to.be.false;
       const shodan = searcherList.querySelector("[name=Shodan]");
       expect((shodan as HTMLInputElement).checked).to.be.true;
+    });
+  });
+
+  describe("#restoreApiKeys", function () {
+    beforeEach(() => {
+      const dom = new JSDOM();
+      root.document = dom.window.document;
+
+      const hybridAanalysisApiKey = root.document.createElement(
+        "input"
+      ) as HTMLInputElement;
+      hybridAanalysisApiKey.value = "test";
+      const urlscanApiKey = root.document.createElement(
+        "input"
+      ) as HTMLInputElement;
+      urlscanApiKey.value = "test";
+      const virusTotalApiKey = root.document.createElement(
+        "input"
+      ) as HTMLInputElement;
+      virusTotalApiKey.value = "test";
+
+      const stub: sinon.SinonStub = sandbox.stub(
+        root.document,
+        "getElementById"
+      );
+      stub.withArgs("hybridanalysis-api-key").returns(hybridAanalysisApiKey);
+      stub.withArgs("urlscan-api-key").returns(urlscanApiKey);
+      stub.withArgs("virustotal-api-key").returns(virusTotalApiKey);
+    });
+
+    it("should restore apiKeys via chrome.storage.sync.get", async function () {
+      sandbox
+        .stub(browserMock.storage.sync, "get")
+        .withArgs("apiKeys")
+        .resolves({
+          apiKeys: {
+            hybridAanalysisApiKey: "test",
+            urlscanApiKey: "test1",
+            virusTotalApiKey: "test2",
+          },
+        });
+
+      await restoreApiKeys();
+
+      const hybridAanalysisApiKey = root.document.getElementById(
+        "hybridanalysis-api-key"
+      ) as HTMLInputElement;
+      expect(hybridAanalysisApiKey.value).to.equal("test");
+      const urlscanApiKey = root.document.getElementById(
+        "urlscan-api-key"
+      ) as HTMLInputElement;
+      expect(urlscanApiKey.value).to.equal("test1");
+      const virusTotalApiKey = root.document.getElementById(
+        "virustotal-api-key"
+      ) as HTMLInputElement;
+      expect(virusTotalApiKey.value).to.equal("test2");
+    });
+  });
+
+  describe("#restoreGeneralSettings", function () {
+    beforeEach(() => {
+      const dom = new JSDOM();
+      root.document = dom.window.document;
+
+      const wrapper = root.document.createElement("div") as HTMLElement;
+      wrapper.id = "general-settings";
+
+      const stub: sinon.SinonStub = sandbox.stub(
+        root.document,
+        "getElementById"
+      );
+      stub.withArgs("general-settings").returns(wrapper);
+      stub.withArgs("general-settings-template").returns({
+        innerHTML: `<input id="enable-idn" type="checkbox" {{#enableIDN}}checked="checked"{{/enableIDN}}>`,
+      });
+    });
+
+    it("should compose general-settings based on generalSettings via chrome.storage.sync.get", async function () {
+      sandbox
+        .stub(browserMock.storage.sync, "get")
+        .withArgs("generalSettings")
+        .resolves({
+          generalSettings: {
+            enableIDN: true,
+          },
+        });
+
+      await restoreGeneralSettings();
+
+      const generalSettings = root.document.getElementById(
+        "general-settings"
+      ) as HTMLElement;
+      const enableIDN = generalSettings.querySelector(
+        "input#enable-idn"
+      ) as HTMLInputElement;
+      expect(enableIDN.checked).to.equal(true);
     });
   });
 });
