@@ -22,13 +22,7 @@ export async function saveApiKeys(): Promise<void> {
     urlscanApiKey: urlscanApiKey.value,
     virusTotalApiKey: virusTotalApiKey.value,
   };
-  if (apiKeys) {
-    await browser.storage.sync.set({ apiKeys });
-    const status = document.getElementById("status");
-    if (status) {
-      status.textContent = "Settings are saved.";
-    }
-  }
+  await browser.storage.sync.set({ apiKeys });
 }
 
 export async function saveSearcherStates(): Promise<void> {
@@ -132,10 +126,11 @@ export async function restoreOptions(): Promise<void> {
 
 export async function onDOMContentLoaded(): Promise<void> {
   await restoreOptions();
-  const save = document.getElementById("save");
-  if (save) {
+
+  const inputs = document.getElementsByTagName("input");
+  for (const input of inputs) {
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    save.addEventListener("click", async () => {
+    input.addEventListener("change", async () => {
       await saveOptions();
     });
   }
