@@ -14,8 +14,8 @@
     "build:zip": "npm run build && ts-node scripts/build-zip.ts",
     "watch": "npm run build -- --watch",
     "watch:dev": "cross-env HMR=true npm run build:dev -- --watch",
-    "test": "nyc mocha",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "test": "mocha",
+    "coverage": "nyc npm run test"
   },
   "husky": {
     "hooks": {
@@ -41,7 +41,8 @@
     ],
     "reporter": [
       "html",
-      "text"
+      "text",
+      "lcov"
     ],
     "sourceMap": true,
     "all": true
