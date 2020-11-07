@@ -3,7 +3,7 @@
 [link-cws]: https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg
 [link-amo]: https://addons.mozilla.org/en-US/firefox/addon/mitaka/
 
-[![Build Status](https://travis-ci.com/ninoseki/mitaka.svg?branch=master)](https://travis-ci.com/ninoseki/mitaka)
+[![Build Status](https://github.com/ninoseki/mitaka/workflows/Node.js%20CI/badge.svg)](https://github.com/ninoseki/mitaka/actions?query=workflow%3A%22Node.js+CI%22)
 [![CodeFactor](https://www.codefactor.io/repository/github/ninoseki/mitaka/badge)](https://www.codefactor.io/repository/github/ninoseki/mitaka)
 [![Coverage Status](https://coveralls.io/repos/github/ninoseki/mitaka/badge.svg)](https://coveralls.io/github/ninoseki/mitaka)
 
