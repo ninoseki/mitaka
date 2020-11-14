@@ -30,8 +30,12 @@ export async function onSelctionChange(): Promise<void> {
 if (typeof document !== "undefined") {
   document.addEventListener(
     "selectionchange",
-    throttle(async () => {
-      await onSelctionChange();
-    }, 200)
+    throttle(
+      async () => {
+        await onSelctionChange();
+      },
+      250,
+      { middle: false }
+    )
   );
 }
