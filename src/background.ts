@@ -81,6 +81,8 @@ export async function createContextMenus(
   const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
   let nonTextEntry: AnalyzerEntry | undefined = undefined;
 
+  const contexts: ContextMenus.ContextType[] = ["selection"];
+
   for (const entry of searcherEntries) {
     const name = entry.analyzer.name;
     // continue if a searcher is disabled by options
@@ -95,7 +97,6 @@ export async function createContextMenus(
     // it tells action, query, type and target to the listner
     const id = `Search ${entry.query} as a ${entry.type} on ${name}`;
     const title = `Search this ${entry.type} on ${name}`;
-    const contexts: ContextMenus.ContextType[] = ["selection"];
     const options = { contexts, id, title };
     browser.contextMenus.create(options, createContextMenuErrorHandler);
   }
@@ -106,7 +107,6 @@ export async function createContextMenus(
     const type = nonTextEntry.type;
     const id = `Search ${query} as a ${type} on all`;
     const title = `Search this ${type} on all`;
-    const contexts: ContextMenus.ContextType[] = ["selection"];
     const options = { contexts, id, title };
     browser.contextMenus.create(options, createContextMenuErrorHandler);
   }
@@ -118,7 +118,6 @@ export async function createContextMenus(
     // it tells action/query/type/target to the listner
     const id = `Scan ${entry.query} as a ${entry.type} on ${name}`;
     const title = `Scan this ${entry.type} on ${name}`;
-    const contexts: ContextMenus.ContextType[] = ["selection"];
     const options = { contexts, id, title };
     browser.contextMenus.create(options, createContextMenuErrorHandler);
   }
