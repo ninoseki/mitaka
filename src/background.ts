@@ -73,11 +73,15 @@ export async function createContextMenus(
 ): Promise<void> {
   await browser.contextMenus.removeAll();
 
+  console.debug("Mitaka: removed the previous context menus.");
+
   const text: string = message.selection;
   const selector: Selector = new Selector(text, generalSettings.enableIDN);
   // create searchers context menus based on a type of the input
   const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
   let nonTextEntry: AnalyzerEntry | undefined = undefined;
+
+  const contexts: ContextMenus.ContextType[] = ["selection"];
 
   for (const entry of searcherEntries) {
     const name = entry.analyzer.name;
@@ -93,7 +97,6 @@ export async function createContextMenus(
     // it tells action, query, type and target to the listner
     const id = `Search ${entry.query} as a ${entry.type} on ${name}`;
     const title = `Search this ${entry.type} on ${name}`;
-    const contexts: ContextMenus.ContextType[] = ["selection"];
     const options = { contexts, id, title };
     browser.contextMenus.create(options, createContextMenuErrorHandler);
   }
@@ -104,7 +107,6 @@ export async function createContextMenus(
     const type = nonTextEntry.type;
     const id = `Search ${query} as a ${type} on all`;
     const title = `Search this ${type} on all`;
-    const contexts: ContextMenus.ContextType[] = ["selection"];
     const options = { contexts, id, title };
     browser.contextMenus.create(options, createContextMenuErrorHandler);
   }
@@ -116,15 +118,20 @@ export async function createContextMenus(
     // it tells action/query/type/target to the listner
     const id = `Scan ${entry.query} as a ${entry.type} on ${name}`;
     const title = `Scan this ${entry.type} on ${name}`;
-    const contexts: ContextMenus.ContextType[] = ["selection"];
     const options = { contexts, id, title };
     browser.contextMenus.create(options, createContextMenuErrorHandler);
   }
+
+  console.debug("Mitaka: created context menus.");
 }
 
 if (typeof browser !== "undefined" && browser.runtime !== undefined) {
   browser.runtime.onMessage.addListener(
     async (message: UpdateContextMenuMessage): Promise<void> => {
+      console.debug(
+        `Mitaka: received message. selection = ${message.selection}. request = ${message.request}.`
+      );
+
       if (message.request === "updateContextMenu") {
         const config = await browser.storage.sync.get("searcherStates");
         const generalSettings = await getGeneralSettings();

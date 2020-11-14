@@ -141,6 +141,7 @@ export class Selector {
 
       const result = func.apply(this);
       if (result !== null) {
+        console.debug(`Mitaka: ${type} is selected. value = ${result}.`);
         return this.concat(
           entries,
           this.makeAnalyzerEntries(this.getSearchersByType(type), type, result)
