@@ -16,6 +16,8 @@ export async function onSelctionChange(): Promise<void> {
   }
 
   const selected: string = link || text;
+  console.debug(`Mitaka: selected = ${selected}`);
+
   if (selected !== "") {
     const message: UpdateContextMenuMessage = {
       request: "updateContextMenu",
