@@ -8,7 +8,7 @@ import {
   SearcherStates,
   UpdateContextMenuMessage,
 } from "./lib/types";
-import { getApiKeys, getGeneralSettings } from "./utility";
+import { getApiKeys, getConfig, getSearcherStates } from "./utility";
 
 export async function showNotification(message: string): Promise<void> {
   await browser.notifications.create({
@@ -33,10 +33,7 @@ export async function search(command: Command): Promise<void> {
 
 export async function searchAll(command: Command): Promise<void> {
   try {
-    const config = await browser.storage.sync.get("searcherStates");
-    const states: SearcherStates = <SearcherStates>(
-      ("searcherStates" in config ? config["searcherStates"] : {})
-    );
+    const states: SearcherStates = await getSearcherStates();
     const urls = command.searchAll(states);
     for (const url of urls) {
       await browser.tabs.create({ url });
@@ -133,15 +130,13 @@ if (typeof browser !== "undefined" && browser.runtime !== undefined) {
       );
 
       if (message.request === "updateContextMenu") {
-        const config = await browser.storage.sync.get("searcherStates");
-        const generalSettings = await getGeneralSettings();
+        const config = await getConfig();
 
-        if ("searcherStates" in config) {
-          const searcherStates = <SearcherStates>config["searcherStates"];
-          await createContextMenus(message, searcherStates, generalSettings);
-        } else {
-          await createContextMenus(message, {}, generalSettings);
-        }
+        await createContextMenus(
+          message,
+          config.searcherStates,
+          config.generalSettings
+        );
       }
     }
   );
