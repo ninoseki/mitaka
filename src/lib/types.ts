@@ -92,3 +92,8 @@ export interface ScannerTable {
 export interface GeneralSettings {
   enableIDN: boolean;
 }
+
+export interface Config {
+  generalSettings: GeneralSettings;
+  searcherStates: SearcherStates;
+}

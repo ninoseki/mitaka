@@ -2,7 +2,11 @@ import Mustache from "mustache";
 import { browser } from "webextension-polyfill-ts";
 
 import { ApiKeys, GeneralSettings, SearcherStates } from "./lib/types";
-import { getApiKeys, getGeneralSettings, getSearcherStates } from "./utility";
+import {
+  getApiKeys,
+  getGeneralSettings,
+  getSearcherStateList,
+} from "./utility";
 
 require("./options/bulma.scss");
 
@@ -84,7 +88,7 @@ export async function restoreApiKeys(): Promise<void> {
 }
 
 export async function restoreSearcherStates(): Promise<void> {
-  const states = await getSearcherStates();
+  const states = await getSearcherStateList();
 
   const searcherList = document.getElementById("searcher-list") as HTMLElement;
   const fragment: DocumentFragment = document.createDocumentFragment();

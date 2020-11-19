@@ -3,10 +3,16 @@ import { browser } from "webextension-polyfill-ts";
 import { Searchers } from "./lib/searcher";
 import {
   ApiKeys,
+  Config,
   GeneralSettings,
   SearcherState,
   SearcherStates,
 } from "./lib/types";
+
+interface StorageValue {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [s: string]: any;
+}
 
 export async function getApiKeys(): Promise<ApiKeys> {
   const config = await browser.storage.sync.get("apiKeys");
@@ -25,7 +31,45 @@ export async function getApiKeys(): Promise<ApiKeys> {
   return apiKeys;
 }
 
-export async function getSearcherStates(): Promise<SearcherState[]> {
+function convertToGeneralSettings(value: StorageValue): GeneralSettings {
+  const hasGeneralSettings: boolean = "generalSettings" in value;
+  const generalSettings: GeneralSettings = {
+    enableIDN: false,
+  };
+
+  if (hasGeneralSettings) {
+    const _generalSettings = <GeneralSettings>value["generalSettings"];
+    generalSettings.enableIDN = _generalSettings.enableIDN || false;
+  }
+  return generalSettings;
+}
+
+function convertToSearcherStates(value: StorageValue): SearcherStates {
+  const hasSearcherStates: boolean = "searcherStates" in value;
+  if (hasSearcherStates) {
+    return <SearcherStates>value["searcherStates"];
+  }
+  return {};
+}
+
+export async function getConfig(): Promise<Config> {
+  const config = await browser.storage.sync.get([
+    "searcherStates",
+    "generalSettings",
+  ]);
+
+  const generalSettings = convertToGeneralSettings(config || {});
+  const searcherStates = convertToSearcherStates(config || {});
+
+  return { searcherStates: searcherStates, generalSettings: generalSettings };
+}
+
+export async function getSearcherStates(): Promise<SearcherStates> {
+  const config = await browser.storage.sync.get("searcherStates");
+  return convertToSearcherStates(config || {});
+}
+
+export async function getSearcherStateList(): Promise<SearcherState[]> {
   const config = await browser.storage.sync.get("searcherStates");
   const hasSearcherStates: boolean = "searcherStates" in config;
   const states: SearcherState[] = [];
@@ -49,16 +93,5 @@ export async function getSearcherStates(): Promise<SearcherState[]> {
 
 export async function getGeneralSettings(): Promise<GeneralSettings> {
   const config = await browser.storage.sync.get("generalSettings");
-
-  const hasGeneralSettings: boolean = "generalSettings" in config;
-  const generalSettings: GeneralSettings = {
-    enableIDN: false,
-  };
-
-  if (hasGeneralSettings) {
-    const _generalSettings = <GeneralSettings>config["generalSettings"];
-    generalSettings.enableIDN = _generalSettings.enableIDN || false;
-  }
-
-  return generalSettings;
+  return convertToGeneralSettings(config || {});
 }
