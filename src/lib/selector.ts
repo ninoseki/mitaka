@@ -31,13 +31,15 @@ import {
 export class Selector {
   protected input: string;
   protected enableIDN: boolean;
+  protected strictTLD: boolean;
 
   protected scanners: Scanner[] = Scanners;
   protected searchers: Searcher[] = Searchers;
 
-  public constructor(input: string, enableIDN = true) {
+  public constructor(input: string, enableIDN = true, strictTLD = true) {
     this.input = refang(input);
     this.enableIDN = enableIDN;
+    this.strictTLD = strictTLD;
   }
 
   public getIP(): string | null {
@@ -46,17 +48,19 @@ export class Selector {
 
   public getDomain(): string | null {
     return this.getFirstValueFromArray(
-      extractDomain(this.input, this.enableIDN)
+      extractDomain(this.input, this.enableIDN, this.strictTLD)
     );
   }
 
   public getURL(): string | null {
-    return this.getFirstValueFromArray(extractURL(this.input, this.enableIDN));
+    return this.getFirstValueFromArray(
+      extractURL(this.input, this.enableIDN, this.strictTLD)
+    );
   }
 
   public getEmail(): string | null {
     return this.getFirstValueFromArray(
-      extractEmail(this.input, this.enableIDN)
+      extractEmail(this.input, this.enableIDN, this.strictTLD)
     );
   }
 
@@ -112,20 +116,20 @@ export class Selector {
   }
 
   private selectorSlots: SelectorSlot[] = [
-    { type: "url", func: this.getURL = this.getURL.bind(this) },
-    { type: "email", func: this.getEmail = this.getEmail.bind(this) },
-    { type: "domain", func: this.getDomain = this.getDomain.bind(this) },
-    { type: "ip", func: this.getIP = this.getIP.bind(this) },
-    { type: "asn", func: this.getASN = this.getASN.bind(this) },
-    { type: "hash", func: this.getHash = this.getHash.bind(this) },
-    { type: "cve", func: this.getCVE = this.getCVE.bind(this) },
-    { type: "btc", func: this.getBTC = this.getBTC.bind(this) },
+    { type: "url", func: (this.getURL = this.getURL.bind(this)) },
+    { type: "email", func: (this.getEmail = this.getEmail.bind(this)) },
+    { type: "domain", func: (this.getDomain = this.getDomain.bind(this)) },
+    { type: "ip", func: (this.getIP = this.getIP.bind(this)) },
+    { type: "asn", func: (this.getASN = this.getASN.bind(this)) },
+    { type: "hash", func: (this.getHash = this.getHash.bind(this)) },
+    { type: "cve", func: (this.getCVE = this.getCVE.bind(this)) },
+    { type: "btc", func: (this.getBTC = this.getBTC.bind(this)) },
     {
       type: "gaTrackID",
-      func: this.getGATrackID = this.getGATrackID.bind(this),
+      func: (this.getGATrackID = this.getGATrackID.bind(this)),
     },
-    { type: "gaPubID", func: this.getGAPubID = this.getGAPubID.bind(this) },
-    { type: "eth", func: this.getETH = this.getETH.bind(this) },
+    { type: "gaPubID", func: (this.getGAPubID = this.getGAPubID.bind(this)) },
+    { type: "eth", func: (this.getETH = this.getETH.bind(this)) },
   ];
 
   public getSearcherEntries(): AnalyzerEntry[] {
@@ -153,9 +157,9 @@ export class Selector {
   }
 
   private scannerSlots: ScannerSlot[] = [
-    { type: "url", func: this.getURL = this.getURL.bind(this) },
-    { type: "domain", func: this.getDomain = this.getDomain.bind(this) },
-    { type: "ip", func: this.getIP = this.getIP.bind(this) },
+    { type: "url", func: (this.getURL = this.getURL.bind(this)) },
+    { type: "domain", func: (this.getDomain = this.getDomain.bind(this)) },
+    { type: "ip", func: (this.getIP = this.getIP.bind(this)) },
   ];
 
   public getScannerEntries(): AnalyzerEntry[] {

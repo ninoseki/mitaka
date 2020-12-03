@@ -29,11 +29,13 @@ describe("Utility", function () {
           },
           generalSettings: {
             enableIDN: true,
+            strictTLD: true,
           },
         });
 
       const config = await getConfig();
       expect(config.generalSettings.enableIDN).to.be.true;
+      expect(config.generalSettings.strictTLD).to.be.true;
       expect(config.searcherStates["Censys"]).to.be.true;
       expect(config.searcherStates["404"]).to.be.undefined;
     });

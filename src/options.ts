@@ -49,9 +49,13 @@ export async function saveGeneralSettings(): Promise<void> {
   const enableIDNInput = document.getElementById(
     "enable-idn"
   ) as HTMLInputElement;
+  const strictTLDInput = document.getElementById(
+    "strict-tld"
+  ) as HTMLInputElement;
 
   const generalSettings: GeneralSettings = {
     enableIDN: enableIDNInput.checked,
+    strictTLD: strictTLDInput.checked,
   };
 
   await browser.storage.sync.set({ generalSettings });
