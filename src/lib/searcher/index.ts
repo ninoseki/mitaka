@@ -46,7 +46,6 @@ export { Radar } from "./radar";
 export { RiskIQ } from "./riskiq";
 export { Robtex } from "./robtex";
 export { Scumware } from "./scumware";
-export { Searchers } from "./searchers";
 export { SecurityTrails } from "./securitytrails";
 export { Shodan } from "./shodan";
 export { Sploitus } from "./sploitus";
@@ -69,3 +68,6 @@ export { VxCube } from "./vxcube";
 export { WebAnalyzer } from "./webanalyzer";
 export { XForceExchange } from "./xforce-exchange";
 export { ZoomEye } from "./zoomeye";
+
+// eslint-disable-next-line simple-import-sort/exports
+export { Searchers } from "./searchers";
