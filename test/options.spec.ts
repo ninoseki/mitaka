@@ -111,6 +111,7 @@ describe("Options script", function () {
         "getElementById"
       );
       stub.withArgs("enable-idn").returns(input);
+      stub.withArgs("strict-tld").returns(input);
     });
 
     it("should save generalSettings via chrome.storage.sync.set", async function () {
@@ -120,6 +121,7 @@ describe("Options script", function () {
           {
             generalSettings: {
               enableIDN: true,
+              strictTLD: true,
             },
           },
         ],
@@ -305,7 +307,7 @@ describe("Options script", function () {
       );
       stub.withArgs("general-settings").returns(wrapper);
       stub.withArgs("general-settings-template").returns({
-        innerHTML: `<input id="enable-idn" type="checkbox" {{#enableIDN}}checked="checked"{{/enableIDN}}>`,
+        innerHTML: `<input id="enable-idn" type="checkbox" {{#enableIDN}}checked="checked"{{/enableIDN}}><input id="strict-tld" type="checkbox" {{#strictTLD}}checked="checked"{{/strictTLD}}>`,
       });
     });
 
@@ -316,6 +318,7 @@ describe("Options script", function () {
         .resolves({
           generalSettings: {
             enableIDN: true,
+            strictTLD: true,
           },
         });
 
@@ -324,10 +327,16 @@ describe("Options script", function () {
       const generalSettings = root.document.getElementById(
         "general-settings"
       ) as HTMLElement;
+
       const enableIDN = generalSettings.querySelector(
         "input#enable-idn"
       ) as HTMLInputElement;
       expect(enableIDN.checked).to.equal(true);
+
+      const strictTLD = generalSettings.querySelector(
+        "input#strict-tld"
+      ) as HTMLInputElement;
+      expect(strictTLD.checked).to.equal(true);
     });
   });
 });

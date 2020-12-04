@@ -69,4 +69,5 @@ export { WebAnalyzer } from "./webanalyzer";
 export { XForceExchange } from "./xforce-exchange";
 export { ZoomEye } from "./zoomeye";
 
+// eslint-disable-next-line simple-import-sort/exports
 export { Searchers } from "./searchers";

@@ -91,6 +91,7 @@ export interface ScannerTable {
 
 export interface GeneralSettings {
   enableIDN: boolean;
+  strictTLD: boolean;
 }
 
 export interface Config {

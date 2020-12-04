@@ -185,7 +185,7 @@ describe("Background script", function () {
         await createContextMenus(
           { request: "updateContextMenu", selection: "test" },
           {},
-          { enableIDN: true }
+          { enableIDN: true, strictTLD: true }
         );
 
         browserMock.contextMenus.create.assertCalls([
@@ -216,7 +216,7 @@ describe("Background script", function () {
           {
             Censys: false,
           },
-          { enableIDN: true }
+          { enableIDN: true, strictTLD: true }
         );
 
         browserMock.contextMenus.create.assertCalls([

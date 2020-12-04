@@ -35,11 +35,15 @@ function convertToGeneralSettings(value: StorageValue): GeneralSettings {
   const hasGeneralSettings: boolean = "generalSettings" in value;
   const generalSettings: GeneralSettings = {
     enableIDN: false,
+    strictTLD: false,
   };
 
   if (hasGeneralSettings) {
     const _generalSettings = <GeneralSettings>value["generalSettings"];
-    generalSettings.enableIDN = _generalSettings.enableIDN || false;
+    generalSettings.enableIDN =
+      _generalSettings.enableIDN || generalSettings.enableIDN;
+    generalSettings.strictTLD =
+      _generalSettings.strictTLD || generalSettings.strictTLD;
   }
   return generalSettings;
 }
