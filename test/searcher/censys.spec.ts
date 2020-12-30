@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { Censys } from "../../src/lib/searcher";
+import { Censys } from "@/searcher";
 
 describe("Censys", function () {
   const subject = new Censys();

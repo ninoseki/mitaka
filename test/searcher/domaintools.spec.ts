@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { DomainTools } from "../../src/lib/searcher";
+import { DomainTools } from "@/searcher";
 
 describe("DomainTools", function () {
   const subject = new DomainTools();

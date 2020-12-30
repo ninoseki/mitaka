@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { HybridAnalysis } from "../../src/lib/searcher";
+import { HybridAnalysis } from "@/searcher";
 
 describe("HybridAnalysis", function () {
   const subject = new HybridAnalysis();

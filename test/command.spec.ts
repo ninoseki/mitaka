@@ -3,8 +3,8 @@ import "mocha";
 import { expect } from "chai";
 import moxios from "moxios";
 
-import { Command } from "../src/lib/command";
-import { ApiKeys } from "./lib/types";
+import { Command } from "@/command";
+import { ApiKeys } from "@/types";
 
 describe("Command", function () {
   describe("#constructor", function () {

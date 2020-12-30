@@ -1,14 +1,14 @@
 import { browser, ContextMenus, Extension } from "webextension-polyfill-ts";
 
-import { Command } from "./lib/command";
-import { Selector } from "./lib/selector";
+import { Command } from "@/command";
+import { Selector } from "@/selector";
 import {
   AnalyzerEntry,
   GeneralSettings,
   SearcherStates,
   UpdateContextMenuMessage,
-} from "./lib/types";
-import { getApiKeys, getConfig, getSearcherStates } from "./utility";
+} from "@/types";
+import { getApiKeys, getConfig, getSearcherStates } from "@/utility";
 
 export async function showNotification(message: string): Promise<void> {
   await browser.notifications.create({

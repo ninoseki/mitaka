@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { IPinfo } from "../../src/lib/searcher";
+import { IPinfo } from "@/searcher";
 
 describe("IPinfo", function () {
   const subject = new IPinfo();

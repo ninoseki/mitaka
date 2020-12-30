@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { NVD } from "../../src/lib/searcher";
+import { NVD } from "@/searcher";
 
 describe("NVD", function () {
   const subject = new NVD();

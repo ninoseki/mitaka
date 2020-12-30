@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { Robtex } from "../../src/lib/searcher";
+import { Robtex } from "@/searcher";
 
 describe("Robtex", function () {
   const subject = new Robtex();

@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { ONYPHE } from "../../src/lib/searcher";
+import { ONYPHE } from "@/searcher";
 
 describe("ONYPHE", function () {
   const subject = new ONYPHE();

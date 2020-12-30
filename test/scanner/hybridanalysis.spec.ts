@@ -7,7 +7,7 @@ import "mocha";
 
 import moxios from "moxios";
 
-import { HybridAnalysis } from "../../src/lib/scanner";
+import { HybridAnalysis } from "@/scanner";
 
 describe("HybridAnalysis", function () {
   const subject = new HybridAnalysis();

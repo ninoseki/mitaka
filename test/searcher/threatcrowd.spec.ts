@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { ThreatCrowd } from "../../src/lib/searcher";
+import { ThreatCrowd } from "@/searcher";
 
 describe("ThreatCrowd", function () {
   const subject = new ThreatCrowd();

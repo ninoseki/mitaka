@@ -1,13 +1,13 @@
 import { browser } from "webextension-polyfill-ts";
 
-import { Searchers } from "./lib/searcher";
+import { Searchers } from "@/searcher";
 import {
   ApiKeys,
   Config,
   GeneralSettings,
   SearcherState,
   SearcherStates,
-} from "./lib/types";
+} from "@/types";
 
 interface StorageValue {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -98,4 +98,18 @@ export async function getSearcherStateList(): Promise<SearcherState[]> {
 export async function getGeneralSettings(): Promise<GeneralSettings> {
   const config = await browser.storage.sync.get("generalSettings");
   return convertToGeneralSettings(config || {});
+}
+
+export function extractASNumber(asn: string): string {
+  const matches = /\d+$/.exec(asn);
+  if (matches !== null && matches[0]) {
+    return matches[0];
+  }
+  return "";
+}
+
+export function extractCVENumber(cve: string): string {
+  const parts = cve.split("-");
+  const numbers = parts.slice(1 - parts.length);
+  return numbers.join("-");
 }

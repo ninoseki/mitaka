@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { GoogleSafeBrowsing } from "../../src/lib/searcher";
+import { GoogleSafeBrowsing } from "@/searcher";
 
 describe("Google Safe Browsing", function () {
   const subject = new GoogleSafeBrowsing();

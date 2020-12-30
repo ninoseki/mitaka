@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { Pulsedive } from "../../src/lib/searcher";
+import { Pulsedive } from "@/searcher";
 
 describe("Pulsedive", function () {
   const subject = new Pulsedive();

@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { Intezer } from "../../src/lib/searcher";
+import { Intezer } from "@/searcher";
 
 describe("Intezer", function () {
   const subject = new Intezer();

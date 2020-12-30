@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { OpenTIP } from "../../src/lib/searcher";
+import { OpenTIP } from "@/searcher";
 
 describe("OpenTIP", function () {
   const subject = new OpenTIP();

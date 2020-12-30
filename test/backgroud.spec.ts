@@ -10,8 +10,9 @@ import {
   search,
   searchAll,
   showNotification,
-} from "../src/background";
-import { Command } from "../src/lib/command";
+} from "@/background";
+import { Command } from "@/command";
+
 import { browserMock } from "./browserMock";
 import sinon = require("sinon");
 

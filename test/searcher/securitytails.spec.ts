@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { SecurityTrails } from "../../src/lib/searcher";
+import { SecurityTrails } from "@/searcher";
 
 describe("SecurityTrails", function () {
   const subject = new SecurityTrails();

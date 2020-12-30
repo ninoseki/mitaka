@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { ViewDNS } from "../../src/lib/searcher";
+import { ViewDNS } from "@/searcher";
 
 describe("ViewDNS", function () {
   const subject = new ViewDNS();

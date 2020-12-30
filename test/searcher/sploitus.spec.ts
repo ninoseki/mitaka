@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { Sploitus } from "../../src/lib/searcher";
+import { Sploitus } from "@/searcher";
 
 describe("Sploitus", function () {
   const subject = new Sploitus();

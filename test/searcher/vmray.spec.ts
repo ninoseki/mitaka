@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { VMRay } from "../../src/lib/searcher";
+import { VMRay } from "@/searcher";
 
 describe("VMRay", function () {
   const subject = new VMRay();

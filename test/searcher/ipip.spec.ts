@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { IPIP } from "../../src/lib/searcher";
+import { IPIP } from "@/searcher";
 
 describe("IPIP", function () {
   const subject = new IPIP();

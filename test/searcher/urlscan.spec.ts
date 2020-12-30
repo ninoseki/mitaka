@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { Urlscan } from "../../src/lib/searcher";
+import { Urlscan } from "@/searcher";
 
 describe("Urlscan", function () {
   const subject = new Urlscan();

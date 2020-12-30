@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { ArchiveToday } from "../../src/lib/searcher";
+import { ArchiveToday } from "@/searcher";
 
 describe("ArchiveToday", function () {
   const subject = new ArchiveToday();

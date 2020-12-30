@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { BlockCypher } from "../../src/lib/searcher";
+import { BlockCypher } from "@/searcher";
 
 describe("BlockCypher", function () {
   const subject = new BlockCypher();

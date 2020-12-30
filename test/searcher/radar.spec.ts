@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { Radar } from "../../src/lib/searcher";
+import { Radar } from "@/searcher";
 
 describe("Radar", function () {
   const subject = new Radar();

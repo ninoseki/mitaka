@@ -2,9 +2,9 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { Scanners } from "../../src/lib/scanner";
-import { Selector } from "../../src/lib/selector";
-import { AnalyzerEntry, ScannableType, Scanner } from "../lib/types";
+import { Scanners } from "@/scanner";
+import { Selector } from "@/selector";
+import { AnalyzerEntry, ScannableType, Scanner } from "@/types";
 
 function numberOfScannersByType(type: ScannableType): number {
   return Scanners.filter((scanner: Scanner) =>

@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { XForceExchange } from "../../src/lib/searcher";
+import { XForceExchange } from "@/searcher";
 
 describe("X-Force Exchange", function () {
   const subject = new XForceExchange();

@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { Apklab } from "../../src/lib/searcher";
+import { Apklab } from "@/searcher";
 
 describe("Apklab", function () {
   const subject = new Apklab();

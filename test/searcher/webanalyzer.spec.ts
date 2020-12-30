@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { WebAnalyzer } from "../../src/lib/searcher";
+import { WebAnalyzer } from "@/searcher";
 
 describe("WebAnalyzer", function () {
   const subject = new WebAnalyzer();

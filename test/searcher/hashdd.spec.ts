@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { Hashdd } from "../../src/lib/searcher";
+import { Hashdd } from "@/searcher";
 
 describe("Hashdd", function () {
   const subject = new Hashdd();
