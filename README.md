@@ -53,7 +53,6 @@ Mitaka is a browser extension for OSINT (open source intelligence) search which 
 | apklab               | https://apklab.io                      | hash (SHA256 only)                |
 | archive.org          | https://archive.org                    | url                               |
 | archive.today        | http://archive.fo                      | url                               |
-| Auth0                | https://auth0.com                      | ip                                |
 | BGPView              | https://bgpview.io                     | ip / asn                          |
 | BinaryEdge           | https://app.binaryedge.io              | ip / domain                       |
 | BitcoinAbuse         | https://www.bitcoinabuse.com           | btc                               |
@@ -62,6 +61,7 @@ Mitaka is a browser extension for OSINT (open source intelligence) search which 
 | Blockchair           | https://blockchair.com                 | btc / eth                         |
 | BlockCypher          | https://live.blockcypher.com           | btc                               |
 | Censys               | https://censys.io                      | ip / domain / asn / text          |
+| Checkphish           | https://checkphish.ai                  | ip / domain                       |
 | crt.sh               | https://crt.sh                         | domain                            |
 | DNSlytics            | https://dnslytics.com                  | ip / domain                       |
 | DomainBigData        | https://domainbigdata.com              | ip / domain / email               |
@@ -166,6 +166,11 @@ I don't (and will never) collect any information from the users.
 ## Privacy Policy
 
 - [My privacy policy for the extension](https://ninoseki.github.io/chrome-webstore/privacy-policy/)
+
+## Common Questions
+
+- Q. The context menu is not showing.
+  - A. Sometimes it takes time to show the context menu in Chrome. Please wait for a second after selecting. Then the context menu will show.
 
 ## Alternatives or Similar Tools
 
