@@ -11,6 +11,7 @@ export { BlockChain } from "./blockchain";
 export { Blockchair } from "./blockchair";
 export { BlockCypher } from "./blockcypher";
 export { Censys } from "./censys";
+export { Checkphish } from "./checkphish";
 export { Crtsh } from "./crtsh";
 export { DNSlytics } from "./dnslytics";
 export { DomainBigData } from "./domainbigdata";
