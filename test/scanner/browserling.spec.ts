@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { Browserling } from "../../src/lib/scanner";
+import { Browserling } from "@/scanner";
 
 describe("Browserling", function () {
   const subject = new Browserling();

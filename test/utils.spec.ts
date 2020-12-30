@@ -3,10 +3,9 @@
 import "mocha";
 
 import { expect } from "chai";
-import { JSDOM } from "jsdom";
-import root from "window-or-global";
 
-import { getConfig } from "../src/utility";
+import { getConfig } from "@/utility";
+
 import { browserMock } from "./browserMock";
 import sinon = require("sinon");
 

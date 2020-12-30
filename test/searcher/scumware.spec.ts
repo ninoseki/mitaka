@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { Scumware } from "../../src/lib/searcher";
+import { Scumware } from "@/searcher";
 
 describe("Scumware", function () {
   const subject = new Scumware();

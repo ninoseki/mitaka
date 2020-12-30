@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { VirusTotal } from "../../src/lib/searcher";
+import { VirusTotal } from "@/searcher";
 
 describe("VirusTotal", function () {
   const subject = new VirusTotal();

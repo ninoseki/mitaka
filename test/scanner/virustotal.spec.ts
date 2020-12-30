@@ -7,7 +7,7 @@ import "mocha";
 
 import moxios from "moxios";
 
-import { VirusTotal } from "../../src/lib/scanner";
+import { VirusTotal } from "@/scanner";
 
 describe("VirusTotal", function () {
   const subject = new VirusTotal();

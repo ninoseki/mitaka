@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { TIP } from "../../src/lib/searcher";
+import { TIP } from "@/searcher";
 
 describe("TIP", function () {
   const subject = new TIP();

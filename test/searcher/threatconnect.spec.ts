@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { ThreatConnect } from "../../src/lib/searcher";
+import { ThreatConnect } from "@/searcher";
 
 describe("ThreatConnect", function () {
   const subject = new ThreatConnect();

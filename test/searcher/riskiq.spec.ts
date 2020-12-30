@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { RiskIQ } from "../../src/lib/searcher";
+import { RiskIQ } from "@/searcher";
 
 describe("RiskIQ", function () {
   const subject = new RiskIQ();

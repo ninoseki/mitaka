@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { DNSlytics } from "../../src/lib/searcher";
+import { DNSlytics } from "@/searcher";
 
 describe("DNSlytics", function () {
   const subject = new DNSlytics();

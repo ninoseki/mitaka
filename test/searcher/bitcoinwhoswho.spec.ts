@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { BitcoinWhosWho } from "../../src/lib/searcher";
+import { BitcoinWhosWho } from "@/searcher";
 
 describe("BitcoinAbuse", function () {
   const subject = new BitcoinWhosWho();

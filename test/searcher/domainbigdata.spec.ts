@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { DomainBigData } from "../../src/lib/searcher";
+import { DomainBigData } from "@/searcher";
 
 describe("DomainBigData", function () {
   const subject = new DomainBigData();

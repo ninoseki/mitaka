@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { BGPView } from "../../src/lib/searcher";
+import { BGPView } from "@/searcher";
 
 describe("BGPView", function () {
   const subject = new BGPView();

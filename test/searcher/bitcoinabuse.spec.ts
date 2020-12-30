@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { BitcoinAbuse } from "../../src/lib/searcher";
+import { BitcoinAbuse } from "@/searcher";
 
 describe("BitcoinAbuse", function () {
   const subject = new BitcoinAbuse();

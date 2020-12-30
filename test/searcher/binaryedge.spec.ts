@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { BinaryEdge } from "../../src/lib/searcher";
+import { BinaryEdge } from "@/searcher";
 
 describe("BinaryEdge", function () {
   const subject = new BinaryEdge();

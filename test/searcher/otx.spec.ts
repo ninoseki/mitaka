@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { OTX } from "../../src/lib/searcher";
+import { OTX } from "@/searcher";
 
 describe("OTX", function () {
   const subject = new OTX();

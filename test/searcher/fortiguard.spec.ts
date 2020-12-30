@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { FortiGuard } from "../../src/lib/searcher";
+import { FortiGuard } from "@/searcher";
 
 describe("FortiGuard", function () {
   const subject = new FortiGuard();

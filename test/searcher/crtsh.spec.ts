@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { Crtsh } from "../../src/lib/searcher";
+import { Crtsh } from "@/searcher";
 
 describe("Crtsh", function () {
   const subject = new Crtsh();

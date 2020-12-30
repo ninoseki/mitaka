@@ -1,7 +1,7 @@
 import { throttle } from "@github/mini-throttle";
 import { browser } from "webextension-polyfill-ts";
 
-import { UpdateContextMenuMessage } from "./lib/types";
+import { UpdateContextMenuMessage } from "@/types";
 
 export async function onSelctionChange(): Promise<void> {
   const selection = window.getSelection();

@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { PublicWWW } from "../../src/lib/searcher";
+import { PublicWWW } from "@/searcher";
 
 describe("PublicWWW", function () {
   const subject = new PublicWWW();

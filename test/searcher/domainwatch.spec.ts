@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { DomainWatch } from "../../src/lib/searcher";
+import { DomainWatch } from "@/searcher";
 
 describe("DomainWatch", function () {
   const subject = new DomainWatch();

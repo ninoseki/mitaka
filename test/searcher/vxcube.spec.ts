@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { VxCube } from "../../src/lib/searcher";
+import { VxCube } from "@/searcher";
 
 describe("VxCube", function () {
   const subject = new VxCube();

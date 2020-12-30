@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { Vulmon } from "../../src/lib/searcher";
+import { Vulmon } from "@/searcher";
 
 describe("Vulmon", function () {
   const subject = new Vulmon();

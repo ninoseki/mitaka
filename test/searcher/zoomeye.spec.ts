@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { ZoomEye } from "../../src/lib/searcher";
+import { ZoomEye } from "@/searcher";
 
 describe("ZoomEye", function () {
   const subject = new ZoomEye();

@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { ArchiveOrg } from "../../src/lib/searcher";
+import { ArchiveOrg } from "@/searcher";
 
 describe("ArchiveOrg", function () {
   const subject = new ArchiveOrg();

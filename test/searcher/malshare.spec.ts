@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { Malshare } from "../../src/lib/searcher";
+import { Malshare } from "@/searcher";
 
 describe("Malshare", function () {
   const subject = new Malshare();

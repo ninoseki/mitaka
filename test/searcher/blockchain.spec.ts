@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { BlockChain } from "../../src/lib/searcher";
+import { BlockChain } from "@/searcher";
 
 describe("Blockchain", function () {
   const subject = new BlockChain();

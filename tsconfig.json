@@ -5,8 +5,17 @@
         "noImplicitAny": false,
         "sourceMap": true,
         "strict": true,
-        "rootDirs": ["src", "test"],
+        "rootDirs": [
+            "src",
+            "test"
+        ],
         "outDir": "dist/js",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ]
+        },
         "noEmitOnError": true,
         "esModuleInterop": true,
         "resolveJsonModule": true

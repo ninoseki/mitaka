@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { VulncodeDB } from "../../src/lib/searcher";
+import { VulncodeDB } from "@/searcher";
 
 describe("VulncodeDB", function () {
   const subject = new VulncodeDB();

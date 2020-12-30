@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { SpyOnWeb } from "../../src/lib/searcher";
+import { SpyOnWeb } from "@/searcher";
 
 describe("SpyOnWeb", function () {
   const subject = new SpyOnWeb();

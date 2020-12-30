@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { OCCRP } from "../../src/lib/searcher";
+import { OCCRP } from "@/searcher";
 
 describe("OCCRP", function () {
   const subject = new OCCRP();

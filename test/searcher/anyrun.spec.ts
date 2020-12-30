@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { AnyRun } from "../../src/lib/searcher";
+import { AnyRun } from "@/searcher";
 
 describe("AnyRun", function () {
   const subject = new AnyRun();

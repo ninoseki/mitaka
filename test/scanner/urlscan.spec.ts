@@ -7,7 +7,7 @@ import "mocha";
 
 import moxios from "moxios";
 
-import { Urlscan } from "../../src/lib/scanner";
+import { Urlscan } from "@/scanner";
 
 describe("Urlscan", function () {
   const subject = new Urlscan();

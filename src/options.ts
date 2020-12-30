@@ -1,12 +1,12 @@
 import Mustache from "mustache";
 import { browser } from "webextension-polyfill-ts";
 
-import { ApiKeys, GeneralSettings, SearcherStates } from "./lib/types";
+import { ApiKeys, GeneralSettings, SearcherStates } from "@/types";
 import {
   getApiKeys,
   getGeneralSettings,
   getSearcherStateList,
-} from "./utility";
+} from "@/utility";
 
 require("./options/bulma.scss");
 

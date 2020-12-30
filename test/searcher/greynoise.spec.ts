@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { GreyNoise } from "../../src/lib/searcher";
+import { GreyNoise } from "@/searcher";
 
 describe("GreyNoise", function () {
   const subject = new GreyNoise();

@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { EmailRep } from "../../src/lib/searcher";
+import { EmailRep } from "@/searcher";
 
 describe("EmailRep", function () {
   const subject = new EmailRep();

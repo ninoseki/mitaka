@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { JoeSandbox } from "../../src/lib/searcher";
+import { JoeSandbox } from "@/searcher";
 
 describe("JoeSandbox", function () {
   const subject = new JoeSandbox();

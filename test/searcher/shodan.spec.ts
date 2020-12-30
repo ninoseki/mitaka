@@ -2,7 +2,7 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { Shodan } from "../../src/lib/searcher";
+import { Shodan } from "@/searcher";
 
 describe("Shodan", function () {
   const subject = new Shodan();
