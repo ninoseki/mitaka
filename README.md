@@ -13,7 +13,7 @@ Mitaka is a browser extension for OSINT (open source intelligence) search which 
 
 - Extract & refang IoCs (indicators of compromise) from a selected block of text.
   - E.g. `example[.]com` to `example.com`, `test[at]example.com` to `test@example.com`, `hxxp://example.com` to `http://example.com`, etc.
-  - You can find all the refang techniques at [here](https://github.com/ninoseki/ioc-extractor#details).
+  - You can find all the refang techniques in [here](https://github.com/ninoseki/ioc-extractor#details).
 - Search / scan it on various engines.
   - E.g. VirusTotal, urlscan.io, Censys, Shodan, etc.
 
@@ -29,7 +29,7 @@ Mitaka is a browser extension for OSINT (open source intelligence) search which 
 
 ### Supported IoCs
 
-| name      | desc.                       | e.g.                                         |
+| Name      | Desc.                       | E.g.                                         |
 |:----------|:----------------------------|:---------------------------------------------|
 | text      | Freetext                    | any string(s)                                |
 | asn       | ASN                         | `AS13335`                                    |
@@ -46,90 +46,90 @@ Mitaka is a browser extension for OSINT (open source intelligence) search which 
 
 ### Supported search engines
 
-| name                 | url                                    | supported types                   |
-|:---------------------|:---------------------------------------|:----------------------------------|
-| AbuseIPDB            | https://www.abuseipdb.com              | ip                                |
-| AnyRun               | https://app.any.run                    | hash                              |
-| apklab               | https://apklab.io                      | hash (SHA256 only)                |
-| archive.org          | https://archive.org                    | url                               |
-| archive.today        | http://archive.fo                      | url                               |
-| BGPView              | https://bgpview.io                     | ip / asn                          |
-| BinaryEdge           | https://app.binaryedge.io              | ip / domain                       |
-| BitcoinAbuse         | https://www.bitcoinabuse.com           | btc                               |
-| BitcoinWhosWhos      | https://bitcoinwhoswho.com             | btc                               |
-| Blockchain.com       | https://www.blockchain.com             | btc                               |
-| Blockchair           | https://blockchair.com                 | btc / eth                         |
-| BlockCypher          | https://live.blockcypher.com           | btc                               |
-| Censys               | https://censys.io                      | ip / domain / asn / text          |
-| Checkphish           | https://checkphish.ai                  | ip / domain                       |
-| crt.sh               | https://crt.sh                         | domain                            |
-| DNSlytics            | https://dnslytics.com                  | ip / domain                       |
-| DomainBigData        | https://domainbigdata.com              | ip / domain / email               |
-| DomainTools          | https://www.domaintools.com            | ip / domain                       |
-| DomainWatch          | https://domainwat.ch                   | domain / email                    |
-| EmailRep             | https://emailrep.io                    | email                             |
-| FOFA                 | https://fofa.so                        | ip / domain                       |
-| FortiGuard           | https://fortiguard.com                 | ip / url / cve                    |
-| Google Safe Browsing | https://transparencyreport.google.com  | domain / url                      |
-| GreyNoise            | https://viz.greynoise.io               | ip / domain / asn                 |
-| Hashdd               | https://hashdd.com                     | ip / domain / hash                |
-| Hurricane Electric   | https://bgp.he.net/                    | ip / domain / asn                 |
-| HybridAnalysis       | https://www.hybrid-analysis.com        | ip / domain / hash                |
-| Intelligence X       | https://intelx.io                      | ip / domain / url / email / btc   |
-| Intezer              | https://analyze.intezer.com            | hash                              |
-| IPinfo               | https://ipinfo.io                      | ip / asn                          |
-| IPIP                 | https://en.ipip.net                    | ip / asn                          |
-| Joe Sandbox          | https://www.joesandbox.com             | hash                              |
-| MalShare             | https://malshare.com                   | hash                              |
-| Maltiverse           | https://www.maltiverse.com             | domain / hash                     |
-| MalwareBazaar        | https://bazaar.abuse.ch                | hash                              |
-| Malwares             | https://www.malwares.com               | hash                              |
-| NVD                  | https://nvd.nist.gov                   | cve                               |
-| OOCPR                | https://data.occrp.org                 | email                             |
-| ONYPHE               | https://www.onyphe.io                  | ip                                |
-| OpenTIP              | https://opentip.kaspersky.com          | hash                              |
-| OTX                  | https://otx.alienvault.com             | ip / domain / hash                |
-| PublicWWW            | https://publicwww.com                  | text                              |
-| Pulsedive            | https://pulsedive.com                  | ip / domain / url / hash          |
-| Radar                | https://radar.cloudflare.com           | ip / domain                       |
-| RiskIQ               | http://community.riskiq.com            | ip / domain / email / gaTrackID   |
-| Robtex               | https://www.robtex.com                 | ip / domain                       |
-| Scumware             | https://www.scumware.org               | ip / domain / hash (MD5 only)     |
-| SecurityTrails       | https://securitytrails.com             | ip / domain / email               |
-| Shodan               | https://www.shodan.io                  | ip / domain / asn                 |
-| Sploitus             | https://sploitus.com                   | cve                               |
-| SpyOnWeb             | http://spyonweb.com                    | ip / domain / gaPubID / gaTrackID |
-| Spyse                | https://spyse.com                      | ip / domain / asn                 |
-| Talos                | https://talosintelligence.com          | ip / domain                       |
-| ThreatConnect        | https://app.threatconnect.com          | ip / domain / email               |
-| ThreatCrowd          | https://www.threatcrowd.org            | ip / domain / email               |
-| ThreatMiner          | https://www.threatminer.org            | ip / domain / hash                |
-| TIP                  | https://threatintelligenceplatform.com | ip / domain                       |
-| Triage               | https://tria.ge                        | hash / url                        |
-| URLhaus              | https://urlhaus.abuse.ch               | ip / domain                       |
-| Urlscan              | https://urlscan.io                     | ip / domain / asn / url           |
-| ViewDNS              | https://viewdns.info                   | ip / domain / email               |
-| VirusTotal           | https://www.virustotal.com             | ip / domain / url / hash          |
-| VMRay                | https://www.vmray.com                  | hash                              |
-| Vulmon               | https://vulmon.com                     | cve                               |
-| VulncodeDB           | https://www.vulncode-db.com            | cve                               |
-| VxCube               | http://vxcube.com                      | ip / domain / hash                |
-| WebAnalyzer          | https://wa-com.com                     | domain                            |
-| X-Force Exchange     | https://exchange.xforce.ibmcloud.com   | ip / domain / hash                |
-| ZoomEye              | https://www.zoomeye.org                | ip                                |
+| Name                 | URL                                    | Supported types                                                       |
+|:---------------------|:---------------------------------------|:----------------------------------------------------------------------|
+| AbuseIPDB            | https://www.abuseipdb.com              | IP                                                                    |
+| AnyRun               | https://app.any.run                    | Hash                                                                  |
+| apklab               | https://apklab.io                      | Hash (SHA256)                                                         |
+| archive.org          | https://archive.org                    | URL                                                                   |
+| archive.today        | http://archive.fo                      | URL                                                                   |
+| BGPView              | https://bgpview.io                     | IP, ASN                                                               |
+| BinaryEdge           | https://app.binaryedge.io              | IP, domain                                                            |
+| BitcoinAbuse         | https://www.bitcoinabuse.com           | BTC                                                                   |
+| BitcoinWhosWhos      | https://bitcoinwhoswho.com             | BTC                                                                   |
+| Blockchain.com       | https://www.blockchain.com             | BTC                                                                   |
+| Blockchair           | https://blockchair.com                 | BTC, ETH                                                              |
+| BlockCypher          | https://live.blockcypher.com           | BTC                                                                   |
+| Censys               | https://censys.io                      | IP, domain, ASN, Text                                                 |
+| Checkphish           | https://checkphish.ai                  | IP, domain                                                            |
+| crt.sh               | https://crt.sh                         | Domain                                                                |
+| DNSlytics            | https://dnslytics.com                  | IP, domain                                                            |
+| DomainBigData        | https://domainbigdata.com              | IP, domain, email                                                     |
+| DomainTools          | https://www.domaintools.com            | IP, domain                                                            |
+| DomainWatch          | https://domainwat.ch                   | Domain, email                                                         |
+| EmailRep             | https://emailrep.io                    | Email                                                                 |
+| FOFA                 | https://fofa.so                        | IP, domain                                                            |
+| FortiGuard           | https://fortiguard.com                 | IP, URL, CVE                                                          |
+| Google Safe Browsing | https://transparencyreport.google.com  | Domain, URL                                                           |
+| GreyNoise            | https://viz.greynoise.io               | IP, domain, ASN                                                       |
+| Hashdd               | https://hashdd.com                     | IP, domain, hash                                                      |
+| Hurricane Electric   | https://bgp.he.net/                    | IP, domain, ASN                                                       |
+| HybridAnalysis       | https://www.hybrid-analysis.com        | IP, domain, hash                                                      |
+| Intelligence X       | https://intelx.io                      | IP, domain, URL, email, BTC                                           |
+| Intezer              | https://analyze.intezer.com            | Hash                                                                  |
+| IPinfo               | https://ipinfo.io                      | IP, ASN                                                               |
+| IPIP                 | https://en.ipip.net                    | IP, ASN                                                               |
+| Joe Sandbox          | https://www.joesandbox.com             | Hash                                                                  |
+| MalShare             | https://malshare.com                   | Hash                                                                  |
+| Maltiverse           | https://www.maltiverse.com             | Domain, hash                                                          |
+| MalwareBazaar        | https://bazaar.abuse.ch                | Hash                                                                  |
+| Malwares             | https://www.malwares.com               | Hash                                                                  |
+| NVD                  | https://nvd.nist.gov                   | CVE                                                                   |
+| OOCPR                | https://data.occrp.org                 | Email                                                                 |
+| ONYPHE               | https://www.onyphe.io                  | IP                                                                    |
+| OpenTIP              | https://opentip.kaspersky.com          | Hash                                                                  |
+| OTX                  | https://otx.alienvault.com             | IP, domain hash                                                       |
+| PublicWWW            | https://publicwww.com                  | Text                                                                  |
+| Pulsedive            | https://pulsedive.com                  | IP, domain, URL, hash                                                 |
+| Radar                | https://radar.cloudflare.com           | IP, domain                                                            |
+| RiskIQ               | http://community.riskiq.com            | IP, domain, email, Google Analytics Tracker ID                        |
+| Robtex               | https://www.robtex.com                 | IP, domain                                                            |
+| Scumware             | https://www.scumware.org               | IP, domain, hash (MD5)                                                |
+| SecurityTrails       | https://securitytrails.com             | IP, domain, email                                                     |
+| Shodan               | https://www.shodan.io                  | IP, domain, ASN                                                       |
+| Sploitus             | https://sploitus.com                   | CVE                                                                   |
+| SpyOnWeb             | http://spyonweb.com                    | IP, domain,  Google Adsense Publisher ID, Google Analytics Tracker ID |
+| Spyse                | https://spyse.com                      | IP, domain, ASN                                                       |
+| Talos                | https://talosintelligence.com          | IP, domain                                                            |
+| ThreatConnect        | https://app.threatconnect.com          | IP, domain, email                                                     |
+| ThreatCrowd          | https://www.threatcrowd.org            | IP, domain, email                                                     |
+| ThreatMiner          | https://www.threatminer.org            | IP, domain, hash                                                      |
+| TIP                  | https://threatintelligenceplatform.com | IP, domain                                                            |
+| Triage               | https://tria.ge                        | Hash, URL                                                             |
+| URLhaus              | https://urlhaus.abuse.ch               | IP, domain                                                            |
+| Urlscan              | https://urlscan.io                     | IP, domain, ASN, URL                                                  |
+| ViewDNS              | https://viewdns.info                   | IP, domain, email                                                     |
+| VirusTotal           | https://www.virustotal.com             | IP, domain, URL, hash                                                 |
+| VMRay                | https://www.vmray.com                  | Hash                                                                  |
+| Vulmon               | https://vulmon.com                     | CVE                                                                   |
+| VulncodeDB           | https://www.vulncode-db.com            | CVE                                                                   |
+| VxCube               | http://vxcube.com                      | IP, domain, hash                                                      |
+| WebAnalyzer          | https://wa-com.com                     | Domain                                                                |
+| X-Force Exchange     | https://exchange.xforce.ibmcloud.com   | IP, domain, hash                                                      |
+| ZoomEye              | https://www.zoomeye.org                | IP                                                                    |
 
 ### Supported scan engines
 
-| name           | url                             | supported types   |
-|:---------------|:--------------------------------|:------------------|
-| Browserling    | https://www.browserling.com     | url               |
-| HybridAnalysis | https://www.hybrid-analysis.com | url               |
-| Urlscan        | https://urlscan.io              | ip / domain / url |
-| VirusTotal     | https://www.virustotal.com      | url               |
+| name           | url                             | supported types |
+|:---------------|:--------------------------------|:----------------|
+| Browserling    | https://www.browserling.com     | URL             |
+| HybridAnalysis | https://www.hybrid-analysis.com | URL             |
+| Urlscan        | https://urlscan.io              | IP, domain, URL |
+| VirusTotal     | https://www.virustotal.com      | URL             |
 
 ## How to use
 
-This browser extension shows context menus based on a type of IoC you selected and then you can choose what you want to search / scan on.
+This browser extension shows context menus based on a type of IoC you select and then you can choose what you want to search / scan on.
 
 **Examples:**
 
@@ -137,7 +137,7 @@ This browser extension shows context menus based on a type of IoC you selected a
 
 !["example2"](/examples/2.gif "2.gif")
 
-Also, there is a how-to article about Mitaka which is written by Null Byte.
+Also, there is a how-to article about Mitaka by Null Byte.
 
 - [Use Mitaka to Perform In-Browser OSINT to Identify Malware, Sketchy Sites, Shady Emails & More](https://null-byte.wonderhowto.com/how-to/use-mitaka-perform-browser-osint-identify-malware-sketchy-sites-shady-emails-more-0216352/)
 
@@ -165,7 +165,7 @@ I don't (and will never) collect any information from the users.
 
 ## Privacy Policy
 
-- [My privacy policy for the extension](https://ninoseki.github.io/chrome-webstore/privacy-policy/)
+- [Privacy policy for the extension](https://ninoseki.github.io/chrome-webstore/privacy-policy/)
 
 ## Common Questions
 
