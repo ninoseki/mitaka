@@ -19,13 +19,6 @@ describe("Command", function () {
   });
 
   describe("#search", function () {
-    context("text", function () {
-      it("should return a URL for search", function () {
-        const command = new Command("Search 1.1.1.1 as a text on Censys");
-        expect(command.search()).to.equal("https://censys.io/ipv4?q=1.1.1.1");
-      });
-    });
-
     context("ip", function () {
       it("should return a URL for search", function () {
         const command = new Command("Search 1.1.1.1 as a ip on Urlscan");

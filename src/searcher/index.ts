@@ -41,7 +41,6 @@ export { OCCRP } from "./occrp";
 export { ONYPHE } from "./onyphe";
 export { OpenTIP } from "./opentip";
 export { OTX } from "./otx";
-export { PublicWWW } from "./publicwww";
 export { Pulsedive } from "./pulsedive";
 export { Radar } from "./radar";
 export { RiskIQ } from "./riskiq";

@@ -80,7 +80,7 @@ export async function createContextMenus(
   );
   // create searchers context menus based on a type of the input
   const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
-  let nonTextEntry: AnalyzerEntry | undefined = undefined;
+  let firstEntry: AnalyzerEntry | undefined = undefined;
 
   const contexts: ContextMenus.ContextType[] = ["selection"];
 
@@ -91,8 +91,8 @@ export async function createContextMenus(
       continue;
     }
 
-    if (entry.type !== "text" && nonTextEntry === undefined) {
-      nonTextEntry = entry;
+    if (firstEntry === undefined) {
+      firstEntry = entry;
     }
 
     // it tells action, query, type and target to the listner
@@ -103,9 +103,9 @@ export async function createContextMenus(
   }
 
   // search it on all services
-  if (nonTextEntry !== undefined) {
-    const query = nonTextEntry.query;
-    const type = nonTextEntry.type;
+  if (firstEntry !== undefined) {
+    const query = firstEntry.query;
+    const type = firstEntry.type;
     const id = `Search ${query} as a ${type} on all`;
     const title = `Search this ${type} on all`;
     const options = { contexts, id, title };

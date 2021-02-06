@@ -31,7 +31,6 @@ Mitaka is a browser extension for OSINT (open source intelligence) search which 
 
 | Name      | Desc.                       | E.g.                                         |
 |:----------|:----------------------------|:---------------------------------------------|
-| text      | Freetext                    | any string(s)                                |
 | asn       | ASN                         | `AS13335`                                    |
 | btc       | BTC address                 | `1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa`         |
 | cve       | CVE number                  | `CVE-2018-11776`                             |
@@ -60,7 +59,7 @@ Mitaka is a browser extension for OSINT (open source intelligence) search which 
 | Blockchain.com       | https://www.blockchain.com             | BTC                                                                   |
 | Blockchair           | https://blockchair.com                 | BTC, ETH                                                              |
 | BlockCypher          | https://live.blockcypher.com           | BTC                                                                   |
-| Censys               | https://censys.io                      | IP, domain, ASN, Text                                                 |
+| Censys               | https://censys.io                      | IP, domain, ASN                                                       |
 | Checkphish           | https://checkphish.ai                  | IP, domain                                                            |
 | crt.sh               | https://crt.sh                         | Domain                                                                |
 | DNSlytics            | https://dnslytics.com                  | IP, domain                                                            |
@@ -89,7 +88,6 @@ Mitaka is a browser extension for OSINT (open source intelligence) search which 
 | ONYPHE               | https://www.onyphe.io                  | IP                                                                    |
 | OpenTIP              | https://opentip.kaspersky.com          | Hash                                                                  |
 | OTX                  | https://otx.alienvault.com             | IP, domain hash                                                       |
-| PublicWWW            | https://publicwww.com                  | Text                                                                  |
 | Pulsedive            | https://pulsedive.com                  | IP, domain, URL, hash                                                 |
 | Radar                | https://radar.cloudflare.com           | IP, domain                                                            |
 | RiskIQ               | http://community.riskiq.com            | IP, domain, email, Google Analytics Tracker ID                        |

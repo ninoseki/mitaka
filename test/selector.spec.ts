@@ -25,32 +25,10 @@ describe("Seletor", function () {
     gaTrackID: numberOfSelectorsByType("gaTrackID"),
     hash: numberOfSelectorsByType("hash"),
     ip: numberOfSelectorsByType("ip"),
-    text: numberOfSelectorsByType("text"),
     url: numberOfSelectorsByType("url"),
   };
 
   context("searcher", function () {
-    context("text", function () {
-      const selector: Selector = new Selector("text");
-      describe("#getSearchersForText", function () {
-        it("should return searchers which support text", function () {
-          expect(selector.getSearchersByType("text").length).to.equal(
-            stats.text
-          );
-        });
-      });
-
-      describe("#getAnalyzerEntrys", function () {
-        it("should return searchers which support text", function () {
-          const entries: AnalyzerEntry[] = selector.getSearcherEntries();
-          for (const entry of entries) {
-            expect(entry.query).to.equal("text");
-          }
-          expect(entries.length).to.equal(stats.text);
-        });
-      });
-    });
-
     context("ip", function () {
       const ip = "1.1.1.1";
       const selector: Selector = new Selector(ip);
@@ -72,7 +50,7 @@ describe("Seletor", function () {
           for (const entry of entries) {
             expect(entry.query).to.equal(ip);
           }
-          expect(entries.length).to.equal(stats.text + stats.ip);
+          expect(entries.length).to.equal(stats.ip);
         });
       });
     });
@@ -101,7 +79,7 @@ describe("Seletor", function () {
           for (const entry of entries) {
             expect(entry.query).to.equal(domain);
           }
-          expect(entries.length).to.equal(stats.text + stats.domain);
+          expect(entries.length).to.equal(stats.domain);
         });
       });
     });
@@ -127,7 +105,7 @@ describe("Seletor", function () {
           for (const entry of entries) {
             expect(entry.query).to.equal(url);
           }
-          expect(entries.length).to.equal(stats.text + stats.url);
+          expect(entries.length).to.equal(stats.url);
         });
       });
     });
@@ -155,7 +133,7 @@ describe("Seletor", function () {
           for (const entry of entries) {
             expect(entry.query).to.equal(email);
           }
-          expect(entries.length).to.equal(stats.text + stats.email);
+          expect(entries.length).to.equal(stats.email);
         });
       });
     });
@@ -181,7 +159,7 @@ describe("Seletor", function () {
           for (const entry of entries) {
             expect(entry.query).to.equal(asn);
           }
-          expect(entries.length).to.equal(stats.text + stats.asn);
+          expect(entries.length).to.equal(stats.asn);
         });
       });
     });
@@ -220,7 +198,7 @@ describe("Seletor", function () {
           for (const entry of entries) {
             expect(entry.query).to.equal(sha256);
           }
-          expect(entries.length).to.equal(stats.text + stats.hash);
+          expect(entries.length).to.equal(stats.hash);
         });
       });
     });
@@ -246,7 +224,7 @@ describe("Seletor", function () {
           for (const entry of entries) {
             expect(entry.query).to.equal(cve);
           }
-          expect(entries.length).to.equal(stats.text + stats.cve);
+          expect(entries.length).to.equal(stats.cve);
         });
       });
     });
@@ -272,7 +250,7 @@ describe("Seletor", function () {
           for (const entry of entries) {
             expect(entry.query).to.equal(btc);
           }
-          expect(entries.length).to.equal(stats.text + stats.btc);
+          expect(entries.length).to.equal(stats.btc);
         });
       });
     });
@@ -334,7 +312,7 @@ describe("Seletor", function () {
           for (const entry of entries) {
             expect(entry.query).to.equal(eth);
           }
-          expect(entries.length).to.equal(stats.text + stats.eth);
+          expect(entries.length).to.equal(stats.eth);
         });
       });
     });

@@ -181,56 +181,14 @@ describe("Background script", function () {
   });
 
   describe("#createContextMenus", function () {
-    context("when not given a searcherStates", function () {
-      it("should call chrome.contextMenus.create", async function () {
-        await createContextMenus(
-          { request: "updateContextMenu", selection: "test" },
-          {},
-          { enableIDN: true, strictTLD: true }
-        );
+    it("should not call chrome.contextMenus.create", async function () {
+      await createContextMenus(
+        { request: "updateContextMenu", selection: "test" },
+        {},
+        { enableIDN: true, strictTLD: true }
+      );
 
-        browserMock.contextMenus.create.assertCalls([
-          [
-            {
-              contexts: ["selection"],
-              id: "Search test as a text on Censys",
-              title: "Search this text on Censys",
-            },
-            createContextMenuErrorHandler,
-          ],
-          [
-            {
-              contexts: ["selection"],
-              id: "Search test as a text on PublicWWW",
-              title: "Search this text on PublicWWW",
-            },
-            createContextMenuErrorHandler,
-          ],
-        ]);
-      });
-    });
-
-    context("when given a searcherStates", function () {
-      it("should call chrome.contextMenus.create", async function () {
-        await createContextMenus(
-          { request: "updateContextMenu", selection: "test" },
-          {
-            Censys: false,
-          },
-          { enableIDN: true, strictTLD: true }
-        );
-
-        browserMock.contextMenus.create.assertCalls([
-          [
-            {
-              contexts: ["selection"],
-              id: "Search test as a text on PublicWWW",
-              title: "Search this text on PublicWWW",
-            },
-            createContextMenuErrorHandler,
-          ],
-        ]);
-      });
+      browserMock.contextMenus.create.assertNoCall();
     });
   });
 });

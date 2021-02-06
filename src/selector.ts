@@ -133,11 +133,7 @@ export class Selector {
   ];
 
   public getSearcherEntries(): AnalyzerEntry[] {
-    const entries: AnalyzerEntry[] = this.makeAnalyzerEntries(
-      this.getSearchersByType("text"),
-      "text",
-      this.input
-    );
+    const entries: AnalyzerEntry[] = [];
 
     for (const slot of this.selectorSlots) {
       const type = slot.type;
