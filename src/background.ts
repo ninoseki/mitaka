@@ -2,6 +2,7 @@ import { browser, ContextMenus, Extension } from "webextension-polyfill-ts";
 
 import { Command } from "@/command";
 import { Selector } from "@/selector";
+import { truncate } from "@/truncate";
 import {
   AnalyzerEntry,
   GeneralSettings,
@@ -95,9 +96,9 @@ export async function createContextMenus(
       firstEntry = entry;
     }
 
-    // it tells action, query, type and target to the listner
+    // it tells action, query, type and target to the listener
     const id = `Search ${entry.query} as a ${entry.type} on ${name}`;
-    const title = `Search this ${entry.type} on ${name}`;
+    const title = `Search ${truncate(entry.query)} on ${name}`;
     const options = { contexts, id, title };
     browser.contextMenus.create(options, createContextMenuErrorHandler);
   }
@@ -116,9 +117,9 @@ export async function createContextMenus(
   const scannerEntries: AnalyzerEntry[] = selector.getScannerEntries();
   for (const entry of scannerEntries) {
     const name = entry.analyzer.name;
-    // it tells action/query/type/target to the listner
+    // it tells action/query/type/target to the listener
     const id = `Scan ${entry.query} as a ${entry.type} on ${name}`;
-    const title = `Scan this ${entry.type} on ${name}`;
+    const title = `Scan ${truncate(entry.query)} on ${name}`;
     const options = { contexts, id, title };
     browser.contextMenus.create(options, createContextMenuErrorHandler);
   }
