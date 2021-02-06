@@ -5,15 +5,11 @@ import { extractASNumber } from "@/utility";
 export class Censys implements Searcher {
   public baseURL: string;
   public name: string;
-  public supportedTypes: SearchableType[] = ["ip", "domain", "asn", "text"];
+  public supportedTypes: SearchableType[] = ["ip", "domain", "asn"];
 
   public constructor() {
     this.baseURL = "https://censys.io";
     this.name = "Censys";
-  }
-
-  public searchByText(query: string): string {
-    return buildURL(this.baseURL, "/ipv4", { q: query });
   }
 
   public searchByIP(query: string): string {

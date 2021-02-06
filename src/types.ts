@@ -9,7 +9,6 @@ export type SearchableType =
   | "gaTrackID"
   | "hash"
   | "ip"
-  | "text"
   | "url";
 
 export interface Searcher {
@@ -26,7 +25,6 @@ export interface Searcher {
   searchByGATrackID?(query: string): string;
   searchByHash?(query: string): string;
   searchByIP?(query: string): string;
-  searchByText?(query: string): string;
   searchByURL?(query: string): string;
   searchByXMR?(query: string): string;
 }

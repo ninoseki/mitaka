@@ -25,12 +25,6 @@ export class Command {
   }
 
   private searcherTable: SearcherTable = {
-    text: (searcher: Searcher, query: string): string => {
-      if (searcher.searchByText) {
-        return searcher.searchByText(query);
-      }
-      return "";
-    },
     ip: (searcher: Searcher, query: string): string => {
       if (searcher.searchByIP) {
         return searcher.searchByIP(query);
@@ -104,6 +98,7 @@ export class Command {
     const entries: AnalyzerEntry[] = selector.getSearcherEntries();
     const entry = entries.find((r) => r.analyzer.name === this.target);
     let url = "";
+
     if (entry !== undefined) {
       const searcher = entry.analyzer as Searcher;
       if (this.type in this.searcherTable) {
@@ -111,6 +106,7 @@ export class Command {
         url = fn(searcher, entry.query);
       }
     }
+
     return url;
   }
 

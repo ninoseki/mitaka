@@ -7,22 +7,8 @@ import { Censys } from "@/searcher";
 describe("Censys", function () {
   const subject = new Censys();
 
-  it("should support ip, domain, asn and text", function () {
-    expect(subject.supportedTypes).to.deep.equal([
-      "ip",
-      "domain",
-      "asn",
-      "text",
-    ]);
-  });
-
-  describe("#searchByText", function () {
-    const text = "urlscan.io";
-    it("should return a URL", function () {
-      expect(subject.searchByText(text)).to.equal(
-        `https://censys.io/ipv4?q=${text}`
-      );
-    });
+  it("should support ip, domain, asn", function () {
+    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "asn"]);
   });
 
   describe("#searchByIP", function () {
