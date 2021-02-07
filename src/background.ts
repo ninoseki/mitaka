@@ -82,7 +82,6 @@ export async function createContextMenus(
   // create searchers context menus based on a type of the input
   const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
   let firstEntry: AnalyzerEntry | undefined = undefined;
-
   const contexts: ContextMenus.ContextType[] = ["selection"];
 
   for (const entry of searcherEntries) {
@@ -108,7 +107,7 @@ export async function createContextMenus(
     const query = firstEntry.query;
     const type = firstEntry.type;
     const id = `Search ${query} as a ${type} on all`;
-    const title = `Search this ${type} on all`;
+    const title = `Search ${truncate(query)} on all`;
     const options = { contexts, id, title };
     browser.contextMenus.create(options, createContextMenuErrorHandler);
   }
