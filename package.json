@@ -5,10 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint --ext .ts src test",
-    "lint:fix": "npm run lint -- --fix",
     "lint:pre-commit": "eslint --ext .ts src --fix --quiet",
-    "prettier": "prettier \"src/**/*.ts\" \"test/**/*.ts\"",
-    "prettier:write": "npm run prettier -- --write",
     "build": "cross-env NODE_ENV=production webpack",
     "build:dev": "cross-env NODE_ENV=development webpack",
     "build:zip": "npm run build && ts-node scripts/build-zip.ts",
@@ -22,8 +19,7 @@
   },
   "lint-staged": {
     "*.ts": [
-      "npm run lint:pre-commit",
-      "npm run prettier:write"
+      "npm run lint:pre-commit"
     ]
   },
   "nyc": {
