@@ -7,8 +7,13 @@ import { GreyNoise } from "@/searcher";
 describe("GreyNoise", function () {
   const subject = new GreyNoise();
 
-  it("should support ip, domain & asn", function () {
-    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "asn"]);
+  it("should support ip, domain, asn and cve", function () {
+    expect(subject.supportedTypes).to.deep.equal([
+      "ip",
+      "domain",
+      "asn",
+      "cve",
+    ]);
   });
 
   describe("#searchByIP", function () {
@@ -34,6 +39,15 @@ describe("GreyNoise", function () {
     it("should return a URL", function () {
       expect(subject.searchByASN(asn)).to.equal(
         "https://viz.greynoise.io/query?gnql=metadata.asn%3AAS13335"
+      );
+    });
+  });
+
+  describe("#searchByCVE", function () {
+    const cve = "CVE-2019-19781";
+    it("should return a URL", function () {
+      expect(subject.searchByCVE(cve)).to.equal(
+        "https://viz.greynoise.io/query?gnql=cve%3ACVE-2019-19781"
       );
     });
   });
