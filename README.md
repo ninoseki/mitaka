@@ -70,7 +70,7 @@ Mitaka is a browser extension for OSINT (open source intelligence) search which 
 | FOFA                 | https://fofa.so                        | IP, domain                                                            |
 | FortiGuard           | https://fortiguard.com                 | IP, URL, CVE                                                          |
 | Google Safe Browsing | https://transparencyreport.google.com  | Domain, URL                                                           |
-| GreyNoise            | https://viz.greynoise.io               | IP, domain, ASN                                                       |
+| GreyNoise            | https://viz.greynoise.io               | IP, domain, ASN, CVE                                                  |
 | Hashdd               | https://hashdd.com                     | IP, domain, hash                                                      |
 | Hurricane Electric   | https://bgp.he.net/                    | IP, domain, ASN                                                       |
 | HybridAnalysis       | https://www.hybrid-analysis.com        | IP, domain, hash                                                      |

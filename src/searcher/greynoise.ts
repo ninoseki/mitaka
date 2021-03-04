@@ -4,7 +4,7 @@ import { buildURL } from "@/url_builder";
 export class GreyNoise implements Searcher {
   public baseURL: string;
   public name: string;
-  public supportedTypes: SearchableType[] = ["ip", "domain", "asn"];
+  public supportedTypes: SearchableType[] = ["ip", "domain", "asn", "cve"];
 
   public constructor() {
     this.baseURL = "https://viz.greynoise.io";
@@ -21,6 +21,10 @@ export class GreyNoise implements Searcher {
 
   public searchByASN(query: string): string {
     return this.search(`metadata.asn:${query}`);
+  }
+
+  public searchByCVE(query: string): string {
+    return this.search(`cve:${query}`);
   }
 
   private search(gnql: string): string {
