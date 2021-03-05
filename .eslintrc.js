@@ -4,7 +4,6 @@ module.exports = {
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:@typescript-eslint/recommended",
     "prettier",
-    "prettier/@typescript-eslint",
   ],
   plugins: ["@typescript-eslint", "prettier", "simple-import-sort"],
   parser: "@typescript-eslint/parser",
