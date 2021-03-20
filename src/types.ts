@@ -97,6 +97,13 @@ export interface Config {
   searcherStates: SearcherStates;
 }
 
+export interface Command {
+  action: string;
+  query: string;
+  type: SearchableType;
+  target: string;
+}
+
 export const MD5_LENGTH = 32;
 export const SHA1_LENGTH = 40;
 export const SHA256_LENGTH = 64;
