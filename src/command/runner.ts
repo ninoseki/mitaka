@@ -2,6 +2,7 @@ import { Selector } from "@/selector";
 import {
   AnalyzerEntry,
   ApiKeys,
+  Command,
   Scanner,
   ScannerTable,
   Searcher,
@@ -9,19 +10,13 @@ import {
   SearcherTable,
 } from "@/types";
 
-export class Command {
-  public action: string;
-  public query: string;
-  public target: string;
-  public type: string;
+export class CommandRunner {
+  public command: Command;
 
-  public constructor(command: string) {
-    // command = `Search ${entry.query} as a ${entry.type} on ${name}`;
-    const parts: string[] = command.split(" ");
-    this.action = parts[0].toLowerCase();
-    this.type = parts[parts.length - 3];
-    this.query = parts.slice(1, parts.length - 5).join(" ");
-    this.target = parts[parts.length - 1];
+  public constructor(commandString: string) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const command: Command = JSON.parse(commandString);
+    this.command = command;
   }
 
   private searcherTable: SearcherTable = {
@@ -94,15 +89,15 @@ export class Command {
   };
 
   public search(): string {
-    const selector: Selector = new Selector(this.query);
+    const selector: Selector = new Selector(this.command.query);
     const entries: AnalyzerEntry[] = selector.getSearcherEntries();
-    const entry = entries.find((r) => r.analyzer.name === this.target);
+    const entry = entries.find((r) => r.analyzer.name === this.command.target);
     let url = "";
 
     if (entry !== undefined) {
       const searcher = entry.analyzer as Searcher;
-      if (this.type in this.searcherTable) {
-        const fn = this.searcherTable[this.type];
+      if (this.command.type in this.searcherTable) {
+        const fn = this.searcherTable[this.command.type];
         url = fn(searcher, entry.query);
       }
     }
@@ -111,10 +106,10 @@ export class Command {
   }
 
   public searchAll(searcherStates: SearcherStates): string[] {
-    const selector: Selector = new Selector(this.query);
+    const selector: Selector = new Selector(this.command.query);
     const entries: AnalyzerEntry[] = selector
       .getSearcherEntries()
-      .filter((entry) => this.type === entry.type);
+      .filter((entry) => this.command.type === entry.type);
     const selectedEntries = entries.filter(
       (entry) =>
         !(entry.analyzer.name in searcherStates) ||
@@ -123,9 +118,9 @@ export class Command {
     const urls: string[] = [];
     for (const entry of selectedEntries) {
       const searcher = entry.analyzer as Searcher;
-      if (this.type in this.searcherTable) {
+      if (this.command.type in this.searcherTable) {
         try {
-          const fn = this.searcherTable[this.type];
+          const fn = this.searcherTable[this.command.type];
           urls.push(fn(searcher, entry.query));
         } catch (err) {
           continue;
@@ -157,9 +152,9 @@ export class Command {
   };
 
   public async scan(apiKeys: ApiKeys): Promise<string> {
-    const selector: Selector = new Selector(this.query);
+    const selector: Selector = new Selector(this.command.query);
     const entries: AnalyzerEntry[] = selector.getScannerEntries();
-    const entry = entries.find((r) => r.analyzer.name === this.target);
+    const entry = entries.find((r) => r.analyzer.name === this.command.target);
     let url = "";
     if (entry !== undefined) {
       const scanner = entry.analyzer as Scanner;

@@ -11,7 +11,8 @@ import {
   searchAll,
   showNotification,
 } from "@/background";
-import { Command } from "@/command";
+import { CommandPacker } from "@/command/packer";
+import { CommandRunner } from "@/command/runner";
 
 import { browserMock } from "./browserMock";
 import sinon = require("sinon");
@@ -43,10 +44,14 @@ describe("Background script", function () {
   describe("#search", function () {
     context("when given a valid input", function () {
       it("should call chrome.tabs.create()", async function () {
-        const command = new Command(
-          "Search https://github.com as a url on Urlscan"
+        const packer = new CommandPacker(
+          "search",
+          "https://github.com",
+          "url",
+          "Urlscan"
         );
-        await search(command);
+        const runner = new CommandRunner(packer.getJSON());
+        await search(runner);
         browserMock.tabs.create.assertCalls([
           [
             {
@@ -72,10 +77,14 @@ describe("Background script", function () {
           });
       });
       it("should call chrome.tabs.create", async function () {
-        const command = new Command(
-          "Search pub-9383614236930773 as a gaPubID on all"
+        const packer = new CommandPacker(
+          "search",
+          "pub-9383614236930773",
+          "gaPubID",
+          "all"
         );
-        await searchAll(command);
+        const runner = new CommandRunner(packer.getJSON());
+        await searchAll(runner);
         browserMock.tabs.create.assertCalls([
           [
             {
@@ -103,11 +112,16 @@ describe("Background script", function () {
       });
 
       it("should call chrome.tabs.create()", async function () {
-        const command = new Command(
-          "Scan https://www.wikipedia.org/ as a url on Urlscan"
+        const packer = new CommandPacker(
+          "scan",
+          "https://www.wikipedia.org/",
+          "url",
+          "Urlscan"
         );
+        const runner = new CommandRunner(packer.getJSON());
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const commandStub: sinon.SinonStub<any, any> = sandbox
-          .stub(command, "scan")
+          .stub(runner, "scan")
           .withArgs({
             hybridAnalysisApiKey: "test",
             urlscanApiKey: "test",
@@ -117,7 +131,7 @@ describe("Background script", function () {
           "https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/"
         );
 
-        await scan(command);
+        await scan(runner);
         browserMock.tabs.create.assertCalls([
           [
             {
@@ -140,11 +154,15 @@ describe("Background script", function () {
         });
 
         it("should not call chrome.tabs.create()", async function () {
-          const command = new Command(
-            "Scan https://www.wikipedia.org/ as a url on Urlscan"
+          const packer = new CommandPacker(
+            "scan",
+            "https://www.wikipedia.org/",
+            "url",
+            "Urlscan"
           );
+          const runner = new CommandRunner(packer.getJSON());
 
-          await scan(command);
+          await scan(runner);
           browserMock.tabs.create.assertCalls([]);
         });
       }

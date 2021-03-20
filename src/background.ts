@@ -1,8 +1,8 @@
 import { browser, ContextMenus, Extension } from "webextension-polyfill-ts";
 
-import { Command } from "@/command";
+import { CommandPacker } from "@/command/packer";
+import { CommandRunner } from "@/command/runner";
 import { Selector } from "@/selector";
-import { truncate } from "@/truncate";
 import {
   AnalyzerEntry,
   GeneralSettings,
@@ -20,9 +20,9 @@ export async function showNotification(message: string): Promise<void> {
   });
 }
 
-export async function search(command: Command): Promise<void> {
+export async function search(runner: CommandRunner): Promise<void> {
   try {
-    const url: string = command.search();
+    const url: string = runner.search();
     if (url !== "") {
       await browser.tabs.create({ url });
     }
@@ -32,10 +32,10 @@ export async function search(command: Command): Promise<void> {
   }
 }
 
-export async function searchAll(command: Command): Promise<void> {
+export async function searchAll(runner: CommandRunner): Promise<void> {
   try {
     const states: SearcherStates = await getSearcherStates();
-    const urls = command.searchAll(states);
+    const urls = runner.searchAll(states);
     for (const url of urls) {
       await browser.tabs.create({ url });
     }
@@ -45,10 +45,10 @@ export async function searchAll(command: Command): Promise<void> {
   }
 }
 
-export async function scan(command: Command): Promise<void> {
+export async function scan(runner: CommandRunner): Promise<void> {
   const apiKeys = await getApiKeys();
   try {
-    const url: string = await command.scan(apiKeys);
+    const url: string = await runner.scan(apiKeys);
     if (url !== "") {
       await browser.tabs.create({ url });
     }
@@ -95,9 +95,16 @@ export async function createContextMenus(
       firstEntry = entry;
     }
 
+    const command: CommandPacker = new CommandPacker(
+      "search",
+      entry.query,
+      entry.type,
+      name
+    );
+
     // it tells action, query, type and target to the listener
-    const id = `Search ${entry.query} as a ${entry.type} on ${name}`;
-    const title = `Search ${truncate(entry.query)} on ${name}`;
+    const id = command.getJSON();
+    const title = command.getMessage();
     const options = { contexts, id, title };
     browser.contextMenus.create(options, createContextMenuErrorHandler);
   }
@@ -106,8 +113,15 @@ export async function createContextMenus(
   if (firstEntry !== undefined) {
     const query = firstEntry.query;
     const type = firstEntry.type;
-    const id = `Search ${query} as a ${type} on all`;
-    const title = `Search ${truncate(query)} on all`;
+
+    const command: CommandPacker = new CommandPacker(
+      "search",
+      query,
+      type,
+      "all"
+    );
+    const id = command.getJSON();
+    const title = command.getMessage();
     const options = { contexts, id, title };
     browser.contextMenus.create(options, createContextMenuErrorHandler);
   }
@@ -116,9 +130,10 @@ export async function createContextMenus(
   const scannerEntries: AnalyzerEntry[] = selector.getScannerEntries();
   for (const entry of scannerEntries) {
     const name = entry.analyzer.name;
-    // it tells action/query/type/target to the listener
-    const id = `Scan ${entry.query} as a ${entry.type} on ${name}`;
-    const title = `Scan ${truncate(entry.query)} on ${name}`;
+
+    const command = new CommandPacker("scan", entry.query, entry.type, name);
+    const id = command.getJSON();
+    const title = command.getMessage();
     const options = { contexts, id, title };
     browser.contextMenus.create(options, createContextMenuErrorHandler);
   }
@@ -148,17 +163,17 @@ if (typeof browser !== "undefined" && browser.runtime !== undefined) {
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   browser.contextMenus.onClicked.addListener(async (info, tab_) => {
     const id: string = info.menuItemId.toString();
-    const command = new Command(id);
-    switch (command.action) {
+    const runner = new CommandRunner(id);
+    switch (runner.command.action) {
       case "search":
-        if (command.target === "all") {
-          await searchAll(command);
+        if (runner.command.target === "all") {
+          await searchAll(runner);
         } else {
-          await search(command);
+          await search(runner);
         }
         break;
       case "scan":
-        await scan(command);
+        await scan(runner);
         break;
     }
   });
