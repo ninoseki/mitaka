@@ -115,27 +115,41 @@ export class Selector {
     );
   }
 
-  private selectorSlots: SelectorSlot[] = [
-    { type: "url", func: (this.getURL = this.getURL.bind(this)) },
-    { type: "email", func: (this.getEmail = this.getEmail.bind(this)) },
-    { type: "domain", func: (this.getDomain = this.getDomain.bind(this)) },
-    { type: "ip", func: (this.getIP = this.getIP.bind(this)) },
-    { type: "asn", func: (this.getASN = this.getASN.bind(this)) },
-    { type: "hash", func: (this.getHash = this.getHash.bind(this)) },
-    { type: "cve", func: (this.getCVE = this.getCVE.bind(this)) },
-    { type: "btc", func: (this.getBTC = this.getBTC.bind(this)) },
-    {
-      type: "gaTrackID",
-      func: (this.getGATrackID = this.getGATrackID.bind(this)),
-    },
-    { type: "gaPubID", func: (this.getGAPubID = this.getGAPubID.bind(this)) },
-    { type: "eth", func: (this.getETH = this.getETH.bind(this)) },
-  ];
+  public IsPossibleNetworkIndicator(): boolean {
+    return this.input.includes(".") || this.input.includes("dot");
+  }
+
+  private getSelectorSlots(): SelectorSlot[] {
+    let slots: SelectorSlot[] = [];
+
+    if (this.IsPossibleNetworkIndicator()) {
+      slots = slots.concat([
+        { type: "url", func: (this.getURL = this.getURL.bind(this)) },
+        { type: "email", func: (this.getEmail = this.getEmail.bind(this)) },
+        { type: "domain", func: (this.getDomain = this.getDomain.bind(this)) },
+        { type: "ip", func: (this.getIP = this.getIP.bind(this)) },
+      ]);
+    }
+
+    return slots.concat([
+      { type: "asn", func: (this.getASN = this.getASN.bind(this)) },
+      { type: "hash", func: (this.getHash = this.getHash.bind(this)) },
+      { type: "cve", func: (this.getCVE = this.getCVE.bind(this)) },
+      { type: "btc", func: (this.getBTC = this.getBTC.bind(this)) },
+      {
+        type: "gaTrackID",
+        func: (this.getGATrackID = this.getGATrackID.bind(this)),
+      },
+      { type: "gaPubID", func: (this.getGAPubID = this.getGAPubID.bind(this)) },
+      { type: "eth", func: (this.getETH = this.getETH.bind(this)) },
+    ]);
+  }
 
   public getSearcherEntries(): AnalyzerEntry[] {
     const entries: AnalyzerEntry[] = [];
+    const slots = this.getSelectorSlots();
 
-    for (const slot of this.selectorSlots) {
+    for (const slot of slots) {
       const type = slot.type;
       const func = slot.func;
 
