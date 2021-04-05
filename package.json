@@ -68,7 +68,7 @@
     "@types/mocha": "8.2.2",
     "@types/moxios": "0.4.10",
     "@types/mustache": "4.1.1",
-    "@types/node": "14.14.35",
+    "@types/node": "14.14.37",
     "@types/qs": "6.9.6",
     "@types/sinon": "9.0.11",
     "@types/window-or-global": "1.0.0",
