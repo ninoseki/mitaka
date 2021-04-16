@@ -7,15 +7,16 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/ninoseki/mitaka/badge)](https://www.codefactor.io/repository/github/ninoseki/mitaka)
 [![Coverage Status](https://coveralls.io/repos/github/ninoseki/mitaka/badge.svg)](https://coveralls.io/github/ninoseki/mitaka)
 
-![eyecatch](./examples/eyecatch.png)
+[![](images/tines.png)](https://tines.io?utm_source=github&utm_medium=sponsorship&utm_campaign=ninoseki)
 
-Mitaka is a browser extension for OSINT (open source intelligence) search which can:
+Mitaka is a browser extension makes your OSINT search & scan easy.
 
-- Extract & refang IoCs (indicators of compromise) from a selected block of text.
-  - E.g. `example[.]com` to `example.com`, `test[at]example.com` to `test@example.com`, `hxxp://example.com` to `http://example.com`, etc.
-  - You can find all the refang techniques in [here](https://github.com/ninoseki/ioc-extractor#details).
-- Search / scan it on various engines.
-  - E.g. VirusTotal, urlscan.io, Censys, Shodan, etc.
+![demo](./images/demo.gif)
+
+- Key features:
+  - Auto IoC selection with refang.
+    - E.g. `example[.]com` to `example.com`, `test[at]example.com` to `test@example.com`, `hxxp://example.com` to `http://example.com`, etc.
+  - Support 65+ services.
 
 ## Install
 
@@ -127,27 +128,15 @@ Mitaka is a browser extension for OSINT (open source intelligence) search which 
 
 ## How to use
 
-This browser extension shows context menus based on a type of IoC you select and then you can choose what you want to search / scan on.
-
-**Examples:**
-
-!["example"](/examples/1.gif "1.gif")
-
-!["example2"](/examples/2.gif "2.gif")
-
-Also, there is a how-to article about Mitaka by Null Byte.
-
 - [Use Mitaka to Perform In-Browser OSINT to Identify Malware, Sketchy Sites, Shady Emails & More](https://null-byte.wonderhowto.com/how-to/use-mitaka-perform-browser-osint-identify-malware-sketchy-sites-shady-emails-more-0216352/)
 
-**Note:**
-
-Please set your API keys in the options for enabling HybridAnalysis, urlscan.io and VirusTotal scans.
+**Note:** Please set your API keys in the options for enabling HybridAnalysis, urlscan.io and VirusTotal scan.
 
 ## Options
 
 You can enable / disable a search engine on the options page based on your preference.
 
-!["options.png](/examples/options.png "options.png")
+!["options.png](/images/options.png "options.png")
 
 ## About Permissons
 
