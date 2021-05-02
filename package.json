@@ -90,7 +90,7 @@
     "ignore-styles": "5.0.1",
     "jsdom": "16.5.3",
     "lint-staged": "10.5.4",
-    "mini-css-extract-plugin": "1.5.1",
+    "mini-css-extract-plugin": "1.6.0",
     "mocha": "8.3.2",
     "moxios": "0.4.0",
     "nyc": "15.1.0",
