@@ -1,5 +1,5 @@
 import { SearchableType, Searcher } from "@/types";
-import { buildURL } from "@/url_builder";
+import { buildURL } from "@/urlBuilder";
 
 export class URLhaus implements Searcher {
   public baseURL: string;

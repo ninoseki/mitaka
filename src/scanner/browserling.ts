@@ -1,5 +1,5 @@
 import { ScannableType, Scanner } from "@/types";
-import { buildURL } from "@/url_builder";
+import { buildURL } from "@/urlBuilder";
 
 export class Browserling implements Scanner {
   public baseURL: string;

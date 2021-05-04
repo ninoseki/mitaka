@@ -2,7 +2,7 @@ import axios from "axios";
 import qs from "qs";
 
 import { ScannableType, Scanner } from "@/types";
-import { buildURL } from "@/url_builder";
+import { buildURL } from "@/urlBuilder";
 
 interface Data {
   id: string;

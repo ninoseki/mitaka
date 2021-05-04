@@ -63,10 +63,10 @@ export { ViewDNS } from "./viewdns";
 export { VirusTotal } from "./virustotal";
 export { VMRay } from "./vmray";
 export { Vulmon } from "./vulmon";
-export { VulncodeDB } from "./vulncode-db";
+export { VulncodeDB } from "./vulncodeDB";
 export { VxCube } from "./vxcube";
 export { WebAnalyzer } from "./webanalyzer";
-export { XForceExchange } from "./xforce-exchange";
+export { XForceExchange } from "./xforceExchange";
 export { ZoomEye } from "./zoomeye";
 
 // eslint-disable-next-line simple-import-sort/exports

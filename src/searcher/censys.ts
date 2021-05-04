@@ -1,5 +1,5 @@
 import { SearchableType, Searcher } from "@/types";
-import { buildURL } from "@/url_builder";
+import { buildURL } from "@/urlBuilder";
 import { extractASNumber } from "@/utility";
 
 export class Censys implements Searcher {
