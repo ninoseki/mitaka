@@ -8,21 +8,14 @@ describe("Censys", function () {
   const subject = new Censys();
 
   it("should support ip, domain, asn", function () {
-    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "asn"]);
+    expect(subject.supportedTypes).to.deep.equal(["ip", "asn"]);
   });
 
   describe("#searchByIP", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
-      expect(subject.searchByIP(ip)).to.equal(`https://censys.io/ipv4/${ip}`);
-    });
-  });
-
-  describe("#searchByDomain", function () {
-    const domain = "github.com";
-    it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).to.equal(
-        `https://censys.io/domain/${domain}`
+      expect(subject.searchByIP(ip)).to.equal(
+        `https://search.censys.io/hosts/${ip}`
       );
     });
   });
@@ -31,7 +24,7 @@ describe("Censys", function () {
     const asn = "AS13335";
     it("should return a URL", function () {
       expect(subject.searchByASN(asn)).to.equal(
-        "https://censys.io/ipv4?q=autonomous_system.asn%3A13335"
+        "https://search.censys.io/search?q=autonomous_system.asn%3A13335&resource=hosts"
       );
     });
   });
