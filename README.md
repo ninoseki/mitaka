@@ -60,7 +60,7 @@ Mitaka is a browser extension makes your OSINT search & scan easy.
 | Blockchain.com       | https://www.blockchain.com             | BTC                                                                   |
 | Blockchair           | https://blockchair.com                 | BTC, ETH                                                              |
 | BlockCypher          | https://live.blockcypher.com           | BTC                                                                   |
-| Censys               | https://censys.io                      | IP, ASN                                                               |
+| Censys               | https://censys.io                      | IP, domain, ASN, email                                                |
 | Checkphish           | https://checkphish.ai                  | IP, domain                                                            |
 | crt.sh               | https://crt.sh                         | Domain                                                                |
 | DNSlytics            | https://dnslytics.com                  | IP, domain                                                            |

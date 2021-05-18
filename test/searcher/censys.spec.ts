@@ -28,4 +28,22 @@ describe("Censys", function () {
       );
     });
   });
+
+  describe("#searchByDomain", function () {
+    const domain = "github.com";
+    it("should return a URL", function () {
+      expect(subject.searchByDomain(domain)).to.equal(
+        "https://search.censys.io/certificates?q=parsed.names%3Agithub.com"
+      );
+    });
+  });
+
+  describe("#searchByEmail", function () {
+    const email = "test@test.com";
+    it("should return a URL", function () {
+      expect(subject.searchByEmail(email)).to.equal(
+        "https://search.censys.io/certificates?q=parsed.subject.email_address%3Atest%40test.com"
+      );
+    });
+  });
 });
