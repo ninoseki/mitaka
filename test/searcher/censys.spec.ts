@@ -7,8 +7,13 @@ import { Censys } from "@/searcher";
 describe("Censys", function () {
   const subject = new Censys();
 
-  it("should support ip, domain, asn", function () {
-    expect(subject.supportedTypes).to.deep.equal(["ip", "asn"]);
+  it("should support ip, domain, asn and email", function () {
+    expect(subject.supportedTypes).to.deep.equal([
+      "ip",
+      "asn",
+      "domain",
+      "email",
+    ]);
   });
 
   describe("#searchByIP", function () {
