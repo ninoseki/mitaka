@@ -9,7 +9,7 @@
 
 [![](images/tines.png)](https://tines.io?utm_source=github&utm_medium=sponsorship&utm_campaign=ninoseki)
 
-Mitaka is a browser extension makes your OSINT search & scan easy.
+Mitaka is a browser extension makes your OSINT search & scan easily.
 
 ![demo](./images/demo.gif)
 
@@ -32,17 +32,17 @@ Mitaka is a browser extension makes your OSINT search & scan easy.
 
 | Name      | Desc.                       | E.g.                                         |
 |:----------|:----------------------------|:---------------------------------------------|
-| asn       | ASN                         | `AS13335`                                    |
-| btc       | BTC address                 | `1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa`         |
-| cve       | CVE number                  | `CVE-2018-11776`                             |
-| domain    | Domain name                 | `github.com`                                 |
-| email     | Email address               | `test@test.com`                              |
-| eth       | Ethereum address            | `0x32be343b94f860124dc4fee278fdcbd38c102d88` |
-| gaPubID   | Google Adsense Publisher ID | `pub-9383614236930773`                       |
-| gaTrackID | Google Analytics Tracker ID | `UA-67609351-1`                              |
-| hash      | MD5, SHA1, SHA256           | `44d88612fea8a8f36de82e1278abb02f`           |
-| ip        | IPv4 address                | `8.8.8.8`                                    |
-| url       | URL                         | `https://github.com`                         |
+| ANS       | ASN                         | `AS13335`                                    |
+| BTC       | BTC address                 | `1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa`         |
+| CVE       | CVE number                  | `CVE-2018-11776`                             |
+| Domain    | Domain name                 | `github.com`                                 |
+| Email     | Email address               | `test@test.com`                              |
+| ETH       | Ethereum address            | `0x32be343b94f860124dc4fee278fdcbd38c102d88` |
+| GaPubID   | Google Adsense Publisher ID | `pub-9383614236930773`                       |
+| GaTrackID | Google Analytics Tracker ID | `UA-67609351-1`                              |
+| Hash      | MD5, SHA1, SHA256           | `44d88612fea8a8f36de82e1278abb02f`           |
+| IP        | IPv4 address                | `8.8.8.8`                                    |
+| URL       | URL                         | `https://github.com`                         |
 
 ### Supported search engines
 
