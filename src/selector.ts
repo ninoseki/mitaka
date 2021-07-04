@@ -43,64 +43,66 @@ export class Selector {
   }
 
   public getIP(): string | null {
-    return this.getFirstValueFromArray(extractIPv4(this.input));
+    return extractIPv4(this.input);
   }
 
   public getDomain(): string | null {
-    return this.getFirstValueFromArray(
-      extractDomain(this.input, this.enableIDN, this.strictTLD)
-    );
+    return extractDomain(this.input, this.enableIDN, this.strictTLD);
   }
 
   public getURL(): string | null {
-    return this.getFirstValueFromArray(
-      extractURL(this.input, this.enableIDN, this.strictTLD)
-    );
+    return extractURL(this.input, this.enableIDN, this.strictTLD);
   }
 
   public getEmail(): string | null {
-    return this.getFirstValueFromArray(
-      extractEmail(this.input, this.enableIDN, this.strictTLD)
-    );
+    return extractEmail(this.input, this.enableIDN, this.strictTLD);
   }
 
   public getASN(): string | null {
-    return this.getFirstValueFromArray(extractASN(this.input));
+    return extractASN(this.input);
   }
 
   public getHash(): string | null {
-    let hashes: string[] = [];
-    hashes = this.concat(hashes, extractSHA256(this.input));
-    hashes = this.concat(hashes, extractSHA1(this.input));
-    hashes = this.concat(hashes, extractMD5(this.input));
-    if (hashes.length === 0) {
-      return null;
+    const sha256 = extractSHA256(this.input);
+    if (sha256 !== null) {
+      return sha256;
     }
-    return hashes[0];
+
+    const sha1 = extractSHA1(this.input);
+    if (sha1 !== null) {
+      return sha1;
+    }
+
+    const md5 = extractMD5(this.input);
+    if (md5 !== null) {
+      return md5;
+    }
+
+    return null;
   }
 
   public getCVE(): string | null {
-    return this.getFirstValueFromArray(extractCVE(this.input));
+    return extractCVE(this.input);
   }
 
   public getBTC(): string | null {
-    return this.getFirstValueFromArray(extractBTC(this.input));
+    return extractBTC(this.input);
   }
 
   public getXMR(): string | null {
-    return this.getFirstValueFromArray(extractXMR(this.input));
+    return extractXMR(this.input);
   }
 
   public getGATrackID(): string | null {
-    return this.getFirstValueFromArray(extractGATrackID(this.input));
+    return extractGATrackID(this.input);
   }
 
   public getGAPubID(): string | null {
-    return this.getFirstValueFromArray(extractGAPubID(this.input));
+    return extractGAPubID(this.input);
   }
 
   public getETH(): string | null {
-    return this.getFirstValueFromArray(extractETH(this.input));
+    return extractETH(this.input);
   }
 
   public getSearchersByType(type: SearchableType): Searcher[] {
@@ -116,7 +118,7 @@ export class Selector {
   }
 
   public IsPossibleNetworkIndicator(): boolean {
-    return this.input.includes(".") || this.input.includes("dot");
+    return this.input.includes(".");
   }
 
   private getSelectorSlots(): SelectorSlot[] {
@@ -156,9 +158,10 @@ export class Selector {
       const result = func.apply(this);
       if (result !== null) {
         console.debug(`Mitaka: ${type} is selected. value = ${result}.`);
-        return this.concat(
-          entries,
-          this.makeAnalyzerEntries(this.getSearchersByType(type), type, result)
+        return this.makeAnalyzerEntries(
+          this.getSearchersByType(type),
+          type,
+          result
         );
       }
     }
@@ -181,27 +184,15 @@ export class Selector {
 
       const result = func.apply(this);
       if (result !== null) {
-        return entries.concat(
-          this.makeAnalyzerEntries(this.getScannersByType(type), type, result)
+        return this.makeAnalyzerEntries(
+          this.getScannersByType(type),
+          type,
+          result
         );
       }
     }
 
     return entries;
-  }
-
-  private getFirstValueFromArray<T>(array: T[] | null): T | null {
-    if (array !== null && array[0]) {
-      return array[0];
-    }
-    return null;
-  }
-
-  private concat<T>(target: T[], input: T[] | null): T[] {
-    if (input !== null) {
-      return target.concat(input);
-    }
-    return target;
   }
 
   private makeAnalyzerEntries(
