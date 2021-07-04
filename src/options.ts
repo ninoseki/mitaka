@@ -32,9 +32,8 @@ export async function saveApiKeys(): Promise<void> {
 export async function saveSearcherStates(): Promise<void> {
   const searcherStates: SearcherStates = {};
   const searcherList = document.getElementById("searcher-list") as HTMLElement;
-  const radios = searcherList.querySelectorAll<HTMLInputElement>(
-    '[type="checkbox"]'
-  );
+  const radios =
+    searcherList.querySelectorAll<HTMLInputElement>('[type="checkbox"]');
   for (const radio of radios) {
     const name = radio.getAttribute("name");
     if (name === null) {
@@ -115,9 +114,9 @@ export async function restoreGeneralSettings(): Promise<void> {
     "general-settings"
   ) as HTMLElement;
   const fragment: DocumentFragment = document.createDocumentFragment();
-  const template = (document.getElementById(
-    "general-settings-template"
-  ) as HTMLElement).innerHTML;
+  const template = (
+    document.getElementById("general-settings-template") as HTMLElement
+  ).innerHTML;
 
   const elem = document.createElement("div");
   elem.innerHTML = Mustache.render(template, generalSettings);
