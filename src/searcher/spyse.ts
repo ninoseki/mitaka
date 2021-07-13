@@ -5,7 +5,7 @@ import { extractASNumber } from "@/utility";
 export class Spyse implements Searcher {
   public baseURL: string;
   public name: string;
-  public supportedTypes: SearchableType[] = ["ip", "domain", "asn"];
+  public supportedTypes: SearchableType[] = ["ip", "domain", "asn", "cve"];
 
   public constructor() {
     this.baseURL = "https://spyse.com";
@@ -23,5 +23,9 @@ export class Spyse implements Searcher {
   public searchByASN(query: string): string {
     const asn = extractASNumber(query);
     return buildURL(this.baseURL, `/target/as/${asn}`);
+  }
+
+  public searchByCVE(query: string): string {
+    return buildURL(this.baseURL, `/target/cve/${query}`);
   }
 }
