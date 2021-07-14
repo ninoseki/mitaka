@@ -5,7 +5,13 @@ import { extractASNumber } from "@/utility";
 export class Spyse implements Searcher {
   public baseURL: string;
   public name: string;
-  public supportedTypes: SearchableType[] = ["ip", "domain", "asn"];
+  public supportedTypes: SearchableType[] = [
+    "ip",
+    "domain",
+    "asn",
+    "cve",
+    "email",
+  ];
 
   public constructor() {
     this.baseURL = "https://spyse.com";
@@ -23,5 +29,15 @@ export class Spyse implements Searcher {
   public searchByASN(query: string): string {
     const asn = extractASNumber(query);
     return buildURL(this.baseURL, `/target/as/${asn}`);
+  }
+
+  public searchByCVE(query: string): string {
+    return buildURL(this.baseURL, `/target/cve/${query}`);
+  }
+
+  public searchByEmail(query: string): string {
+    return buildURL(this.baseURL, "/advanced-search/domain", {
+      search_params: `[{"domain_whois_registrant_email":{"operator":"contains","value":"${query}"}}]`,
+    });
   }
 }
