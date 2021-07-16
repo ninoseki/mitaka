@@ -11,7 +11,7 @@ describe("Google Safe Browsing", function () {
     expect(subject.supportedTypes).to.deep.equal(["domain", "url"]);
   });
 
-  describe("#searchByDoman", function () {
+  describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).to.equal(
