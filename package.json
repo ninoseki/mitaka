@@ -63,7 +63,7 @@
     "@types/js-base64": "3.3.1",
     "@types/jsdom": "16.2.12",
     "@types/mocha": "8.2.2",
-    "@types/moxios": "0.4.11",
+    "@types/moxios": "0.4.12",
     "@types/mustache": "4.1.1",
     "@types/node": "16.0.0",
     "@types/qs": "6.9.6",
