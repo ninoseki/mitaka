@@ -17,8 +17,7 @@ describe("VirusTotal", function () {
     moxios.stubRequest("https://www.virustotal.com/api/v3/urls", {
       response: {
         data: {
-          id:
-            "u-ef8678c0f43f6142407ca89b4a376556cd4472d26b5952efa6d3821fa9fc597b-1589690619",
+          id: "u-ef8678c0f43f6142407ca89b4a376556cd4472d26b5952efa6d3821fa9fc597b-1589690619",
           type: "analysis",
         },
       },

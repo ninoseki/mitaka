@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * License: zlib/libpng
  * @author Santo Pfingsten
@@ -101,7 +103,7 @@ function booleanVariations(count: number): boolean[][] {
 }
 
 function getArgs(func: (...value: boolean[]) => void): string[] {
-  const match = func.toString().match(/.*\(([^)]*)\)/);
+  const match = /.*\(([^)]*)\)/.exec(func.toString());
   if (!match) throw new Error("Can't detect argument names for function");
 
   return match[1]

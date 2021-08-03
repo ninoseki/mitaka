@@ -55,8 +55,7 @@ describe("Background script", function () {
         browserMock.tabs.create.assertCalls([
           [
             {
-              url:
-                "https://urlscan.io/search/#page.url%3A%22https%3A%2F%2Fgithub.com%22%20OR%20task.url%3A%22https%3A%2F%2Fgithub.com%22",
+              url: "https://urlscan.io/search/#page.url%3A%22https%3A%2F%2Fgithub.com%22%20OR%20task.url%3A%22https%3A%2F%2Fgithub.com%22",
             },
           ],
         ]);
@@ -135,8 +134,7 @@ describe("Background script", function () {
         browserMock.tabs.create.assertCalls([
           [
             {
-              url:
-                "https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/",
+              url: "https://urlscan.io/entry/ac04bc14-4efe-439d-b356-8384843daf75/",
             },
           ],
         ]);
