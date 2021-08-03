@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * Credit: Santo Pfingsten (https://github.com/Lusito/forget-me-not)
  */
