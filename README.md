@@ -94,11 +94,11 @@ Mitaka is a browser extension makes your OSINT search & scan easily.
 | RiskIQ               | http://community.riskiq.com            | IP, domain, email, Google Analytics Tracker ID                        |
 | Robtex               | https://www.robtex.com                 | IP, domain                                                            |
 | Scumware             | https://www.scumware.org               | IP, domain, hash (MD5)                                                |
-| SecurityTrails       | https://securitytrails.com             | IP, domain, email                                                     |
+| SecurityTrails       | https://securitytrails.com             | IP, domain                                                            |
 | Shodan               | https://www.shodan.io                  | IP, domain, ASN                                                       |
 | Sploitus             | https://sploitus.com                   | CVE                                                                   |
 | SpyOnWeb             | http://spyonweb.com                    | IP, domain,  Google Adsense Publisher ID, Google Analytics Tracker ID |
-| Spyse                | https://spyse.com                      | IP, domain, ASN, CVE, email                                                       |
+| Spyse                | https://spyse.com                      | IP, domain, ASN, CVE, email                                           |
 | Talos                | https://talosintelligence.com          | IP, domain                                                            |
 | ThreatConnect        | https://app.threatconnect.com          | IP, domain, email                                                     |
 | ThreatCrowd          | https://www.threatcrowd.org            | IP, domain, email                                                     |
