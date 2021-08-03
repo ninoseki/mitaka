@@ -7,8 +7,8 @@ import { SecurityTrails } from "@/searcher";
 describe("SecurityTrails", function () {
   const subject = new SecurityTrails();
 
-  it("should support ip, domain and email", function () {
-    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "email"]);
+  it("should support ip, domain", function () {
+    expect(subject.supportedTypes).to.deep.equal(["ip", "domain"]);
   });
 
   describe("#searchByIP", function () {
@@ -25,15 +25,6 @@ describe("SecurityTrails", function () {
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).to.equal(
         `https://securitytrails.com/domain/${domain}`
-      );
-    });
-  });
-
-  describe("#searchByEmail", function () {
-    const email = "test@test.com";
-    it("should return a URL", function () {
-      expect(subject.searchByEmail(email)).to.equal(
-        `https://securitytrails.com/list/by-email/${email}`
       );
     });
   });
