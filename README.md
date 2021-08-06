@@ -49,6 +49,7 @@ Mitaka is a browser extension makes your OSINT search & scan easily.
 | Name                 | URL                                    | Supported types                                                       |
 |:---------------------|:---------------------------------------|:----------------------------------------------------------------------|
 | AbuseIPDB            | https://www.abuseipdb.com              | IP                                                                    |
+| AlienVault           | https://otx.alienvault.com             | IP, domain, CVE, URL, hash                                            |
 | AnyRun               | https://app.any.run                    | Hash                                                                  |
 | apklab               | https://apklab.io                      | Hash (SHA256)                                                         |
 | archive.org          | https://archive.org                    | URL                                                                   |

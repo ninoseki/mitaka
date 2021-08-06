@@ -1,4 +1,5 @@
 export { AbuseIPDB } from "./abuseipdb";
+export { AlienVault } from "./alienvault";
 export { AnyRun } from "./anyrun";
 export { Apklab } from "./apklab";
 export { ArchiveOrg } from "./archiveorg";

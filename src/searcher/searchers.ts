@@ -2,6 +2,7 @@ import { Searcher } from "@/types";
 
 import {
   AbuseIPDB,
+  AlienVault,
   AnyRun,
   Apklab,
   ArchiveOrg,
@@ -75,6 +76,7 @@ import {
 
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),
+  new AlienVault(),
   new AnyRun(),
   new Apklab(),
   new ArchiveOrg(),
