@@ -17,6 +17,12 @@
           <div class="box">
             <h2 class="title is-2">General settings</h2>
             <div id="general-settings"></div>
+            <hr>
+            <article class="message is-warning">
+              <div class="message-body">
+                <strong>Warning</strong>: Enabling the above options may cause a performance issue
+              </div>
+            </article>
           </div>
 
           <div class="box">
@@ -63,7 +69,7 @@
           <label class="label">
             <a href="{{baseURL}}" target="_blank">{{name}}</a>
           </label>
-          <span>Supported types: {{supportedTypes}}</span>
+          <span><strong>Supported types</strong>: {{joinedSupportedTypes}}</span>
         </div>
       </div>
       <div class="control">
@@ -76,24 +82,21 @@
   <script id="general-settings-template" type="x-tmpl-mustache">
     <div class="field has-addons">
       <div class="control is-expanded">
-        <div>
-          <label class="label">
-            Enable IDN (Internationalized Domain Name) extraction
-          </label>
-        </div>
+        <label class="label">
+          Enable IDN (Internationalized Domain Name) extraction
+        </label>
       </div>
       <div class="control">
         <input id="enable-idn" type="checkbox" {{#enableIDN}}checked="checked"{{/enableIDN}}>
         <label>Enable</label>
       </div>
     </div>
+
     <div class="field has-addons">
       <div class="control is-expanded">
-        <div>
-          <label class="label">
-            Enable strict TLD (Top Level Domain) validation
-          </label>
-        </div>
+        <label class="label">
+          Enable strict TLD (Top Level Domain) validation
+        </label>
       </div>
       <div class="control">
         <input id="strict-tld" type="checkbox" {{#strictTLD}}checked="checked"{{/strictTLD}}>

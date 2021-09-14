@@ -15,3 +15,8 @@ span#status {
 .searcher:nth-child(even) {
   background-color: #fafafa
 }
+
+article.message .message-body {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

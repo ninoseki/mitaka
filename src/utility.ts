@@ -90,6 +90,7 @@ export async function getSearcherStateList(): Promise<SearcherState[]> {
       name: searcher.name,
       baseURL: searcher.baseURL,
       supportedTypes: searcher.supportedTypes,
+      joinedSupportedTypes: searcher.supportedTypes.join(", "),
     });
   }
   return states;
