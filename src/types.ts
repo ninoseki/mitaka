@@ -61,6 +61,7 @@ export interface SearcherState {
   name: string;
   baseURL: string;
   supportedTypes: string[];
+  joinedSupportedTypes: string;
   isEnabled: boolean;
 }
 
