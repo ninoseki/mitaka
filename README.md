@@ -97,7 +97,7 @@ Mitaka is a browser extension makes your OSINT search & scan easily.
 | SecurityTrails       | https://securitytrails.com             | IP, domain                                                            |
 | Shodan               | https://www.shodan.io                  | IP, domain, ASN                                                       |
 | Sploitus             | https://sploitus.com                   | CVE                                                                   |
-| SpyOnWeb             | http://spyonweb.com                    | IP, domain,  Google Adsense Publisher ID, Google Analytics Tracker ID |
+| SpyOnWeb             | http://spyonweb.com                    | IP, domain, Google Adsense Publisher ID, Google Analytics Tracker ID  |
 | Spyse                | https://spyse.com                      | IP, domain, ASN, CVE, email                                           |
 | Talos                | https://talosintelligence.com          | IP, domain                                                            |
 | ThreatConnect        | https://app.threatconnect.com          | IP, domain, email                                                     |
@@ -107,6 +107,7 @@ Mitaka is a browser extension makes your OSINT search & scan easily.
 | Triage               | https://tria.ge                        | Hash, URL                                                             |
 | URLhaus              | https://urlhaus.abuse.ch               | IP, domain                                                            |
 | Urlscan              | https://urlscan.io                     | IP, domain, ASN, URL                                                  |
+| URLVoid              | https://www.urlvoid.com                | Domain                                                                |
 | ViewDNS              | https://viewdns.info                   | IP, domain, email                                                     |
 | VirusTotal           | https://www.virustotal.com             | IP, domain, URL, hash                                                 |
 | VMRay                | https://www.vmray.com                  | Hash                                                                  |

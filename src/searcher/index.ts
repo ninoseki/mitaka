@@ -59,6 +59,7 @@ export { TIP } from "./tip";
 export { Triage } from "./triage";
 export { URLhaus } from "./urlhaus";
 export { Urlscan } from "./urlscan";
+export { URLVoid } from "./urlvoid";
 export { ViewDNS } from "./viewdns";
 export { VirusTotal } from "./virustotal";
 export { VMRay } from "./vmray";
