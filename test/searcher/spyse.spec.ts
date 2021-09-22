@@ -57,7 +57,7 @@ describe("Spyse", function () {
     const email = "test@test.com";
     it("should return a URL", function () {
       expect(subject.searchByEmail(email)).to.equal(
-        "https://spyse.com/search?target=domain&search_params=%5B%7B%22whois_registrant_email%22%3A%7B%22operator%22%3A%22contains%22%2C%22value%22%3A%22test%40test.com%22%7D%7D%5D"
+        "https://spyse.com/search?target=domain&search_params=%5B%7B%22whois_registrant_email%22%3A%7B%22operator%22%3A%22eq%22%2C%22value%22%3A%22test%40test.com%22%7D%7D%5D"
       );
     });
   });

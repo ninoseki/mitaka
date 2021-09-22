@@ -14,8 +14,4 @@ export class URLVoid implements Searcher {
   public searchByDomain(query: string): string {
     return buildURL(this.baseURL, `/scan/${query}`);
   }
-
-  public search(query: string): string {
-    return buildURL(this.baseURL, `/scan/${query}`);
-  }
 }
