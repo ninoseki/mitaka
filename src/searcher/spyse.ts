@@ -38,7 +38,7 @@ export class Spyse implements Searcher {
   public searchByEmail(query: string): string {
     return buildURL(this.baseURL, "/search", {
       target: "domain",
-      search_params: `[{"whois_registrant_email":{"operator":"contains","value":"${query}"}}]`,
+      search_params: `[{"whois_registrant_email":{"operator":"eq","value":"${query}"}}]`,
     });
   }
 }
