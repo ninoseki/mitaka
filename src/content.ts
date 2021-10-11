@@ -3,7 +3,7 @@ import { browser } from "webextension-polyfill-ts";
 
 import { UpdateContextMenuMessage } from "@/types";
 
-export async function onSelctionChange(): Promise<void> {
+export async function onSelectionChange(): Promise<void> {
   const selection = window.getSelection();
   const text: string = selection !== null ? selection.toString().trim() : "";
   let link: string | null = null;
@@ -32,7 +32,7 @@ if (typeof document !== "undefined") {
     "selectionchange",
     throttle(
       async () => {
-        await onSelctionChange();
+        await onSelectionChange();
       },
       250,
       { middle: false }
