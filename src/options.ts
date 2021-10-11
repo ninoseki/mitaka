@@ -1,5 +1,4 @@
-import Mustache, { render } from "mustache";
-import { text } from "stream/consumers";
+import Mustache from "mustache";
 import { browser } from "webextension-polyfill-ts";
 
 import { ApiKeys, GeneralSettings, SearcherStates } from "@/types";
