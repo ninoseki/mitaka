@@ -5,7 +5,7 @@ import "mocha";
 import { JSDOM } from "jsdom";
 import root from "window-or-global";
 
-import { onSelctionChange } from "@/content";
+import { onSelectionChange } from "@/content";
 
 import { browserMock } from "./browserMock";
 
@@ -37,7 +37,7 @@ describe("Context script", function () {
 
     describe("#onSelectionChange", function () {
       it("should call chrome.runtime.sendMessage()", async function () {
-        await onSelctionChange();
+        await onSelectionChange();
         browserMock.runtime.sendMessage.assertCalls([
           [
             {
@@ -82,7 +82,7 @@ describe("Context script", function () {
 
     describe("#onSelectionChange", function () {
       it("should call chrome.runtime.sendMessage", async function () {
-        await onSelctionChange();
+        await onSelectionChange();
         browserMock.runtime.sendMessage.assertCalls([
           [
             {
