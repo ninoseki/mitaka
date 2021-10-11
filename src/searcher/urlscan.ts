@@ -9,7 +9,7 @@ export class Urlscan implements Searcher {
 
   public constructor() {
     this.baseURL = "https://urlscan.io";
-    this.name = "Urlscan";
+    this.name = "urlscan.io";
   }
 
   public searchByIP(query: string): string {

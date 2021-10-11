@@ -164,7 +164,7 @@ export class CommandRunner {
             scanner.setApiKey(apiKeys.hybridAnalysisApiKey);
           }
           break;
-        case "Urlscan":
+        case "urlscan.io":
           if (typeof scanner["setApiKey"] === "function") {
             scanner.setApiKey(apiKeys.urlscanApiKey);
           }

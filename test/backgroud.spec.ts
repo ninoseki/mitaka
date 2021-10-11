@@ -48,7 +48,7 @@ describe("Background script", function () {
           "search",
           "https://github.com",
           "url",
-          "Urlscan"
+          "urlscan.io"
         );
         const runner = new CommandRunner(packer.getJSON());
         await search(runner);
@@ -115,7 +115,7 @@ describe("Background script", function () {
           "scan",
           "https://www.wikipedia.org/",
           "url",
-          "Urlscan"
+          "urlscan.io"
         );
         const runner = new CommandRunner(packer.getJSON());
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -156,7 +156,7 @@ describe("Background script", function () {
             "scan",
             "https://www.wikipedia.org/",
             "url",
-            "Urlscan"
+            "urlscan.io"
           );
           const runner = new CommandRunner(packer.getJSON());
 

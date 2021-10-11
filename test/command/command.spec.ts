@@ -14,19 +14,24 @@ describe("Command", function () {
         "search",
         "https://github.com",
         "url",
-        "Urlscan"
+        "urlscan.io"
       );
       const runner = new CommandRunner(packer.getJSON());
       expect(runner.command.action).to.equal("search");
       expect(runner.command.query).to.equal("https://github.com");
-      expect(runner.command.target).to.equal("Urlscan");
+      expect(runner.command.target).to.equal("urlscan.io");
     });
   });
 
   describe("#search", function () {
     context("ip", function () {
       it("should return a URL for search", function () {
-        const packer = new CommandPacker("search", "1.1.1.1", "ip", "Urlscan");
+        const packer = new CommandPacker(
+          "search",
+          "1.1.1.1",
+          "ip",
+          "urlscan.io"
+        );
         const runner = new CommandRunner(packer.getJSON());
         expect(runner.search()).to.equal("https://urlscan.io/ip/1.1.1.1");
       });
@@ -38,7 +43,7 @@ describe("Command", function () {
           "search",
           "github.com",
           "domain",
-          "Urlscan"
+          "urlscan.io"
         );
         const runner = new CommandRunner(packer.getJSON());
         expect(runner.search()).to.equal(
@@ -53,7 +58,7 @@ describe("Command", function () {
           "search",
           "https://github.com",
           "url",
-          "Urlscan"
+          "urlscan.io"
         );
         const runner = new CommandRunner(packer.getJSON());
         expect(runner.search()).to.equal(
@@ -208,7 +213,7 @@ describe("Command", function () {
 
     context("ip", function () {
       it("should return a URL", async function () {
-        const packer = new CommandPacker("scan", "1.1.1.1", "ip", "Urlscan");
+        const packer = new CommandPacker("scan", "1.1.1.1", "ip", "urlscan.io");
         const runner = new CommandRunner(packer.getJSON());
         expect(await runner.scan(apiKeys)).to.equal(
           "https://urlscan.io/entry/foo/loading"
@@ -222,7 +227,7 @@ describe("Command", function () {
           "scan",
           "github.com",
           "domain",
-          "Urlscan"
+          "urlscan.io"
         );
         const runner = new CommandRunner(packer.getJSON());
         expect(await runner.scan(apiKeys)).to.equal(
@@ -237,7 +242,7 @@ describe("Command", function () {
           "scan",
           "https://www.wikipedia.org/",
           "url",
-          "Urlscan"
+          "urlscan.io"
         );
         const runner = new CommandRunner(packer.getJSON());
         expect(await runner.scan(apiKeys)).to.equal(
