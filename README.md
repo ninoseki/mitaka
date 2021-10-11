@@ -106,7 +106,7 @@ Mitaka is a browser extension makes your OSINT search & scan easily.
 | TIP                  | https://threatintelligenceplatform.com | IP, domain                                                           |
 | Triage               | https://tria.ge                        | Hash, URL                                                            |
 | URLhaus              | https://urlhaus.abuse.ch               | IP, domain                                                           |
-| Urlscan              | https://urlscan.io                     | IP, domain, ASN, URL                                                 |
+| urlscan.io           | https://urlscan.io                     | IP, domain, ASN, URL                                                 |
 | URLVoid              | https://www.urlvoid.com                | Domain                                                               |
 | ViewDNS              | https://viewdns.info                   | IP, domain, email                                                    |
 | VirusTotal           | https://www.virustotal.com             | IP, domain, URL, hash                                                |
@@ -124,7 +124,7 @@ Mitaka is a browser extension makes your OSINT search & scan easily.
 |:---------------|:--------------------------------|:----------------|
 | Browserling    | https://www.browserling.com     | URL             |
 | HybridAnalysis | https://www.hybrid-analysis.com | URL             |
-| Urlscan        | https://urlscan.io              | IP, domain, URL |
+| urlscan.io     | https://urlscan.io              | IP, domain, URL |
 | VirusTotal     | https://www.virustotal.com      | URL             |
 
 ## How to use

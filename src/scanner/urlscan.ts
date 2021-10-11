@@ -20,7 +20,7 @@ export class Urlscan implements Scanner {
 
   public constructor() {
     this.baseURL = "https://urlscan.io/api/v1";
-    this.name = "Urlscan";
+    this.name = "urlscan.io";
   }
 
   public setApiKey(apiKey: string | undefined): void {
