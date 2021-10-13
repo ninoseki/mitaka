@@ -24,7 +24,7 @@ export class CommandPacker {
   }
 
   private isAbbreviationType(): boolean {
-    const abbreviations = ["ip", "asn", "cve", "eth", "url"];
+    const abbreviations = ["ip", "asn", "btc", "cve", "eth", "url"];
     return abbreviations.includes(this.type);
   }
 
