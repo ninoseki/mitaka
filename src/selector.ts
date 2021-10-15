@@ -117,14 +117,14 @@ export class Selector {
     );
   }
 
-  public IsPossibleNetworkIndicator(): boolean {
+  public isPossibleNetworkIndicator(): boolean {
     return this.input.includes(".");
   }
 
   private getSelectorSlots(): SelectorSlot[] {
     let slots: SelectorSlot[] = [];
 
-    if (this.IsPossibleNetworkIndicator()) {
+    if (this.isPossibleNetworkIndicator()) {
       slots = slots.concat([
         { type: "url", func: (this.getURL = this.getURL.bind(this)) },
         { type: "email", func: (this.getEmail = this.getEmail.bind(this)) },
@@ -157,7 +157,7 @@ export class Selector {
 
       const result = func.apply(this);
       if (result !== null) {
-        console.debug(`Mitaka: ${type} is selected. value = ${result}.`);
+        console.debug(`Mitaka: ${type} type is selected, value = ${result}.`);
         return this.makeAnalyzerEntries(
           this.getSearchersByType(type),
           type,
