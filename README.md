@@ -88,7 +88,7 @@ Mitaka is a browser extension makes your OSINT search & scan easily.
 | OOCPR                | https://data.occrp.org                 | Email                                                                |
 | ONYPHE               | https://www.onyphe.io                  | IP                                                                   |
 | OpenTIP              | https://opentip.kaspersky.com          | Hash                                                                 |
-| OTX                  | https://otx.alienvault.com             | IP, domain hash                                                      |
+| OTX                  | https://otx.alienvault.com             | IP, domain, CVE, URL, hash                                           |
 | Pulsedive            | https://pulsedive.com                  | IP, domain, URL, hash                                                |
 | Radar                | https://radar.cloudflare.com           | IP, domain                                                           |
 | RiskIQ               | http://community.riskiq.com            | IP, domain, email, Google Analytics Tracker ID                       |

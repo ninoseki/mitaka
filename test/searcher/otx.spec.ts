@@ -7,8 +7,14 @@ import { OTX } from "@/searcher";
 describe("OTX", function () {
   const subject = new OTX();
 
-  it("should support ip, domain and hash", function () {
-    expect(subject.supportedTypes).to.deep.equal(["ip", "domain", "hash"]);
+  it("should support url, CVE, domain, ip and hash", function () {
+    expect(subject.supportedTypes).to.deep.equal([
+      "ip",
+      "domain",
+      "url",
+      "hash",
+      "cve",
+    ]);
   });
 
   describe("#searchByIP", function () {
@@ -34,6 +40,24 @@ describe("OTX", function () {
     it("should return a URL", function () {
       expect(subject.searchByHash(hash)).to.equal(
         `https://otx.alienvault.com/indicator/file/${hash}`
+      );
+    });
+  });
+
+  describe("#searchByCVE", function () {
+    it("should return a URL", function () {
+      const cve = "CVE-2018-8013";
+      expect(subject.searchByCVE(cve)).to.equal(
+        `https://otx.alienvault.com/indicator/cve/${cve}`
+      );
+    });
+  });
+
+  describe("#searchByURL", function () {
+    it("should return a URL", function () {
+      const url = "https://github.com";
+      expect(subject.searchByURL(url)).to.equal(
+        `https://otx.alienvault.com/indicator/url/${url}`
       );
     });
   });
