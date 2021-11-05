@@ -74,11 +74,10 @@ export async function createContextMenus(
   console.debug("Mitaka: removed the previous context menus.");
 
   const text: string = message.selection;
-  const selector: Selector = new Selector(
-    text,
-    generalSettings.enableIDN,
-    generalSettings.strictTLD
-  );
+  const selector: Selector = new Selector(text, {
+    enableIDN: generalSettings.enableIDN,
+    strictTLD: generalSettings.strictTLD,
+  });
   // create searchers context menus based on a type of the input
   const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
   let firstEntry: AnalyzerEntry | undefined = undefined;

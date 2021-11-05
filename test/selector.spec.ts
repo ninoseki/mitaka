@@ -73,7 +73,7 @@ describe("Seletor", function () {
         });
       });
 
-      describe("#getAnalyzerEntrys", function () {
+      describe("#getSearcherEntries", function () {
         it("should return entries which support domain", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
@@ -99,7 +99,7 @@ describe("Seletor", function () {
         });
       });
 
-      describe("#getAnalyzerEntrys", function () {
+      describe("#getSearcherEntries", function () {
         it("should return entries which support url", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
