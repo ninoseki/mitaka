@@ -20,6 +20,7 @@ import { Scanners } from "@/scanner";
 import { Searchers } from "@/searcher";
 import {
   AnalyzerEntry,
+  Options,
   ScannableType,
   Scanner,
   ScannerSlot,
@@ -30,16 +31,17 @@ import {
 
 export class Selector {
   protected input: string;
-  protected enableIDN: boolean;
-  protected strictTLD: boolean;
+  protected options: Options;
 
   protected scanners: Scanner[] = Scanners;
   protected searchers: Searcher[] = Searchers;
 
-  public constructor(input: string, enableIDN = true, strictTLD = true) {
+  public constructor(
+    input: string,
+    options: Options = { enableIDN: true, strictTLD: true }
+  ) {
     this.input = refang(input);
-    this.enableIDN = enableIDN;
-    this.strictTLD = strictTLD;
+    this.options = options;
   }
 
   public getIP(): string | null {
@@ -47,15 +49,15 @@ export class Selector {
   }
 
   public getDomain(): string | null {
-    return extractDomain(this.input, this.enableIDN, this.strictTLD);
+    return extractDomain(this.input, this.options);
   }
 
   public getURL(): string | null {
-    return extractURL(this.input, this.enableIDN, this.strictTLD);
+    return extractURL(this.input, this.options);
   }
 
   public getEmail(): string | null {
-    return extractEmail(this.input, this.enableIDN, this.strictTLD);
+    return extractEmail(this.input, this.options);
   }
 
   public getASN(): string | null {

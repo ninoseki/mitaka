@@ -108,3 +108,8 @@ export interface Command {
 export const MD5_LENGTH = 32;
 export const SHA1_LENGTH = 40;
 export const SHA256_LENGTH = 64;
+
+export interface Options {
+  enableIDN: boolean;
+  strictTLD: boolean;
+}
