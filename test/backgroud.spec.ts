@@ -201,7 +201,7 @@ describe("Background script", function () {
       await createContextMenus(
         { request: "updateContextMenu", selection: "test" },
         {},
-        { enableIDN: true, strictTLD: true }
+        { enableIDN: true, strictTLD: true, enableRefang: true }
       );
 
       browserMock.contextMenus.create.assertNoCall();

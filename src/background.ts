@@ -77,6 +77,7 @@ export async function createContextMenus(
   const selector: Selector = new Selector(text, {
     enableIDN: generalSettings.enableIDN,
     strictTLD: generalSettings.strictTLD,
+    enableRefang: generalSettings.enableRefang,
   });
   // create searchers context menus based on a type of the input
   const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();

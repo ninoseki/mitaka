@@ -91,6 +91,7 @@ export interface ScannerTable {
 export interface GeneralSettings {
   enableIDN: boolean;
   strictTLD: boolean;
+  enableRefang: boolean;
 }
 
 export interface Config {
@@ -112,4 +113,5 @@ export const SHA256_LENGTH = 64;
 export interface Options {
   enableIDN: boolean;
   strictTLD: boolean;
+  enableRefang: boolean;
 }

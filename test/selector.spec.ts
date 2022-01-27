@@ -13,7 +13,7 @@ function numberOfSelectorsByType(type: SearchableType): number {
   ).length;
 }
 
-describe("Seletor", function () {
+describe("Selector", function () {
   const stats = {
     asn: numberOfSelectorsByType("asn"),
     btc: numberOfSelectorsByType("btc"),
@@ -38,13 +38,13 @@ describe("Seletor", function () {
         });
       });
 
-      describe("#getSearchersForIP", function () {
+      describe("#getSearchersByType with ip", function () {
         it("should return searchers which support ip", function () {
           expect(selector.getSearchersByType("ip").length).to.equal(stats.ip);
         });
       });
 
-      describe("#getAnalyzerEntrys", function () {
+      describe("#getSearcherEntries", function () {
         it("should return entries which support ip", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
@@ -65,7 +65,7 @@ describe("Seletor", function () {
         });
       });
 
-      describe("#getSearchersForDomain", function () {
+      describe("#getSearchersByType with domain", function () {
         it("should return searchers which support domain", function () {
           expect(selector.getSearchersByType("domain").length).to.equal(
             stats.domain
@@ -93,7 +93,7 @@ describe("Seletor", function () {
         });
       });
 
-      describe("#getSearchersForUrl", function () {
+      describe("#getSearchersByType with url", function () {
         it("should return searchers which support url", function () {
           expect(selector.getSearchersByType("url").length).to.equal(stats.url);
         });
@@ -119,7 +119,7 @@ describe("Seletor", function () {
         });
       });
 
-      describe("#getSearchersForEmail", function () {
+      describe("#getSearchersByType with email", function () {
         it("should return searchers which support email", function () {
           expect(selector.getSearchersByType("email").length).to.equal(
             stats.email
@@ -127,7 +127,7 @@ describe("Seletor", function () {
         });
       });
 
-      describe("#getAnalyzerEntrys", function () {
+      describe("#getSearcherEntries", function () {
         it("should return entries which support email", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
@@ -147,13 +147,13 @@ describe("Seletor", function () {
         });
       });
 
-      describe("#getSearchersForASN", function () {
+      describe("#getSearchersByType with asn", function () {
         it("should return searchers which support asn", function () {
           expect(selector.getSearchersByType("asn").length).to.equal(stats.asn);
         });
       });
 
-      describe("#getAnalyzerEntrys", function () {
+      describe("#getSearcherEntries", function () {
         it("should return entries which support asn", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
@@ -184,7 +184,7 @@ describe("Seletor", function () {
         });
       });
 
-      describe("#getSearchersForHash", function () {
+      describe("#getSearchersByType with hash", function () {
         it("should return searchers which support hash", function () {
           expect(selector.getSearchersByType("hash").length).to.equal(
             stats.hash
@@ -192,7 +192,7 @@ describe("Seletor", function () {
         });
       });
 
-      describe("#getAnalyzerEntrys", function () {
+      describe("#getSearcherEntries", function () {
         it("should return entries which support hash", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
@@ -212,13 +212,13 @@ describe("Seletor", function () {
         });
       });
 
-      describe("#getSearchersForCVE", function () {
+      describe("#getSearchersByType with cve", function () {
         it("should return searchers which support CVE", function () {
           expect(selector.getSearchersByType("cve").length).to.equal(stats.cve);
         });
       });
 
-      describe("#getAnalyzerEntrys", function () {
+      describe("#getSearcherEntries", function () {
         it("should return entries which support cve", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
@@ -238,13 +238,13 @@ describe("Seletor", function () {
         });
       });
 
-      describe("#getSearchersForBTC", function () {
+      describe("#getSearchersByType with btc", function () {
         it("should return searchers which support BTC", function () {
           expect(selector.getSearchersByType("btc").length).to.equal(stats.btc);
         });
       });
 
-      describe("#getAnalyzerEntrys", function () {
+      describe("#getSearcherEntries", function () {
         it("should return entries which support btc", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
@@ -264,7 +264,7 @@ describe("Seletor", function () {
         });
       });
 
-      describe("#getSearchersForGATrackID", function () {
+      describe("#getSearchersByType with gaTrackID", function () {
         it("should return searchers which support GATrackID", function () {
           expect(selector.getSearchersByType("gaTrackID").length).to.equal(
             stats.gaTrackID
@@ -282,7 +282,7 @@ describe("Seletor", function () {
         });
       });
 
-      describe("#getSearchersForGAPubID", function () {
+      describe("#getSearchersByType with gaPubID", function () {
         it("should return searchers support GAPubID", function () {
           expect(selector.getSearchersByType("gaPubID").length).to.equal(
             stats.gaPubID
@@ -300,19 +300,41 @@ describe("Seletor", function () {
         });
       });
 
-      describe("#getSearchersForETH", function () {
+      describe("#getSearchersByType with eth", function () {
         it("should return searchers which support ETH", function () {
           expect(selector.getSearchersByType("eth").length).to.equal(stats.eth);
         });
       });
 
-      describe("#getAnalyzerEntrys", function () {
+      describe("#getSearcherEntries", function () {
         it("should return entries which support ETH", function () {
           const entries: AnalyzerEntry[] = selector.getSearcherEntries();
           for (const entry of entries) {
             expect(entry.query).to.equal(eth);
           }
           expect(entries.length).to.equal(stats.eth);
+        });
+      });
+    });
+
+    context("without refang", function () {
+      const ip = "1[.]1.1.1";
+      const selector: Selector = new Selector(ip, {
+        enableIDN: true,
+        strictTLD: true,
+        enableRefang: false,
+      });
+
+      describe("#getIP", function () {
+        it("should return null", function () {
+          expect(selector.getIP()).to.equal(null);
+        });
+      });
+
+      describe("#getSearcherEntries", function () {
+        it("should return an empty array", function () {
+          const entries: AnalyzerEntry[] = selector.getSearcherEntries();
+          expect(entries.length).to.equal(0);
         });
       });
     });

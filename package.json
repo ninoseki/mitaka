@@ -49,7 +49,7 @@
     "@github/mini-throttle": "^2.1.0",
     "axios": "^0.25.0",
     "bulma": "^0.9.3",
-    "ioc-extractor": "4.0.2",
+    "ioc-extractor": "4.0.4",
     "js-base64": "^3.7.2",
     "js-sha256": "^0.9.0",
     "mustache": "^4.2.0",

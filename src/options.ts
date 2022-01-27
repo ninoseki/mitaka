@@ -51,10 +51,14 @@ export async function saveGeneralSettings(): Promise<void> {
   const strictTLDInput = document.getElementById(
     "strict-tld"
   ) as HTMLInputElement;
+  const enableRefangInput = document.getElementById(
+    "enable-refang"
+  ) as HTMLInputElement;
 
   const generalSettings: GeneralSettings = {
     enableIDN: enableIDNInput.checked,
     strictTLD: strictTLDInput.checked,
+    enableRefang: enableRefangInput.checked,
   };
 
   await browser.storage.sync.set({ generalSettings });
