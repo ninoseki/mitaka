@@ -36,6 +36,7 @@ function convertToGeneralSettings(value: StorageValue): GeneralSettings {
   const generalSettings: GeneralSettings = {
     enableIDN: false,
     strictTLD: false,
+    enableRefang: false,
   };
 
   if (hasGeneralSettings) {
@@ -44,6 +45,8 @@ function convertToGeneralSettings(value: StorageValue): GeneralSettings {
       _generalSettings.enableIDN || generalSettings.enableIDN;
     generalSettings.strictTLD =
       _generalSettings.strictTLD || generalSettings.strictTLD;
+    generalSettings.enableRefang =
+      _generalSettings.enableRefang || generalSettings.enableRefang;
   }
   return generalSettings;
 }

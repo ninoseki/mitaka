@@ -112,6 +112,7 @@ describe("Options script", function () {
       );
       stub.withArgs("enable-idn").returns(input);
       stub.withArgs("strict-tld").returns(input);
+      stub.withArgs("enable-refang").returns(input);
     });
 
     it("should save generalSettings via chrome.storage.sync.set", async function () {
@@ -122,6 +123,7 @@ describe("Options script", function () {
             generalSettings: {
               enableIDN: true,
               strictTLD: true,
+              enableRefang: true,
             },
           },
         ],
@@ -215,7 +217,7 @@ describe("Options script", function () {
       });
     });
 
-    it("should compose a searcerList based on searcherStates via chrome.storage.sync.get", async function () {
+    it("should compose a searcherList based on searcherStates via chrome.storage.sync.get", async function () {
       sandbox
         .stub(browserMock.storage.sync, "get")
         .withArgs("searcherStates")
@@ -307,7 +309,10 @@ describe("Options script", function () {
       );
       stub.withArgs("general-settings").returns(wrapper);
       stub.withArgs("general-settings-template").returns({
-        innerHTML: `<input id="enable-idn" type="checkbox" {{#enableIDN}}checked="checked"{{/enableIDN}}><input id="strict-tld" type="checkbox" {{#strictTLD}}checked="checked"{{/strictTLD}}>`,
+        innerHTML: `
+        <input id="enable-idn" type="checkbox" {{#enableIDN}}checked="checked"{{/enableIDN}}>
+        <input id="strict-tld" type="checkbox" {{#strictTLD}}checked="checked"{{/strictTLD}}>
+        <input id="enable-refang" type="checkbox" {{#enableRefang}}checked="checked"{{/enableRefang}}>`,
       });
     });
 
@@ -319,6 +324,7 @@ describe("Options script", function () {
           generalSettings: {
             enableIDN: true,
             strictTLD: true,
+            enableRefang: true,
           },
         });
 
@@ -337,6 +343,11 @@ describe("Options script", function () {
         "input#strict-tld"
       ) as HTMLInputElement;
       expect(strictTLD.checked).to.equal(true);
+
+      const enableRefang = generalSettings.querySelector(
+        "input#enable-refang"
+      ) as HTMLInputElement;
+      expect(enableRefang.checked).to.equal(true);
     });
   });
 });
