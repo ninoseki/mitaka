@@ -167,7 +167,15 @@ if (typeof browser !== "undefined" && browser.runtime !== undefined) {
     switch (runner.command.action) {
       case "search":
         if (runner.command.target === "all") {
-          await searchAll(runner);
+          const states: SearcherStates = await getSearcherStates();
+          const number = runner.getNumberOfSearchers(states);
+
+          const confirmation = window.confirm(
+            `Are you sure you want to open ${number} tabs?`
+          );
+          if (confirmation) {
+            await searchAll(runner);
+          }
         } else {
           await search(runner);
         }

@@ -105,7 +105,7 @@ export class CommandRunner {
     return url;
   }
 
-  public searchAll(searcherStates: SearcherStates): string[] {
+  public selectSearchers(searcherStates: SearcherStates): AnalyzerEntry[] {
     const selector: Selector = new Selector(this.command.query);
     const entries: AnalyzerEntry[] = selector
       .getSearcherEntries()
@@ -115,6 +115,16 @@ export class CommandRunner {
         !(entry.analyzer.name in searcherStates) ||
         searcherStates[entry.analyzer.name]
     );
+    return selectedEntries;
+  }
+
+  public getNumberOfSearchers(searcherStates: SearcherStates): number {
+    const selectedEntries = this.selectSearchers(searcherStates);
+    return selectedEntries.length;
+  }
+
+  public searchAll(searcherStates: SearcherStates): string[] {
+    const selectedEntries = this.selectSearchers(searcherStates);
     const urls: string[] = [];
     for (const entry of selectedEntries) {
       const searcher = entry.analyzer as Searcher;
