@@ -20,11 +20,9 @@ Mitaka is a browser extension makes your OSINT search & scan easily.
 
 ## Install
 
-- [Chrome extension][link-cws]
-  - [![Chrome Version](https://img.shields.io/chrome-web-store/v/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)][link-cws] [![Chrome Users](https://img.shields.io/chrome-web-store/users/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg)][link-cws]
+<img src="https://raw.githubusercontent.com/alrra/browser-logos/90fdf03c/src/chrome/chrome.svg" width="48" alt="Chrome" valign="middle"> [<img valign="middle" src="https://img.shields.io/chrome-web-store/v/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg">][link-cws] [<img valign="middle" src="https://img.shields.io/chrome-web-store/users/bfjbejmeoibbdpfdbmbacmefcbannnbg.svg">][link-cws]
 
-- [Firefox add-on][link-amo]
-  - [![FF Version](https://img.shields.io/amo/v/mitaka.svg)][link-amo] [![Mozilla Users](https://img.shields.io/amo/users/mitaka)][link-amo]
+<img src="https://raw.githubusercontent.com/alrra/browser-logos/90fdf03c/src/firefox/firefox.svg" width="48" alt="Firefox" valign="middle"> [<img valign="middle" src="https://img.shields.io/amo/v/mitaka.svg">][link-amo] [<img valign="middle" src="https://img.shields.io/amo/users/mitaka.svg">][link-amo]
 
 ## Features
 
