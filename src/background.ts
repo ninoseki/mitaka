@@ -9,7 +9,7 @@ import {
   SearcherStates,
   UpdateContextMenuMessage,
 } from "@/types";
-import { getApiKeys, getConfig, getSearcherStates } from "@/utility";
+import { getApiKeys, getConfig, getSearcherStates, isFirefox } from "@/utility";
 
 export async function showNotification(message: string): Promise<void> {
   await browser.notifications.create({
@@ -167,13 +167,19 @@ if (typeof browser !== "undefined" && browser.runtime !== undefined) {
     switch (runner.command.action) {
       case "search":
         if (runner.command.target === "all") {
-          const states: SearcherStates = await getSearcherStates();
-          const number = runner.getNumberOfSearchers(states);
+          const isFirefox_ = isFirefox();
+          if (!isFirefox_) {
+            const states: SearcherStates = await getSearcherStates();
+            const number = runner.getNumberOfSearchers(states);
 
-          const confirmation = window.confirm(
-            `Are you sure you want to open ${number} tabs?`
-          );
-          if (confirmation) {
+            const confirmation = window.confirm(
+              `Are you sure you want to open ${number} tabs?`
+            );
+            if (confirmation) {
+              await searchAll(runner);
+            }
+          } else {
+            // do not use window.confirm in Firefox because it is prohibited
             await searchAll(runner);
           }
         } else {
