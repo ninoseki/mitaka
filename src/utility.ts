@@ -117,3 +117,10 @@ export function extractCVENumber(cve: string): string {
   const numbers = parts.slice(1 - parts.length);
   return numbers.join("-");
 }
+
+export function isFirefox(): boolean {
+  return (
+    typeof navigator !== "undefined" &&
+    /^(?!.*Seamonkey)(?=.*Firefox).*/i.test(navigator.userAgent)
+  );
+}
