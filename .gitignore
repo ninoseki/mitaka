@@ -16,3 +16,5 @@ coverage
 /dist
 /dist-zip
 /web-ext-artifacts
+
+keys.json
