@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@types/chai": "4.3.0",
-    "@types/chai-as-promised": "7.1.4",
+    "@types/chai-as-promised": "7.1.5",
     "@types/js-base64": "3.3.1",
     "@types/jsdom": "16.2.14",
     "@types/mocha": "9.1.0",
