@@ -62,7 +62,7 @@
     "@types/chai-as-promised": "7.1.5",
     "@types/js-base64": "3.3.1",
     "@types/jsdom": "16.2.14",
-    "@types/mocha": "9.1.0",
+    "@types/mocha": "9.1.1",
     "@types/moxios": "0.4.15",
     "@types/mustache": "4.1.2",
     "@types/node": "17.0.23",
