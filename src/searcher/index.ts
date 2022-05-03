@@ -19,6 +19,7 @@ export { DomainTools } from "./domaintools";
 export { DomainWatch } from "./domainwatch";
 export { EmailRep } from "./emailrep";
 export { ExploitDatabase } from "./exploitdatabase";
+export { FileScan } from "./filescan";
 export { FOFA } from "./fofa";
 export { FortiGuard } from "./fortiguard";
 export { GoogleSafeBrowsing } from "./googlesafebrowsing";
