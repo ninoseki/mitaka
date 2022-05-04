@@ -76,6 +76,10 @@ export async function getSearcherStates(): Promise<SearcherStates> {
   return convertToSearcherStates(config || {});
 }
 
+export function getFaviconURL(baseURL: string): string {
+  return `https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${baseURL}&size=16`;
+}
+
 export async function getSearcherStateList(): Promise<SearcherState[]> {
   const config = await browser.storage.sync.get("searcherStates");
   const hasSearcherStates: boolean = "searcherStates" in config;
@@ -94,6 +98,7 @@ export async function getSearcherStateList(): Promise<SearcherState[]> {
       baseURL: searcher.baseURL,
       supportedTypes: searcher.supportedTypes,
       joinedSupportedTypes: searcher.supportedTypes.join(", "),
+      faviconURL: getFaviconURL(searcher.baseURL),
     });
   }
   return states;

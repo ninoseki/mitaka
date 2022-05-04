@@ -20,7 +20,7 @@
     "matches": ["<all_urls>"],
     "js": ["vendor.js", "content.js"]
   }],
-  "content_security_policy": "default-src 'none'; script-src 'self'; object-src 'self'; connect-src https://www.hybrid-analysis.com https://www.virustotal.com https://urlscan.io",
+  "content_security_policy": "default-src 'none'; script-src 'self'; object-src 'self'; img-src 'self' https://t1.gstatic.com; connect-src https://www.hybrid-analysis.com https://www.virustotal.com https://urlscan.io",
   "permissions": [
     "contextMenus",
     "notifications",

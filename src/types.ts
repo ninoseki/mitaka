@@ -62,6 +62,7 @@ export interface SearcherState {
   baseURL: string;
   supportedTypes: string[];
   joinedSupportedTypes: string;
+  faviconURL: string;
   isEnabled: boolean;
 }
 
