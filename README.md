@@ -66,6 +66,7 @@ Mitaka is a browser extension makes your OSINT search & scan easily.
 | DomainTools          | https://www.domaintools.com            | IP, domain                                                           |
 | DomainWatch          | https://domainwat.ch                   | Domain, email                                                        |
 | EmailRep             | https://emailrep.io                    | Email                                                                |
+| FileScan.IO          | https://filescan.io                    | Hash                                                                 |
 | FOFA                 | https://fofa.so                        | IP, domain                                                           |
 | FortiGuard           | https://fortiguard.com                 | IP, URL, CVE                                                         |
 | Google Safe Browsing | https://transparencyreport.google.com  | Domain, URL                                                          |
