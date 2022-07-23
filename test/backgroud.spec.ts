@@ -199,9 +199,14 @@ describe("Background script", function () {
   describe("#createContextMenus", function () {
     it("should not call chrome.contextMenus.create", async function () {
       await createContextMenus(
-        { request: "updateContextMenu", selection: "test" },
+        { request: "updateContextMenu", text: "test", link: null },
         {},
-        { enableIDN: true, strictTLD: true, enableRefang: true }
+        {
+          enableIDN: true,
+          strictTLD: true,
+          enableRefang: true,
+          preferHrefValue: true,
+        }
       );
 
       browserMock.contextMenus.create.assertNoCall();

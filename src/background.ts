@@ -73,7 +73,11 @@ export async function createContextMenus(
 
   console.debug("Mitaka: removed the previous context menus.");
 
-  const text: string = message.selection;
+  let text: string = message.text;
+  if (generalSettings.preferHrefValue && message.link !== null) {
+    text = message.link;
+  }
+
   const selector: Selector = new Selector(text, {
     enableIDN: generalSettings.enableIDN,
     strictTLD: generalSettings.strictTLD,
@@ -145,7 +149,9 @@ if (typeof browser !== "undefined" && browser.runtime !== undefined) {
   browser.runtime.onMessage.addListener(
     async (message: UpdateContextMenuMessage): Promise<void> => {
       console.debug(
-        `Mitaka: received message. selection = ${message.selection}. request = ${message.request}.`
+        `Mitaka: received message. link: ${message.link || "N/A"}, text: ${
+          message.text
+        }, request: ${message.request}.`
       );
 
       if (message.request === "updateContextMenu") {

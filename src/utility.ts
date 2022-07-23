@@ -37,6 +37,7 @@ function convertToGeneralSettings(value: StorageValue): GeneralSettings {
     enableIDN: false,
     strictTLD: false,
     enableRefang: false,
+    preferHrefValue: false,
   };
 
   if (hasGeneralSettings) {
@@ -47,6 +48,8 @@ function convertToGeneralSettings(value: StorageValue): GeneralSettings {
       _generalSettings.strictTLD || generalSettings.strictTLD;
     generalSettings.enableRefang =
       _generalSettings.enableRefang || generalSettings.enableRefang;
+    generalSettings.preferHrefValue =
+      _generalSettings.preferHrefValue || generalSettings.preferHrefValue;
   }
   return generalSettings;
 }

@@ -28,7 +28,7 @@
             <hr>
             <article class="message is-warning">
               <div class="message-body">
-                <strong>Warning</strong>: Enabling the above options may cause a performance issue
+                <strong>Warning</strong>: Enabling IDN extraction, strict TLD validation and refang option may cause a performance issue
               </div>
             </article>
           </div>
@@ -109,8 +109,9 @@
     <div class="field has-addons">
       <div class="control is-expanded">
         <label class="label">
-          Enable IDN (Internationalized Domain Name) extraction
+          Enable IDN extraction
         </label>
+        <p>(IDN: Internationalized Domain Name)</p>
       </div>
       <div class="control">
         <input id="enable-idn" type="checkbox" {{#enableIDN}}checked="checked"{{/enableIDN}}>
@@ -121,8 +122,9 @@
     <div class="field has-addons">
       <div class="control is-expanded">
         <label class="label">
-          Enable strict TLD (Top Level Domain) validation
+          Enable strict TLD validation
         </label>
+        <p>(TLD: Top Level Domain)</p>
       </div>
       <div class="control">
         <input id="strict-tld" type="checkbox" {{#strictTLD}}checked="checked"{{/strictTLD}}>
@@ -130,18 +132,31 @@
       </div>
     </div>
 
-    <div class="field has-addons">
+    <div class="field has-addons mt-1">
       <div class="control is-expanded">
         <label class="label">
           Enable refang
         </label>
+        <p>(Enable a transformation like <code>example[.]com</code> to <code>example.com</code>)</p>
       </div>
       <div class="control">
         <input id="enable-refang" type="checkbox" {{#enableRefang}}checked="checked"{{/enableRefang}}>
         <label>Enable</label>
       </div>
     </div>
+
+    <div class="field has-addons mt-1">
+      <div class="control is-expanded">
+        <label class="label">
+          Prefer href value
+        </label>
+        <p>(Prefer href value to text)</p>
+      </div>
+      <div class="control">
+        <input id="prefer-href-value" type="checkbox" {{#preferHrefValue}}checked="checked"{{/preferHrefValue}}>
+        <label>Enable</label>
+      </div>
+    </div>
   </script>
 </body>
-
 </html>

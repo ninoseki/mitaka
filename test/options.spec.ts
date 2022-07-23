@@ -113,6 +113,7 @@ describe("Options script", function () {
       stub.withArgs("enable-idn").returns(input);
       stub.withArgs("strict-tld").returns(input);
       stub.withArgs("enable-refang").returns(input);
+      stub.withArgs("prefer-href-value").returns(input);
     });
 
     it("should save generalSettings via chrome.storage.sync.set", async function () {
@@ -124,6 +125,7 @@ describe("Options script", function () {
               enableIDN: true,
               strictTLD: true,
               enableRefang: true,
+              preferHrefValue: true,
             },
           },
         ],
@@ -312,7 +314,8 @@ describe("Options script", function () {
         innerHTML: `
         <input id="enable-idn" type="checkbox" {{#enableIDN}}checked="checked"{{/enableIDN}}>
         <input id="strict-tld" type="checkbox" {{#strictTLD}}checked="checked"{{/strictTLD}}>
-        <input id="enable-refang" type="checkbox" {{#enableRefang}}checked="checked"{{/enableRefang}}>`,
+        <input id="enable-refang" type="checkbox" {{#enableRefang}}checked="checked"{{/enableRefang}}>
+        <input id="prefer-href-value" type="checkbox" {{#preferHrefValue}}checked="checked"{{/preferHrefValue}}>`,
       });
     });
 
@@ -325,6 +328,7 @@ describe("Options script", function () {
             enableIDN: true,
             strictTLD: true,
             enableRefang: true,
+            preferHrefValue: true,
           },
         });
 
@@ -348,6 +352,11 @@ describe("Options script", function () {
         "input#enable-refang"
       ) as HTMLInputElement;
       expect(enableRefang.checked).to.equal(true);
+
+      const preferHrefValue = generalSettings.querySelector(
+        "input#prefer-href-value"
+      ) as HTMLInputElement;
+      expect(preferHrefValue.checked).to.equal(true);
     });
   });
 });
