@@ -42,7 +42,8 @@ describe("Context script", function () {
           [
             {
               request: "updateContextMenu",
-              selection: "test",
+              text: "test",
+              link: null,
             },
           ],
         ]);
@@ -87,7 +88,8 @@ describe("Context script", function () {
           [
             {
               request: "updateContextMenu",
-              selection: "https://example.com",
+              link: "https://example.com",
+              text: "test",
             },
           ],
         ]);

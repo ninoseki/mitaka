@@ -1,3 +1,5 @@
+import { ExecFileSyncOptionsWithBufferEncoding } from "child_process";
+
 export type SearchableType =
   | "asn"
   | "btc"
@@ -78,7 +80,8 @@ export interface ApiKeys {
 
 export interface UpdateContextMenuMessage {
   request: string;
-  selection: string;
+  link: string | null;
+  text: string;
 }
 
 export interface SearcherTable {
@@ -93,6 +96,7 @@ export interface GeneralSettings {
   enableIDN: boolean;
   strictTLD: boolean;
   enableRefang: boolean;
+  preferHrefValue: boolean;
 }
 
 export interface Config {

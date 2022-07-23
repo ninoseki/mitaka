@@ -21,7 +21,8 @@ export async function onSelectionChange(): Promise<void> {
   if (selected !== "") {
     const message: UpdateContextMenuMessage = {
       request: "updateContextMenu",
-      selection: selected,
+      link: link,
+      text: text,
     };
     await browser.runtime.sendMessage(message);
   }
