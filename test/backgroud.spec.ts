@@ -197,8 +197,8 @@ describe("Background script", function () {
   });
 
   describe("#createContextMenus", function () {
-    it("should not call chrome.contextMenus.create", async function () {
-      await createContextMenus(
+    it("should not call chrome.contextMenus.create", function () {
+      createContextMenus(
         { request: "updateContextMenu", text: "test", link: null },
         {},
         {

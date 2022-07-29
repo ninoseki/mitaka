@@ -64,15 +64,11 @@ export function createContextMenuErrorHandler(): void {
   }
 }
 
-export async function createContextMenus(
+export function createContextMenus(
   message: UpdateContextMenuMessage,
   searcherStates: SearcherStates,
   generalSettings: GeneralSettings
-): Promise<void> {
-  await browser.contextMenus.removeAll();
-
-  console.debug("Mitaka: removed the previous context menus.");
-
+): void {
   let text: string = message.text;
   if (generalSettings.preferHrefValue && message.link !== null) {
     text = message.link;
@@ -154,10 +150,13 @@ if (typeof browser !== "undefined" && browser.runtime !== undefined) {
         }, request: ${message.request}.`
       );
 
+      await browser.contextMenus.removeAll();
+      console.debug("Mitaka: removed all context menus (onMessage)");
+
       if (message.request === "updateContextMenu") {
         const config = await getConfig();
 
-        await createContextMenus(
+        createContextMenus(
           message,
           config.searcherStates,
           config.generalSettings
@@ -196,5 +195,8 @@ if (typeof browser !== "undefined" && browser.runtime !== undefined) {
         await scan(runner);
         break;
     }
+
+    await browser.contextMenus.removeAll();
+    console.debug("Mitaka: removed all context menus (onClicked)");
   });
 }
