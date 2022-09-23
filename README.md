@@ -62,12 +62,10 @@ Mitaka is a browser extension makes your OSINT search & scan easily.
 | Checkphish           | https://checkphish.ai                  | IP, domain                                                           |
 | crt.sh               | https://crt.sh                         | Domain                                                               |
 | DNSlytics            | https://dnslytics.com                  | IP, domain                                                           |
-| DomainBigData        | https://domainbigdata.com              | IP, domain, email                                                    |
 | DomainTools          | https://www.domaintools.com            | IP, domain                                                           |
 | DomainWatch          | https://domainwat.ch                   | Domain, email                                                        |
 | EmailRep             | https://emailrep.io                    | Email                                                                |
 | FileScan.IO          | https://filescan.io                    | Hash                                                                 |
-| FOFA                 | https://fofa.so                        | IP, domain                                                           |
 | FortiGuard           | https://fortiguard.com                 | IP, URL, CVE                                                         |
 | Google Safe Browsing | https://transparencyreport.google.com  | Domain, URL                                                          |
 | GreyNoise            | https://viz.greynoise.io               | IP, domain, ASN, CVE                                                 |
@@ -100,7 +98,6 @@ Mitaka is a browser extension makes your OSINT search & scan easily.
 | Spyse                | https://spyse.com                      | IP, domain, ASN, CVE, email                                          |
 | Talos                | https://talosintelligence.com          | IP, domain                                                           |
 | ThreatConnect        | https://app.threatconnect.com          | IP, domain, email                                                    |
-| ThreatCrowd          | https://www.threatcrowd.org            | IP, domain, email                                                    |
 | ThreatMiner          | https://www.threatminer.org            | IP, domain, hash                                                     |
 | TIP                  | https://threatintelligenceplatform.com | IP, domain                                                           |
 | Triage               | https://tria.ge                        | Hash, URL                                                            |
@@ -112,8 +109,6 @@ Mitaka is a browser extension makes your OSINT search & scan easily.
 | VMRay                | https://www.vmray.com                  | Hash                                                                 |
 | Vulmon               | https://vulmon.com                     | CVE                                                                  |
 | VulncodeDB           | https://www.vulncode-db.com            | CVE                                                                  |
-| VxCube               | http://vxcube.com                      | IP, domain, hash                                                     |
-| WebAnalyzer          | https://wa-com.com                     | Domain                                                               |
 | X-Force Exchange     | https://exchange.xforce.ibmcloud.com   | IP, domain, hash                                                     |
 | ZoomEye              | https://www.zoomeye.org                | IP                                                                   |
 
