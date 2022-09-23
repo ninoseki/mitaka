@@ -75,6 +75,8 @@ import {
   ZoomEye,
 } from "./index";
 
+export { DomainBigData, FOFA, Spyse, ThreatCrowd, VxCube, WebAnalyzer };
+
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),
   new AnyRun(),
@@ -92,13 +94,11 @@ export const Searchers: Searcher[] = [
   new Checkphish(),
   new Crtsh(),
   new DNSlytics(),
-  new DomainBigData(),
   new DomainTools(),
   new DomainWatch(),
   new EmailRep(),
   new ExploitDatabase(),
   new FileScan(),
-  new FOFA(),
   new FortiGuard(),
   new GoogleSafeBrowsing(),
   new GreyNoise(),
@@ -129,10 +129,8 @@ export const Searchers: Searcher[] = [
   new Shodan(),
   new Sploitus(),
   new SpyOnWeb(),
-  new Spyse(),
   new Talos(),
   new ThreatConnect(),
-  new ThreatCrowd(),
   new ThreatMiner(),
   new TIP(),
   new Triage(),
@@ -144,8 +142,6 @@ export const Searchers: Searcher[] = [
   new VMRay(),
   new Vulmon(),
   new VulncodeDB(),
-  new VxCube(),
-  new WebAnalyzer(),
   new XForceExchange(),
   new ZoomEye(),
 ];
