@@ -28,7 +28,7 @@ export class VirusTotal implements Scanner {
     this.apiKey = apiKey;
   }
 
-  private permmaLink(id: string): string {
+  private permaLink(id: string): string {
     // id format: u-{SHA256}-{?}
     // e.g. u-ef8678c0f43f6142407ca89b4a376556cd4472d26b5952efa6d3821fa9fc597b-1589690619
     const parts = id.split("-");
@@ -51,6 +51,6 @@ export class VirusTotal implements Scanner {
       }
     );
     const response = res.data;
-    return this.permmaLink(response.data.id);
+    return this.permaLink(response.data.id);
   }
 }
