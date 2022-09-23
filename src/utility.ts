@@ -38,6 +38,7 @@ function convertToGeneralSettings(value: StorageValue): GeneralSettings {
     strictTLD: false,
     enableRefang: false,
     preferHrefValue: false,
+    enableDebugLog: false,
   };
 
   if (hasGeneralSettings) {
@@ -50,7 +51,10 @@ function convertToGeneralSettings(value: StorageValue): GeneralSettings {
       _generalSettings.enableRefang || generalSettings.enableRefang;
     generalSettings.preferHrefValue =
       _generalSettings.preferHrefValue || generalSettings.preferHrefValue;
+    generalSettings.enableDebugLog =
+      _generalSettings.enableDebugLog || generalSettings.enableDebugLog;
   }
+
   return generalSettings;
 }
 

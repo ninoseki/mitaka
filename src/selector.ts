@@ -38,7 +38,12 @@ export class Selector {
 
   public constructor(
     input: string,
-    options: Options = { enableIDN: true, strictTLD: true, enableRefang: true }
+    options: Options = {
+      enableIDN: true,
+      strictTLD: true,
+      enableRefang: true,
+      enableDebugLog: true,
+    }
   ) {
     this.input = options.enableRefang ? refang(input) : input;
     this.options = options;
@@ -157,7 +162,10 @@ export class Selector {
 
       const result = func.apply(this);
       if (result !== null) {
-        console.debug(`Mitaka: ${type} type is selected, value = ${result}.`);
+        if (this.options.enableDebugLog) {
+          console.debug(`Mitaka: ${type} type is selected, value = ${result}.`);
+        }
+
         return this.makeAnalyzerEntries(
           this.getSearchersByType(type),
           type,

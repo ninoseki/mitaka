@@ -9,7 +9,13 @@ import {
   SearcherStates,
   UpdateContextMenuMessage,
 } from "@/types";
-import { getApiKeys, getConfig, getSearcherStates, isFirefox } from "@/utility";
+import {
+  getApiKeys,
+  getConfig,
+  getGeneralSettings,
+  getSearcherStates,
+  isFirefox,
+} from "@/utility";
 
 export async function showNotification(message: string): Promise<void> {
   await browser.notifications.create({
@@ -78,6 +84,7 @@ export function createContextMenus(
     enableIDN: generalSettings.enableIDN,
     strictTLD: generalSettings.strictTLD,
     enableRefang: generalSettings.enableRefang,
+    enableDebugLog: generalSettings.enableDebugLog,
   });
   // create searchers context menus based on a type of the input
   const searcherEntries: AnalyzerEntry[] = selector.getSearcherEntries();
@@ -138,24 +145,28 @@ export function createContextMenus(
     browser.contextMenus.create(options, createContextMenuErrorHandler);
   }
 
-  console.debug("Mitaka: created context menus.");
+  if (generalSettings.enableDebugLog) {
+    console.debug("Mitaka: created context menus.");
+  }
 }
 
 if (typeof browser !== "undefined" && browser.runtime !== undefined) {
   browser.runtime.onMessage.addListener(
     async (message: UpdateContextMenuMessage): Promise<void> => {
-      console.debug(
-        `Mitaka: received message. link: ${message.link || "N/A"}, text: ${
-          message.text
-        }, request: ${message.request}.`
-      );
-
       await browser.contextMenus.removeAll();
-      console.debug("Mitaka: removed all context menus (onMessage)");
+
+      const config = await getConfig();
+
+      if (config.generalSettings.enableDebugLog) {
+        console.debug("Mitaka: removed all context menus (onMessage)");
+        console.debug(
+          `Mitaka: received message. link: ${message.link || "N/A"}, text: ${
+            message.text
+          }, request: ${message.request}.`
+        );
+      }
 
       if (message.request === "updateContextMenu") {
-        const config = await getConfig();
-
         createContextMenus(
           message,
           config.searcherStates,
@@ -197,6 +208,10 @@ if (typeof browser !== "undefined" && browser.runtime !== undefined) {
     }
 
     await browser.contextMenus.removeAll();
-    console.debug("Mitaka: removed all context menus (onClicked)");
+
+    const generalSettings = await getGeneralSettings();
+    if (generalSettings.enableDebugLog) {
+      console.debug("Mitaka: removed all context menus (onClicked)");
+    }
   });
 }

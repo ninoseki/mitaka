@@ -2,6 +2,7 @@ import { throttle } from "@github/mini-throttle";
 import { browser } from "webextension-polyfill-ts";
 
 import { UpdateContextMenuMessage } from "@/types";
+import { getGeneralSettings } from "@/utility";
 
 export async function onSelectionChange(): Promise<void> {
   const selection = window.getSelection();
@@ -16,7 +17,6 @@ export async function onSelectionChange(): Promise<void> {
   }
 
   const selected: string = link || text;
-  console.debug(`Mitaka: selected = ${selected}`);
 
   if (selected !== "") {
     const message: UpdateContextMenuMessage = {
@@ -25,6 +25,11 @@ export async function onSelectionChange(): Promise<void> {
       text: text,
     };
     await browser.runtime.sendMessage(message);
+  }
+
+  const settings = await getGeneralSettings();
+  if (settings.enableDebugLog) {
+    console.debug(`Mitaka: selected = ${selected}`);
   }
 }
 

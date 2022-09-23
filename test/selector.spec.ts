@@ -323,6 +323,7 @@ describe("Selector", function () {
         enableIDN: true,
         strictTLD: true,
         enableRefang: false,
+        enableDebugLog: false,
       });
 
       describe("#getIP", function () {
