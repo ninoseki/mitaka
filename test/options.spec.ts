@@ -114,6 +114,7 @@ describe("Options script", function () {
       stub.withArgs("strict-tld").returns(input);
       stub.withArgs("enable-refang").returns(input);
       stub.withArgs("prefer-href-value").returns(input);
+      stub.withArgs("enable-debug-log").returns(input);
     });
 
     it("should save generalSettings via chrome.storage.sync.set", async function () {
@@ -126,6 +127,7 @@ describe("Options script", function () {
               strictTLD: true,
               enableRefang: true,
               preferHrefValue: true,
+              enableDebugLog: true,
             },
           },
         ],
@@ -315,7 +317,8 @@ describe("Options script", function () {
         <input id="enable-idn" type="checkbox" {{#enableIDN}}checked="checked"{{/enableIDN}}>
         <input id="strict-tld" type="checkbox" {{#strictTLD}}checked="checked"{{/strictTLD}}>
         <input id="enable-refang" type="checkbox" {{#enableRefang}}checked="checked"{{/enableRefang}}>
-        <input id="prefer-href-value" type="checkbox" {{#preferHrefValue}}checked="checked"{{/preferHrefValue}}>`,
+        <input id="prefer-href-value" type="checkbox" {{#preferHrefValue}}checked="checked"{{/preferHrefValue}}>
+        <input id="enable-debug-log" type="checkbox" {{#enableDebugLog}}checked="checked"{{/enableDebugLog}}>`,
       });
     });
 
@@ -329,6 +332,7 @@ describe("Options script", function () {
             strictTLD: true,
             enableRefang: true,
             preferHrefValue: true,
+            enableDebugLog: true,
           },
         });
 
@@ -357,6 +361,11 @@ describe("Options script", function () {
         "input#prefer-href-value"
       ) as HTMLInputElement;
       expect(preferHrefValue.checked).to.equal(true);
+
+      const enableDebugLog = generalSettings.querySelector(
+        "input#enable-debug-log"
+      ) as HTMLInputElement;
+      expect(enableDebugLog.checked).to.equal(true);
     });
   });
 });

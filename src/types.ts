@@ -97,6 +97,7 @@ export interface GeneralSettings {
   strictTLD: boolean;
   enableRefang: boolean;
   preferHrefValue: boolean;
+  enableDebugLog: boolean;
 }
 
 export interface Config {
@@ -119,4 +120,5 @@ export interface Options {
   enableIDN: boolean;
   strictTLD: boolean;
   enableRefang: boolean;
+  enableDebugLog: boolean;
 }

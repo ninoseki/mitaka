@@ -57,14 +57,16 @@ export async function saveGeneralSettings(): Promise<void> {
   const preferHrefValueInput = document.getElementById(
     "prefer-href-value"
   ) as HTMLInputElement;
-
-  console.log(preferHrefValueInput.checked);
+  const enableDebugLogInput = document.getElementById(
+    "enable-debug-log"
+  ) as HTMLInputElement;
 
   const generalSettings: GeneralSettings = {
     enableIDN: enableIDNInput.checked,
     strictTLD: strictTLDInput.checked,
     enableRefang: enableRefangInput.checked,
     preferHrefValue: preferHrefValueInput.checked,
+    enableDebugLog: enableDebugLogInput.checked,
   };
 
   await browser.storage.sync.set({ generalSettings });
@@ -129,7 +131,6 @@ export async function restoreGeneralSettings(): Promise<void> {
   ).innerHTML;
 
   const elem = document.createElement("div");
-  console.log(generalSettings);
   elem.innerHTML = Mustache.render(template, generalSettings);
   fragment.appendChild(elem);
 

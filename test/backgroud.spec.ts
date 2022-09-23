@@ -206,6 +206,7 @@ describe("Background script", function () {
           strictTLD: true,
           enableRefang: true,
           preferHrefValue: true,
+          enableDebugLog: true,
         }
       );
 
