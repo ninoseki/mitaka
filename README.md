@@ -7,6 +7,8 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/ninoseki/mitaka/badge)](https://www.codefactor.io/repository/github/ninoseki/mitaka)
 [![Coverage Status](https://coveralls.io/repos/github/ninoseki/mitaka/badge.svg)](https://coveralls.io/github/ninoseki/mitaka)
 
+---
+
 <p align="center">
   <a href="https://tines.io?utm_source=github&utm_medium=sponsorship&utm_campaign=ninoseki">
     <img src="https://github.com/ninoseki/mitaka/raw/master/images/Tines-Full_Logo-Tines_Black.png"/>
@@ -14,6 +16,8 @@
   <br/>
   Mitaka is proudly supported by <a href="https://tines.io?utm_source=github&utm_medium=sponsorship&utm_campaign=ninoseki">Tines</a>
 </p>
+
+---
 
 Mitaka is a browser extension makes your OSINT search & scan easily.
 
