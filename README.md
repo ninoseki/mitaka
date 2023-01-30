@@ -168,6 +168,7 @@ I don't (and will never) collect any information from the users.
 
 - [CrowdScrape](https://chrome.google.com/webstore/detail/crowdscrape/jjplaeklnlddpkbbdbnogmppffokemej)
 - [Gotanda](https://github.com/HASH1da1/Gotanda)
+- [SOC Multi-tool](https://github.com/zdhenard42/SOC-Multitool)
 - [Sputnik](https://github.com/mitchmoser/sputnik)
 - [ThreatConnect Integrated Chrome Extension](https://chrome.google.com/webstore/detail/threatconnect-integrated/lblgcphpihpadjdpjgjnnoikjdjcnkbh)
 - [ThreatPinch Lookup](https://github.com/cloudtracer/ThreatPinchLookup)
