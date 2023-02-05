@@ -1,7 +1,7 @@
-import { Apklab } from "@/searcher";
+import { APKLab } from "@/searcher";
 
-describe("Apklab", function () {
-  const subject = new Apklab();
+describe("APKLab", function () {
+  const subject = new APKLab();
 
   it("should support hash", function () {
     expect(subject.supportedTypes).toEqual(["hash"]);

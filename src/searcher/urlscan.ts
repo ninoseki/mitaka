@@ -2,7 +2,7 @@ import type { SearchableType, Searcher } from "@/types";
 import { extractASNumber } from "@/utils";
 import { buildURL } from "@/utils";
 
-export class Urlscan implements Searcher {
+export class URLScan implements Searcher {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "asn", "url"];

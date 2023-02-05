@@ -1,9 +1,9 @@
-import { Searcher } from "@/types";
+import type { Searcher } from "@/types";
 
 import {
+  APKLab,
   AbuseIPDB,
   AnyRun,
-  Apklab,
   ArchiveOrg,
   ArchiveToday,
   BGPView,
@@ -14,7 +14,7 @@ import {
   BlockCypher,
   Blockchair,
   Censys,
-  Checkphish,
+  CheckPhish,
   Crtsh,
   DNSlytics,
   DomainBigData,
@@ -61,9 +61,9 @@ import {
   ThreatCrowd,
   ThreatMiner,
   Triage,
+  URLScan,
   URLVoid,
   URLhaus,
-  Urlscan,
   VMRay,
   ViewDNS,
   VirusTotal,
@@ -80,7 +80,7 @@ export { DomainBigData, FOFA, Spyse, ThreatCrowd, VxCube, WebAnalyzer };
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),
   new AnyRun(),
-  new Apklab(),
+  new APKLab(),
   new ArchiveOrg(),
   new ArchiveToday(),
   new BGPView(),
@@ -91,7 +91,7 @@ export const Searchers: Searcher[] = [
   new Blockchair(),
   new BlockCypher(),
   new Censys(),
-  new Checkphish(),
+  new CheckPhish(),
   new Crtsh(),
   new DNSlytics(),
   new DomainTools(),
@@ -135,7 +135,7 @@ export const Searchers: Searcher[] = [
   new TIP(),
   new Triage(),
   new URLhaus(),
-  new Urlscan(),
+  new URLScan(),
   new URLVoid(),
   new ViewDNS(),
   new VirusTotal(),

@@ -10,7 +10,7 @@ interface ErrorResponse {
   status: number;
 }
 
-export class Urlscan implements Scanner {
+export class URLScan implements Scanner {
   public baseURL: string;
   public name: string;
   public supportedTypes: ScannableType[] = ["ip", "domain", "url"];

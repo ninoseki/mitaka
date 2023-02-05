@@ -1,7 +1,7 @@
-import { Urlscan } from "@/searcher";
+import { URLScan } from "@/searcher";
 
 describe("Urlscan", function () {
-  const subject = new Urlscan();
+  const subject = new URLScan();
 
   it("should support ip, domain, asn and url", function () {
     expect(subject.supportedTypes).toEqual(["ip", "domain", "asn", "url"]);

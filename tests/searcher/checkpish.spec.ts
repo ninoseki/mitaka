@@ -1,7 +1,7 @@
-import { Checkphish } from "@/searcher";
+import { CheckPhish } from "@/searcher";
 
-describe("Checkpish", function () {
-  const subject = new Checkphish();
+describe("CheckPhish", function () {
+  const subject = new CheckPhish();
 
   it("should support ip and domain", function () {
     expect(subject.supportedTypes).toEqual(["ip", "domain"]);
