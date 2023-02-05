@@ -106,7 +106,3 @@ export interface Options {
   urlscanAPIKey?: string;
   virusTotalAPIKey?: string;
 }
-
-export interface ErrorMessage {
-  message: string;
-}

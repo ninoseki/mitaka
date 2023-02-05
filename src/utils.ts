@@ -1,4 +1,4 @@
-import type { ErrorMessage, Scanner, Searcher } from "@/types";
+import type { Scanner, Searcher } from "@/types";
 import { Base64 } from "js-base64";
 
 export function buildURL(baseURL: string, path: string, params = {}): string {
