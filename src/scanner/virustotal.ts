@@ -1,8 +1,5 @@
-import axios from "axios";
-import qs from "qs";
-
-import { ScannableType, Scanner } from "@/types";
-import { buildURL } from "@/urlBuilder";
+import type { ScannableType, Scanner } from "@/types";
+import { buildURL } from "@/utils";
 
 interface Data {
   id: string;
@@ -11,6 +8,14 @@ interface Data {
 
 interface Response {
   data: Data;
+}
+
+interface ErrorMessage {
+  message: string;
+}
+
+interface ErrorResponse {
+  error: ErrorMessage;
 }
 
 export class VirusTotal implements Scanner {
@@ -24,7 +29,7 @@ export class VirusTotal implements Scanner {
     this.name = "VirusTotal";
   }
 
-  public setApiKey(apiKey: string | undefined): void {
+  public setAPIKey(apiKey: string | undefined): void {
     this.apiKey = apiKey;
   }
 
@@ -41,16 +46,25 @@ export class VirusTotal implements Scanner {
       throw Error("Please set your VirusTotal API key via the option.");
     }
 
-    const params = { url };
-    const headers = { "x-apikey": this.apiKey };
-    const res = await axios.post<Response>(
-      buildURL(this.baseURL, "/urls"),
-      qs.stringify(params),
-      {
-        headers: headers,
-      }
-    );
-    const response = res.data;
-    return this.permaLink(response.data.id);
+    const formData = new FormData();
+    formData.append("url", url);
+
+    const headers = {
+      "x-apikey": this.apiKey,
+    };
+
+    const res = await fetch(buildURL(this.baseURL, "/urls"), {
+      method: "POST",
+      headers,
+      body: formData,
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw Error((data as ErrorResponse).error.message);
+    }
+
+    return this.permaLink((data as Response).data.id);
   }
 }

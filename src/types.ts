@@ -1,5 +1,3 @@
-import { ExecFileSyncOptionsWithBufferEncoding } from "child_process";
-
 export type SearchableType =
   | "asn"
   | "btc"
@@ -17,6 +15,7 @@ export interface Searcher {
   baseURL: string;
   name: string;
   supportedTypes: SearchableType[];
+
   searchByASN?(query: string): string;
   searchByBTC?(query: string): string;
   searchByCVE?(query: string): string;
@@ -40,85 +39,74 @@ export interface Scanner {
   scanByIP?(query: string): Promise<string>;
   scanByDomain?(query: string): Promise<string>;
   scanByURL?(query: string): Promise<string> | string;
-  setApiKey?(apiKey: string | undefined): void;
+  setAPIKey(apiKey: string | undefined): void;
 }
 
-export interface SelectorSlot {
+export interface SearchFuncWrapper {
   type: SearchableType;
   func: () => string | null;
 }
 
-export interface ScannerSlot {
+export interface ScanFuncWrapper {
   type: ScannableType;
   func: () => string | null;
 }
 
-export interface AnalyzerEntry {
+export interface SelectorSlot {
   analyzer: Scanner | Searcher;
   type: SearchableType | ScannableType;
   query: string;
 }
 
-export interface SearcherState {
-  name: string;
-  baseURL: string;
-  supportedTypes: string[];
-  joinedSupportedTypes: string;
-  faviconURL: string;
-  isEnabled: boolean;
-}
-
-export interface SearcherStates {
-  [name: string]: boolean;
-}
-
-export interface ApiKeys {
-  hybridAnalysisApiKey: string | undefined;
-  urlscanApiKey: string | undefined;
-  virusTotalApiKey: string | undefined;
-}
-
-export interface UpdateContextMenuMessage {
-  request: string;
+export interface Message {
   link: string | null;
   text: string;
 }
 
-export interface SearcherTable {
-  [name: string]: (searcher: Searcher, query: string) => string;
+export interface SearcherMap {
+  [name: string]: (searcher: Searcher, query: string) => string | undefined;
 }
 
-export interface ScannerTable {
-  [name: string]: (scanner: Scanner, query: string) => Promise<string>;
+export interface ScannerMap {
+  [name: string]: (
+    scanner: Scanner,
+    query: string
+  ) => Promise<string | undefined>;
 }
 
-export interface GeneralSettings {
-  enableIDN: boolean;
-  strictTLD: boolean;
-  enableRefang: boolean;
-  preferHrefValue: boolean;
-  enableDebugLog: boolean;
-}
-
-export interface Config {
-  generalSettings: GeneralSettings;
-  searcherStates: SearcherStates;
-}
+export type CommandAction = "scan" | "search";
 
 export interface Command {
-  action: string;
+  action: CommandAction;
   query: string;
   type: SearchableType;
-  target: string;
+  name: string;
 }
 
 export const MD5_LENGTH = 32;
 export const SHA1_LENGTH = 40;
 export const SHA256_LENGTH = 64;
 
+export interface SelectorOptions {
+  enableIDN: boolean;
+  strictTLD: boolean;
+  enableRefang: boolean;
+  enableDebugLog: boolean;
+  disabledSearcherNames: string[];
+}
+
 export interface Options {
   enableIDN: boolean;
   strictTLD: boolean;
   enableRefang: boolean;
   enableDebugLog: boolean;
+  preferHrefValue: boolean;
+  disabledSearcherNames: string[];
+  hybridAnalysisAPIKey?: string;
+  urlscanAPIKey?: string;
+  virusTotalAPIKey?: string;
+}
+
+export interface ErrorMessage {
+  message: string;
 }

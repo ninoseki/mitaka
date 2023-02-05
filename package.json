@@ -1,43 +1,21 @@
 {
   "name": "mitaka",
+  "displayName": "Mitaka",
   "version": "0.93.0",
   "description": "A browser extension for searching IP, domain, URL, hash, etc. via the context menu.",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --ext .ts src test",
-    "lint:pre-commit": "eslint --ext .ts src --fix --quiet",
-    "prebuild": "cross-env NODE_ENV=production webpack",
-    "build": "npx web-ext build -s dist/ --overwrite-dest",
-    "watch": "npm run prebuild -- --watch",
-    "test": "mocha -r ts-node/register -r tsconfig-paths/register",
-    "coverage": "nyc npm run test",
-    "postinstall": "husky install",
-    "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable"
+    "lint": "eslint --ext .js,.vue,.ts --ignore-path .gitignore --fix src --fix tests",
+    "dev": "plasmo dev",
+    "build": "plasmo build",
+    "package": "plasmo package",
+    "prepare": "husky install",
+    "test": "jest tests/ --collect-coverage"
   },
   "lint-staged": {
     "*.ts": [
-      "npm run lint:pre-commit"
+      "npm run lint"
     ]
-  },
-  "nyc": {
-    "include": [
-      "src/*.ts",
-      "src/**/*.ts"
-    ],
-    "extension": [
-      ".ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "reporter": [
-      "html",
-      "text",
-      "lcov"
-    ],
-    "sourceMap": true,
-    "all": true
   },
   "author": "ninoseki",
   "license": "MIT",
@@ -46,64 +24,50 @@
     "url": "https://github.com/ninoseki/mitaka.git"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.2.1",
     "@github/mini-throttle": "^2.1.0",
-    "axios": "^0.27.2",
+    "@vespaiach/axios-fetch-adapter": "^0.3.1",
     "bulma": "^0.9.4",
-    "ioc-extractor": "4.1.0",
-    "js-base64": "^3.7.2",
+    "ioc-extractor": "5.0.3",
+    "js-base64": "^3.7.4",
     "js-sha256": "^0.9.0",
-    "mustache": "^4.2.0",
-    "qs": "^6.11.0",
-    "snakecase-keys": "^5.4.4",
-    "url": "^0.11.0"
+    "plasmo": "^0.64.5",
+    "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@types/chai": "4.3.3",
-    "@types/chai-as-promised": "7.1.5",
+    "@jest/globals": "^29.4.1",
+    "@jest/types": "^29.4.1",
+    "@plasmohq/prettier-plugin-sort-imports": "^3.6.1",
+    "@types/chrome": "^0.0.212",
+    "@types/jest": "^29.4.0",
     "@types/js-base64": "3.3.1",
-    "@types/jsdom": "16.2.15",
-    "@types/mocha": "9.1.1",
-    "@types/moxios": "0.4.15",
-    "@types/mustache": "4.2.1",
-    "@types/node": "18.7.18",
-    "@types/qs": "6.9.7",
-    "@types/sinon": "10.0.13",
-    "@types/window-or-global": "1.0.0",
-    "@typescript-eslint/eslint-plugin": "5.38.0",
-    "@typescript-eslint/parser": "5.38.0",
-    "chai": "4.3.6",
-    "chai-as-promised": "7.1.1",
-    "clean-webpack-plugin": "4.0.0",
-    "copy-webpack-plugin": "10.2.4",
+    "@types/node": "^18.11.19",
+    "@typescript-eslint/eslint-plugin": "5.50.0",
+    "@typescript-eslint/parser": "5.50.0",
+    "@vue/eslint-config-typescript": "^11.0.2",
     "coveralls": "3.1.1",
-    "cross-env": "7.0.3",
-    "css-loader": "6.7.1",
-    "eslint": "8.23.1",
-    "eslint-config-prettier": "8.5.0",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "8.6.0",
     "eslint-plugin-prettier": "4.2.1",
-    "eslint-plugin-simple-import-sort": "8.0.0",
-    "husky": "8.0.1",
-    "ignore-styles": "5.0.1",
-    "jsdom": "20.0.0",
-    "lint-staged": "13.0.3",
-    "mini-css-extract-plugin": "2.6.1",
-    "mocha": "10.0.0",
-    "moxios": "0.4.0",
-    "nyc": "15.1.0",
-    "pinst": "3.0.0",
-    "prettier": "2.7.1",
-    "sass": "1.55.0",
-    "sass-loader": "13.0.2",
-    "sinon": "14.0.0",
-    "style-loader": "3.3.1",
-    "ts-loader": "9.4.1",
-    "ts-node": "10.9.1",
-    "tsconfig-paths": "4.1.0",
-    "typescript": "4.8.3",
-    "web-ext": "7.2.0",
-    "webextension-polyfill-ts": "0.22.0",
-    "webpack": "5.74.0",
-    "webpack-cli": "4.10.0",
-    "window-or-global": "1.0.1"
+    "eslint-plugin-vue": "^9.9.0",
+    "husky": "8.0.3",
+    "jest": "^29.4.1",
+    "jest-environment-jsdom": "^29.4.1",
+    "jest-webextension-mock": "^3.8.8",
+    "lint-staged": "13.1.0",
+    "prettier": "2.8.3",
+    "ts-jest": "^29.0.5",
+    "typescript": "4.9.5"
+  },
+  "manifest": {
+    "host_permissions": [
+      "https://*/*",
+      "http://*/*"
+    ],
+    "permissions": [
+      "contextMenus",
+      "storage",
+      "notifications"
+    ]
   }
 }

@@ -1,11 +1,11 @@
-import axios from "axios";
-import qs from "qs";
-import snakecaseKeys from "snakecase-keys";
+import type { ScannableType, Scanner } from "@/types";
 
-import { ScannableType, Scanner } from "@/types";
-
-interface Resopnse {
+interface Response {
   sha256: string;
+}
+
+export interface ErrorResponse {
+  message: string;
 }
 
 export class HybridAnalysis implements Scanner {
@@ -19,7 +19,7 @@ export class HybridAnalysis implements Scanner {
     this.name = "HybridAnalysis";
   }
 
-  public setApiKey(apiKey: string | undefined): void {
+  public setAPIKey(apiKey: string | undefined): void {
     this.apiKey = apiKey;
   }
 
@@ -28,23 +28,28 @@ export class HybridAnalysis implements Scanner {
       throw Error("Please set your HybridAnalysis API key via the option.");
     }
 
-    const params = snakecaseKeys({
-      scanType: "all",
-      url: url,
-    });
-    const res = await axios.post<Resopnse>(
-      `${this.baseURL}/quick-scan/url`,
-      qs.stringify(params),
-      {
-        headers: {
-          "api-key": this.apiKey,
-          "user-agent": "Falcon Sandbox",
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      }
-    );
+    const formData = new FormData();
+    formData.append("scan_type", "all");
+    formData.append("url", url);
 
-    const sha256: string = res.data.sha256;
+    const headers = {
+      "api-key": this.apiKey,
+      "user-agent": "Falcon Sandbox",
+    };
+
+    const res = await fetch(`${this.baseURL}/quick-scan/url`, {
+      method: "POST",
+      headers,
+      body: formData,
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw Error((data as ErrorResponse).message);
+    }
+
+    const sha256: string = (data as Response).sha256;
     return `https://www.hybrid-analysis.com/sample/${sha256}/`;
   }
 }

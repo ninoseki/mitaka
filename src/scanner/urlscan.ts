@@ -1,6 +1,4 @@
-import axios, { AxiosError } from "axios";
-
-import { ScannableType, Scanner } from "@/types";
+import type { ScannableType, Scanner } from "@/types";
 
 interface Response {
   result: string;
@@ -23,7 +21,7 @@ export class Urlscan implements Scanner {
     this.name = "urlscan.io";
   }
 
-  public setApiKey(apiKey: string | undefined): void {
+  public setAPIKey(apiKey: string | undefined): void {
     this.apiKey = apiKey;
   }
 
@@ -44,24 +42,26 @@ export class Urlscan implements Scanner {
       throw Error("Please set your urlscan.io API key via the option.");
     }
 
-    try {
-      const res = await axios.post<Response>(
-        `${this.baseURL}/scan/`,
-        {
-          public: isPublic ? "on" : "off",
-          url: query,
-        },
-        {
-          headers: {
-            "API-KEY": this.apiKey,
-          },
-        }
-      );
-      // ref. https://github.com/ninoseki/mitaka/issues/97
-      return `${res.data.result}loading`;
-    } catch (err) {
-      const error = err as AxiosError<ErrorResponse>;
-      throw Error(error.response?.data.description);
+    const body = JSON.stringify({
+      public: isPublic ? "on" : "off",
+      url: query,
+    });
+    const headers = {
+      "API-KEY": this.apiKey,
+      "content-type": "application/json",
+    };
+
+    const res = await fetch(`${this.baseURL}/scan/`, {
+      method: "POST",
+      headers,
+      body,
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw Error((data as ErrorResponse).message);
     }
+    return `${(data as Response).result}loading`;
   }
 }

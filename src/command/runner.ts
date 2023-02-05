@@ -1,197 +1,180 @@
 import { Selector } from "@/selector";
-import {
-  AnalyzerEntry,
-  ApiKeys,
+import type {
   Command,
+  Options,
   Scanner,
-  ScannerTable,
+  ScannerMap,
   Searcher,
-  SearcherStates,
-  SearcherTable,
+  SearcherMap,
+  SelectorSlot,
 } from "@/types";
+import { isScanner, isSearcher } from "@/utils";
 
 export class CommandRunner {
   public command: Command;
+  protected options: Options;
 
-  public constructor(commandString: string) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const command: Command = JSON.parse(commandString);
+  public constructor(command: Command, options: Options) {
     this.command = command;
+    this.options = options;
   }
 
-  private searcherTable: SearcherTable = {
-    ip: (searcher: Searcher, query: string): string => {
+  private searcherMap: SearcherMap = {
+    ip: (searcher: Searcher, query: string): string | undefined => {
       if (searcher.searchByIP) {
         return searcher.searchByIP(query);
       }
-      return "";
     },
-    domain: (searcher: Searcher, query: string): string => {
+    domain: (searcher: Searcher, query: string): string | undefined => {
       if (searcher.searchByDomain) {
         return searcher.searchByDomain(query);
       }
-      return "";
     },
-    url: (searcher: Searcher, query: string): string => {
+    url: (searcher: Searcher, query: string): string | undefined => {
       if (searcher.searchByURL) {
         return searcher.searchByURL(query);
       }
-      return "";
     },
-    asn: (searcher: Searcher, query: string): string => {
+    asn: (searcher: Searcher, query: string): string | undefined => {
       if (searcher.searchByASN) {
         return searcher.searchByASN(query);
       }
-      return "";
     },
-    email: (searcher: Searcher, query: string): string => {
+    email: (searcher: Searcher, query: string): string | undefined => {
       if (searcher.searchByEmail) {
         return searcher.searchByEmail(query);
       }
-      return "";
     },
-    hash: (searcher: Searcher, query: string): string => {
+    hash: (searcher: Searcher, query: string): string | undefined => {
       if (searcher.searchByHash) {
         return searcher.searchByHash(query);
       }
-      return "";
     },
-    cve: (searcher: Searcher, query: string): string => {
+    cve: (searcher: Searcher, query: string): string | undefined => {
       if (searcher.searchByCVE) {
         return searcher.searchByCVE(query);
       }
-      return "";
     },
-    btc: (searcher: Searcher, query: string): string => {
+    btc: (searcher: Searcher, query: string): string | undefined => {
       if (searcher.searchByBTC) {
         return searcher.searchByBTC(query);
       }
-      return "";
     },
-    gaPubID: (searcher: Searcher, query: string): string => {
+    gaPubID: (searcher: Searcher, query: string): string | undefined => {
       if (searcher.searchByGAPubID) {
         return searcher.searchByGAPubID(query);
       }
-      return "";
     },
-    gaTrackID: (searcher: Searcher, query: string): string => {
+    gaTrackID: (searcher: Searcher, query: string): string | undefined => {
       if (searcher.searchByGATrackID) {
         return searcher.searchByGATrackID(query);
       }
-      return "";
     },
-    eth: (searcher: Searcher, query: string): string => {
+    eth: (searcher: Searcher, query: string): string | undefined => {
       if (searcher.searchByETH) {
         return searcher.searchByETH(query);
       }
-      return "";
     },
   };
 
-  public search(): string {
+  public search(): string | undefined {
     const selector: Selector = new Selector(this.command.query);
-    const entries: AnalyzerEntry[] = selector.getSearcherEntries();
-    const entry = entries.find((r) => r.analyzer.name === this.command.target);
-    let url = "";
+    const slots: SelectorSlot[] = selector.getSearcherSlots();
+    const slot = slots.find((s) => s.analyzer.name === this.command.name);
 
-    if (entry !== undefined) {
-      const searcher = entry.analyzer as Searcher;
-      if (this.command.type in this.searcherTable) {
-        const fn = this.searcherTable[this.command.type];
-        url = fn(searcher, entry.query);
-      }
+    if (slot === undefined) {
+      return undefined;
     }
 
-    return url;
+    if (!isSearcher(slot.analyzer)) {
+      return undefined;
+    }
+
+    const searcher = slot.analyzer;
+    if (this.command.type in this.searcherMap) {
+      const fn = this.searcherMap[this.command.type];
+      return fn(searcher, slot.query);
+    }
+
+    return undefined;
   }
 
-  public selectSearchers(searcherStates: SearcherStates): AnalyzerEntry[] {
+  public searchAll(): string[] {
     const selector: Selector = new Selector(this.command.query);
-    const entries: AnalyzerEntry[] = selector
-      .getSearcherEntries()
-      .filter((entry) => this.command.type === entry.type);
-    const selectedEntries = entries.filter(
-      (entry) =>
-        !(entry.analyzer.name in searcherStates) ||
-        searcherStates[entry.analyzer.name]
-    );
-    return selectedEntries;
-  }
+    const slots: SelectorSlot[] = selector.getSearcherSlots();
 
-  public getNumberOfSearchers(searcherStates: SearcherStates): number {
-    const selectedEntries = this.selectSearchers(searcherStates);
-    return selectedEntries.length;
-  }
-
-  public searchAll(searcherStates: SearcherStates): string[] {
-    const selectedEntries = this.selectSearchers(searcherStates);
-    const urls: string[] = [];
-    for (const entry of selectedEntries) {
-      const searcher = entry.analyzer as Searcher;
-      if (this.command.type in this.searcherTable) {
-        try {
-          const fn = this.searcherTable[this.command.type];
-          urls.push(fn(searcher, entry.query));
-        } catch (err) {
-          continue;
+    return slots
+      .map((slot) => {
+        const searcher = slot.analyzer;
+        if (this.command.type in this.searcherMap) {
+          const fn = this.searcherMap[this.command.type];
+          return fn(searcher, slot.query);
         }
-      }
-    }
-    return urls;
+      })
+      .flatMap((url) => (url === undefined ? [] : [url]));
   }
 
-  private scannerTable: ScannerTable = {
-    ip: async (scanner: Scanner, query: string): Promise<string> => {
+  private scannerMap: ScannerMap = {
+    ip: async (
+      scanner: Scanner,
+      query: string
+    ): Promise<string | undefined> => {
       if (scanner.scanByIP) {
         return scanner.scanByIP(query);
       }
-      return "";
     },
-    domain: async (scanner: Scanner, query: string): Promise<string> => {
+    domain: async (
+      scanner: Scanner,
+      query: string
+    ): Promise<string | undefined> => {
       if (scanner.scanByDomain) {
         return scanner.scanByDomain(query);
       }
-      return "";
     },
-    url: async (scanner: Scanner, query: string): Promise<string> => {
+    url: async (
+      scanner: Scanner,
+      query: string
+    ): Promise<string | undefined> => {
       if (scanner.scanByURL) {
         return scanner.scanByURL(query);
       }
-      return "";
     },
   };
 
-  public async scan(apiKeys: ApiKeys): Promise<string> {
+  public async scan(): Promise<string | undefined> {
     const selector: Selector = new Selector(this.command.query);
-    const entries: AnalyzerEntry[] = selector.getScannerEntries();
-    const entry = entries.find((r) => r.analyzer.name === this.command.target);
-    let url = "";
-    if (entry !== undefined) {
-      const scanner = entry.analyzer as Scanner;
-      switch (scanner.name) {
-        case "HybridAnalysis":
-          if (typeof scanner["setApiKey"] === "function") {
-            scanner.setApiKey(apiKeys.hybridAnalysisApiKey);
-          }
-          break;
-        case "urlscan.io":
-          if (typeof scanner["setApiKey"] === "function") {
-            scanner.setApiKey(apiKeys.urlscanApiKey);
-          }
-          break;
-        case "VirusTotal":
-          if (typeof scanner["setApiKey"] === "function") {
-            scanner.setApiKey(apiKeys.virusTotalApiKey);
-          }
-          break;
-        default:
-          break;
-      }
-      if (entry.type in this.scannerTable) {
-        const fn = this.scannerTable[entry.type];
-        url = await fn(scanner, entry.query);
-      }
+    const slots: SelectorSlot[] = selector.getScannerSlots();
+    const slot = slots.find((s) => s.analyzer.name === this.command.name);
+
+    if (slot === undefined) {
+      return undefined;
     }
-    return url;
+
+    if (!isScanner(slot.analyzer)) {
+      return undefined;
+    }
+
+    const scanner = slot.analyzer;
+
+    switch (scanner.name) {
+      case "HybridAnalysis":
+        scanner.setAPIKey(this.options.hybridAnalysisAPIKey);
+        break;
+      case "urlscan.io":
+        scanner.setAPIKey(this.options.urlscanAPIKey);
+        break;
+      case "VirusTotal":
+        scanner.setAPIKey(this.options.virusTotalAPIKey);
+        break;
+      default:
+        break;
+    }
+
+    if (slot.type in this.scannerMap) {
+      const fn = this.scannerMap[slot.type];
+      return await fn(scanner, slot.query);
+    }
+
+    return undefined;
   }
 }
