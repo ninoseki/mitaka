@@ -26,7 +26,6 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.1",
     "@github/mini-throttle": "^2.1.0",
-    "@vespaiach/axios-fetch-adapter": "^0.3.1",
     "bulma": "^0.9.4",
     "ioc-extractor": "5.0.3",
     "js-base64": "^3.7.4",
