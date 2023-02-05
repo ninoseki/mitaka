@@ -1,14 +1,15 @@
 import type { ScannableType, Scanner } from "@/types";
+import { z } from "zod";
 
-interface Response {
-  result: string;
-}
+const Response = z.object({
+  result: z.string(),
+});
 
-interface ErrorResponse {
-  message: string;
-  description: string;
-  status: number;
-}
+const ErrorResponse = z.object({
+  message: z.string(),
+  description: z.string(),
+  status: z.number(),
+});
 
 export class URLScan implements Scanner {
   public baseURL: string;
@@ -60,8 +61,11 @@ export class URLScan implements Scanner {
     const data = await res.json();
 
     if (!res.ok) {
-      throw Error((data as ErrorResponse).message);
+      const parsed = ErrorResponse.parse(data);
+      throw Error(parsed.message);
     }
-    return `${(data as Response).result}loading`;
+
+    const parsed = Response.parse(data);
+    return `${parsed.result}loading`;
   }
 }

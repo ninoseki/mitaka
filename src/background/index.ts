@@ -2,6 +2,7 @@ import { scan } from "@/background/scan";
 import { search, searchAll } from "@/background/search";
 import { commandToID, commandToMessage } from "@/command/packer";
 import { CommandRunner } from "@/command/runner";
+import { CommandSchema } from "@/schemas";
 import { Selector } from "@/selector";
 import { getOptions } from "@/storage";
 import type { Command, CommandAction, Message, Options } from "@/types";
@@ -76,7 +77,7 @@ chrome.runtime.onMessage.addListener(
 chrome.contextMenus.onClicked.addListener(async (info, _tab) => {
   // id is JSON string represents command
   const id: string = info.menuItemId.toString();
-  const command: Command = JSON.parse(id);
+  const command = CommandSchema.parse(JSON.parse(id));
   const options = await getOptions();
 
   const runner = new CommandRunner(command, options);

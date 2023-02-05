@@ -1,12 +1,13 @@
 import type { ScannableType, Scanner } from "@/types";
+import { z } from "zod";
 
-interface Response {
-  sha256: string;
-}
+const Response = z.object({
+  sha256: z.string(),
+});
 
-export interface ErrorResponse {
-  message: string;
-}
+const ErrorResponse = z.object({
+  message: z.string(),
+});
 
 export class HybridAnalysis implements Scanner {
   public baseURL: string;
@@ -46,10 +47,12 @@ export class HybridAnalysis implements Scanner {
     const data = await res.json();
 
     if (!res.ok) {
-      throw Error((data as ErrorResponse).message);
+      const parsed = ErrorResponse.parse(data);
+      throw Error(parsed.message);
     }
 
-    const sha256: string = (data as Response).sha256;
+    const parsed = Response.parse(data);
+    const sha256: string = parsed.sha256;
     return `https://www.hybrid-analysis.com/sample/${sha256}/`;
   }
 }

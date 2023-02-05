@@ -1,22 +1,23 @@
 import type { ScannableType, Scanner } from "@/types";
 import { buildURL } from "@/utils";
+import { z } from "zod";
 
-interface Data {
-  id: string;
-  type: string;
-}
+const Data = z.object({
+  id: z.string(),
+  type: z.string(),
+});
 
-interface Response {
-  data: Data;
-}
+const Response = z.object({
+  data: Data,
+});
 
-interface ErrorMessage {
-  message: string;
-}
+const ErrorMessage = z.object({
+  message: z.string(),
+});
 
-interface ErrorResponse {
-  error: ErrorMessage;
-}
+const ErrorResponse = z.object({
+  error: ErrorMessage,
+});
 
 export class VirusTotal implements Scanner {
   public baseURL: string;
@@ -62,9 +63,11 @@ export class VirusTotal implements Scanner {
     const data = await res.json();
 
     if (!res.ok) {
-      throw Error((data as ErrorResponse).error.message);
+      const parsed = ErrorResponse.parse(data);
+      throw Error(parsed.error.message);
     }
 
-    return this.permaLink((data as Response).data.id);
+    const parsed = Response.parse(data);
+    return this.permaLink(parsed.data.id);
   }
 }

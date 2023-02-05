@@ -61,8 +61,3 @@ export function isSearcher(object: any): object is Searcher {
 export function isScanner(object: any): object is Scanner {
   return "setAPIKey" in object;
 }
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isErrorMessage(object: any): object is ErrorMessage {
-  return "message" in object;
-}
