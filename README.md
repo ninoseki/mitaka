@@ -19,14 +19,14 @@
 
 ---
 
-Mitaka is a browser extension makes your OSINT search & scan easily.
+Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) search & scan easier.
 
 ![demo](./images/demo.gif)
 
 - Key features:
-  - Auto IoC selection with refang.
+  - Auto IoC (indicators of compromise) selection with refang.
     - E.g. `example[.]com` to `example.com`, `test[at]example.com` to `test@example.com`, `hxxp://example.com` to `http://example.com`, etc.
-  - Support 65+ services.
+  - Supports 65+ services.
 
 ## Install
 
@@ -36,7 +36,7 @@ Mitaka is a browser extension makes your OSINT search & scan easily.
 
 ## Features
 
-### Supported IoCs
+### Supported IoCs (indicators of compromise)
 
 | Name      | Desc.                       | E.g.                                         |
 |:----------|:----------------------------|:---------------------------------------------|
@@ -135,7 +135,7 @@ Mitaka is a browser extension makes your OSINT search & scan easily.
 
 - [Use Mitaka to Perform In-Browser OSINT to Identify Malware, Sketchy Sites, Shady Emails & More](https://null-byte.wonderhowto.com/how-to/use-mitaka-perform-browser-osint-identify-malware-sketchy-sites-shady-emails-more-0216352/)
 
-**Note:** Please set your API keys in the options for enabling HybridAnalysis, urlscan.io and VirusTotal scan.
+**Note:** Please set your API keys in the options for enabling HybridAnalysis, urlscan.io and VirusTotal scans.
 
 ## Options
 
@@ -149,7 +149,7 @@ This browser extension requires the following permissions.
 
 - `Read and change all your data on the websites you visit`:
   - This extension creates context menus dynamically based on what you select on a website.
-  - It means this extension requires reading all your data on the websites you visit. (This extension doesn't change anything on the websites)
+  - This means that this extension requires reading all your data on the websites you visit. (This extension doesn't change anything on the websites)
 - `Display notifications`:
   - This extension makes a notification when something goes wrong.
 
@@ -161,7 +161,7 @@ I don't (and will never) collect any information from the users.
 
 ## Common Questions
 
-- Q. The context menu is not showing.
+- Q. The context menu is not being shown.
   - A. Sometimes it takes time to show the context menu in Chrome. Please wait for a second after selecting. Then the context menu will show.
 
 ## Alternatives or Similar Tools
