@@ -7,7 +7,7 @@
     "lint": "eslint --ext .js,.vue,.ts --ignore-path .gitignore --fix src --fix tests",
     "dev": "plasmo dev",
     "build": "plasmo build",
-    "package": "plasmo package",
+    "package": "plasmo build --zip",
     "prepare": "husky install",
     "test": "jest tests/ --collect-coverage"
   },
