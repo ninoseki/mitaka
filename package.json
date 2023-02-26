@@ -23,7 +23,6 @@
     "url": "https://github.com/ninoseki/mitaka.git"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.3.0",
     "@github/mini-throttle": "^2.1.0",
     "bulma": "^0.9.4",
     "ioc-extractor": "5.0.3",
