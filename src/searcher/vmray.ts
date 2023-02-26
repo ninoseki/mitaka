@@ -1,5 +1,5 @@
-import { SearchableType, Searcher } from "@/types";
-import { buildURL } from "@/urlBuilder";
+import type { SearchableType, Searcher } from "@/types";
+import { buildURL } from "@/utils";
 
 export class VMRay implements Searcher {
   public baseURL: string;

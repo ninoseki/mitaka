@@ -13,6 +13,18 @@ coverage
 
 .DS_Store
 
-/dist
-/dist-zip
-/web-ext-artifacts
+# local env files
+.env*
+
+out/
+build/
+dist/
+
+# plasmo - https://www.plasmo.com
+.plasmo
+
+# bpp - http://bpp.browser.market/
+keys.json
+
+# typescript
+.tsbuildinfo

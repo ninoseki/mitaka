@@ -1,5 +1,5 @@
-import { ScannableType, Scanner } from "@/types";
-import { buildURL } from "@/urlBuilder";
+import type { ScannableType, Scanner } from "@/types";
+import { buildURL } from "@/utils";
 
 export class Browserling implements Scanner {
   public baseURL: string;
@@ -16,5 +16,10 @@ export class Browserling implements Scanner {
       this.baseURL,
       `/browse/win/7/ie/11/${encodeURIComponent(url)}`
     );
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public setAPIKey(_: string | undefined): void {
+    return;
   }
 }

@@ -1,55 +1,30 @@
-import { truncate } from "@/truncate";
-import { Command, SearchableType } from "@/types";
+import type { Command } from "@/types";
+import { truncate } from "@/utils";
 
-const capitalize = (s: string) => {
+const abbreviations = ["ip", "asn", "btc", "cve", "eth", "url"];
+
+function capitalize(s: string) {
   return s.charAt(0).toUpperCase() + s.slice(1);
-};
+}
 
-export class CommandPacker {
-  public action: string;
-  public query: string;
-  public target: string;
-  public type: SearchableType;
+export function commandToID(command: Command): string {
+  return JSON.stringify(command);
+}
 
-  public constructor(
-    action: string,
-    query: string,
-    type: SearchableType,
-    target: string
-  ) {
-    this.action = action;
-    this.query = query;
-    this.type = type;
-    this.target = target;
+function isAbbreviationType(commandType: string): boolean {
+  return abbreviations.includes(commandType);
+}
+
+function normalizeCommandType(commandType: string): string {
+  if (isAbbreviationType(commandType)) {
+    return commandType.toUpperCase();
   }
 
-  private isAbbreviationType(): boolean {
-    const abbreviations = ["ip", "asn", "btc", "cve", "eth", "url"];
-    return abbreviations.includes(this.type);
-  }
+  return commandType;
+}
 
-  private getNormalizedType(): string {
-    if (this.isAbbreviationType()) {
-      return this.type.toUpperCase();
-    }
-    return this.type;
-  }
-
-  public getJSON(): string {
-    const command: Command = {
-      action: this.action,
-      query: this.query,
-      type: this.type,
-      target: this.target,
-    };
-    return JSON.stringify(command);
-  }
-
-  public getMessage(): string {
-    const type = this.getNormalizedType();
-
-    return `${capitalize(this.action)} ${truncate(this.query)} as ${type} on ${
-      this.target
-    }`;
-  }
+export function commandToMessage(command: Command): string {
+  return `${capitalize(command.action)} ${truncate(
+    command.query
+  )} as ${normalizeCommandType(command.type)} on ${command.name}`;
 }

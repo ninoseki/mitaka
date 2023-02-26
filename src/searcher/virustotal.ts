@@ -1,8 +1,6 @@
+import type { SearchableType, Searcher } from "@/types";
+import { buildURL } from "@/utils";
 import { sha256 } from "js-sha256";
-import url from "url";
-
-import { SearchableType, Searcher } from "@/types";
-import { buildURL } from "@/urlBuilder";
 
 export class VirusTotal implements Searcher {
   public baseURL: string;
@@ -32,7 +30,7 @@ export class VirusTotal implements Searcher {
   }
 
   private normalizeURL(uri: string): string {
-    const parsedUrl = url.parse(uri);
+    const parsedUrl = new URL(uri);
     if (parsedUrl.pathname === "/" && !uri.endsWith("/")) {
       return `${uri}/`;
     }

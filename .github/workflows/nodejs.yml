@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -18,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -26,7 +25,7 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: npm run coverage
+        run: npm run test
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
