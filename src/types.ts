@@ -95,13 +95,8 @@ export interface SelectorOptions {
   disabledSearcherNames: string[];
 }
 
-export interface Options {
-  enableIDN: boolean;
-  strictTLD: boolean;
-  enableRefang: boolean;
-  enableDebugLog: boolean;
+export interface Options extends SelectorOptions {
   preferHrefValue: boolean;
-  disabledSearcherNames: string[];
   hybridAnalysisAPIKey?: string;
   urlscanAPIKey?: string;
   virusTotalAPIKey?: string;

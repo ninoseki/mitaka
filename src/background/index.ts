@@ -20,13 +20,7 @@ export function createContextMenus(message: Message, options: Options): void {
     text = message.link;
   }
 
-  const selector: Selector = new Selector(text, {
-    enableIDN: options.enableIDN,
-    strictTLD: options.strictTLD,
-    enableRefang: options.enableRefang,
-    enableDebugLog: options.enableDebugLog,
-    disabledSearcherNames: options.disabledSearcherNames,
-  });
+  const selector: Selector = new Selector(text, options);
 
   const contexts: chrome.contextMenus.ContextType[] = ["selection"];
 

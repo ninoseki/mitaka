@@ -78,7 +78,7 @@ export class CommandRunner {
   };
 
   public search(): string | undefined {
-    const selector: Selector = new Selector(this.command.query);
+    const selector: Selector = new Selector(this.command.query, this.options);
     const slots: SelectorSlot[] = selector.getSearcherSlots();
     const slot = slots.find((s) => s.analyzer.name === this.command.name);
 
@@ -100,7 +100,7 @@ export class CommandRunner {
   }
 
   public searchAll(): string[] {
-    const selector: Selector = new Selector(this.command.query);
+    const selector: Selector = new Selector(this.command.query, this.options);
     const slots: SelectorSlot[] = selector.getSearcherSlots();
 
     return slots
