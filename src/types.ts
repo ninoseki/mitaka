@@ -11,6 +11,20 @@ export type SearchableType =
   | "ip"
   | "url";
 
+export const SEARCHABLE_TYPES: SearchableType[] = [
+  "asn",
+  "btc",
+  "cve",
+  "domain",
+  "email",
+  "eth",
+  "gaPubID",
+  "gaTrackID",
+  "hash",
+  "ip",
+  "url",
+];
+
 export interface Searcher {
   baseURL: string;
   name: string;

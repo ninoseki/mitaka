@@ -5,7 +5,8 @@ import { defineComponent, onMounted, ref, watchEffect } from "vue";
 
 import { Searchers } from "../searcher";
 import { getOptions, setOptions } from "../storage";
-import type { Options } from "../types";
+import type { Options, SearchableType, Searcher } from "../types";
+import { SEARCHABLE_TYPES } from "../types";
 import { getFaviconURL } from "../utils";
 
 export default defineComponent({
@@ -24,6 +25,8 @@ export default defineComponent({
     const virusTotalAPIKey = ref<string | undefined>(undefined);
 
     const disabledSearcherNames = ref<string[]>([]);
+
+    const searchableType = ref<SearchableType | undefined>(undefined);
 
     onMounted(async () => {
       const options = await getOptions();
@@ -57,6 +60,21 @@ export default defineComponent({
       }
     };
 
+    const selectSearchableType = (selected: SearchableType): void => {
+      if (selected == searchableType.value) {
+        searchableType.value = undefined;
+      } else {
+        searchableType.value = selected;
+      }
+    };
+
+    const isSelected = (searcher: Searcher): boolean => {
+      if (searchableType.value !== undefined) {
+        return searcher.supportedTypes.includes(searchableType.value);
+      }
+      return true;
+    };
+
     watchEffect(async () => {
       if (!isInitialized.value) {
         // do nothing if it is not initialized
@@ -78,26 +96,30 @@ export default defineComponent({
     });
 
     return {
-      enableIDN,
-      strictTLD,
-      enableRefang,
-      preferHrefValue,
       enableDebugLog,
+      enableIDN,
+      enableRefang,
       hybridAnalysisAPIKey,
+      isInitialized,
+      preferHrefValue,
+      Searchers,
+      strictTLD,
+      searchableType,
       urlscanAPIKey,
       virusTotalAPIKey,
-      Searchers,
-      isInitialized,
+      SEARCHABLE_TYPES,
+      disableOrEnableSearcher,
       getFaviconURL,
       isEnabledSearcher,
-      disableOrEnableSearcher,
+      isSelected,
+      selectSearchableType,
     };
   },
 });
 </script>
 
 <template>
-  <section class="section is-medium">
+  <section class="section">
     <div class="container">
       <div class="columns is-centered" v-if="isInitialized">
         <div class="column is-half">
@@ -235,40 +257,55 @@ export default defineComponent({
           <div class="box" id="searchers">
             <h2 class="title is-2">Searcher settings</h2>
 
-            <div
-              class="searcher field has-addons"
-              v-for="(searcher, index) in Searchers"
-              :key="index"
-            >
-              <div class="control is-expanded">
-                <label class="label">
-                  <span class="icon">
-                    <img :src="getFaviconURL(searcher.baseURL)" />
-                  </span>
-                  <span
-                    ><a :href="searcher.baseURL" target="_blank">{{
-                      searcher.name
-                    }}</a></span
-                  >
-                </label>
-                <p class="tags">
-                  <strong class="mr-1">Supported types:</strong>
-                  <span
-                    class="tag is-info is-light"
-                    v-for="(supportedType, index) in searcher.supportedTypes"
-                    :key="index"
-                  >
-                    {{ supportedType }}
-                  </span>
-                </p>
-              </div>
-              <div class="control">
-                <input
-                  type="checkbox"
-                  :checked="isEnabledSearcher(searcher.name)"
-                  @click="disableOrEnableSearcher(searcher.name)"
-                />
-                <label>Enable</label>
+            <div class="tags">
+              <span
+                class="tag is-info is-light"
+                @click="selectSearchableType(tag)"
+                v-for="tag in SEARCHABLE_TYPES"
+                :key="tag"
+              >
+                {{ tag }}
+                <span
+                  class="delete is-small"
+                  v-if="searchableType === tag"
+                ></span>
+              </span>
+            </div>
+            <div v-for="(searcher, index) in Searchers" :key="index">
+              <div
+                class="searcher field has-addons"
+                v-if="isSelected(searcher)"
+              >
+                <div class="control is-expanded">
+                  <label class="label">
+                    <span class="icon">
+                      <img :src="getFaviconURL(searcher.baseURL)" />
+                    </span>
+                    <span
+                      ><a :href="searcher.baseURL" target="_blank">{{
+                        searcher.name
+                      }}</a></span
+                    >
+                  </label>
+                  <p class="tags">
+                    <strong class="mr-1">Supported types:</strong>
+                    <span
+                      class="tag is-info is-light"
+                      v-for="(supportedType, index) in searcher.supportedTypes"
+                      :key="index"
+                    >
+                      {{ supportedType }}
+                    </span>
+                  </p>
+                </div>
+                <div class="control">
+                  <input
+                    type="checkbox"
+                    :checked="isEnabledSearcher(searcher.name)"
+                    @click="disableOrEnableSearcher(searcher.name)"
+                  />
+                  <label>Enable</label>
+                </div>
               </div>
             </div>
           </div>
