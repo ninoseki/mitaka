@@ -108,7 +108,15 @@ export class CommandRunner {
         const searcher = slot.analyzer;
         if (this.command.type in this.searcherMap) {
           const fn = this.searcherMap[this.command.type];
-          return fn(searcher, slot.query);
+          try {
+            return fn(searcher, slot.query);
+          } catch (_err) {
+            // NOTE: some hash searchers support only specific hash format
+            //       (e.g. APK Lab supports SHA256 only)
+            //       such searcher throws an error
+            //       ignore that to make the all search works
+            return undefined;
+          }
         }
       })
       .flatMap((url) => (url === undefined ? [] : [url]));
