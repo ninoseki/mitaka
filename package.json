@@ -6,8 +6,8 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue,.ts --ignore-path .gitignore --fix src --fix tests",
     "dev": "plasmo dev",
-    "build": "plasmo build --no-minify",
-    "package": "plasmo build --no-minify --zip",
+    "build": "plasmo build --no-minify --no-hoist",
+    "package": "plasmo build --no-minify --no-hoist --zip",
     "prepare": "husky install",
     "test": "jest tests/ --collect-coverage"
   },
@@ -66,6 +66,21 @@
       "contextMenus",
       "storage",
       "notifications"
+    ],
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self';",
+      "sandbox": "sandbox allow-scripts allow-forms allow-popups allow-modals; script-src 'self' 'unsafe-inline' 'unsafe-eval'; child-src 'self';"
+    },
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "assets/icon.png"
+        ],
+        "matches": [
+          "https://*/*",
+          "http://*/*"
+        ]
+      }
     ]
   }
 }
