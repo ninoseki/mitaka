@@ -1,4 +1,4 @@
-import type { Searcher } from "@/types";
+import type { Searcher } from "~/types";
 
 import {
   AbuseIPDB,

@@ -1,4 +1,4 @@
-import { VirusTotal } from "@/searcher";
+import { VirusTotal } from "~/searcher";
 
 describe("VirusTotal", function () {
   const subject = new VirusTotal();

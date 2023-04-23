@@ -1,4 +1,4 @@
-import { Shodan } from "@/searcher";
+import { Shodan } from "~/searcher";
 
 describe("Shodan", function () {
   const subject = new Shodan();

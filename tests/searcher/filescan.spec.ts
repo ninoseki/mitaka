@@ -1,4 +1,4 @@
-import { FileScan } from "@/searcher";
+import { FileScan } from "~/searcher";
 
 describe("FileScan", function () {
   const subject = new FileScan();

@@ -1,4 +1,4 @@
-import { BinaryEdge } from "@/searcher";
+import { BinaryEdge } from "~/searcher";
 
 describe("BinaryEdge", function () {
   const subject = new BinaryEdge();

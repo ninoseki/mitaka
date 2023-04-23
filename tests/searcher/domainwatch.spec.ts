@@ -1,4 +1,4 @@
-import { DomainWatch } from "@/searcher";
+import { DomainWatch } from "~/searcher";
 
 describe("DomainWatch", function () {
   const subject = new DomainWatch();

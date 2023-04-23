@@ -1,4 +1,4 @@
-import { Scumware } from "@/searcher";
+import { Scumware } from "~/searcher";
 
 describe("Scumware", function () {
   const subject = new Scumware();

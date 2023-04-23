@@ -1,4 +1,4 @@
-import { GoogleSafeBrowsing } from "@/searcher";
+import { GoogleSafeBrowsing } from "~/searcher";
 
 describe("Google Safe Browsing", function () {
   const subject = new GoogleSafeBrowsing();

@@ -1,5 +1,5 @@
-import { Selector } from "@/selector";
-import { isScanner, isSearcher } from "@/utils";
+import { Selector } from "~/selector";
+import { isScanner, isSearcher } from "~/utils";
 
 describe("Selector", function () {
   describe("ip", function () {

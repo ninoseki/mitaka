@@ -1,4 +1,4 @@
-import { Browserling } from "@/scanner";
+import { Browserling } from "~/scanner";
 
 describe("Browserling", function () {
   const subject = new Browserling();

@@ -1,4 +1,4 @@
-import { APKLab } from "@/searcher";
+import { APKLab } from "~/searcher";
 
 describe("APKLab", function () {
   const subject = new APKLab();

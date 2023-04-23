@@ -1,4 +1,4 @@
-import { HurricaneElectric } from "@/searcher";
+import { HurricaneElectric } from "~/searcher";
 
 describe("HurricaneElectric", function () {
   const subject = new HurricaneElectric();

@@ -1,4 +1,4 @@
-import { FortiGuard } from "@/searcher";
+import { FortiGuard } from "~/searcher";
 
 describe("FortiGuard", function () {
   const subject = new FortiGuard();

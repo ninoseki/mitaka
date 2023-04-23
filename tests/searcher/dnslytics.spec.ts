@@ -1,4 +1,4 @@
-import { DNSlytics } from "@/searcher";
+import { DNSlytics } from "~/searcher";
 
 describe("DNSlytics", function () {
   const subject = new DNSlytics();

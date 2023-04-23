@@ -1,6 +1,6 @@
-import { showNotification } from "@/background/notification";
-import type { CommandRunner } from "@/command/runner";
-import { ErrorMessageSchema } from "@/schemas";
+import { showNotification } from "~/background/notification";
+import type { CommandRunner } from "~/command/runner";
+import { ErrorMessageSchema } from "~/schemas";
 
 export async function searchAll(runner: CommandRunner): Promise<void> {
   try {

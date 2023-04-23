@@ -1,4 +1,4 @@
-import { DomainTools } from "@/searcher";
+import { DomainTools } from "~/searcher";
 
 describe("DomainTools", function () {
   const subject = new DomainTools();

@@ -1,4 +1,4 @@
-import type { Scanner } from "@/types";
+import type { Scanner } from "~/types";
 
 import { Browserling } from "./browserling";
 import { HybridAnalysis } from "./hybridanalysis";

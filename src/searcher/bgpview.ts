@@ -1,5 +1,5 @@
-import type { SearchableType, Searcher } from "@/types";
-import { buildURL, extractASNumber } from "@/utils";
+import type { SearchableType, Searcher } from "~/types";
+import { buildURL, extractASNumber } from "~/utils";
 
 export class BGPView implements Searcher {
   public baseURL: string;

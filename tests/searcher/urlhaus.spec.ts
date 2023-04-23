@@ -1,4 +1,4 @@
-import { URLhaus } from "@/searcher";
+import { URLhaus } from "~/searcher";
 
 describe("URLhaus", function () {
   const subject = new URLhaus();

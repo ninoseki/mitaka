@@ -1,4 +1,4 @@
-import { SpyOnWeb } from "@/searcher";
+import { SpyOnWeb } from "~/searcher";
 
 describe("SpyOnWeb", function () {
   const subject = new SpyOnWeb();

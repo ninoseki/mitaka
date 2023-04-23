@@ -1,4 +1,4 @@
-import { DomainBigData } from "@/searcher";
+import { DomainBigData } from "~/searcher";
 
 describe("DomainBigData", function () {
   const subject = new DomainBigData();

@@ -1,4 +1,4 @@
-import { JoeSandbox } from "@/searcher";
+import { JoeSandbox } from "~/searcher";
 
 describe("JoeSandbox", function () {
   const subject = new JoeSandbox();

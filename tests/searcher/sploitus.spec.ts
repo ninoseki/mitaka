@@ -1,4 +1,4 @@
-import { Sploitus } from "@/searcher";
+import { Sploitus } from "~/searcher";
 
 describe("Sploitus", function () {
   const subject = new Sploitus();

@@ -1,6 +1,6 @@
 import { Base64 } from "js-base64";
 
-import type { Scanner, Searcher } from "@/types";
+import type { Scanner, Searcher } from "~/types";
 
 export function buildURL(baseURL: string, path: string, params = {}): string {
   const searchParams = new URLSearchParams(params);

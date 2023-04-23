@@ -1,4 +1,4 @@
-import { GreyNoise } from "@/searcher";
+import { GreyNoise } from "~/searcher";
 
 describe("GreyNoise", function () {
   const subject = new GreyNoise();

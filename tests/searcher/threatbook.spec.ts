@@ -1,4 +1,4 @@
-import { ThreatBook } from "@/searcher";
+import { ThreatBook } from "~/searcher";
 
 describe("ThreatBook", function () {
   const subject = new ThreatBook();

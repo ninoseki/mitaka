@@ -1,6 +1,7 @@
-import { getOptions } from "@/storage";
-import type { Message } from "@/types";
 import { throttle } from "@github/mini-throttle";
+
+import { getOptions } from "~/storage";
+import type { Message } from "~/types";
 
 export {};
 

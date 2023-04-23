@@ -1,4 +1,4 @@
-import type { SearchableType, Searcher } from "@/types";
+import type { SearchableType, Searcher } from "~/types";
 
 export class AnyRun implements Searcher {
   public baseURL: string;

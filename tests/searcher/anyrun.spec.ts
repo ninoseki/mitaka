@@ -1,4 +1,4 @@
-import { AnyRun } from "@/searcher";
+import { AnyRun } from "~/searcher";
 
 describe("AnyRun", function () {
   const subject = new AnyRun();

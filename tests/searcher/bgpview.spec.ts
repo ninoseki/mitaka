@@ -1,4 +1,4 @@
-import { BGPView } from "@/searcher";
+import { BGPView } from "~/searcher";
 
 describe("BGPView", function () {
   const subject = new BGPView();

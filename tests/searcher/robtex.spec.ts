@@ -1,4 +1,4 @@
-import { Robtex } from "@/searcher";
+import { Robtex } from "~/searcher";
 
 describe("Robtex", function () {
   const subject = new Robtex();

@@ -1,4 +1,4 @@
-import { Selector } from "@/selector";
+import { Selector } from "~/selector";
 import type {
   Command,
   Options,
@@ -7,8 +7,8 @@ import type {
   Searcher,
   SearcherMap,
   SelectorSlot,
-} from "@/types";
-import { isScanner, isSearcher } from "@/utils";
+} from "~/types";
+import { isScanner, isSearcher } from "~/utils";
 
 export class CommandRunner {
   public command: Command;

@@ -1,4 +1,4 @@
-import { ArchiveOrg } from "@/searcher";
+import { ArchiveOrg } from "~/searcher";
 
 describe("ArchiveOrg", function () {
   const subject = new ArchiveOrg();

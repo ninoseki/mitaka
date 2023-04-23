@@ -1,4 +1,4 @@
-import { ThreatCrowd } from "@/searcher";
+import { ThreatCrowd } from "~/searcher";
 
 describe("ThreatCrowd", function () {
   const subject = new ThreatCrowd();

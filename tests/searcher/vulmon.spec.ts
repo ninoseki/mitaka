@@ -1,4 +1,4 @@
-import { Vulmon } from "@/searcher";
+import { Vulmon } from "~/searcher";
 
 describe("Vulmon", function () {
   const subject = new Vulmon();

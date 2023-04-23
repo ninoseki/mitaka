@@ -1,4 +1,4 @@
-import { ZoomEye } from "@/searcher";
+import { ZoomEye } from "~/searcher";
 
 describe("ZoomEye", function () {
   const subject = new ZoomEye();

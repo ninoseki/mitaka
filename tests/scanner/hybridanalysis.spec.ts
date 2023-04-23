@@ -1,4 +1,4 @@
-import { HybridAnalysis } from "@/scanner";
+import { HybridAnalysis } from "~/scanner";
 
 describe("HybridAnalysis", function () {
   const subject = new HybridAnalysis();

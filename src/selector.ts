@@ -16,8 +16,8 @@ import {
   refang,
 } from "ioc-extractor";
 
-import { Scanners } from "@/scanner";
-import { All, Searchers } from "@/searcher";
+import { Scanners } from "~/scanner";
+import { All, Searchers } from "~/searcher";
 import type {
   ScanFuncWrapper,
   ScannableType,
@@ -27,7 +27,7 @@ import type {
   SearchFuncWrapper,
   SelectorOptions,
   SelectorSlot,
-} from "@/types";
+} from "~/types";
 
 export class Selector {
   protected input: string;

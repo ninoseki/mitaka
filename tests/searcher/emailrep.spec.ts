@@ -1,4 +1,4 @@
-import { EmailRep } from "@/searcher";
+import { EmailRep } from "~/searcher";
 
 describe("EmailRep", function () {
   const subject = new EmailRep();

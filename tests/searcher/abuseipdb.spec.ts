@@ -1,4 +1,4 @@
-import { AbuseIPDB } from "@/searcher";
+import { AbuseIPDB } from "~/searcher";
 
 describe("AbuseIPDB", function () {
   const subject = new AbuseIPDB();

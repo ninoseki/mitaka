@@ -1,4 +1,4 @@
-import { Talos } from "@/searcher";
+import { Talos } from "~/searcher";
 
 describe("Talos", function () {
   const subject = new Talos();

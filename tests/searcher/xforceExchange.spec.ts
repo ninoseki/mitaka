@@ -1,4 +1,4 @@
-import { XForceExchange } from "@/searcher";
+import { XForceExchange } from "~/searcher";
 
 describe("X-Force Exchange", function () {
   const subject = new XForceExchange();

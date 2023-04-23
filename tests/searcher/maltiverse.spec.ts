@@ -1,4 +1,4 @@
-import { Maltiverse } from "@/searcher";
+import { Maltiverse } from "~/searcher";
 
 describe("Maltiverse", function () {
   const subject = new Maltiverse();

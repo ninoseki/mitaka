@@ -1,4 +1,4 @@
-import { VulncodeDB } from "@/searcher";
+import { VulncodeDB } from "~/searcher";
 
 describe("VulncodeDB", function () {
   const subject = new VulncodeDB();

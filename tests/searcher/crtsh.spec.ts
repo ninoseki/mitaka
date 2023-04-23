@@ -1,4 +1,4 @@
-import { Crtsh } from "@/searcher";
+import { Crtsh } from "~/searcher";
 
 describe("Crtsh", function () {
   const subject = new Crtsh();

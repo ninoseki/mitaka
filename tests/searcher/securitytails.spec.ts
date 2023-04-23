@@ -1,4 +1,4 @@
-import { SecurityTrails } from "@/searcher";
+import { SecurityTrails } from "~/searcher";
 
 describe("SecurityTrails", function () {
   const subject = new SecurityTrails();
