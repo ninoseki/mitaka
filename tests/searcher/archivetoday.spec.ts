@@ -1,4 +1,4 @@
-import { ArchiveToday } from "@/searcher";
+import { ArchiveToday } from "~/searcher";
 
 describe("ArchiveToday", function () {
   const subject = new ArchiveToday();

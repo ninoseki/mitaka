@@ -1,4 +1,4 @@
-import { IPinfo } from "@/searcher";
+import { IPinfo } from "~/searcher";
 
 describe("IPinfo", function () {
   const subject = new IPinfo();

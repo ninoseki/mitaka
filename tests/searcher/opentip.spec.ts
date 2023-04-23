@@ -1,4 +1,4 @@
-import { OpenTIP } from "@/searcher";
+import { OpenTIP } from "~/searcher";
 
 describe("OpenTIP", function () {
   const subject = new OpenTIP();

@@ -1,4 +1,4 @@
-import { Intezer } from "@/searcher";
+import { Intezer } from "~/searcher";
 
 describe("Intezer", function () {
   const subject = new Intezer();

@@ -1,4 +1,4 @@
-import { Censys } from "@/searcher";
+import { Censys } from "~/searcher";
 
 describe("Censys", function () {
   const subject = new Censys();

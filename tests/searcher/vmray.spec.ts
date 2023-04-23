@@ -1,4 +1,4 @@
-import { VMRay } from "@/searcher";
+import { VMRay } from "~/searcher";
 
 describe("VMRay", function () {
   const subject = new VMRay();

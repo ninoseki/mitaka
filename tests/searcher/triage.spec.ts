@@ -1,4 +1,4 @@
-import { Triage } from "@/searcher";
+import { Triage } from "~/searcher";
 
 describe("Triage", function () {
   const subject = new Triage();

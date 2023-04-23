@@ -1,4 +1,4 @@
-import { Spyse } from "@/searcher";
+import { Spyse } from "~/searcher";
 
 describe("Spyse", function () {
   const subject = new Spyse();

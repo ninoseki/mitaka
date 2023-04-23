@@ -1,4 +1,4 @@
-import { BlockCypher } from "@/searcher";
+import { BlockCypher } from "~/searcher";
 
 describe("BlockCypher", function () {
   const subject = new BlockCypher();

@@ -1,4 +1,4 @@
-import { URLScan } from "@/searcher";
+import { URLScan } from "~/searcher";
 
 describe("Urlscan", function () {
   const subject = new URLScan();

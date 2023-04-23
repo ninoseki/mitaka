@@ -1,4 +1,4 @@
-import { truncate } from "@/utils";
+import { truncate } from "~/utils";
 
 describe("truncate", function () {
   it("truncates a text", function () {

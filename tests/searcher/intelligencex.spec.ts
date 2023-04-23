@@ -1,4 +1,4 @@
-import { IntelligenceX } from "@/searcher";
+import { IntelligenceX } from "~/searcher";
 
 describe("Intelligence X", function () {
   const subject = new IntelligenceX();

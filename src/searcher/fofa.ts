@@ -1,5 +1,5 @@
-import type { SearchableType, Searcher } from "@/types";
-import { base64fy, buildURL } from "@/utils";
+import type { SearchableType, Searcher } from "~/types";
+import { base64fy, buildURL } from "~/utils";
 
 export class FOFA implements Searcher {
   public baseURL: string;

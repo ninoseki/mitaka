@@ -1,4 +1,4 @@
-import { TIP } from "@/searcher";
+import { TIP } from "~/searcher";
 
 describe("TIP", function () {
   const subject = new TIP();

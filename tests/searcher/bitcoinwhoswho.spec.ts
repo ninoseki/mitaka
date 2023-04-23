@@ -1,4 +1,4 @@
-import { BitcoinWhosWho } from "@/searcher";
+import { BitcoinWhosWho } from "~/searcher";
 
 describe("BitcoinAbuse", function () {
   const subject = new BitcoinWhosWho();

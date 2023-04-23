@@ -1,4 +1,4 @@
-import { URLVoid } from "@/searcher";
+import { URLVoid } from "~/searcher";
 
 describe("URLVoid", function () {
   const subject = new URLVoid();

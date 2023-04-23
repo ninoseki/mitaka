@@ -1,4 +1,4 @@
-import { Blockchair } from "@/searcher";
+import { Blockchair } from "~/searcher";
 
 describe("Blockchair", function () {
   const subject = new Blockchair();

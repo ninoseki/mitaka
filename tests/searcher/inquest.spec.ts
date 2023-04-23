@@ -1,4 +1,4 @@
-import { InQuest } from "@/searcher";
+import { InQuest } from "~/searcher";
 
 describe("InQuest", function () {
   const subject = new InQuest();

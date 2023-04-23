@@ -1,4 +1,4 @@
-import { BlockChain } from "@/searcher";
+import { BlockChain } from "~/searcher";
 
 describe("Blockchain", function () {
   const subject = new BlockChain();

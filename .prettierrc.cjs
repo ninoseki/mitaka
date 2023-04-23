@@ -3,7 +3,7 @@
  */
 module.exports = {
   plugins: [require.resolve("@plasmohq/prettier-plugin-sort-imports")],
-  importOrder: ["^@plasmohq/(.*)$", "^@(.*)$", "^[./]"],
+  importOrder: ["^@plasmo/(.*)$", "^@plasmohq/(.*)$", "^~(.*)$", "^[./]"],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
   importOrderBuiltinModulesToTop: true,

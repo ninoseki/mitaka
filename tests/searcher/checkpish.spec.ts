@@ -1,4 +1,4 @@
-import { CheckPhish } from "@/searcher";
+import { CheckPhish } from "~/searcher";
 
 describe("CheckPhish", function () {
   const subject = new CheckPhish();

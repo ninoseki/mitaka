@@ -1,4 +1,4 @@
-import { WebAnalyzer } from "@/searcher";
+import { WebAnalyzer } from "~/searcher";
 
 describe("WebAnalyzer", function () {
   const subject = new WebAnalyzer();

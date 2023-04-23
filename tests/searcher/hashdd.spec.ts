@@ -1,4 +1,4 @@
-import { Hashdd } from "@/searcher";
+import { Hashdd } from "~/searcher";
 
 describe("Hashdd", function () {
   const subject = new Hashdd();

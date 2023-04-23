@@ -1,5 +1,5 @@
-import { OptionsSchema } from "@/schemas";
-import type { Options } from "@/types";
+import { OptionsSchema } from "~/schemas";
+import type { Options } from "~/types";
 
 export async function getOptions(): Promise<Options> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

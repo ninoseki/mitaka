@@ -1,4 +1,4 @@
-import { OTX } from "@/searcher";
+import { OTX } from "~/searcher";
 
 describe("OTX", function () {
   const subject = new OTX();

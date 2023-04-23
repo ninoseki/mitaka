@@ -1,4 +1,4 @@
-import { Pulsedive } from "@/searcher";
+import { Pulsedive } from "~/searcher";
 
 describe("Pulsedive", function () {
   const subject = new Pulsedive();

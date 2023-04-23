@@ -1,4 +1,4 @@
-import { Radar } from "@/searcher";
+import { Radar } from "~/searcher";
 
 describe("Radar", function () {
   const subject = new Radar();

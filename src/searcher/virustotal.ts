@@ -1,7 +1,7 @@
 import { sha256 } from "js-sha256";
 
-import type { SearchableType, Searcher } from "@/types";
-import { buildURL } from "@/utils";
+import type { SearchableType, Searcher } from "~/types";
+import { buildURL } from "~/utils";
 
 export class VirusTotal implements Searcher {
   public baseURL: string;

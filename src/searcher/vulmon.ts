@@ -1,5 +1,5 @@
-import type { SearchableType, Searcher } from "@/types";
-import { buildURL } from "@/utils";
+import type { SearchableType, Searcher } from "~/types";
+import { buildURL } from "~/utils";
 
 export class Vulmon implements Searcher {
   public baseURL: string;

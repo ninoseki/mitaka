@@ -1,4 +1,4 @@
-import { BitcoinAbuse } from "@/searcher";
+import { BitcoinAbuse } from "~/searcher";
 
 describe("BitcoinAbuse", function () {
   const subject = new BitcoinAbuse();

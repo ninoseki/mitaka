@@ -1,4 +1,4 @@
-import { VxCube } from "@/searcher";
+import { VxCube } from "~/searcher";
 
 describe("VxCube", function () {
   const subject = new VxCube();

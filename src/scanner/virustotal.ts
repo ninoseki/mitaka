@@ -1,7 +1,7 @@
 import { z } from "zod";
 
-import type { ScannableType, Scanner } from "@/types";
-import { buildURL } from "@/utils";
+import type { ScannableType, Scanner } from "~/types";
+import { buildURL } from "~/utils";
 
 const Data = z.object({
   id: z.string(),

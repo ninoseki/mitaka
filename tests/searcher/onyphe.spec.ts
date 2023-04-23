@@ -1,4 +1,4 @@
-import { ONYPHE } from "@/searcher";
+import { ONYPHE } from "~/searcher";
 
 describe("ONYPHE", function () {
   const subject = new ONYPHE();

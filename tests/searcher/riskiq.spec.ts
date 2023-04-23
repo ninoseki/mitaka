@@ -1,4 +1,4 @@
-import { RiskIQ } from "@/searcher";
+import { RiskIQ } from "~/searcher";
 
 describe("RiskIQ", function () {
   const subject = new RiskIQ();

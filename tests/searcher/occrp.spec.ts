@@ -1,4 +1,4 @@
-import { OCCRP } from "@/searcher";
+import { OCCRP } from "~/searcher";
 
 describe("OCCRP", function () {
   const subject = new OCCRP();

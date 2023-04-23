@@ -1,4 +1,4 @@
-import { Malshare } from "@/searcher";
+import { Malshare } from "~/searcher";
 
 describe("Malshare", function () {
   const subject = new Malshare();

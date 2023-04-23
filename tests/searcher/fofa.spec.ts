@@ -1,4 +1,4 @@
-import { FOFA } from "@/searcher";
+import { FOFA } from "~/searcher";
 
 describe("FOFA", function () {
   const subject = new FOFA();

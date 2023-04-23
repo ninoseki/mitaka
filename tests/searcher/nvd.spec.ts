@@ -1,4 +1,4 @@
-import { NVD } from "@/searcher";
+import { NVD } from "~/searcher";
 
 describe("NVD", function () {
   const subject = new NVD();

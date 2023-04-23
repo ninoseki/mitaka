@@ -1,4 +1,4 @@
-import { ThreatMiner } from "@/searcher";
+import { ThreatMiner } from "~/searcher";
 
 describe("ThreatMiner", function () {
   const subject = new ThreatMiner();

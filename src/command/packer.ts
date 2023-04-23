@@ -1,5 +1,5 @@
-import type { Command } from "@/types";
-import { truncate } from "@/utils";
+import type { Command } from "~/types";
+import { truncate } from "~/utils";
 
 const abbreviations = ["ip", "asn", "btc", "cve", "eth", "url"];
 

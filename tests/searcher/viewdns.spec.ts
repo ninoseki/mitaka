@@ -1,4 +1,4 @@
-import { ViewDNS } from "@/searcher";
+import { ViewDNS } from "~/searcher";
 
 describe("ViewDNS", function () {
   const subject = new ViewDNS();

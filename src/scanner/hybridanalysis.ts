@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import type { ScannableType, Scanner } from "@/types";
+import type { ScannableType, Scanner } from "~/types";
 
 const Response = z.object({
   sha256: z.string(),

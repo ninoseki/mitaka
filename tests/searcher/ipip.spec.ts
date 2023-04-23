@@ -1,4 +1,4 @@
-import { IPIP } from "@/searcher";
+import { IPIP } from "~/searcher";
 
 describe("IPIP", function () {
   const subject = new IPIP();

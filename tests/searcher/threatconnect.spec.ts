@@ -1,4 +1,4 @@
-import { ThreatConnect } from "@/searcher";
+import { ThreatConnect } from "~/searcher";
 
 describe("ThreatConnect", function () {
   const subject = new ThreatConnect();
