@@ -39,7 +39,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 ### Supported IoCs (indicators of compromise)
 
 | Name      | Desc.                       | E.g.                                         |
-|:----------|:----------------------------|:---------------------------------------------|
+| :-------- | :-------------------------- | :------------------------------------------- |
 | ANS       | ASN                         | `AS13335`                                    |
 | BTC       | BTC address                 | `1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa`         |
 | CVE       | CVE number                  | `CVE-2018-11776`                             |
@@ -55,7 +55,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 ### Supported search engines
 
 | Name                 | URL                                    | Supported types                                                      |
-|:---------------------|:---------------------------------------|:---------------------------------------------------------------------|
+| :------------------- | :------------------------------------- | :------------------------------------------------------------------- |
 | AbuseIPDB            | https://www.abuseipdb.com              | IP                                                                   |
 | AnyRun               | https://app.any.run                    | Hash                                                                 |
 | apklab               | https://apklab.io                      | Hash (SHA256)                                                        |
@@ -73,7 +73,6 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | crt.sh               | https://crt.sh                         | Domain                                                               |
 | DNSlytics            | https://dnslytics.com                  | IP, domain                                                           |
 | DomainTools          | https://www.domaintools.com            | IP, domain                                                           |
-| DomainWatch          | https://domainwat.ch                   | Domain, email                                                        |
 | EmailRep             | https://emailrep.io                    | Email                                                                |
 | FileScan.IO          | https://filescan.io                    | Hash                                                                 |
 | FortiGuard           | https://fortiguard.com                 | IP, URL, CVE                                                         |
@@ -118,14 +117,13 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | VirusTotal           | https://www.virustotal.com             | IP, domain, URL, hash                                                |
 | VMRay                | https://www.vmray.com                  | Hash                                                                 |
 | Vulmon               | https://vulmon.com                     | CVE                                                                  |
-| VulncodeDB           | https://www.vulncode-db.com            | CVE                                                                  |
 | X-Force Exchange     | https://exchange.xforce.ibmcloud.com   | IP, domain, hash                                                     |
 | ZoomEye              | https://www.zoomeye.org                | IP                                                                   |
 
 ### Supported scan engines
 
 | name           | url                             | supported types |
-|:---------------|:--------------------------------|:----------------|
+| :------------- | :------------------------------ | :-------------- |
 | Browserling    | https://www.browserling.com     | URL             |
 | HybridAnalysis | https://www.hybrid-analysis.com | URL             |
 | urlscan.io     | https://urlscan.io              | IP, domain, URL |

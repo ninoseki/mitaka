@@ -161,7 +161,6 @@ export const Searchers: Searcher[] = [
   new Crtsh(),
   new DNSlytics(),
   new DomainTools(),
-  new DomainWatch(),
   new EmailRep(),
   new ExploitDatabase(),
   new FileScan(),
@@ -207,7 +206,6 @@ export const Searchers: Searcher[] = [
   new VirusTotal(),
   new VMRay(),
   new Vulmon(),
-  new VulncodeDB(),
   new XForceExchange(),
   new ZoomEye(),
 ];
