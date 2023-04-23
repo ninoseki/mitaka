@@ -14,7 +14,8 @@ export class HybridAnalysis implements Scanner {
   public baseURL: string;
   public name: string;
   public supportedTypes: ScannableType[] = ["url"];
-  protected apiKey: string | undefined;
+  public apiKey: string | undefined;
+  public hasAPIKey = true;
 
   public constructor() {
     this.baseURL = "https://www.hybrid-analysis.com/api/v2";

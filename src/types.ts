@@ -25,6 +25,8 @@ export const SEARCHABLE_TYPES: SearchableType[] = [
   "url",
 ];
 
+export const SCANNABLE_TYPES: ScannableType[] = ["domain", "ip", "url"];
+
 export interface Searcher {
   baseURL: string;
   name: string;
@@ -50,10 +52,12 @@ export interface Scanner {
   baseURL: string;
   name: string;
   supportedTypes: ScannableType[];
+  apiKey?: string;
+  hasAPIKey: boolean;
+  setAPIKey(apiKey: string | undefined): void;
   scanByIP?(query: string): Promise<string>;
   scanByDomain?(query: string): Promise<string>;
   scanByURL?(query: string): Promise<string> | string;
-  setAPIKey(apiKey: string | undefined): void;
 }
 
 export interface SearchFuncWrapper {
@@ -107,6 +111,7 @@ export interface SelectorOptions {
   enableRefang: boolean;
   enableDebugLog: boolean;
   disabledSearcherNames: string[];
+  disabledScannerNames: string[];
 }
 
 export interface Options extends SelectorOptions {

@@ -3,10 +3,17 @@ import "bulma/css/bulma.css";
 
 import { defineComponent, onMounted, ref, watchEffect } from "vue";
 
+import { Scanners } from "../scanner";
 import { Searchers } from "../searcher";
 import { getOptions, setOptions } from "../storage";
-import type { Options, SearchableType, Searcher } from "../types";
-import { SEARCHABLE_TYPES } from "../types";
+import type {
+  Options,
+  ScannableType,
+  Scanner,
+  SearchableType,
+  Searcher,
+} from "../types";
+import { SCANNABLE_TYPES, SEARCHABLE_TYPES } from "../types";
 import { getFaviconURL } from "../utils";
 
 export default defineComponent({
@@ -25,8 +32,10 @@ export default defineComponent({
     const virusTotalAPIKey = ref<string | undefined>(undefined);
 
     const disabledSearcherNames = ref<string[]>([]);
+    const disabledScannerNames = ref<string[]>([]);
 
     const searchableType = ref<SearchableType | undefined>(undefined);
+    const scannableType = ref<ScannableType | undefined>(undefined);
 
     onMounted(async () => {
       const options = await getOptions();
@@ -42,12 +51,17 @@ export default defineComponent({
       virusTotalAPIKey.value = options.virusTotalAPIKey;
 
       disabledSearcherNames.value = options.disabledSearcherNames;
+      disabledScannerNames.value = options.disabledScannerNames;
 
       isInitialized.value = true;
     });
 
     const isEnabledSearcher = (name: string): boolean => {
       return !disabledSearcherNames.value.includes(name);
+    };
+
+    const isEnabledScanner = (name: string): boolean => {
+      return !disabledScannerNames.value.includes(name);
     };
 
     const disableOrEnableSearcher = (name: string): void => {
@@ -60,6 +74,16 @@ export default defineComponent({
       }
     };
 
+    const disableOrEnableScanner = (name: string): void => {
+      if (disabledScannerNames.value.includes(name)) {
+        disabledScannerNames.value = disabledScannerNames.value.filter(
+          (n) => n !== name
+        );
+      } else {
+        disabledScannerNames.value.push(name);
+      }
+    };
+
     const selectSearchableType = (selected: SearchableType): void => {
       if (selected == searchableType.value) {
         searchableType.value = undefined;
@@ -68,9 +92,24 @@ export default defineComponent({
       }
     };
 
-    const isSelected = (searcher: Searcher): boolean => {
+    const selectScannableType = (selected: ScannableType): void => {
+      if (selected == scannableType.value) {
+        scannableType.value = undefined;
+      } else {
+        scannableType.value = selected;
+      }
+    };
+
+    const isSelectedSearcher = (searcher: Searcher): boolean => {
       if (searchableType.value !== undefined) {
         return searcher.supportedTypes.includes(searchableType.value);
+      }
+      return true;
+    };
+
+    const isSelectedScanner = (scanner: Scanner): boolean => {
+      if (scannableType.value !== undefined) {
+        return scanner.supportedTypes.includes(scannableType.value);
       }
       return true;
     };
@@ -88,6 +127,7 @@ export default defineComponent({
         enableRefang: enableRefang.value,
         preferHrefValue: preferHrefValue.value,
         disabledSearcherNames: disabledSearcherNames.value.map((n) => n),
+        disabledScannerNames: disabledScannerNames.value.map((n) => n),
         hybridAnalysisAPIKey: hybridAnalysisAPIKey.value,
         urlscanAPIKey: urlscanAPIKey.value,
         virusTotalAPIKey: virusTotalAPIKey.value,
@@ -102,16 +142,23 @@ export default defineComponent({
       hybridAnalysisAPIKey,
       isInitialized,
       preferHrefValue,
+      SCANNABLE_TYPES,
+      scannableType,
+      Scanners,
+      SEARCHABLE_TYPES,
+      searchableType,
       Searchers,
       strictTLD,
-      searchableType,
       urlscanAPIKey,
       virusTotalAPIKey,
-      SEARCHABLE_TYPES,
+      disableOrEnableScanner,
       disableOrEnableSearcher,
       getFaviconURL,
+      isEnabledScanner,
       isEnabledSearcher,
-      isSelected,
+      isSelectedScanner,
+      isSelectedSearcher,
+      selectScannableType,
       selectSearchableType,
     };
   },
@@ -128,7 +175,7 @@ export default defineComponent({
           <div class="content">
             <ul>
               <li><a href="#general">General</a></li>
-              <li><a href="#api-keys">API keys</a></li>
+              <li><a href="#scanners">Scanners</a></li>
               <li><a href="#searchers">Searchers</a></li>
             </ul>
           </div>
@@ -200,56 +247,79 @@ export default defineComponent({
             </div>
           </div>
 
-          <div class="box" id="api-keys">
-            <h2 class="title is-2">API key settings</h2>
-            <div class="field">
-              <label class="label">
-                <span class="icon">
-                  <img
-                    src="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.hybrid-analysis.com&size=16"
-                  />
-                </span>
-                <span>
-                  <a href="https://www.hybrid-analysis.com">HybridAnalysis</a>
-                  API Key
-                </span>
-              </label>
-              <div class="control">
-                <input
-                  type="text"
-                  class="input"
-                  v-model="hybridAnalysisAPIKey"
-                />
-              </div>
+          <div class="box" id="scanners">
+            <h2 class="title is-2">Scanner settings</h2>
+            <div class="tags">
+              <span
+                class="tag is-info is-light"
+                @click="selectScannableType(tag)"
+                v-for="tag in SCANNABLE_TYPES"
+                :key="tag"
+              >
+                {{ tag }}
+                <span
+                  class="delete is-small"
+                  v-if="scannableType === tag"
+                ></span>
+              </span>
             </div>
-            <div class="field">
-              <label class="label">
-                <span class="icon">
-                  <img
-                    src="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://urlscan.io&size=16"
+            <div v-for="(scanner, index) in Scanners" :key="index">
+              <div
+                class="searcher field has-addons"
+                v-if="isSelectedScanner(scanner)"
+              >
+                <div class="control is-expanded">
+                  <label class="label">
+                    <span class="icon">
+                      <img :src="getFaviconURL(scanner.baseURL)" />
+                    </span>
+                    <span
+                      ><a :href="scanner.baseURL" target="_blank">{{
+                        scanner.name
+                      }}</a></span
+                    >
+                  </label>
+                  <p class="tags">
+                    <strong class="mr-1">Supported types:</strong>
+                    <span
+                      class="tag is-info is-light"
+                      v-for="(supportedType, index) in scanner.supportedTypes"
+                      :key="index"
+                    >
+                      {{ supportedType }}
+                    </span>
+                  </p>
+                </div>
+                <div class="control">
+                  <input
+                    type="checkbox"
+                    :checked="isEnabledScanner(scanner.name)"
+                    @click="disableOrEnableScanner(scanner.name)"
                   />
-                </span>
-                <span>
-                  <a href="https://urlscan.io">urlscan.io</a> API Key
-                </span>
-              </label>
-              <div class="control">
-                <input type="text" class="input" v-model="urlscanAPIKey" />
+                  <label>Enable</label>
+                </div>
               </div>
-            </div>
-            <div class="field">
-              <label class="label">
-                <span class="icon">
-                  <img
-                    src="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.virustotal.com&size=16"
+              <div class="field">
+                <div class="control" v-if="scanner.hasAPIKey">
+                  <input
+                    type="text"
+                    class="input"
+                    v-model="virusTotalAPIKey"
+                    v-if="scanner.name === 'VirusTotal'"
                   />
-                </span>
-                <span>
-                  <a href="https://www.virustotal.com">VirusTotal</a> API Key
-                </span>
-              </label>
-              <div class="control">
-                <input type="text" class="input" v-model="virusTotalAPIKey" />
+                  <input
+                    type="text"
+                    class="input"
+                    v-model="urlscanAPIKey"
+                    v-if="scanner.name === 'urlscan.io'"
+                  />
+                  <input
+                    type="text"
+                    class="input"
+                    v-model="hybridAnalysisAPIKey"
+                    v-if="scanner.name === 'HybridAnalysis'"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -274,7 +344,7 @@ export default defineComponent({
             <div v-for="(searcher, index) in Searchers" :key="index">
               <div
                 class="searcher field has-addons"
-                v-if="isSelected(searcher)"
+                v-if="isSelectedSearcher(searcher)"
               >
                 <div class="control is-expanded">
                   <label class="label">
