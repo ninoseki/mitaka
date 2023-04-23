@@ -226,6 +226,7 @@ describe("Selector", function () {
       enableRefang: false,
       enableDebugLog: false,
       disabledSearcherNames: [],
+      disabledScannerNames: [],
     });
 
     describe("#getIP", function () {
