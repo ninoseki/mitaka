@@ -11,7 +11,7 @@ describe("FortiGuard", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://fortiguard.com/search?q=${ip}&engine=8`
+        `https://fortiguard.com/search?q=${ip}&engine=7`
       );
     });
   });
@@ -20,7 +20,7 @@ describe("FortiGuard", function () {
     const url = "https://github.com";
     it("should return a URL", function () {
       expect(subject.searchByURL(url)).toBe(
-        "https://fortiguard.com/webfilter?q=https%3A%2F%2Fgithub.com"
+        `https://fortiguard.com/search?q=${encodeURIComponent(url)}&engine=7`
       );
     });
   });
