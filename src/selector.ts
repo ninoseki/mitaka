@@ -33,7 +33,7 @@ export class Selector {
   protected input: string;
   protected options: SelectorOptions;
 
-  protected scanners: Scanner[] = Scanners;
+  protected scanners: Scanner[];
   protected searchers: Searcher[];
 
   public constructor(
@@ -44,6 +44,7 @@ export class Selector {
       enableRefang: true,
       enableDebugLog: true,
       disabledSearcherNames: [],
+      disabledScannerNames: [],
     }
   ) {
     this.input = options.enableRefang ? refang(input) : input;
@@ -51,6 +52,10 @@ export class Selector {
 
     this.searchers = Searchers.filter(
       (s) => !this.options.disabledSearcherNames.includes(s.name)
+    );
+
+    this.scanners = Scanners.filter(
+      (s) => !this.options.disabledScannerNames.includes(s.name)
     );
   }
 

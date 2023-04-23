@@ -16,7 +16,8 @@ export class URLScan implements Scanner {
   public baseURL: string;
   public name: string;
   public supportedTypes: ScannableType[] = ["ip", "domain", "url"];
-  protected apiKey: string | undefined;
+  public apiKey: string | undefined;
+  public hasAPIKey = true;
 
   public constructor() {
     this.baseURL = "https://urlscan.io/api/v1";

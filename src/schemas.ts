@@ -7,6 +7,7 @@ export const OptionsSchema = z.object({
   enableDebugLog: z.boolean().default(false),
   preferHrefValue: z.boolean().default(true),
   disabledSearcherNames: z.array(z.string()).default([]),
+  disabledScannerNames: z.array(z.string()).default([]),
   hybridAnalysisAPIKey: z.string().optional(),
   urlscanAPIKey: z.string().optional(),
   virusTotalAPIKey: z.string().optional(),

@@ -5,6 +5,8 @@ export class Browserling implements Scanner {
   public baseURL: string;
   public name: string;
   public supportedTypes: ScannableType[] = ["url"];
+  public apiKey: string | undefined = undefined;
+  public hasAPIKey = false;
 
   public constructor() {
     this.baseURL = "https://www.browserling.com";
@@ -18,8 +20,7 @@ export class Browserling implements Scanner {
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public setAPIKey(_: string | undefined): void {
-    return;
+  public setAPIKey(apiKey: string | undefined): void {
+    this.apiKey = apiKey;
   }
 }
