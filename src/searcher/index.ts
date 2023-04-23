@@ -18,7 +18,6 @@ import {
   Crtsh,
   DNSlytics,
   DomainTools,
-  DomainWatch,
   EmailRep,
   ExploitDatabase,
   FileScan,
@@ -65,7 +64,6 @@ import {
   VirusTotal,
   VMRay,
   Vulmon,
-  VulncodeDB,
   XForceExchange,
   ZoomEye,
 } from "./index";
