@@ -1,6 +1,5 @@
 import type { SearchableType, Searcher } from "@/types";
-import { extractASNumber } from "@/utils";
-import { buildURL } from "@/utils";
+import { buildURL, extractASNumber } from "@/utils";
 
 export class Spyse implements Searcher {
   public baseURL: string;
