@@ -1,23 +1,10 @@
-import { Scanners } from "@/scanner";
-import { Searchers } from "@/searcher";
-import { All } from "@/searcher";
-import type {
-  ScanFuncWrapper,
-  ScannableType,
-  Scanner,
-  SearchFuncWrapper,
-  SearchableType,
-  Searcher,
-  SelectorOptions,
-  SelectorSlot,
-} from "@/types";
 import {
   extractASN,
   extractBTC,
   extractCVE,
   extractDomain,
-  extractETH,
   extractEmail,
+  extractETH,
   extractGAPubID,
   extractGATrackID,
   extractIPv4,
@@ -28,6 +15,19 @@ import {
   extractXMR,
   refang,
 } from "ioc-extractor";
+
+import { Scanners } from "@/scanner";
+import { All, Searchers } from "@/searcher";
+import type {
+  ScanFuncWrapper,
+  ScannableType,
+  Scanner,
+  SearchableType,
+  Searcher,
+  SearchFuncWrapper,
+  SelectorOptions,
+  SelectorSlot,
+} from "@/types";
 
 export class Selector {
   protected input: string;
