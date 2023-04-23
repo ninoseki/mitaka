@@ -12,11 +12,11 @@ export class FortiGuard implements Searcher {
   }
 
   public searchByIP(query: string): string {
-    return buildURL(this.baseURL, "/search", { q: query, engine: 8 });
+    return buildURL(this.baseURL, "/search", { q: query, engine: 7 });
   }
 
   public searchByURL(query: string): string {
-    return buildURL(this.baseURL, "/webfilter", { q: query });
+    return buildURL(this.baseURL, "/search", { q: query, engine: 7 });
   }
 
   public searchByCVE(query: string): string {
