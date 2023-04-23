@@ -54,6 +54,7 @@ import {
   SpyOnWeb,
   TIP,
   Talos,
+  ThreatBook,
   ThreatConnect,
   ThreatMiner,
   Triage,
@@ -70,6 +71,7 @@ import {
 } from "./index";
 
 export { AbuseIPDB } from "./abuseipdb";
+export { All } from "./all";
 export { AnyRun } from "./anyrun";
 export { APKLab } from "./apklab";
 export { ArchiveOrg } from "./archiveorg";
@@ -124,6 +126,7 @@ export { Sploitus } from "./sploitus";
 export { SpyOnWeb } from "./spyonweb";
 export { Spyse } from "./spyse";
 export { Talos } from "./talos";
+export { ThreatBook } from "./threatbook";
 export { ThreatConnect } from "./threatconnect";
 export { ThreatCrowd } from "./threatcrowd";
 export { ThreatMiner } from "./threatminer";
@@ -141,7 +144,6 @@ export { VxCube } from "./vxcube";
 export { WebAnalyzer } from "./webanalyzer";
 export { XForceExchange } from "./xforceExchange";
 export { ZoomEye } from "./zoomeye";
-export { All } from "./all";
 
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),
@@ -195,6 +197,7 @@ export const Searchers: Searcher[] = [
   new Sploitus(),
   new SpyOnWeb(),
   new Talos(),
+  new ThreatBook(),
   new ThreatConnect(),
   new ThreatMiner(),
   new TIP(),

@@ -106,6 +106,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | SpyOnWeb             | http://spyonweb.com                    | IP, domain, Google Adsense Publisher ID, Google Analytics Tracker ID |
 | Spyse                | https://spyse.com                      | IP, domain, ASN, CVE, email                                          |
 | Talos                | https://talosintelligence.com          | IP, domain                                                           |
+| ThreatBook           | https://threatbook.io                  | IP, domain                                                           |
 | ThreatConnect        | https://app.threatconnect.com          | IP, domain, email                                                    |
 | ThreatMiner          | https://www.threatminer.org            | IP, domain, hash                                                     |
 | TIP                  | https://threatintelligenceplatform.com | IP, domain                                                           |
