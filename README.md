@@ -70,6 +70,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | BlockCypher          | https://live.blockcypher.com           | BTC                                                                  |
 | Censys               | https://censys.io                      | IP, domain, ASN, email                                               |
 | Checkphish           | https://checkphish.ai                  | IP, domain                                                           |
+| Coalition            | https://ess.coalitioninc.com           | CVE                                                                  |
 | crt.sh               | https://crt.sh                         | Domain                                                               |
 | DNSlytics            | https://dnslytics.com                  | IP, domain                                                           |
 | DomainTools          | https://www.domaintools.com            | IP, domain                                                           |

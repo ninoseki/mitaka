@@ -1,5 +1,6 @@
 import type { Searcher } from "~/types";
 
+import { Coalition } from "./coalition";
 import {
   AbuseIPDB,
   AnyRun,
@@ -142,6 +143,7 @@ export { VxCube } from "./vxcube";
 export { WebAnalyzer } from "./webanalyzer";
 export { XForceExchange } from "./xforceExchange";
 export { ZoomEye } from "./zoomeye";
+export { Coalition } from "./coalition";
 
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),
@@ -158,6 +160,7 @@ export const Searchers: Searcher[] = [
   new BlockCypher(),
   new Censys(),
   new CheckPhish(),
+  new Coalition(),
   new Crtsh(),
   new DNSlytics(),
   new DomainTools(),
