@@ -14,7 +14,7 @@ describe("InQuest", function () {
 
     it("should return a URL", function () {
       expect(subject.searchByHash(sha256)).toBe(
-        `https://labs.inquest.net/dfi/sha256/${sha256}`
+        `https://labs.inquest.net/dfi/sha256/${sha256}`,
       );
     });
 

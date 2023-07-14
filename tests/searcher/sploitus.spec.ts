@@ -11,7 +11,7 @@ describe("Sploitus", function () {
     const cve = "CVE-2018-8013";
     it("should return a URL", function () {
       expect(subject.searchByCVE(cve)).toBe(
-        `https://sploitus.com/?query=${cve}`
+        `https://sploitus.com/?query=${cve}`,
       );
     });
   });

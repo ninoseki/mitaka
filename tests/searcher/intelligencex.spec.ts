@@ -24,7 +24,7 @@ describe("Intelligence X", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://intelx.io/?s=${domain}`
+        `https://intelx.io/?s=${domain}`,
       );
     });
   });
@@ -33,7 +33,7 @@ describe("Intelligence X", function () {
     const url = "https://github.com";
     it("should return a URL", function () {
       expect(subject.searchByURL(url)).toBe(
-        "https://intelx.io/?s=https%3A%2F%2Fgithub.com"
+        "https://intelx.io/?s=https%3A%2F%2Fgithub.com",
       );
     });
   });
@@ -42,7 +42,7 @@ describe("Intelligence X", function () {
     const email = "test@test.com";
     it("should return a URL", function () {
       expect(subject.searchByEmail(email)).toBe(
-        "https://intelx.io/?s=test%40test.com"
+        "https://intelx.io/?s=test%40test.com",
       );
     });
   });

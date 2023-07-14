@@ -11,7 +11,7 @@ describe("Crtsh", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://crt.sh/?q=${domain}`
+        `https://crt.sh/?q=${domain}`,
       );
     });
   });

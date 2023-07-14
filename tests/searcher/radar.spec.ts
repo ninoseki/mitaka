@@ -11,7 +11,7 @@ describe("Radar", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://radar.cloudflare.com/ip/${ip}`
+        `https://radar.cloudflare.com/ip/${ip}`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("Radar", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://radar.cloudflare.com/domain/${domain}`
+        `https://radar.cloudflare.com/domain/${domain}`,
       );
     });
   });

@@ -16,7 +16,7 @@ describe("RiskIQ", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://community.riskiq.com/search/${ip}`
+        `https://community.riskiq.com/search/${ip}`,
       );
     });
   });
@@ -25,7 +25,7 @@ describe("RiskIQ", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://community.riskiq.com/search/${domain}`
+        `https://community.riskiq.com/search/${domain}`,
       );
     });
   });
@@ -34,7 +34,7 @@ describe("RiskIQ", function () {
     const email = "test@test.com";
     it("should return a URL", function () {
       expect(subject.searchByEmail(email)).toBe(
-        `https://community.riskiq.com/search/whois/email/${email}`
+        `https://community.riskiq.com/search/whois/email/${email}`,
       );
     });
   });
@@ -43,7 +43,7 @@ describe("RiskIQ", function () {
     const gaTrackID = "UA-67609351-1";
     it("should return a URL", function () {
       expect(subject.searchByGATrackID(gaTrackID)).toBe(
-        "https://community.riskiq.com/search/trackers/ua-67609351-1"
+        "https://community.riskiq.com/search/trackers/ua-67609351-1",
       );
     });
   });

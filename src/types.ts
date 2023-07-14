@@ -88,7 +88,7 @@ export interface SearcherMap {
 export interface ScannerMap {
   [name: string]: (
     scanner: Scanner,
-    query: string
+    query: string,
   ) => Promise<string | undefined>;
 }
 

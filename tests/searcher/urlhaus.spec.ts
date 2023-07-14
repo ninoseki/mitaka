@@ -11,7 +11,7 @@ describe("URLhaus", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://urlhaus.abuse.ch/host/${ip}/`
+        `https://urlhaus.abuse.ch/host/${ip}/`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("URLhaus", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://urlhaus.abuse.ch/host/${domain}/`
+        `https://urlhaus.abuse.ch/host/${domain}/`,
       );
     });
   });

@@ -11,7 +11,7 @@ describe("ThreatCrowd", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://www.threatcrowd.org/ip.php?ip=${ip}`
+        `https://www.threatcrowd.org/ip.php?ip=${ip}`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("ThreatCrowd", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://www.threatcrowd.org/domain.php?domain=${domain}`
+        `https://www.threatcrowd.org/domain.php?domain=${domain}`,
       );
     });
   });
@@ -29,7 +29,7 @@ describe("ThreatCrowd", function () {
     const email = "test@test.com";
     it("should return a URL", function () {
       expect(subject.searchByEmail(email)).toBe(
-        "https://www.threatcrowd.org/email.php?email=test%40test.com"
+        "https://www.threatcrowd.org/email.php?email=test%40test.com",
       );
     });
   });

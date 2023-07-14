@@ -11,7 +11,7 @@ describe("VxCube", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `http://vxcube.com/tools/ip/${ip}/whois`
+        `http://vxcube.com/tools/ip/${ip}/whois`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("VxCube", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `http://vxcube.com/tools/domain/${domain}/whois`
+        `http://vxcube.com/tools/domain/${domain}/whois`,
       );
     });
   });
@@ -29,7 +29,7 @@ describe("VxCube", function () {
     const hash = "44d88612fea8a8f36de82e1278abb02f";
     it("should return a URL", function () {
       expect(subject.searchByHash(hash)).toBe(
-        `http://vxcube.com/result/${hash}`
+        `http://vxcube.com/result/${hash}`,
       );
     });
   });

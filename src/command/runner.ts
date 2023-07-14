@@ -125,7 +125,7 @@ export class CommandRunner {
   private scannerMap: ScannerMap = {
     ip: async (
       scanner: Scanner,
-      query: string
+      query: string,
     ): Promise<string | undefined> => {
       if (scanner.scanByIP) {
         return scanner.scanByIP(query);
@@ -133,7 +133,7 @@ export class CommandRunner {
     },
     domain: async (
       scanner: Scanner,
-      query: string
+      query: string,
     ): Promise<string | undefined> => {
       if (scanner.scanByDomain) {
         return scanner.scanByDomain(query);
@@ -141,7 +141,7 @@ export class CommandRunner {
     },
     url: async (
       scanner: Scanner,
-      query: string
+      query: string,
     ): Promise<string | undefined> => {
       if (scanner.scanByURL) {
         return scanner.scanByURL(query);

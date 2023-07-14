@@ -11,7 +11,7 @@ describe("DomainBigData", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://domainbigdata.com/${domain}`
+        `https://domainbigdata.com/${domain}`,
       );
     });
   });
@@ -27,7 +27,7 @@ describe("DomainBigData", function () {
     const email = "test@test.com";
     it("should return a URL", function () {
       expect(subject.searchByEmail(email)).toBe(
-        `https://domainbigdata.com/email/${email}`
+        `https://domainbigdata.com/email/${email}`,
       );
     });
   });

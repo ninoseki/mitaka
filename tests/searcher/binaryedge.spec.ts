@@ -11,7 +11,7 @@ describe("BinaryEdge", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        "https://app.binaryedge.io/services/query?query=ip%3A%221.1.1.1%22"
+        "https://app.binaryedge.io/services/query?query=ip%3A%221.1.1.1%22",
       );
     });
   });
@@ -20,7 +20,7 @@ describe("BinaryEdge", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://app.binaryedge.io/services/domains?query=${domain}`
+        `https://app.binaryedge.io/services/domains?query=${domain}`,
       );
     });
   });

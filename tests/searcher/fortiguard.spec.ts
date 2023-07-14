@@ -11,7 +11,7 @@ describe("FortiGuard", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://fortiguard.com/search?q=${ip}&engine=7`
+        `https://fortiguard.com/search?q=${ip}&engine=7`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("FortiGuard", function () {
     const url = "https://github.com";
     it("should return a URL", function () {
       expect(subject.searchByURL(url)).toBe(
-        `https://fortiguard.com/search?q=${encodeURIComponent(url)}&engine=7`
+        `https://fortiguard.com/search?q=${encodeURIComponent(url)}&engine=7`,
       );
     });
   });
@@ -29,7 +29,7 @@ describe("FortiGuard", function () {
     const cve = "CVE-2017-2991";
     it("should return a URL", function () {
       expect(subject.searchByCVE(cve)).toBe(
-        `https://fortiguard.com/search?q=${cve}&engine=3`
+        `https://fortiguard.com/search?q=${cve}&engine=3`,
       );
     });
   });

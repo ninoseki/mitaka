@@ -14,7 +14,7 @@ describe("VMRay", function () {
 
     it("should return a URL", function () {
       expect(subject.searchByHash(sha256)).toBe(
-        "https://www.vmray.com/analyses/4e38fd97f1d6/report/overview.html"
+        "https://www.vmray.com/analyses/4e38fd97f1d6/report/overview.html",
       );
     });
 

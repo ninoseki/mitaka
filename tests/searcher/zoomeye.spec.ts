@@ -11,7 +11,7 @@ describe("ZoomEye", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        "https://www.zoomeye.org/searchResult?q=ip%3A%221.1.1.1%22&t=host"
+        "https://www.zoomeye.org/searchResult?q=ip%3A%221.1.1.1%22&t=host",
       );
     });
   });

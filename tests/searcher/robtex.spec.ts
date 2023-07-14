@@ -11,7 +11,7 @@ describe("Robtex", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://www.robtex.com/dns-lookup/${domain}`
+        `https://www.robtex.com/dns-lookup/${domain}`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("Robtex", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://www.robtex.com/ip-lookup/${ip}`
+        `https://www.robtex.com/ip-lookup/${ip}`,
       );
     });
   });

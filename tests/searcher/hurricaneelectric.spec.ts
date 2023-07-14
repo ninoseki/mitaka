@@ -18,7 +18,7 @@ describe("HurricaneElectric", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://bgp.he.net/dns/${domain}`
+        `https://bgp.he.net/dns/${domain}`,
       );
     });
   });

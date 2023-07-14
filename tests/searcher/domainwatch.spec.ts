@@ -11,7 +11,7 @@ describe("DomainWatch", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://domainwat.ch/site/${domain}`
+        `https://domainwat.ch/site/${domain}`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("DomainWatch", function () {
     const email = "test@test.com";
     it("should return a URL", function () {
       expect(subject.searchByEmail(email)).toBe(
-        "https://domainwat.ch/search?query=email%3Atest%40test.com&type=whois_raw"
+        "https://domainwat.ch/search?query=email%3Atest%40test.com&type=whois_raw",
       );
     });
   });

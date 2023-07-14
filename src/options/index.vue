@@ -67,7 +67,7 @@ export default defineComponent({
     const disableOrEnableSearcher = (name: string): void => {
       if (disabledSearcherNames.value.includes(name)) {
         disabledSearcherNames.value = disabledSearcherNames.value.filter(
-          (n) => n !== name
+          (n) => n !== name,
         );
       } else {
         disabledSearcherNames.value.push(name);
@@ -77,7 +77,7 @@ export default defineComponent({
     const disableOrEnableScanner = (name: string): void => {
       if (disabledScannerNames.value.includes(name)) {
         disabledScannerNames.value = disabledScannerNames.value.filter(
-          (n) => n !== name
+          (n) => n !== name,
         );
       } else {
         disabledScannerNames.value.push(name);

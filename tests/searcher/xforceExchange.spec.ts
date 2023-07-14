@@ -11,7 +11,7 @@ describe("X-Force Exchange", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://exchange.xforce.ibmcloud.com/ip/${ip}`
+        `https://exchange.xforce.ibmcloud.com/ip/${ip}`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("X-Force Exchange", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://exchange.xforce.ibmcloud.com/url/${domain}`
+        `https://exchange.xforce.ibmcloud.com/url/${domain}`,
       );
     });
   });
@@ -29,7 +29,7 @@ describe("X-Force Exchange", function () {
     const hash = "44d88612fea8a8f36de82e1278abb02f";
     it("should return a URL", function () {
       expect(subject.searchByHash(hash)).toBe(
-        `https://exchange.xforce.ibmcloud.com/malware/${hash}`
+        `https://exchange.xforce.ibmcloud.com/malware/${hash}`,
       );
     });
   });
