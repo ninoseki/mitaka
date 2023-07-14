@@ -131,17 +131,16 @@ You can enable / disable a search engine on the options page based on your prefe
 
 !["options.png](/images/options.png "options.png")
 
-## About Permissons
+## Permissions
 
-This browser extension requires the following permissions.
+> **Note**
+> I don't (and will never) collect any information from the users. You can verify it by reviewing the source code.
 
-- `Read and change all your data on the websites you visit`:
-  - This extension creates context menus dynamically based on what you select on a website.
-  - This means that this extension requires reading all your data on the websites you visit. (This extension doesn't change anything on the websites)
-- `Display notifications`:
-  - This extension makes a notification when something goes wrong.
+### Firefox
 
-I don't (and will never) collect any information from the users.
+Please allow "Access your data for all websites" permission. Otherwise this extension does not work.
+
+<img width="703" alt="Screenshot 2023-07-15 at 8 27 26" src="https://github.com/ninoseki/mitaka/assets/291028/40a5709a-bb4a-4078-b135-287c07ecabef">
 
 ## Privacy Policy
 
