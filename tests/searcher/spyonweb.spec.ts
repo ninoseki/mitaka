@@ -23,7 +23,7 @@ describe("SpyOnWeb", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `http://spyonweb.com/${domain}`
+        `http://spyonweb.com/${domain}`,
       );
     });
   });

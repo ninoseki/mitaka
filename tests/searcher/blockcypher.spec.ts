@@ -12,7 +12,7 @@ describe("BlockCypher", function () {
 
     it("should return a URL", function () {
       expect(subject.searchByBTC(btc)).toBe(
-        `https://live.blockcypher.com/btc/address/${btc}/`
+        `https://live.blockcypher.com/btc/address/${btc}/`,
       );
     });
   });

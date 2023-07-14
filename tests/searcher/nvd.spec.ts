@@ -11,7 +11,7 @@ describe("NVD", function () {
     const cve = "CVE-2018-8013";
     it("should return a URL", function () {
       expect(subject.searchByCVE(cve)).toBe(
-        `https://nvd.nist.gov/vuln/detail/${cve}`
+        `https://nvd.nist.gov/vuln/detail/${cve}`,
       );
     });
   });

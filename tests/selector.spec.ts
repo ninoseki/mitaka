@@ -111,7 +111,7 @@ describe("Selector", function () {
 
         // additional tests
         const s2: Selector = new Selector(
-          "3395856ce81f2b7382dee72602f798b642f14140"
+          "3395856ce81f2b7382dee72602f798b642f14140",
         );
         expect(s2.getHash()).toBe("3395856ce81f2b7382dee72602f798b642f14140");
         const s3: Selector = new Selector("44d88612fea8a8f36de82e1278abb02f");

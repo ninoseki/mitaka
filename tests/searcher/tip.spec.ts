@@ -11,7 +11,7 @@ describe("TIP", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://threatintelligenceplatform.com/report/${ip}/`
+        `https://threatintelligenceplatform.com/report/${ip}/`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("TIP", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://threatintelligenceplatform.com/report/${domain}/`
+        `https://threatintelligenceplatform.com/report/${domain}/`,
       );
     });
   });

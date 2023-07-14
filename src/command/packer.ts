@@ -25,6 +25,6 @@ function normalizeCommandType(commandType: string): string {
 
 export function commandToMessage(command: Command): string {
   return `${capitalize(command.action)} ${truncate(
-    command.query
+    command.query,
   )} as ${normalizeCommandType(command.type)} on ${command.name}`;
 }

@@ -11,7 +11,7 @@ describe("BitcoinAbuse", function () {
     const btc = "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa";
     it("should return a URL", function () {
       expect(subject.searchByBTC(btc)).toBe(
-        `https://bitcoinwhoswho.com/address/${btc}`
+        `https://bitcoinwhoswho.com/address/${btc}`,
       );
     });
   });

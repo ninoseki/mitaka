@@ -11,7 +11,7 @@ describe("Vulmon", function () {
     const cve = "CVE-2018-8013";
     it("should return a URL", function () {
       expect(subject.searchByCVE(cve)).toBe(
-        `https://vulmon.com/vulnerabilitydetails?qid=${cve}`
+        `https://vulmon.com/vulnerabilitydetails?qid=${cve}`,
       );
     });
   });

@@ -41,7 +41,7 @@ if (typeof document !== "undefined") {
         await onSelectionChange();
       },
       250,
-      { middle: false }
-    )
+      { middle: false },
+    ),
   );
 }

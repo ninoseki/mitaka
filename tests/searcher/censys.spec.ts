@@ -11,7 +11,7 @@ describe("Censys", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://search.censys.io/hosts/${ip}`
+        `https://search.censys.io/hosts/${ip}`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("Censys", function () {
     const asn = "AS13335";
     it("should return a URL", function () {
       expect(subject.searchByASN(asn)).toBe(
-        "https://search.censys.io/search?q=autonomous_system.asn%3A13335&resource=hosts"
+        "https://search.censys.io/search?q=autonomous_system.asn%3A13335&resource=hosts",
       );
     });
   });
@@ -29,7 +29,7 @@ describe("Censys", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        "https://search.censys.io/certificates?q=parsed.names%3Agithub.com"
+        "https://search.censys.io/certificates?q=parsed.names%3Agithub.com",
       );
     });
   });
@@ -38,7 +38,7 @@ describe("Censys", function () {
     const email = "test@test.com";
     it("should return a URL", function () {
       expect(subject.searchByEmail(email)).toBe(
-        "https://search.censys.io/certificates?q=parsed.subject.email_address%3Atest%40test.com"
+        "https://search.censys.io/certificates?q=parsed.subject.email_address%3Atest%40test.com",
       );
     });
   });

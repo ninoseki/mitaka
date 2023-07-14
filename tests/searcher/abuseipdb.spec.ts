@@ -11,7 +11,7 @@ describe("AbuseIPDB", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://www.abuseipdb.com/check/${ip}`
+        `https://www.abuseipdb.com/check/${ip}`,
       );
     });
   });

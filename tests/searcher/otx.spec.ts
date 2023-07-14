@@ -17,7 +17,7 @@ describe("OTX", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://otx.alienvault.com/indicator/ip/${ip}`
+        `https://otx.alienvault.com/indicator/ip/${ip}`,
       );
     });
   });
@@ -26,7 +26,7 @@ describe("OTX", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://otx.alienvault.com/indicator/domain/${domain}`
+        `https://otx.alienvault.com/indicator/domain/${domain}`,
       );
     });
   });
@@ -35,7 +35,7 @@ describe("OTX", function () {
     const hash = "726a2eedb9df3d63ec1b4a7d774a799901f1a2b9";
     it("should return a URL", function () {
       expect(subject.searchByHash(hash)).toBe(
-        `https://otx.alienvault.com/indicator/file/${hash}`
+        `https://otx.alienvault.com/indicator/file/${hash}`,
       );
     });
   });
@@ -44,7 +44,7 @@ describe("OTX", function () {
     it("should return a URL", function () {
       const cve = "CVE-2018-8013";
       expect(subject.searchByCVE(cve)).toBe(
-        `https://otx.alienvault.com/indicator/cve/${cve}`
+        `https://otx.alienvault.com/indicator/cve/${cve}`,
       );
     });
   });
@@ -53,7 +53,7 @@ describe("OTX", function () {
     it("should return a URL", function () {
       const url = "https://github.com";
       expect(subject.searchByURL(url)).toBe(
-        `https://otx.alienvault.com/indicator/url/${url}`
+        `https://otx.alienvault.com/indicator/url/${url}`,
       );
     });
   });

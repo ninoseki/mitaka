@@ -11,7 +11,7 @@ describe("Maltiverse", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://www.maltiverse.com/ip/${ip}`
+        `https://www.maltiverse.com/ip/${ip}`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("Maltiverse", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://www.maltiverse.com/hostname/${domain}`
+        `https://www.maltiverse.com/hostname/${domain}`,
       );
     });
   });
@@ -29,7 +29,7 @@ describe("Maltiverse", function () {
     const url = "https://mxqfubnawkypazgkxu.top/";
     it("should return a URL", function () {
       expect(subject.searchByURL(url)).toBe(
-        `https://www.maltiverse.com/url/900c18a4bbfb8be98a1b5ba07afb1a9d46c8acb4628999e935934bd59c28f140`
+        `https://www.maltiverse.com/url/900c18a4bbfb8be98a1b5ba07afb1a9d46c8acb4628999e935934bd59c28f140`,
       );
     });
   });
@@ -38,7 +38,7 @@ describe("Maltiverse", function () {
     const hash = "44d88612fea8a8f36de82e1278abb02";
     it("should return a URL", function () {
       expect(subject.searchByHash(hash)).toBe(
-        `https://www.maltiverse.com/search;query=${hash}`
+        `https://www.maltiverse.com/search;query=${hash}`,
       );
     });
   });

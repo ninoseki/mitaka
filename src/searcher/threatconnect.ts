@@ -30,7 +30,7 @@ export class ThreatConnect implements Searcher {
     return buildURL(
       this.baseURL,
       `/auth/indicators/details/${type}.xhtml`,
-      params
+      params,
     );
   }
 }

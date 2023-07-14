@@ -10,10 +10,10 @@ describe("VirusTotal", function () {
   describe("#searchByURL", function () {
     it("should return a URL", function () {
       expect(subject.searchByURL("https://virustotal.com")).toBe(
-        "https://www.virustotal.com/gui/url/77af0145fa9290ca3a4c214eb4561fc01070132300f6265e2c4cfb447372422e/details"
+        "https://www.virustotal.com/gui/url/77af0145fa9290ca3a4c214eb4561fc01070132300f6265e2c4cfb447372422e/details",
       );
       expect(subject.searchByURL("https://qiita.com/trend")).toBe(
-        "https://www.virustotal.com/gui/url/5dd2d006b4430a593be125eee20494016d3ac933796da6deef590c3e045a685d/details"
+        "https://www.virustotal.com/gui/url/5dd2d006b4430a593be125eee20494016d3ac933796da6deef590c3e045a685d/details",
       );
     });
   });
@@ -22,7 +22,7 @@ describe("VirusTotal", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://www.virustotal.com/gui/domain/${domain}/details`
+        `https://www.virustotal.com/gui/domain/${domain}/details`,
       );
     });
   });
@@ -31,7 +31,7 @@ describe("VirusTotal", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://www.virustotal.com/gui/ip-address/${ip}/details`
+        `https://www.virustotal.com/gui/ip-address/${ip}/details`,
       );
     });
   });
@@ -41,7 +41,7 @@ describe("VirusTotal", function () {
       "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f";
     it("should return a URL", function () {
       expect(subject.searchByHash(hash)).toBe(
-        `https://www.virustotal.com/gui/file/${hash}/details`
+        `https://www.virustotal.com/gui/file/${hash}/details`,
       );
     });
   });

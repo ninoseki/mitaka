@@ -11,7 +11,7 @@ describe("Talos", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://talosintelligence.com/reputation_center/lookup?search=${ip}`
+        `https://talosintelligence.com/reputation_center/lookup?search=${ip}`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("Talos", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://talosintelligence.com/reputation_center/lookup?search=${domain}`
+        `https://talosintelligence.com/reputation_center/lookup?search=${domain}`,
       );
     });
   });

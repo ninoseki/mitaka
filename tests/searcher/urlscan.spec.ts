@@ -11,7 +11,7 @@ describe("Urlscan", function () {
     const url = "https://github.com";
     it("should return a URL", function () {
       expect(subject.searchByURL(url)).toBe(
-        "https://urlscan.io/search/#page.url%3A%22https%3A%2F%2Fgithub.com%22%20OR%20task.url%3A%22https%3A%2F%2Fgithub.com%22"
+        "https://urlscan.io/search/#page.url%3A%22https%3A%2F%2Fgithub.com%22%20OR%20task.url%3A%22https%3A%2F%2Fgithub.com%22",
       );
     });
   });
@@ -27,7 +27,7 @@ describe("Urlscan", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://urlscan.io/domain/${domain}`
+        `https://urlscan.io/domain/${domain}`,
       );
     });
   });

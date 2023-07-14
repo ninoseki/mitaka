@@ -18,7 +18,7 @@ describe("Triage", function () {
     const url = "http://example.com";
     it("should return a URL", function () {
       expect(subject.searchByURL(url)).toBe(
-        "https://tria.ge/s?q=url%3Ahttp%3A%2F%2Fexample.com"
+        "https://tria.ge/s?q=url%3Ahttp%3A%2F%2Fexample.com",
       );
     });
   });

@@ -11,7 +11,7 @@ describe("ArchiveOrg", function () {
     const url = "https://github.com";
     it("should return a URL", function () {
       expect(subject.searchByURL(url)).toBe(
-        `https://web.archive.org/web/*/${url}`
+        `https://web.archive.org/web/*/${url}`,
       );
     });
   });

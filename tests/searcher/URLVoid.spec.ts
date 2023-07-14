@@ -11,7 +11,7 @@ describe("URLVoid", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://www.urlvoid.com/scan/${domain}`
+        `https://www.urlvoid.com/scan/${domain}`,
       );
     });
   });

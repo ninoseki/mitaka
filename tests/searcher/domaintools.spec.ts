@@ -11,7 +11,7 @@ describe("DomainTools", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://whois.domaintools.com/${ip}`
+        `https://whois.domaintools.com/${ip}`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("DomainTools", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://whois.domaintools.com/${domain}`
+        `https://whois.domaintools.com/${domain}`,
       );
     });
   });

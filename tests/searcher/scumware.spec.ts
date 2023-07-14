@@ -11,7 +11,7 @@ describe("Scumware", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://www.scumware.org/report/${domain}`
+        `https://www.scumware.org/report/${domain}`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("Scumware", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByDomain(ip)).toBe(
-        `https://www.scumware.org/report/${ip}`
+        `https://www.scumware.org/report/${ip}`,
       );
     });
   });
@@ -29,7 +29,7 @@ describe("Scumware", function () {
     it("should return a URL", function () {
       const md5 = "44d88612fea8a8f36de82e1278abb02f";
       expect(subject.searchByHash(md5)).toBe(
-        `https://www.scumware.org/report/${md5}`
+        `https://www.scumware.org/report/${md5}`,
       );
     });
 

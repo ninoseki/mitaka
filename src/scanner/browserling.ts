@@ -16,7 +16,7 @@ export class Browserling implements Scanner {
   public scanByURL(url: string): string {
     return buildURL(
       this.baseURL,
-      `/browse/win/7/ie/11/${encodeURIComponent(url)}`
+      `/browse/win/7/ie/11/${encodeURIComponent(url)}`,
     );
   }
 

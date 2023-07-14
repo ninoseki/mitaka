@@ -18,7 +18,7 @@ describe("DNSlytics", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://dnslytics.com/domain/${domain}`
+        `https://dnslytics.com/domain/${domain}`,
       );
     });
   });

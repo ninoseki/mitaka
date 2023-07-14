@@ -11,7 +11,7 @@ describe("WebAnalyzer", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://wa-com.com/${domain}`
+        `https://wa-com.com/${domain}`,
       );
     });
   });

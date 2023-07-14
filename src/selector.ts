@@ -45,17 +45,17 @@ export class Selector {
       enableDebugLog: true,
       disabledSearcherNames: [],
       disabledScannerNames: [],
-    }
+    },
   ) {
     this.input = options.enableRefang ? refang(input) : input;
     this.options = options;
 
     this.searchers = Searchers.filter(
-      (s) => !this.options.disabledSearcherNames.includes(s.name)
+      (s) => !this.options.disabledSearcherNames.includes(s.name),
     );
 
     this.scanners = Scanners.filter(
-      (s) => !this.options.disabledScannerNames.includes(s.name)
+      (s) => !this.options.disabledScannerNames.includes(s.name),
     );
   }
 
@@ -124,13 +124,13 @@ export class Selector {
 
   public getSearchersByType(type: SearchableType): Searcher[] {
     return this.searchers.filter((searcher: Searcher) =>
-      searcher.supportedTypes.includes(type)
+      searcher.supportedTypes.includes(type),
     );
   }
 
   public getScannersByType(type: ScannableType): Scanner[] {
     return this.scanners.filter((scanner: Scanner) =>
-      scanner.supportedTypes.includes(type)
+      scanner.supportedTypes.includes(type),
     );
   }
 

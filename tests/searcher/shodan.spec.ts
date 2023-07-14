@@ -18,7 +18,7 @@ describe("Shodan", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        "https://www.shodan.io/search?query=hostname%3Agithub.com"
+        "https://www.shodan.io/search?query=hostname%3Agithub.com",
       );
     });
   });
@@ -27,7 +27,7 @@ describe("Shodan", function () {
     const asn = "AS13335";
     it("should return a URL", function () {
       expect(subject.searchByASN(asn)).toBe(
-        "https://www.shodan.io/search?query=asn%3AAS13335"
+        "https://www.shodan.io/search?query=asn%3AAS13335",
       );
     });
   });

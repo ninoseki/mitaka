@@ -63,7 +63,7 @@ chrome.runtime.onMessage.addListener(
 
       createContextMenus(message, options);
     });
-  }
+  },
 );
 
 // set contextMenu onClicked lister

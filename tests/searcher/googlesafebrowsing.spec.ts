@@ -11,7 +11,7 @@ describe("Google Safe Browsing", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://transparencyreport.google.com/safe-browsing/search?url=${domain}`
+        `https://transparencyreport.google.com/safe-browsing/search?url=${domain}`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("Google Safe Browsing", function () {
     const url = "https://github.com";
     it("should return a URL", function () {
       expect(subject.searchByURL(url)).toBe(
-        "https://transparencyreport.google.com/safe-browsing/search?url=https%3A%2F%2Fgithub.com"
+        "https://transparencyreport.google.com/safe-browsing/search?url=https%3A%2F%2Fgithub.com",
       );
     });
   });

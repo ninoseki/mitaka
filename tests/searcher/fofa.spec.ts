@@ -11,7 +11,7 @@ describe("FOFA", function () {
     const ip = "1.1.1.1";
     it("should returna  URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        "https://fofa.so/result?qbase64=aXA9IjEuMS4xLjEi"
+        "https://fofa.so/result?qbase64=aXA9IjEuMS4xLjEi",
       );
     });
   });
@@ -20,7 +20,7 @@ describe("FOFA", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        "https://fofa.so/result?qbase64=ZG9tYWluPSJnaXRodWIuY29tIg%3D%3D"
+        "https://fofa.so/result?qbase64=ZG9tYWluPSJnaXRodWIuY29tIg%3D%3D",
       );
     });
   });

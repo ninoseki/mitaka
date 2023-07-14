@@ -11,7 +11,7 @@ describe("SecurityTrails", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
       expect(subject.searchByIP(ip)).toBe(
-        `https://securitytrails.com/list/ip/${ip}`
+        `https://securitytrails.com/list/ip/${ip}`,
       );
     });
   });
@@ -20,7 +20,7 @@ describe("SecurityTrails", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://securitytrails.com/domain/${domain}`
+        `https://securitytrails.com/domain/${domain}`,
       );
     });
   });

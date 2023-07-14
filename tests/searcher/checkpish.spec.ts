@@ -18,7 +18,7 @@ describe("CheckPhish", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        `https://checkphish.ai/domain/${domain}`
+        `https://checkphish.ai/domain/${domain}`,
       );
     });
   });

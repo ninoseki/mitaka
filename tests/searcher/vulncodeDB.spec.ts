@@ -11,7 +11,7 @@ describe("VulncodeDB", function () {
     const cve = "CVE-2018-8013";
     it("should return a URL", function () {
       expect(subject.searchByCVE(cve)).toBe(
-        `https://www.vulncode-db.com/${cve}`
+        `https://www.vulncode-db.com/${cve}`,
       );
     });
   });
