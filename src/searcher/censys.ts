@@ -24,14 +24,16 @@ export class Censys implements Searcher {
   }
 
   public searchByDomain(query: string): string {
-    return buildURL(this.baseURL, "/certificates", {
+    return buildURL(this.baseURL, "/search", {
       q: `parsed.names:${query}`,
+      resource: "certificates",
     });
   }
 
   public searchByEmail(query: string): string {
-    return buildURL(this.baseURL, "/certificates", {
+    return buildURL(this.baseURL, "/search", {
       q: `parsed.subject.email_address:${query}`,
+      resource: "certificates",
     });
   }
 }
