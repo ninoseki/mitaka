@@ -29,7 +29,7 @@ describe("Censys", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        "https://search.censys.io/certificates?q=parsed.names%3Agithub.com",
+        "https://search.censys.io/search?q=parsed.names%3Agithub.com&resource=certificates",
       );
     });
   });
@@ -38,7 +38,7 @@ describe("Censys", function () {
     const email = "test@test.com";
     it("should return a URL", function () {
       expect(subject.searchByEmail(email)).toBe(
-        "https://search.censys.io/certificates?q=parsed.subject.email_address%3Atest%40test.com",
+        "https://search.censys.io/search?q=parsed.subject.email_address%3Atest%40test.com&resource=certificates",
       );
     });
   });
