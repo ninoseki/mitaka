@@ -1,6 +1,5 @@
 import type { Searcher } from "~/types";
 
-import { Coalition } from "./coalition";
 import {
   AbuseIPDB,
   AnyRun,
@@ -17,6 +16,7 @@ import {
   Censys,
   CheckPhish,
   Crtsh,
+  Coalition,
   DNSlytics,
   DomainTools,
   EmailRep,
@@ -29,7 +29,6 @@ import {
   HurricaneElectric,
   HybridAnalysis,
   InQuest,
-  IntelligenceX,
   Intezer,
   IPinfo,
   IPIP,
@@ -174,7 +173,6 @@ export const Searchers: Searcher[] = [
   new HurricaneElectric(),
   new HybridAnalysis(),
   new InQuest(),
-  new IntelligenceX(),
   new Intezer(),
   new IPinfo(),
   new IPIP(),
