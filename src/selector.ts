@@ -81,17 +81,17 @@ export class Selector {
 
   public getHash(): string | null {
     const sha256 = extractSHA256(this.input);
-    if (sha256 !== null) {
+    if (sha256) {
       return sha256;
     }
 
     const sha1 = extractSHA1(this.input);
-    if (sha1 !== null) {
+    if (sha1) {
       return sha1;
     }
 
     const md5 = extractMD5(this.input);
-    if (md5 !== null) {
+    if (md5) {
       return md5;
     }
 
@@ -169,7 +169,7 @@ export class Selector {
       const type = wrapper.type;
 
       const query: string | null = wrapper.func.apply(this);
-      if (query !== null) {
+      if (query) {
         const searchers = this.getSearchersByType(type);
         const slots = searchers.map((analyzer) => {
           return {
@@ -206,7 +206,7 @@ export class Selector {
       const type = wrapper.type;
 
       const query: string | null = wrapper.func.apply(this);
-      if (query !== null) {
+      if (query) {
         const scanners = this.getScannersByType(type);
         return scanners.map((analyzer) => {
           return {
