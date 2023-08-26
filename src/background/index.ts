@@ -16,7 +16,7 @@ export function createContextMenuErrorHandler(): void {
 
 export function createContextMenus(message: Message, options: Options): void {
   let text: string = message.text;
-  if (options.preferHrefValue && message.link !== null) {
+  if (options.preferHrefValue && message.link) {
     text = message.link;
   }
 

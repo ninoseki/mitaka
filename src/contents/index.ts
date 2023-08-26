@@ -7,12 +7,12 @@ export {};
 
 export async function onSelectionChange(): Promise<void> {
   const selection = window.getSelection();
-  const text: string = selection !== null ? selection.toString().trim() : "";
+  const text: string = selection ? selection.toString().trim() : "";
   let link: string | null = null;
 
-  if (selection !== null && selection.rangeCount > 0) {
+  if (selection && selection.rangeCount > 0) {
     const range = selection.getRangeAt(0).startContainer.parentElement;
-    if (range !== null && range.hasAttribute("href")) {
+    if (range && range.hasAttribute("href")) {
       link = range.getAttribute("href");
     }
   }

@@ -85,7 +85,7 @@ export default defineComponent({
     };
 
     const selectSearchableType = (selected: SearchableType): void => {
-      if (selected == searchableType.value) {
+      if (selected === searchableType.value) {
         searchableType.value = undefined;
       } else {
         searchableType.value = selected;
@@ -93,7 +93,7 @@ export default defineComponent({
     };
 
     const selectScannableType = (selected: ScannableType): void => {
-      if (selected == scannableType.value) {
+      if (selected === scannableType.value) {
         scannableType.value = undefined;
       } else {
         scannableType.value = selected;
@@ -101,14 +101,14 @@ export default defineComponent({
     };
 
     const isSelectedSearcher = (searcher: Searcher): boolean => {
-      if (searchableType.value !== undefined) {
+      if (searchableType.value) {
         return searcher.supportedTypes.includes(searchableType.value);
       }
       return true;
     };
 
     const isSelectedScanner = (scanner: Scanner): boolean => {
-      if (scannableType.value !== undefined) {
+      if (scannableType.value) {
         return scanner.supportedTypes.includes(scannableType.value);
       }
       return true;
