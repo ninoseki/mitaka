@@ -20,7 +20,7 @@ export class URLScan implements Scanner {
   public hasAPIKey = true;
 
   public constructor() {
-    this.baseURL = "https://urlscan.io/api/v1";
+    this.baseURL = "https://urlscan.io";
     this.name = "urlscan.io";
   }
 
@@ -54,7 +54,7 @@ export class URLScan implements Scanner {
       "content-type": "application/json",
     };
 
-    const res = await fetch(`${this.baseURL}/scan/`, {
+    const res = await fetch(`${this.baseURL}/api/v1/scan/`, {
       method: "POST",
       headers,
       body,
