@@ -28,7 +28,7 @@ export class VirusTotal implements Scanner {
   public hasAPIKey = true;
 
   public constructor() {
-    this.baseURL = "https://www.virustotal.com/api/v3";
+    this.baseURL = "https://www.virustotal.com";
     this.name = "VirusTotal";
   }
 
@@ -41,7 +41,7 @@ export class VirusTotal implements Scanner {
     // e.g. u-ef8678c0f43f6142407ca89b4a376556cd4472d26b5952efa6d3821fa9fc597b-1589690619
     const parts = id.split("-");
     const sha256 = parts[1];
-    return buildURL("https://www.virustotal.com", `/gui/url/${sha256}/details`);
+    return buildURL(this.baseURL, `/gui/url/${sha256}/details`);
   }
 
   public async scanByURL(url: string): Promise<string> {
@@ -56,7 +56,7 @@ export class VirusTotal implements Scanner {
       "x-apikey": this.apiKey,
     };
 
-    const res = await fetch(buildURL(this.baseURL, "/urls"), {
+    const res = await fetch(buildURL(this.baseURL, "/api/v3/urls"), {
       method: "POST",
       headers,
       body: formData,

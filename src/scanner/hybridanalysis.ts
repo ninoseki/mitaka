@@ -18,7 +18,7 @@ export class HybridAnalysis implements Scanner {
   public hasAPIKey = true;
 
   public constructor() {
-    this.baseURL = "https://www.hybrid-analysis.com/api/v2";
+    this.baseURL = "https://www.hybrid-analysis.com";
     this.name = "HybridAnalysis";
   }
 
@@ -40,7 +40,7 @@ export class HybridAnalysis implements Scanner {
       "user-agent": "Falcon Sandbox",
     };
 
-    const res = await fetch(`${this.baseURL}/quick-scan/url`, {
+    const res = await fetch(`${this.baseURL}/api/v2/quick-scan/url`, {
       method: "POST",
       headers,
       body: formData,
