@@ -196,7 +196,6 @@ export default defineComponent({
               </div>
               <div class="control">
                 <input type="checkbox" v-model="enableIDN" />
-                <label>Enable</label>
               </div>
             </div>
 
@@ -207,7 +206,6 @@ export default defineComponent({
               </div>
               <div class="control">
                 <input type="checkbox" v-model="strictTLD" />
-                <label>Enable</label>
               </div>
             </div>
 
@@ -221,7 +219,6 @@ export default defineComponent({
               </div>
               <div class="control">
                 <input type="checkbox" v-model="enableRefang" />
-                <label>Enable</label>
               </div>
             </div>
 
@@ -232,7 +229,6 @@ export default defineComponent({
               </div>
               <div class="control">
                 <input type="checkbox" v-model="preferHrefValue" />
-                <label>Enable</label>
               </div>
             </div>
 
@@ -242,7 +238,6 @@ export default defineComponent({
               </div>
               <div class="control">
                 <input type="checkbox" v-model="enableDebugLog" />
-                <label>Enable</label>
               </div>
             </div>
           </div>
@@ -296,7 +291,6 @@ export default defineComponent({
                     :checked="isEnabledScanner(scanner.name)"
                     @click="disableOrEnableScanner(scanner.name)"
                   />
-                  <label>Enable</label>
                 </div>
               </div>
               <div class="field">
@@ -374,7 +368,6 @@ export default defineComponent({
                     :checked="isEnabledSearcher(searcher.name)"
                     @click="disableOrEnableSearcher(searcher.name)"
                   />
-                  <label>Enable</label>
                 </div>
               </div>
             </div>
