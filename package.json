@@ -35,7 +35,7 @@
     "@jest/globals": "^29.6.4",
     "@jest/types": "^29.6.3",
     "@plasmohq/prettier-plugin-sort-imports": "^4.0.1",
-    "@types/chrome": "^0.0.243",
+    "@types/chrome": "^0.0.246",
     "@types/jest": "^29.5.4",
     "@types/js-base64": "3.3.1",
     "@types/node": "^20.5.4",
