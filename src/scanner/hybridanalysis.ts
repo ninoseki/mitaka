@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ok, err, Result } from "neverthrow";
 
 import type { ScannableType, Scanner } from "~/types";
 
@@ -26,9 +27,9 @@ export class HybridAnalysis implements Scanner {
     this.apiKey = apiKey;
   }
 
-  public async scanByURL(url: string): Promise<string> {
+  public async scanByURL(url: string): Promise<Result<string, string>> {
     if (this.apiKey === undefined) {
-      throw Error("Please set your HybridAnalysis API key via the option.");
+      return err("Please set your HybridAnalysis API key via the option.");
     }
 
     const formData = new FormData();
@@ -50,11 +51,11 @@ export class HybridAnalysis implements Scanner {
 
     if (!res.ok) {
       const parsed = ErrorResponse.parse(data);
-      throw Error(parsed.message);
+      return err(parsed.message);
     }
 
     const parsed = Response.parse(data);
     const sha256: string = parsed.sha256;
-    return `https://www.hybrid-analysis.com/sample/${sha256}/`;
+    return ok(`https://www.hybrid-analysis.com/sample/${sha256}/`);
   }
 }

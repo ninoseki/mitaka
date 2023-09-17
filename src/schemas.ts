@@ -35,7 +35,3 @@ export const CommandSchema = z.object({
   type: SearchableType,
   name: z.string(),
 });
-
-export const ErrorMessageSchema = z.object({
-  message: z.string().default("Unknown error occurs..."),
-});

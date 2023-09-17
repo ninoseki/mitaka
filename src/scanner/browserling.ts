@@ -1,3 +1,4 @@
+import { Result, ok } from "neverthrow";
 import type { ScannableType, Scanner } from "~/types";
 import { buildURL } from "~/utils";
 
@@ -13,10 +14,9 @@ export class Browserling implements Scanner {
     this.name = "Browserling";
   }
 
-  public scanByURL(url: string): string {
-    return buildURL(
-      this.baseURL,
-      `/browse/win/7/ie/11/${encodeURIComponent(url)}`,
+  public async scanByURL(url: string): Promise<Result<string, string>> {
+    return ok(
+      buildURL(this.baseURL, `/browse/win/7/ie/11/${encodeURIComponent(url)}`),
     );
   }
 

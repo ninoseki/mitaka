@@ -9,6 +9,7 @@ import type {
   SelectorSlot,
 } from "~/types";
 import { isScanner, isSearcher } from "~/utils";
+import { ok, err, Result } from "neverthrow";
 
 export class CommandRunner {
   public command: Command;
@@ -20,74 +21,89 @@ export class CommandRunner {
   }
 
   private searcherMap: SearcherMap = {
-    ip: (searcher: Searcher, query: string): string | undefined => {
+    ip: (searcher: Searcher, query: string): Result<string, string> => {
       if (searcher.searchByIP) {
-        return searcher.searchByIP(query);
+        return ok(searcher.searchByIP(query));
       }
+      return err(`${searcher.name} does not support IP`);
     },
-    domain: (searcher: Searcher, query: string): string | undefined => {
+    domain: (searcher: Searcher, query: string): Result<string, string> => {
       if (searcher.searchByDomain) {
-        return searcher.searchByDomain(query);
+        return ok(searcher.searchByDomain(query));
       }
+      return err(`${searcher.name} does not support domain`);
     },
-    url: (searcher: Searcher, query: string): string | undefined => {
+    url: (searcher: Searcher, query: string): Result<string, string> => {
       if (searcher.searchByURL) {
-        return searcher.searchByURL(query);
+        return ok(searcher.searchByURL(query));
       }
+      return err(`${searcher.name} does not support URL`);
     },
-    asn: (searcher: Searcher, query: string): string | undefined => {
+    asn: (searcher: Searcher, query: string): Result<string, string> => {
       if (searcher.searchByASN) {
-        return searcher.searchByASN(query);
+        return ok(searcher.searchByASN(query));
       }
+      return err(`${searcher.name} does not support ASN`);
     },
-    email: (searcher: Searcher, query: string): string | undefined => {
+    email: (searcher: Searcher, query: string): Result<string, string> => {
       if (searcher.searchByEmail) {
-        return searcher.searchByEmail(query);
+        return ok(searcher.searchByEmail(query));
       }
+      return err(`${searcher.name} does not support email`);
     },
-    hash: (searcher: Searcher, query: string): string | undefined => {
+    hash: (searcher: Searcher, query: string): Result<string, string> => {
       if (searcher.searchByHash) {
-        return searcher.searchByHash(query);
+        const result = searcher.searchByHash(query);
+        if (typeof result === "string") {
+          return ok(result);
+        }
+        return result;
       }
+      return err(`${searcher.name} does not support hash`);
     },
-    cve: (searcher: Searcher, query: string): string | undefined => {
+    cve: (searcher: Searcher, query: string): Result<string, string> => {
       if (searcher.searchByCVE) {
-        return searcher.searchByCVE(query);
+        return ok(searcher.searchByCVE(query));
       }
+      return err(`${searcher.name} does not support CVE`);
     },
-    btc: (searcher: Searcher, query: string): string | undefined => {
+    btc: (searcher: Searcher, query: string): Result<string, string> => {
       if (searcher.searchByBTC) {
-        return searcher.searchByBTC(query);
+        return ok(searcher.searchByBTC(query));
       }
+      return err(`${searcher.name} does not support BTC`);
     },
-    gaPubID: (searcher: Searcher, query: string): string | undefined => {
+    gaPubID: (searcher: Searcher, query: string): Result<string, string> => {
       if (searcher.searchByGAPubID) {
-        return searcher.searchByGAPubID(query);
+        return ok(searcher.searchByGAPubID(query));
       }
+      return err(`${searcher.name} does not support GA pub ID`);
     },
-    gaTrackID: (searcher: Searcher, query: string): string | undefined => {
+    gaTrackID: (searcher: Searcher, query: string): Result<string, string> => {
       if (searcher.searchByGATrackID) {
-        return searcher.searchByGATrackID(query);
+        return ok(searcher.searchByGATrackID(query));
       }
+      return err(`${searcher.name} does not support GA track ID`);
     },
-    eth: (searcher: Searcher, query: string): string | undefined => {
+    eth: (searcher: Searcher, query: string): Result<string, string> => {
       if (searcher.searchByETH) {
-        return searcher.searchByETH(query);
+        return ok(searcher.searchByETH(query));
       }
+      return err(`${searcher.name} does not support ETH`);
     },
   };
 
-  public search(): string | undefined {
+  public search(): Result<string, string> {
     const selector: Selector = new Selector(this.command.query, this.options);
     const slots: SelectorSlot[] = selector.getSearcherSlots();
     const slot = slots.find((s) => s.analyzer.name === this.command.name);
 
     if (slot === undefined) {
-      return undefined;
+      return err(`Slot for ${this.command.name} is missing`);
     }
 
     if (!isSearcher(slot.analyzer)) {
-      return undefined;
+      return err(`${slot.analyzer.name} is not a searcher`);
     }
 
     const searcher = slot.analyzer;
@@ -96,70 +112,64 @@ export class CommandRunner {
       return fn(searcher, slot.query);
     }
 
-    return undefined;
+    return err("Something went wrong");
   }
 
-  public searchAll(): string[] {
+  public searchAll(): Result<string, string>[] {
     const selector: Selector = new Selector(this.command.query, this.options);
     const slots: SelectorSlot[] = selector.getSearcherSlots();
 
-    return slots
-      .map((slot) => {
-        const searcher = slot.analyzer;
-        if (this.command.type in this.searcherMap) {
-          const fn = this.searcherMap[this.command.type];
-          try {
-            return fn(searcher, slot.query);
-          } catch (_err) {
-            // NOTE: some hash searchers support only specific hash format
-            //       (e.g. APK Lab supports SHA256 only)
-            //       such searcher throws an error
-            //       ignore that to make the all search works
-            return undefined;
-          }
-        }
-      })
-      .flatMap((url) => (url === undefined ? [] : [url]));
+    return slots.map((slot) => {
+      const searcher = slot.analyzer;
+      if (this.command.type in this.searcherMap) {
+        const fn = this.searcherMap[this.command.type];
+        return fn(searcher, slot.query);
+      }
+      return err(`${this.command.type} is not supported`);
+    });
   }
 
   private scannerMap: ScannerMap = {
     ip: async (
       scanner: Scanner,
       query: string,
-    ): Promise<string | undefined> => {
+    ): Promise<Result<string, string>> => {
       if (scanner.scanByIP) {
         return scanner.scanByIP(query);
       }
+      return err(`${scanner.name} does not support IP`);
     },
     domain: async (
       scanner: Scanner,
       query: string,
-    ): Promise<string | undefined> => {
+    ): Promise<Result<string, string>> => {
       if (scanner.scanByDomain) {
         return scanner.scanByDomain(query);
       }
+      return err(`${scanner.name} does not support domain`);
     },
     url: async (
       scanner: Scanner,
       query: string,
-    ): Promise<string | undefined> => {
+    ): Promise<Result<string, string>> => {
       if (scanner.scanByURL) {
         return scanner.scanByURL(query);
       }
+      return err(`${scanner.name} does not support URL`);
     },
   };
 
-  public async scan(): Promise<string | undefined> {
+  public async scan(): Promise<Result<string, string>> {
     const selector: Selector = new Selector(this.command.query);
     const slots: SelectorSlot[] = selector.getScannerSlots();
     const slot = slots.find((s) => s.analyzer.name === this.command.name);
 
     if (slot === undefined) {
-      return undefined;
+      return err(`Slot for ${this.command.name} is missing`);
     }
 
     if (!isScanner(slot.analyzer)) {
-      return undefined;
+      return err(`${slot.analyzer.name} is not a scanner`);
     }
 
     const scanner = slot.analyzer;
@@ -183,6 +193,6 @@ export class CommandRunner {
       return await fn(scanner, slot.query);
     }
 
-    return undefined;
+    return err("Something went wrong");
   }
 }

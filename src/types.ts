@@ -1,3 +1,5 @@
+import { Result } from "neverthrow";
+
 export type SearchableType =
   | "asn"
   | "btc"
@@ -40,7 +42,7 @@ export interface Searcher {
   searchByETH?(query: string): string;
   searchByGAPubID?(quqery: string): string;
   searchByGATrackID?(query: string): string;
-  searchByHash?(query: string): string;
+  searchByHash?(query: string): Result<string, string> | string;
   searchByIP?(query: string): string;
   searchByURL?(query: string): string;
   searchByXMR?(query: string): string;
@@ -55,9 +57,9 @@ export interface Scanner {
   apiKey?: string;
   hasAPIKey: boolean;
   setAPIKey(apiKey: string | undefined): void;
-  scanByIP?(query: string): Promise<string>;
-  scanByDomain?(query: string): Promise<string>;
-  scanByURL?(query: string): Promise<string> | string;
+  scanByIP?(query: string): Promise<Result<string, string>>;
+  scanByDomain?(query: string): Promise<Result<string, string>>;
+  scanByURL?(query: string): Promise<Result<string, string>>;
 }
 
 export interface SearchFuncWrapper {
@@ -82,14 +84,14 @@ export interface Message {
 }
 
 export interface SearcherMap {
-  [name: string]: (searcher: Searcher, query: string) => string | undefined;
+  [name: string]: (searcher: Searcher, query: string) => Result<string, string>;
 }
 
 export interface ScannerMap {
   [name: string]: (
     scanner: Scanner,
     query: string,
-  ) => Promise<string | undefined>;
+  ) => Promise<Result<string, string>>;
 }
 
 export type CommandAction = "scan" | "search";

@@ -1,5 +1,6 @@
 import type { SearchableType, Searcher } from "~/types";
 import { buildURL } from "~/utils";
+import { ok, err, Result } from "neverthrow";
 
 export class APKLab implements Searcher {
   public baseURL: string;
@@ -11,11 +12,11 @@ export class APKLab implements Searcher {
     this.name = "Apklab";
   }
 
-  public searchByHash(query: string): string {
+  public searchByHash(query: string): Result<string, string> {
     if (query.length !== 64) {
-      throw new Error("apklab supports only SHA256 hash");
+      return err("apklab supports only SHA256 hash");
     }
 
-    return buildURL(this.baseURL, "/apk.html", { hash: query });
+    return ok(buildURL(this.baseURL, "/apk.html", { hash: query }));
   }
 }
