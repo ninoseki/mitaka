@@ -14,7 +14,6 @@ export async function searchAll(runner: CommandRunner): Promise<void> {
 
 export async function search(runner: CommandRunner): Promise<void> {
   const res = runner.search();
-  console.log(res);
   if (res.isOk()) {
     await chrome.tabs.create({ url: res.value });
   } else {
