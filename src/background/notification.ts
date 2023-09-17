@@ -1,6 +1,7 @@
 export function showNotification(message: string): void {
   chrome.notifications.create({
-    iconUrl: "./assets/icon.png",
+    iconUrl:
+      "https://raw.githubusercontent.com/ninoseki/mitaka/master/assets/icon.png",
     message,
     title: "Mitaka",
     type: "basic",
