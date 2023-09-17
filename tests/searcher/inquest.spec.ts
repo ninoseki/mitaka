@@ -13,15 +13,14 @@ describe("InQuest", function () {
     const md5 = "5584cd3c99cde56e459f30eec3bb470b";
 
     it("should return a URL", function () {
-      expect(subject.searchByHash(sha256)).toBe(
+      expect(subject.searchByHash(sha256)._unsafeUnwrap()).toBe(
         `https://labs.inquest.net/dfi/sha256/${sha256}`,
       );
     });
 
     it("should throw an error when given hash which is not SHA256", function () {
-      expect(() => {
-        subject.searchByHash(md5);
-      }).toThrow("InQuest supports SHA256 hash only");
+      const res = subject.searchByHash(md5);
+      expect(res.isErr()).toBe(true);
     });
   });
 });

@@ -28,6 +28,7 @@
     "ioc-extractor": "6.0.0",
     "js-base64": "^3.7.5",
     "js-sha256": "^0.9.0",
+    "neverthrow": "^6.0.0",
     "vue": "^3.3.4",
     "zod": "^3.22.2"
   },
@@ -45,6 +46,7 @@
     "coveralls": "3.1.1",
     "eslint": "^8.47.0",
     "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-neverthrow": "^1.1.4",
     "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-vue": "^9.17.0",
     "husky": "8.0.3",

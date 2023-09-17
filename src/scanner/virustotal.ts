@@ -2,6 +2,7 @@ import { z } from "zod";
 
 import type { ScannableType, Scanner } from "~/types";
 import { buildURL } from "~/utils";
+import { ok, err, Result } from "neverthrow";
 
 const Data = z.object({
   id: z.string(),
@@ -44,9 +45,9 @@ export class VirusTotal implements Scanner {
     return buildURL(this.baseURL, `/gui/url/${sha256}/details`);
   }
 
-  public async scanByURL(url: string): Promise<string> {
+  public async scanByURL(url: string): Promise<Result<string, string>> {
     if (this.apiKey === undefined) {
-      throw Error("Please set your VirusTotal API key via the option.");
+      return err("Please set your VirusTotal API key via the option.");
     }
 
     const formData = new FormData();
@@ -66,10 +67,10 @@ export class VirusTotal implements Scanner {
 
     if (!res.ok) {
       const parsed = ErrorResponse.parse(data);
-      throw Error(parsed.error.message);
+      return err(parsed.error.message);
     }
 
     const parsed = Response.parse(data);
-    return this.permaLink(parsed.data.id);
+    return ok(this.permaLink(parsed.data.id));
   }
 }

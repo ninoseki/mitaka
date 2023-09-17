@@ -13,15 +13,14 @@ describe("VMRay", function () {
     const md5 = "5584cd3c99cde56e459f30eec3bb470b";
 
     it("should return a URL", function () {
-      expect(subject.searchByHash(sha256)).toBe(
+      expect(subject.searchByHash(sha256)._unsafeUnwrap()).toBe(
         "https://www.vmray.com/analyses/4e38fd97f1d6/report/overview.html",
       );
     });
 
     it("should throw an error when given hash which is not SHA256", function () {
-      expect(() => {
-        subject.searchByHash(md5);
-      }).toThrow("VMRay supports SHA256 hash only");
+      const res = subject.searchByHash(md5);
+      expect(res.isErr()).toBe(true);
     });
   });
 });

@@ -8,9 +8,10 @@ describe("VirusTotal", function () {
   });
 
   describe("when apiKey is undefined", function () {
-    it("should raise an error", function () {
+    it("should raise an error", async function () {
       subject.setAPIKey(undefined);
-      expect(subject.scanByURL("http://example.com")).rejects.toThrow(Error);
+      const res = await subject.scanByURL("http://example.com");
+      expect(res.isErr()).toBe(true);
     });
   });
 });

@@ -1,27 +1,23 @@
 import { showNotification } from "~/background/notification";
 import type { CommandRunner } from "~/command/runner";
-import { ErrorMessageSchema } from "~/schemas";
 
 export async function searchAll(runner: CommandRunner): Promise<void> {
-  try {
-    const urls = runner.searchAll();
-    for (const url of urls) {
-      chrome.tabs.create({ url });
+  const results = runner.searchAll();
+  for (const result of results) {
+    if (result.isOk()) {
+      await chrome.tabs.create({ url: result.value });
+    } else {
+      showNotification(result.error);
     }
-  } catch (e) {
-    const errorMessage = ErrorMessageSchema.parse(e);
-    showNotification(errorMessage.message);
   }
 }
 
 export async function search(runner: CommandRunner): Promise<void> {
-  try {
-    const url = runner.search();
-    if (url) {
-      await chrome.tabs.create({ url });
-    }
-  } catch (e) {
-    const errorMessage = ErrorMessageSchema.parse(e);
-    showNotification(errorMessage.message);
+  const res = runner.search();
+  console.log(res);
+  if (res.isOk()) {
+    await chrome.tabs.create({ url: res.value });
+  } else {
+    showNotification(res.error);
   }
 }

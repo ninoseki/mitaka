@@ -28,7 +28,7 @@ describe("Scumware", function () {
   describe("#searchByHash", function () {
     it("should return a URL", function () {
       const md5 = "44d88612fea8a8f36de82e1278abb02f";
-      expect(subject.searchByHash(md5)).toBe(
+      expect(subject.searchByHash(md5)._unsafeUnwrap()).toBe(
         `https://www.scumware.org/report/${md5}`,
       );
     });
@@ -36,9 +36,8 @@ describe("Scumware", function () {
     it("should throw an error when given SHA256", function () {
       const sha256 =
         "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f";
-      expect(() => {
-        subject.searchByHash(sha256);
-      }).toThrow("Scumware supports only MD5 hashes");
+      const res = subject.searchByHash(sha256);
+      expect(res.isErr()).toBe(true);
     });
   });
 });

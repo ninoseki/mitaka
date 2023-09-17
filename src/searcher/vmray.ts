@@ -1,5 +1,6 @@
 import type { SearchableType, Searcher } from "~/types";
 import { buildURL } from "~/utils";
+import { ok, err, Result } from "neverthrow";
 
 export class VMRay implements Searcher {
   public baseURL: string;
@@ -11,11 +12,13 @@ export class VMRay implements Searcher {
     this.name = "VMRay";
   }
 
-  public searchByHash(query: string): string {
+  public searchByHash(query: string): Result<string, string> {
     if (query.length !== 64) {
-      throw new Error("VMRay supports SHA256 hash only");
+      return err("VMRay supports SHA256 hash only");
     }
     const trimmed = query.substring(0, 12);
-    return buildURL(this.baseURL, `/analyses/${trimmed}/report/overview.html`);
+    return ok(
+      buildURL(this.baseURL, `/analyses/${trimmed}/report/overview.html`),
+    );
   }
 }

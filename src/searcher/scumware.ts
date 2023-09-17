@@ -1,5 +1,6 @@
 import type { SearchableType, Searcher } from "~/types";
 import { buildURL } from "~/utils";
+import { ok, err, Result } from "neverthrow";
 
 export class Scumware implements Searcher {
   public baseURL: string;
@@ -19,11 +20,11 @@ export class Scumware implements Searcher {
     return buildURL(this.baseURL, `/report/${query}`);
   }
 
-  public searchByHash(query: string): string {
+  public searchByHash(query: string): Result<string, string> {
     if (query.length !== 32) {
-      throw new Error("Scumware supports only MD5 hashes");
+      return err("Scumware supports only MD5 hashes");
     }
 
-    return buildURL(this.baseURL, `/report/${query}`);
+    return ok(buildURL(this.baseURL, `/report/${query}`));
   }
 }

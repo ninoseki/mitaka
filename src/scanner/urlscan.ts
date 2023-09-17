@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import type { ScannableType, Scanner } from "~/types";
+import { ok, err, Result } from "neverthrow";
 
 const Response = z.object({
   result: z.string(),
@@ -28,21 +29,24 @@ export class URLScan implements Scanner {
     this.apiKey = apiKey;
   }
 
-  public async scanByIP(ip: string): Promise<string> {
+  public async scanByIP(ip: string): Promise<Result<string, string>> {
     return await this.scan(ip);
   }
 
-  public async scanByDomain(domain: string): Promise<string> {
+  public async scanByDomain(domain: string): Promise<Result<string, string>> {
     return await this.scan(domain);
   }
 
-  public async scanByURL(url: string): Promise<string> {
+  public async scanByURL(url: string): Promise<Result<string, string>> {
     return await this.scan(url);
   }
 
-  private async scan(query: string, isPublic = true): Promise<string> {
+  private async scan(
+    query: string,
+    isPublic = true,
+  ): Promise<Result<string, string>> {
     if (this.apiKey === undefined) {
-      throw Error("Please set your urlscan.io API key via the option.");
+      return err("Please set your urlscan.io API key via the option.");
     }
 
     const body = JSON.stringify({
@@ -64,10 +68,10 @@ export class URLScan implements Scanner {
 
     if (!res.ok) {
       const parsed = ErrorResponse.parse(data);
-      throw Error(parsed.message);
+      return err(parsed.message);
     }
 
     const parsed = Response.parse(data);
-    return `${parsed.result}loading`;
+    return ok(`${parsed.result}loading`);
   }
 }

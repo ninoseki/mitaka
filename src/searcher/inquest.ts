@@ -1,5 +1,6 @@
 import type { SearchableType, Searcher } from "~/types";
 import { buildURL } from "~/utils";
+import { ok, err, Result } from "neverthrow";
 
 export class InQuest implements Searcher {
   public baseURL: string;
@@ -11,10 +12,10 @@ export class InQuest implements Searcher {
     this.name = "InQuest";
   }
 
-  public searchByHash(query: string): string {
+  public searchByHash(query: string): Result<string, string> {
     if (query.length !== 64) {
-      throw new Error("InQuest supports SHA256 hash only");
+      return err("InQuest supports SHA256 hash only");
     }
-    return buildURL(this.baseURL, `/dfi/sha256/${query}`);
+    return ok(buildURL(this.baseURL, `/dfi/sha256/${query}`));
   }
 }
