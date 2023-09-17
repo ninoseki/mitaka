@@ -55,7 +55,7 @@
     "jest-webextension-mock": "^3.8.9",
     "lint-staged": "14.0.1",
     "plasmo": "^0.83.0",
-    "prettier": "3.0.2",
+    "prettier": "3.0.3",
     "ts-jest": "^29.1.1",
     "typescript": "5.1.6"
   },
