@@ -4,7 +4,7 @@ describe("Censys", function () {
   const subject = new Censys();
 
   it("should support ip, domain, asn and email", function () {
-    expect(subject.supportedTypes).toEqual(["ip", "asn", "domain", "email"]);
+    expect(subject.supportedTypes).toEqual(["ip", "asn", "domain", "email", "gaTrackID"]);
   });
 
   describe("#searchByIP", function () {
