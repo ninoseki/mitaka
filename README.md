@@ -28,7 +28,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 
 | Name      | Desc.                       | E.g.                                         |
 | :-------- | :-------------------------- | :------------------------------------------- |
-| ANS       | ASN                         | `AS13335`                                    |
+| ASN       | Autonomous System Number    | `AS13335`                                    |
 | BTC       | BTC address                 | `1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa`         |
 | CVE       | CVE number                  | `CVE-2018-11776`                             |
 | Domain    | Domain name                 | `github.com`                                 |
@@ -56,7 +56,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | Blockchain.com       | https://www.blockchain.com             | BTC                                                                  |
 | Blockchair           | https://blockchair.com                 | BTC, ETH                                                             |
 | BlockCypher          | https://live.blockcypher.com           | BTC                                                                  |
-| Censys               | https://censys.io                      | IP, domain, ASN, email                                               |
+| Censys Search        | https://search.censys.io               | IP, domain, ASN, email, Google Analytics Tracker ID                  |
 | Checkphish           | https://checkphish.ai                  | IP, domain                                                           |
 | Coalition            | https://ess.coalitioninc.com           | CVE                                                                  |
 | crt.sh               | https://crt.sh                         | Domain                                                               |
