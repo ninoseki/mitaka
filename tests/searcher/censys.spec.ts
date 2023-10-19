@@ -29,7 +29,7 @@ describe("Censys", function () {
     const domain = "github.com";
     it("should return a URL", function () {
       expect(subject.searchByDomain(domain)).toBe(
-        "https://search.censys.io/search?q=parsed.names%3A+github.com&resource=certificates",
+        "https://search.censys.io/search?q=names%3A+github.com&resource=certificates",
       );
     });
   });
