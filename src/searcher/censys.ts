@@ -18,21 +18,21 @@ export class Censys implements Searcher {
   public searchByASN(query: string): string {
     const asn = extractASNumber(query);
     return buildURL(this.baseURL, "/search", {
-      q: `autonomous_system.asn:${asn}`,
+      q: `autonomous_system.asn: ${asn}`,
       resource: "hosts",
     });
   }
 
   public searchByDomain(query: string): string {
     return buildURL(this.baseURL, "/search", {
-      q: `parsed.names:${query}`,
+      q: `names: ${query}`,
       resource: "certificates",
     });
   }
 
   public searchByEmail(query: string): string {
     return buildURL(this.baseURL, "/search", {
-      q: `parsed.subject.email_address:${query}`,
+      q: `parsed.subject.email_address: ${query}`,
       resource: "certificates",
     });
   }
