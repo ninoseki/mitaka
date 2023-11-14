@@ -118,8 +118,10 @@ export class CommandRunner {
   public searchAll(): Result<string, string>[] {
     const selector: Selector = new Selector(this.command.query, this.options);
     const slots: SelectorSlot[] = selector.getSearcherSlots();
-
-    return slots.map((slot) => {
+    const slotsWithoutAll = slots.filter(
+      (slot) => slot.analyzer.name !== "all",
+    );
+    return slotsWithoutAll.map((slot) => {
       const searcher = slot.analyzer;
       if (this.command.type in this.searcherMap) {
         const fn = this.searcherMap[this.command.type];
