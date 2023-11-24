@@ -9,7 +9,6 @@ const Response = z.object({
 
 const ErrorResponse = z.object({
   message: z.string(),
-  description: z.string(),
   status: z.number(),
 });
 
