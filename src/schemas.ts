@@ -1,8 +1,8 @@
 import { z } from "zod";
 
 export const OptionsSchema = z.object({
-  enableIDN: z.boolean().default(true),
-  strictTLD: z.boolean().default(true),
+  enableIDN: z.boolean().default(false),
+  strictTLD: z.boolean().default(false),
   enableRefang: z.boolean().default(true),
   enableDebugLog: z.boolean().default(false),
   preferHrefValue: z.boolean().default(true),
