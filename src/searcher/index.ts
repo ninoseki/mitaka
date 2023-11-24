@@ -9,7 +9,6 @@ import {
   BGPView,
   BinaryEdge,
   BitcoinAbuse,
-  BitcoinWhosWho,
   BlockChain,
   Blockchair,
   BlockCypher,
@@ -77,7 +76,6 @@ export { ArchiveToday } from "./archivetoday";
 export { BGPView } from "./bgpview";
 export { BinaryEdge } from "./binaryedge";
 export { BitcoinAbuse } from "./bitcoinabuse";
-export { BitcoinWhosWho } from "./bitcoinwhoswho";
 export { BlockChain } from "./blockchain";
 export { Blockchair } from "./blockchair";
 export { BlockCypher } from "./blockcypher";
@@ -153,7 +151,6 @@ export const Searchers: Searcher[] = [
   new BGPView(),
   new BinaryEdge(),
   new BitcoinAbuse(),
-  new BitcoinWhosWho(),
   new BlockChain(),
   new Blockchair(),
   new BlockCypher(),
