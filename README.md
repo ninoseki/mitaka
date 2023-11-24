@@ -52,7 +52,6 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | BGPView              | https://bgpview.io                     | IP, ASN                                                              |
 | BinaryEdge           | https://app.binaryedge.io              | IP, domain                                                           |
 | BitcoinAbuse         | https://www.bitcoinabuse.com           | BTC                                                                  |
-| BitcoinWhosWhos      | https://bitcoinwhoswho.com             | BTC                                                                  |
 | Blockchain.com       | https://www.blockchain.com             | BTC                                                                  |
 | Blockchair           | https://blockchair.com                 | BTC, ETH                                                             |
 | BlockCypher          | https://live.blockcypher.com           | BTC                                                                  |
