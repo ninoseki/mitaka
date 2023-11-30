@@ -105,6 +105,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | VirusTotal           | https://www.virustotal.com             | IP, domain, URL, hash                                                |
 | VMRay                | https://www.vmray.com                  | Hash                                                                 |
 | Vulmon               | https://vulmon.com                     | CVE                                                                  |
+| WebCheck             | https://web-check.xyz                  | Domain                                                               |
 | X-Force Exchange     | https://exchange.xforce.ibmcloud.com   | IP, domain, hash                                                     |
 | ZoomEye              | https://www.zoomeye.org                | IP                                                                   |
 

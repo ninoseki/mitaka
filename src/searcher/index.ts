@@ -65,6 +65,7 @@ import {
   Vulmon,
   XForceExchange,
   ZoomEye,
+  WebCheck,
 } from "./index";
 
 export { AbuseIPDB } from "./abuseipdb";
@@ -81,6 +82,7 @@ export { Blockchair } from "./blockchair";
 export { BlockCypher } from "./blockcypher";
 export { Censys } from "./censys";
 export { CheckPhish } from "./checkphish";
+export { Coalition } from "./coalition";
 export { Crtsh } from "./crtsh";
 export { DNSlytics } from "./dnslytics";
 export { DomainBigData } from "./domainbigdata";
@@ -135,9 +137,9 @@ export { VirusTotal } from "./virustotal";
 export { VMRay } from "./vmray";
 export { Vulmon } from "./vulmon";
 export { VxCube } from "./vxcube";
+export { WebCheck } from "./webcheck";
 export { XForceExchange } from "./xforceExchange";
 export { ZoomEye } from "./zoomeye";
-export { Coalition } from "./coalition";
 
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),
@@ -204,4 +206,5 @@ export const Searchers: Searcher[] = [
   new Vulmon(),
   new XForceExchange(),
   new ZoomEye(),
+  new WebCheck(),
 ];
