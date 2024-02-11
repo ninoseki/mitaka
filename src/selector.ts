@@ -138,14 +138,30 @@ export class Selector {
     return this.input.includes(".");
   }
 
-  private getSearchFucWrappers(): SearchFuncWrapper[] {
+  private getSearchFuncWrappers(): SearchFuncWrapper[] {
     if (this.isPossibleNetworkIndicator()) {
-      return [
-        { type: "url", func: (this.getURL = this.getURL.bind(this)) },
-        { type: "email", func: (this.getEmail = this.getEmail.bind(this)) },
+      const wrappers: SearchFuncWrapper[] = [];
+
+      if (this.input.includes("http")) {
+        wrappers.push({
+          type: "url",
+          func: (this.getURL = this.getURL.bind(this)),
+        });
+      }
+
+      if (this.input.includes("@")) {
+        wrappers.push({
+          type: "email",
+          func: (this.getEmail = this.getEmail.bind(this)),
+        });
+      }
+
+      wrappers.push(
         { type: "domain", func: (this.getDomain = this.getDomain.bind(this)) },
         { type: "ip", func: (this.getIP = this.getIP.bind(this)) },
-      ];
+      );
+
+      return wrappers;
     }
 
     return [
@@ -163,11 +179,10 @@ export class Selector {
   }
 
   public getSearcherSlots(): SelectorSlot[] {
-    const wrappers = this.getSearchFucWrappers();
+    const wrappers = this.getSearchFuncWrappers();
 
     for (const wrapper of wrappers) {
       const type = wrapper.type;
-
       const query: string | null = wrapper.func.apply(this);
       if (query) {
         const searchers = this.getSearchersByType(type);
