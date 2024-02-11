@@ -1,7 +1,7 @@
 {
   "name": "mitaka",
   "displayName": "Mitaka",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "A browser extension for searching IP, domain, URL, hash, etc. via the context menu.",
   "scripts": {
     "lint": "eslint --ext .js,.vue,.ts --ignore-path .gitignore --fix src --fix tests",
