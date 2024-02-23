@@ -18,13 +18,13 @@ import {
 } from "ioc-extractor";
 
 import { Scanners } from "~/scanner";
-import { OptionsSchema, type OptionsType } from "~/schemas";
+import { OptionsSchema } from "~/schemas";
+import type { OptionsType, SearchableType } from "~/schemas";
 import { All, Searchers } from "~/searcher";
 import type {
   ScanFuncWrapper,
   ScannableType,
   Scanner,
-  SearchableType,
   Searcher,
   SearchFuncWrapper,
   SelectorSlot,
@@ -162,9 +162,9 @@ export class Selector {
     const wrappers = this.getSearchFuncWrappers();
 
     for (const wrapper of wrappers) {
-      const type = wrapper.type;
       const query: string | null = wrapper.func.apply(this);
       if (query) {
+        const type = wrapper.type;
         const searchers = this.getSearchersByType(type);
         const slots = searchers.map((analyzer) => {
           return {

@@ -38,6 +38,6 @@ if (typeof document !== "undefined") {
     "selectionchange",
     debounce(async () => {
       await onSelectionChange();
-    }, 100),
+    }, 250),
   );
 }
