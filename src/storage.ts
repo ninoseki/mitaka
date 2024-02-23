@@ -1,25 +1,21 @@
-import { OptionsSchema } from "~/schemas";
-import type { Options } from "~/types";
+import { ResultAsync } from "neverthrow";
 
-export async function getOptions(): Promise<Options> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let wrapper: any = {};
-  try {
-    wrapper = await chrome.storage.sync.get("options");
-  } catch (e) {
-    console.error(e);
-  }
+import { OptionsSchema, type OptionsType } from "~/schemas";
 
-  const options = (() => {
-    if (wrapper) {
-      return wrapper["options"] || {};
-    }
-    return {};
-  })();
+export async function getOptions(): Promise<OptionsType> {
+  const _getOptions = async () => {
+    return (await chrome.storage.sync.get("options"))["options"];
+  };
 
+  const result = ResultAsync.fromPromise(
+    _getOptions(),
+    () => new Error("Storage error"),
+  );
+
+  const options = await result.unwrapOr({});
   return OptionsSchema.parse(options);
 }
 
-export async function setOptions(options: Options): Promise<void> {
+export async function setOptions(options: OptionsType): Promise<void> {
   await chrome.storage.sync.set({ options });
 }

@@ -1,13 +1,14 @@
-import { throttle } from "@github/mini-throttle";
+import { debounce } from "@github/mini-throttle";
 
 import { getOptions } from "~/storage";
-import type { Message } from "~/types";
 
 export {};
 
 export async function onSelectionChange(): Promise<void> {
+  const options = await getOptions();
+
   const selection = window.getSelection();
-  const text: string = selection ? selection.toString().trim() : "";
+  const selectionText = selection ? selection.toString().trim() : null;
   let link: string | null = null;
 
   if (selection && selection.rangeCount > 0) {
@@ -17,31 +18,26 @@ export async function onSelectionChange(): Promise<void> {
     }
   }
 
-  const selected: string = link || text;
+  const text = ((): string => {
+    if (options.href && link) {
+      return link;
+    }
+    return selectionText || "";
+  })();
 
-  if (selected !== "") {
-    const message: Message = {
-      link: link,
-      text: text,
-    };
-    await chrome.runtime.sendMessage(message);
-  }
-
-  const options = await getOptions();
-  if (options.enableDebugLog) {
-    console.debug(`Mitaka: selected = ${selected}`);
+  if (text !== "") {
+    if (options.debug) {
+      console.debug(`Mitaka: "${text}" selected`);
+    }
+    await chrome.runtime.sendMessage({ text, options });
   }
 }
 
 if (typeof document !== "undefined") {
   document.addEventListener(
     "selectionchange",
-    throttle(
-      async () => {
-        await onSelectionChange();
-      },
-      250,
-      { middle: false },
-    ),
+    debounce(async () => {
+      await onSelectionChange();
+    }, 250),
   );
 }

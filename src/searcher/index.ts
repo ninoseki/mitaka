@@ -14,8 +14,8 @@ import {
   BlockCypher,
   Censys,
   CheckPhish,
-  Crtsh,
   Coalition,
+  Crtsh,
   DNSlytics,
   DomainTools,
   EmailRep,
@@ -62,9 +62,9 @@ import {
   VirusTotal,
   VMRay,
   Vulmon,
+  WebCheck,
   XForceExchange,
   ZoomEye,
-  WebCheck,
 } from "./index";
 
 export { AbuseIPDB } from "./abuseipdb";

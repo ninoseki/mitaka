@@ -1,6 +1,8 @@
-import type { SearchableType, Searcher } from "~/types";
+import { err, ok, Result } from "neverthrow";
+
+import type { SearchableType } from "~/schemas";
+import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
-import { ok, err, Result } from "neverthrow";
 
 export class InQuest implements Searcher {
   public baseURL: string;

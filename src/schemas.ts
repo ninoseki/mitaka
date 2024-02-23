@@ -1,11 +1,16 @@
 import { z } from "zod";
 
-export const OptionsSchema = z.object({
-  enableIDN: z.boolean().default(false),
-  strictTLD: z.boolean().default(false),
-  enableRefang: z.boolean().default(true),
-  enableDebugLog: z.boolean().default(false),
-  preferHrefValue: z.boolean().default(true),
+export const SelectorOptionsSchema = z.object({
+  strict: z.boolean().default(false),
+  refang: z.boolean().default(true),
+  punycode: z.boolean().default(false),
+  debug: z.boolean().default(false),
+});
+
+export type SelectorOptionsType = z.infer<typeof SelectorOptionsSchema>;
+
+export const OptionsSchema = SelectorOptionsSchema.extend({
+  href: z.boolean().default(true),
   disabledSearcherNames: z.array(z.string()).default([]),
   disabledScannerNames: z.array(z.string()).default([]),
   hybridAnalysisAPIKey: z.string().optional(),
@@ -13,7 +18,9 @@ export const OptionsSchema = z.object({
   virusTotalAPIKey: z.string().optional(),
 });
 
-export const SearchableType = z.union([
+export type OptionsType = z.infer<typeof OptionsSchema>;
+
+export const Searchable = z.union([
   z.literal("asn"),
   z.literal("btc"),
   z.literal("cve"),
@@ -26,12 +33,14 @@ export const SearchableType = z.union([
   z.literal("ip"),
   z.literal("url"),
 ]);
+export type SearchableType = z.infer<typeof Searchable>;
 
 export const CommandAction = z.union([z.literal("scan"), z.literal("search")]);
+export type CommandActionType = z.infer<typeof CommandAction>;
 
 export const CommandSchema = z.object({
   action: CommandAction,
   query: z.string(),
-  type: SearchableType,
+  type: Searchable,
   name: z.string(),
 });

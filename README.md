@@ -12,7 +12,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 ![demo](./images/demo.gif)
 
 - Key features:
-  - Auto IoC (indicators of compromise) selection with refang.
+  - Auto IoC (indicators of compromise) selection with refanging.
     - E.g. `example[.]com` to `example.com`, `test[at]example.com` to `test@example.com`, `hxxp://example.com` to `http://example.com`, etc.
   - Supports 65+ services.
 
@@ -24,7 +24,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 
 ## Features
 
-### Supported IoCs (indicators of compromise)
+### Supported IoCs (Indicators of Compromise)
 
 | Name      | Desc.                       | E.g.                                         |
 | :-------- | :-------------------------- | :------------------------------------------- |
@@ -40,7 +40,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | IP        | IPv4 address                | `8.8.8.8`                                    |
 | URL       | URL                         | `https://github.com`                         |
 
-### Supported search engines
+### Supported Search Engines
 
 | Name                 | URL                                    | Supported types                                                      |
 | :------------------- | :------------------------------------- | :------------------------------------------------------------------- |
@@ -108,7 +108,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | X-Force Exchange     | https://exchange.xforce.ibmcloud.com   | IP, domain, hash                                                     |
 | ZoomEye              | https://www.zoomeye.org                | IP                                                                   |
 
-### Supported scan engines
+### Supported Scan Engines
 
 | name           | url                             | supported types |
 | :------------- | :------------------------------ | :-------------- |
@@ -117,7 +117,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | urlscan.io     | https://urlscan.io              | IP, domain, URL |
 | VirusTotal     | https://www.virustotal.com      | URL             |
 
-## How to use
+## How To Use
 
 - [Use Mitaka to Perform In-Browser OSINT to Identify Malware, Sketchy Sites, Shady Emails & More](https://null-byte.wonderhowto.com/how-to/use-mitaka-perform-browser-osint-identify-malware-sketchy-sites-shady-emails-more-0216352/)
 
@@ -131,8 +131,8 @@ You can enable / disable a search engine on the options page based on your prefe
 
 ## Permissions
 
-> **Note**
-> I don't (and will never) collect any information from the users. You can verify it by reviewing the source code.
+> [!NOTE]
+> I don't and will never collect any information from the users. You can verify it by reviewing the source code.
 
 ### Firefox
 
@@ -146,8 +146,8 @@ Please allow "Access your data for all websites" permission. Otherwise this exte
 
 ## Common Questions
 
-- Q. The context menu is not being shown.
-  - A. Sometimes it takes time to show the context menu in Chrome. Please wait for a second after selecting. Then the context menu will show.
+- Q. The context menu is not displayed.
+  - A. Sometimes it takes a while for the context menus to appear. Or something goes wrong while refreshing the context menus. This glitch can be solved by waiting for a second. Please take a breath after selecting and then right-click.
 
 ## Alternatives or Similar Tools
 

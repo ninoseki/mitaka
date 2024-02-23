@@ -219,14 +219,10 @@ describe("Selector", function () {
 
   describe("without refang", function () {
     const ip = "1[.]1.1.1";
-
     const selector: Selector = new Selector(ip, {
-      enableIDN: true,
-      strictTLD: true,
-      enableRefang: false,
-      enableDebugLog: false,
-      disabledSearcherNames: [],
+      refang: false,
       disabledScannerNames: [],
+      disabledSearcherNames: [],
     });
 
     describe("#getIP", function () {
