@@ -1,4 +1,5 @@
-import { Result, ok } from "neverthrow";
+import { ok, Result } from "neverthrow";
+
 import type { ScannableType, Scanner } from "~/types";
 import { buildURL } from "~/utils";
 

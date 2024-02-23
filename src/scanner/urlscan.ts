@@ -1,7 +1,7 @@
+import { err, ok, Result } from "neverthrow";
 import { z } from "zod";
 
 import type { ScannableType, Scanner } from "~/types";
-import { ok, err, Result } from "neverthrow";
 
 const Response = z.object({
   result: z.string(),

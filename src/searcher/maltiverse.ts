@@ -1,6 +1,7 @@
 import { sha256 } from "js-sha256";
 
-import type { SearchableType, Searcher } from "~/types";
+import type { SearchableType } from "~/schemas";
+import type { Searcher } from "~/types";
 
 export class Maltiverse implements Searcher {
   public baseURL: string;

@@ -1,17 +1,6 @@
 import { Result } from "neverthrow";
 
-export type SearchableType =
-  | "asn"
-  | "btc"
-  | "cve"
-  | "domain"
-  | "email"
-  | "eth"
-  | "gaPubID"
-  | "gaTrackID"
-  | "hash"
-  | "ip"
-  | "url";
+import type { CommandActionType, OptionsType, SearchableType } from "~/schemas";
 
 export const SEARCHABLE_TYPES: SearchableType[] = [
   "asn",
@@ -79,8 +68,8 @@ export interface SelectorSlot {
 }
 
 export interface Message {
-  link: string | null;
   text: string;
+  options: OptionsType;
 }
 
 export interface SearcherMap {
@@ -94,10 +83,8 @@ export interface ScannerMap {
   ) => Promise<Result<string, string>>;
 }
 
-export type CommandAction = "scan" | "search";
-
 export interface Command {
-  action: CommandAction;
+  action: CommandActionType;
   query: string;
   type: SearchableType;
   name: string;
@@ -106,19 +93,3 @@ export interface Command {
 export const MD5_LENGTH = 32;
 export const SHA1_LENGTH = 40;
 export const SHA256_LENGTH = 64;
-
-export interface SelectorOptions {
-  enableIDN: boolean;
-  strictTLD: boolean;
-  enableRefang: boolean;
-  enableDebugLog: boolean;
-  disabledSearcherNames: string[];
-  disabledScannerNames: string[];
-}
-
-export interface Options extends SelectorOptions {
-  preferHrefValue: boolean;
-  hybridAnalysisAPIKey?: string;
-  urlscanAPIKey?: string;
-  virusTotalAPIKey?: string;
-}

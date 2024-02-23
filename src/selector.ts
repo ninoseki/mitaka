@@ -14,9 +14,11 @@ import {
   extractURL,
   extractXMR,
   refang,
+  unicodeToASCII,
 } from "ioc-extractor";
 
 import { Scanners } from "~/scanner";
+import { OptionsSchema, type OptionsType } from "~/schemas";
 import { All, Searchers } from "~/searcher";
 import type {
   ScanFuncWrapper,
@@ -25,35 +27,33 @@ import type {
   SearchableType,
   Searcher,
   SearchFuncWrapper,
-  SelectorOptions,
   SelectorSlot,
 } from "~/types";
 
 export class Selector {
   protected input: string;
-  protected options: SelectorOptions;
+  protected options: OptionsType;
 
   protected scanners: Scanner[];
   protected searchers: Searcher[];
 
   public constructor(
     input: string,
-    options: SelectorOptions = {
-      enableIDN: true,
-      strictTLD: true,
-      enableRefang: true,
-      enableDebugLog: true,
-      disabledSearcherNames: [],
-      disabledScannerNames: [],
-    },
+    options: OptionsType = OptionsSchema.parse({}),
   ) {
-    this.input = options.enableRefang ? refang(input) : input;
-    this.options = options;
+    let normalized = options.refang ? refang(input) : input;
+    normalized = options.punycode
+      ? unicodeToASCII(normalized, {
+          ignoreInvalidPunycode: true,
+          transitionalProcessing: true,
+        })
+      : normalized;
 
+    this.input = normalized;
+    this.options = options;
     this.searchers = Searchers.filter(
       (s) => !this.options.disabledSearcherNames.includes(s.name),
     );
-
     this.scanners = Scanners.filter(
       (s) => !this.options.disabledScannerNames.includes(s.name),
     );
@@ -134,34 +134,14 @@ export class Selector {
     );
   }
 
-  public isPossibleNetworkIndicator(): boolean {
-    return this.input.includes(".");
-  }
-
   private getSearchFuncWrappers(): SearchFuncWrapper[] {
-    if (this.isPossibleNetworkIndicator()) {
-      const wrappers: SearchFuncWrapper[] = [];
-
-      if (this.input.includes("http")) {
-        wrappers.push({
-          type: "url",
-          func: (this.getURL = this.getURL.bind(this)),
-        });
-      }
-
-      if (this.input.includes("@")) {
-        wrappers.push({
-          type: "email",
-          func: (this.getEmail = this.getEmail.bind(this)),
-        });
-      }
-
-      wrappers.push(
+    if (this.input.includes(".")) {
+      return [
+        { type: "url", func: (this.getURL = this.getURL.bind(this)) },
+        { type: "email", func: (this.getEmail = this.getEmail.bind(this)) },
         { type: "domain", func: (this.getDomain = this.getDomain.bind(this)) },
         { type: "ip", func: (this.getIP = this.getIP.bind(this)) },
-      );
-
-      return wrappers;
+      ];
     }
 
     return [

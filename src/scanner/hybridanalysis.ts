@@ -1,5 +1,5 @@
+import { err, ok, Result } from "neverthrow";
 import { z } from "zod";
-import { ok, err, Result } from "neverthrow";
 
 import type { ScannableType, Scanner } from "~/types";
 

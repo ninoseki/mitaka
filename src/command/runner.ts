@@ -1,7 +1,9 @@
+import { err, ok, Result } from "neverthrow";
+
+import type { OptionsType } from "~/schemas";
 import { Selector } from "~/selector";
 import type {
   Command,
-  Options,
   Scanner,
   ScannerMap,
   Searcher,
@@ -9,13 +11,12 @@ import type {
   SelectorSlot,
 } from "~/types";
 import { isScanner, isSearcher } from "~/utils";
-import { ok, err, Result } from "neverthrow";
 
 export class CommandRunner {
   public command: Command;
-  protected options: Options;
+  protected options: OptionsType;
 
-  public constructor(command: Command, options: Options) {
+  public constructor(command: Command, options: OptionsType) {
     this.command = command;
     this.options = options;
   }
@@ -175,7 +176,6 @@ export class CommandRunner {
     }
 
     const scanner = slot.analyzer;
-
     switch (scanner.name) {
       case "HybridAnalysis":
         scanner.setAPIKey(this.options.hybridAnalysisAPIKey);
