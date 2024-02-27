@@ -1,7 +1,7 @@
 {
   "name": "mitaka",
   "displayName": "Mitaka",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A browser extension for searching IP, domain, URL, hash, etc. via the context menu.",
   "scripts": {
     "lint": "eslint --ext .js,.vue,.ts --ignore-path .gitignore --fix src --fix tests",
@@ -31,19 +31,19 @@
     "js-base64": "^3.7.7",
     "js-sha256": "^0.11.0",
     "neverthrow": "^6.1.0",
-    "vue": "^3.4.19",
+    "vue": "^3.4.20",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
     "@jest/globals": "^29.7.0",
     "@jest/types": "^29.6.3",
-    "@types/chrome": "^0.0.261",
+    "@types/chrome": "^0.0.262",
     "@types/jest": "^29.5.12",
     "@types/js-base64": "3.3.1",
-    "@types/node": "^20.11.20",
-    "@typescript-eslint/eslint-plugin": "7.0.2",
-    "@typescript-eslint/parser": "7.0.2",
+    "@types/node": "^20.11.21",
+    "@typescript-eslint/eslint-plugin": "7.1.0",
+    "@typescript-eslint/parser": "7.1.0",
     "@vue/eslint-config-typescript": "^12.0.0",
     "coveralls": "3.1.1",
     "eslint": "^8.57.0",
