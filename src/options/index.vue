@@ -1,7 +1,7 @@
 <script lang="ts">
 import "bulma/css/bulma.css";
 
-import { defineComponent, onMounted, ref, watchEffect } from "vue";
+import { defineComponent, onMounted, ref, watch } from "vue";
 
 import { Scanners } from "../scanner";
 import type { SearchableType } from "../schemas";
@@ -31,6 +31,8 @@ export default defineComponent({
 
     const searchableType = ref<SearchableType | undefined>(undefined);
     const scannableType = ref<ScannableType | undefined>(undefined);
+
+    const synchedAt = ref<string>();
 
     onMounted(async () => {
       const options = await getOptions();
@@ -109,24 +111,36 @@ export default defineComponent({
       return true;
     };
 
-    watchEffect(async () => {
-      if (!isInitialized.value) {
-        // do nothing if it is not initialized
-        return;
-      }
-      await setOptions({
-        debug: debug.value,
-        strict: strict.value,
-        punycode: punycode.value,
-        refang: refang.value,
-        href: href.value,
-        disabledSearcherNames: disabledSearcherNames.value.map((n) => n),
-        disabledScannerNames: disabledScannerNames.value.map((n) => n),
-        hybridAnalysisAPIKey: hybridAnalysisAPIKey.value,
-        urlscanAPIKey: urlscanAPIKey.value,
-        virusTotalAPIKey: virusTotalAPIKey.value,
-      });
-    });
+    watch(
+      [
+        debug,
+        strict,
+        punycode,
+        refang,
+        href,
+        disabledScannerNames,
+        disabledSearcherNames,
+        hybridAnalysisAPIKey,
+        urlscanAPIKey,
+        virusTotalAPIKey,
+      ],
+      async () => {
+        await setOptions({
+          debug: debug.value,
+          strict: strict.value,
+          punycode: punycode.value,
+          refang: refang.value,
+          href: href.value,
+          disabledSearcherNames: disabledSearcherNames.value.map((n) => n),
+          disabledScannerNames: disabledScannerNames.value.map((n) => n),
+          hybridAnalysisAPIKey: hybridAnalysisAPIKey.value,
+          urlscanAPIKey: urlscanAPIKey.value,
+          virusTotalAPIKey: virusTotalAPIKey.value,
+        });
+
+        synchedAt.value = new Date().toISOString();
+      },
+    );
 
     return {
       debug,
@@ -153,6 +167,7 @@ export default defineComponent({
       isSelectedSearcher,
       selectScannableType,
       selectSearchableType,
+      synchedAt,
     };
   },
 });
@@ -166,10 +181,15 @@ export default defineComponent({
           <span class="navbar-item title">Mitaka</span>
         </div>
         <div class="navbar-menu">
-          <div class="navbar-end">
+          <div class="navbar-start">
             <a class="navbar-item" href="#general"> General </a>
             <a class="navbar-item" href="#scanners"> Scanners </a>
             <a class="navbar-item" href="#searchers"> Searchers </a>
+          </div>
+          <div class="navbar-end">
+            <span class="navbar-item help" v-if="synchedAt">
+              (Synced at: {{ synchedAt }})
+            </span>
           </div>
         </div>
       </nav>
