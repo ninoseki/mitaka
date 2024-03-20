@@ -1,10 +1,10 @@
 <script lang="ts">
 import "bulma/css/bulma.css";
 
-import { defineComponent, onMounted, ref, watch } from "vue";
+import { defineComponent, onMounted, reactive, ref, watch } from "vue";
 
 import { Scanners } from "../scanner";
-import type { SearchableType } from "../schemas";
+import type { OptionsType, SearchableType } from "../schemas";
 import { Searchers } from "../searcher";
 import { getOptions, setOptions } from "../storage";
 import type { ScannableType, Scanner, Searcher } from "../types";
@@ -15,69 +15,56 @@ export default defineComponent({
   name: "OptionsView",
   setup() {
     const isInitialized = ref(false);
-
-    const debug = ref(false);
-    const href = ref(true);
-    const punycode = ref(false);
-    const refang = ref(true);
-    const strict = ref(true);
-
-    const hybridAnalysisAPIKey = ref<string | undefined>(undefined);
-    const urlscanAPIKey = ref<string | undefined>(undefined);
-    const virusTotalAPIKey = ref<string | undefined>(undefined);
-
-    const disabledSearcherNames = ref<string[]>([]);
-    const disabledScannerNames = ref<string[]>([]);
+    const synchedAt = ref<string>();
 
     const searchableType = ref<SearchableType | undefined>(undefined);
     const scannableType = ref<ScannableType | undefined>(undefined);
 
-    const synchedAt = ref<string>();
+    const options = reactive<OptionsType>({
+      debug: false,
+      href: true,
+      punycode: false,
+      refang: true,
+      strict: true,
+      hybridAnalysisAPIKey: undefined,
+      urlscanAPIKey: undefined,
+      virusTotalAPIKey: undefined,
+      disabledScannerNames: [],
+      disabledSearcherNames: [],
+    });
 
     onMounted(async () => {
-      const options = await getOptions();
-
-      debug.value = options.debug;
-      href.value = options.href;
-      punycode.value = options.punycode;
-      refang.value = options.refang;
-      strict.value = options.strict;
-
-      hybridAnalysisAPIKey.value = options.hybridAnalysisAPIKey;
-      urlscanAPIKey.value = options.urlscanAPIKey;
-      virusTotalAPIKey.value = options.virusTotalAPIKey;
-
-      disabledSearcherNames.value = options.disabledSearcherNames;
-      disabledScannerNames.value = options.disabledScannerNames;
+      const storageOptions = await getOptions();
+      Object.assign(options, { ...storageOptions });
 
       isInitialized.value = true;
     });
 
     const isEnabledSearcher = (name: string): boolean => {
-      return !disabledSearcherNames.value.includes(name);
+      return !options.disabledSearcherNames.includes(name);
     };
 
     const isEnabledScanner = (name: string): boolean => {
-      return !disabledScannerNames.value.includes(name);
+      return !options.disabledScannerNames.includes(name);
     };
 
     const disableOrEnableSearcher = (name: string): void => {
-      if (disabledSearcherNames.value.includes(name)) {
-        disabledSearcherNames.value = disabledSearcherNames.value.filter(
+      if (options.disabledSearcherNames.includes(name)) {
+        options.disabledSearcherNames = options.disabledSearcherNames.filter(
           (n) => n !== name,
         );
       } else {
-        disabledSearcherNames.value.push(name);
+        options.disabledSearcherNames.push(name);
       }
     };
 
     const disableOrEnableScanner = (name: string): void => {
-      if (disabledScannerNames.value.includes(name)) {
-        disabledScannerNames.value = disabledScannerNames.value.filter(
+      if (options.disabledScannerNames.includes(name)) {
+        options.disabledScannerNames = options.disabledScannerNames.filter(
           (n) => n !== name,
         );
       } else {
-        disabledScannerNames.value.push(name);
+        options.disabledScannerNames.push(name);
       }
     };
 
@@ -111,53 +98,20 @@ export default defineComponent({
       return true;
     };
 
-    watch(
-      [
-        debug,
-        strict,
-        punycode,
-        refang,
-        href,
-        disabledScannerNames,
-        disabledSearcherNames,
-        hybridAnalysisAPIKey,
-        urlscanAPIKey,
-        virusTotalAPIKey,
-      ],
-      async () => {
-        await setOptions({
-          debug: debug.value,
-          strict: strict.value,
-          punycode: punycode.value,
-          refang: refang.value,
-          href: href.value,
-          disabledSearcherNames: disabledSearcherNames.value.map((n) => n),
-          disabledScannerNames: disabledScannerNames.value.map((n) => n),
-          hybridAnalysisAPIKey: hybridAnalysisAPIKey.value,
-          urlscanAPIKey: urlscanAPIKey.value,
-          virusTotalAPIKey: virusTotalAPIKey.value,
-        });
-
-        synchedAt.value = new Date().toISOString();
-      },
-    );
+    watch(options, async () => {
+      await setOptions(options);
+      synchedAt.value = new Date().toISOString();
+    });
 
     return {
-      debug,
-      href,
-      hybridAnalysisAPIKey,
+      options,
       isInitialized,
-      punycode,
-      refang,
       SCANNABLE_TYPES,
       scannableType,
       Scanners,
       SEARCHABLE_TYPES,
       searchableType,
       Searchers,
-      strict,
-      urlscanAPIKey,
-      virusTotalAPIKey,
       disableOrEnableScanner,
       disableOrEnableSearcher,
       getFaviconURL,
@@ -203,7 +157,7 @@ export default defineComponent({
                 <p class="help">Whether to do strict TLD matching or not.</p>
               </div>
               <div class="control">
-                <input type="checkbox" v-model="strict" />
+                <input type="checkbox" v-model="options.strict" />
               </div>
             </div>
             <div class="field has-addons">
@@ -215,7 +169,7 @@ export default defineComponent({
                 <p class="help is-danger">(Punycode conversion can be lossy)</p>
               </div>
               <div class="control">
-                <input type="checkbox" v-model="punycode" />
+                <input type="checkbox" v-model="options.punycode" />
               </div>
             </div>
             <div class="field has-addons mt-1">
@@ -227,7 +181,7 @@ export default defineComponent({
                 </p>
               </div>
               <div class="control">
-                <input type="checkbox" v-model="refang" />
+                <input type="checkbox" v-model="options.refang" />
               </div>
             </div>
             <div class="field has-addons mt-1">
@@ -236,7 +190,7 @@ export default defineComponent({
                 <p class="help">Prefer a href value to a text or not.</p>
               </div>
               <div class="control">
-                <input type="checkbox" v-model="href" />
+                <input type="checkbox" v-model="options.href" />
               </div>
             </div>
             <div class="field has-addons mt-1">
@@ -245,7 +199,7 @@ export default defineComponent({
                 <p class="help">Whether to enable debug logs or not.</p>
               </div>
               <div class="control">
-                <input type="checkbox" v-model="debug" />
+                <input type="checkbox" v-model="options.debug" />
               </div>
             </div>
           </div>
@@ -313,21 +267,21 @@ export default defineComponent({
                   <input
                     type="text"
                     class="input"
-                    v-model="virusTotalAPIKey"
+                    v-model="options.virusTotalAPIKey"
                     placeholder="VirusTotal API key"
                     v-if="scanner.name === 'VirusTotal'"
                   />
                   <input
                     type="text"
                     class="input"
-                    v-model="urlscanAPIKey"
+                    v-model="options.urlscanAPIKey"
                     placeholder="urlscan.io key"
                     v-if="scanner.name === 'urlscan.io'"
                   />
                   <input
                     type="text"
                     class="input"
-                    v-model="hybridAnalysisAPIKey"
+                    v-model="options.hybridAnalysisAPIKey"
                     placeholder="HybridAnalysis API key"
                     v-if="scanner.name === 'HybridAnalysis'"
                   />
