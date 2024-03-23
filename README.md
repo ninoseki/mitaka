@@ -66,6 +66,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | FortiGuard           | https://fortiguard.com                 | IP, URL, CVE                                                         |
 | Google Safe Browsing | https://transparencyreport.google.com  | Domain, URL                                                          |
 | GreyNoise            | https://viz.greynoise.io               | IP, domain, ASN, CVE                                                 |
+| Host.io              | https://host.io                        | Domain                                                               |
 | Hurricane Electric   | https://bgp.he.net/                    | IP, domain, ASN                                                      |
 | HybridAnalysis       | https://www.hybrid-analysis.com        | IP, domain, hash                                                     |
 | Intezer              | https://analyze.intezer.com            | Hash                                                                 |
