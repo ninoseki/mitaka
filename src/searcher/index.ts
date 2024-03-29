@@ -24,7 +24,7 @@ import {
   FortiGuard,
   GoogleSafeBrowsing,
   GreyNoise,
-  Hostio,
+  Host,
   HurricaneElectric,
   HybridAnalysis,
   InQuest,
@@ -94,7 +94,7 @@ export { FOFA } from "./fofa";
 export { FortiGuard } from "./fortiguard";
 export { GoogleSafeBrowsing } from "./googlesafebrowsing";
 export { GreyNoise } from "./greynoise";
-export { Hostio } from "./hostio";
+export { Host } from "./host";
 export { HurricaneElectric } from "./hurricaneelectric";
 export { HybridAnalysis } from "./hybridanalysis";
 export { InQuest } from "./inquest";
@@ -165,7 +165,7 @@ export const Searchers: Searcher[] = [
   new FortiGuard(),
   new GoogleSafeBrowsing(),
   new GreyNoise(),
-  new Hostio(),
+  new Host(),
   new HurricaneElectric(),
   new HybridAnalysis(),
   new InQuest(),
