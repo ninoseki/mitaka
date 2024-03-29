@@ -42,4 +42,4 @@ jobs:
       - name: Install npm dependencies
         run: npm install
       - name: Run lint
-        run: npm run lint
+        run: npx eslint --ext .js,.vue,.ts --ignore-path .gitignore src tests
