@@ -1,7 +1,13 @@
-<script lang="ts">
+<script>
+export default {
+  name: "IndexView",
+};
+</script>
+
+<script setup lang="ts">
 import "bulma/css/bulma.css";
 
-import { defineComponent, onMounted, reactive, ref, watch } from "vue";
+import { onMounted, reactive, ref, watch } from "vue";
 
 import { Scanners } from "../scanner";
 import type { OptionsType, SearchableType } from "../schemas";
@@ -11,119 +17,96 @@ import type { ScannableType, Scanner, Searcher } from "../types";
 import { SCANNABLE_TYPES, SEARCHABLE_TYPES } from "../types";
 import { getFaviconURL } from "../utils";
 
-export default defineComponent({
-  name: "OptionsView",
-  setup() {
-    const isInitialized = ref(false);
-    const synchedAt = ref<string>();
+const isInitialized = ref(false);
+const synchedAt = ref<string>();
 
-    const searchableType = ref<SearchableType | undefined>(undefined);
-    const scannableType = ref<ScannableType | undefined>(undefined);
+const searchableType = ref<SearchableType | undefined>(undefined);
+const scannableType = ref<ScannableType | undefined>(undefined);
 
-    const options = reactive<OptionsType>({
-      debug: false,
-      href: true,
-      punycode: false,
-      refang: true,
-      strict: true,
-      hybridAnalysisAPIKey: undefined,
-      urlscanAPIKey: undefined,
-      virusTotalAPIKey: undefined,
-      disabledScannerNames: [],
-      disabledSearcherNames: [],
-    });
+const options = reactive<OptionsType>({
+  debug: false,
+  href: true,
+  punycode: false,
+  refang: true,
+  strict: true,
+  hybridAnalysisAPIKey: undefined,
+  urlscanAPIKey: undefined,
+  virusTotalAPIKey: undefined,
+  disabledScannerNames: [],
+  disabledSearcherNames: [],
+});
 
-    onMounted(async () => {
-      const storageOptions = await getOptions();
-      Object.assign(options, { ...storageOptions });
+onMounted(async () => {
+  const storageOptions = await getOptions();
+  Object.assign(options, { ...storageOptions });
+});
 
-      isInitialized.value = true;
-    });
+const isEnabledSearcher = (name: string): boolean => {
+  return !options.disabledSearcherNames.includes(name);
+};
 
-    const isEnabledSearcher = (name: string): boolean => {
-      return !options.disabledSearcherNames.includes(name);
-    };
+const isEnabledScanner = (name: string): boolean => {
+  return !options.disabledScannerNames.includes(name);
+};
 
-    const isEnabledScanner = (name: string): boolean => {
-      return !options.disabledScannerNames.includes(name);
-    };
+const disableOrEnableSearcher = (name: string): void => {
+  if (options.disabledSearcherNames.includes(name)) {
+    options.disabledSearcherNames = options.disabledSearcherNames.filter(
+      (n) => n !== name,
+    );
+  } else {
+    options.disabledSearcherNames.push(name);
+  }
+};
 
-    const disableOrEnableSearcher = (name: string): void => {
-      if (options.disabledSearcherNames.includes(name)) {
-        options.disabledSearcherNames = options.disabledSearcherNames.filter(
-          (n) => n !== name,
-        );
-      } else {
-        options.disabledSearcherNames.push(name);
-      }
-    };
+const disableOrEnableScanner = (name: string): void => {
+  if (options.disabledScannerNames.includes(name)) {
+    options.disabledScannerNames = options.disabledScannerNames.filter(
+      (n) => n !== name,
+    );
+  } else {
+    options.disabledScannerNames.push(name);
+  }
+};
 
-    const disableOrEnableScanner = (name: string): void => {
-      if (options.disabledScannerNames.includes(name)) {
-        options.disabledScannerNames = options.disabledScannerNames.filter(
-          (n) => n !== name,
-        );
-      } else {
-        options.disabledScannerNames.push(name);
-      }
-    };
+const selectSearchableType = (selected: SearchableType): void => {
+  if (selected === searchableType.value) {
+    searchableType.value = undefined;
+  } else {
+    searchableType.value = selected;
+  }
+};
 
-    const selectSearchableType = (selected: SearchableType): void => {
-      if (selected === searchableType.value) {
-        searchableType.value = undefined;
-      } else {
-        searchableType.value = selected;
-      }
-    };
+const selectScannableType = (selected: ScannableType): void => {
+  if (selected === scannableType.value) {
+    scannableType.value = undefined;
+  } else {
+    scannableType.value = selected;
+  }
+};
 
-    const selectScannableType = (selected: ScannableType): void => {
-      if (selected === scannableType.value) {
-        scannableType.value = undefined;
-      } else {
-        scannableType.value = selected;
-      }
-    };
+const isSelectedSearcher = (searcher: Searcher): boolean => {
+  if (searchableType.value) {
+    return searcher.supportedTypes.includes(searchableType.value);
+  }
+  return true;
+};
 
-    const isSelectedSearcher = (searcher: Searcher): boolean => {
-      if (searchableType.value) {
-        return searcher.supportedTypes.includes(searchableType.value);
-      }
-      return true;
-    };
+const isSelectedScanner = (scanner: Scanner): boolean => {
+  if (scannableType.value) {
+    return scanner.supportedTypes.includes(scannableType.value);
+  }
+  return true;
+};
 
-    const isSelectedScanner = (scanner: Scanner): boolean => {
-      if (scannableType.value) {
-        return scanner.supportedTypes.includes(scannableType.value);
-      }
-      return true;
-    };
+watch(options, async (newOptions) => {
+  // don't sync for the first time (this event is invoked through onMounted)
+  if (isInitialized.value) {
+    await setOptions(newOptions);
+  }
 
-    watch(options, async () => {
-      await setOptions(options);
-      synchedAt.value = new Date().toISOString();
-    });
-
-    return {
-      options,
-      isInitialized,
-      SCANNABLE_TYPES,
-      scannableType,
-      Scanners,
-      SEARCHABLE_TYPES,
-      searchableType,
-      Searchers,
-      disableOrEnableScanner,
-      disableOrEnableSearcher,
-      getFaviconURL,
-      isEnabledScanner,
-      isEnabledSearcher,
-      isSelectedScanner,
-      isSelectedSearcher,
-      selectScannableType,
-      selectSearchableType,
-      synchedAt,
-    };
-  },
+  synchedAt.value = new Date().toISOString();
+  isInitialized.value = true;
 });
 </script>
 
@@ -141,7 +124,7 @@ export default defineComponent({
             <a class="navbar-item" href="#searchers"> Searchers </a>
           </div>
           <div class="navbar-end">
-            <span class="navbar-item help" v-if="synchedAt">
+            <span class="navbar-item" v-if="synchedAt">
               (Synced at: {{ synchedAt }})
             </span>
           </div>
