@@ -1,3 +1,9 @@
+<script>
+export default {
+  name: "IndexView",
+};
+</script>
+
 <script setup lang="ts">
 import "bulma/css/bulma.css";
 
