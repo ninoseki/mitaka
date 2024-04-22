@@ -1,8 +1,11 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class IntelligenceX implements Searcher {
+import { Base } from "./base";
+
+export class IntelligenceX extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = [
@@ -14,31 +17,32 @@ export class IntelligenceX implements Searcher {
   ];
 
   public constructor() {
+    super();
     this.baseURL = "https://intelx.io";
     this.name = "IntelligenceX";
   }
 
-  public searchByIP(query: string): string {
+  public searchByIP(query: string) {
     return this.search(query);
   }
 
-  public searchByDomain(query: string): string {
+  public searchByDomain(query: string) {
     return this.search(query);
   }
 
-  public searchByURL(query: string): string {
+  public searchByURL(query: string) {
     return this.search(query);
   }
 
-  public searchByEmail(query: string): string {
+  public searchByEmail(query: string) {
     return this.search(query);
   }
 
-  public searchByBTC(query: string): string {
+  public searchByBTC(query: string) {
     return this.search(query);
   }
 
-  private search(query: string): string {
-    return buildURL(this.baseURL, "/", { s: query });
+  private search(query: string) {
+    return ok(buildURL(this.baseURL, "/", { s: query }));
   }
 }

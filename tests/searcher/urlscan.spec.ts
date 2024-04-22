@@ -10,7 +10,7 @@ describe("Urlscan", function () {
   describe("#searchByURL", function () {
     const url = "https://github.com";
     it("should return a URL", function () {
-      expect(subject.searchByURL(url)).toBe(
+      expect(subject.searchByURL(url)._unsafeUnwrap()).toBe(
         "https://urlscan.io/search/#page.url%3A%22https%3A%2F%2Fgithub.com%22%20OR%20task.url%3A%22https%3A%2F%2Fgithub.com%22",
       );
     });
@@ -19,14 +19,16 @@ describe("Urlscan", function () {
   describe("#searchByIP", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
-      expect(subject.searchByIP(ip)).toBe(`https://urlscan.io/ip/${ip}`);
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
+        `https://urlscan.io/ip/${ip}`,
+      );
     });
   });
 
   describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).toBe(
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
         `https://urlscan.io/domain/${domain}`,
       );
     });
@@ -35,7 +37,9 @@ describe("Urlscan", function () {
   describe("#searchByASN", function () {
     const asn = "AS24940";
     it("should return a URL", function () {
-      expect(subject.searchByASN(asn)).toBe(`https://urlscan.io/asn/${asn}`);
+      expect(subject.searchByASN(asn)._unsafeUnwrap()).toBe(
+        `https://urlscan.io/asn/${asn}`,
+      );
     });
   });
 });

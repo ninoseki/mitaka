@@ -10,7 +10,7 @@ describe("Google Safe Browsing", function () {
   describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).toBe(
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
         `https://transparencyreport.google.com/safe-browsing/search?url=${domain}`,
       );
     });
@@ -19,7 +19,7 @@ describe("Google Safe Browsing", function () {
   describe("#searchByURL", function () {
     const url = "https://github.com";
     it("should return a URL", function () {
-      expect(subject.searchByURL(url)).toBe(
+      expect(subject.searchByURL(url)._unsafeUnwrap()).toBe(
         "https://transparencyreport.google.com/safe-browsing/search?url=https%3A%2F%2Fgithub.com",
       );
     });

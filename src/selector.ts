@@ -167,20 +167,12 @@ export class Selector {
         const type = wrapper.type;
         const searchers = this.getSearchersByType(type);
         const slots = searchers.map((analyzer) => {
-          return {
-            analyzer,
-            type,
-            query,
-          };
+          return { analyzer, type, query };
         });
 
         if (searchers.length > 1) {
           // add "all" searcher if there are searchers more than one
-          slots.push({
-            analyzer: new All(),
-            type,
-            query,
-          });
+          slots.push({ analyzer: new All(), type, query });
         }
 
         return slots;
@@ -204,11 +196,7 @@ export class Selector {
       if (query) {
         const scanners = this.getScannersByType(type);
         return scanners.map((analyzer) => {
-          return {
-            analyzer,
-            type,
-            query,
-          };
+          return { analyzer, type, query };
         });
       }
     }

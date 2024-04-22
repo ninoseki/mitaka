@@ -1,7 +1,9 @@
 import { err, ok, Result } from "neverthrow";
 import { z } from "zod";
 
-import type { ScannableType, Scanner } from "~/types";
+import type { ScannableType } from "~/types";
+
+import { Base } from "./base";
 
 const Response = z.object({
   sha256: z.string(),
@@ -11,14 +13,14 @@ const ErrorResponse = z.object({
   message: z.string(),
 });
 
-export class HybridAnalysis implements Scanner {
+export class HybridAnalysis extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: ScannableType[] = ["url"];
-  public apiKey: string | undefined;
-  public hasAPIKey = true;
+  public apiKey: string | undefined = undefined;
 
   public constructor() {
+    super();
     this.baseURL = "https://www.hybrid-analysis.com";
     this.name = "HybridAnalysis";
   }

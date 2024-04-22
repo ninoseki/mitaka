@@ -10,7 +10,7 @@ describe("ArchiveOrg", function () {
   describe("#searchByURL", function () {
     const url = "https://github.com";
     it("should return a URL", function () {
-      expect(subject.searchByURL(url)).toBe(
+      expect(subject.searchByURL(url)._unsafeUnwrap()).toBe(
         `https://web.archive.org/web/*/${url}`,
       );
     });

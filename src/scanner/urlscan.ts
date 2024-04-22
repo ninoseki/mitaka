@@ -1,7 +1,9 @@
 import { err, ok, Result } from "neverthrow";
 import { z } from "zod";
 
-import type { ScannableType, Scanner } from "~/types";
+import type { ScannableType } from "~/types";
+
+import { Base } from "./base";
 
 const Response = z.object({
   result: z.string(),
@@ -12,14 +14,14 @@ const ErrorResponse = z.object({
   status: z.number(),
 });
 
-export class URLScan implements Scanner {
+export class URLScan extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: ScannableType[] = ["ip", "domain", "url"];
-  public apiKey: string | undefined;
-  public hasAPIKey = true;
+  public apiKey: string | undefined = undefined;
 
   public constructor() {
+    super();
     this.baseURL = "https://urlscan.io";
     this.name = "urlscan.io";
   }

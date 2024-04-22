@@ -16,14 +16,16 @@ describe("Spyse", function () {
   describe("#searchByIP", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
-      expect(subject.searchByIP(ip)).toBe(`https://spyse.com/target/ip/${ip}`);
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
+        `https://spyse.com/target/ip/${ip}`,
+      );
     });
   });
 
   describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).toBe(
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
         `https://spyse.com/target/domain/${domain}`,
       );
     });
@@ -32,7 +34,7 @@ describe("Spyse", function () {
   describe("#searchByASN", function () {
     const asn = "AS13335";
     it("should return a URL", function () {
-      expect(subject.searchByASN(asn)).toBe(
+      expect(subject.searchByASN(asn)._unsafeUnwrap()).toBe(
         "https://spyse.com/target/as/13335",
       );
     });
@@ -41,7 +43,7 @@ describe("Spyse", function () {
   describe("#searchByCVE", function () {
     const cve = "CVE-2018-11776";
     it("should return a URL", function () {
-      expect(subject.searchByCVE(cve)).toBe(
+      expect(subject.searchByCVE(cve)._unsafeUnwrap()).toBe(
         "https://spyse.com/target/cve/CVE-2018-11776",
       );
     });
@@ -50,7 +52,7 @@ describe("Spyse", function () {
   describe("#searchByEmail", function () {
     const email = "test@test.com";
     it("should return a URL", function () {
-      expect(subject.searchByEmail(email)).toBe(
+      expect(subject.searchByEmail(email)._unsafeUnwrap()).toBe(
         "https://spyse.com/search?target=domain&search_params=%5B%7B%22whois_registrant_email%22%3A%7B%22operator%22%3A%22eq%22%2C%22value%22%3A%22test%40test.com%22%7D%7D%5D",
       );
     });

@@ -1,23 +1,27 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL, extractASNumber } from "~/utils";
 
-export class IPIP implements Searcher {
+import { Base } from "./base";
+
+export class IPIP extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "asn"];
 
   public constructor() {
+    super();
     this.baseURL = "https://en.ipip.net";
     this.name = "IPIP";
   }
 
-  public searchByIP(query: string): string {
-    return buildURL(this.baseURL, `/ip/${query}.html`);
+  public searchByIP(query: string) {
+    return ok(buildURL(this.baseURL, `/ip/${query}.html`));
   }
 
-  public searchByASN(query: string): string {
+  public searchByASN(query: string) {
     const number: string = extractASNumber(query);
-    return buildURL("https://whois.ipip.net", `/AS${number}`);
+    return ok(buildURL("https://whois.ipip.net", `/AS${number}`));
   }
 }

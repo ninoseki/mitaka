@@ -10,14 +10,16 @@ describe("HurricaneElectric", function () {
   describe("#searchByIP", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
-      expect(subject.searchByIP(ip)).toBe(`https://bgp.he.net/ip/${ip}`);
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
+        `https://bgp.he.net/ip/${ip}`,
+      );
     });
   });
 
   describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).toBe(
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
         `https://bgp.he.net/dns/${domain}`,
       );
     });
@@ -26,7 +28,9 @@ describe("HurricaneElectric", function () {
   describe("#searchByASN", function () {
     const asn = "AS2497";
     it("should return a URL", function () {
-      expect(subject.searchByASN(asn)).toBe(`https://bgp.he.net/${asn}`);
+      expect(subject.searchByASN(asn)._unsafeUnwrap()).toBe(
+        `https://bgp.he.net/${asn}`,
+      );
     });
   });
 });

@@ -16,14 +16,16 @@ describe("Intelligence X", function () {
   describe("#searchByIP", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
-      expect(subject.searchByIP(ip)).toBe(`https://intelx.io/?s=${ip}`);
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
+        `https://intelx.io/?s=${ip}`,
+      );
     });
   });
 
   describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).toBe(
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
         `https://intelx.io/?s=${domain}`,
       );
     });
@@ -32,7 +34,7 @@ describe("Intelligence X", function () {
   describe("#searchByURL", function () {
     const url = "https://github.com";
     it("should return a URL", function () {
-      expect(subject.searchByURL(url)).toBe(
+      expect(subject.searchByURL(url)._unsafeUnwrap()).toBe(
         "https://intelx.io/?s=https%3A%2F%2Fgithub.com",
       );
     });
@@ -41,7 +43,7 @@ describe("Intelligence X", function () {
   describe("#searchByEmail", function () {
     const email = "test@test.com";
     it("should return a URL", function () {
-      expect(subject.searchByEmail(email)).toBe(
+      expect(subject.searchByEmail(email)._unsafeUnwrap()).toBe(
         "https://intelx.io/?s=test%40test.com",
       );
     });
@@ -50,7 +52,9 @@ describe("Intelligence X", function () {
   describe("#searchByBTC", function () {
     const btc = "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa";
     it("should return a URL", function () {
-      expect(subject.searchByBTC(btc)).toBe(`https://intelx.io/?s=${btc}`);
+      expect(subject.searchByBTC(btc)._unsafeUnwrap()).toBe(
+        `https://intelx.io/?s=${btc}`,
+      );
     });
   });
 });

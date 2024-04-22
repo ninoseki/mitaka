@@ -10,7 +10,7 @@ describe("BitcoinAbuse", function () {
   describe("#searchByBTC", function () {
     const btc = "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa";
     it("should return a URL", function () {
-      expect(subject.searchByBTC(btc)).toBe(
+      expect(subject.searchByBTC(btc)._unsafeUnwrap()).toBe(
         `https://www.bitcoinabuse.com/reports/${btc}`,
       );
     });

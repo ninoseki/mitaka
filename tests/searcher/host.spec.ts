@@ -10,7 +10,9 @@ describe("Host", function () {
   describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).toBe(`https://host.io/${domain}`);
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
+        `https://host.io/${domain}`,
+      );
     });
   });
 });

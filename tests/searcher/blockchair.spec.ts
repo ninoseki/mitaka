@@ -10,7 +10,7 @@ describe("Blockchair", function () {
   describe("#searchByBTC", function () {
     const btc = "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa";
     it("should return a URL", function () {
-      expect(subject.searchByBTC(btc)).toBe(
+      expect(subject.searchByBTC(btc)._unsafeUnwrap()).toBe(
         `https://blockchair.com/bitcoin/address/${btc}`,
       );
     });
@@ -19,7 +19,7 @@ describe("Blockchair", function () {
   describe("#searchByETH", function () {
     const eth = "0x4966db520b0680fc19df5d7774ca96f42e6abd4f";
     it("should return a URL", function () {
-      expect(subject.searchByETH(eth)).toBe(
+      expect(subject.searchByETH(eth)._unsafeUnwrap()).toBe(
         `https://blockchair.com/ethereum/address/${eth}`,
       );
     });

@@ -10,7 +10,7 @@ describe("Coalition", function () {
   describe("#searchByCVE", function () {
     const cve = "CVE-2018-8013";
     it("should return a URL", function () {
-      expect(subject.searchByCVE(cve)).toBe(
+      expect(subject.searchByCVE(cve)._unsafeUnwrap()).toBe(
         `https://ess.coalitioninc.com/cve/?id=${cve}`,
       );
     });

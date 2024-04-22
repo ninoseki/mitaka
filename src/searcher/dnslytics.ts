@@ -1,22 +1,26 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class DNSlytics implements Searcher {
+import { Base } from "./base";
+
+export class DNSlytics extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain"];
 
   public constructor() {
+    super();
     this.baseURL = "https://dnslytics.com";
     this.name = "DNSlytics";
   }
 
-  public searchByIP(query: string): string {
-    return buildURL(this.baseURL, `/ip/${query}`);
+  public searchByIP(query: string) {
+    return ok(buildURL(this.baseURL, `/ip/${query}`));
   }
 
-  public searchByDomain(query: string): string {
-    return buildURL(this.baseURL, `/domain/${query}`);
+  public searchByDomain(query: string) {
+    return ok(buildURL(this.baseURL, `/domain/${query}`));
   }
 }

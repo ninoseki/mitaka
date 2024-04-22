@@ -1,21 +1,27 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class Malshare implements Searcher {
+import { Base } from "./base";
+
+export class Malshare extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["hash"];
 
   public constructor() {
+    super();
     this.baseURL = "https://www.malshare.com";
     this.name = "MalShare";
   }
 
-  public searchByHash(query: string): string {
-    return buildURL(this.baseURL, "/sample.php", {
-      action: "detail",
-      hash: query,
-    });
+  public searchByHash(query: string) {
+    return ok(
+      buildURL(this.baseURL, "/sample.php", {
+        action: "detail",
+        hash: query,
+      }),
+    );
   }
 }

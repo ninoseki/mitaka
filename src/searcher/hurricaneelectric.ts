@@ -1,27 +1,31 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL, extractASNumber } from "~/utils";
 
-export class HurricaneElectric implements Searcher {
+import { Base } from "./base";
+
+export class HurricaneElectric extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "asn"];
 
   public constructor() {
+    super();
     this.baseURL = "https://bgp.he.net";
     this.name = "HurricaneElectric";
   }
 
-  public searchByIP(query: string): string {
-    return buildURL(this.baseURL, `/ip/${query}`);
+  public searchByIP(query: string) {
+    return ok(buildURL(this.baseURL, `/ip/${query}`));
   }
 
-  public searchByDomain(query: string): string {
-    return buildURL(this.baseURL, `/dns/${query}`);
+  public searchByDomain(query: string) {
+    return ok(buildURL(this.baseURL, `/dns/${query}`));
   }
 
-  public searchByASN(query: string): string {
+  public searchByASN(query: string) {
     const asn = extractASNumber(query);
-    return buildURL(this.baseURL, `/AS${asn}`);
+    return ok(buildURL(this.baseURL, `/AS${asn}`));
   }
 }

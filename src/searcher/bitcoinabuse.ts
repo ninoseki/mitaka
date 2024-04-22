@@ -1,18 +1,22 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class BitcoinAbuse implements Searcher {
+import { Base } from "./base";
+
+export class BitcoinAbuse extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["btc"];
 
   public constructor() {
+    super();
     this.baseURL = "https://www.bitcoinabuse.com";
     this.name = "BitcoinAbuse";
   }
 
-  public searchByBTC(query: string): string {
-    return buildURL(this.baseURL, `/reports/${query}`);
+  public searchByBTC(query: string) {
+    return ok(buildURL(this.baseURL, `/reports/${query}`));
   }
 }

@@ -10,7 +10,7 @@ describe("GreyNoise", function () {
   describe("#searchByIP", function () {
     it("should return a URL", function () {
       const ip = "1.1.1.1";
-      expect(subject.searchByIP(ip)).toBe(
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
         "https://viz.greynoise.io/query?gnql=ip%3A1.1.1.1",
       );
     });
@@ -19,7 +19,7 @@ describe("GreyNoise", function () {
   describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).toBe(
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
         "https://viz.greynoise.io/query?gnql=metadata.rdns%3Agithub.com",
       );
     });
@@ -28,7 +28,7 @@ describe("GreyNoise", function () {
   describe("#searchByASN", function () {
     const asn = "AS13335";
     it("should return a URL", function () {
-      expect(subject.searchByASN(asn)).toBe(
+      expect(subject.searchByASN(asn)._unsafeUnwrap()).toBe(
         "https://viz.greynoise.io/query?gnql=metadata.asn%3AAS13335",
       );
     });
@@ -37,7 +37,7 @@ describe("GreyNoise", function () {
   describe("#searchByCVE", function () {
     const cve = "CVE-2019-19781";
     it("should return a URL", function () {
-      expect(subject.searchByCVE(cve)).toBe(
+      expect(subject.searchByCVE(cve)._unsafeUnwrap()).toBe(
         "https://viz.greynoise.io/query?gnql=cve%3ACVE-2019-19781",
       );
     });
