@@ -1,20 +1,22 @@
-import { err, ok, Result } from "neverthrow";
+import { err, ok } from "neverthrow";
 
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class VMRay implements Searcher {
+import { Base } from "./base";
+
+export class VMRay extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["hash"];
 
   public constructor() {
+    super();
     this.baseURL = "https://www.vmray.com";
     this.name = "VMRay";
   }
 
-  public searchByHash(query: string): Result<string, string> {
+  public searchByHash(query: string) {
     if (query.length !== 64) {
       return err("VMRay supports SHA256 hash only");
     }

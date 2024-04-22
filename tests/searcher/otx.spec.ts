@@ -16,7 +16,7 @@ describe("OTX", function () {
   describe("#searchByIP", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
-      expect(subject.searchByIP(ip)).toBe(
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
         `https://otx.alienvault.com/indicator/ip/${ip}`,
       );
     });
@@ -25,7 +25,7 @@ describe("OTX", function () {
   describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).toBe(
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
         `https://otx.alienvault.com/indicator/domain/${domain}`,
       );
     });
@@ -34,7 +34,7 @@ describe("OTX", function () {
   describe("#searchByHash", function () {
     const hash = "726a2eedb9df3d63ec1b4a7d774a799901f1a2b9";
     it("should return a URL", function () {
-      expect(subject.searchByHash(hash)).toBe(
+      expect(subject.searchByHash(hash)._unsafeUnwrap()).toBe(
         `https://otx.alienvault.com/indicator/file/${hash}`,
       );
     });
@@ -43,7 +43,7 @@ describe("OTX", function () {
   describe("#searchByCVE", function () {
     it("should return a URL", function () {
       const cve = "CVE-2018-8013";
-      expect(subject.searchByCVE(cve)).toBe(
+      expect(subject.searchByCVE(cve)._unsafeUnwrap()).toBe(
         `https://otx.alienvault.com/indicator/cve/${cve}`,
       );
     });
@@ -52,7 +52,7 @@ describe("OTX", function () {
   describe("#searchByURL", function () {
     it("should return a URL", function () {
       const url = "https://github.com";
-      expect(subject.searchByURL(url)).toBe(
+      expect(subject.searchByURL(url)._unsafeUnwrap()).toBe(
         `https://otx.alienvault.com/indicator/url/${url}`,
       );
     });

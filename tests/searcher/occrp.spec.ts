@@ -10,7 +10,7 @@ describe("OCCRP", function () {
   describe("#searchByEmail", function () {
     const email = "test@test.com";
     it("should return a URL", function () {
-      expect(subject.searchByEmail(email)).toBe(
+      expect(subject.searchByEmail(email)._unsafeUnwrap()).toBe(
         "https://data.occrp.org/search?facet=email&filter%3Aemails=test%40test.com",
       );
     });

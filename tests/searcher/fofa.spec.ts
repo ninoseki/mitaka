@@ -10,7 +10,7 @@ describe("FOFA", function () {
   describe("#searchByIP", function () {
     const ip = "1.1.1.1";
     it("should returna  URL", function () {
-      expect(subject.searchByIP(ip)).toBe(
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
         "https://fofa.so/result?qbase64=aXA9IjEuMS4xLjEi",
       );
     });
@@ -19,7 +19,7 @@ describe("FOFA", function () {
   describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).toBe(
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
         "https://fofa.so/result?qbase64=ZG9tYWluPSJnaXRodWIuY29tIg%3D%3D",
       );
     });

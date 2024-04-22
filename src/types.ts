@@ -23,18 +23,18 @@ export interface Searcher {
   name: string;
   supportedTypes: SearchableType[];
 
-  searchByASN?(query: string): string;
-  searchByBTC?(query: string): string;
-  searchByCVE?(query: string): string;
-  searchByDomain?(query: string): string;
-  searchByEmail?(query: string): string;
-  searchByETH?(query: string): string;
-  searchByGAPubID?(quqery: string): string;
-  searchByGATrackID?(query: string): string;
-  searchByHash?(query: string): Result<string, string> | string;
-  searchByIP?(query: string): string;
-  searchByURL?(query: string): string;
-  searchByXMR?(query: string): string;
+  searchByASN(query: string): Result<string, string>;
+  searchByBTC(query: string): Result<string, string>;
+  searchByCVE(query: string): Result<string, string>;
+  searchByDomain(query: string): Result<string, string>;
+  searchByEmail(query: string): Result<string, string>;
+  searchByETH(query: string): Result<string, string>;
+  searchByGAPubID(quqery: string): Result<string, string>;
+  searchByGATrackID(query: string): Result<string, string>;
+  searchByHash(query: string): Result<string, string>;
+  searchByIP(query: string): Result<string, string>;
+  searchByURL(query: string): Result<string, string>;
+  searchByXMR(query: string): Result<string, string>;
 }
 
 export type ScannableType = "ip" | "domain" | "url";
@@ -44,11 +44,10 @@ export interface Scanner {
   name: string;
   supportedTypes: ScannableType[];
   apiKey?: string;
-  hasAPIKey: boolean;
   setAPIKey(apiKey: string | undefined): void;
-  scanByIP?(query: string): Promise<Result<string, string>>;
-  scanByDomain?(query: string): Promise<Result<string, string>>;
-  scanByURL?(query: string): Promise<Result<string, string>>;
+  scanByIP(query: string): Promise<Result<string, string>>;
+  scanByDomain(query: string): Promise<Result<string, string>>;
+  scanByURL(query: string): Promise<Result<string, string>>;
 }
 
 export interface SearchFuncWrapper {

@@ -10,14 +10,18 @@ describe("IPIP", function () {
   describe("#searchByIP", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
-      expect(subject.searchByIP(ip)).toBe(`https://en.ipip.net/ip/${ip}.html`);
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
+        `https://en.ipip.net/ip/${ip}.html`,
+      );
     });
   });
 
   describe("#searchByASN", function () {
     const asn = "AS13335";
     it("should return a URL", function () {
-      expect(subject.searchByASN(asn)).toBe(`https://whois.ipip.net/${asn}`);
+      expect(subject.searchByASN(asn)._unsafeUnwrap()).toBe(
+        `https://whois.ipip.net/${asn}`,
+      );
     });
   });
 });

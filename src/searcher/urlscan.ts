@@ -1,37 +1,40 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL, extractASNumber } from "~/utils";
 
-export class URLScan implements Searcher {
+import { Base } from "./base";
+
+export class URLScan extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "asn", "url"];
 
   public constructor() {
+    super();
     this.baseURL = "https://urlscan.io";
     this.name = "urlscan.io";
   }
 
-  public searchByIP(query: string): string {
-    return buildURL(this.baseURL, `/ip/${query}`);
+  public searchByIP(query: string) {
+    return ok(buildURL(this.baseURL, `/ip/${query}`));
   }
 
-  public searchByDomain(query: string): string {
-    return buildURL(this.baseURL, `/domain/${query}`);
+  public searchByDomain(query: string) {
+    return ok(buildURL(this.baseURL, `/domain/${query}`));
   }
 
-  public searchByASN(query: string): string {
+  public searchByASN(query: string) {
     const number: string = extractASNumber(query);
-    return buildURL(this.baseURL, `/asn/AS${number}`);
+    return ok(buildURL(this.baseURL, `/asn/AS${number}`));
   }
 
-  public searchByURL(query: string): string {
-    return this.search(
-      encodeURIComponent(`page.url:"${query}" OR task.url:"${query}"`),
+  public searchByURL(query: string) {
+    return ok(
+      buildURL(
+        this.baseURL,
+        `/search/#${encodeURIComponent(`page.url:"${query}" OR task.url:"${query}"`)}`,
+      ),
     );
-  }
-
-  private search(query: string): string {
-    return buildURL(this.baseURL, `/search/#${query}`);
   }
 }

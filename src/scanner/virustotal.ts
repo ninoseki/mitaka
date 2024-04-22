@@ -1,8 +1,10 @@
 import { err, ok, Result } from "neverthrow";
 import { z } from "zod";
 
-import type { ScannableType, Scanner } from "~/types";
+import type { ScannableType } from "~/types";
 import { buildURL } from "~/utils";
+
+import { Base } from "./base";
 
 const Data = z.object({
   id: z.string(),
@@ -21,14 +23,14 @@ const ErrorResponse = z.object({
   error: ErrorMessage,
 });
 
-export class VirusTotal implements Scanner {
+export class VirusTotal extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: ScannableType[] = ["url"];
-  public apiKey: string | undefined;
-  public hasAPIKey = true;
+  public apiKey: string | undefined = undefined;
 
   public constructor() {
+    super();
     this.baseURL = "https://www.virustotal.com";
     this.name = "VirusTotal";
   }

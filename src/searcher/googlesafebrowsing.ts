@@ -1,26 +1,30 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class GoogleSafeBrowsing implements Searcher {
+import { Base } from "./base";
+
+export class GoogleSafeBrowsing extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["domain", "url"];
 
   public constructor() {
+    super();
     this.baseURL = "https://transparencyreport.google.com";
     this.name = "GoogleSafeBrowsing";
   }
 
-  public searchByDomain(query: string): string {
+  public searchByDomain(query: string) {
     return this.search(query);
   }
 
-  public searchByURL(query: string): string {
+  public searchByURL(query: string) {
     return this.search(query);
   }
 
-  private search(query: string): string {
-    return buildURL(this.baseURL, "/safe-browsing/search", { url: query });
+  private search(query: string) {
+    return ok(buildURL(this.baseURL, "/safe-browsing/search", { url: query }));
   }
 }

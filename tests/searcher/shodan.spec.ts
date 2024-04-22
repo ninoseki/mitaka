@@ -10,14 +10,16 @@ describe("Shodan", function () {
   describe("#searchByIP", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
-      expect(subject.searchByIP(ip)).toBe(`https://www.shodan.io/host/${ip}`);
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
+        `https://www.shodan.io/host/${ip}`,
+      );
     });
   });
 
   describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).toBe(
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
         "https://www.shodan.io/search?query=hostname%3Agithub.com",
       );
     });
@@ -26,7 +28,7 @@ describe("Shodan", function () {
   describe("#searchByASN", function () {
     const asn = "AS13335";
     it("should return a URL", function () {
-      expect(subject.searchByASN(asn)).toBe(
+      expect(subject.searchByASN(asn)._unsafeUnwrap()).toBe(
         "https://www.shodan.io/search?query=asn%3AAS13335",
       );
     });

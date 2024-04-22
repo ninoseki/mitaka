@@ -10,7 +10,7 @@ describe("ViewDNS", function () {
   describe("#searchByIP", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
-      expect(subject.searchByIP(ip)).toBe(
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
         `https://viewdns.info/reverseip/?t=1&host=${ip}`,
       );
     });
@@ -19,7 +19,7 @@ describe("ViewDNS", function () {
   describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).toBe(
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
         `https://viewdns.info/iphistory/?domain=${domain}`,
       );
     });
@@ -28,7 +28,7 @@ describe("ViewDNS", function () {
   describe("#searchByEmail", function () {
     const email = "test@test.com";
     it("should return a URL", function () {
-      expect(subject.searchByEmail(email)).toBe(
+      expect(subject.searchByEmail(email)._unsafeUnwrap()).toBe(
         "https://viewdns.info/reversewhois/?q=test%40test.com",
       );
     });

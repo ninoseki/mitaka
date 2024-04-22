@@ -10,7 +10,9 @@ describe("EmailRep", function () {
   describe("#searchByEmail", function () {
     const email = "test@test.com";
     it("should return a URL", function () {
-      expect(subject.searchByEmail(email)).toBe(`https://emailrep.io/${email}`);
+      expect(subject.searchByEmail(email)._unsafeUnwrap()).toBe(
+        `https://emailrep.io/${email}`,
+      );
     });
   });
 });

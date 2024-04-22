@@ -1,18 +1,22 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class ArchiveToday implements Searcher {
+import { Base } from "./base";
+
+export class ArchiveToday extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["url"];
 
   public constructor() {
+    super();
     this.baseURL = "http://archive.fo";
     this.name = "archive.today";
   }
 
-  public searchByURL(query: string): string {
-    return buildURL(this.baseURL, `/${query}`);
+  public searchByURL(query: string) {
+    return ok(buildURL(this.baseURL, `/${query}`));
   }
 }

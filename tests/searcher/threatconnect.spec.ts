@@ -10,7 +10,7 @@ describe("ThreatConnect", function () {
   describe("#searchByIP", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
-      expect(subject.searchByIP(ip)).toBe(
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
         `https://app.threatconnect.com/auth/indicators/details/address.xhtml?address=${ip}`,
       );
     });
@@ -19,7 +19,7 @@ describe("ThreatConnect", function () {
   describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).toBe(
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
         `https://app.threatconnect.com/auth/indicators/details/host.xhtml?host=${domain}`,
       );
     });
@@ -28,7 +28,7 @@ describe("ThreatConnect", function () {
   describe("#searchByEmail", function () {
     const email = "test@test.com";
     it("should return a URL", function () {
-      expect(subject.searchByEmail(email)).toBe(
+      expect(subject.searchByEmail(email)._unsafeUnwrap()).toBe(
         "https://app.threatconnect.com/auth/indicators/details/emailaddress.xhtml?emailaddress=test%40test.com",
       );
     });

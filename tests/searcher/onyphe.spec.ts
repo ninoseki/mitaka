@@ -10,7 +10,7 @@ describe("ONYPHE", function () {
   describe("#searchByIP", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
-      expect(subject.searchByIP(ip)).toBe(
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
         `https://www.onyphe.io/summary/ip/${ip}`,
       );
     });

@@ -10,7 +10,7 @@ describe("Pulsedive", function () {
   describe("#searchByIP", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
-      expect(subject.searchByIP(ip)).toBe(
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
         "https://pulsedive.com/indicator/?ioc=MS4xLjEuMQ==",
       );
     });
@@ -19,7 +19,7 @@ describe("Pulsedive", function () {
   describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).toBe(
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
         "https://pulsedive.com/indicator/?ioc=Z2l0aHViLmNvbQ==",
       );
     });
@@ -28,7 +28,7 @@ describe("Pulsedive", function () {
   describe("#searchByURL", function () {
     const url = "https://github.com";
     it("should return a URL", function () {
-      expect(subject.searchByURL(url)).toBe(
+      expect(subject.searchByURL(url)._unsafeUnwrap()).toBe(
         "https://pulsedive.com/indicator/?ioc=aHR0cHM6Ly9naXRodWIuY29t",
       );
     });
@@ -37,7 +37,7 @@ describe("Pulsedive", function () {
   describe("#searchByHash", function () {
     const hash = "726a2eedb9df3d63ec1b4a7d774a799901f1a2b9";
     it("should return a URL", function () {
-      expect(subject.searchByHash(hash)).toBe(
+      expect(subject.searchByHash(hash)._unsafeUnwrap()).toBe(
         "https://pulsedive.com/indicator/?ioc=NzI2YTJlZWRiOWRmM2Q2M2VjMWI0YTdkNzc0YTc5OTkwMWYxYTJiOQ==",
       );
     });

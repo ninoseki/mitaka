@@ -1,18 +1,22 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class BlockChain implements Searcher {
+import { Base } from "./base";
+
+export class BlockChain extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["btc"];
 
   public constructor() {
+    super();
     this.baseURL = "https://www.blockchain.com";
     this.name = "Blockchain.com";
   }
 
-  public searchByBTC(query: string): string {
-    return buildURL(this.baseURL, `/btc/address/${query}`);
+  public searchByBTC(query: string) {
+    return ok(buildURL(this.baseURL, `/btc/address/${query}`));
   }
 }

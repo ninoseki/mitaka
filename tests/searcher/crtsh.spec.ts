@@ -10,7 +10,7 @@ describe("Crtsh", function () {
   describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).toBe(
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
         `https://crt.sh/?q=${domain}`,
       );
     });

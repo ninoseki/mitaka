@@ -1,18 +1,22 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class Sploitus implements Searcher {
+import { Base } from "./base";
+
+export class Sploitus extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["cve"];
 
   public constructor() {
+    super();
     this.baseURL = "https://sploitus.com";
     this.name = "Sploitus";
   }
 
-  public searchByCVE(query: string): string {
-    return buildURL(this.baseURL, "/", { query });
+  public searchByCVE(query: string) {
+    return ok(buildURL(this.baseURL, "/", { query }));
   }
 }

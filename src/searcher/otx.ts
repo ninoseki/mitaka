@@ -1,8 +1,11 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class OTX implements Searcher {
+import { Base } from "./base";
+
+export class OTX extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = [
@@ -14,27 +17,28 @@ export class OTX implements Searcher {
   ];
 
   public constructor() {
+    super();
     this.baseURL = "https://otx.alienvault.com";
     this.name = "OTX";
   }
 
-  public searchByIP(query: string): string {
-    return buildURL(this.baseURL, `/indicator/ip/${query}`);
+  public searchByIP(query: string) {
+    return ok(buildURL(this.baseURL, `/indicator/ip/${query}`));
   }
 
-  public searchByURL(query: string): string {
-    return buildURL(this.baseURL, `/indicator/url/${query}`);
+  public searchByURL(query: string) {
+    return ok(buildURL(this.baseURL, `/indicator/url/${query}`));
   }
 
-  public searchByDomain(query: string): string {
-    return buildURL(this.baseURL, `/indicator/domain/${query}`);
+  public searchByDomain(query: string) {
+    return ok(buildURL(this.baseURL, `/indicator/domain/${query}`));
   }
 
-  public searchByHash(query: string): string {
-    return buildURL(this.baseURL, `/indicator/file/${query}`);
+  public searchByHash(query: string) {
+    return ok(buildURL(this.baseURL, `/indicator/file/${query}`));
   }
 
-  public searchByCVE(query: string): string {
-    return buildURL(this.baseURL, `/indicator/cve/${query}`);
+  public searchByCVE(query: string) {
+    return ok(buildURL(this.baseURL, `/indicator/cve/${query}`));
   }
 }

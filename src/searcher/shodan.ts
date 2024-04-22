@@ -1,26 +1,32 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class Shodan implements Searcher {
+import { Base } from "./base";
+
+export class Shodan extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "asn"];
 
   public constructor() {
+    super();
     this.baseURL = `https://www.shodan.io`;
     this.name = "Shodan";
   }
 
-  public searchByASN(query: string): string {
-    return buildURL(this.baseURL, "/search", { query: `asn:${query}` });
+  public searchByASN(query: string) {
+    return ok(buildURL(this.baseURL, "/search", { query: `asn:${query}` }));
   }
 
-  public searchByIP(query: string): string {
-    return buildURL(this.baseURL, `/host/${query}`);
+  public searchByIP(query: string) {
+    return ok(buildURL(this.baseURL, `/host/${query}`));
   }
 
-  public searchByDomain(query: string): string {
-    return buildURL(this.baseURL, "/search", { query: `hostname:${query}` });
+  public searchByDomain(query: string) {
+    return ok(
+      buildURL(this.baseURL, "/search", { query: `hostname:${query}` }),
+    );
   }
 }

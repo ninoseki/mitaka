@@ -1,15 +1,17 @@
 import { err, ok, Result } from "neverthrow";
 
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class APKLab implements Searcher {
+import { Base } from "./base";
+
+export class APKLab extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["hash"];
 
   public constructor() {
+    super();
     this.baseURL = "https://www.apklab.io";
     this.name = "Apklab";
   }

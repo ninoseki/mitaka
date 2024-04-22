@@ -10,7 +10,9 @@ describe("ArchiveToday", function () {
   describe("#searchByURL", function () {
     const url = "https://github.com";
     it("should return a URL", function () {
-      expect(subject.searchByURL(url)).toBe(`http://archive.fo/${url}`);
+      expect(subject.searchByURL(url)._unsafeUnwrap()).toBe(
+        `http://archive.fo/${url}`,
+      );
     });
   });
 });

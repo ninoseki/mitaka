@@ -1,22 +1,26 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class Robtex implements Searcher {
+import { Base } from "./base";
+
+export class Robtex extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["domain", "ip"];
 
   public constructor() {
+    super();
     this.baseURL = "https://www.robtex.com";
     this.name = "Robtex";
   }
 
-  public searchByDomain(query: string): string {
-    return buildURL(this.baseURL, `/dns-lookup/${query}`);
+  public searchByDomain(query: string) {
+    return ok(buildURL(this.baseURL, `/dns-lookup/${query}`));
   }
 
-  public searchByIP(query: string): string {
-    return buildURL(this.baseURL, `/ip-lookup/${query}`);
+  public searchByIP(query: string) {
+    return ok(buildURL(this.baseURL, `/ip-lookup/${query}`));
   }
 }

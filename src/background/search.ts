@@ -13,10 +13,10 @@ export async function searchAll(runner: CommandRunner): Promise<void> {
 }
 
 export async function search(runner: CommandRunner): Promise<void> {
-  const res = runner.search();
-  if (res.isOk()) {
-    await chrome.tabs.create({ url: res.value });
+  const result = runner.search();
+  if (result.isOk()) {
+    await chrome.tabs.create({ url: result.value });
   } else {
-    showNotification(res.error);
+    showNotification(result.error);
   }
 }

@@ -23,97 +23,66 @@ export class CommandRunner {
 
   private searcherMap: SearcherMap = {
     ip: (searcher: Searcher, query: string): Result<string, string> => {
-      if (searcher.searchByIP) {
-        return ok(searcher.searchByIP(query));
-      }
-      return err(`${searcher.name} does not support IP`);
+      return searcher.searchByIP(query);
     },
     domain: (searcher: Searcher, query: string): Result<string, string> => {
-      if (searcher.searchByDomain) {
-        return ok(searcher.searchByDomain(query));
-      }
-      return err(`${searcher.name} does not support domain`);
+      return searcher.searchByDomain(query);
     },
     url: (searcher: Searcher, query: string): Result<string, string> => {
-      if (searcher.searchByURL) {
-        return ok(searcher.searchByURL(query));
-      }
-      return err(`${searcher.name} does not support URL`);
+      return searcher.searchByURL(query);
     },
     asn: (searcher: Searcher, query: string): Result<string, string> => {
-      if (searcher.searchByASN) {
-        return ok(searcher.searchByASN(query));
-      }
-      return err(`${searcher.name} does not support ASN`);
+      return searcher.searchByASN(query);
     },
     email: (searcher: Searcher, query: string): Result<string, string> => {
-      if (searcher.searchByEmail) {
-        return ok(searcher.searchByEmail(query));
-      }
-      return err(`${searcher.name} does not support email`);
+      return searcher.searchByEmail(query);
     },
     hash: (searcher: Searcher, query: string): Result<string, string> => {
-      if (searcher.searchByHash) {
-        const result = searcher.searchByHash(query);
-        if (typeof result === "string") {
-          return ok(result);
-        }
-        return result;
-      }
-      return err(`${searcher.name} does not support hash`);
+      return searcher.searchByHash(query);
     },
     cve: (searcher: Searcher, query: string): Result<string, string> => {
-      if (searcher.searchByCVE) {
-        return ok(searcher.searchByCVE(query));
-      }
-      return err(`${searcher.name} does not support CVE`);
+      return searcher.searchByCVE(query);
     },
     btc: (searcher: Searcher, query: string): Result<string, string> => {
-      if (searcher.searchByBTC) {
-        return ok(searcher.searchByBTC(query));
-      }
-      return err(`${searcher.name} does not support BTC`);
+      return searcher.searchByBTC(query);
     },
     gaPubID: (searcher: Searcher, query: string): Result<string, string> => {
-      if (searcher.searchByGAPubID) {
-        return ok(searcher.searchByGAPubID(query));
-      }
-      return err(`${searcher.name} does not support GA pub ID`);
+      return searcher.searchByGAPubID(query);
     },
     gaTrackID: (searcher: Searcher, query: string): Result<string, string> => {
-      if (searcher.searchByGATrackID) {
-        return ok(searcher.searchByGATrackID(query));
-      }
-      return err(`${searcher.name} does not support GA track ID`);
+      return searcher.searchByGATrackID(query);
     },
     eth: (searcher: Searcher, query: string): Result<string, string> => {
-      if (searcher.searchByETH) {
-        return ok(searcher.searchByETH(query));
-      }
-      return err(`${searcher.name} does not support ETH`);
+      return searcher.searchByETH(query);
     },
   };
 
   public search(): Result<string, string> {
-    const selector: Selector = new Selector(this.command.query, this.options);
-    const slots: SelectorSlot[] = selector.getSearcherSlots();
-    const slot = slots.find((s) => s.analyzer.name === this.command.name);
+    const getSlot = (): Result<SelectorSlot, string> => {
+      const selector: Selector = new Selector(this.command.query, this.options);
+      const slots: SelectorSlot[] = selector.getSearcherSlots();
+      const slot = slots.find((s) => s.analyzer.name === this.command.name);
+      if (!slot) {
+        return err(`Slot for ${this.command.name} is missing`);
+      }
 
-    if (slot === undefined) {
-      return err(`Slot for ${this.command.name} is missing`);
-    }
+      if (!isSearcher(slot.analyzer)) {
+        return err(`${slot.analyzer.name} is not a searcher`);
+      }
 
-    if (!isSearcher(slot.analyzer)) {
-      return err(`${slot.analyzer.name} is not a searcher`);
-    }
+      return ok(slot);
+    };
 
-    const searcher = slot.analyzer;
-    if (this.command.type in this.searcherMap) {
-      const fn = this.searcherMap[this.command.type];
-      return fn(searcher, slot.query);
-    }
+    const search = (slot: SelectorSlot) => {
+      const searcher = slot.analyzer as Searcher;
+      if (this.command.type in this.searcherMap) {
+        const fn = this.searcherMap[this.command.type];
+        return fn(searcher, slot.query);
+      }
+      return err("Something goes wrong");
+    };
 
-    return err("Something went wrong");
+    return getSlot().andThen(search);
   }
 
   public searchAll(): Result<string, string>[] {
@@ -123,7 +92,7 @@ export class CommandRunner {
       (slot) => slot.analyzer.name !== "all",
     );
     return slotsWithoutAll.map((slot) => {
-      const searcher = slot.analyzer;
+      const searcher = slot.analyzer as Searcher;
       if (this.command.type in this.searcherMap) {
         const fn = this.searcherMap[this.command.type];
         return fn(searcher, slot.query);
@@ -137,64 +106,69 @@ export class CommandRunner {
       scanner: Scanner,
       query: string,
     ): Promise<Result<string, string>> => {
-      if (scanner.scanByIP) {
-        return scanner.scanByIP(query);
-      }
-      return err(`${scanner.name} does not support IP`);
+      return scanner.scanByIP(query);
     },
     domain: async (
       scanner: Scanner,
       query: string,
     ): Promise<Result<string, string>> => {
-      if (scanner.scanByDomain) {
-        return scanner.scanByDomain(query);
-      }
-      return err(`${scanner.name} does not support domain`);
+      return scanner.scanByDomain(query);
     },
     url: async (
       scanner: Scanner,
       query: string,
     ): Promise<Result<string, string>> => {
-      if (scanner.scanByURL) {
-        return scanner.scanByURL(query);
-      }
-      return err(`${scanner.name} does not support URL`);
+      return scanner.scanByURL(query);
     },
   };
 
   public async scan(): Promise<Result<string, string>> {
-    const selector: Selector = new Selector(this.command.query);
-    const slots: SelectorSlot[] = selector.getScannerSlots();
-    const slot = slots.find((s) => s.analyzer.name === this.command.name);
+    const getSlot = () => {
+      const selector: Selector = new Selector(this.command.query);
+      const slots: SelectorSlot[] = selector.getScannerSlots();
+      const slot = slots.find((s) => s.analyzer.name === this.command.name);
 
-    if (slot === undefined) {
-      return err(`Slot for ${this.command.name} is missing`);
+      if (!slot) {
+        return err(`Slot for ${this.command.name} is missing`);
+      }
+
+      if (!isScanner(slot.analyzer)) {
+        return err(`${slot.analyzer.name} is not a scanner`);
+      }
+
+      return ok(slot);
+    };
+
+    const scan = async (slot: SelectorSlot) => {
+      const scanner = slot.analyzer as Scanner;
+
+      switch (scanner.name) {
+        case "HybridAnalysis":
+          scanner.setAPIKey(this.options.hybridAnalysisAPIKey);
+          break;
+        case "urlscan.io":
+          scanner.setAPIKey(this.options.urlscanAPIKey);
+          break;
+        case "VirusTotal":
+          scanner.setAPIKey(this.options.virusTotalAPIKey);
+          break;
+        default:
+          break;
+      }
+
+      if (slot.type in this.scannerMap) {
+        const fn = this.scannerMap[slot.type];
+        return await fn(scanner, slot.query);
+      }
+
+      return err("Something goes wrong");
+    };
+
+    const result = await getSlot().asyncMap(scan);
+
+    if (result.isErr()) {
+      return err(result.error);
     }
-
-    if (!isScanner(slot.analyzer)) {
-      return err(`${slot.analyzer.name} is not a scanner`);
-    }
-
-    const scanner = slot.analyzer;
-    switch (scanner.name) {
-      case "HybridAnalysis":
-        scanner.setAPIKey(this.options.hybridAnalysisAPIKey);
-        break;
-      case "urlscan.io":
-        scanner.setAPIKey(this.options.urlscanAPIKey);
-        break;
-      case "VirusTotal":
-        scanner.setAPIKey(this.options.virusTotalAPIKey);
-        break;
-      default:
-        break;
-    }
-
-    if (slot.type in this.scannerMap) {
-      const fn = this.scannerMap[slot.type];
-      return await fn(scanner, slot.query);
-    }
-
-    return err("Something went wrong");
+    return result.value;
   }
 }

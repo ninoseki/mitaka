@@ -10,7 +10,7 @@ describe("AnyRun", function () {
   describe("#searchByHash", function () {
     it("should return a URL", function () {
       const hash = "8a8f93a0a4e4a709d73695accb2af068";
-      expect(subject.searchByHash(hash)).toBe(
+      expect(subject.searchByHash(hash)._unsafeUnwrap()).toBe(
         `https://app.any.run/submissions/#filehash:${hash}`,
       );
     });

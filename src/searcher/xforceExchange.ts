@@ -1,26 +1,30 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class XForceExchange implements Searcher {
+import { Base } from "./base";
+
+export class XForceExchange extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["ip", "domain", "hash"];
 
   public constructor() {
+    super();
     this.baseURL = "https://exchange.xforce.ibmcloud.com";
     this.name = "X-Force-Exchange";
   }
 
-  public searchByIP(query: string): string {
-    return buildURL(this.baseURL, `/ip/${query}`);
+  public searchByIP(query: string) {
+    return ok(buildURL(this.baseURL, `/ip/${query}`));
   }
 
-  public searchByDomain(query: string): string {
-    return buildURL(this.baseURL, `/url/${query}`);
+  public searchByDomain(query: string) {
+    return ok(buildURL(this.baseURL, `/url/${query}`));
   }
 
-  public searchByHash(query: string): string {
-    return buildURL(this.baseURL, `/malware/${query}`);
+  public searchByHash(query: string) {
+    return ok(buildURL(this.baseURL, `/malware/${query}`));
   }
 }

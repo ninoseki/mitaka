@@ -10,7 +10,7 @@ describe("ThreatMiner", function () {
   describe("#searchByIP", function () {
     const ip = "1.1.1.1";
     it("should return a URL", function () {
-      expect(subject.searchByIP(ip)).toBe(
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
         `https://www.threatminer.org/host.php?q=${ip}`,
       );
     });
@@ -19,7 +19,7 @@ describe("ThreatMiner", function () {
   describe("#searchByDomain", function () {
     const domain = "github.com";
     it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)).toBe(
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
         `https://www.threatminer.org/domain.php?q=${domain}`,
       );
     });
@@ -28,7 +28,7 @@ describe("ThreatMiner", function () {
   describe("#searchByHash", function () {
     const hash = "44d88612fea8a8f36de82e1278abb02f";
     it("should return a URL", function () {
-      expect(subject.searchByHash(hash)).toBe(
+      expect(subject.searchByHash(hash)._unsafeUnwrap()).toBe(
         `https://www.threatminer.org/sample.php?q=${hash}`,
       );
     });

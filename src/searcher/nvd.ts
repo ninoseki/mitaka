@@ -1,18 +1,22 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class NVD implements Searcher {
+import { Base } from "./base";
+
+export class NVD extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["cve"];
 
   public constructor() {
+    super();
     this.baseURL = "https://nvd.nist.gov";
     this.name = "NVD";
   }
 
-  public searchByCVE(query: string): string {
-    return buildURL(this.baseURL, `/vuln/detail/${query}`);
+  public searchByCVE(query: string) {
+    return ok(buildURL(this.baseURL, `/vuln/detail/${query}`));
   }
 }

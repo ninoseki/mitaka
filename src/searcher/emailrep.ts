@@ -1,18 +1,22 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class EmailRep implements Searcher {
+import { Base } from "./base";
+
+export class EmailRep extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["email"];
 
   public constructor() {
+    super();
     this.baseURL = "https://emailrep.io";
     this.name = "EmailRep";
   }
 
-  public searchByEmail(query: string): string {
-    return buildURL(this.baseURL, `/${query}`);
+  public searchByEmail(query: string) {
+    return ok(buildURL(this.baseURL, `/${query}`));
   }
 }

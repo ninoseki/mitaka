@@ -1,18 +1,22 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class JoeSandbox implements Searcher {
+import { Base } from "./base";
+
+export class JoeSandbox extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["hash"];
 
   public constructor() {
+    super();
     this.baseURL = "https://www.joesandbox.com";
     this.name = "JoeSandbox";
   }
 
-  public searchByHash(query: string): string {
-    return buildURL(this.baseURL, `/search`, { q: query });
+  public searchByHash(query: string) {
+    return ok(buildURL(this.baseURL, `/search`, { q: query }));
   }
 }

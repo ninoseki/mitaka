@@ -1,8 +1,11 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class RiskIQ implements Searcher {
+import { Base } from "./base";
+
+export class RiskIQ extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = [
@@ -13,23 +16,26 @@ export class RiskIQ implements Searcher {
   ];
 
   public constructor() {
+    super();
     this.baseURL = "https://community.riskiq.com";
     this.name = "RiskIQ";
   }
 
-  public searchByIP(query: string): string {
-    return buildURL(this.baseURL, `/search/${query}`);
+  public searchByIP(query: string) {
+    return ok(buildURL(this.baseURL, `/search/${query}`));
   }
 
-  public searchByDomain(query: string): string {
-    return buildURL(this.baseURL, `/search/${query}`);
+  public searchByDomain(query: string) {
+    return ok(buildURL(this.baseURL, `/search/${query}`));
   }
 
-  public searchByEmail(query: string): string {
-    return buildURL(this.baseURL, `/search/whois/email/${query}`);
+  public searchByEmail(query: string) {
+    return ok(buildURL(this.baseURL, `/search/whois/email/${query}`));
   }
 
-  public searchByGATrackID(query: string): string {
-    return buildURL(this.baseURL, `/search/trackers/${query.toLowerCase()}`);
+  public searchByGATrackID(query: string) {
+    return ok(
+      buildURL(this.baseURL, `/search/trackers/${query.toLowerCase()}`),
+    );
   }
 }

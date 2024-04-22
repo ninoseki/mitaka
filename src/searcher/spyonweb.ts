@@ -1,8 +1,11 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class SpyOnWeb implements Searcher {
+import { Base } from "./base";
+
+export class SpyOnWeb extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = [
@@ -13,27 +16,28 @@ export class SpyOnWeb implements Searcher {
   ];
 
   public constructor() {
+    super();
     this.baseURL = "http://spyonweb.com";
     this.name = "SpyOnWeb";
   }
 
-  public searchByIP(query: string): string {
+  public searchByIP(query: string) {
     return this.search(query);
   }
 
-  public searchByDomain(query: string): string {
+  public searchByDomain(query: string) {
     return this.search(query);
   }
 
-  public searchByGAPubID(query: string): string {
+  public searchByGAPubID(query: string) {
     return this.search(query);
   }
 
-  public searchByGATrackID(query: string): string {
+  public searchByGATrackID(query: string) {
     return this.search(query);
   }
 
-  private search(query: string): string {
-    return buildURL(this.baseURL, `/${query}`);
+  private search(query: string) {
+    return ok(buildURL(this.baseURL, `/${query}`));
   }
 }

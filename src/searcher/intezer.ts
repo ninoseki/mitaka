@@ -1,18 +1,22 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class Intezer implements Searcher {
+import { Base } from "./base";
+
+export class Intezer extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["hash"];
 
   public constructor() {
+    super();
     this.baseURL = "https://analyze.intezer.com";
     this.name = "Intezer";
   }
 
-  public searchByHash(query: string): string {
-    return buildURL(this.baseURL, `/#/files/${query}`);
+  public searchByHash(query: string) {
+    return ok(buildURL(this.baseURL, `/#/files/${query}`));
   }
 }

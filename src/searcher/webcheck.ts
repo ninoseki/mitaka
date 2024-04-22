@@ -1,18 +1,22 @@
+import { ok } from "neverthrow";
+
 import type { SearchableType } from "~/schemas";
-import type { Searcher } from "~/types";
 import { buildURL } from "~/utils";
 
-export class WebCheck implements Searcher {
+import { Base } from "./base";
+
+export class WebCheck extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["domain"];
 
   public constructor() {
+    super();
     this.baseURL = "https://web-check.xyz";
     this.name = "WebCheck";
   }
 
-  public searchByDomain(query: string): string {
-    return buildURL(this.baseURL, `/results/${query}`);
+  public searchByDomain(query: string) {
+    return ok(buildURL(this.baseURL, `/results/${query}`));
   }
 }
