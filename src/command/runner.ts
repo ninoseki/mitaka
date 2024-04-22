@@ -165,6 +165,10 @@ export class CommandRunner {
     };
 
     const result = await getSlot().asyncMap(scan);
-    return result._unsafeUnwrap();
+
+    if (result.isErr()) {
+      return err(result.error);
+    }
+    return result.value;
   }
 }
