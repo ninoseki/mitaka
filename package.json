@@ -40,7 +40,7 @@
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "@jest/globals": "^29.7.0",
     "@jest/types": "^29.6.3",
-    "@types/chrome": "^0.0.266",
+    "@types/chrome": "^0.0.268",
     "@types/jest": "^29.5.12",
     "@types/js-base64": "3.3.1",
     "@types/node": "^20.12.7",
