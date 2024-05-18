@@ -1,4 +1,4 @@
-import { err, ok, Result } from "neverthrow";
+import { errAsync, ResultAsync } from "neverthrow";
 import { z } from "zod";
 
 import type { ScannableType } from "~/types";
@@ -27,7 +27,7 @@ export class VirusTotal extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: ScannableType[] = ["url"];
-  public apiKey: string | undefined = undefined;
+  public apiKey?: string = undefined;
 
   public constructor() {
     super();
@@ -35,7 +35,7 @@ export class VirusTotal extends Base {
     this.name = "VirusTotal";
   }
 
-  public setAPIKey(apiKey: string | undefined): void {
+  public setAPIKey(apiKey: string): void {
     this.apiKey = apiKey;
   }
 
@@ -47,9 +47,9 @@ export class VirusTotal extends Base {
     return buildURL(this.baseURL, `/gui/url/${sha256}/details`);
   }
 
-  public async scanByURL(url: string): Promise<Result<string, string>> {
-    if (this.apiKey === undefined) {
-      return err("Please set your VirusTotal API key via the option.");
+  scanByURL(url: string) {
+    if (!this.apiKey) {
+      return errAsync("Please set your VirusTotal API key via the option.");
     }
 
     const formData = new FormData();
@@ -59,20 +59,27 @@ export class VirusTotal extends Base {
       "x-apikey": this.apiKey,
     };
 
-    const res = await fetch(buildURL(this.baseURL, "/api/v3/urls"), {
-      method: "POST",
-      headers,
-      body: formData,
-    });
+    const scan = async () => {
+      const res = await fetch(buildURL(this.baseURL, "/api/v3/urls"), {
+        method: "POST",
+        headers,
+        body: formData,
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (!res.ok) {
-      const parsed = ErrorResponse.parse(data);
-      return err(parsed.error.message);
-    }
+      if (!res.ok) {
+        const parsed = ErrorResponse.parse(data);
+        throw new Error(parsed.error.message);
+      }
 
-    const parsed = Response.parse(data);
-    return ok(this.permaLink(parsed.data.id));
+      const parsed = Response.parse(data);
+      return this.permaLink(parsed.data.id);
+    };
+
+    return ResultAsync.fromThrowable(
+      scan,
+      (err: unknown) => (err as Error).message,
+    )();
   }
 }

@@ -1,4 +1,4 @@
-import { err, ok, Result } from "neverthrow";
+import { errAsync, ResultAsync } from "neverthrow";
 import { z } from "zod";
 
 import type { ScannableType } from "~/types";
@@ -18,7 +18,7 @@ export class URLScan extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: ScannableType[] = ["ip", "domain", "url"];
-  public apiKey: string | undefined = undefined;
+  public apiKey?: string = undefined;
 
   public constructor() {
     super();
@@ -26,28 +26,25 @@ export class URLScan extends Base {
     this.name = "urlscan.io";
   }
 
-  public setAPIKey(apiKey: string | undefined): void {
+  public setAPIKey(apiKey: string): void {
     this.apiKey = apiKey;
   }
 
-  public async scanByIP(ip: string): Promise<Result<string, string>> {
-    return await this.scan(ip);
+  scanByIP(ip: string) {
+    return this.scan(ip);
   }
 
-  public async scanByDomain(domain: string): Promise<Result<string, string>> {
-    return await this.scan(domain);
+  scanByDomain(domain: string) {
+    return this.scan(domain);
   }
 
-  public async scanByURL(url: string): Promise<Result<string, string>> {
-    return await this.scan(url);
+  scanByURL(url: string) {
+    return this.scan(url);
   }
 
-  private async scan(
-    query: string,
-    isPublic = true,
-  ): Promise<Result<string, string>> {
-    if (this.apiKey === undefined) {
-      return err("Please set your urlscan.io API key via the option.");
+  private scan(query: string, isPublic = true) {
+    if (!this.apiKey) {
+      return errAsync("Please set your urlscan.io API key via the option.");
     }
 
     const body = JSON.stringify({
@@ -59,20 +56,27 @@ export class URLScan extends Base {
       "content-type": "application/json",
     };
 
-    const res = await fetch(`${this.baseURL}/api/v1/scan/`, {
-      method: "POST",
-      headers,
-      body,
-    });
+    const scan = async () => {
+      const res = await fetch(`${this.baseURL}/api/v1/scan/`, {
+        method: "POST",
+        headers,
+        body,
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (!res.ok) {
-      const parsed = ErrorResponse.parse(data);
-      return err(parsed.message);
-    }
+      if (!res.ok) {
+        const parsed = ErrorResponse.parse(data);
+        throw new Error(parsed.message);
+      }
 
-    const parsed = Response.parse(data);
-    return ok(`${parsed.result}loading`);
+      const parsed = Response.parse(data);
+      return `${parsed.result}loading`;
+    };
+
+    return ResultAsync.fromThrowable(
+      scan,
+      (err: unknown) => (err as Error).message,
+    )();
   }
 }
