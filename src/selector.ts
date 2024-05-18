@@ -30,6 +30,8 @@ import type {
   SelectorSlot,
 } from "~/types";
 
+const defaultOptions = OptionsSchema.parse({});
+
 export class Selector {
   protected input: string;
   protected options: OptionsType;
@@ -37,10 +39,7 @@ export class Selector {
   protected scanners: Scanner[];
   protected searchers: Searcher[];
 
-  public constructor(
-    input: string,
-    options: OptionsType = OptionsSchema.parse({}),
-  ) {
+  public constructor(input: string, options: OptionsType = defaultOptions) {
     let normalized = options.refang ? refang(input) : input;
     normalized = options.punycode
       ? unicodeToASCII(normalized, {
