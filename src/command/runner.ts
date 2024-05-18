@@ -1,4 +1,4 @@
-import { err, ok, Result } from "neverthrow";
+import { err, errAsync, ok, okAsync, Result, ResultAsync } from "neverthrow";
 
 import type { OptionsType } from "~/schemas";
 import { Selector } from "~/selector";
@@ -102,44 +102,35 @@ export class CommandRunner {
   }
 
   private scannerMap: ScannerMap = {
-    ip: async (
-      scanner: Scanner,
-      query: string,
-    ): Promise<Result<string, string>> => {
+    ip: (scanner: Scanner, query: string) => {
       return scanner.scanByIP(query);
     },
-    domain: async (
-      scanner: Scanner,
-      query: string,
-    ): Promise<Result<string, string>> => {
+    domain: (scanner: Scanner, query: string) => {
       return scanner.scanByDomain(query);
     },
-    url: async (
-      scanner: Scanner,
-      query: string,
-    ): Promise<Result<string, string>> => {
+    url: (scanner: Scanner, query: string) => {
       return scanner.scanByURL(query);
     },
   };
 
-  public async scan(): Promise<Result<string, string>> {
-    const getSlot = () => {
+  public scan(): ResultAsync<string, string> {
+    const getSlot = (): ResultAsync<SelectorSlot, string> => {
       const selector: Selector = new Selector(this.command.query);
       const slots: SelectorSlot[] = selector.getScannerSlots();
       const slot = slots.find((s) => s.analyzer.name === this.command.name);
 
       if (!slot) {
-        return err(`Slot for ${this.command.name} is missing`);
+        return errAsync(`Slot for ${this.command.name} is missing`);
       }
 
       if (!isScanner(slot.analyzer)) {
-        return err(`${slot.analyzer.name} is not a scanner`);
+        return errAsync(`${slot.analyzer.name} is not a scanner`);
       }
 
-      return ok(slot);
+      return okAsync(slot);
     };
 
-    const scan = async (slot: SelectorSlot) => {
+    const scan = (slot: SelectorSlot): ResultAsync<string, string> => {
       const scanner = slot.analyzer as Scanner;
 
       switch (scanner.name) {
@@ -158,17 +149,12 @@ export class CommandRunner {
 
       if (slot.type in this.scannerMap) {
         const fn = this.scannerMap[slot.type];
-        return await fn(scanner, slot.query);
+        return fn(scanner, slot.query);
       }
 
-      return err("Something goes wrong");
+      return errAsync("Something goes wrong");
     };
 
-    const result = await getSlot().asyncMap(scan);
-
-    if (result.isErr()) {
-      return err(result.error);
-    }
-    return result.value;
+    return getSlot().andThen(scan);
   }
 }

@@ -20,8 +20,8 @@ import { getFaviconURL } from "../utils";
 const isInitialized = ref(false);
 const synchedAt = ref<string>();
 
-const searchableType = ref<SearchableType | undefined>(undefined);
-const scannableType = ref<ScannableType | undefined>(undefined);
+const searchableType = ref<SearchableType>();
+const scannableType = ref<ScannableType>();
 
 const options = reactive<OptionsType>({
   debug: false,
@@ -243,10 +243,7 @@ watch(options, async (newOptions) => {
                 </div>
               </div>
               <div class="field">
-                <div
-                  class="control"
-                  v-if="scanner.hasAPIKey && isSelectedScanner(scanner)"
-                >
+                <div class="control" v-if="isSelectedScanner(scanner)">
                   <input
                     type="text"
                     class="input"

@@ -6,9 +6,10 @@ export async function searchAll(runner: CommandRunner): Promise<void> {
   for (const result of results) {
     if (result.isOk()) {
       await chrome.tabs.create({ url: result.value });
-    } else {
-      showNotification(result.error);
+      continue;
     }
+
+    showNotification(result.error);
   }
 }
 
@@ -16,7 +17,8 @@ export async function search(runner: CommandRunner): Promise<void> {
   const result = runner.search();
   if (result.isOk()) {
     await chrome.tabs.create({ url: result.value });
-  } else {
-    showNotification(result.error);
+    return;
   }
+
+  showNotification(result.error);
 }

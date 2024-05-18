@@ -1,4 +1,4 @@
-import { err, ok, Result } from "neverthrow";
+import { errAsync, ResultAsync } from "neverthrow";
 import { z } from "zod";
 
 import type { ScannableType } from "~/types";
@@ -17,7 +17,7 @@ export class HybridAnalysis extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: ScannableType[] = ["url"];
-  public apiKey: string | undefined = undefined;
+  public apiKey?: string = undefined;
 
   public constructor() {
     super();
@@ -25,13 +25,13 @@ export class HybridAnalysis extends Base {
     this.name = "HybridAnalysis";
   }
 
-  public setAPIKey(apiKey: string | undefined): void {
+  setAPIKey(apiKey: string): void {
     this.apiKey = apiKey;
   }
 
-  public async scanByURL(url: string): Promise<Result<string, string>> {
-    if (this.apiKey === undefined) {
-      return err("Please set your HybridAnalysis API key via the option.");
+  scanByURL(url: string) {
+    if (!this.apiKey) {
+      return errAsync("Please set your HybridAnalysis API key via the option.");
     }
 
     const formData = new FormData();
@@ -43,21 +43,28 @@ export class HybridAnalysis extends Base {
       "user-agent": "Falcon Sandbox",
     };
 
-    const res = await fetch(`${this.baseURL}/api/v2/quick-scan/url`, {
-      method: "POST",
-      headers,
-      body: formData,
-    });
+    const scan = async () => {
+      const res = await fetch(`${this.baseURL}/api/v2/quick-scan/url`, {
+        method: "POST",
+        headers,
+        body: formData,
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (!res.ok) {
-      const parsed = ErrorResponse.parse(data);
-      return err(parsed.message);
-    }
+      if (!res.ok) {
+        const parsed = ErrorResponse.parse(data);
+        throw Error(parsed.message);
+      }
 
-    const parsed = Response.parse(data);
-    const sha256: string = parsed.sha256;
-    return ok(`https://www.hybrid-analysis.com/sample/${sha256}/`);
+      const parsed = Response.parse(data);
+      const sha256: string = parsed.sha256;
+      return `https://www.hybrid-analysis.com/sample/${sha256}/`;
+    };
+
+    return ResultAsync.fromThrowable(
+      scan,
+      (err: unknown) => (err as Error).message,
+    )();
   }
 }

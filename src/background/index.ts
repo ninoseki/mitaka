@@ -31,11 +31,11 @@ export function createContextMenus(text: string, options: OptionsType): void {
     // it tells action, query, type and target to the listener
     const id = commandToID(command);
     const title = commandToMessage(command);
-    chrome.contextMenus.create({ contexts, id, title });
-
-    if (options.debug) {
-      console.debug(`Mitaka: context menu:${id} created`);
-    }
+    chrome.contextMenus.create({ contexts, id, title }, () => {
+      if (options.debug) {
+        console.debug(`Mitaka: context menu:${id} created`);
+      }
+    });
   }
 }
 

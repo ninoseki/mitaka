@@ -1,4 +1,4 @@
-import { Result } from "neverthrow";
+import { Result, ResultAsync } from "neverthrow";
 
 import type { CommandActionType, OptionsType, SearchableType } from "~/schemas";
 
@@ -44,10 +44,11 @@ export interface Scanner {
   name: string;
   supportedTypes: ScannableType[];
   apiKey?: string;
-  setAPIKey(apiKey: string | undefined): void;
-  scanByIP(query: string): Promise<Result<string, string>>;
-  scanByDomain(query: string): Promise<Result<string, string>>;
-  scanByURL(query: string): Promise<Result<string, string>>;
+  apiKeyRequired: boolean;
+  setAPIKey(apiKey?: string): void;
+  scanByIP(query: string): ResultAsync<string, string>;
+  scanByDomain(query: string): ResultAsync<string, string>;
+  scanByURL(query: string): ResultAsync<string, string>;
 }
 
 export interface SearchFuncWrapper {
@@ -79,7 +80,7 @@ export interface ScannerMap {
   [name: string]: (
     scanner: Scanner,
     query: string,
-  ) => Promise<Result<string, string>>;
+  ) => ResultAsync<string, string>;
 }
 
 export interface Command {
