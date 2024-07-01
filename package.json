@@ -32,7 +32,7 @@
     "js-base64": "^3.7.7",
     "js-sha256": "^0.11.0",
     "just-truncate": "^2.2.0",
-    "neverthrow": "6.2.1",
+    "neverthrow": "6.2.2",
     "vue": "^3.4.27",
     "zod": "^3.23.8"
   },
