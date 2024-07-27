@@ -34,8 +34,8 @@
     "js-sha256": "^0.11.0",
     "just-truncate": "^2.2.0",
     "neverthrow": "7.0.0",
-    "vue": "^3.4.34",
-    "zod": "^3.23.8"
+    "valibot": "^0.36.0",
+    "vue": "^3.4.34"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
@@ -44,7 +44,6 @@
     "@rushstack/eslint-patch": "^1.10.4",
     "@types/chrome": "^0.0.269",
     "@types/jest": "^29.5.12",
-    "@types/js-base64": "3.3.1",
     "@types/node": "^20.14.12",
     "@typescript-eslint/eslint-plugin": "7.17.0",
     "@typescript-eslint/parser": "7.17.0",
