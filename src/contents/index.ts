@@ -27,6 +27,7 @@ export async function onSelectionChange(): Promise<void> {
 
   if (text !== "") {
     if (options.debug) {
+      // eslint-disable-next-line no-console
       console.debug(`Mitaka: "${text}" selected`);
     }
     await chrome.runtime.sendMessage({ text, options });

@@ -30,9 +30,11 @@ function isReachable(url: string) {
   const errors = results.filter((r) => r.isErr());
   if (errors.length > 0) {
     errors.forEach((e) => {
+      // eslint-disable-next-line no-console
       console.error(e);
     });
   } else {
+    // eslint-disable-next-line no-console
     console.log("All goes well");
   }
 })();
