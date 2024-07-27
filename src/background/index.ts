@@ -33,6 +33,7 @@ export function createContextMenus(text: string, options: OptionsType): void {
     const title = commandToMessage(command);
     chrome.contextMenus.create({ contexts, id, title }, () => {
       if (options.debug) {
+        // eslint-disable-next-line no-console
         console.debug(`Mitaka: context menu:${id} created`);
       }
     });
@@ -42,6 +43,7 @@ export function createContextMenus(text: string, options: OptionsType): void {
 // set onMessage lister
 chrome.runtime.onMessage.addListener((message: Message) => {
   if (message.options.debug) {
+    // eslint-disable-next-line no-console
     console.debug(`Mitaka: "${message.text}" received`);
   }
   // remove all context menus as an initialization

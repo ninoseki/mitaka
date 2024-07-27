@@ -24,7 +24,7 @@ jobs:
       - name: Run tests
         run: npm run test
       - name: Coveralls
-        uses: coverallsapp/github-action@master
+        uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
   lint:
@@ -42,4 +42,4 @@ jobs:
       - name: Install npm dependencies
         run: npm install
       - name: Run lint
-        run: npx eslint --ext .js,.vue,.ts --ignore-path .gitignore src tests
+        run: NODE_ENV=production npm run lint
