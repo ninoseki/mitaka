@@ -1,25 +1,25 @@
 import { errAsync, ResultAsync } from "neverthrow";
-import { z } from "zod";
+import * as v from "valibot";
 
 import type { ScannableType } from "~/types";
 import { buildURL } from "~/utils";
 
 import { Base } from "./base";
 
-const Data = z.object({
-  id: z.string(),
-  type: z.string(),
+const Data = v.object({
+  id: v.string(),
+  type: v.string(),
 });
 
-const Response = z.object({
+const Response = v.object({
   data: Data,
 });
 
-const ErrorMessage = z.object({
-  message: z.string(),
+const ErrorMessage = v.object({
+  message: v.string(),
 });
 
-const ErrorResponse = z.object({
+const ErrorResponse = v.object({
   error: ErrorMessage,
 });
 
@@ -69,11 +69,11 @@ export class VirusTotal extends Base {
       const data = await res.json();
 
       if (!res.ok) {
-        const parsed = ErrorResponse.parse(data);
+        const parsed = v.parse(ErrorResponse, data);
         throw new Error(parsed.error.message);
       }
 
-      const parsed = Response.parse(data);
+      const parsed = v.parse(Response, data);
       return this.permaLink(parsed.data.id);
     };
 

@@ -16,6 +16,7 @@ import {
   refang,
   unicodeToASCII,
 } from "ioc-extractor";
+import * as v from "valibot";
 
 import { Scanners } from "~/scanner";
 import { OptionsSchema } from "~/schemas";
@@ -30,7 +31,7 @@ import type {
   SelectorSlot,
 } from "~/types";
 
-const defaultOptions = OptionsSchema.parse({});
+const defaultOptions = v.parse(OptionsSchema, {});
 
 export class Selector {
   protected input: string;

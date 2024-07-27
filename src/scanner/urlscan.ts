@@ -1,17 +1,17 @@
 import { errAsync, ResultAsync } from "neverthrow";
-import { z } from "zod";
+import * as v from "valibot";
 
 import type { ScannableType } from "~/types";
 
 import { Base } from "./base";
 
-const Response = z.object({
-  result: z.string(),
+const Response = v.object({
+  result: v.string(),
 });
 
-const ErrorResponse = z.object({
-  message: z.string(),
-  status: z.number(),
+const ErrorResponse = v.object({
+  message: v.string(),
+  status: v.number(),
 });
 
 export class URLScan extends Base {
@@ -66,11 +66,11 @@ export class URLScan extends Base {
       const data = await res.json();
 
       if (!res.ok) {
-        const parsed = ErrorResponse.parse(data);
+        const parsed = v.parse(ErrorResponse, data);
         throw new Error(parsed.message);
       }
 
-      const parsed = Response.parse(data);
+      const parsed = v.parse(Response, data);
       return `${parsed.result}loading`;
     };
 

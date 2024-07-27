@@ -1,16 +1,16 @@
 import { errAsync, ResultAsync } from "neverthrow";
-import { z } from "zod";
+import * as v from "valibot";
 
 import type { ScannableType } from "~/types";
 
 import { Base } from "./base";
 
-const Response = z.object({
-  sha256: z.string(),
+const Response = v.object({
+  sha256: v.string(),
 });
 
-const ErrorResponse = z.object({
-  message: z.string(),
+const ErrorResponse = v.object({
+  message: v.string(),
 });
 
 export class HybridAnalysis extends Base {
@@ -53,11 +53,11 @@ export class HybridAnalysis extends Base {
       const data = await res.json();
 
       if (!res.ok) {
-        const parsed = ErrorResponse.parse(data);
+        const parsed = v.parse(ErrorResponse, data);
         throw Error(parsed.message);
       }
 
-      const parsed = Response.parse(data);
+      const parsed = v.parse(Response, data);
       const sha256: string = parsed.sha256;
       return `https://www.hybrid-analysis.com/sample/${sha256}/`;
     };

@@ -1,46 +1,51 @@
-import { z } from "zod";
+import * as v from "valibot";
 
-export const SelectorOptionsSchema = z.object({
-  strict: z.boolean().default(false),
-  refang: z.boolean().default(true),
-  punycode: z.boolean().default(false),
-  debug: z.boolean().default(false),
+export const SelectorOptionsSchema = v.object({
+  strict: v.optional(v.boolean(), false),
+  refang: v.optional(v.boolean(), true),
+  punycode: v.optional(v.boolean(), false),
+  debug: v.optional(v.boolean(), false),
 });
 
-export type SelectorOptionsType = z.infer<typeof SelectorOptionsSchema>;
+export type SelectorOptionsType = v.InferOutput<typeof SelectorOptionsSchema>;
 
-export const OptionsSchema = SelectorOptionsSchema.extend({
-  href: z.boolean().default(true),
-  disabledSearcherNames: z.array(z.string()).default([]),
-  disabledScannerNames: z.array(z.string()).default([]),
-  hybridAnalysisAPIKey: z.string().optional(),
-  urlscanAPIKey: z.string().optional(),
-  virusTotalAPIKey: z.string().optional(),
+export const OtherOptionsSchema = v.object({
+  href: v.optional(v.boolean(), true),
+  disabledSearcherNames: v.optional(v.array(v.string()), []),
+  disabledScannerNames: v.optional(v.array(v.string()), []),
+  hybridAnalysisAPIKey: v.optional(v.string()),
+  urlscanAPIKey: v.optional(v.string()),
+  virusTotalAPIKey: v.optional(v.string()),
 });
 
-export type OptionsType = z.infer<typeof OptionsSchema>;
+export const OptionsSchema = v.object({
+  ...SelectorOptionsSchema.entries,
+  ...OtherOptionsSchema.entries,
+});
 
-export const Searchable = z.union([
-  z.literal("asn"),
-  z.literal("btc"),
-  z.literal("cve"),
-  z.literal("domain"),
-  z.literal("email"),
-  z.literal("eth"),
-  z.literal("gaPubID"),
-  z.literal("gaTrackID"),
-  z.literal("hash"),
-  z.literal("ip"),
-  z.literal("url"),
+export type OptionsType = v.InferOutput<typeof OptionsSchema>;
+
+export const Searchable = v.union([
+  v.literal("asn"),
+  v.literal("btc"),
+  v.literal("cve"),
+  v.literal("domain"),
+  v.literal("email"),
+  v.literal("eth"),
+  v.literal("gaPubID"),
+  v.literal("gaTrackID"),
+  v.literal("hash"),
+  v.literal("ip"),
+  v.literal("url"),
 ]);
-export type SearchableType = z.infer<typeof Searchable>;
+export type SearchableType = v.InferOutput<typeof Searchable>;
 
-export const CommandAction = z.union([z.literal("scan"), z.literal("search")]);
-export type CommandActionType = z.infer<typeof CommandAction>;
+export const CommandAction = v.union([v.literal("scan"), v.literal("search")]);
+export type CommandActionType = v.InferOutput<typeof CommandAction>;
 
-export const CommandSchema = z.object({
+export const CommandSchema = v.object({
   action: CommandAction,
-  query: z.string(),
+  query: v.string(),
   type: Searchable,
-  name: z.string(),
+  name: v.string(),
 });

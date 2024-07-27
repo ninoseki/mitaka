@@ -1,3 +1,5 @@
+import * as v from "valibot";
+
 import { scan } from "~/background/scan";
 import { search, searchAll } from "~/background/search";
 import { CommandRunner } from "~/command/runner";
@@ -8,7 +10,7 @@ import { getOptions } from "~/storage";
 chrome.contextMenus.onClicked.addListener(async (info) => {
   // id is JSON string represents command
   const id: string = info.menuItemId.toString();
-  const command = CommandSchema.parse(JSON.parse(id));
+  const command = v.parse(CommandSchema, JSON.parse(id));
   const options = await getOptions();
 
   const runner = new CommandRunner(command, options);
