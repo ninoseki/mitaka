@@ -1,5 +1,7 @@
 import { debounce } from "@github/mini-throttle";
 
+import { sendToBackground } from "@plasmohq/messaging";
+
 import { getOptions } from "~/storage";
 
 export {};
@@ -30,7 +32,11 @@ export async function onSelectionChange(): Promise<void> {
       // eslint-disable-next-line no-console
       console.debug(`Mitaka: "${text}" selected`);
     }
-    await chrome.runtime.sendMessage({ text, options });
+
+    await sendToBackground({
+      name: "create-context-menus",
+      body: { text, options },
+    });
   }
 }
 

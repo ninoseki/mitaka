@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@github/mini-throttle": "^2.1.1",
+    "@plasmohq/messaging": "^0.6.2",
     "bulma": "^1.0.0",
     "ioc-extractor": "^8.0.4",
     "js-base64": "^3.7.7",
