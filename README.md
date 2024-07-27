@@ -91,7 +91,6 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | Shodan               | https://www.shodan.io                  | IP, domain, ASN                                                      |
 | Sploitus             | https://sploitus.com                   | CVE                                                                  |
 | SpyOnWeb             | http://spyonweb.com                    | IP, domain, Google Adsense Publisher ID, Google Analytics Tracker ID |
-| Spyse                | https://spyse.com                      | IP, domain, ASN, CVE, email                                          |
 | Talos                | https://talosintelligence.com          | IP, domain                                                           |
 | ThreatBook           | https://threatbook.io                  | IP, domain                                                           |
 | ThreatConnect        | https://app.threatconnect.com          | IP, domain, email                                                    |
@@ -159,6 +158,16 @@ Please allow "Access your data for all websites" permission. Otherwise this exte
 - [ThreatConnect Integrated Chrome Extension](https://chrome.google.com/webstore/detail/threatconnect-integrated/lblgcphpihpadjdpjgjnnoikjdjcnkbh)
 - [ThreatPinch Lookup](https://github.com/cloudtracer/ThreatPinchLookup)
 - [VTchromizer](https://chrome.google.com/webstore/detail/vtchromizer/efbjojhplkelaegfbieplglfidafgoka)
+
+## How It Works
+
+```mermaid
+flowchart LR
+  CS[Content Script] --> |1. Send Selection| BSW[Background Service Worker]
+  BSW --> |2. Create Context Menus| CS
+  CS --> |3. Click Context Menu| BSW
+  BSW --> |4. Search/Scan| T[New Tab]
+```
 
 ## Contribute
 
