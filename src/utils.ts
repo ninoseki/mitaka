@@ -1,4 +1,5 @@
 import { Base64 } from "js-base64";
+import jt from "just-truncate";
 
 import type { Scanner, Searcher } from "~/types";
 
@@ -42,4 +43,8 @@ export function isSearcher(object: any): object is Searcher {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isScanner(object: any): object is Scanner {
   return "setAPIKey" in object;
+}
+
+export function truncate(s: string, length: number = 32): string {
+  return jt(s, length);
 }

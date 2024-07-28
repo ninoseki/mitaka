@@ -1,6 +1,5 @@
-import truncate from "just-truncate";
-
 import type { CommandType } from "~/schemas";
+import { truncate } from "~/utils";
 
 const abbreviations = ["ip", "asn", "btc", "cve", "eth", "url"];
 
