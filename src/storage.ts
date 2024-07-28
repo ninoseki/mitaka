@@ -15,19 +15,7 @@ export async function getOptions(): Promise<OptionsType> {
 }
 
 export async function setOptions(options: OptionsType): Promise<void> {
-  await chrome.storage.sync.set({
-    options: {
-      debug: options.debug,
-      strict: options.strict,
-      punycode: options.punycode,
-      refang: options.refang,
-      href: options.href,
-      disabledSearcherNames: options.disabledSearcherNames.map((n) => n),
-      disabledScannerNames: options.disabledScannerNames.map((n) => n),
-      hybridAnalysisAPIKey: options.hybridAnalysisAPIKey,
-      urlscanAPIKey: options.urlscanAPIKey,
-      urlscanVisibility: options.urlscanVisibility,
-      virusTotalAPIKey: options.virusTotalAPIKey,
-    },
-  });
+  // NOTE: use valibot to convert Proxy object into vanilla JS/TS object
+  const parsed = v.parse(OptionsSchema, options);
+  await chrome.storage.sync.set({ options: parsed });
 }
