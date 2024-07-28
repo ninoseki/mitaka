@@ -9,12 +9,21 @@ export const SelectorOptionsSchema = v.object({
 
 export type SelectorOptionsType = v.InferOutput<typeof SelectorOptionsSchema>;
 
+export const urlscanVisibility = v.union([
+  v.literal("public"),
+  v.literal("unlisted"),
+  v.literal("private"),
+]);
+
+export type urlscanVisibilityType = v.InferOutput<typeof urlscanVisibility>;
+
 export const OtherOptionsSchema = v.object({
   href: v.optional(v.boolean(), true),
   disabledSearcherNames: v.optional(v.array(v.string()), []),
   disabledScannerNames: v.optional(v.array(v.string()), []),
   hybridAnalysisAPIKey: v.optional(v.string()),
   urlscanAPIKey: v.optional(v.string()),
+  urlscanVisibility: v.optional(urlscanVisibility, "public"),
   virusTotalAPIKey: v.optional(v.string()),
 });
 

@@ -10,7 +10,7 @@ import "bulma/css/bulma.css";
 import { onMounted, reactive, ref, watch } from "vue";
 
 import { Scanners } from "../scanner";
-import type { OptionsType, SearchableType } from "../schemas";
+import { OptionsType, SearchableType } from "../schemas";
 import { Searchers } from "../searcher";
 import { getOptions, setOptions } from "../storage";
 import type { ScannableType, Scanner, Searcher } from "../types";
@@ -31,6 +31,7 @@ const options = reactive<OptionsType>({
   strict: true,
   hybridAnalysisAPIKey: undefined,
   urlscanAPIKey: undefined,
+  urlscanVisibility: "public",
   virusTotalAPIKey: undefined,
   disabledScannerNames: [],
   disabledSearcherNames: [],
@@ -265,6 +266,23 @@ watch(options, async (newOptions) => {
                     placeholder="HybridAnalysis API key"
                     v-if="scanner.name === 'HybridAnalysis'"
                   />
+                </div>
+              </div>
+              <div
+                class="field"
+                v-if="
+                  isSelectedScanner(scanner) && scanner.name === 'urlscan.io'
+                "
+              >
+                <label class="label">Visibility</label>
+                <div class="control">
+                  <div class="select">
+                    <select v-model="options.urlscanVisibility">
+                      <option>public</option>
+                      <option>unlisted</option>
+                      <option>private</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>

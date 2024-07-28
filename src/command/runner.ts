@@ -1,5 +1,6 @@
 import { err, errAsync, ok, okAsync, Result, ResultAsync } from "neverthrow";
 
+import { URLScan } from "~/scanner";
 import type { OptionsType } from "~/schemas";
 import { Selector } from "~/selector";
 import type {
@@ -139,6 +140,7 @@ export class CommandRunner {
           break;
         case "urlscan.io":
           scanner.setAPIKey(this.options.urlscanAPIKey);
+          (scanner as URLScan).setVisibility(this.options.urlscanVisibility);
           break;
         case "VirusTotal":
           scanner.setAPIKey(this.options.virusTotalAPIKey);
