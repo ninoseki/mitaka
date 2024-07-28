@@ -58,3 +58,5 @@ export const CommandSchema = v.object({
   type: Searchable,
   name: v.string(),
 });
+
+export type CommandType = v.InferOutput<typeof CommandSchema>;

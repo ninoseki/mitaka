@@ -1,6 +1,6 @@
 import { Result, ResultAsync } from "neverthrow";
 
-import type { CommandActionType, OptionsType, SearchableType } from "~/schemas";
+import type { OptionsType, SearchableType } from "~/schemas";
 
 export const SEARCHABLE_TYPES: SearchableType[] = [
   "asn",
@@ -81,13 +81,6 @@ export interface ScannerMap {
     scanner: Scanner,
     query: string,
   ) => ResultAsync<string, string>;
-}
-
-export interface Command {
-  action: CommandActionType;
-  query: string;
-  type: SearchableType;
-  name: string;
 }
 
 export const MD5_LENGTH = 32;

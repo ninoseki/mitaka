@@ -1,10 +1,9 @@
 import { err, errAsync, ok, okAsync, Result, ResultAsync } from "neverthrow";
 
 import { URLScan } from "~/scanner";
-import type { OptionsType } from "~/schemas";
+import type { CommandType, OptionsType } from "~/schemas";
 import { Selector } from "~/selector";
 import type {
-  Command,
   Scanner,
   ScannerMap,
   Searcher,
@@ -14,10 +13,10 @@ import type {
 import { isScanner, isSearcher } from "~/utils";
 
 export class CommandRunner {
-  public command: Command;
+  public command: CommandType;
   protected options: OptionsType;
 
-  public constructor(command: Command, options: OptionsType) {
+  public constructor(command: CommandType, options: OptionsType) {
     this.command = command;
     this.options = options;
   }
