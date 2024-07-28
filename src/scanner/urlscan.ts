@@ -1,6 +1,7 @@
 import { errAsync, ResultAsync } from "neverthrow";
 import * as v from "valibot";
 
+import type { urlscanVisibilityType } from "~/schemas";
 import type { ScannableType } from "~/types";
 
 import { Base } from "./base";
@@ -19,6 +20,7 @@ export class URLScan extends Base {
   public name: string;
   public supportedTypes: ScannableType[] = ["ip", "domain", "url"];
   public apiKey?: string = undefined;
+  public visibility: urlscanVisibilityType = "public";
 
   public constructor() {
     super();
@@ -28,6 +30,10 @@ export class URLScan extends Base {
 
   public setAPIKey(apiKey: string): void {
     this.apiKey = apiKey;
+  }
+
+  public setVisibility(visibility: urlscanVisibilityType): void {
+    this.visibility = visibility;
   }
 
   scanByIP(ip: string) {
@@ -42,25 +48,22 @@ export class URLScan extends Base {
     return this.scan(url);
   }
 
-  private scan(query: string, isPublic = true) {
+  private scan(query: string) {
     if (!this.apiKey) {
       return errAsync("Please set your urlscan.io API key via the option.");
     }
 
-    const body = JSON.stringify({
-      public: isPublic ? "on" : "off",
-      url: query,
-    });
-    const headers = {
-      "API-KEY": this.apiKey,
-      "content-type": "application/json",
-    };
-
     const scan = async () => {
       const res = await fetch(`${this.baseURL}/api/v1/scan/`, {
         method: "POST",
-        headers,
-        body,
+        headers: {
+          "API-KEY": this.apiKey!,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          visibility: this.visibility,
+          url: query,
+        }),
       });
 
       const data = await res.json();

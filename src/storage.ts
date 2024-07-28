@@ -26,6 +26,7 @@ export async function setOptions(options: OptionsType): Promise<void> {
       disabledScannerNames: options.disabledScannerNames.map((n) => n),
       hybridAnalysisAPIKey: options.hybridAnalysisAPIKey,
       urlscanAPIKey: options.urlscanAPIKey,
+      urlscanVisibility: options.urlscanVisibility,
       virusTotalAPIKey: options.virusTotalAPIKey,
     },
   });
