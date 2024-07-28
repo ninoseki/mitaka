@@ -1,3 +1,6 @@
+import * as v from "valibot";
+
+import { OptionsSchema } from "~/schemas";
 import { Selector } from "~/selector";
 import { isScanner, isSearcher } from "~/utils";
 
@@ -219,11 +222,12 @@ describe("Selector", function () {
 
   describe("without refang", function () {
     const ip = "1[.]1.1.1";
-    const selector: Selector = new Selector(ip, {
+    const options = v.parse(OptionsSchema, {
       refang: false,
       disabledScannerNames: [],
       disabledSearcherNames: [],
     });
+    const selector: Selector = new Selector(ip, options);
 
     describe("#getIP", function () {
       it("should return null", function () {
