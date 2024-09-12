@@ -3,8 +3,18 @@ name: Node.js CI
 on:
   push:
     branches: [master]
+    paths:
+      - ".github/workflows/nodejs.yml"
+      - "**.cjs"
+      - "**.json"
+      - "src/**"
   pull_request:
     branches: [master]
+    paths:
+      - ".github/workflows/nodejs.yml"
+      - "**.cjs"
+      - "**.json"
+      - "src/**"
 
 jobs:
   test:
