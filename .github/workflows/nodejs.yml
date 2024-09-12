@@ -3,8 +3,16 @@ name: Node.js CI
 on:
   push:
     branches: [master]
+    paths:
+      - "src/**"
+      - "**.json"
+      - "**.cjs"
   pull_request:
     branches: [master]
+    paths:
+      - "src/**"
+      - "**.json"
+      - "**.cjs"
 
 jobs:
   test:
