@@ -163,10 +163,10 @@ Please allow "Access your data for all websites" permission. Otherwise this exte
 
 ```mermaid
 flowchart LR
-  CS[Content Script] --> |1. Send Selection| BSW[Background Service Worker]
-  BSW --> |2. Create Context Menus| CS
-  CS --> |3. Click Context Menu| BSW
-  BSW --> |4. Search/Scan| T[New Tab]
+  CS[Content Script] --> |1 - Send Selection| BSW[Background Service Worker]
+  BSW --> |2 - Create Context Menus| CS
+  CS --> |3 - Click Context Menu| BSW
+  BSW --> |4 - Search/Scan| T[New Tab]
 ```
 
 ## Contribute
