@@ -60,6 +60,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | Coalition            | https://ess.coalitioninc.com           | CVE                                                                  |
 | crt.sh               | https://crt.sh                         | Domain                                                               |
 | DNSlytics            | https://dnslytics.com                  | IP, domain                                                           |
+| DNS Coffee           | https://dns.coffee                     | Domain                                                               |
 | DomainTools          | https://www.domaintools.com            | IP, domain                                                           |
 | EmailRep             | https://emailrep.io                    | Email                                                                |
 | FileScan.IO          | https://filescan.io                    | Hash                                                                 |

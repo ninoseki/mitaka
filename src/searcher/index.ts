@@ -16,6 +16,7 @@ import {
   CheckPhish,
   Coalition,
   Crtsh,
+  DNSCoffee,
   DNSlytics,
   DomainTools,
   EmailRep,
@@ -87,6 +88,7 @@ export { Crtsh } from "./crtsh";
 export { DNSlytics } from "./dnslytics";
 export { DomainBigData } from "./domainbigdata";
 export { DomainTools } from "./domaintools";
+export { DNSCoffee } from "./dnsCoffee";
 export { EmailRep } from "./emailrep";
 export { ExploitDatabase } from "./exploitdatabase";
 export { FileScan } from "./filescan";
@@ -157,6 +159,7 @@ export const Searchers: Searcher[] = [
   new CheckPhish(),
   new Coalition(),
   new Crtsh(),
+  new DNSCoffee(),
   new DNSlytics(),
   new DomainTools(),
   new EmailRep(),
