@@ -7,6 +7,7 @@ export async function getOptions(): Promise<OptionsType> {
   const getOptionsWrapper = async () => {
     return await chrome.storage.sync.get("options");
   };
+  // eslint-disable-next-line neverthrow/must-use-result
   const result = ResultAsync.fromPromise(getOptionsWrapper(), (e) => e);
   const options = (await result)
     .map((wrapper) => wrapper["options"] || {})

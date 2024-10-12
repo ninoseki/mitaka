@@ -4,21 +4,21 @@ import type { CommandRunner } from "~/command/runner";
 export async function searchAll(runner: CommandRunner): Promise<void> {
   const results = runner.searchAll();
   for (const result of results) {
-    if (result.isOk()) {
-      await chrome.tabs.create({ url: result.value });
-      continue;
-    }
-
-    showNotification(result.error);
+    result.match(
+      async (url) => {
+        await chrome.tabs.create({ url });
+      },
+      (err) => showNotification(err),
+    );
   }
 }
 
 export async function search(runner: CommandRunner): Promise<void> {
   const result = runner.search();
-  if (result.isOk()) {
-    await chrome.tabs.create({ url: result.value });
-    return;
-  }
-
-  showNotification(result.error);
+  result.match(
+    async (url) => {
+      await chrome.tabs.create({ url });
+    },
+    (err) => showNotification(err),
+  );
 }

@@ -36,6 +36,7 @@ describe("Scumware", function () {
     it("should throw an error when given SHA256", function () {
       const sha256 =
         "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f";
+      // eslint-disable-next-line neverthrow/must-use-result
       const res = subject.searchByHash(sha256);
       expect(res.isErr()).toBe(true);
     });

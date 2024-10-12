@@ -19,6 +19,7 @@ describe("VMRay", function () {
     });
 
     it("should throw an error when given hash which is not SHA256", function () {
+      // eslint-disable-next-line neverthrow/must-use-result
       const res = subject.searchByHash(md5);
       expect(res.isErr()).toBe(true);
     });
