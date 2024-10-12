@@ -10,7 +10,7 @@ import "bulma/css/bulma.css";
 import { onMounted, reactive, ref, watch } from "vue";
 
 import { Scanners } from "../scanner";
-import { OptionsType, SearchableType } from "../schemas";
+import type { OptionsType, SearchableType } from "../schemas";
 import { Searchers } from "../searcher";
 import { getOptions, setOptions } from "../storage";
 import type { ScannableType, Scanner, Searcher } from "../types";

@@ -5,10 +5,10 @@ export async function scan(runner: CommandRunner): Promise<void> {
   const resultAsync = runner.scan();
   const result = await resultAsync;
 
-  if (result.isOk()) {
-    await chrome.tabs.create({ url: result.value });
-    return;
-  }
-
-  showNotification(result.error);
+  result.match(
+    async (url) => {
+      await chrome.tabs.create({ url });
+    },
+    (err) => showNotification(err),
+  );
 }

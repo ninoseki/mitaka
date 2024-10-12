@@ -17,6 +17,7 @@ describe("APKLab", function () {
     });
 
     it("should throw an error", function () {
+      // eslint-disable-next-line neverthrow/must-use-result
       const res = subject.searchByHash("foo bar");
       expect(res.isErr()).toBe(true);
     });

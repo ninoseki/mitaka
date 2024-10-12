@@ -5,6 +5,7 @@
   ],
   "include": [
     ".plasmo/index.d.ts",
+    "eslint.config.mjs",
     "src/**/*.ts",
     "src/**/*.vue",
     "tests/**/*.ts"
