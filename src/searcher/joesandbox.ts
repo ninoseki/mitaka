@@ -17,6 +17,6 @@ export class JoeSandbox extends Base {
   }
 
   public searchByHash(query: string) {
-    return ok(buildURL(this.baseURL, `/search`, { q: query }));
+    return ok(buildURL(this.baseURL, `/analysis/search`, { q: query }));
   }
 }
