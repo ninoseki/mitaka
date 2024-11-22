@@ -1,6 +1,6 @@
 <script lang="ts">
 export default {
-  name: "IndexView",
+  name: "AppView",
 };
 </script>
 
@@ -9,13 +9,13 @@ import "bulma/css/bulma.css";
 
 import { onMounted, reactive, ref, watch } from "vue";
 
-import { Scanners } from "../scanner";
-import type { OptionsType, SearchableType } from "../schemas";
-import { Searchers } from "../searcher";
-import { getOptions, setOptions } from "../storage";
-import type { ScannableType, Scanner, Searcher } from "../types";
-import { SCANNABLE_TYPES, SEARCHABLE_TYPES } from "../types";
-import { getFaviconURL } from "../utils";
+import { Scanners } from "~/scanner";
+import type { OptionsType, SearchableType } from "~/schemas";
+import { Searchers } from "~/searcher";
+import { getOptions, setOptions } from "~/storage";
+import type { ScannableType, Scanner, Searcher } from "~/types";
+import { SCANNABLE_TYPES, SEARCHABLE_TYPES } from "~/types";
+import { getFaviconURL } from "~/utils";
 
 const isInitialized = ref(false);
 const synchedAt = ref<string>();

@@ -3,51 +3,40 @@ name: Node.js CI
 on:
   push:
     branches: [master]
-    paths:
-      - ".github/workflows/nodejs.yml"
-      - "**.cjs"
-      - "**.json"
-      - "src/**"
   pull_request:
-    branches: [master]
     paths:
       - ".github/workflows/nodejs.yml"
-      - "**.cjs"
       - "**.json"
+      - "**.mjs"
+      - "**.ts"
       - "src/**"
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 22
           cache: npm
       - name: Install npm dependencies
         run: npm install
       - name: Run tests
-        run: npm run test
+        run: npm run coverage
       - name: Coveralls
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
   lint:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 22
           cache: npm
       - name: Install npm dependencies
         run: npm install
