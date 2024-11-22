@@ -1,10 +1,7 @@
 import { debounce } from "@github/mini-throttle";
 
-import { sendToBackground } from "@plasmohq/messaging";
-
+import { sendMessage } from "~/messaging";
 import { getOptions } from "~/storage";
-
-export {};
 
 export async function onSelectionChange(): Promise<void> {
   const options = await getOptions();
@@ -32,19 +29,19 @@ export async function onSelectionChange(): Promise<void> {
       // eslint-disable-next-line no-console
       console.debug(`Mitaka: "${text}" selected`);
     }
-
-    await sendToBackground({
-      name: "create-context-menus",
-      body: { text, options },
-    });
+    await sendMessage("createContextMenus", { text, options });
   }
 }
 
-if (typeof document !== "undefined") {
-  document.addEventListener(
-    "selectionchange",
-    debounce(async () => {
-      await onSelectionChange();
-    }, 250),
-  );
-}
+export default defineContentScript({
+  matches: ["https://*/*", "http://*/*"],
+  main(ctx) {
+    ctx.addEventListener(
+      document,
+      "selectionchange",
+      debounce(async () => {
+        await onSelectionChange();
+      }, 250),
+    );
+  },
+});

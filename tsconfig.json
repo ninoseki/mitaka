@@ -1,22 +1,3 @@
 {
-  "extends": "plasmo/templates/tsconfig.base",
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    ".plasmo/index.d.ts",
-    "eslint.config.mjs",
-    "src/**/*.ts",
-    "src/**/*.vue",
-    "tests/**/*.ts"
-  ],
-  "compilerOptions": {
-    "strict": true,
-    "paths": {
-      "~/*": [
-        "src/*"
-      ]
-    },
-    "baseUrl": "."
-  }
+  "extends": "./.wxt/tsconfig.json"
 }

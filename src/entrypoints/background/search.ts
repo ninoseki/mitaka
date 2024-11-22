@@ -1,5 +1,6 @@
-import { showNotification } from "~/background/notification";
 import type { CommandRunner } from "~/command/runner";
+
+import { showNotification } from "./notification";
 
 export async function searchAll(runner: CommandRunner): Promise<void> {
   const results = runner.searchAll();
