@@ -1,6 +1,6 @@
 {
   "name": "mitaka",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "type": "module",
   "description": "A browser extension for searching IP, domain, URL, hash, etc. via the context menu.",
   "scripts": {
@@ -33,7 +33,7 @@
     "@github/mini-throttle": "^2.1.1",
     "@webext-core/messaging": "^2.1.0",
     "bulma": "^1.0.2",
-    "ioc-extractor": "^8.1.0",
+    "ioc-extractor": "^8.1.2",
     "js-base64": "^3.7.7",
     "js-sha256": "^0.11.0",
     "just-truncate": "^2.2.0",
@@ -46,7 +46,7 @@
     "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
     "@ninoseki/eslint-plugin-neverthrow": "^0.0.1",
     "@types/chrome": "^0.0.283",
-    "@types/node": "^22.9.1",
+    "@types/node": "^22.9.2",
     "@typescript-eslint/eslint-plugin": "8.15.0",
     "@typescript-eslint/parser": "8.15.0",
     "@vitest/coverage-v8": "^2.1.5",
