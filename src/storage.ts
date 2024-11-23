@@ -1,18 +1,15 @@
-import { ResultAsync } from "neverthrow";
 import * as v from "valibot";
 
 import { OptionsSchema, type OptionsType } from "~/schemas";
 
 export async function getOptions(): Promise<OptionsType> {
-  const getOptionsWrapper = async () => {
-    return await chrome.storage.sync.get("options");
-  };
-  // eslint-disable-next-line neverthrow/must-use-result
-  const result = ResultAsync.fromPromise(getOptionsWrapper(), (e) => e);
-  const options = (await result)
-    .map((wrapper) => wrapper["options"] || {})
-    .unwrapOr({});
-  return v.parse(OptionsSchema, options);
+  // don't use neverthrow here to reduce bundle size
+  try {
+    const wrapper = await chrome.storage.sync.get("options");
+    return v.parse(OptionsSchema, wrapper["options"] || {});
+  } catch {
+    return v.parse(OptionsSchema, {});
+  }
 }
 
 export async function setOptions(options: OptionsType): Promise<void> {
