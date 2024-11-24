@@ -4,10 +4,10 @@ import neverthrow from "@ninoseki/eslint-plugin-neverthrow";
 import vitest from "@vitest/eslint-plugin";
 import vueTsEslintConfig from "@vue/eslint-config-typescript";
 import * as regexpPlugin from "eslint-plugin-regexp";
+import simpleImportSort from "eslint-plugin-simple-import-sort";
 import pluginVue from "eslint-plugin-vue";
 import tseslint from "typescript-eslint";
 import vueParser from "vue-eslint-parser";
-import simpleImportSort from "eslint-plugin-simple-import-sort";
 
 // eslint-disable-next-line no-undef
 const mode = process.env.NODE_ENV === "production" ? "error" : "warn";
