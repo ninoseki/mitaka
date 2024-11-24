@@ -4,8 +4,8 @@ import { commandToID, commandToMessage } from "~/command/packer";
 import { CommandRunner } from "~/command/runner";
 import { onMessage } from "~/messaging";
 import {
-  CommandSchema,
   type CommandActionType,
+  CommandSchema,
   type CommandType,
   type OptionsType,
 } from "~/schemas";

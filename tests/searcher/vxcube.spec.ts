@@ -3,7 +3,7 @@ import { VxCube } from "~/searcher";
 describe("VxCube", function () {
   const subject = new VxCube();
 
-  it("should support ip, domain and hash ", function () {
+  it("should support ip, domain and hash", function () {
     expect(subject.supportedTypes).toEqual(["ip", "domain", "hash"]);
   });
 

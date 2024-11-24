@@ -19,8 +19,8 @@ import {
 import * as v from "valibot";
 
 import { Scanners } from "~/scanner";
-import { OptionsSchema } from "~/schemas";
 import type { OptionsType, SearchableType } from "~/schemas";
+import { OptionsSchema } from "~/schemas";
 import { All, Searchers } from "~/searcher";
 import type {
   ScanFuncWrapper,
