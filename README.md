@@ -131,7 +131,8 @@ You can enable/disable a search engine on the options page based on your prefere
 !["options.png](/images/options.png "options.png")
 
 > [!NOTE]
-> API keys are not stored in the [storage.sync](https://developer.chrome.com/docs/extensions/reference/api/storage). Thus you you have to set API keys per device.
+> Basic preferences are stored in [storage.sync](https://developer.chrome.com/docs/extensions/reference/api/storage). Thus they will be synced across devices.
+> But API keys are stored in `storage.local`. You have to set API keys per device.
 
 ## Permissions
 
