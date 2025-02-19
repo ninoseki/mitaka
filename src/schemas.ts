@@ -21,15 +21,23 @@ export const OtherOptionsSchema = v.object({
   href: v.optional(v.boolean(), true),
   disabledSearcherNames: v.optional(v.array(v.string()), []),
   disabledScannerNames: v.optional(v.array(v.string()), []),
+  urlscanVisibility: v.optional(urlscanVisibility, "public"),
+});
+
+export const SyncOptionsSchema = v.object({
+  ...SelectorOptionsSchema.entries,
+  ...OtherOptionsSchema.entries,
+});
+
+export const LocalOptionsSchema = v.object({
   hybridAnalysisAPIKey: v.optional(v.string()),
   urlscanAPIKey: v.optional(v.string()),
-  urlscanVisibility: v.optional(urlscanVisibility, "public"),
   virusTotalAPIKey: v.optional(v.string()),
 });
 
 export const OptionsSchema = v.object({
-  ...SelectorOptionsSchema.entries,
-  ...OtherOptionsSchema.entries,
+  ...SyncOptionsSchema.entries,
+  ...LocalOptionsSchema.entries,
 });
 
 export type OptionsType = v.InferOutput<typeof OptionsSchema>;
