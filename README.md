@@ -126,9 +126,13 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 
 ## Options
 
-You can enable / disable a search engine on the options page based on your preference.
+You can enable/disable a search engine on the options page based on your preference.
 
 !["options.png](/images/options.png "options.png")
+
+> [!NOTE]
+> Basic preferences are stored in [storage.sync](https://developer.chrome.com/docs/extensions/reference/api/storage). Thus they will be synced across devices.
+> But API keys are stored in `storage.local`. You have to set API keys per device.
 
 ## Permissions
 
