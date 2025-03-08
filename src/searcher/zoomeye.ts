@@ -12,7 +12,7 @@ export class ZoomEye extends Base {
 
   public constructor() {
     super();
-    this.baseURL = "https://www.zoomeye.org";
+    this.baseURL = "https://www.zoomeye.ai";
     this.name = "ZoomEye";
   }
 
