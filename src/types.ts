@@ -32,7 +32,7 @@ export interface Searcher {
   searchByGAPubID(quqery: string): Result<string, string>;
   searchByGATrackID(query: string): Result<string, string>;
   searchByHash(query: string): Result<string, string>;
-  searchByIP(query: string): Result<string, string>;
+  searchByIP(query: string, type?: string): Result<string, string>;
   searchByURL(query: string): Result<string, string>;
   searchByXMR(query: string): Result<string, string>;
 }

@@ -9,9 +9,14 @@ describe("ONYPHE", function () {
 
   describe("#searchByIP", function () {
     const ip = "1.1.1.1";
-    it("should return a URL", function () {
+    it("should return datascan URL by default", function () {
       expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
-        `https://www.onyphe.io/summary/ip/${ip}`,
+        "https://search.onyphe.io/search?q=category%3Adatascan+ip%3A1.1.1.1"
+      );
+    });
+    it("should return ctiscan URL when type is ctiscan", function () {
+      expect(subject.searchByIP(ip, "ctiscan")._unsafeUnwrap()).toBe(
+        "https://search.onyphe.io/search?q=category%3Actiscan+ip.dest%3A1.1.1.1"
       );
     });
   });

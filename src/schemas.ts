@@ -65,6 +65,10 @@ export const CommandSchema = v.object({
   query: v.string(),
   type: Searchable,
   name: v.string(),
+  // Optional property for Onyphe search type
+  onypheType: v.optional(v.union([v.literal("datascan"), v.literal("ctiscan")]), undefined),
 });
 
-export type CommandType = v.InferOutput<typeof CommandSchema>;
+export type CommandType = v.InferOutput<typeof CommandSchema> & {
+  onypheType?: "datascan" | "ctiscan";
+};
