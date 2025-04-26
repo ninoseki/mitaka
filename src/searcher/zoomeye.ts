@@ -1,5 +1,5 @@
 import { ok } from "neverthrow";
-import { encode as base64Encode } from "base-64";
+import { Base64 } from "js-base64";
 
 import type { SearchableType } from "~/schemas";
 import { buildURL } from "~/utils";
@@ -18,11 +18,10 @@ export class ZoomEye extends Base {
   }
 
   public searchByIP(query: string) {
-    const encodedQuery = base64Encode(`ip="${query}"`);
+    const encodedQuery = Base64.encode(`ip="${query}"`);
     return ok(
       buildURL(this.baseURL, "/searchResult", {
         q: encodedQuery,
-        t: "host",
       }),
     );
   }
