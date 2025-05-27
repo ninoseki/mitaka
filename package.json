@@ -1,6 +1,6 @@
 {
   "name": "mitaka",
-  "version": "2.4.1",
+  "version": "0.0.0",
   "type": "module",
   "description": "A browser extension for searching IP, domain, URL, hash, etc. via the context menu.",
   "scripts": {
