@@ -45,7 +45,7 @@
     "@eslint/js": "^9.22.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
     "@ninoseki/eslint-plugin-neverthrow": "^0.0.1",
-    "@types/chrome": "^0.0.304",
+    "@types/chrome": "^0.1.0",
     "@types/node": "^22.9.2",
     "@typescript-eslint/eslint-plugin": "8.26.0",
     "@typescript-eslint/parser": "8.26.0",
