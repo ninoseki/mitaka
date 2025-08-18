@@ -3,14 +3,10 @@ import type { Searcher } from "~/types";
 import {
   AbuseIPDB,
   AnyRun,
-  APKLab,
   ArchiveOrg,
   ArchiveToday,
   BGPView,
-  BinaryEdge,
-  BitcoinAbuse,
   BlockChain,
-  Blockchair,
   BlockCypher,
   Censys,
   CheckPhish,
@@ -36,7 +32,6 @@ import {
   Malshare,
   Maltiverse,
   MalwareBazaar,
-  Malwares,
   NVD,
   OCCRP,
   ONYPHE,
@@ -44,7 +39,6 @@ import {
   OTX,
   Pulsedive,
   Radar,
-  RiskIQ,
   Robtex,
   Scumware,
   SecurityTrails,
@@ -71,14 +65,10 @@ import {
 export { AbuseIPDB } from "./abuseipdb";
 export { All } from "./all";
 export { AnyRun } from "./anyrun";
-export { APKLab } from "./apklab";
 export { ArchiveOrg } from "./archiveorg";
 export { ArchiveToday } from "./archivetoday";
 export { BGPView } from "./bgpview";
-export { BinaryEdge } from "./binaryedge";
-export { BitcoinAbuse } from "./bitcoinabuse";
 export { BlockChain } from "./blockchain";
-export { Blockchair } from "./blockchair";
 export { BlockCypher } from "./blockcypher";
 export { Censys } from "./censys";
 export { CheckPhish } from "./checkphish";
@@ -107,7 +97,6 @@ export { JoeSandbox } from "./joesandbox";
 export { Malshare } from "./malshare";
 export { Maltiverse } from "./maltiverse";
 export { MalwareBazaar } from "./malwarebazaar";
-export { Malwares } from "./malwares";
 export { NVD } from "./nvd";
 export { OCCRP } from "./occrp";
 export { ONYPHE } from "./onyphe";
@@ -115,7 +104,6 @@ export { OpenTIP } from "./opentip";
 export { OTX } from "./otx";
 export { Pulsedive } from "./pulsedive";
 export { Radar } from "./radar";
-export { RiskIQ } from "./riskiq";
 export { Robtex } from "./robtex";
 export { Scumware } from "./scumware";
 export { SecurityTrails } from "./securitytrails";
@@ -145,14 +133,10 @@ export { ZoomEye } from "./zoomeye";
 export const Searchers: Searcher[] = [
   new AbuseIPDB(),
   new AnyRun(),
-  new APKLab(),
   new ArchiveOrg(),
   new ArchiveToday(),
   new BGPView(),
-  new BinaryEdge(),
-  new BitcoinAbuse(),
   new BlockChain(),
-  new Blockchair(),
   new BlockCypher(),
   new Censys(),
   new CheckPhish(),
@@ -178,7 +162,6 @@ export const Searchers: Searcher[] = [
   new Malshare(),
   new Maltiverse(),
   new MalwareBazaar(),
-  new Malwares(),
   new NVD(),
   new OCCRP(),
   new ONYPHE(),
@@ -186,7 +169,6 @@ export const Searchers: Searcher[] = [
   new OTX(),
   new Pulsedive(),
   new Radar(),
-  new RiskIQ(),
   new Robtex(),
   new Scumware(),
   new SecurityTrails(),
