@@ -38,7 +38,7 @@
     "js-sha256": "^0.11.1",
     "just-truncate": "^2.2.0",
     "neverthrow": "8.2.0",
-    "valibot": "^1.1.0",
+    "valibot": "^1.2.0",
     "vue": "^3.5.22"
   },
   "devDependencies": {
