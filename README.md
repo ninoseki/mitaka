@@ -48,7 +48,6 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | AnyRun               | https://app.any.run                    | Hash                       |
 | archive.org          | https://archive.org                    | URL                        |
 | archive.today        | http://archive.fo                      | URL                        |
-| BGPView              | https://bgpview.io                     | IP, ASN                    |
 | Blockchain.com       | https://www.blockchain.com             | BTC                        |
 | BlockCypher          | https://live.blockcypher.com           | BTC                        |
 | Censys               | https://censys.io                      | IP, domain, ASN, email     |
@@ -70,7 +69,6 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | IPinfo               | https://ipinfo.io                      | IP, ASN                    |
 | IPIP                 | https://en.ipip.net                    | IP, ASN                    |
 | Joe Sandbox          | https://www.joesandbox.com             | Hash                       |
-| MalShare             | https://malshare.com                   | Hash                       |
 | Maltiverse           | https://www.maltiverse.com             | Domain, hash               |
 | MalwareBazaar        | https://bazaar.abuse.ch                | Hash                       |
 | NVD                  | https://nvd.nist.gov                   | CVE                        |
