@@ -71,15 +71,25 @@ describe("Selector", function () {
     });
 
     describe("#getSlots", function () {
-      it("should have email type slots", function () {
-        const slots = selector.getSlots();
-        slots.forEach((slot) => {
-          if (isSearcher(slot.analyzer)) {
+      describe("searchers", function () {
+        it("should have email type slots", function () {
+          const slots = selector
+            .getSlots()
+            .filter((slot) => isSearcher(slot.analyzer));
+          slots.forEach((slot) => {
             expect(slot.type).toBe("email");
-          }
-          if (isScanner(slot)) {
+          });
+        });
+      });
+
+      describe("scanners", function () {
+        it("should have domain type slots", function () {
+          const slots = selector
+            .getSlots()
+            .filter((slot) => isScanner(slot.analyzer));
+          slots.forEach((slot) => {
             expect(slot.type).toBe("domain");
-          }
+          });
         });
       });
     });
