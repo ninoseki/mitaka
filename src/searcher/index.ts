@@ -5,7 +5,6 @@ import {
   AnyRun,
   ArchiveOrg,
   ArchiveToday,
-  BGPView,
   BlockChain,
   BlockCypher,
   Censys,
@@ -29,7 +28,6 @@ import {
   IPinfo,
   IPIP,
   JoeSandbox,
-  Malshare,
   Maltiverse,
   MalwareBazaar,
   NVD,
@@ -67,7 +65,6 @@ export { All } from "./all";
 export { AnyRun } from "./anyrun";
 export { ArchiveOrg } from "./archiveorg";
 export { ArchiveToday } from "./archivetoday";
-export { BGPView } from "./bgpview";
 export { BlockChain } from "./blockchain";
 export { BlockCypher } from "./blockcypher";
 export { Censys } from "./censys";
@@ -94,7 +91,6 @@ export { Intezer } from "./intezer";
 export { IPinfo } from "./ipinfo";
 export { IPIP } from "./ipip";
 export { JoeSandbox } from "./joesandbox";
-export { Malshare } from "./malshare";
 export { Maltiverse } from "./maltiverse";
 export { MalwareBazaar } from "./malwarebazaar";
 export { NVD } from "./nvd";
@@ -135,7 +131,6 @@ export const Searchers: Searcher[] = [
   new AnyRun(),
   new ArchiveOrg(),
   new ArchiveToday(),
-  new BGPView(),
   new BlockChain(),
   new BlockCypher(),
   new Censys(),
@@ -159,7 +154,6 @@ export const Searchers: Searcher[] = [
   new IPinfo(),
   new IPIP(),
   new JoeSandbox(),
-  new Malshare(),
   new Maltiverse(),
   new MalwareBazaar(),
   new NVD(),
