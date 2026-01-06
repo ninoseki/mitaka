@@ -30,6 +30,7 @@ import {
   JoeSandbox,
   Maltiverse,
   MalwareBazaar,
+  Microsoft,
   NVD,
   OCCRP,
   ONYPHE,
@@ -93,6 +94,7 @@ export { IPIP } from "./ipip";
 export { JoeSandbox } from "./joesandbox";
 export { Maltiverse } from "./maltiverse";
 export { MalwareBazaar } from "./malwarebazaar";
+export { Microsoft } from "./microsoft";
 export { NVD } from "./nvd";
 export { OCCRP } from "./occrp";
 export { ONYPHE } from "./onyphe";
@@ -156,6 +158,7 @@ export const Searchers: Searcher[] = [
   new JoeSandbox(),
   new Maltiverse(),
   new MalwareBazaar(),
+  new Microsoft(),
   new NVD(),
   new OCCRP(),
   new ONYPHE(),
