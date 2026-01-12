@@ -5,7 +5,7 @@ import { buildURL } from "~/utils";
 
 import { Base } from "./base";
 
-export class MITRE extends Base {
+export class CVE extends Base {
   public baseURL: string;
   public name: string;
   public supportedTypes: SearchableType[] = ["cve"];
@@ -13,7 +13,7 @@ export class MITRE extends Base {
   public constructor() {
     super();
     this.baseURL = "https://cve.org";
-    this.name = "MITRE";
+    this.name = "CVE";
   }
 
   public searchByCVE(query: string) {
