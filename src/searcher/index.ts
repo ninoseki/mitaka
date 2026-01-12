@@ -30,6 +30,7 @@ import {
   JoeSandbox,
   Maltiverse,
   MalwareBazaar,
+  MITRE,
   NVD,
   OCCRP,
   ONYPHE,
@@ -71,6 +72,7 @@ export { Censys } from "./censys";
 export { CheckPhish } from "./checkphish";
 export { Coalition } from "./coalition";
 export { Crtsh } from "./crtsh";
+export { CVE as MITRE } from "./cve";
 export { DNSCoffee } from "./dnsCoffee";
 export { DNSlytics } from "./dnslytics";
 export { DomainBigData } from "./domainbigdata";
@@ -156,6 +158,7 @@ export const Searchers: Searcher[] = [
   new JoeSandbox(),
   new Maltiverse(),
   new MalwareBazaar(),
+  new MITRE(),
   new NVD(),
   new OCCRP(),
   new ONYPHE(),
