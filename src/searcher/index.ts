@@ -4,7 +4,6 @@ import {
   AbuseIPDB,
   AnyRun,
   ArchiveOrg,
-  ArchiveToday,
   BlockChain,
   BlockCypher,
   Censys,
@@ -65,7 +64,6 @@ export { AbuseIPDB } from "./abuseipdb";
 export { All } from "./all";
 export { AnyRun } from "./anyrun";
 export { ArchiveOrg } from "./archiveorg";
-export { ArchiveToday } from "./archivetoday";
 export { BlockChain } from "./blockchain";
 export { BlockCypher } from "./blockcypher";
 export { Censys } from "./censys";
@@ -132,7 +130,6 @@ export const Searchers: Searcher[] = [
   new AbuseIPDB(),
   new AnyRun(),
   new ArchiveOrg(),
-  new ArchiveToday(),
   new BlockChain(),
   new BlockCypher(),
   new Censys(),

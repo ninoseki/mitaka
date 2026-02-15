@@ -47,7 +47,6 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | AbuseIPDB            | https://www.abuseipdb.com              | IP                         |
 | AnyRun               | https://app.any.run                    | Hash                       |
 | archive.org          | https://archive.org                    | URL                        |
-| archive.today        | http://archive.fo                      | URL                        |
 | Blockchain.com       | https://www.blockchain.com             | BTC                        |
 | BlockCypher          | https://live.blockcypher.com           | BTC                        |
 | Censys               | https://censys.io                      | IP, domain, ASN, email     |
