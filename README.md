@@ -1,6 +1,6 @@
 # Mitaka
 
-[link-cws]: https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg
+[link-cws]: https://chromewebstore.google.com/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg
 [link-amo]: https://addons.mozilla.org/en-US/firefox/addon/mitaka/
 
 [![Build Status](https://github.com/ninoseki/mitaka/workflows/Node.js%20CI/badge.svg)](https://github.com/ninoseki/mitaka/actions?query=workflow%3A%22Node.js+CI%22)
@@ -147,13 +147,13 @@ Please allow "Access your data for all websites" permission. Otherwise this exte
 
 ## Alternatives or Similar Tools
 
-- [CrowdScrape](https://chrome.google.com/webstore/detail/crowdscrape/jjplaeklnlddpkbbdbnogmppffokemej)
+- [CrowdScrape](https://chromewebstore.google.com/detail/crowdscrape/jjplaeklnlddpkbbdbnogmppffokemej)
 - [Gotanda](https://github.com/HASH1da1/Gotanda)
 - [SOC Multi-tool](https://github.com/zdhenard42/SOC-Multitool)
 - [Sputnik](https://github.com/mitchmoser/sputnik)
-- [ThreatConnect Integrated Chrome Extension](https://chrome.google.com/webstore/detail/threatconnect-integrated/lblgcphpihpadjdpjgjnnoikjdjcnkbh)
+- [ThreatConnect Integrated Chrome Extension](https://chromewebstore.google.com/detail/threatconnect-integrated/lblgcphpihpadjdpjgjnnoikjdjcnkbh)
 - [ThreatPinch Lookup](https://github.com/cloudtracer/ThreatPinchLookup)
-- [VTchromizer](https://chrome.google.com/webstore/detail/vtchromizer/efbjojhplkelaegfbieplglfidafgoka)
+- [VTchromizer](https://chromewebstore.google.com/detail/vtchromizer/efbjojhplkelaegfbieplglfidafgoka)
 
 ## How It Works
 
