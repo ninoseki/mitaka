@@ -1,8 +1,9 @@
-import { fileURLToPath } from "node:url";
-import { mergeConfig } from "vite";
-import { defineConfig } from "vitest/config";
+import { fileURLToPath } from 'node:url'
 
-import wxtConfig from "./wxt.config";
+import { mergeConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
+
+import wxtConfig from './wxt.config'
 
 export default mergeConfig(
   wxtConfig,
@@ -10,13 +11,13 @@ export default mergeConfig(
     test: {
       globals: true,
       coverage: {
-        reporter: ["lcov", "text"],
+        reporter: ['lcov', 'text'],
       },
     },
     resolve: {
       alias: {
-        "~": fileURLToPath(new URL("./src", import.meta.url)),
+        '~': fileURLToPath(new URL('./src', import.meta.url)),
       },
     },
   }),
-);
+)

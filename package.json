@@ -1,72 +1,75 @@
 {
   "name": "mitaka",
   "version": "0.0.0",
-  "type": "module",
   "description": "A browser extension for searching IP, domain, URL, hash, etc. via the context menu.",
+  "license": "MIT",
+  "author": "ninoseki",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ninoseki/mitaka.git"
+  },
+  "type": "module",
   "scripts": {
     "build:firefox": "wxt build -b firefox --mv3",
     "build": "wxt build",
     "compile": "vue-tsc --noEmit",
     "dev:firefox": "wxt -b firefox",
     "dev": "wxt",
-    "format": "prettier --write src/ tests/",
-    "lint": "eslint src tests --fix",
+    "lint": "run-s lint:*",
+    "lint:oxlint": "oxlint . --fix",
+    "lint:eslint": "eslint . --fix --cache",
+    "format": "oxfmt src/",
     "postinstall": "wxt prepare",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "zip:firefox": "wxt zip -b firefox --mv3",
     "zip": "wxt zip"
   },
-  "lint-staged": {
-    "*.ts": [
-      "npm run lint",
-      "npm run format"
-    ]
-  },
-  "author": "ninoseki",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ninoseki/mitaka.git"
-  },
   "dependencies": {
     "@github/mini-throttle": "^2.1.1",
     "@webext-core/messaging": "^2.3.0",
     "bulma": "^1.0.4",
-    "ioc-extractor": "^8.1.3",
+    "ioc-extractor": "^8.1.5",
     "js-base64": "^3.7.8",
     "js-sha256": "^0.11.1",
     "just-truncate": "^2.2.0",
     "neverthrow": "8.2.0",
     "valibot": "^1.2.0",
-    "vue": "^3.5.28"
+    "vue": "^3.5.30"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
     "@ninoseki/eslint-plugin-neverthrow": "^0.0.1",
-    "@types/chrome": "^0.1.36",
+    "@types/chrome": "^0.1.37",
     "@types/node": "^24.10.4",
-    "@typescript-eslint/eslint-plugin": "8.55.0",
-    "@typescript-eslint/parser": "8.55.0",
-    "@vitest/coverage-v8": "^4.0.18",
-    "@vitest/eslint-plugin": "^1.6.9",
-    "@vue/eslint-config-typescript": "^14.6.0",
-    "@wxt-dev/auto-icons": "^1.1.0",
+    "@vitest/coverage-v8": "^4.1.0",
+    "@vitest/eslint-plugin": "^1.6.12",
+    "@vue/eslint-config-typescript": "^14.7.0",
+    "@wxt-dev/auto-icons": "^1.1.1",
     "@wxt-dev/module-vue": "^1.0.3",
-    "axios": "^1.13.5",
+    "axios": "^1.13.6",
     "coveralls": "3.1.1",
-    "eslint": "^9.39.2",
-    "eslint-plugin-regexp": "^3.0.0",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-oxlint": "^1.55.0",
+    "eslint-plugin-regexp": "^3.1.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-vue": "^10.8.0",
     "husky": "9.1.7",
-    "lint-staged": "16.2.7",
+    "lint-staged": "16.3.3",
+    "npm-run-all2": "^8.0.4",
+    "oxfmt": "^0.40.0",
+    "oxlint": "^1.55.0",
     "prettier": "3.8.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.55.0",
-    "vitest": "^4.0.18",
-    "wxt": "^0.20.17"
+    "typescript-eslint": "^8.57.0",
+    "vitest": "^4.1.0",
+    "wxt": "^0.20.18"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npx oxlint --fix",
+      "npx oxfmt"
+    ]
   }
 }

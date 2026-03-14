@@ -1,18 +1,18 @@
-import { OCCRP } from "~/searcher";
+import { OCCRP } from '~/searcher'
 
-describe("OCCRP", function () {
-  const subject = new OCCRP();
+describe('OCCRP', function () {
+  const subject = new OCCRP()
 
-  it("should support email", function () {
-    expect(subject.supportedTypes).toEqual(["email"]);
-  });
+  it('should support email', function () {
+    expect(subject.supportedTypes).toEqual(['email'])
+  })
 
-  describe("#searchByEmail", function () {
-    const email = "test@test.com";
-    it("should return a URL", function () {
+  describe('#searchByEmail', function () {
+    const email = 'test@test.com'
+    it('should return a URL', function () {
       expect(subject.searchByEmail(email)._unsafeUnwrap()).toBe(
-        "https://data.occrp.org/search?facet=email&filter%3Aemails=test%40test.com",
-      );
-    });
-  });
-});
+        'https://data.occrp.org/search?facet=email&filter%3Aemails=test%40test.com',
+      )
+    })
+  })
+})

@@ -1,27 +1,27 @@
 <script lang="ts">
 export default {
-  name: "AppView",
-};
+  name: 'AppView',
+}
 </script>
 
 <script setup lang="ts">
-import "bulma/css/bulma.css";
+import 'bulma/css/bulma.css'
 
-import { onMounted, reactive, ref, watch } from "vue";
+import { onMounted, reactive, ref, watch } from 'vue'
 
-import { Scanners } from "~/scanner";
-import type { OptionsType, SearchableType } from "~/schemas";
-import { Searchers } from "~/searcher";
-import { getOptions, setOptions } from "~/storage";
-import type { ScannableType, Scanner, Searcher } from "~/types";
-import { SCANNABLE_TYPES, SEARCHABLE_TYPES } from "~/types";
-import { getFaviconURL } from "~/utils";
+import { Scanners } from '~/scanner'
+import type { OptionsType, SearchableType } from '~/schemas'
+import { Searchers } from '~/searcher'
+import { getOptions, setOptions } from '~/storage'
+import type { ScannableType, Scanner, Searcher } from '~/types'
+import { SCANNABLE_TYPES, SEARCHABLE_TYPES } from '~/types'
+import { getFaviconURL } from '~/utils'
 
-const isInitialized = ref(false);
-const synchedAt = ref<string>();
+const isInitialized = ref(false)
+const synchedAt = ref<string>()
 
-const searchableType = ref<SearchableType>();
-const scannableType = ref<ScannableType>();
+const searchableType = ref<SearchableType>()
+const scannableType = ref<ScannableType>()
 
 const options = reactive<OptionsType>({
   debug: false,
@@ -31,84 +31,80 @@ const options = reactive<OptionsType>({
   strict: true,
   hybridAnalysisAPIKey: undefined,
   urlscanAPIKey: undefined,
-  urlscanVisibility: "public",
+  urlscanVisibility: 'public',
   virusTotalAPIKey: undefined,
   disabledScannerNames: [],
   disabledSearcherNames: [],
-});
+})
 
 onMounted(async () => {
-  const storageOptions = await getOptions();
-  Object.assign(options, { ...storageOptions });
-});
+  const storageOptions = await getOptions()
+  Object.assign(options, { ...storageOptions })
+})
 
 const isEnabledSearcher = (name: string): boolean => {
-  return !options.disabledSearcherNames.includes(name);
-};
+  return !options.disabledSearcherNames.includes(name)
+}
 
 const isEnabledScanner = (name: string): boolean => {
-  return !options.disabledScannerNames.includes(name);
-};
+  return !options.disabledScannerNames.includes(name)
+}
 
 const disableOrEnableSearcher = (name: string): void => {
   if (options.disabledSearcherNames.includes(name)) {
-    options.disabledSearcherNames = options.disabledSearcherNames.filter(
-      (n) => n !== name,
-    );
+    options.disabledSearcherNames = options.disabledSearcherNames.filter((n) => n !== name)
   } else {
-    options.disabledSearcherNames.push(name);
+    options.disabledSearcherNames.push(name)
   }
-};
+}
 
 const disableOrEnableScanner = (name: string): void => {
   if (options.disabledScannerNames.includes(name)) {
-    options.disabledScannerNames = options.disabledScannerNames.filter(
-      (n) => n !== name,
-    );
+    options.disabledScannerNames = options.disabledScannerNames.filter((n) => n !== name)
   } else {
-    options.disabledScannerNames.push(name);
+    options.disabledScannerNames.push(name)
   }
-};
+}
 
 const selectSearchableType = (selected: SearchableType): void => {
   if (selected === searchableType.value) {
-    searchableType.value = undefined;
+    searchableType.value = undefined
   } else {
-    searchableType.value = selected;
+    searchableType.value = selected
   }
-};
+}
 
 const selectScannableType = (selected: ScannableType): void => {
   if (selected === scannableType.value) {
-    scannableType.value = undefined;
+    scannableType.value = undefined
   } else {
-    scannableType.value = selected;
+    scannableType.value = selected
   }
-};
+}
 
 const isSelectedSearcher = (searcher: Searcher): boolean => {
   if (searchableType.value) {
-    return searcher.supportedTypes.includes(searchableType.value);
+    return searcher.supportedTypes.includes(searchableType.value)
   }
-  return true;
-};
+  return true
+}
 
 const isSelectedScanner = (scanner: Scanner): boolean => {
   if (scannableType.value) {
-    return scanner.supportedTypes.includes(scannableType.value);
+    return scanner.supportedTypes.includes(scannableType.value)
   }
-  return true;
-};
+  return true
+}
 
 watch(options, async (newOptions) => {
   // don't sync for the first time (this event is invoked through onMounted)
   if (isInitialized.value) {
-    await setOptions(newOptions);
+    await setOptions(newOptions)
   }
 
-  synchedAt.value = new Date().toISOString();
-  isInitialized.value = true;
-});
+  synchedAt.value = new Date().toISOString()
+  isInitialized.value = true
+})
 </script>
 
 <template>
@@ -125,9 +121,7 @@ watch(options, async (newOptions) => {
             <a class="navbar-item" href="#searchers"> Searchers </a>
           </div>
           <div class="navbar-end">
-            <span class="navbar-item" v-if="synchedAt">
-              (Synced at: {{ synchedAt }})
-            </span>
+            <span class="navbar-item" v-if="synchedAt"> (Synced at: {{ synchedAt }}) </span>
           </div>
         </div>
       </nav>
@@ -147,9 +141,7 @@ watch(options, async (newOptions) => {
             <div class="field has-addons">
               <div class="control is-expanded">
                 <label class="label"> Punycode </label>
-                <p class="help">
-                  Whether to enable Punycode conversion or not.
-                </p>
+                <p class="help">Whether to enable Punycode conversion or not.</p>
                 <p class="help is-danger">(Punycode conversion can be lossy)</p>
               </div>
               <div class="control">
@@ -160,8 +152,8 @@ watch(options, async (newOptions) => {
               <div class="control is-expanded">
                 <label class="label"> Refang </label>
                 <p class="help">
-                  Whether to do refang (e.g. <code>example[.]com</code> to
-                  <code>example.com</code>) or not.
+                  Whether to do refang (e.g. <code>example[.]com</code> to <code>example.com</code>)
+                  or not.
                 </p>
               </div>
               <div class="control">
@@ -197,31 +189,19 @@ watch(options, async (newOptions) => {
                 :key="tag"
               >
                 {{ tag }}
-                <span
-                  class="delete is-small"
-                  v-if="scannableType === tag"
-                ></span>
+                <span class="delete is-small" v-if="scannableType === tag"></span>
               </span>
             </div>
             <hr />
-            <div
-              class="block"
-              v-for="(scanner, index) in Scanners"
-              :key="index"
-            >
-              <div
-                class="item field has-addons"
-                v-if="isSelectedScanner(scanner)"
-              >
+            <div class="block" v-for="(scanner, index) in Scanners" :key="index">
+              <div class="item field has-addons" v-if="isSelectedScanner(scanner)">
                 <div class="control is-expanded">
                   <label class="label">
                     <span class="icon">
                       <img :src="getFaviconURL(scanner.baseURL)" />
                     </span>
                     <span
-                      ><a :href="scanner.baseURL" target="_blank">{{
-                        scanner.name
-                      }}</a></span
+                      ><a :href="scanner.baseURL" target="_blank">{{ scanner.name }}</a></span
                     >
                   </label>
                   <p class="tags">
@@ -268,12 +248,7 @@ watch(options, async (newOptions) => {
                   />
                 </div>
               </div>
-              <div
-                class="field"
-                v-if="
-                  isSelectedScanner(scanner) && scanner.name === 'urlscan.io'
-                "
-              >
+              <div class="field" v-if="isSelectedScanner(scanner) && scanner.name === 'urlscan.io'">
                 <label class="label">Visibility</label>
                 <div class="control">
                   <div class="select">
@@ -297,31 +272,19 @@ watch(options, async (newOptions) => {
                 :key="tag"
               >
                 {{ tag }}
-                <span
-                  class="delete is-small"
-                  v-if="searchableType === tag"
-                ></span>
+                <span class="delete is-small" v-if="searchableType === tag"></span>
               </span>
             </div>
             <hr />
-            <div
-              class="block"
-              v-for="(searcher, index) in Searchers"
-              :key="index"
-            >
-              <div
-                class="item field has-addons"
-                v-if="isSelectedSearcher(searcher)"
-              >
+            <div class="block" v-for="(searcher, index) in Searchers" :key="index">
+              <div class="item field has-addons" v-if="isSelectedSearcher(searcher)">
                 <div class="control is-expanded">
                   <label class="label">
                     <span class="icon">
                       <img :src="getFaviconURL(searcher.baseURL)" />
                     </span>
                     <span
-                      ><a :href="searcher.baseURL" target="_blank">{{
-                        searcher.name
-                      }}</a></span
+                      ><a :href="searcher.baseURL" target="_blank">{{ searcher.name }}</a></span
                     >
                   </label>
                   <p class="tags">

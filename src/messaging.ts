@@ -1,10 +1,9 @@
-import { defineExtensionMessaging } from "@webext-core/messaging";
+import { defineExtensionMessaging } from '@webext-core/messaging'
 
-import { Message } from "~/types";
+import { Message } from '~/types'
 
 interface ProtocolMap {
-  createContextMenus(message: Message): void;
+  createContextMenus(message: Message): void
 }
 
-export const { sendMessage, onMessage } =
-  defineExtensionMessaging<ProtocolMap>();
+export const { sendMessage, onMessage } = defineExtensionMessaging<ProtocolMap>()

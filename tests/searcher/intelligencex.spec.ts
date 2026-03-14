@@ -1,60 +1,48 @@
-import { IntelligenceX } from "~/searcher";
+import { IntelligenceX } from '~/searcher'
 
-describe("Intelligence X", function () {
-  const subject = new IntelligenceX();
+describe('Intelligence X', function () {
+  const subject = new IntelligenceX()
 
-  it("should support ip, domain, url, email and btc", function () {
-    expect(subject.supportedTypes).toEqual([
-      "ip",
-      "domain",
-      "url",
-      "email",
-      "btc",
-    ]);
-  });
+  it('should support ip, domain, url, email and btc', function () {
+    expect(subject.supportedTypes).toEqual(['ip', 'domain', 'url', 'email', 'btc'])
+  })
 
-  describe("#searchByIP", function () {
-    const ip = "1.1.1.1";
-    it("should return a URL", function () {
-      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(
-        `https://intelx.io/?s=${ip}`,
-      );
-    });
-  });
+  describe('#searchByIP', function () {
+    const ip = '1.1.1.1'
+    it('should return a URL', function () {
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(`https://intelx.io/?s=${ip}`)
+    })
+  })
 
-  describe("#searchByDomain", function () {
-    const domain = "github.com";
-    it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
-        `https://intelx.io/?s=${domain}`,
-      );
-    });
-  });
+  describe('#searchByDomain', function () {
+    const domain = 'github.com'
+    it('should return a URL', function () {
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(`https://intelx.io/?s=${domain}`)
+    })
+  })
 
-  describe("#searchByURL", function () {
-    const url = "https://github.com";
-    it("should return a URL", function () {
+  describe('#searchByURL', function () {
+    const url = 'https://github.com'
+    it('should return a URL', function () {
       expect(subject.searchByURL(url)._unsafeUnwrap()).toBe(
-        "https://intelx.io/?s=https%3A%2F%2Fgithub.com",
-      );
-    });
-  });
+        'https://intelx.io/?s=https%3A%2F%2Fgithub.com',
+      )
+    })
+  })
 
-  describe("#searchByEmail", function () {
-    const email = "test@test.com";
-    it("should return a URL", function () {
+  describe('#searchByEmail', function () {
+    const email = 'test@test.com'
+    it('should return a URL', function () {
       expect(subject.searchByEmail(email)._unsafeUnwrap()).toBe(
-        "https://intelx.io/?s=test%40test.com",
-      );
-    });
-  });
+        'https://intelx.io/?s=test%40test.com',
+      )
+    })
+  })
 
-  describe("#searchByBTC", function () {
-    const btc = "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa";
-    it("should return a URL", function () {
-      expect(subject.searchByBTC(btc)._unsafeUnwrap()).toBe(
-        `https://intelx.io/?s=${btc}`,
-      );
-    });
-  });
-});
+  describe('#searchByBTC', function () {
+    const btc = '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'
+    it('should return a URL', function () {
+      expect(subject.searchByBTC(btc)._unsafeUnwrap()).toBe(`https://intelx.io/?s=${btc}`)
+    })
+  })
+})

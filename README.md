@@ -119,7 +119,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 
 You can enable/disable a search engine on the options page based on your preference.
 
-!["options.png](/images/options.png "options.png")
+!["options.png](/images/options.png 'options.png')
 
 > [!NOTE]
 > Basic preferences are stored in [storage.sync](https://developer.chrome.com/docs/extensions/reference/api/storage). Thus they will be synced across devices.
