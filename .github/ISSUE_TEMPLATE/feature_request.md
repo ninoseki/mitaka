@@ -1,11 +1,11 @@
 ---
 name: Feature request
 about: Suggest a new Feature for Mitaka
-title: "[Feature Request]"
+title: '[Feature Request]'
 labels: enhancement
 assignees: ''
-
 ---
+
 <!--
 1. Make sure your requested feature makes sense for Mitaka:
 

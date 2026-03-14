@@ -1,18 +1,16 @@
-import { Sploitus } from "~/searcher";
+import { Sploitus } from '~/searcher'
 
-describe("Sploitus", function () {
-  const subject = new Sploitus();
+describe('Sploitus', function () {
+  const subject = new Sploitus()
 
-  it("should support cve", function () {
-    expect(subject.supportedTypes).toEqual(["cve"]);
-  });
+  it('should support cve', function () {
+    expect(subject.supportedTypes).toEqual(['cve'])
+  })
 
-  describe("#searchByCVE", function () {
-    const cve = "CVE-2018-8013";
-    it("should return a URL", function () {
-      expect(subject.searchByCVE(cve)._unsafeUnwrap()).toBe(
-        `https://sploitus.com/?query=${cve}`,
-      );
-    });
-  });
-});
+  describe('#searchByCVE', function () {
+    const cve = 'CVE-2018-8013'
+    it('should return a URL', function () {
+      expect(subject.searchByCVE(cve)._unsafeUnwrap()).toBe(`https://sploitus.com/?query=${cve}`)
+    })
+  })
+})

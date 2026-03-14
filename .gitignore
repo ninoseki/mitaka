@@ -26,3 +26,5 @@ dist/
 
 # typescript
 .tsbuildinfo
+
+.eslintcache

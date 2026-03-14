@@ -1,27 +1,26 @@
-import { InQuest } from "~/searcher";
+import { InQuest } from '~/searcher'
 
-describe("InQuest", function () {
-  const subject = new InQuest();
+describe('InQuest', function () {
+  const subject = new InQuest()
 
-  it("should support hash", function () {
-    expect(subject.supportedTypes).toEqual(["hash"]);
-  });
+  it('should support hash', function () {
+    expect(subject.supportedTypes).toEqual(['hash'])
+  })
 
-  describe("#searchByHash", function () {
-    const sha256 =
-      "794374d3e3bd6f2bb232f61d2922d9dae3f78f864a2941f3b76157f82a3e6017";
-    const md5 = "5584cd3c99cde56e459f30eec3bb470b";
+  describe('#searchByHash', function () {
+    const sha256 = '794374d3e3bd6f2bb232f61d2922d9dae3f78f864a2941f3b76157f82a3e6017'
+    const md5 = '5584cd3c99cde56e459f30eec3bb470b'
 
-    it("should return a URL", function () {
+    it('should return a URL', function () {
       expect(subject.searchByHash(sha256)._unsafeUnwrap()).toBe(
         `https://labs.inquest.net/dfi/sha256/${sha256}`,
-      );
-    });
+      )
+    })
 
-    it("should throw an error when given hash which is not SHA256", function () {
+    it('should throw an error when given hash which is not SHA256', function () {
       // eslint-disable-next-line neverthrow/must-use-result
-      const res = subject.searchByHash(md5);
-      expect(res.isErr()).toBe(true);
-    });
-  });
-});
+      const res = subject.searchByHash(md5)
+      expect(res.isErr()).toBe(true)
+    })
+  })
+})

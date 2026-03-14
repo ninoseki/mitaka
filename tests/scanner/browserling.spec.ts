@@ -1,18 +1,18 @@
-import { Browserling } from "~/scanner";
+import { Browserling } from '~/scanner'
 
-describe("Browserling", function () {
-  const subject = new Browserling();
+describe('Browserling', function () {
+  const subject = new Browserling()
 
-  it("should support url", function () {
-    expect(subject.supportedTypes).toEqual(["url"]);
-  });
+  it('should support url', function () {
+    expect(subject.supportedTypes).toEqual(['url'])
+  })
 
-  describe("#scanByURL", function () {
-    it("should return a URL", async function () {
-      const res = await subject.scanByURL("http://example.com");
+  describe('#scanByURL', function () {
+    it('should return a URL', async function () {
+      const res = await subject.scanByURL('http://example.com')
       expect(res._unsafeUnwrap()).toBe(
-        "https://www.browserling.com/browse/win/7/ie/11/http%3A%2F%2Fexample.com",
-      );
-    });
-  });
-});
+        'https://www.browserling.com/browse/win/7/ie/11/http%3A%2F%2Fexample.com',
+      )
+    })
+  })
+})

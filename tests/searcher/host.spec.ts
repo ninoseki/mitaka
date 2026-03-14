@@ -1,18 +1,16 @@
-import { Host } from "~/searcher";
+import { Host } from '~/searcher'
 
-describe("Host", function () {
-  const subject = new Host();
+describe('Host', function () {
+  const subject = new Host()
 
-  it("should support domain", function () {
-    expect(subject.supportedTypes).toEqual(["domain"]);
-  });
+  it('should support domain', function () {
+    expect(subject.supportedTypes).toEqual(['domain'])
+  })
 
-  describe("#searchByDomain", function () {
-    const domain = "github.com";
-    it("should return a URL", function () {
-      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
-        `https://host.io/${domain}`,
-      );
-    });
-  });
-});
+  describe('#searchByDomain', function () {
+    const domain = 'github.com'
+    it('should return a URL', function () {
+      expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(`https://host.io/${domain}`)
+    })
+  })
+})
