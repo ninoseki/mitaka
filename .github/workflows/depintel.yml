@@ -1,0 +1,19 @@
+name: Dependency Intelligence
+
+on:
+  pull_request:
+    paths:
+      - 'package.json'
+      - 'package-lock.json'
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  depintel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lunacompsia-oss/depintel-action@v1
+        with:
+          fail-on-critical: 'true'
