@@ -42,6 +42,7 @@ import {
   SecurityTrails,
   Shodan,
   Sploitus,
+  SpyOnWeb,
   Talos,
   ThreatBook,
   ThreatConnect,
@@ -73,12 +74,10 @@ export { Crtsh } from './crtsh'
 export { CVE as MITRE } from './cve'
 export { DNSCoffee } from './dnsCoffee'
 export { DNSlytics } from './dnslytics'
-export { DomainBigData } from './domainbigdata'
 export { DomainTools } from './domaintools'
 export { EmailRep } from './emailrep'
 export { ExploitDatabase } from './exploitdatabase'
 export { FileScan } from './filescan'
-export { FOFA } from './fofa'
 export { FortiGuard } from './fortiguard'
 export { GoogleSafeBrowsing } from './googlesafebrowsing'
 export { GreyNoise } from './greynoise'
@@ -86,7 +85,6 @@ export { Host } from './host'
 export { HurricaneElectric } from './hurricaneelectric'
 export { HybridAnalysis } from './hybridanalysis'
 export { InQuest } from './inquest'
-export { IntelligenceX } from './intelligencex'
 export { Intezer } from './intezer'
 export { IPinfo } from './ipinfo'
 export { IPIP } from './ipip'
@@ -106,11 +104,9 @@ export { SecurityTrails } from './securitytrails'
 export { Shodan } from './shodan'
 export { Sploitus } from './sploitus'
 export { SpyOnWeb } from './spyonweb'
-export { Spyse } from './spyse'
 export { Talos } from './talos'
 export { ThreatBook } from './threatbook'
 export { ThreatConnect } from './threatconnect'
-export { ThreatCrowd } from './threatcrowd'
 export { ThreatMiner } from './threatminer'
 export { TIP } from './tip'
 export { Triage } from './triage'
@@ -121,7 +117,6 @@ export { ViewDNS } from './viewdns'
 export { VirusTotal } from './virustotal'
 export { VMRay } from './vmray'
 export { Vulmon } from './vulmon'
-export { VxCube } from './vxcube'
 export { WebCheck } from './webcheck'
 export { XForceExchange } from './xforceExchange'
 export { ZoomEye } from './zoomeye'
@@ -168,6 +163,7 @@ export const Searchers: Searcher[] = [
   new SecurityTrails(),
   new Shodan(),
   new Sploitus(),
+  new SpyOnWeb(),
   new Talos(),
   new ThreatBook(),
   new ThreatConnect(),
@@ -181,7 +177,7 @@ export const Searchers: Searcher[] = [
   new VirusTotal(),
   new VMRay(),
   new Vulmon(),
+  new WebCheck(),
   new XForceExchange(),
   new ZoomEye(),
-  new WebCheck(),
 ]
