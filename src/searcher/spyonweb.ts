@@ -12,27 +12,27 @@ export class SpyOnWeb extends Base {
 
   public constructor() {
     super()
-    this.baseURL = 'http://spyonweb.com'
+    this.baseURL = 'http://spyonweb.net'
     this.name = 'SpyOnWeb'
   }
 
   public searchByIP(query: string) {
-    return this.search(query)
+    return this.search('ip', query)
   }
 
   public searchByDomain(query: string) {
-    return this.search(query)
+    return this.search('domain', query)
   }
 
   public searchByGAPubID(query: string) {
-    return this.search(query)
+    return this.search('adsense', query)
   }
 
   public searchByGATrackID(query: string) {
-    return this.search(query)
+    return this.search('analytics', query)
   }
 
-  private search(query: string) {
-    return ok(buildURL(this.baseURL, `/${query}`))
+  private search(type: string, query: string) {
+    return ok(buildURL(this.baseURL, `/${type}/${query}`))
   }
 }
