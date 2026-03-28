@@ -25,6 +25,6 @@ dist/
 .wxt
 
 # typescript
-.tsbuildinfo
+*.tsbuildinfo
 
 .eslintcache

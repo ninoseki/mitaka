@@ -18,7 +18,10 @@ import { search, searchAll } from './search'
 
 export function createContextMenus(text: string, options: OptionsType): void {
   const selector: Selector = new Selector(text, options)
-  const contexts: chrome.contextMenus.ContextType[] = ['selection']
+  const contexts: [
+    `${chrome.contextMenus.ContextType}`,
+    ...`${chrome.contextMenus.ContextType}`[],
+  ] = ['selection']
 
   const slots = selector.getSlots()
   for (const slot of slots) {
@@ -49,11 +52,10 @@ export function createContextMenus(text: string, options: OptionsType): void {
 
 export default defineBackground(() => {
   // message handler
-  onMessage('createContextMenus', (message) => {
+  onMessage('createContextMenus', async (message) => {
     // remove old context menus before creating new ones
-    chrome.contextMenus.removeAll(() => {
-      createContextMenus(message.data.text, message.data.options)
-    })
+    await chrome.contextMenus.removeAll()
+    createContextMenus(message.data.text, message.data.options)
   })
 
   // context menus on-clicked handler

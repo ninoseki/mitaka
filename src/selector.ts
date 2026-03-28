@@ -42,13 +42,7 @@ export class Selector {
 
   public constructor(input: string, options: OptionsType = defaultOptions) {
     let normalized = options.refang ? refang(input) : input
-    normalized = options.punycode
-      ? unicodeToASCII(normalized, {
-          ignoreInvalidPunycode: true,
-          transitionalProcessing: true,
-        })
-      : normalized
-
+    normalized = options.punycode ? unicodeToASCII(normalized) : normalized
     this.input = normalized
     this.options = options
     this.searchers = Searchers.filter((s) => !this.options.disabledSearcherNames.includes(s.name))
