@@ -9,7 +9,7 @@ export async function searchAll(runner: CommandRunner): Promise<void> {
       async (url) => {
         await chrome.tabs.create({ url })
       },
-      (err) => showNotification(err),
+      async (err) => await showNotification(err),
     )
   }
 }
@@ -20,6 +20,6 @@ export async function search(runner: CommandRunner): Promise<void> {
     async (url) => {
       await chrome.tabs.create({ url })
     },
-    (err) => showNotification(err),
+    async (err) => await showNotification(err),
   )
 }

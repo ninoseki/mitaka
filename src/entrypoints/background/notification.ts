@@ -1,6 +1,6 @@
-export function showNotification(message: string): void {
-  chrome.notifications.create({
-    iconUrl: 'https://raw.githubusercontent.com/ninoseki/mitaka/master/assets/icon.png',
+export async function showNotification(message: string): Promise<string> {
+  return await chrome.notifications.create({
+    iconUrl: chrome.runtime.getURL('icons/128.png'),
     message,
     title: 'Mitaka',
     type: 'basic',
