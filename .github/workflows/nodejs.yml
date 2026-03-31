@@ -39,7 +39,7 @@ jobs:
           node-version: 24
           cache: npm
       - name: Install npm dependencies
-        run: npm install
+        run: npm ci
       - name: Run lint
         run: NODE_ENV=production npm run lint
       - name: Type check
