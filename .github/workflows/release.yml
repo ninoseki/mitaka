@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 24
           cache: npm
-      - run: npm install
+      - run: npm ci
       - name: Set version via tag
         run: npm version --no-git-tag-version ${{ github.event.release.tag_name }}
       - name: Build zip packages
