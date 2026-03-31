@@ -23,6 +23,8 @@ jobs:
           cache: npm
       - name: Install npm dependencies
         run: npm ci
+      - name: Prepare WXT
+        run: npx wxt prepare
       - name: Run tests
         run: npm run coverage
       - name: Coveralls
@@ -40,6 +42,8 @@ jobs:
           cache: npm
       - name: Install npm dependencies
         run: npm ci
+      - name: Prepare WXT
+        run: npx wxt prepare
       - name: Run lint
         run: NODE_ENV=production npm run lint
       - name: Type check
