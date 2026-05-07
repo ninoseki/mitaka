@@ -4,32 +4,65 @@ on:
   release:
     types: [created]
 
+env:
+  GO_WEBEXT_VERSION: v0.4.1
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version: 24
           cache: npm
       - run: npm ci
       - name: Set version via tag
         run: npm version --no-git-tag-version ${{ github.event.release.tag_name }}
+      - name: Resolve version
+        run: |
+          tag='${{ github.event.release.tag_name }}'
+          echo "VERSION=${tag#v}" >> "$GITHUB_ENV"
       - name: Build zip packages
         run: |
           npm run zip
           npm run zip:firefox
-      - name: Submit to stores
-        run: |
-          npx wxt submit \
-            --chrome-zip .output/*-chrome.zip \
-            --firefox-zip .output/*-firefox.zip --firefox-sources-zip .output/*-sources.zip
+      - name: Submit to Firefox Add-ons
+        uses: ninoseki/go-webext-action@d9899b7e80bd74b7333de9fdd189cf2e44c1f1ef # v1.0.0
+        with:
+          version: ${{ env.GO_WEBEXT_VERSION }}
+          command: update
+          browser: firefox
+          file: .output/mitaka-${{ env.VERSION }}-firefox.zip
+          source: .output/mitaka-${{ env.VERSION }}-sources.zip
+          channel: listed
         env:
-          CHROME_EXTENSION_ID: 'bfjbejmeoibbdpfdbmbacmefcbannnbg'
+          FIREFOX_CLIENT_ID: ${{ secrets.FIREFOX_JWT_ISSUER }}
+          FIREFOX_CLIENT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}
+      - name: Update Chrome Web Store listing
+        uses: ninoseki/go-webext-action@d9899b7e80bd74b7333de9fdd189cf2e44c1f1ef # v1.0.0
+        with:
+          version: ${{ env.GO_WEBEXT_VERSION }}
+          command: update
+          browser: chrome
+          app-id: bfjbejmeoibbdpfdbmbacmefcbannnbg
+          file: .output/mitaka-${{ env.VERSION }}-chrome.zip
+        env:
+          CHROME_API_VERSION: v2
           CHROME_CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
           CHROME_CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
           CHROME_REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
-          FIREFOX_EXTENSION_ID: 'mitaka'
-          FIREFOX_JWT_ISSUER: ${{ secrets.FIREFOX_JWT_ISSUER }}
-          FIREFOX_JWT_SECRET: ${{ secrets.FIREFOX_JWT_SECRET }}
+          CHROME_PUBLISHER_ID: ${{ secrets.CHROME_PUBLISHER_ID }}
+      - name: Publish to Chrome Web Store
+        uses: ninoseki/go-webext-action@d9899b7e80bd74b7333de9fdd189cf2e44c1f1ef # v1.0.0
+        with:
+          version: ${{ env.GO_WEBEXT_VERSION }}
+          command: publish
+          browser: chrome
+          app-id: bfjbejmeoibbdpfdbmbacmefcbannnbg
+        env:
+          CHROME_API_VERSION: v2
+          CHROME_CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
+          CHROME_CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
+          CHROME_REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
+          CHROME_PUBLISHER_ID: ${{ secrets.CHROME_PUBLISHER_ID }}
