@@ -12,7 +12,7 @@ export class DNSlytics extends Base {
 
   public constructor() {
     super()
-    this.baseURL = 'https://dnslytics.com'
+    this.baseURL = 'https://search.dnslytics.com'
     this.name = 'DNSlytics'
   }
 
