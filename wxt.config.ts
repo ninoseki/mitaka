@@ -1,9 +1,13 @@
+import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'wxt'
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
   srcDir: 'src',
   modules: ['@wxt-dev/module-vue', '@wxt-dev/auto-icons'],
+  vite: () => ({
+    plugins: [tailwindcss()],
+  }),
   manifest: {
     name: 'Mitaka',
     permissions: ['contextMenus', 'storage', 'notifications'],
