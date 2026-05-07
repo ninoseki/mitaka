@@ -10,7 +10,7 @@ describe('DNSlytics', function () {
   describe('#searchByIP', function () {
     const ip = '1.1.1.1'
     it('should return a URL', function () {
-      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(`https://dnslytics.com/ip/${ip}`)
+      expect(subject.searchByIP(ip)._unsafeUnwrap()).toBe(`https://search.dnslytics.com/ip/${ip}`)
     })
   })
 
@@ -18,7 +18,7 @@ describe('DNSlytics', function () {
     const domain = 'github.com'
     it('should return a URL', function () {
       expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
-        `https://dnslytics.com/domain/${domain}`,
+        `https://search.dnslytics.com/domain/${domain}`,
       )
     })
   })
