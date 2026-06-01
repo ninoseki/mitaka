@@ -14,7 +14,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 - Key features:
   - Auto IoC (indicators of compromise) selection with refanging.
     - E.g. `example[.]com` to `example.com`, `test[at]example.com` to `test@example.com`, `hxxp://example.com` to `http://example.com`, etc.
-  - Supports 66+ services.
+  - Supports 65+ services.
 
 ## Install
 
