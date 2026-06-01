@@ -40,6 +40,7 @@ import {
   Robtex,
   Scumware,
   SecurityTrails,
+  Sherlockeye,
   Shodan,
   Sploitus,
   SpyOnWeb,
@@ -101,6 +102,7 @@ export { Radar } from './radar'
 export { Robtex } from './robtex'
 export { Scumware } from './scumware'
 export { SecurityTrails } from './securitytrails'
+export { Sherlockeye } from './sherlockeye'
 export { Shodan } from './shodan'
 export { Sploitus } from './sploitus'
 export { SpyOnWeb } from './spyonweb'
@@ -161,6 +163,7 @@ export const Searchers: Searcher[] = [
   new Robtex(),
   new Scumware(),
   new SecurityTrails(),
+  new Sherlockeye(),
   new Shodan(),
   new Sploitus(),
   new SpyOnWeb(),

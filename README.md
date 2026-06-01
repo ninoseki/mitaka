@@ -14,7 +14,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 - Key features:
   - Auto IoC (indicators of compromise) selection with refanging.
     - E.g. `example[.]com` to `example.com`, `test[at]example.com` to `test@example.com`, `hxxp://example.com` to `http://example.com`, etc.
-  - Supports 65+ services.
+  - Supports 66+ services.
 
 ## Install
 
@@ -81,6 +81,7 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | Robtex               | <https://www.robtex.com>                 | IP, domain                     |
 | Scumware             | <https://www.scumware.org>               | IP, domain, hash (MD5)         |
 | SecurityTrails       | <https://securitytrails.com>             | IP, domain                     |
+| Sherlockeye          | <https://app.sherlockeye.io>             | IP, domain, email              |
 | Shodan               | <https://www.shodan.io>                  | IP, domain, ASN                |
 | Sploitus             | <https://sploitus.com>                   | CVE                            |
 | SpyOnWeb             | <https://spyonweb.net>                   | IP, domain, gaPubID, gaTrackID |
