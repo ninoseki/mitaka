@@ -17,6 +17,6 @@ export class WebCheck extends Base {
   }
 
   public searchByDomain(query: string) {
-    return ok(buildURL(this.baseURL, `/results/${query}`))
+    return ok(buildURL(this.baseURL, `/check/${query}`))
   }
 }
