@@ -58,8 +58,6 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | DNSlytics            | <https://search.dnslytics.com>           | IP, domain                     |
 | DomainTools          | <https://www.domaintools.com>            | IP, domain                     |
 | EmailRep             | <https://emailrep.io>                    | Email                          |
-| FileScan.IO          | <https://filescan.io>                    | Hash                           |
-| FortiGuard           | <https://fortiguard.com>                 | IP, URL, CVE                   |
 | Google Safe Browsing | <https://transparencyreport.google.com>  | Domain, URL                    |
 | GreyNoise            | <https://viz.greynoise.io>               | IP, domain, ASN, CVE           |
 | Host.io              | <https://host.io>                        | Domain                         |
@@ -79,7 +77,6 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | Pulsedive            | <https://pulsedive.com>                  | IP, domain, URL, hash          |
 | Radar                | <https://radar.cloudflare.com>           | IP, domain                     |
 | Robtex               | <https://www.robtex.com>                 | IP, domain                     |
-| Scumware             | <https://www.scumware.org>               | IP, domain, hash (MD5)         |
 | SecurityTrails       | <https://securitytrails.com>             | IP, domain                     |
 | Shodan               | <https://www.shodan.io>                  | IP, domain, ASN                |
 | Sploitus             | <https://sploitus.com>                   | CVE                            |

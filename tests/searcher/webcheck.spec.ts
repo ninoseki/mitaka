@@ -11,7 +11,7 @@ describe('WebCheck', function () {
     const domain = 'github.com'
     it('should return a URL', function () {
       expect(subject.searchByDomain(domain)._unsafeUnwrap()).toBe(
-        `https://web-check.xyz/results/${domain}`,
+        `https://web-check.xyz/check/${domain}`,
       )
     })
   })

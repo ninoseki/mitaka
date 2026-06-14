@@ -15,8 +15,6 @@ import {
   DomainTools,
   EmailRep,
   ExploitDatabase,
-  FileScan,
-  FortiGuard,
   GoogleSafeBrowsing,
   GreyNoise,
   Host,
@@ -38,7 +36,6 @@ import {
   Pulsedive,
   Radar,
   Robtex,
-  Scumware,
   SecurityTrails,
   Shodan,
   Sploitus,
@@ -77,8 +74,6 @@ export { DNSlytics } from './dnslytics'
 export { DomainTools } from './domaintools'
 export { EmailRep } from './emailrep'
 export { ExploitDatabase } from './exploitdatabase'
-export { FileScan } from './filescan'
-export { FortiGuard } from './fortiguard'
 export { GoogleSafeBrowsing } from './googlesafebrowsing'
 export { GreyNoise } from './greynoise'
 export { Host } from './host'
@@ -99,7 +94,6 @@ export { OTX } from './otx'
 export { Pulsedive } from './pulsedive'
 export { Radar } from './radar'
 export { Robtex } from './robtex'
-export { Scumware } from './scumware'
 export { SecurityTrails } from './securitytrails'
 export { Shodan } from './shodan'
 export { Sploitus } from './sploitus'
@@ -136,8 +130,6 @@ export const Searchers: Searcher[] = [
   new DomainTools(),
   new EmailRep(),
   new ExploitDatabase(),
-  new FileScan(),
-  new FortiGuard(),
   new GoogleSafeBrowsing(),
   new GreyNoise(),
   new Host(),
@@ -159,7 +151,6 @@ export const Searchers: Searcher[] = [
   new Pulsedive(),
   new Radar(),
   new Robtex(),
-  new Scumware(),
   new SecurityTrails(),
   new Shodan(),
   new Sploitus(),
