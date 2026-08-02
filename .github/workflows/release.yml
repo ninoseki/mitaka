@@ -13,18 +13,24 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
           cache: npm
       - run: npm ci
       - name: Set version via tag
-        run: npm version --no-git-tag-version ${{ github.event.release.tag_name }}
+        run: npm version --no-git-tag-version ${GITHUB_EVENT_RELEASE_TAG_NAME}
+        env:
+          GITHUB_EVENT_RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
       - name: Resolve version
         run: |
-          tag='${{ github.event.release.tag_name }}'
+          tag='${GITHUB_EVENT_RELEASE_TAG_NAME}'
           echo "VERSION=${tag#v}" >> "$GITHUB_ENV"
+        env:
+          GITHUB_EVENT_RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
       - name: Build zip packages
         run: |
           npm run zip
