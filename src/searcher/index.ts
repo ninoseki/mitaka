@@ -23,7 +23,6 @@ import {
   InQuest,
   Intezer,
   IPinfo,
-  IPIP,
   JoeSandbox,
   Maltiverse,
   MalwareBazaar,
@@ -81,7 +80,6 @@ export { HybridAnalysis } from './hybridanalysis'
 export { InQuest } from './inquest'
 export { Intezer } from './intezer'
 export { IPinfo } from './ipinfo'
-export { IPIP } from './ipip'
 export { JoeSandbox } from './joesandbox'
 export { Maltiverse } from './maltiverse'
 export { MalwareBazaar } from './malwarebazaar'
@@ -136,7 +134,6 @@ export const Searchers: Searcher[] = [
   new InQuest(),
   new Intezer(),
   new IPinfo(),
-  new IPIP(),
   new JoeSandbox(),
   new Maltiverse(),
   new MalwareBazaar(),

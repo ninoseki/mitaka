@@ -65,7 +65,6 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | HybridAnalysis       | <https://www.hybrid-analysis.com>        | IP, domain, hash               |
 | Intezer              | <https://analyze.intezer.com>            | Hash                           |
 | IPinfo               | <https://ipinfo.io>                      | IP, ASN                        |
-| IPIP                 | <https://en.ipip.net>                    | IP, ASN                        |
 | Joe Sandbox          | <https://www.joesandbox.com>             | Hash                           |
 | Maltiverse           | <https://www.maltiverse.com>             | Domain, hash                   |
 | MalwareBazaar        | <https://bazaar.abuse.ch>                | Hash                           |
