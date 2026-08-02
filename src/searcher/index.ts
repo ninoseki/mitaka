@@ -30,7 +30,6 @@ import {
   MITRE,
   NVD,
   OCCRP,
-  ONYPHE,
   OpenTIP,
   OTX,
   Pulsedive,
@@ -88,7 +87,6 @@ export { Maltiverse } from './maltiverse'
 export { MalwareBazaar } from './malwarebazaar'
 export { NVD } from './nvd'
 export { OCCRP } from './occrp'
-export { ONYPHE } from './onyphe'
 export { OpenTIP } from './opentip'
 export { OTX } from './otx'
 export { Pulsedive } from './pulsedive'
@@ -145,7 +143,6 @@ export const Searchers: Searcher[] = [
   new MITRE(),
   new NVD(),
   new OCCRP(),
-  new ONYPHE(),
   new OpenTIP(),
   new OTX(),
   new Pulsedive(),
