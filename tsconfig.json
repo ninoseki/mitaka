@@ -4,9 +4,6 @@
     "types": [
       "vitest/globals",
       "chrome"
-    ],
-    "noImplicitOverride": false,
-    "noUncheckedIndexedAccess": false,
-    "verbatimModuleSyntax": false
+    ]
   }
 }

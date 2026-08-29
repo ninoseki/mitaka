@@ -7,9 +7,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class ZoomEye extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['ip']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['ip']
 
   public constructor() {
     super()
@@ -17,7 +17,7 @@ export class ZoomEye extends Base {
     this.name = 'ZoomEye'
   }
 
-  public searchByIP(query: string) {
+  public override searchByIP(query: string) {
     const encodedQuery = Base64.encode(`ip="${query}"`)
     return ok(
       buildURL(this.baseURL, '/searchResult', {

@@ -6,9 +6,9 @@ import type { SearchableType } from '~/schemas'
 import { Base } from './base'
 
 export class Maltiverse extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['ip', 'domain', 'url', 'hash']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['ip', 'domain', 'url', 'hash']
 
   public constructor() {
     super()
@@ -16,20 +16,20 @@ export class Maltiverse extends Base {
     this.name = 'Maltiverse'
   }
 
-  public searchByIP(query: string) {
+  public override searchByIP(query: string) {
     return ok(`${this.baseURL}/ip/${query}`)
   }
 
-  public searchByDomain(query: string) {
+  public override searchByDomain(query: string) {
     return ok(`${this.baseURL}/hostname/${query}`)
   }
 
-  public searchByURL(query: string) {
+  public override searchByURL(query: string) {
     const hash = sha256(query)
     return ok(`${this.baseURL}/url/${hash}`)
   }
 
-  public searchByHash(query: string) {
+  public override searchByHash(query: string) {
     return ok(`${this.baseURL}/search;query=${query}`)
   }
 }

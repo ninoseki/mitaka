@@ -6,9 +6,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class EmailRep extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['email']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['email']
 
   public constructor() {
     super()
@@ -16,7 +16,7 @@ export class EmailRep extends Base {
     this.name = 'EmailRep'
   }
 
-  public searchByEmail(query: string) {
+  public override searchByEmail(query: string) {
     return ok(buildURL(this.baseURL, `/${query}`))
   }
 }

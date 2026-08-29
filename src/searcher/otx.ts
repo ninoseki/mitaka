@@ -6,9 +6,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class OTX extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['ip', 'domain', 'url', 'hash', 'cve']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['ip', 'domain', 'url', 'hash', 'cve']
 
   public constructor() {
     super()
@@ -16,23 +16,23 @@ export class OTX extends Base {
     this.name = 'OTX'
   }
 
-  public searchByIP(query: string) {
+  public override searchByIP(query: string) {
     return ok(buildURL(this.baseURL, `/indicator/ip/${query}`))
   }
 
-  public searchByURL(query: string) {
+  public override searchByURL(query: string) {
     return ok(buildURL(this.baseURL, `/indicator/url/${query}`))
   }
 
-  public searchByDomain(query: string) {
+  public override searchByDomain(query: string) {
     return ok(buildURL(this.baseURL, `/indicator/domain/${query}`))
   }
 
-  public searchByHash(query: string) {
+  public override searchByHash(query: string) {
     return ok(buildURL(this.baseURL, `/indicator/file/${query}`))
   }
 
-  public searchByCVE(query: string) {
+  public override searchByCVE(query: string) {
     return ok(buildURL(this.baseURL, `/indicator/cve/${query}`))
   }
 }

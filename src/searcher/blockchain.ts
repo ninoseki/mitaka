@@ -6,9 +6,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class BlockChain extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['btc']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['btc']
 
   public constructor() {
     super()
@@ -16,7 +16,7 @@ export class BlockChain extends Base {
     this.name = 'Blockchain.com'
   }
 
-  public searchByBTC(query: string) {
+  public override searchByBTC(query: string) {
     return ok(buildURL(this.baseURL, `/btc/address/${query}`))
   }
 }

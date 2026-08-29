@@ -7,9 +7,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class VirusTotal extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['ip', 'domain', 'url', 'hash']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['ip', 'domain', 'url', 'hash']
 
   public constructor() {
     super()
@@ -17,20 +17,20 @@ export class VirusTotal extends Base {
     this.name = 'VirusTotal'
   }
 
-  public searchByIP(query: string) {
+  public override searchByIP(query: string) {
     return ok(buildURL(this.baseURL, `/gui/ip-address/${query}/details`))
   }
 
-  public searchByURL(query: string) {
+  public override searchByURL(query: string) {
     const hash = sha256(this.normalizeURL(query))
     return ok(buildURL(this.baseURL, `/gui/url/${hash}/details`))
   }
 
-  public searchByDomain(query: string) {
+  public override searchByDomain(query: string) {
     return ok(buildURL(this.baseURL, `/gui/domain/${query}/details`))
   }
 
-  public searchByHash(query: string) {
+  public override searchByHash(query: string) {
     return ok(buildURL(this.baseURL, `/gui/file/${query}/details`))
   }
 

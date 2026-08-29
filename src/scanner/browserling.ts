@@ -6,11 +6,11 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class Browserling extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: ScannableType[] = ['url']
-  public apiKey?: string = undefined
-  public apiKeyRequired: boolean = false
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: ScannableType[] = ['url']
+  public override apiKey?: string = undefined
+  public override apiKeyRequired: boolean = false
 
   public constructor() {
     super()
@@ -18,7 +18,7 @@ export class Browserling extends Base {
     this.name = 'Browserling'
   }
 
-  scanByURL(url: string) {
+  override scanByURL(url: string) {
     return okAsync(buildURL(this.baseURL, `/browse/win/7/ie/11/${encodeURIComponent(url)}`))
   }
 }

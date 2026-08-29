@@ -69,8 +69,8 @@ export class CommandRunner {
 
     const search = (slot: SelectorSlot) => {
       const searcher = slot.analyzer as Searcher
-      if (this.command.type in this.searcherMap) {
-        const fn = this.searcherMap[this.command.type]
+      const fn = this.searcherMap[this.command.type]
+      if (fn) {
         return fn(searcher, slot.query)
       }
       return err('Something goes wrong')
@@ -85,8 +85,8 @@ export class CommandRunner {
     const slotsWithoutAll = slots.filter((slot) => slot.analyzer.name !== 'all')
     return slotsWithoutAll.map((slot) => {
       const searcher = slot.analyzer as Searcher
-      if (this.command.type in this.searcherMap) {
-        const fn = this.searcherMap[this.command.type]
+      const fn = this.searcherMap[this.command.type]
+      if (fn) {
         return fn(searcher, slot.query)
       }
       return err(`${this.command.type} is not supported`)
@@ -140,8 +140,8 @@ export class CommandRunner {
           break
       }
 
-      if (slot.type in this.scannerMap) {
-        const fn = this.scannerMap[slot.type]
+      const fn = this.scannerMap[slot.type]
+      if (fn) {
         return fn(scanner, slot.query)
       }
 

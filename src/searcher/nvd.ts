@@ -6,9 +6,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class NVD extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['cve']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['cve']
 
   public constructor() {
     super()
@@ -16,7 +16,7 @@ export class NVD extends Base {
     this.name = 'NVD'
   }
 
-  public searchByCVE(query: string) {
+  public override searchByCVE(query: string) {
     return ok(buildURL(this.baseURL, `/vuln/detail/${query}`))
   }
 }

@@ -6,9 +6,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class Robtex extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['domain', 'ip']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['domain', 'ip']
 
   public constructor() {
     super()
@@ -16,11 +16,11 @@ export class Robtex extends Base {
     this.name = 'Robtex'
   }
 
-  public searchByDomain(query: string) {
+  public override searchByDomain(query: string) {
     return ok(buildURL(this.baseURL, `/dns-lookup/${query}`))
   }
 
-  public searchByIP(query: string) {
+  public override searchByIP(query: string) {
     return ok(buildURL(this.baseURL, `/ip-lookup/${query}`))
   }
 }

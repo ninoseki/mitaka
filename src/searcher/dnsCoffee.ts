@@ -6,9 +6,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class DNSCoffee extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['domain']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['domain']
 
   public constructor() {
     super()
@@ -16,7 +16,7 @@ export class DNSCoffee extends Base {
     this.name = 'DNS Coffee'
   }
 
-  public searchByDomain(query: string) {
+  public override searchByDomain(query: string) {
     return ok(buildURL(this.baseURL, `/domains/${query}`))
   }
 }

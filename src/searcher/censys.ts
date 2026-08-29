@@ -6,9 +6,9 @@ import { buildURL, extractASNumber } from '~/utils'
 import { Base } from './base'
 
 export class Censys extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['ip', 'asn', 'domain', 'email']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['ip', 'asn', 'domain', 'email']
 
   public constructor() {
     super()
@@ -16,11 +16,11 @@ export class Censys extends Base {
     this.name = 'Censys'
   }
 
-  public searchByIP(query: string) {
+  public override searchByIP(query: string) {
     return ok(buildURL(this.baseURL, `/hosts/${query}`))
   }
 
-  public searchByASN(query: string) {
+  public override searchByASN(query: string) {
     const asn = extractASNumber(query)
     return ok(
       buildURL(this.baseURL, '/search', {
@@ -30,7 +30,7 @@ export class Censys extends Base {
     )
   }
 
-  public searchByDomain(query: string) {
+  public override searchByDomain(query: string) {
     return ok(
       buildURL(this.baseURL, '/search', {
         q: `parsed.names:${query}`,
@@ -39,7 +39,7 @@ export class Censys extends Base {
     )
   }
 
-  public searchByEmail(query: string) {
+  public override searchByEmail(query: string) {
     return ok(
       buildURL(this.baseURL, '/search', {
         q: `parsed.subject.email_address:${query}`,

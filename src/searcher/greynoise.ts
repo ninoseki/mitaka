@@ -6,9 +6,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class GreyNoise extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['ip', 'domain', 'asn', 'cve']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['ip', 'domain', 'asn', 'cve']
 
   public constructor() {
     super()
@@ -16,19 +16,19 @@ export class GreyNoise extends Base {
     this.name = 'GreyNoise'
   }
 
-  public searchByIP(query: string) {
+  public override searchByIP(query: string) {
     return this.search(`ip:${query}`)
   }
 
-  public searchByDomain(query: string) {
+  public override searchByDomain(query: string) {
     return this.search(`metadata.rdns:${query}`)
   }
 
-  public searchByASN(query: string) {
+  public override searchByASN(query: string) {
     return this.search(`metadata.asn:${query}`)
   }
 
-  public searchByCVE(query: string) {
+  public override searchByCVE(query: string) {
     return this.search(`cve:${query}`)
   }
 

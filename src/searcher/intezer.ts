@@ -6,9 +6,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class Intezer extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['hash']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['hash']
 
   public constructor() {
     super()
@@ -16,7 +16,7 @@ export class Intezer extends Base {
     this.name = 'Intezer'
   }
 
-  public searchByHash(query: string) {
+  public override searchByHash(query: string) {
     return ok(buildURL(this.baseURL, `/#/files/${query}`))
   }
 }

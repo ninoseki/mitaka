@@ -6,9 +6,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class ArchiveOrg extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['url']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['url']
 
   public constructor() {
     super()
@@ -16,7 +16,7 @@ export class ArchiveOrg extends Base {
     this.name = 'archive.org'
   }
 
-  public searchByURL(query: string) {
+  public override searchByURL(query: string) {
     return ok(buildURL(this.baseURL, `/web/*/${query}`))
   }
 }

@@ -1,6 +1,6 @@
 import { defineExtensionMessaging } from '@webext-core/messaging'
 
-import { Message } from '~/types'
+import type { Message } from '~/types'
 
 interface ProtocolMap {
   createContextMenus(message: Message): void

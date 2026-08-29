@@ -5,9 +5,9 @@ import type { SearchableType } from '~/schemas'
 import { Base } from './base'
 
 export class AnyRun extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['hash']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['hash']
 
   public constructor() {
     super()
@@ -15,7 +15,7 @@ export class AnyRun extends Base {
     this.name = 'ANY.RUN'
   }
 
-  public searchByHash(query: string) {
+  public override searchByHash(query: string) {
     return ok(this.baseURL + `/submissions/#filehash:${query}`)
   }
 }

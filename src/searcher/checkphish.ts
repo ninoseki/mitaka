@@ -6,9 +6,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class CheckPhish extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['ip', 'domain']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['ip', 'domain']
 
   public constructor() {
     super()
@@ -16,11 +16,11 @@ export class CheckPhish extends Base {
     this.name = 'CheckPhish'
   }
 
-  public searchByIP(query: string) {
+  public override searchByIP(query: string) {
     return ok(buildURL(this.baseURL, `/ip/${query}`))
   }
 
-  public searchByDomain(query: string) {
+  public override searchByDomain(query: string) {
     return ok(buildURL(this.baseURL, `/domain/${query}`))
   }
 }

@@ -6,9 +6,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class ThreatConnect extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['ip', 'domain', 'email']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['ip', 'domain', 'email']
 
   public constructor() {
     super()
@@ -16,15 +16,15 @@ export class ThreatConnect extends Base {
     this.name = 'ThreatConnect'
   }
 
-  public searchByIP(query: string) {
+  public override searchByIP(query: string) {
     return this.searchByType('address', query)
   }
 
-  public searchByDomain(query: string) {
+  public override searchByDomain(query: string) {
     return this.searchByType('host', query)
   }
 
-  public searchByEmail(query: string) {
+  public override searchByEmail(query: string) {
     return this.searchByType('emailaddress', query)
   }
 

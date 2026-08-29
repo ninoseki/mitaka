@@ -14,10 +14,10 @@ const ErrorResponse = v.object({
 })
 
 export class HybridAnalysis extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: ScannableType[] = ['url']
-  public apiKey?: string = undefined
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: ScannableType[] = ['url']
+  public override apiKey?: string = undefined
 
   public constructor() {
     super()
@@ -25,11 +25,11 @@ export class HybridAnalysis extends Base {
     this.name = 'HybridAnalysis'
   }
 
-  setAPIKey(apiKey: string): void {
+  override setAPIKey(apiKey: string): void {
     this.apiKey = apiKey
   }
 
-  scanByURL(url: string) {
+  override scanByURL(url: string) {
     if (!this.apiKey) {
       return errAsync('Please set your HybridAnalysis API key via the option.')
     }

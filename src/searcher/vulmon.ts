@@ -6,9 +6,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class Vulmon extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['cve']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['cve']
 
   public constructor() {
     super()
@@ -16,7 +16,7 @@ export class Vulmon extends Base {
     this.name = 'Vulmon'
   }
 
-  public searchByCVE(query: string) {
+  public override searchByCVE(query: string) {
     return ok(buildURL(this.baseURL, '/vulnerabilitydetails', { qid: query }))
   }
 }

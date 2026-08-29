@@ -24,10 +24,10 @@ const ErrorResponse = v.object({
 })
 
 export class VirusTotal extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: ScannableType[] = ['url']
-  public apiKey?: string = undefined
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: ScannableType[] = ['url']
+  public override apiKey?: string = undefined
 
   public constructor() {
     super()
@@ -35,7 +35,7 @@ export class VirusTotal extends Base {
     this.name = 'VirusTotal'
   }
 
-  public setAPIKey(apiKey: string): void {
+  public override setAPIKey(apiKey: string): void {
     this.apiKey = apiKey
   }
 
@@ -47,7 +47,7 @@ export class VirusTotal extends Base {
     return buildURL(this.baseURL, `/gui/url/${sha256}/details`)
   }
 
-  scanByURL(url: string) {
+  override scanByURL(url: string) {
     if (!this.apiKey) {
       return errAsync('Please set your VirusTotal API key via the option.')
     }

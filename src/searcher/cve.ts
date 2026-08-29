@@ -6,9 +6,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class CVE extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['cve']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['cve']
 
   public constructor() {
     super()
@@ -16,7 +16,7 @@ export class CVE extends Base {
     this.name = 'CVE'
   }
 
-  public searchByCVE(query: string) {
+  public override searchByCVE(query: string) {
     return ok(buildURL(this.baseURL, `/CVERecord?id=${query}`))
   }
 }

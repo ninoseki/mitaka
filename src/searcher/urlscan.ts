@@ -6,9 +6,9 @@ import { buildURL, extractASNumber } from '~/utils'
 import { Base } from './base'
 
 export class URLScan extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['ip', 'domain', 'asn', 'url']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['ip', 'domain', 'asn', 'url']
 
   public constructor() {
     super()
@@ -16,20 +16,20 @@ export class URLScan extends Base {
     this.name = 'urlscan.io'
   }
 
-  public searchByIP(query: string) {
+  public override searchByIP(query: string) {
     return ok(buildURL(this.baseURL, `/ip/${query}`))
   }
 
-  public searchByDomain(query: string) {
+  public override searchByDomain(query: string) {
     return ok(buildURL(this.baseURL, `/domain/${query}`))
   }
 
-  public searchByASN(query: string) {
+  public override searchByASN(query: string) {
     const number: string = extractASNumber(query)
     return ok(buildURL(this.baseURL, `/asn/AS${number}`))
   }
 
-  public searchByURL(query: string) {
+  public override searchByURL(query: string) {
     return ok(
       buildURL(
         this.baseURL,

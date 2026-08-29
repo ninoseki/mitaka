@@ -6,9 +6,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class ThreatMiner extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['ip', 'domain', 'hash']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['ip', 'domain', 'hash']
 
   public constructor() {
     super()
@@ -16,15 +16,15 @@ export class ThreatMiner extends Base {
     this.name = 'ThreatMiner'
   }
 
-  public searchByIP(query: string) {
+  public override searchByIP(query: string) {
     return ok(buildURL(this.baseURL, '/host.php', { q: query }))
   }
 
-  public searchByDomain(query: string) {
+  public override searchByDomain(query: string) {
     return ok(buildURL(this.baseURL, '/domain.php', { q: query }))
   }
 
-  public searchByHash(query: string) {
+  public override searchByHash(query: string) {
     return ok(buildURL(this.baseURL, '/sample.php', { q: query }))
   }
 }

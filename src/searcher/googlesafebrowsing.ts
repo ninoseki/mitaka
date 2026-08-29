@@ -6,9 +6,9 @@ import { buildURL } from '~/utils'
 import { Base } from './base'
 
 export class GoogleSafeBrowsing extends Base {
-  public baseURL: string
-  public name: string
-  public supportedTypes: SearchableType[] = ['domain', 'url']
+  public override baseURL: string
+  public override name: string
+  public override supportedTypes: SearchableType[] = ['domain', 'url']
 
   public constructor() {
     super()
@@ -16,11 +16,11 @@ export class GoogleSafeBrowsing extends Base {
     this.name = 'GoogleSafeBrowsing'
   }
 
-  public searchByDomain(query: string) {
+  public override searchByDomain(query: string) {
     return this.search(query)
   }
 
-  public searchByURL(query: string) {
+  public override searchByURL(query: string) {
     return this.search(query)
   }
 
