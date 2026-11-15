@@ -2,7 +2,6 @@ import neverthrow from '@ninoseki/eslint-plugin-neverthrow'
 import pluginVitest from '@vitest/eslint-plugin'
 import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
 import { globalIgnores } from 'eslint/config'
-import skipFormatting from 'eslint-config-prettier/flat'
 import pluginOxlint from 'eslint-plugin-oxlint'
 import * as regexpPlugin from 'eslint-plugin-regexp'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
@@ -34,8 +33,6 @@ export default defineConfigWithVueTs(
   },
 
   ...pluginOxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
-
-  skipFormatting,
 
   regexpPlugin.configs['flat/recommended'],
 
