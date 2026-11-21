@@ -41,7 +41,6 @@ import {
   Talos,
   ThreatBook,
   ThreatConnect,
-  ThreatMiner,
   TIP,
   Triage,
   URLhaus,
@@ -97,7 +96,6 @@ export { SpyOnWeb } from './spyonweb'
 export { Talos } from './talos'
 export { ThreatBook } from './threatbook'
 export { ThreatConnect } from './threatconnect'
-export { ThreatMiner } from './threatminer'
 export { TIP } from './tip'
 export { Triage } from './triage'
 export { URLhaus } from './urlhaus'
@@ -152,7 +150,6 @@ export const Searchers: Searcher[] = [
   new Talos(),
   new ThreatBook(),
   new ThreatConnect(),
-  new ThreatMiner(),
   new TIP(),
   new Triage(),
   new URLhaus(),

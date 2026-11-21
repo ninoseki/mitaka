@@ -82,7 +82,6 @@ Mitaka is a browser extension that makes your OSINT (Open Source Intelligence) s
 | Talos                | <https://talosintelligence.com>          | IP, domain                     |
 | ThreatBook           | <https://threatbook.io>                  | IP, domain                     |
 | ThreatConnect        | <https://app.threatconnect.com>          | IP, domain, email              |
-| ThreatMiner          | <https://www.threatminer.org>            | IP, domain, hash               |
 | TIP                  | <https://threatintelligenceplatform.com> | IP, domain                     |
 | Triage               | <https://tria.ge>                        | Hash, URL                      |
 | URLhaus              | <https://urlhaus.abuse.ch>               | IP, domain                     |
